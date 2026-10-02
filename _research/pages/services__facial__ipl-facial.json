@@ -1,0 +1,127 @@
+{
+ "url": "https://elements.com.sg/services/facial/ipl-facial/",
+ "path": "/services/facial/ipl-facial/",
+ "title": "IPL Facial in Singapore",
+ "description": "IPL Facial treatment targets skin concerns such as sunspots, hyperpigmentation and uneven skin tone. Book your IPL Facial treatment in Singapore today!",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Advanced IPL Facial",
+   "html": "Advanced IPL Facial"
+  },
+  {
+   "t": "html",
+   "html": "<p>Uses light energy to improve the appearance of your skin and reverse signs of aging and damage.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Sign Up To Enjoy Your First Trial At $128 nett (90-min, U.P. $498) | T&C applies",
+   "html": "Sign Up To Enjoy Your First Trial At $128 nett (90-min, U.P. $498) | T&C applies"
+  },
+  {
+   "t": "html",
+   "html": "<p>Pre-registration and advance booking required to enjoy this promotion.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "What is Advanced IPL Facial?",
+   "html": "What is Advanced IPL Facial?"
+  },
+  {
+   "t": "html",
+   "html": "<p>IPL uses light energy to stimulate new collagen to form in the skin to fix many skin issues. IPL uses broad-spectrum light with varying wavelengths that penetrate the skin at different depths, allowing it to treat many skin conditions. This treatment is favored by many for managing pigmentation, enlarged pores, wrinkles, acne, etc.</p><p>Experience healthier and more radiant complexion with this therapy.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/ipl-facial-min-4b175ea65bb3.jpg",
+   "alt": "ipl facial",
+   "caption": "",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Benefits of Advanced IPL Facial",
+   "html": "Benefits of Advanced IPL Facial"
+  },
+  {
+   "t": "html",
+   "html": "<p>Not only repairs signs of aging, but helps to prevent future signs as well</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Minimal downtime</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Immediate result of initial IPL therapy is a brighter skin tone. Maintenance treatments help to keep your skin looking younger and healthy, promote collagen growth, prevent the effects of sun damage, and give the skin a healthy glow</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Combines well with other facial treatments, such as chemical peels and infusions. These treatments target the surface layer of skin, while IPL reaches the deeper layers of skin</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>IPL produces multiple wavelengths of pulsating light, as a result, IPL can treat a range of skin conditions at the same time</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Suitable For",
+   "html": "Suitable For"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Pigmentation</strong><br/>IPL breaks down unwanted pigments in your skin</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Dull uneven skin</strong><br/>IPL stimulates collagen growth for smoother, younger looking skin</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Acne</strong><br/>IPL kills p.acne bacteria and controls oil and manages scarring and pigmentation</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Anti-aging</strong><br/>IPL reduces fine lines and wrinkles, while improving skin elasticity</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Reduce pore size</strong><br/>New collagen formation helps to reduce appearance of pore size</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How Advanced IPL Facial Works",
+   "html": "How Advanced IPL Facial Works"
+  },
+  {
+   "t": "video",
+   "url": "https://youtu.be/crNL5Yo7fbM"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>IPL treatment uses intense wavelengths of light to heat the skin surface enough to stimulate the skin to naturally regenerate while boosting collagen production. Over time, clients are left with a smoother skin tone, healthier complexion, and less visible sun damage.</li><li>During the treatment, light energy is applied to your skin in flashes.</li><li>The light energy converts to heat in the deep layers of your skin, bringing about positive changes for skin rejuvenation.</li><li>Includes a soothing mask to calm skin after light/heat therapy.</li></ul>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Experience Advanced IPL Facial at Elements Wellness",
+   "html": "Experience Advanced IPL Facial at Elements Wellness"
+  },
+  {
+   "t": "html",
+   "html": "<p>Rejuvenate your skin with the Advanced IPL Facial at Elements Wellness—an advanced light-based treatment that targets pigmentation, redness, and uneven skin tone. Intense Pulsed Light (IPL) penetrates deep into the skin to stimulate collagen production, reduce blemishes, and reveal a smoother, brighter complexion. Ideal for those with sun damage, acne scars, or dull skin, this non-invasive facial delivers visible results with minimal downtime.</p><p>💡 Let your skin glow from within—book your Advanced IPL Facial at Elements Wellness today!</p>"
+  },
+  {
+   "t": "button",
+   "text": "Book an appointment",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi,%20I'd%20like%20to%20book%20Advanced%20IPL%20Facial%20(website)"
+  }
+ ]
+}

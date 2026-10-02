@@ -1,0 +1,207 @@
+{
+ "url": "https://elements.com.sg/services/massage/prenatal-massage/",
+ "path": "/services/massage/prenatal-massage/",
+ "title": "Prenatal Massage in Singapore",
+ "description": "Elements Wellness offers expert prenatal massage to alleviate discomfort, reduce swelling, and promote relaxation safely throughout your pregnancy journey. Book now!",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Prenatal Massage",
+   "html": "Prenatal Massage"
+  },
+  {
+   "t": "html",
+   "html": "<p>The golden opportunity to heal and restore before giving birth. </p> <p>Relieves many of the discomforts experienced during pregnancy, such as backaches, stiff neck, leg cramps, headaches and edema (or swelling).</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Sign Up To Enjoy Your First Trial At $98 Nett (60-min, U.P. $228) | T&C applies",
+   "html": "Sign Up To Enjoy Your First Trial At $98 Nett (60-min, U.P. $228) | T&C applies"
+  },
+  {
+   "t": "html",
+   "html": "<p>Pre-registration and advance booking required to enjoy this promotion.</p>"
+  },
+  {
+   "t": "html",
+   "html": ".wpforms-container",
+   "widget": "eael-wpforms"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Prenatal Massage – Relax, Relieve, and Rejuvenate During Pregnancy",
+   "html": "Prenatal Massage – Relax, Relieve, and Rejuvenate During Pregnancy"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/babyfeet-3ab14a700928.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 800,
+   "h": 533
+  },
+  {
+   "t": "html",
+   "html": "<p>Did you know Prenatal massage (also known as Pre-partum massage) provides expectant mothers emotional, mental and physical benefits. Our trained therapists melt muscle tension, joint aches and soothe cramps. Improved circulation plays a role in strengthening the mother’s immune system, promoting greater well-being and happiness among expectant mothers.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<ul> <li> <i></i> <h2>Happy Mother &gt; Happy Baby</h2> <p>Prenatal massage provides a nurturing and relaxing experience for both the expectant mother and her baby. Gentle touch and positive interaction during massage can help strengthen the maternal bond and promote a sense of connection with the unborn child.</p> </li> <li> <i></i> <h2>Reduced Pregnancy Discomfort</h2> <p>Can alleviate common discomforts associated with pregnancy, such as back pain, hip pain, leg cramps, and sciatic nerve pain. The massage techniques help relieve tension in muscles and joints, promoting relaxation and comfort.</p> </li> <li> <i></i> <h2>Stress and Anxiety Reduction</h2> <p>Prenatal massage can help reduce stress hormones like cortisol while promoting the release of feel-good hormones like serotonin and dopamine, leading to improved mood and emotional well-being.</p> </li> <li> <i></i> <h2>Improved Sleep Quality</h2> <p>Many pregnant women experience difficulty sleeping due to discomfort, hormonal changes, and anxiety. Prenatal massage can promote relaxation and ease tension, helping expectant mothers achieve better sleep quality and duration.</p> </li> <li> <i></i> <h2>Enhanced Circulation</h2> <p>Pregnancy can lead to reduced circulation and swelling in the legs and feet due to increased pressure on blood vessels. Prenatal massage helps improve blood and lymphatic circulation, reducing swelling (edema) and promoting overall cardiovascular health.</p> </li> <li> <i></i> <h2>Relief from Headaches and sinus</h2> <p>Most pregnant women experience headaches and sinus congestion due to hormonal changes and increased blood volume. Prenatal massage techniques targeting the head, neck, and shoulders can help alleviate tension headaches and sinus pressure.</p> </li> <li> <i></i> <h2>Preparation for Labor and Childbirth</h2> <p>Prenatal massage can help prepare the body for labor and childbirth by promoting relaxation, improving flexibility, and reducing muscle tension. Some massage techniques may also help position the baby optimally for delivery.</p> </li> </ul>",
+   "widget": "eael-feature-list"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How Our Prenatal Massage Supports a Healthier, More Comfortable Pregnancy",
+   "html": "How Our Prenatal Massage Supports a Healthier, More Comfortable Pregnancy"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/pregnancy-4-db8cbdc27d42.jpg",
+   "alt": "a pregnant woman",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Qualified Therapist</strong><br/>Our prenatal massages are performed by qualified therapists who specialize in prenatal care, ensuring that you and your baby are in expert hands. The massage techniques are adapted to accommodate your body’s changes during pregnancy. For example, you may lie on your side with the support of pillows and cushions to ensure maximum comfort.</p> <p><strong>Safety</strong><br/>Our therapists use gentle, targeted techniques while avoiding sensitive pressure points, providing a relaxing and safe experience. This treatment is suitable for clients after 18 weeks of pregnancy, when the body is better prepared for massage therapy. We see pregnant clients in their 18th to 32nd weeks of prenancy.</p> <p><strong>Hygiene</strong><br/>We also uphold the highest standards of hygiene and cleanliness, ensuring a clean and soothing environment for every session. Rest assured, you’re receiving care that is both nurturing and safe.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Should I get a Pre-partum Massage?",
+   "html": "Should I get a Pre-partum Massage?"
+  },
+  {
+   "t": "html",
+   "html": "<p>Whether or not to get a pre-partum massage depends on various factors such as your overall health, any pregnancy-related conditions you may have, and your comfort level with massage therapy. If your healthcare provider gives the green light and you’re experiencing discomfort or stress during pregnancy, a pre-partum massage may offer relief and relaxation.</p> <p>Overall, pre-partum massage can provide a holistic approach to prenatal care, addressing both physical and emotional aspects of pregnancy. At Elements Wellness, our massage therapists are trained and experienced in working with pregnant clients to ensure safety and effectiveness.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Book an appointment",
+   "href": "#book-appointment"
+  },
+  {
+   "t": "html",
+   "html": "<p>Book You Prenatal Massage Today!</p>"
+  },
+  {
+   "t": "button",
+   "text": "SIGN UP",
+   "href": "#book-appointment"
+  },
+  {
+   "t": "html",
+   "html": "<p>|</p>"
+  },
+  {
+   "t": "button",
+   "text": "WhatsApp us",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Book%20Prenatal%20Massage%20First%20Trial%20$98%20nett%20(web)"
+  },
+  {
+   "t": "html",
+   "html": "<p>|</p>"
+  },
+  {
+   "t": "button",
+   "text": "book online",
+   "href": "https://elements.voltade.com/elements/appointment-form?sid=bv9uyzi86eux61z"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Conveniently Located for You",
+   "html": "Conveniently Located for You"
+  },
+  {
+   "t": "html",
+   "html": "<p>Our <b>Prenatal Massage</b> is available at multiple locations in <strong>Orchard, </strong>making it easy for you to access rejuvenating care in Singapore.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/elements-ion-scaled-ppf0rfu9kjv0hcooeibo-501aca9c3b10.jpg",
+   "alt": "Elements_ION",
+   "caption": "",
+   "w": 600,
+   "h": 350
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "ION Orchard",
+   "html": "ION Orchard"
+  },
+  {
+   "t": "list",
+   "items": [
+    "#B1-30 ION Orchard",
+    "6738 3788",
+    "8938 2878",
+    "ion@elements.com.sg"
+   ]
+  },
+  {
+   "t": "html",
+   "html": "<p>Monday – Friday: 11am to 9:00pm<br/>Weekends &amp; PH: 10:30am to 8:00pm</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/elements-centrepoint-ppezpcfql9pnya0pujj-ff208cfc90de.jpg",
+   "alt": "Elements_centrepoint",
+   "caption": "",
+   "w": 600,
+   "h": 350
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "The Centrepoint",
+   "html": "The Centrepoint"
+  },
+  {
+   "t": "list",
+   "items": [
+    "#02-28 The Centrepoint",
+    "6737 8488",
+    "9357 8183",
+    "cpoint@elements.com.sg"
+   ]
+  },
+  {
+   "t": "html",
+   "html": "<p>Monday – Friday: 11am to 9:00pm<br/>Weekends &amp; PH: 10:30am to 8:00pm</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/elements-313-scaled-ppf0ycxhvnbzy0muzzzt-33a223dfa7ba.jpg",
+   "alt": "Elements 313",
+   "caption": "",
+   "w": 600,
+   "h": 350
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "313@somerset",
+   "html": "313@somerset"
+  },
+  {
+   "t": "list",
+   "items": [
+    "#B2-50/51, 313@somerset",
+    "6636 8878",
+    "9669 6460",
+    "313@elements.com.sg"
+   ]
+  },
+  {
+   "t": "html",
+   "html": "<p>Monday – Friday: 11am to 9:00pm<br/>Weekends &amp; PH: 10:30am to 8:00pm</p>"
+  }
+ ]
+}

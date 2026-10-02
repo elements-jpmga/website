@@ -1,0 +1,105 @@
+{
+ "url": "https://elements.com.sg/services/facial/indiba-proionic-facial/",
+ "path": "/services/facial/indiba-proionic-facial/",
+ "title": "INDIBA® Proionic Gravity Defy Facial",
+ "description": "INDIBA Proionic Gravity Defey Facial stimulates collagen production and improves skin elasticity. Book an appointment with us today!",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "INDIBA ® Proionic Gravity Defy Facial",
+   "html": "INDIBA<sup>®</sup> Proionic Gravity Defy Facial"
+  },
+  {
+   "t": "html",
+   "html": "<p>A facial that uses medical-grade radiofrequency technology that firms skin and improves skin appearance and health.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Sign Up To Enjoy Your First Trial At $128 nett (90-min, U.P. $598) | T&C applies",
+   "html": "Sign Up To Enjoy Your First Trial At $128 nett (90-min, U.P. $598) | T&C applies"
+  },
+  {
+   "t": "html",
+   "html": "<p>Pre-registration and advance booking required to enjoy this promotion.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "What is Indiba® Proionic Gracity Defy Facial?",
+   "html": "What is Indiba® Proionic Gracity Defy Facial?"
+  },
+  {
+   "t": "html",
+   "html": "<p>Indiba® is a non-invasive aesthetic treatment that facilitates the Proionic exchange in cells to create a balanced state of healthy cells for improved elasticity and appearance.</p><p>Nourished cells produce lots more collagen thus improving skin elasticity and appearance. Your facial complexion and contours are refined in just one session and you continue to experience improvement over the following days.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/indiba-facial-40ccb0b9847e.jpg",
+   "alt": "Indiba Facial",
+   "caption": "",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Benefits of Indiba® Proionic Gracity Defy Facial",
+   "html": "Benefits of Indiba® Proionic Gracity Defy Facial"
+  },
+  {
+   "t": "html",
+   "html": "<p>Reverse signs of wrinkles, scars, pore size and marks due to new collagen generated</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Increase collagen production for more radiant skin</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Increase cell generation &amp; elasticity for firmer skin and youthful facial contours</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Removal of toxins to prevent full, tired, saggy skin</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Accelerates healing for skin restoration</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>See immediate tightening effects due to the contraction of collagen fibers. Results will continue to improve over several months with repeated treatments due to the regeneration of new collagen</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How Indiba® Proionic Gracity Defy Facial Works",
+   "html": "How Indiba® Proionic Gracity Defy Facial Works"
+  },
+  {
+   "t": "video",
+   "url": "https://youtu.be/hwAKZON6rBw"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Using the patented radiofrequency of 448 kHz, Indiba raises the internal temperature of tissues to stimulate collagen production and increases the circulation, tightening the skin and improving the delivery of nutrients and removal of waste products.</li><li>Increases proionic exchange in skin cells to restore their vital functions.</li><li>Enhances oxygen flow to skin tissues for increased cell metabolism.</li><li>Works to improve healthy cell function (improved collagen production, detoxification and anti-inflammatory response)</li><li>Repairs and restores skin tissues for skin rejuvenation.</li></ul>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Experience Indiba® Proionic Gracity Defy Facial at Elements Wellness",
+   "html": "Experience Indiba® Proionic Gracity Defy Facial at Elements Wellness"
+  },
+  {
+   "t": "html",
+   "html": "<p>Rediscover youthful, radiant skin with the INDIBA® Proionic Facial at Elements Wellness. Powered by patented Proionic® radiofrequency technology, this non-invasive treatment boosts collagen synthesis, enhances microcirculation, and accelerates cell renewal—helping to reduce fine lines, firm sagging skin, and restore a healthy glow. Suitable for all skin types, it delivers visible lifting effects with no pain or downtime.</p><p>✨ Book your INDIBA Proionic Facial today and give your skin the rejuvenation it deserves!</p>"
+  },
+  {
+   "t": "button",
+   "text": "Book an appointment",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi,%20I'd%20like%20to%20book%20Indiba%20Proionic%20Gracity%20Defy%20Facial%20(website)"
+  }
+ ]
+}

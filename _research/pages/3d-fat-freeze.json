@@ -1,0 +1,80 @@
+{
+ "url": "https://elements.com.sg/3d-fat-freeze/",
+ "path": "/3d-fat-freeze/",
+ "title": "3D Fat Freeze Treatment in Singapore",
+ "description": "3D Fat Freeze treatment targets and freezes stubborn fat cells, leaving you with a smoother, more sculpted figure. Make an appointment now",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "3D Fat Freeze",
+   "html": "3D Fat Freeze"
+  },
+  {
+   "t": "html",
+   "html": "<p>The advanced 3D Lipo Med Cryolipolysis targets fat cells to destroy them through a targeted super-cooling process.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Freeze and dissolve 20 – 40% of fat cells at the targeted area over several weeks. This treatment targets fat cells and cools them to a point where ‘cell death’ or apoptosis occurs. The dying fat cells are expelled from your body through your body’s own biological processes naturally.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/fat-freeze-1-945b9cd896f6.jpg",
+   "alt": "Fat Freeze 1",
+   "caption": "",
+   "w": 398,
+   "h": 361
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Benefits",
+   "html": "Benefits"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Non invasive</li><li>Spot reduction, able to target problem areas</li><li>Short treatment time</li><li>Low or no downtime</li></ul>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Targets",
+   "html": "Targets"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Tummy</li><li>Thighs</li><li>Arms</li><li>Love Handles</li></ul>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/fat-freeze-illustration-for-web-276b899ed53c.jpg",
+   "alt": "Fat Freeze Illustration for web",
+   "caption": "",
+   "w": 598,
+   "h": 568
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How It Works",
+   "html": "How It Works"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/fat-freeze-illustration-for-web-276b899ed53c.jpg",
+   "alt": "Fat Freeze Illustration for web",
+   "caption": "",
+   "w": 598,
+   "h": 568
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>The therapist places the applicators on the target area, where the suction begins and cooling energy is released to target only the fat cells under skin, destroying them in the process.</li><li>Cryolipolysis uses the unique combination of electro and cryo-therapy (“freezing”) to freeze and shrink the targeted fat cells which will in-turn send out distress signals. The body then reacts by sending macrophages – a type of white blood cells to clean out the shrunken fat cells using the body’s natural drainage over the course of several months. After a series of 3D Lipo Med Cryolipolysis, you can expect gradual fat layer reduction with an average of 20-40% cellulite reduction in the treated area.</li><li>The cooling process causes the fat cells to send out distress signals, and the body reacts by sending macrophages – a type of white blood cells to clean out the shrunken fat cells using the body’s natural drainage over the course of several months</li><li>As fat cells are more sensitive to the temperature drop than other cells, the surrounding skin cells remain undamaged. </li></ul>"
+  },
+  {
+   "t": "html",
+   "html": "<p>You might also be interested in the other services Elements Wellness has to offer, such as <a href=\"/anti-aging/\">anti-aging facial</a> and<a href=\"/anti-aging/\"> neck and shoulder massages</a>. </p>"
+  }
+ ]
+}

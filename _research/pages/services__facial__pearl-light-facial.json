@@ -1,0 +1,307 @@
+{
+ "url": "https://elements.com.sg/services/facial/pearl-light-facial/",
+ "path": "/services/facial/pearl-light-facial/",
+ "title": "Pearl Light Facial",
+ "description": "Revolutionary Pearl Light technology gives firmness and flawlessness in tone and texture that keeps getting better as the treatments go on.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Pearl Light Facial",
+   "html": "Pearl Light Facial"
+  },
+  {
+   "t": "html",
+   "html": "<p>Achieve translucent bouncy skin that reflects light multiple times, creating the Pearl Glow.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Sign Up To Enjoy Your First Trial At $148 nett (75-min, U.P. $288) | T&C applied",
+   "html": "Sign Up To Enjoy Your First Trial At $148 nett (75-min, U.P. $288) | T&C applied"
+  },
+  {
+   "t": "html",
+   "html": "<p>Pre-registration and advance booking required to enjoy this promotion.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/proven-by-science-990d8d1c18c8.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Naturally Boost Collagen for Firmer, Radiant Skin - No Damage, Only Stunning Results!",
+   "html": "Naturally Boost Collagen for Firmer, Radiant Skin - No Damage, Only Stunning Results!"
+  },
+  {
+   "t": "html",
+   "html": "<p>The Pearl Light Facial naturally stimulates collagen production without needles or oral supplements. This helps improve appearances of laugh lines, crows feet, saggy cheeks and jawline. More collagen also means more radiant and smoother skin.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Why We Want More Collagen",
+   "html": "Why We Want More Collagen"
+  },
+  {
+   "t": "html",
+   "html": "<p>Collagen is your skin’s foundation, it keeps your skin firm and smooth. Collagen declines with age, causing wrinkles, dryness and dullness and skin sensitivity in some cases. For skin health and appearance to improve, increasing collagen is essential.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/pearl-light-wordpress-6df9d85a0a44.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1200,
+   "h": 900
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Duo Effect: Instant Lift, Long-Lasting Firmness!",
+   "html": "Duo Effect: Instant Lift, Long-Lasting Firmness!"
+  },
+  {
+   "t": "html",
+   "html": "<p>The Pearl Light NIR (Near Infrared) technology achieves two important benefits, it tightens exisiting collagen while stimulating the growth of NEW collagen.<br/>Collagen resides in the deeper dermis layer, where our Pearl Light NIR wavelength reaches and heats the water within the skin tissue, tightening and contracting collagen fibres—all without harming the skin’s surface. This non-invasive way of reaching deeper skin layers also stimulates fibroblasts, encouraging skin cell repair and the natural production of new collagen.</p> <p><strong>The result?</strong> Immediate tightness and radiance, with longer term firmness for sagging areas and renewed smooth skin with reduced fine lines and diminished wrinkles —all achieved comfortably and effectively.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Benefits of Pearl Light Facial",
+   "html": "Benefits of Pearl Light Facial"
+  },
+  {
+   "t": "html",
+   "html": "<h4>Experience the remarkable radiance and firmness.</h4>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/pearl-light-image-fb4f4e3f961a.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 540,
+   "h": 400
+  },
+  {
+   "t": "html",
+   "html": "<ul><li><b>Instant tightening</b><br/>As NIR targets the water molecules in skin tissue, it causes collagen fibres to contract and tighten, showing instant skin lift.</li><li><b>Shrink pores</b><br/>Increase collagen production plumps up pores and reduces its appearance.</li><li><b>Luminous smooth skin texture</b><br/>Improved collagen structure reduces the appearance of fine lines, wrinkles and pores. A smooth skin surface is able to reflect light giving a luminous glow.</li><li><b>Fairer, more even skin tone</b><br/>Thermal circulation breaks down melanin (pigments) which plays a role in lightening the skin.</li><li><b>Long-lasting results</b><br/>You would notice your skin looking firmer and wrinkles lessening immediately after the treatment. The most significant results happen over the following 2 – 4 weeks as new collagen forms.</li><li><b>Multi-layer rejuvenation<br/></b>Targets skin from shallow to deep levels, keeping complexion lifted with a radiant, luminous skin surface.</li></ul>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Suitable for",
+   "html": "Suitable for"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/sagging-skin-063be986444d.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 675,
+   "h": 675
+  },
+  {
+   "t": "html",
+   "html": "<p>Sagging, crepey skin</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/unevene-4a716e5611d0.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 675,
+   "h": 675
+  },
+  {
+   "t": "html",
+   "html": "<p>Uneven skin tone</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/fine-lines-73d5c5320ad0.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 675,
+   "h": 675
+  },
+  {
+   "t": "html",
+   "html": "<p>Fine lines and wrinkles</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/enlarged-pores-4809a30186c6.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 675,
+   "h": 675
+  },
+  {
+   "t": "html",
+   "html": "<p>Enlarged pores</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/rough-skin-fe739b4b9223.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 675,
+   "h": 675
+  },
+  {
+   "t": "html",
+   "html": "<p>Rough skin</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "🏆 We’ve Achieved Multiple Prestigious Awards 🏆",
+   "html": "🏆 We’ve Achieved Multiple Prestigious Awards 🏆"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/awards-all-1-f17374341bb3.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1600,
+   "h": 427
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Why You Can Trust the Pearl Light Facial for Stunning Results",
+   "html": "Why You Can Trust the Pearl Light Facial for Stunning Results"
+  },
+  {
+   "t": "html",
+   "html": "<i></i><i></i>Clinically Proven Technology​<i></i><p>NIR (Near Infra Red) light energy has been scientifically proven to penetrate deep into the dermis, heating the water molecules within the skin tissue, which triggers collagen contraction and stimulates fibroblasts to produce new collagen.</p> <i></i><i></i>Trusted Technology<i></i><p>This treatment uses Alma™ NIR technology, top RF Laser company globally recognized and trusted by dermatologists.</p> <i></i><i></i>Long Lasting results<i></i><p>our collagen growth is elevated for up to 4 weeks after the treatment and you can witness your skin looking more youthful and healthier.</p> <i></i><i></i>Non-Invasive, Pain-Free Guarantee<i></i><p>One unique thing about NIR is that it only heats the subdermal tissues or the skin’s deeper layers with collagen, it does not heat or harm the skin surface. Unlike injections or deep exfoliation, Pearl Light has zero wounds and downtime.</p> <i></i><i></i>Zero Downtime<i></i><p>You can resume their normal activities immediately after the facial.</p> <i></i><i></i>Award-Winning Facials<i></i><p>We have been in beauty and wellness for past 24 years, and have won multiple awards for our treatments.</p> <i></i><i></i>Customer' Results<i></i><p>Our clients that have done the Pearl Light Facial were pleased with the visible results.</p>",
+   "widget": "eael-adv-accordion"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "See the Radiance Our Customers Achieve",
+   "html": "See the Radiance Our Customers Achieve"
+  },
+  {
+   "t": "gallery",
+   "images": [
+    {
+     "src": "/assets/img/pages/updated-1-13059085a79c.jpg",
+     "alt": "Reduces laugh lines",
+     "w": 1080,
+     "h": 800
+    },
+    {
+     "src": "/assets/img/pages/updated-2-ee578be60320.jpg",
+     "alt": "Skin look fairer & evens out skin tone",
+     "w": 1080,
+     "h": 800
+    },
+    {
+     "src": "/assets/img/pages/updated-3-cd4a054c1c10.jpg",
+     "alt": "Boosts your natural glow and give a luminous look. Skin reflects light",
+     "w": 1080,
+     "h": 800
+    },
+    {
+     "src": "/assets/img/pages/updated-4-fb54dc6a07f3.jpg",
+     "alt": "More defined jawline and lifted appearance",
+     "w": 1080,
+     "h": 800
+    }
+   ]
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Why Do This First Trial",
+   "html": "Why Do This First Trial"
+  },
+  {
+   "t": "html",
+   "html": "<p>If you have dull, saggy skin, this facial can help you tremendously. You would notice your skin looking firmer and wrinkles lessening immediately after the treatment.</p><p>The most significant results happen over the following 2 – 4 weeks as new collagen forms. So take advantage of the <strong>65% savings on your first trial to see for yourself!</strong></p>"
+  },
+  {
+   "t": "button",
+   "text": "See results in 1 session!",
+   "href": "/first-trial-pearl-light-facial/"
+  },
+  {
+   "t": "video",
+   "url": "https://www.youtube.com/watch?v=wYkF47OGEUI"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "See results within 24 hours, and watch your skin improve as the days go by",
+   "html": "See results within 24 hours, and watch your skin improve as the days go by"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Top Technology –</strong> Alma™ RF by the world’s leading laser company</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Immediate Results – </strong>Firmer, smoother skin in 24hrs; best in 2-4 weeks</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Non-Invasive –</strong> Boosts collagen without injections</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Painless – </strong>In-motion method ensures comfort</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Long-Lasting –</strong> Continuous collagen growth for lasting effects</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Significant results in One session</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>No Downtime! Here are some clients that experienced rejuvenated skin in just 1 session.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/2-1-4d4e96c02fde.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 800
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/3-2-6aa952ab5e77.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 800
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Frequently Ask Questions",
+   "html": "Frequently Ask Questions"
+  },
+  {
+   "t": "html",
+   "html": "<i></i><i></i>Is Pearl Light Facial suitable for all skin types?<i></i><p>Yes, the Pearl Light Facial is generally safe and effective for all skin types, including sensitive skin. However, it’s always recommended to consult with a skincare professional to determine the best treatment plan for your specific needs.</p> <i></i><i></i>How many sessions of Pearl Light Facial are recommended for optimal results?<i></i><p>The number of recommended sessions can vary based on individual skin conditions and desired outcomes.</p><p>A 8-session program is highly recommended to manage specific issues.</p><p>For the first 3 sessions, scheduling sessions 3 weeks apart gives optimal results, as skin cells renew averagely every 28 days. Thereafter every 4-6 weeks to maintain glowing skin and keep it at its best.</p> <i></i><i></i>Are the results of the Pearl Light Facial permanent?<i></i><p>The Pearl Light Facial provides long-lasting improvements to the skin’s appearance. Maintenance treatments and homecare sustain the benefits achieved. The positive results stack up.</p> <i></i><i></i>What makes the Pearl Light Facial different from other facial treatments?<i></i><p>You can experience noticeable improvements after just one session! The most significant changes appear over the next 2 to 4 weeks as new collagen production kicks in. There’s no downtime or need for needles, making it incredibly convenient and non-disruptive to your lifestyle!</p>",
+   "widget": "eael-adv-accordion"
+  },
+  {
+   "t": "button",
+   "text": "Book your Appointment",
+   "href": "#PEARL-APPOINTMENT"
+  }
+ ]
+}

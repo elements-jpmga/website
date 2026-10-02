@@ -1,0 +1,213 @@
+{
+ "url": "https://elements.com.sg/services/facial/sensitive/",
+ "path": "/services/facial/sensitive/",
+ "title": "Sensitive Skin Facials in Singapore",
+ "description": "Calm, hydrate, and restore your skin with sensitive skin facials at Elements Wellness. Protect your skin barrier from heat, pollution, and moisture imbalance.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Sensitive Skin Facials",
+   "html": "Sensitive Skin Facials"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/shutterstock-1892653492-scaled-0551917b31ea.jpg",
+   "alt": "Sensitive skin",
+   "caption": "",
+   "w": 1600,
+   "h": 1066
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Facials for Sensitive Skin in Singapore",
+   "html": "Facials for Sensitive Skin in Singapore"
+  },
+  {
+   "t": "html",
+   "html": "<p><em>Hydrate. Soothe. Restore — Even in the Humid Heat.</em></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Singapore’s hot and humid climate can make sensitive skin feel constantly irritated—causing redness, flare-ups, and dehydration. At Elements Wellness, ourour specialized facials for sensitive skin are designed to calm and hydrate while protecting your skin barrier against environmental stressors like heat, pollution, and moisture imbalance.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Why Sensitive Skin Needs Special Care in Singapore",
+   "html": "Why Sensitive Skin Needs Special Care in Singapore"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Heat-triggered redness and inflammation</li><li>Increased oiliness and sweat-induced breakouts</li><li>Dehydration from air conditioning and sun exposure</li><li>Skin barrier disruption due to pollution and over-cleansing</li></ul>"
+  },
+  {
+   "t": "html",
+   "html": "<p>That’s why our facials are tailored to deliver soothing relief, hydration, and barrier restoration—all while using gentle, non-irritating formulas.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/wishpro-ba68a0f7ff88.jpg",
+   "alt": "wishpro",
+   "caption": "",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "WishPro Facial",
+   "html": "<a href=\"/services/facial/wishpro-facial/\">WishPro Facial</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>The Brightening Capsule helps lighten and even out skin tone by blocking epidermal melanin and regulating melanin biosynthesis.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/wishpro-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/facial-50-7eeb39296f49.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 400,
+   "h": 400
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Desensitize Facial",
+   "html": "<a href=\"/services/facial/desensitize-facial/\">Desensitize Facial</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Cryotherapy calms dry, sensitive, irritated skin while infusing antioxidants that strengthen skin barrier.<br/><br/></p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/desensitize-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/power-dose-3dec2ac891be.jpg",
+   "alt": "brightening glutathione facial treatment",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Power Dose Facial",
+   "html": "<a href=\"/services/facial/power-dose-facial/\">Power Dose Facial</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Experience a soothing, highly effective facial that infuses a blend of active ingredients, known to calm, restore and brighten skin.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/power-dose-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/sensitive-skin-2c243b684873.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Who This Is For</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Residents of Singapore with sensitive or reactive skin</li><li>Those experiencing flare-ups from heat, sweat, or product overuse</li><li>Those post-holiday skin dryness and irritation</li><li>Anyone seeking a gentle facial in Singapore with hydration and barrier support</li><li>Visitors or expats adapting to Singapore’s climate</li></ul>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>What to Expect During Your Treatment</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>A personalized consultation to assess your skin’s needs</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Soothing, cooling techniques suited to Singapore’s climate</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Professional-grade calming and hydrating ingredients</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>No harsh exfoliants, no downtime just calm, comforted skin</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Book a Sensitive Skin Facial in Singapore Today",
+   "html": "Book a Sensitive Skin Facial in Singapore Today"
+  },
+  {
+   "t": "html",
+   "html": "<p>At Elements Wellness, we know how to treat sensitive skin in tropical conditions. Let us help you protect your skin, restore balance, and feel confident in your skin again.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Book now",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Book%20brightening%20facial%20and%20need%20a%20consult"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Frequently Asked Questions",
+   "html": "Frequently Asked Questions"
+  },
+  {
+   "t": "faq",
+   "items": [
+    {
+     "q": "What are facials for sensitive skin?",
+     "a": "<p>Facials for sensitive skin are gentle treatments designed to hydrate, soothe, and restore your skin’s natural barrier. At Elements Wellness, we use calming ingredients and techniques to reduce redness, inflammation and dryness caused by environmental factors like heat and pollution.</p>"
+    },
+    {
+     "q": "Are your facials safe for skin with rosacea or eczema?",
+     "a": "<p>Our facials are formulated with sensitive skin in mind, making them ideal for conditions like rosacea or eczema. However, we adopt a case-by-case approach as different people have different triggers.</p>"
+    },
+    {
+     "q": "How do facials for sensitive skin help with Singapore’s humidity?",
+     "a": "<p>In Singapore’s hot and humid climate, sensitive skin often struggles with moisture imbalance, redness, and irritation, the signs of a broken skin barrier. Our facials are specifically designed to hydrate deeply, soothe irritation, and strengthen the skin’s barrier against environmental stressors like heat and pollution.</p>"
+    },
+    {
+     "q": "How often should I get a facial for sensitive skin?",
+     "a": "<p>For optimal results, we recommend a facial every 4 weeks. However, the frequency can vary depending on your skin’s condition and concerns. Our skin therapists will tailor a treatment plan that works best for you.</p>"
+    },
+    {
+     "q": "Will I see immediate results from my facial?",
+     "a": "<p>Yes! Most clients notice a visible difference after just one facial, including smoother, more hydrated, and less irritated skin. For long-term benefits, consistent treatments can help maintain and enhance your skin’s health.</p>"
+    },
+    {
+     "q": "Can I wear makeup after my facial?",
+     "a": "<p>We recommend avoiding makeup for at least a few hours after your facial to allow your skin to fully absorb the calming and hydrating ingredients. Your skin will feel refreshed, but it’s best to give it time to breathe.</p>"
+    },
+    {
+     "q": "How do I know which facial is right for my skin?",
+     "a": "<p>Our experienced skin therapists will assess your skin during a consultation and recommend the best facial treatment based on your unique needs—whether you’re dealing with dryness, irritation, or an imbalanced skin barrier.</p>"
+    },
+    {
+     "q": "What type of cleanser is best for sensitive skin?",
+     "a": "<p>For sensitive skin, it’s important to use a gentle, hydrating cleanser that won’t strip or irritate your skin. Look for cream or milk-based cleansers, hydrating gel cleansers, or micellar water. These types of cleansers are typically mild and help preserve the skin’s natural moisture while removing impurities. Avoid cleansers with strong fragrances or harsh exfoliants, as these can cause irritation.</p>"
+    }
+   ]
+  }
+ ]
+}

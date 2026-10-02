@@ -1,0 +1,160 @@
+{
+ "url": "https://elements.com.sg/services/facial/men_facial/",
+ "path": "/services/facial/men_facial/",
+ "title": "Men's Facial in Singapore",
+ "description": "Expert facials that target male skin concerns efficiently by combining advanced technologies. Treat oily skin, large pores & is anti-aging.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Men's Facial: Premium Care for The Modern Man",
+   "html": "Men's Facial: Premium Care for The Modern Man"
+  },
+  {
+   "t": "html",
+   "html": "<p>Painless | Non-Invasive | Effective<br/>Discover the ultimate men’s facial experience designed specifically for male skin, targeting oiliness, rough complexion and aging concerns.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Sign Up To Enjoy Your First Trial At $58 Nett (60-min, U.P. $228) | T&C applies",
+   "html": "Sign Up To Enjoy Your First Trial At $58 Nett (60-min, U.P. $228) | T&C applies"
+  },
+  {
+   "t": "html",
+   "html": "<p>Pre-registration and advance booking required to enjoy this promotion.</p>"
+  },
+  {
+   "t": "html",
+   "html": ".wpforms-container",
+   "widget": "eael-wpforms"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "About our Facial Treatment for Men",
+   "html": "About our Facial Treatment for Men"
+  },
+  {
+   "t": "html",
+   "html": "<p>Our high-quality facials are designed for the modern man who values efficiency and excellence. The facials target skin concerns and skin health to get exceptional results with minimal hassle. Experience your best skin today!</p><p><strong>Key features of our facials</strong></p><ul><li>By combining multiple technologies, we treat various concerns in a single session</li><li>Our synergistic approach has additional benefits as the results are magnified</li><li>Customised to your skin needs</li><li>Leaves you looking and feeling your best</li></ul><p><strong>Addresses the specific needs of men’s skin:<br/></strong></p><ul><li>Combats signs of aging</li><li>Manage Oily and Sensitive Skin</li><li>Reduces large pores</li><li>Reducing irritation from shaving.</li></ul>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/mens-011c270a860d.jpg",
+   "alt": "Man with good skin",
+   "caption": "",
+   "w": 800,
+   "h": 800
+  },
+  {
+   "t": "video",
+   "url": "https://elements.com.sg/wp-content/uploads/2024/07/Hydrolux-Men.mp4"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "HydroLux Men Facial Treatment",
+   "html": "HydroLux Men Facial Treatment"
+  },
+  {
+   "t": "html",
+   "html": "<p>Get Fresh, Clear, Smooth Complexion</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Men’s skin is thicker than female skin, hence they require deep cleansing to clear out pores and dead skin that looks dull (you’ll be surprised how good your skin can look once we exfoliate professionally!). Our HydroLux Facial uses Hydro-Cleanse, an improved vortex infusion technology that effectively cleanses without skin damage. Hydro-Cleanse vacuums out impurities while delivering hydration, ensuring that your skin gets proper cleansing without drying out, leaving your skin protected and balanced.</p><p>Treatment Highlights<br/><strong>Hydro Cleanse:</strong> Vacuums out impurities while delivering hydration, ensuring that your skin gets proper cleansing without drying out, leaving your skin protected and balanced.</p><p><strong>Cryotherapy:</strong> This cold treatment stimulates collagen production while firming skin. The low temperature shrinks pores for a smoother appearance.</p><p><strong>Active ingredient:</strong> A Yeast Protein Ampoule is applied to your skin. It brightens and soothes skin while keeping your skin barrier strong. Works very well on oily skin too.</p><p><strong>LED Light Therapy:</strong> Uses different wavelengths of light to improve skin’s appearance.<br/>Blue Light: For Acne Treatment by targeting acne-causing bacteria for clearer skin.<br/>Red Light: <span>For Anti-aging. Red</span>uces wrinkles and rejuvenates your skin by boosting collagen and improving skin texture.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>HydroLux Men Facial is safe, with no downtime. It focuses on building skin health without invasive methods. As skin needs and concerns change with season and different phases in life, this facial has various modes built in to cater to varying needs, all aim to keep skin healthy, radiant and functioning well.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Why is this treatment so good?",
+   "html": "Why is this treatment so good?"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Customization: Each facial is tailored to address specific skin concerns, providing a truly bespoke experience.</li><li>Comprehensive Solution: Combining multiple technologies for a holistic approach to skincare.</li><li>Visible Results: Clients will notice immediate improvements in skin texture, tone, and overall appearance.</li><li>Intensive Signature Products: Each facial includes our signature serums and mask , meticulously selected to cater to individual skin needs, ensuring the highest level of care and optimal results.</li><li>Non-Invasive: Our treatments are designed to be effective without downtime, allowing clients to return to their daily activities immediately.</li></ul>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/before-after-mens-facial-2f1b3f83d2aa.jpg",
+   "alt": "Male facial client results",
+   "caption": "",
+   "w": 800,
+   "h": 800
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Treatment Process",
+   "html": "Treatment Process"
+  },
+  {
+   "t": "faq",
+   "items": [
+    {
+     "q": "Step 1: Double Cleanse",
+     "a": "<p>Two-step cleansing to prepare your skin for the facial treatment.</p>"
+    },
+    {
+     "q": "Step 2: Hydro Cleanse",
+     "a": "<p>Uses an improved vortex system to vacuum out impurities (blackheads, dead skin, oil), while delivering hydration. This form of hydro-exfoliation purifies skin without drying out, leaving your skin protected and balanced.</p>"
+    },
+    {
+     "q": "Step 3: Micro-mist Steamer & Extraction",
+     "a": "<p>Nano-sized mist softens and freshens skin for safe and pain-free extraction of blackheads.</p>"
+    },
+    {
+     "q": "Step 4: Face Ampoule",
+     "a": "<p>Application of concentrated active ingredients for nourishing your skin.</p>"
+    },
+    {
+     "q": "Step 5: Cryotherapy",
+     "a": "<p>Cold treatment that stimulates microcirculation, reduce pore size and restore firmness and radiance to dull, fatigued and saggy skin.</p>"
+    },
+    {
+     "q": "Step 6: Face Massage",
+     "a": "<p>Relaxing massage for lifting, detoxification and de-puffing. Improves circulation for healthy skin function.</p>"
+    },
+    {
+     "q": "Step 7: Deep Hydration Soothing Mask With LED Light",
+     "a": "<p>A treatment mask that hydrates and soothes, sealing in all the goodness of the facial with LED Light Therapy.<br/>Red LED Light helps with skin recovery and reduce the appearance of wrinkles and age spots<br/>Blue LED Light can kill acne-causing bacteria and reduce oil production</p>"
+    },
+    {
+     "q": "Step 8: Final Care",
+     "a": "<p>Toner, moisturizer and sunblock for extra protection.</p>"
+    }
+   ]
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Revitalize Your Skin with Our Men’s Facial",
+   "html": "Revitalize Your Skin with Our Men’s Facial"
+  },
+  {
+   "t": "html",
+   "html": "<p>Achieve a refreshed, youthful look with our specialized Men’s Facial at Elements Wellness. Designed to combat oiliness, sensitivity, large pores, and signs of aging, this treatment combines advanced skincare technologies to deliver visible results. Whether you’re dealing with post-shaving irritation or simply want healthier, smoother skin, our facial is tailored to your needs. ✨ Feel confident in your skin—book your Men’s Facial today! ✨</p>"
+  },
+  {
+   "t": "button",
+   "text": "Book an appointment",
+   "href": "#book-appointment"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Frequently Ask Question",
+   "html": "Frequently Ask Question"
+  },
+  {
+   "t": "html",
+   "html": "<i></i><i></i>What is the Men's Facial at Elements Wellness?<i></i><p>The Men’s Facial is a premium skincare treatment specifically designed to address the unique needs of men’s skin, targeting concerns such as oiliness, rough complexion, and signs of aging.</p> <i></i><i></i> Is the treatment painful or invasive?<i></i><p>No, the Men’s Facial is designed to be painless, non-invasive, and effective.</p> <i></i><i></i>What makes this facial different from a regular facial?<i></i><p>Men’s skin is typically thicker, oilier, and more prone to irritation from shaving. Our Men’s Facial is customized to address these specific needs, using deep cleansing, oil control, and soothing treatments.</p> <i></i><i></i>How soon will I see results?<i></i><p>Many clients notice immediate improvements in skin texture, clarity, and hydration after just one session. Regular treatments lead to long-term skin health benefits.</p>",
+   "widget": "eael-adv-accordion"
+  }
+ ]
+}

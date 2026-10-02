@@ -1,0 +1,183 @@
+{
+ "url": "https://elements.com.sg/services/facial/nano-fibroblast-facial/",
+ "path": "/services/facial/nano-fibroblast-facial/",
+ "title": "Nano Fibroblast | Skin Rejuvenation",
+ "description": "Achieve a radiant complexion with our skin rejuvenation treatment in Singapore. Contact us today to book an appointment.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Nano FibroBlast Treatment",
+   "html": "Nano FibroBlast Treatment"
+  },
+  {
+   "t": "html",
+   "html": "<p>Needle-less Skin Rejuvenation. Find out why the experts love this!</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Sign Up To Enjoy Your First Trial At $88 Nett (75-min, U.P. $388) | T&C applies",
+   "html": "Sign Up To Enjoy Your First Trial At $88 Nett (75-min, U.P. $388) | T&C applies"
+  },
+  {
+   "t": "html",
+   "html": "<p>Pre-registration and advance booking required to enjoy this promotion.</p>"
+  },
+  {
+   "t": "html",
+   "html": ".wpforms-container",
+   "widget": "eael-wpforms"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Youthful Skin Rejuvenation, without Needles!",
+   "html": "Youthful Skin Rejuvenation, without Needles!"
+  },
+  {
+   "t": "video",
+   "url": "https://elements.com.sg/wp-content/uploads/2023/11/Video-Nano-Fibroblast-WhatsApp.mp4"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/cream-and-white-photographic-wedding-pho-1dc22a3a1532.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1025,
+   "h": 576
+  },
+  {
+   "t": "html",
+   "html": "<h3><strong>Introducing the Nano Fibroblast Treatment</strong></h3><p>Many beauty treatments deliver results—but often at the cost of discomfort and downtime. The Nano Fibroblast Treatment changes that. Known as “needle-less microneedling,” this advanced therapy offers impressive skin rejuvenation without breaking the skin or requiring recovery time.</p><p>Using a single-use nano cartridge, this treatment mimics the effects of traditional microneedling by creating tiny micro-channels in the skin—without any puncturing. These channels allow for the deep, rapid absorption of active ingredients, making your skincare work harder for you.</p><p>What we love most? Skin looks softer, smoother, and noticeably healthier within days.</p><p>Nano-needling gently stimulates collagen production at the cellular level by creating controlled micro-injuries. When paired with targeted active ingredients, it helps improve texture, tone, and elasticity—leaving you with that “wow” glow.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "The Difference - 4 key steps that multiply results",
+   "html": "The Difference - 4 key steps that multiply results"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong><span>Increase absorption by 5 times &amp; Skyrocket collagen production<br/></strong></span>The Fibroblast device’s unique vibration vortex pushes bioactive ingredients deep into your skin and stimulates collagen production for rapid rejuvenation.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Enhanced Formula<br/></strong>Nano Elixir Ampoule uses Liposome tech for deepest penetration for the most effective results.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>High Performance Mask</strong><br/>Our mask features the super soothing Northern Truffle, known for its anti-inflammatory effect, and antioxidants and essential fatty acids that hydrates, plumps, and protects the skin.<span> </span></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><span><strong>Strengthen Cells’ Rejuvenation</strong><br/>Omega Light Therapy: uses clinically proven wavelengths to enhance your skin’s glow.</span></p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/nano-elixir-4a4ddbd2e811.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Benefits of Nano Fibroblast Treatment",
+   "html": "Benefits of Nano Fibroblast Treatment"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/lifting-ba4e8dc74923.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Saggy Skin</strong><br/>Stimulates fibroblast activity for increased collagen production.<br/>Achieve firmer, more youthful, and radiant skin</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/wrinkles-1-e1775cfe06e9.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Acne Scar &amp; Fine Lines</strong><br/>Reduces fine lines, wrinkles, and acne scars.<br/>Micro-injuries prompt skin healing and regeneration.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/large-pores-07f99788e863.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Enlarged Pores</strong><br/>Reduces pore size by encouraging collagen production.<br/>Tightens skin around pores for a refined texture.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/large-pores-07f99788e863.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Dehydrated Skin</strong><br/>Enhances skin hydration by penetrating active ingredients.<br/>Retains moisture for a natural, glowing complexion.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/image-qgb6vzavaqdtjelvngn074sq77v5bn9mrp-4387b0a0d13d.jpg",
+   "alt": "image",
+   "caption": "",
+   "w": 900,
+   "h": 1600
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How It Works",
+   "html": "How It Works"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Nano-tips combined with high-speed vibrations create micro-perforations on the skin’s surface, allowing for effective infusion of the Nano Elixir Ampoule.</li><li>The cartridge gently penetrates the epidermis, forming micro-channels that enhance serum absorption by up to 500%.</li><li>These tiny openings close naturally within two hours, triggering the skin’s natural regeneration process.</li><li>The treatment activates instant tissue repair, boosts cell renewal, and accelerates healing—effectively targeting skin concerns for a smoother, healthier complexion.</li></ul><p><strong>Here’s the process:</strong></p><ol><li>Double cleanse </li><li>Exfoliate </li><li>Steam</li><li>Extraction </li><li>Fibroblast therapy with Nano elixir ampoules </li><li>Massage </li><li>Truffle Glow &amp; Soothe Mask</li></ol>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Nano Fibroblast Treatment with Elements Wellness",
+   "html": "Nano Fibroblast Treatment with Elements Wellness"
+  },
+  {
+   "t": "html",
+   "html": "<p>Every step of this facial is designed to strengthen the results, to renew your skin for baby soft glowing results without invasive methods. Book your experience with Elements Wellness today!</p>"
+  },
+  {
+   "t": "button",
+   "text": "Book an appointment",
+   "href": "#book-appointment"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Frequently Ask Question",
+   "html": "Frequently Ask Question"
+  },
+  {
+   "t": "html",
+   "html": "<i></i><i></i>Is the Nano Fibroblast Facial painful?<i></i><p>The Nano Fibroblast treatment is non-invasive and needle-free, making it generally painless. You may experience mild sensations, but the treatment is well-tolerated by most individuals, with minimal to no discomfort.</p> <i></i><i></i>What post-treatment care is required after the Nano Fibroblast Facial?<i></i><p>To maintain the results of your <strong>Nano Fibroblast Facial</strong>, avoid direct sun exposure, harsh skincare products, and makeup for the first 24-48 hours after the treatment. Use gentle, hydrating skincare products as recommended by your therapist.</p> <i></i><i></i>Who is a good candidate for Nano Fibroblast Facial?<i></i><p>The <strong>Nano Fibroblast Facial</strong> is suitable for individuals looking to improve skin texture, reduce wrinkles, and combat acne scars. It is ideal for all skin types and those seeking a non-invasive anti-aging treatment.</p>",
+   "widget": "eael-adv-accordion"
+  }
+ ]
+}

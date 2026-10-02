@@ -1,0 +1,2089 @@
+{
+  "source": "https://elements.com.sg/",
+  "fetchedOn": "2026-09-29",
+  "story": {
+    "url": "https://elements.com.sg/our-story/",
+    "title": "Our Story",
+    "subtitle": "How we began",
+    "mission": "Our mission is to provide the best treatments for wellness and beauty.",
+    "paragraphs": [
+      "We performed our first massage more than a decade ago and have done more than a million massages since. It started with a bunch of regular folks craving “shiok” massages. The most legit one being an Olympic swimmer, who had a “real” reason to relieve muscle tension and heal injuries as he was bearing the weight of a gold medal on his shoulders. Good massages were few and far between back then, thus we studied the intricacies of good therapy, built unique protocols into our training of passionate people and burdened ourselves for the national good of providing superb massages.",
+      "The customers flowed through the doors and some have not left since (we love you!). At the same time, our Olympian was suffering from sun-damaged skin and needed serious facial remedy. We applied the same development formula, did rigorous research and testing (no animals were harmed during this process, only the Olympian was), and introduced a comprehensive range of customized treatments. Our philosophy is to only offer professional grade products (containing the best technology and ingredients in optimum concentrations) combined with cutting edge technology in skincare machines to treat and solve skin problems. Our Olympian, till today has maintained his youthful appearance and is still can be the poster boy of the spa.",
+      "The founders remain active in the business to stay at the forefront of the beauty and wellness industry. We adopt a holistic approach, and have since added on weight management, nutrition and detox/diet programs, chiropractic and TCM inspired therapy into our extensive list of wellness treatments.",
+      "As time passed, we kept increasing our number of rooms to cater for the demand, what started as 4 rooms is now almost 100 rooms. Through the years, there were great days and tough times, but we weathered them all because we had an excellent team, and customers that kept us going. We invest our time and energy to bring the best treatments because we strongly believe in the wellness business. We do what we do because we love it. Our therapists have a way of turning frowns upside down….they got the science behind that. But all we do is not just about making people feel good; it is also about doing their bodies and soul some good too. Our services are all thoughtfully designed, we first think of what the customer can benefit from, then we go about creating the services and hunting down the best products and technologies to support the vision.",
+      "We also try to give back to society. Sometimes you will find our staff at soup kitchens helping out, and it is just our way of appreciating our blessings.",
+      "Our brand story? It is a team of people dedicated to making others happy and improving clients’ health and wellness through the power of technology, products, ancient healing traditions and the magic of touch."
+    ],
+    "keyFacts": [
+      "First massage performed more than a decade ago; more than a million massages since",
+      "Started with 4 rooms, now almost 100 rooms",
+      "Founders remain active in the business",
+      "Staff volunteer at soup kitchens"
+    ],
+    "otherClaims": {
+      "massagePage": "Started by two massage enthusiasts, who were seeking a good spa massage in Singapore to relieve their bodies from muscle tension and sore muscles.",
+      "acnePage": "With over 24 years of experience in holistic skincare, we combine advanced technology and time-tested techniques to deliver real results with a gentle touch."
+    },
+    "homepage": {
+      "headline": "Where Wellness Meets Results",
+      "subheadline": "Where feeling good and real results go hand in hand",
+      "signatureTreatments": {
+        "Massage": [
+          "Tuina Massage",
+          "Sports Massage",
+          "Lymphatic Massage"
+        ],
+        "Facial": [
+          "3C Vit Glow Facial",
+          "Nano Fibro Facial",
+          "Meridian Bojin Facial"
+        ],
+        "Wellness": [
+          "Medi-Stretch",
+          "Contrast Therapy",
+          "Acu-Wave Relief Therapy"
+        ],
+        "Slimming": [
+          "TCM Tummy Trim",
+          "INDIBA® Slimming"
+        ]
+      },
+      "sectionTitles": [
+        "SIGNATURE TREATMENTS",
+        "Featured & award-winning spa retreats",
+        "WHAT PEOPLE ARE SAYING"
+      ],
+      "testimonials": [
+        {
+          "name": "Ivan Ng",
+          "text": "Place is clean and the service was excellent. Had a stiff neck and felt better after the massage!"
+        },
+        {
+          "name": "Brad Bones",
+          "text": "I come back weekly to see my super star Nicole! My wife also enjoys. Amazing at what they do!"
+        },
+        {
+          "name": "Marissa Teo",
+          "text": "My husband and I thoroughly enjoyed the full body massage and Onsen experience. We will be back!"
+        },
+        {
+          "name": "Elspeth Jiang",
+          "text": "Their onsen package for 2 pax was amazing. You get a good full body massage plus a private onsen room by yourself. Can’t wait to get pampered again."
+        },
+        {
+          "name": "Iain Wong",
+          "text": "Enjoyed the Onsen and massage tremendously. Massage was very relaxing and really helps in loosening the tight muscles. Felt energized after the session. Thumbs up."
+        },
+        {
+          "name": "Abdul Rauf",
+          "text": "I went for the couple spa with onsen. The spa was extremely rejuvenating for both my spouse and I. It was a lovely session to recharge ourselves. Highly recommend the Koyamaki Onsen Couple package for those attached ones. The masseuse was great as they will adjust the intensity of massage to your liking. The ambience was just right too. Definitely one of the better spa places out here."
+        }
+      ]
+    }
+  },
+  "outlets": [
+    {
+      "name": "ION Orchard",
+      "unit": "#B1-30",
+      "address": "#B1-30, 2 Orchard Turn, Singapore 238801",
+      "postalCode": "238801",
+      "phone": "6738 3788",
+      "whatsapp": "8938 2878",
+      "email": "ion@elements.com.sg",
+      "hours": {
+        "weekdays": "Monday – Friday: 11am to 9:00pm",
+        "weekendsPH": "Weekends & PH: 10:30am to 8:00pm"
+      },
+      "notes": [
+        "Red Light Therapy element enhancement noted as ION Orchard on The 5 Elements Massage page"
+      ],
+      "photo": "https://elements.com.sg/wp-content/uploads/2022/05/Elements_ION-scaled.jpg"
+    },
+    {
+      "name": "313@somerset",
+      "unit": "#B2-50/51",
+      "address": "#B2-50/51, 313 Orchard Road, Singapore 238895",
+      "postalCode": "238895",
+      "phone": "6636 8878",
+      "whatsapp": "8875 1677",
+      "email": "313@elements.com.sg",
+      "hours": {
+        "weekdays": "Monday – Friday: 11am to 9:00pm",
+        "weekendsPH": "Weekends & PH: 10:30am to 8:00pm"
+      },
+      "notes": [
+        "Chill & Heal Rituals / Contrast Therapy (ice bath) are 313@somerset only (per Promotions page)",
+        "Herbal Bath Therapy available only at 313@Somerset",
+        "Chiropractic only available at Elements Wellness – 313 (per Wellness page)",
+        "Massage category page lists a different WhatsApp number for 313: 9669 6460 (contact page and footer say 8875 1677)"
+      ],
+      "photo": "https://elements.com.sg/wp-content/uploads/2022/05/Elements-313-scaled.jpg"
+    },
+    {
+      "name": "The Centrepoint",
+      "unit": "#02-28",
+      "address": "#02-28, 176 Orchard Road, Singapore 238843",
+      "postalCode": "238843",
+      "phone": "6737 8488",
+      "whatsapp": "9357 8183",
+      "email": "cpoint@elements.com.sg",
+      "hours": {
+        "weekdays": "Monday – Friday: 11am to 9:00pm",
+        "weekendsPH": "Weekends & PH: 10:30am to 8:00pm"
+      },
+      "notes": [
+        "Koyamaki Onsen (private Japanese onsen suites) is at Centrepoint only"
+      ],
+      "photo": "https://elements.com.sg/wp-content/uploads/2022/05/Elements_centrepoint.jpg"
+    }
+  ],
+  "contact": {
+    "bookingNote": "To make a booking, please call or WhatsApp your preferred location",
+    "formNote": "CONTACT US — For partnership, collaboration or feedback. (web form, not submitted)"
+  },
+  "awardsPage": {
+    "heading": "ELEMENTS WELLNESS — Award-Winning Beauty Care",
+    "intro": "Discover our award-winning beauty treatments, recognized for delivering outstanding results and unparalleled care.",
+    "linkNote": "'link' is the award card's 'learn more' href exactly as on the page (null where the card had no link/href). Several point to legacy URLs (/onsen/, /massage/, /therapy/, /facial/)."
+  },
+  "awards": [
+    {
+      "year": 2026,
+      "publication": "Daily Vanity Beauty Treatment Awards 2026",
+      "category": "Best Customisable Facial (< 90 Mins)",
+      "awardLabel": "Daily Vanity Recommends",
+      "treatment": "The Probiotic Facial",
+      "description": "A fast-acting treatment infusing probiotics to “train” the skin barrier and calm inflammation.",
+      "link": "https://elements.com.sg/services/massage/lymphatic-drainage-massage/",
+      "linkNote": "Site's 'learn more' for this award points to the Lymphatic Drainage Massage page (likely a site error); actual page is /services/facial/probiotic-facial/"
+    },
+    {
+      "year": 2026,
+      "publication": "Beauty Insider Spa & Salon Awards 2026",
+      "category": "Best Body Tension Relief Therapy",
+      "awardLabel": "Best Trend Award",
+      "treatment": "Fascia Release Therapy",
+      "description": "A pioneering manual therapy using a magnetic 24K Gold Stick to unlock deep myofascial tension.",
+      "link": "https://elements.com.sg/services/massage/fascia-release-therapy/"
+    },
+    {
+      "year": 2026,
+      "publication": "Beauty Insider Spa & Salon Awards 2026",
+      "category": "Best Detoxifying Body Massage Treatment",
+      "awardLabel": "Beauty Insiders’ Choice Award",
+      "treatment": "Lymphatic Drainage Massage",
+      "description": "A scientific, gentle-touch massage that clears lymphatic pathways to eliminate toxins and bloating.",
+      "link": "https://elements.com.sg/services/massage/lymphatic-drainage-massage/"
+    },
+    {
+      "year": 2026,
+      "publication": "Beauty Insider Spa & Salon Awards 2026",
+      "category": "Best Couple Wellness Ritual Experience",
+      "awardLabel": "Readers’ Choice Award",
+      "treatment": "Couple Koyamaki Onsen Ritual",
+      "description": "A private 115-minute couple’s retreat featuring a therapeutic, handcrafted Koyamaki Wood Onsen soak.",
+      "link": "https://elements.com.sg/spa-ritual/onsen-spa/"
+    },
+    {
+      "year": 2026,
+      "publication": "Beauty Insider Spa & Salon Awards 2026",
+      "category": "Best Lymphatic Drainage Facial Treatment",
+      "awardLabel": "Readers’ Choice Award",
+      "treatment": "Lymphatic Sculpt Facial",
+      "description": "A 100% machine-free manual facial that drains fluid retention to sculpt a V-shaped silhouette.",
+      "link": "https://elements.com.sg/services/facial/lymphatic-sculpt-facial/"
+    },
+    {
+      "year": 2025,
+      "publication": "Daily Vanity Beauty Treatment Awards 2025",
+      "category": "Best Body Detox Treatment",
+      "awardLabel": "Reader’s Choice",
+      "treatment": "Lymphatic Drainage Massage",
+      "description": "A gentle yet powerful massage that stimulates the lymphatic system to flush out toxins, reduce water retention, and boost overall wellness.",
+      "link": "https://elements.com.sg/services/massage/lymphatic-drainage-massage/"
+    },
+    {
+      "year": 2025,
+      "publication": "Daily Vanity Beauty Treatment Awards 2025",
+      "category": "Best Eye Treatment",
+      "awardLabel": "DV Recommend & Reader’s Choice",
+      "treatment": "Eye Bojin Treatment",
+      "description": "A traditional TCM-inspired therapy that uses a Bojin tool to relieve eye fatigue, reduce puffiness, and improve circulation for brighter, refreshed eyes.",
+      "link": "https://elements.com.sg/eye-bojin-treatment/"
+    },
+    {
+      "year": 2025,
+      "publication": "Beauty Insider Spa & Salon Awards 2025",
+      "category": "Best Day Spa",
+      "awardLabel": "Bloggers’ Choice Award 2025",
+      "treatment": "Chill & Heal Ritual",
+      "description": "A holistic spa journey that melts stress away with soothing massage strokes, calming aromas, and a deeply restorative touch.",
+      "link": "https://elements.com.sg/services/wellness/ice-bath-therapy/"
+    },
+    {
+      "year": 2025,
+      "publication": "Beauty Insider Spa & Salon Awards 2025",
+      "category": "Best Therapeutic Massage",
+      "awardLabel": "Beauty Insiders’ Choice Award 2025",
+      "treatment": "Muscle & Joint Vitality Massage",
+      "description": "Designed to relieve tension, improve mobility, and promote recovery—ideal for those with active lifestyles or chronic muscle soreness.",
+      "link": null
+    },
+    {
+      "year": 2025,
+      "publication": "Beauty Insider Spa & Salon Awards 2025",
+      "category": "Best Prenatal Massage",
+      "awardLabel": "Readers’ Choice Award 2025",
+      "treatment": "Prenatal Massage",
+      "description": "A gentle, specially tailored massage to ease body aches, reduce swelling, and promote deep relaxation for expecting mothers.",
+      "link": "https://elements.com.sg/prenatal-massage/"
+    },
+    {
+      "year": 2025,
+      "publication": "Beauty Insider Spa & Salon Awards 2025",
+      "category": "Best Signature Massage",
+      "awardLabel": "Readers’ Choice Award 2025",
+      "treatment": "Antedote Aromatherapy Massage",
+      "description": "A luxurious blend of custom essential oils and expert strokes to calm the mind, restore balance, and reawaken your senses.",
+      "link": "https://elements.com.sg/antedote-aromatherapy/"
+    },
+    {
+      "year": 2024,
+      "publication": "Harper's Bazaar Spa Award 2024",
+      "category": "Best Detox Experience",
+      "awardLabel": null,
+      "treatment": "Acu-Wave Relief Therapy",
+      "description": "This Acu-Wave target stubborn aches, ease joint discomfort, and improve circulation with this specialized therapy designed for lasting relief.",
+      "link": "https://elements.com.sg/acuwave-relief-therapy/"
+    },
+    {
+      "year": 2024,
+      "publication": "Beauty Insider Spa & Salon Awards 2024",
+      "category": "Best Whitening / Brightening",
+      "awardLabel": null,
+      "treatment": "Power Dose Brightening Facial",
+      "description": "This facial uses ultrasound to infuse the Glutathione Power Dose Ampoule for brighter, smoother and more hydrated skin.",
+      "link": "https://elements.com.sg/ha-glutathione-power-dose-facial/"
+    },
+    {
+      "year": 2024,
+      "publication": "Beauty Insider Spa & Salon Awards 2024",
+      "category": "Best Couple Spa",
+      "awardLabel": null,
+      "treatment": "Couple Koyamaki Onsen Spa Retreat",
+      "description": "Experience the time honored Japanese bath ritual in a handcrafted Koyamaki wood tub with energized ion water.",
+      "link": "https://elements.com.sg/onsen/"
+    },
+    {
+      "year": 2024,
+      "publication": "Daily Vanity Beauty Awards 2024",
+      "category": "Body Wash – Night Shower Gel",
+      "awardLabel": null,
+      "treatment": "Antedote Botanicals Shower Gel",
+      "description": "Transform body care with thia luxury shower gel. Invigorate your senses with Sweet Orange and Rose Geranium oils.",
+      "link": null
+    },
+    {
+      "year": 2024,
+      "publication": "Daily Vanity Beauty Awards 2024",
+      "category": "Body Lotion – Dry Skin",
+      "awardLabel": null,
+      "treatment": "Antedote Botanical Body & Hand Lotion",
+      "description": "An ultra-hydrating moisturizer blended with nut oils that soften skin and boost its natural barrier for protection.",
+      "link": null
+    },
+    {
+      "year": 2024,
+      "publication": "Daily Vanity Beauty Awards 2024",
+      "category": "Premium Brightening Serum",
+      "awardLabel": null,
+      "treatment": "Clarity Nano Elixir Ampoules",
+      "description": "Experience a level of absorption! The nano-sized liposomes allow for 1.6x more absorption for 2.5x more effective results.",
+      "link": null
+    },
+    {
+      "year": 2023,
+      "publication": "Harper’s Bazaar Spa Award 2023",
+      "category": "Best Luxurious Facial",
+      "awardLabel": null,
+      "treatment": "24K Pure Gold Facial",
+      "description": "This facial harnesses the remarkable properties of gold to improve collagen levels and suppress dullness.",
+      "link": "https://elements.com.sg/24k-pure-gold-facial/"
+    },
+    {
+      "year": 2023,
+      "publication": "Harper’s Bazaar Spa Award 2023",
+      "category": "Best Deep Tissue Massage",
+      "awardLabel": null,
+      "treatment": "Signature Tui Na with Meridian Flush Therapy",
+      "description": "A deep muscle therapy that releases tension and energizes by using specialized grooved wooden sticks.",
+      "link": "https://elements.com.sg/meridian-flush-therapy/"
+    },
+    {
+      "year": 2021,
+      "publication": "Singapore Women's Weekly Spa Awards 2021",
+      "category": "Best Couple Spa Retreat",
+      "awardLabel": null,
+      "treatment": "Couple Koyamaki Onsen Spa Retreat",
+      "description": "We complete your Onsen Spa experience with real Hinoki wood bath accessories for authenticity.",
+      "link": "https://elements.com.sg/onsen/"
+    },
+    {
+      "year": 2021,
+      "publication": "Singapore Women's Weekly Spa Awards 2021",
+      "category": "Best Head and Scalp Massage",
+      "awardLabel": null,
+      "treatment": "Myofascial Head/Neck Therapy",
+      "description": "uses ‘gua-sha’ and ‘bojin’ techniques to release tightened fascia in the scalp and neck area to lessen tension and headache.",
+      "link": "https://elements.com.sg/ginseng-bojin-meridian/"
+    },
+    {
+      "year": 2021,
+      "publication": "Singapore Women's Weekly Spa Awards 2021",
+      "category": "Best TCM Tummy Detox Treatment",
+      "awardLabel": null,
+      "treatment": "TCM Tummy Slimming",
+      "description": "Helps to contour target areas and detox by Flushing along Meridian channels.",
+      "link": "https://elements.com.sg/tcm-slimming-therapy/"
+    },
+    {
+      "year": 2021,
+      "publication": "Harper's Bazaar Spa Awards 2021",
+      "category": "Best Drainage Massage",
+      "awardLabel": null,
+      "treatment": "TCM Meridian Flush Therapy",
+      "description": "Flushing involves using a special wooden bars to ‘scrape’ across muscles. It covers larger areas and also improves lymph flow for detoxification.",
+      "link": "https://elements.com.sg/meridian-flush-therapy/"
+    },
+    {
+      "year": 2021,
+      "publication": "Her World Spa & Wellness Awards 2021",
+      "category": "Best Purifying Facial",
+      "awardLabel": null,
+      "treatment": "Purifying Black Magnelight Facial",
+      "description": "This facial uses ionized minerals to draw out impurities, while depositing nutrients into your skin.",
+      "link": "https://elements.com.sg/purifying-black-magnelight-facial/"
+    },
+    {
+      "year": 2021,
+      "publication": "Her World Spa & Wellness Awards 2021",
+      "category": "Best Deep Tissue Massage",
+      "awardLabel": null,
+      "treatment": "Muscle Blading Therapy + Muscle Release Body Massage",
+      "description": "uses specialized tools to alleviate muscle tension and improve circulation combined with body massage.",
+      "link": "https://elements.com.sg/massage/"
+    },
+    {
+      "year": 2021,
+      "publication": "Her World Spa & Wellness Awards 2021",
+      "category": "Best Holistic Spa",
+      "awardLabel": null,
+      "treatment": "Elements Wellness",
+      "description": "Offering therapeutic massages, facial treatments, and personalized wellness programs to enhance your health and well-being.",
+      "link": "https://elements.com.sg/therapy/"
+    },
+    {
+      "year": 2019,
+      "publication": "Daily Vanity Spa & Hair Awards 2019",
+      "category": "Couple Spa",
+      "awardLabel": null,
+      "treatment": "Couple Koyamaki Onsen Spa Retreat",
+      "description": "Nestled in a private room at Elements Wellness Centrepoint, a unique and exclusive experience awaits – Koyamaki Onsen Therapy.",
+      "link": "https://elements.com.sg/onsen/"
+    },
+    {
+      "year": 2019,
+      "publication": "Her World Spa Awards 2019",
+      "category": "Best Top-To-Toe Spa Experience",
+      "awardLabel": null,
+      "treatment": "Spa Ritual",
+      "description": "Offering therapeutic massages, facial treatments, and personalized wellness programs to enhance your health and well-being.",
+      "link": "https://elements.com.sg/therapy/"
+    },
+    {
+      "year": 2019,
+      "publication": "The Singapore Women’s Weekly Spa Awards 2019",
+      "category": "Best Me-Time Day Spa",
+      "awardLabel": null,
+      "treatment": "Head-to-Toe Spa Ritual",
+      "description": "Featuring a comprehensive treatment that pampers and revitalizes every part of your body for ultimate relaxation and well-being.",
+      "link": "https://elements.com.sg/massage/"
+    },
+    {
+      "year": 2019,
+      "publication": "The Singapore Women’s Weekly Spa Awards 2019",
+      "category": "Best Facial – Stem Cell",
+      "awardLabel": null,
+      "treatment": "Biocell Stem Cell Face Treatment",
+      "description": "Stem Cell Meso contains bioactive compounds to provoke blood circulation and promote skin’s natural re-birth to reveal new skin.",
+      "link": null
+    },
+    {
+      "year": 2019,
+      "publication": "The Singapore Women’s Weekly Spa Awards 2019",
+      "category": "Best Deep Tissue Massage",
+      "awardLabel": null,
+      "treatment": "Elements Ginseng Meridian Therapy",
+      "description": "Focuses on meridian channels to release tightness and activate healing. Ginseng compliments by improving energy and relaxation.",
+      "link": "https://elements.com.sg/tcm-slimming-therapy/"
+    },
+    {
+      "year": 2018,
+      "publication": "Daily Vanity Spa & Hair Awards 2018",
+      "category": "Best Prenatal Massage",
+      "awardLabel": null,
+      "treatment": "Prenatal Massage",
+      "description": "Relieves discomforts experienced during pregnancy, such as backaches, stiff neck, leg cramps, headaches and edema (or swelling).",
+      "link": "https://elements.com.sg/prenatal-massage/"
+    },
+    {
+      "year": 2018,
+      "publication": "Daily Vanity Spa & Hair Awards 2018",
+      "category": "Best Couple Spa",
+      "awardLabel": null,
+      "treatment": "Elements Wellness",
+      "description": "Featuring luxurious treatments, private suites, and personalized services, our spa provides a serene and romantic atmosphere perfect.",
+      "link": null
+    },
+    {
+      "year": 2018,
+      "publication": "Harper's Bazaar Spa Awards Winner 2018",
+      "category": "Best Detox Experience",
+      "awardLabel": null,
+      "treatment": "Cell Labs Energy Massage Therapy",
+      "description": "Distributes energy through the internal system to the entire body for vitality and health.",
+      "link": null
+    },
+    {
+      "year": 2017,
+      "publication": "Her World Spa Awards 2017",
+      "category": "Best Firming Facial",
+      "awardLabel": null,
+      "treatment": "LPG Mobilift Facial",
+      "description": "Effectively eliminate wrinkles, firming contours, refining and reshaping your face, balancing out your complexion, and improving your skin quality.",
+      "link": "https://elements.com.sg/lpg-mobilift-facial/"
+    },
+    {
+      "year": 2017,
+      "publication": "Her World Spa Awards 2017",
+      "category": "Best Clarifying Peel Treatment",
+      "awardLabel": null,
+      "treatment": "Reveal Peel Facial",
+      "description": "Medical-grade chemical peel that specifically targets dark spots, wrinkles and hyperpigmentation.",
+      "link": "https://elements.com.sg/skin-rejuvenation-treatment-singapore/"
+    },
+    {
+      "year": 2017,
+      "publication": "Her World Spa Awards 2017",
+      "category": "Best Aromatherapy Massage",
+      "awardLabel": null,
+      "treatment": "Aromatherapy Massage",
+      "description": "Beneficial for moving lymph flow and aiding in detoxification.",
+      "link": "https://elements.com.sg/massage/"
+    },
+    {
+      "year": 2017,
+      "publication": "The Singapore Women's Weekly Spa Awards 2017",
+      "category": "Best Couple Treatment",
+      "awardLabel": null,
+      "treatment": "Couple Massage Retreat With Koyamaki Onsen",
+      "description": "Improve circulation, relieve pain, feel more energetic and revitalize your health.",
+      "link": "https://elements.com.sg/onsen/"
+    },
+    {
+      "year": 2017,
+      "publication": "Harper's Bazaar Spa Award 2017",
+      "category": "Best Traditional Remedy Massage",
+      "awardLabel": null,
+      "treatment": "TCM Qi Meridian Wellness Therapy",
+      "description": "Improve circulation, relieve pain, feel more energetic and revitalize your health.",
+      "link": "https://elements.com.sg/meridian-flush-therapy/"
+    },
+    {
+      "year": 2017,
+      "publication": "Harper's Bazaar Spa Award 2017",
+      "category": "Best Firming Massage",
+      "awardLabel": null,
+      "treatment": "Collagen Firming Body Massage",
+      "description": "This improves blood flow, delivering nutrients and oxygen to skin cells, promoting a healthier, firmer, and smoother complexion",
+      "link": "https://elements.com.sg/collagen-firming-body-massage/"
+    },
+    {
+      "year": 2016,
+      "publication": "Harper's Bazaar Spa Award 2016",
+      "category": "Best Anti-Ache Massage",
+      "awardLabel": null,
+      "treatment": "Classic Massage",
+      "description": "Helps relieve stress, reduce pain, boost mood and promote relaxation.",
+      "link": "https://elements.com.sg/massage/"
+    },
+    {
+      "year": 2016,
+      "publication": "Harper's Bazaar Spa Award 2016",
+      "category": "Best Hydrating Facial",
+      "awardLabel": null,
+      "treatment": "Cocoon Premium Therapy",
+      "description": null,
+      "link": "https://elements.com.sg/facial/"
+    },
+    {
+      "year": 2016,
+      "publication": "ELLE Beauty Treats 2016",
+      "category": "Best Skin Plumping Treatment",
+      "awardLabel": null,
+      "treatment": "LPG Classic Facial",
+      "description": "Improve circulation, relieve pain, feel more energetic and revitalize your health.",
+      "link": "https://elements.com.sg/lpg-mobilift-facial/"
+    },
+    {
+      "year": 2016,
+      "publication": "Singapore Women's Weekly Spa Awards 2016",
+      "category": "Best Firming Massage",
+      "awardLabel": null,
+      "treatment": "Collagen Firming Body Massage",
+      "description": "This improves blood flow, delivering nutrients and oxygen to skin cells, promoting a healthier, firmer, and smoother complexion.",
+      "link": "https://elements.com.sg/collagen-firming-body-massage/"
+    },
+    {
+      "year": 2015,
+      "publication": "Singapore Women's Weekly Spa Awards 2015",
+      "category": "Best Anti-Cellulite Treatment",
+      "awardLabel": null,
+      "treatment": "3D Lipo Med Slimming",
+      "description": "The use of low frequency ultrasound technology to break down fat cells below the skin.",
+      "link": "https://elements.com.sg/3d-cavitation/"
+    },
+    {
+      "year": 2015,
+      "publication": "Singapore Women's Weekly Spa Awards 2015",
+      "category": "Best Stress Relieving Massage",
+      "awardLabel": null,
+      "treatment": "Classic Deep Tissue Sports Massage",
+      "description": "A sports massage can help speed up recovery when your muscles cramp and strain, which may otherwise take weeks to fully heal.",
+      "link": "https://elements.com.sg/sports-massage/"
+    },
+    {
+      "year": 2014,
+      "publication": "Singapore Women's Weekly Spa Awards 2014",
+      "category": "Best Bust Care",
+      "awardLabel": null,
+      "treatment": "LPG Bust Enhancer Treatment",
+      "description": "Bust massage with GuaSha for lymphatic drainage to aid detoxification and natural flow of hormones.",
+      "link": null
+    },
+    {
+      "year": 2014,
+      "publication": "Singapore Women's Weekly Spa Awards 2014",
+      "category": "Best Sports Massage",
+      "awardLabel": null,
+      "treatment": "Classic Deep Tissue Sports Massage",
+      "description": "A sports massage can help speed up recovery when your muscles cramp and strain, which may otherwise take weeks to fully heal.",
+      "link": "https://elements.com.sg/sports-massage/"
+    }
+  ],
+  "promotions": {
+    "url": "https://elements.com.sg/promotions/",
+    "heading": "PROMOTION",
+    "intro": "Experience expert-led treatments at special first-visit and online rates.",
+    "items": [
+      {
+        "category": "Body Massage",
+        "name": "Body Massage",
+        "duration": "60 min",
+        "description": "Choose your massage style (Tuina/ Sports/ Deep Tissue/ Swedish)",
+        "prices": {
+          "firstVisit": "$69",
+          "usual": "$158"
+        },
+        "tag": "MOST BOOKED",
+        "packages": true
+      },
+      {
+        "category": "Body Massage",
+        "name": "The 5 Elements Massage",
+        "duration": "60 min",
+        "description": "Choose your element (金/木/水/火/土) · Deepen your treatment",
+        "prices": {
+          "webPromo": "$98",
+          "usual": "$229"
+        },
+        "packages": true
+      },
+      {
+        "category": "Body Massage",
+        "name": "Couple Aromatherapy Massage",
+        "duration": "60 min",
+        "description": "For 2 pax. Includes: Couple Room access and a signature Antedote Aromatherapy enhancement.",
+        "prices": {
+          "webPromo": "$195",
+          "usual": "$313.80"
+        }
+      },
+      {
+        "category": "Body Massage",
+        "name": "Lymphatic Drainage Massage",
+        "duration": "60 min",
+        "description": "Rhythmic technique to reduce fluid retention.",
+        "prices": {
+          "firstVisit": "$98",
+          "webPromo": "$148",
+          "usual": "$228"
+        },
+        "packages": true
+      },
+      {
+        "category": "Body Massage",
+        "name": "Pre/ Postnatal Massage",
+        "duration": "60 min",
+        "description": "Safe, therapist-guided care for mothers.",
+        "prices": {
+          "firstVisit": "$98",
+          "webPromo": "$128",
+          "usual": "$228"
+        },
+        "packages": true
+      },
+      {
+        "category": "Body Recovery",
+        "name": "INDIBA Body Therapy",
+        "duration": "30 min",
+        "description": "(Slimming / Pain Management/ Wombcare)",
+        "prices": {
+          "firstVisit": "$109",
+          "webPromo": "$188",
+          "usual": "$400"
+        },
+        "packages": true
+      },
+      {
+        "category": "Body Recovery",
+        "name": "Customised Pain Management Therapy",
+        "duration": "30 min",
+        "description": "(Acuwave/ Meridian Flush Therapy/ Infraray Moxibustion)",
+        "prices": {
+          "firstVisit": "$69",
+          "webPromo": "$98",
+          "usual": "$138"
+        },
+        "packages": true
+      },
+      {
+        "category": "Facial Treatments",
+        "name": "AquaGlow Facial",
+        "duration": "60 min",
+        "description": "For a clean, refreshed, and naturally radiant complexion.",
+        "prices": {
+          "firstVisit": "$69",
+          "webPromo": "$98",
+          "usual": "$118"
+        },
+        "tag": "MOST BOOKED",
+        "packages": true
+      },
+      {
+        "category": "Facial Treatments",
+        "name": "Probiotic Facial",
+        "duration": "75 min",
+        "description": "(Hydrating/ Soothing/ Brightening/ Anti-aging/ Anti-acne)",
+        "prices": {
+          "firstVisit": "$129",
+          "webPromo": "$188",
+          "usual": "$228"
+        },
+        "tag": "MOST BOOKED",
+        "packages": true
+      },
+      {
+        "category": "Facial Treatments",
+        "name": "HA Power Dose Facial",
+        "duration": "60 min",
+        "description": "Plumps and restores skin with a concentrated dose.",
+        "prices": {
+          "firstVisit": "$99",
+          "webPromo": "$128",
+          "usual": "$188"
+        },
+        "packages": true
+      },
+      {
+        "category": "Facial Treatments",
+        "name": "Customised Facial Solution Treatment",
+        "duration": "90 min",
+        "description": "(Indiba/ LPG /IPL /Wishpro /Needleless Rejuran/ Skin Booster)",
+        "prices": {
+          "from": "$288"
+        },
+        "packages": true
+      },
+      {
+        "category": "Onsen Rituals (Centrepoint only)",
+        "name": "Solo Koyamaki Onsen Spa Ritual",
+        "duration": "115 min",
+        "description": "For 1 pax. Includes: 40-min Private Onsen, 60-min Ocha Body Massage, and 15-min Back Scrub",
+        "prices": {
+          "weekdays": "$165",
+          "weekends": "$185",
+          "usual": "$293"
+        }
+      },
+      {
+        "category": "Onsen Rituals (Centrepoint only)",
+        "name": "Couple Koyamaki Onsen Spa Ritual",
+        "duration": "115 min",
+        "description": "For 2 pax. Includes: 40-min Private Onsen, 60-min Ocha Body Massage, 15-min Back Scrub, and Couple Room access",
+        "prices": {
+          "weekdays": "$288",
+          "weekends": "$323",
+          "usual": "$490"
+        }
+      },
+      {
+        "category": "Onsen Rituals (Centrepoint only)",
+        "name": "Koyamaki Onsen",
+        "duration": "40 min",
+        "description": "Private Onsen only (Body Massage is not included)",
+        "prices": {
+          "solo": "$98 (U.P. $118)",
+          "couple": "$148 (U.P. $198)"
+        }
+      },
+      {
+        "category": "Chill & Heal Rituals (313@somerset only)",
+        "name": "Solo Chill & Heal Ritual",
+        "duration": "105 min",
+        "description": "For 1 pax. Includes: 60-min Body Massage, and 45-min Contrast Therapy",
+        "prices": {
+          "weekdays": "$158",
+          "weekends": "$168",
+          "usual": "$236"
+        }
+      },
+      {
+        "category": "Chill & Heal Rituals (313@somerset only)",
+        "name": "Couple Chill & Heal Ritual",
+        "duration": "105 min",
+        "description": "For 2 pax. Includes: 60-min Body Massage, 45-min Contrast Therapy, and Couple Room access.",
+        "prices": {
+          "weekdays": "$298",
+          "weekends": "$318",
+          "usual": "$434"
+        }
+      },
+      {
+        "category": "Chill & Heal Rituals (313@somerset only)",
+        "name": "Chill & Heal Therapy",
+        "duration": "45 min",
+        "description": "Contrast Therapy only, Body Massage is not included.",
+        "prices": {
+          "solo": "$98 (U.P. $118)",
+          "couple": "$148 (U.P. $198)"
+        }
+      }
+    ],
+    "terms": [
+      "*The first trial promotion is valid for local residents who are first-time visitors to Elements Wellness and pay by local debit/credit card or PayNow.",
+      "Website promotion is available to all customers on any day, subject to availability. Simply quote ‘website promotion’ when making an appointment.",
+      "All prices stated are after GST."
+    ],
+    "priceLabelKey": {
+      "firstVisit": "FIRST VISIT*",
+      "webPromo": "WEB PROMO",
+      "usual": "U.P. (usual price)"
+    }
+  },
+  "giftVouchers": {
+    "url": "https://elements.com.sg/gift-vouchers/",
+    "heading": "Gift Vouchers",
+    "platform": "Gift Up! embedded widget (giftup.app, site id 025887db-063a-408b-34b2-08da9590d9f1); content rendered client-side in an iframe — captured from a rendered browser view, not from static HTML",
+    "widgetHeader": "ELEMENTS WELLNESS — A Gift For You — GIFT VOUCHER",
+    "items": [
+      {
+        "name": "$100 Spa Voucher",
+        "price": "SGD 100",
+        "description": "Enjoy some self-pampering moments at Elements Wellness."
+      },
+      {
+        "name": "$200 Spa Voucher",
+        "price": "SGD 200",
+        "description": "Enjoy some self-pampering moments at Elements Wellness."
+      },
+      {
+        "name": "$300 Spa Voucher",
+        "price": "SGD 300",
+        "description": "Enjoy some self-pampering moments at Elements Wellness."
+      },
+      {
+        "name": "Therapeutic Body Massage (60-min)",
+        "price": "SGD 98",
+        "description": "Choose from: Swedish / Deep Tissue Massage/ Tuina/ Sports"
+      },
+      {
+        "name": "Therapeutic Body Massage (90-min)",
+        "price": "SGD 147",
+        "description": "Choose from: Swedish / Deep Tissue Massage/ Tuina/ Sports"
+      },
+      {
+        "name": "Aqua Glow Facial (60-min)",
+        "price": "SGD 98",
+        "description": "A deeply hydrating facial for a radiant boost!"
+      },
+      {
+        "name": "Koyamaki Onsen Spa Ritual (1-pax, 115-min)",
+        "price": "SGD 185",
+        "description": "Includes: Massage (60-min); Back Scrub (15-min); Koyamaki Onsen Therapy in Private Onsen Suite (40-min). Exclusive to Elements Wellness Centrepoint branch."
+      },
+      {
+        "name": "Couple Koyamaki Onsen Spa Ritual (2-pax, 115-min)",
+        "price": "SGD 323",
+        "description": "Includes: Massage (60-min); Back Scrub (15-min); Koyamaki Onsen Therapy in Private Onsen Suite (40-min); Couple Massage Room. Exclusive to Elements Wellness Centrepoint branch."
+      },
+      {
+        "name": "Prenatal / Postnatal Massage (60-min)",
+        "price": "SGD 128",
+        "description": "Massage to help relieve pregnancy / post-pregnancy discomforts: water retention, sores and aches, tension and fatigue."
+      },
+      {
+        "name": "Couple Aromatherapy Body Massage (60-min)",
+        "price": "SGD 195",
+        "description": "Enjoy side-by-side massages in the same room, each tailored to your individual preferences—whether you and your partner favour different techniques or pressure levels, our therapists ensure both of you have a relaxing and customised experience."
+      }
+    ],
+    "notes": "Each item has 'Terms & conditions' (collapsed, not expanded) and the cash vouchers have a 'More information' link. Voucher card artwork: stacked pebbles in a wooden bowl with rose petals."
+  },
+  "faq": [
+    {
+      "q": "Do I need to bring anything?",
+      "a": "No. Disposable underwear and slippers will be provided for your use in the spa. If you prefer, you may bring along your swimming costume for your Jacuzzi treatment."
+    },
+    {
+      "q": "Should I avoid visiting if I am pregnant?",
+      "a": "Please let us know if you are pregnant so that our spa consultant can recommend the spa treatments most suitable for you. However, you should avoid treatments and body massages using heat, deep pressure and certain aromatic oils."
+    },
+    {
+      "q": "Do I have to disrobe entirely for my spa treatments?",
+      "a": "We provide disposable undergarments for your body treatments. Any area not treated is properly draped to protect your privacy at all times. Your massage therapist will only uncover the part of the body she is working on, ensuring that your modesty is respected at all times."
+    },
+    {
+      "q": "Should I let someone know if I have any allergies or physical ailments?",
+      "a": "Yes. Especially if you have high blood pressure, allergies, or are pregnant. Please notify our spa consultant when booking your spa appointments."
+    },
+    {
+      "q": "How often should I visit the Spa?",
+      "a": "It depends on the spa treatments and specific needs. Some of our clients would come whenever they can find the time. There are those who would come twice a week. Most of our regular spa members visit us once a fortnight as recommended."
+    },
+    {
+      "q": "How do I ensure that the treatment is comfortable for me?",
+      "a": "At any time during the session, should you feel that the pressure or technique is uncomfortable for you, please alert the therapist. Depending on your specific needs or requests, your massage therapist will either perform a customized full-body massage (for general relaxation and stress reduction) or focus on the specific parts of your body that you have requested. Do not hesitate to ask any questions as it is our duty to provide you with our best service."
+    }
+  ],
+  "blog": [
+    {
+      "title": "Blog: Men’s Facial",
+      "displayTitle": "The Ultimate Guide to Facials for Men",
+      "url": "https://elements.com.sg/2024/07/23/blog-mens-facial/",
+      "date": "2024-07-23",
+      "excerpt": "The Ultimate Guide to Facials for Men: Why You Should Consider It and What Makes It Unique In today’s fast-paced world, self-care is not just a luxury but a necessity. For men, grooming routines have expanded beyond the traditional shave and haircut. One aspect gaining popularity is the facial. Once considered a predominantly female treatment, […]",
+      "image": "https://elements.com.sg/wp-content/uploads/2024/07/mens-banner-e1743676717906.png"
+    },
+    {
+      "title": "Pearl Light Facial",
+      "displayTitle": "A sustainable way for skin tightening of the face!",
+      "url": "https://elements.com.sg/2024/05/30/blog-pearl-light-facial/",
+      "date": "2024-05-30",
+      "excerpt": "PEARL LIGHT FACIAL This facial technology is a sustainable way for skin tightening of the face! As we age, our skin naturally loses its elasticity and firmness, leading to sagging and wrinkles. Skin tightening treatments for the face have become a popular solution to combat these signs of aging, offering a more youthful and rejuvenated […]",
+      "image": "https://elements.com.sg/wp-content/uploads/2024/04/Pearl-light-wordpress.png"
+    },
+    {
+      "title": "Benefits of Massage & Herbal Volcanic Mud Therapy",
+      "displayTitle": "The wonder duo: massage & herbal volcanic mud therapy",
+      "url": "https://elements.com.sg/2023/04/24/benefits-of-massage-herbal-volcanic-mud-therapy/",
+      "date": "2023-04-24",
+      "excerpt": "The wonder duo: massage & herbal volcanic mud therapy Going for a professional massage is a great and healthy way to relax and rejuvenate, and adding complementary treatments can enhance the restorative benefits of massage therapy. Adding Herbal Volcanic Mud Therapy helps in managing pain and circulatory issues. Herbal Volcanic Mud is rich in minerals like iron, calcium and […]",
+      "image": null
+    }
+  ],
+  "services": {
+    "massage": [
+      {
+        "name": "The 5 Elements Massage",
+        "url": "https://elements.com.sg/services/massage/the-5-elements-massage/",
+        "description": "A TCM massage series built on five elements — Wood, Fire, Earth, Metal, Water — each mapping to a distinct physical and emotional state. You choose your element; your therapist delivers a full-body massage (Sports, Tuina, Deep Tissue or Swedish) with the matching oil blend and enhancement (Muscle Blade, Infra Ray Moxibustion, Herbal Volcanic Warming Mask, Cupping or Back Scrub).",
+        "concerns": [
+          "Muscle tension and physical stiffness",
+          "Poor circulation or persistent coldness",
+          "Digestive discomfort and bloating",
+          "Low energy and fatigue",
+          "Stress, anxiety, or difficulty sleeping"
+        ],
+        "duration": "60 min",
+        "price": "First Trial S$98 (U.P. S$229); Web promo $98",
+        "tagline": "A TCM massage series. You always choose the element you need.",
+        "elements": {
+          "Metal": "Sluggish / Feeling down — Lungs, Skin, Breathing — Cupping",
+          "Wood": "Tension / Irritable — Liver, Gallbladder, Tendons — Muscle Blade",
+          "Water": "Fatigue / Anxiety — Kidneys, Lower back, Vitality — Back Scrub",
+          "Fire": "Poor circulation / Unmotivated — Heart, Blood vessels, Sleep — Infra Ray Moxibustion (ION Orchard: Red Light Therapy)",
+          "Earth": "Poor Digestion / Worry — Spleen, Stomach, Lymph — Herbal Volcanic Warming Mask"
+        },
+        "availability": "All three locations"
+      },
+      {
+        "name": "Tuina Massage",
+        "url": "https://elements.com.sg/services/massage/tuina-massage/",
+        "description": "A form of TCM massage therapy that stimulates energy flow in the meridians to restore the body. Uses acupressure, kneading, rolling and rhythmic compression on meridians and acupoints to clear blockages and restore harmony.",
+        "concerns": [
+          "Pain relief (neck stiffness, back pain, joint pain, muscle soreness)",
+          "Improve mobility",
+          "Boost blood circulation",
+          "Improve sleep quality",
+          "Prevent toxin build-up"
+        ],
+        "duration": "60 min",
+        "price": "First trial $69 nett (U.P. $158)",
+        "tagline": "Authentic Chinese Massage Therapy"
+      },
+      {
+        "name": "Swedish Massage",
+        "url": "https://elements.com.sg/services/massage/swedish-massage/",
+        "description": "A relaxing body massage that improves your circulation and promotes relaxation through soothing your muscles. Uses long, flowing strokes, kneading and rhythmic techniques with light to moderate pressure.",
+        "concerns": [
+          "Relaxation and stress",
+          "Muscle tension and aches",
+          "Circulation",
+          "Mood"
+        ],
+        "duration": "60 min",
+        "price": "First trial $69 nett (U.P. $158)"
+      },
+      {
+        "name": "Sports Massage",
+        "url": "https://elements.com.sg/services/massage/sports-massage/",
+        "description": "Relieves tight muscles & pain. Improves recovery & flexibility. Targeted therapy using deep tissue, trigger point, stretching and Swedish techniques — for all fitness levels, not only athletes.",
+        "concerns": [
+          "Persistent tension and pain (back, shoulders, legs)",
+          "Muscle imbalances and joint pain",
+          "Office workers / lifestyle strain",
+          "Recovery and mobility"
+        ],
+        "duration": "60 min (sessions typically 60–90 min)",
+        "price": "First trial from $69 nett (U.P. $158); combos at $85 nett: + Red Light Therapy (60-min), 30-min + Meridian Flush (30-min), 30-min + Medi-Stretch (30-min)"
+      },
+      {
+        "name": "Lymphatic Drainage Massage",
+        "url": "https://elements.com.sg/services/massage/lymphatic-drainage-massage/",
+        "description": "Feel lighter, clearer, and recharged with Singapore’s favourite detox massage. A gentle, rhythmic therapy that stimulates the lymph system to remove toxins, reduce puffiness and support immunity; classic lymphatic or TCM-inspired techniques available.",
+        "concerns": [
+          "Water retention and puffiness",
+          "Detox",
+          "Bloating",
+          "Slow recovery / fatigue",
+          "Immunity"
+        ],
+        "duration": "60 min",
+        "price": "First Trial $98 nett; Ala-carte $228 nett; Web promo $148",
+        "awards": [
+          "Beauty Insider 2026 Best Detoxifying Body Massage Treatment",
+          "Daily Vanity 2025 Best Body Detox Treatment"
+        ]
+      },
+      {
+        "name": "Ginseng Bojin Meridian Massage",
+        "url": "https://elements.com.sg/services/massage/ginseng-bojin-meridian-massage/",
+        "description": "Combines TCM’s concept of acupoints and Western Medicine’s knowledge of muscular structure for relief and to encourage self-healing. Uses buffalo-horn Bojin tools along meridian points with a nourishing Ginseng cream to release deep-seated knots and tension.",
+        "concerns": [
+          "Chronic muscle tension & pain",
+          "Muscle elasticity & joint mobility",
+          "Inflammation",
+          "Stubborn knots in shoulders, neck, lower back"
+        ],
+        "duration": "30 min",
+        "price": "First trial $68 nett (U.P. $158)"
+      },
+      {
+        "name": "Prenatal Massage",
+        "url": "https://elements.com.sg/services/massage/prenatal-massage/",
+        "description": "The golden opportunity to heal and restore before giving birth. Relieves many of the discomforts experienced during pregnancy, such as backaches, stiff neck, leg cramps, headaches and edema (or swelling). Recommended from the 4th month of pregnancy (per massage category page).",
+        "concerns": [
+          "Back/hip pain, leg cramps, sciatic pain",
+          "Stress and anxiety",
+          "Sleep quality",
+          "Swelling (edema) and circulation",
+          "Headaches and sinus"
+        ],
+        "duration": "60 min",
+        "price": "First trial $98 nett (U.P. $228); Web promo $128",
+        "awards": [
+          "Beauty Insider 2025 Best Prenatal Massage",
+          "Daily Vanity 2018 Best Prenatal Massage"
+        ]
+      },
+      {
+        "name": "Postnatal Massage",
+        "url": "https://elements.com.sg/services/massage/postnatal-massage/",
+        "description": "The golden opportunity to heal and restore after giving birth. Specifically tailored to restore the new mother’s body to pre-pregnancy conditions, realign the body weight and tone over-stretched skin. Can start from the 5th day after natural delivery; after C-section once the incision has closed (usually one month).",
+        "concerns": [
+          "Womb recovery",
+          "Uterus contraction / flattening the tummy",
+          "Lower back, hip and shoulder discomfort",
+          "Slimming",
+          "Posture",
+          "Relaxation for new mothers"
+        ],
+        "duration": "60 min",
+        "price": "First trial $98 nett (U.P. $228); Web promo $128"
+      },
+      {
+        "name": "Couples Spa and Massage",
+        "url": "https://elements.com.sg/services/massage/couple-massage/",
+        "description": "Reconnect and Relax Together — side-by-side massages in the same room, each tailored to individual preferences. Page also lists couple rituals: Koyamaki Onsen Ritual, Couples Herbal Rebalance Ritual, Couples Contrast Therapy Ritual.",
+        "concerns": [
+          "Shared relaxation",
+          "Couples bonding"
+        ],
+        "duration": "60 min (couple aromatherapy massage)",
+        "price": "Starts from $195 per couple"
+      },
+      {
+        "name": "Massage Enhancements",
+        "url": "https://elements.com.sg/services/massage/massage-enhancements/",
+        "description": "Add-on treatments designed to deepen relaxation and boost results: Herbal Volcanic Mud, Cupping Therapy, Guasha, Antedote Aromatherapy (9 essential oil blends: Sleep, Energize, Uplift, Harmony, Muscles, Stress, Cheer, Bliss, Detox), Muscle Blade Therapy, and Infra-Ray Moxa Therapy.",
+        "concerns": [
+          "Water retention",
+          "Menstrual/womb care",
+          "Muscle and joint pain",
+          "Stagnation and inflammation",
+          "Tight fascia",
+          "Poor circulation / cold limbs"
+        ],
+        "duration": null,
+        "price": null,
+        "enhancements": [
+          "Herbal Volcanic Mud",
+          "Cupping Therapy",
+          "Guasha",
+          "Antedote Aromatherapy",
+          "Muscle Blade Therapy",
+          "Infra-Ray Moxa Therapy"
+        ]
+      },
+      {
+        "name": "Muscle & Joint Vitality Massage",
+        "url": "https://elements.com.sg/services/massage/muscle-joints-massage/",
+        "description": "Move Better, Feel Stronger. An advanced recovery massage combining three therapies — the 3 Pillars of Recovery: Pain management, Fascia & Tendon activation and Muscles Relaxation.",
+        "concerns": [
+          "Stiff joints",
+          "Tight muscles",
+          "Pain",
+          "Mobility and flexibility"
+        ],
+        "duration": "60 min (typical session 60–90 min)",
+        "price": "First trial $88 nett (U.P. $158)",
+        "navListed": false,
+        "note": "Listed on /services/massage/ category page, not in main nav",
+        "awards": [
+          "Beauty Insider 2025 Best Therapeutic Massage"
+        ]
+      },
+      {
+        "name": "Menopause Massage",
+        "url": "https://elements.com.sg/services/massage/menopause-massage/",
+        "description": "Designed with your comfort in mind: a calming experience that promotes relaxation, supports hormonal balance, and helps ease symptoms.",
+        "concerns": [
+          "Menopause symptoms",
+          "Hormonal balance",
+          "Relaxation"
+        ],
+        "duration": null,
+        "price": null,
+        "navListed": false,
+        "note": "Listed on /services/massage/ category page but its link returns 404"
+      }
+    ],
+    "facial": [
+      {
+        "name": "Medi-Jet Facial",
+        "url": "https://elements.com.sg/services/facial/medi-jet-facial/",
+        "description": "Delivers clinical-grade actives deep into the dermis — no needles, no downtime, no recovery time. Uses micro-airjet pressure to open temporary micro-pathways in the skin. Pioneered in Korea; formulations: Radiance or Rejuvenate.",
+        "concerns": [
+          "Pigmentation & uneven skin tone",
+          "Fine lines & loss of firmness",
+          "Dull or dehydrated skin",
+          "Skin that isn’t responding to topicals",
+          "Sensitive skin unsuitable for laser"
+        ],
+        "duration": "90 min",
+        "price": "First Trial S$344 (U.P. S$688)",
+        "tagline": "MEDI-FACIAL · MEDISPA RANGE"
+      },
+      {
+        "name": "Lymphatic Sculpt Facial",
+        "url": "https://elements.com.sg/services/facial/lymphatic-sculpt-facial/",
+        "description": "Depuffs and lifts to bring back your natural definition, while tackling the signs of ageing where they start. Pairs lymphatic drainage and connective tissue massage with Cellular 3 active ingredients (100% machine-free manual facial per Awards page).",
+        "concerns": [
+          "Puffiness and fluid retention in the face",
+          "Soft or undefined jawline",
+          "Dull, flat skin tone",
+          "Fine lines and reduced elasticity",
+          "Early structural signs of skin ageing"
+        ],
+        "duration": "75 min",
+        "price": "First Trial S$168 (U.P. S$438); course of 10 recommended",
+        "awards": [
+          "Beauty Insider 2026 Best Lymphatic Drainage Facial Treatment"
+        ]
+      },
+      {
+        "name": "AquaGlow Facial",
+        "url": "https://elements.com.sg/services/facial/aquaglow/",
+        "description": "Professional Cleansing and Hydration. A classic hands-on treatment combining thorough cleansing, gentle manual extraction and nourishing hydration — a comprehensive “skin reset”, not reliant on machines.",
+        "concerns": [
+          "Clogged pores and congestion",
+          "Hydration balance",
+          "Fresher, healthier-looking complexion",
+          "Regular maintenance"
+        ],
+        "duration": "60 min",
+        "price": "First trial $69 nett (page says U.P. $218; Promotions page says U.P. $118); Web promo $98"
+      },
+      {
+        "name": "Omega Light Therapy",
+        "url": "https://elements.com.sg/services/facial/omega-light-therapy/",
+        "description": "Medical-grade LED lights to treat acne, scarring, pigmentation, dullness, aging, and sensitive skin. A non-surgical, painless skin renewal treatment using therapeutic wavelengths (Red: anti-aging; Blue: anti-acne, etc.).",
+        "concerns": [
+          "Acne and acne scars",
+          "Pigmentation",
+          "Dullness",
+          "Aging / fine lines / open pores",
+          "Sensitive skin"
+        ],
+        "duration": null,
+        "price": null
+      },
+      {
+        "name": "Men’s Facial",
+        "url": "https://elements.com.sg/services/facial/men_facial/",
+        "description": "Premium Care for The Modern Man — Painless | Non-Invasive | Effective. Designed specifically for male skin, combining multiple technologies to treat various concerns in a single session.",
+        "concerns": [
+          "Oiliness",
+          "Rough complexion",
+          "Aging concerns"
+        ],
+        "duration": "60 min",
+        "price": "First trial (HydroLux Men Facial) $58 nett (U.P. $228)"
+      },
+      {
+        "name": "3C Vitamin Glow Facial",
+        "url": "https://elements.com.sg/services/facial/3c-vitamin-glow-facial/",
+        "description": "Freshest & Most Potent Antioxidant. Your Go-To for Brightening and Rejuvenation. Features Vitamin C in three advanced forms, freshly activated right before use.",
+        "concerns": [
+          "Dullness / brightening",
+          "Rejuvenation",
+          "Antioxidant protection",
+          "Collagen"
+        ],
+        "duration": "75 min",
+        "price": "First trial $168 nett (U.P. $438)"
+      },
+      {
+        "name": "HydroLux Facial",
+        "url": "https://elements.com.sg/services/facial/hydrolux-facial/",
+        "description": "Multi Technology Facial Program. An improved vortex infusion technology (Hydro-Cleanse) that effectively cleanses without skin damage while infusing skin-nourishing ingredients. Three protocols: HydroLux Renewal (radiance & hydration), Defense (acne/pores), Oxylift (lifting).",
+        "concerns": [
+          "Radiance & hydration",
+          "Acne and pores",
+          "Sagging cheeks / jawline"
+        ],
+        "duration": "75 min",
+        "price": "First trial $98 nett (U.P. $358)"
+      },
+      {
+        "name": "Probiotic Facial",
+        "url": "https://elements.com.sg/services/facial/probiotic-facial/",
+        "description": "Feed your skin’s living ecosystem for a calmer, stronger, radiant complexion that lasts. Uses a freshly activated Biotics+ Synergy (prebiotic + probiotic) hydrogel mask to rebalance the skin microbiome and strengthen the barrier.",
+        "concerns": [
+          "Post-treatment recovery (microneedling, laser, extractions)",
+          "Dryness and dehydration",
+          "Sensitivity and redness",
+          "Breakouts and congestion",
+          "Uneven tone, dullness, early aging"
+        ],
+        "duration": "75 min (per Promotions)",
+        "price": "First visit $129 (U.P. $228); Web promo $188 (per Promotions page)",
+        "awards": [
+          "Daily Vanity 2026 Best Customisable Facial (< 90 Mins)"
+        ]
+      },
+      {
+        "name": "Power Dose Brightening Facial",
+        "url": "https://elements.com.sg/services/facial/power-dose-facial/",
+        "description": "Lightweight Hydration. Instant Glow. Calms Sensitive Skin. Designed for Singapore’s hot, humid climate; uses the Power Dose Brightening Ampoule (Glutathione, multi-molecular Hyaluronic Acid and peptides) infused by ultrasound.",
+        "concerns": [
+          "Dull skin",
+          "Dehydrated skin",
+          "Sensitive / reactive skin"
+        ],
+        "duration": "60 min",
+        "price": "First trial $99 nett (page U.P. $288; Promotions 'HA Power Dose Facial' U.P. $188, web promo $128)",
+        "awards": [
+          "Beauty Insider 2024 Best Whitening / Brightening"
+        ]
+      },
+      {
+        "name": "Nano Fibroblast Facial",
+        "url": "https://elements.com.sg/services/facial/nano-fibroblast-facial/",
+        "description": "Needle-less Skin Rejuvenation. Known as “needle-less microneedling” — a single-use nano cartridge creates micro-channels without puncturing, for deep absorption of actives and collagen stimulation with no downtime.",
+        "concerns": [
+          "Texture",
+          "Tone",
+          "Elasticity / collagen",
+          "Anti-aging"
+        ],
+        "duration": "75 min",
+        "price": "First trial $88 nett (U.P. $388)"
+      },
+      {
+        "name": "NIR CellBright Facial",
+        "url": "https://elements.com.sg/services/facial/nir-cellbright-facial/",
+        "description": "Advanced Radiance & Collagen Remodeling. A clinical-grade facial that directs near-infrared light deep into the dermis — stimulating collagen to restore firmness and radiance from within.",
+        "concerns": [
+          "Loss of firmness",
+          "Dullness",
+          "Collagen decline",
+          "Jawline tightening and pores (men)"
+        ],
+        "duration": "75 min",
+        "price": "First Trial $148 nett (U.P. $388)"
+      },
+      {
+        "name": "WishPro Facial",
+        "url": "https://elements.com.sg/services/facial/wishpro-facial/",
+        "description": "The Ultimate Collagen Boost for your skin. Infuses vital serums and nutrients deep into the skin, stimulating elastin, collagen and toning muscle fibers; 7 customisable serum capsules.",
+        "concerns": [
+          "Collagen decline / aging",
+          "Dullness",
+          "Pigmentation (Brightening capsule)",
+          "Dehydration (Hydration capsule)"
+        ],
+        "duration": "75 min",
+        "price": "First trial $148 nett (U.P. $498)"
+      },
+      {
+        "name": "Needle-less Rejuran Facial",
+        "url": "https://elements.com.sg/services/facial/needleless-rejuran-facial/",
+        "description": "Get your Rejuran® shots without the injections! Infuses c-PDRN® (salmon DNA-derived) into skin cells — no injection, no downtime.",
+        "concerns": [
+          "Anti-aging",
+          "Skin healing / repair",
+          "Glow"
+        ],
+        "duration": "75 min",
+        "price": "First trial 1-for-1 at $369 nett"
+      },
+      {
+        "name": "LPG Mobilift Facial",
+        "url": "https://elements.com.sg/services/facial/lpg-mobilift-facial/",
+        "description": "100% natural mechanical stimulation of dormant skin cells reverse signs of aging, using the ENDERMOLIFT technique for radiance and anti-fatigue effect.",
+        "concerns": [
+          "Wrinkles",
+          "Firming contours",
+          "Reshaping the face",
+          "Complexion"
+        ],
+        "duration": "90 min",
+        "price": "First trial $128 nett (U.P. $598)",
+        "awards": [
+          "Her World 2017 Best Firming Facial"
+        ]
+      },
+      {
+        "name": "INDIBA® Proionic Gravity Defy Facial",
+        "url": "https://elements.com.sg/services/facial/indiba-proionic-facial/",
+        "description": "A facial that uses medical-grade radiofrequency technology that firms skin and improves skin appearance and health.",
+        "concerns": [
+          "Firmness / elasticity",
+          "Contours",
+          "Collagen"
+        ],
+        "duration": "90 min",
+        "price": "First trial $128 nett (U.P. $598)"
+      },
+      {
+        "name": "24K Pure Gold Facial",
+        "url": "https://elements.com.sg/services/facial/24k-pure-gold-facial/",
+        "description": "This award-winning facial harnesses the remarkable properties of gold to improve collagen levels and suppress dullness — real gold massaged in, followed by ultrasound infusion of 24K Gold Serum.",
+        "concerns": [
+          "Dullness",
+          "Wrinkles and fine lines",
+          "Collagen",
+          "Skin barrier"
+        ],
+        "duration": "90 min",
+        "price": "First trial $128 nett (U.P. $388)",
+        "awards": [
+          "Harper’s Bazaar 2023 Best Luxurious Facial"
+        ]
+      },
+      {
+        "name": "Meridian Bojin Facial",
+        "url": "https://elements.com.sg/services/facial/meridian-bojin-facial/",
+        "description": "This facial stimulates meridians in the face to release blockages for a facelift and radiant skin, using a buffalo horn tool with premium red ginseng and tang kwei.",
+        "concerns": [
+          "Lift and elasticity",
+          "Circulation of Qi and blood",
+          "Complexion / radiance"
+        ],
+        "duration": "90 min",
+        "price": "First trial $128 nett (U.P. $388) per banner; the page's form lists 'Meridian Bojin Facial $88 nett'"
+      },
+      {
+        "name": "IPL Facial (Intense Pulsed Light)",
+        "url": "https://elements.com.sg/services/facial/ipl-facial/",
+        "description": "Uses light energy to improve the appearance of your skin and reverse signs of aging and damage.",
+        "concerns": [
+          "Pigmentation",
+          "Enlarged pores",
+          "Wrinkles",
+          "Acne"
+        ],
+        "duration": "90 min",
+        "price": "First trial $128 nett (U.P. $498)"
+      }
+    ],
+    "wellness": [
+      {
+        "name": "Fascia Release Therapy",
+        "url": "https://elements.com.sg/services/massage/fascia-release-therapy/",
+        "description": "Targeted Release for Tension, Mobility, and Recovery. Gold or silver-plated tools with a mild magnetic field glide along areas of restriction to break down fascial adhesions.",
+        "concerns": [
+          "Chronic pain",
+          "Posture",
+          "Energy levels and sleep",
+          "Lymphatic flow and digestion",
+          "Fatigue"
+        ],
+        "duration": "30 min",
+        "price": "First Trial $98 nett (U.P. $228)",
+        "awards": [
+          "Beauty Insider 2026 Best Body Tension Relief Therapy (Best Trend Award)"
+        ]
+      },
+      {
+        "name": "Ice Bath Therapy (Contrast Therapy)",
+        "url": "https://elements.com.sg/services/wellness/ice-bath-therapy/",
+        "description": "Ice Bath & Warm Soak — Contrast Therapy for Recovery. Alternates warm bath and cold plunge to awaken circulation, reduce inflammation and support recovery, in a private room; couples welcome; ideal before a massage.",
+        "concerns": [
+          "Recovery",
+          "Inflammation and soreness",
+          "Circulation",
+          "Energy"
+        ],
+        "duration": "45 min (Chill & Heal Ritual: 45-min contrast + 60-min massage)",
+        "price": "Contrast Hot/Cold Recovery Bath: 1 pax $98 nett, 2 pax $148 nett. Chill & Heal Ritual: weekdays 1 pax $158 / 2 pax $298; weekends 1 pax $168 / 2 pax $318",
+        "availability": "313@somerset only (per Promotions page)"
+      },
+      {
+        "name": "Herbal Bath Therapy",
+        "url": "https://elements.com.sg/services/wellness/herbal-bath-therapy/",
+        "description": "A Private Healing Experience for One or Two — a TCM herbal bath ritual in a private room with two individual tubs; choose a personalised herbal blend.",
+        "concerns": [
+          "Insomnia",
+          "Muscle recovery and circulation",
+          "Detox and weight loss",
+          "Men’s fertility and vitality",
+          "Uterus warming and dampness removal (women)"
+        ],
+        "duration": "45 min",
+        "price": "TCM Herbal Bath U.P. $128 per pax. TCM Herbal Harmony Ritual (bath + 60-min massage): weekdays $158 (1 pax) / $298 (2 pax); weekends $168 (1 pax) / $318 (2 pax). TCM Herbal Beauty Ritual (bath + facial of choice): price not listed",
+        "availability": "313@Somerset only"
+      },
+      {
+        "name": "Red Light Therapy",
+        "url": "https://elements.com.sg/services/wellness/red-light-therapy/",
+        "description": "Red Light Therapy with Massage — FDA Approved | Clinically Proven Results. Low-level red and near-infrared light (photobiomodulation) via flexible LED mats applied during your massage (typically 20 minutes).",
+        "concerns": [
+          "Healing and pain",
+          "Inflammation",
+          "Muscle recovery",
+          "Skin"
+        ],
+        "duration": "60 min",
+        "price": "First trial $88 nett (U.P. $256)"
+      },
+      {
+        "name": "Meridian Moxibustion",
+        "url": "https://elements.com.sg/moxibustion/",
+        "description": "To stimulate the flow of Qi, strengthen the blood and maintain general health. Uses premium aged moxa sticks that burn at lower temperatures.",
+        "concerns": [
+          "Chronic pain (arthritis, fibromyalgia)",
+          "Menstrual issues / menopause",
+          "Immunity",
+          "Digestion",
+          "'Cold' or 'weak' body constitution"
+        ],
+        "duration": "30 min",
+        "price": "Try it now at $79 nett (U.P. $198)"
+      },
+      {
+        "name": "Acu-Wave Relief Therapy",
+        "url": "https://elements.com.sg/acuwave-relief-therapy/",
+        "description": "For relief of stubborn aches, joint discomforts and circulation issues. Uses microcurrent at three different frequencies.",
+        "concerns": [
+          "Joint pain",
+          "Neck hump (Dowager’s hump)",
+          "Frozen shoulder",
+          "Bloating, water retention",
+          "Sciatica, lower back pain, leg pain & weakness",
+          "Menstrual cramps & irregularities"
+        ],
+        "duration": "30 min",
+        "price": "Try it now at $80 nett (U.P. $158)",
+        "awards": [
+          "Harper's Bazaar 2024 Best Detox Experience"
+        ]
+      },
+      {
+        "name": "Medi-Stretch",
+        "url": "https://elements.com.sg/medi-stretch/",
+        "description": "A trained therapist stretches your body for you, to promote healing, relieve pain, restore movement and enable you to return to activities you love. Assisted stretch therapy using the Dynamic Corrective Stretch Method.",
+        "concerns": [
+          "Muscle pain from over-exercising",
+          "Lower back pain/stiffness",
+          "Poor posture & flexibility",
+          "Overuse of computer/digital devices",
+          "Injury",
+          "Stress",
+          "Fatigue"
+        ],
+        "duration": "30 min add-on (per customer review / sports massage combo)",
+        "price": null
+      },
+      {
+        "name": "Meridian Flush Therapy",
+        "url": "https://elements.com.sg/meridian-flush-therapy/",
+        "description": "A deep muscle therapy that releases tension and energizes, using specialized grooved wooden sticks along meridian channels on the neck, shoulder, back and legs, with a Mugwort plant-based essence.",
+        "concerns": [
+          "Fatigue, sluggishness",
+          "Muscle tension, pain and stiffness",
+          "Puffiness",
+          "Water retention",
+          "Muscle soreness from overuse",
+          "Low immunity"
+        ],
+        "duration": null,
+        "price": null
+      },
+      {
+        "name": "INDIBA® Pro-Recovery",
+        "url": "https://elements.com.sg/indiba-recovery/",
+        "description": "A proven system used by leading professional sports teams, hospitals and clinics across Europe for accelerated healing and immediate pain relief — non-invasive patented long-wave radio frequency.",
+        "concerns": [
+          "Musculoskeletal problems",
+          "Neck, back, knee and shoulder pain",
+          "Osteoarthritis",
+          "Joint sprains",
+          "Post-surgery rehabilitation",
+          "Sports injuries",
+          "Chronic muscle pain",
+          "Cervical spondylosis"
+        ],
+        "duration": "30 min (INDIBA Body Therapy per Promotions)",
+        "price": "INDIBA Body Therapy: first visit $109, web promo $188 (U.P. $400) per Promotions page"
+      },
+      {
+        "name": "INDIBA® Womb Care",
+        "url": "https://elements.com.sg/indiba-womb-care/",
+        "description": "INDIBA® increases circulation and cell recovery in the womb area to maintain balance. It also firms up the tummy area and reduces fat. Uses 448 kHz radio-frequency; also a good postpartum therapy.",
+        "concerns": [
+          "Menstrual cramps",
+          "Irregular periods",
+          "PMS",
+          "'Cold' womb / difficulty conceiving",
+          "Menopause",
+          "Constipation, poor digestion, bloating"
+        ],
+        "duration": "30 min (INDIBA Body Therapy per Promotions)",
+        "price": "INDIBA Body Therapy: first visit $109, web promo $188 (U.P. $400) per Promotions page"
+      }
+    ],
+    "slimming": [
+      {
+        "name": "TCM Slimming Therapy",
+        "url": "https://elements.com.sg/tcm-slimming-therapy/",
+        "description": "Helps to contour target areas and detox by Flushing along Meridian channels, using special tools, handwork and premium oils to clear 'dampness'.",
+        "concerns": [
+          "Flabby arms / 'bat wings'",
+          "Bulges at bra line",
+          "Love handles",
+          "Cellulite on thighs and buttocks",
+          "Water retention or puffiness",
+          "Sluggishness, lethargy"
+        ],
+        "duration": null,
+        "price": null
+      },
+      {
+        "name": "TCM Tummy Trim",
+        "url": "https://elements.com.sg/tcm-tummy-trim/",
+        "description": "Based on TCM principles to improve digestion and fire up your metabolism for effective, natural, and long-lasting weight management and wellness. Combines Flushing along meridian channels with Cupping.",
+        "concerns": [
+          "Bloatedness, water retention, puffiness",
+          "Weight gain around the waist",
+          "Sluggish digestion or constipation",
+          "Low energy / fast weight gain",
+          "Sedentary lifestyle",
+          "TCM 'dampness'"
+        ],
+        "duration": null,
+        "price": null
+      },
+      {
+        "name": "INDIBA® Slimming",
+        "url": "https://elements.com.sg/indiba-slimming/",
+        "description": "INDIBA® slims targeted areas by shrinking fat cells, activating metabolism and tightening the skin, using patented radiofrequency technology.",
+        "concerns": [
+          "Targeted fat reduction",
+          "Body contouring",
+          "Skin elasticity",
+          "Metabolism"
+        ],
+        "duration": "30 min per body area",
+        "price": "INDIBA Body Therapy: first visit $109, web promo $188 (U.P. $400) per Promotions page"
+      },
+      {
+        "name": "3D Cavitation",
+        "url": "https://elements.com.sg/3d-cavitation/",
+        "description": "Uses ultrasound cavitation technology to disrupt fat cells body sculpting — a non-surgical method of reducing cellulite and localized fat.",
+        "concerns": [
+          "Upper arms",
+          "Abdomen",
+          "Love handles",
+          "Thighs",
+          "Cellulite"
+        ],
+        "duration": null,
+        "price": null
+      },
+      {
+        "name": "3D Fat Freeze",
+        "url": "https://elements.com.sg/3d-fat-freeze/",
+        "description": "The advanced 3D Lipo Med Cryolipolysis targets fat cells to destroy them through a targeted super-cooling process — freeze and dissolve 20 – 40% of fat cells at the targeted area over several weeks.",
+        "concerns": [
+          "Tummy",
+          "Thighs",
+          "Arms",
+          "Love handles"
+        ],
+        "duration": null,
+        "price": null
+      }
+    ],
+    "spaRitual": [
+      {
+        "name": "Koyamaki Onsen Spa @Centrepoint",
+        "url": "https://elements.com.sg/spa-ritual/onsen-spa/",
+        "description": "Level up your spa experience with our Onsen Therapy, featuring authentic Japanese Koyamaki baths in private suites. Baths are handcrafted from Koyamaki wood (Japanese Umbrella Pine) with ionized, micro-bubble water at 38–42°C; enjoy Onsen by itself or paired with massage, single or couple.",
+        "concerns": [
+          "Circulation",
+          "Pain relief",
+          "Stress relief",
+          "Detoxification",
+          "Anti-aging (negative ions)",
+          "Thermal work out / metabolism"
+        ],
+        "duration": "40 min onsen; 115 min ritual",
+        "price": "Solo Ritual: weekdays $165 / weekends $185 (U.P. $293). Couple Ritual: weekdays $288 / weekends $323 (U.P. $490). Onsen only (40 min): solo $98 (U.P. $118), couple $148 (U.P. $198) — per Promotions page",
+        "availability": "The Centrepoint only",
+        "ritualIncludes": "40-min Private Onsen, 60-min Ocha Body Massage, 15-min Back Scrub (+ Couple Room for couples)",
+        "awards": [
+          "Beauty Insider 2026 Best Couple Wellness Ritual Experience",
+          "Beauty Insider 2024 Best Couple Spa",
+          "Singapore Women's Weekly 2021 Best Couple Spa Retreat",
+          "Daily Vanity 2019 Couple Spa",
+          "Singapore Women's Weekly 2017 Best Couple Treatment"
+        ],
+        "onsenBenefits": {
+          "Koyamaki wood": "Lime-scented fragrance; natural oils are antibacterial and antifungal",
+          "Anti-aging effect": "Negative ions neutralize free radicals",
+          "Relieves pains": "Ionized water and micro bubbles relieve rheumatic and arthritic pains",
+          "Stress relief": "Negative ions are a natural mood lifter",
+          "Detoxification": "Ionized water at 38-42°C promotes circulation and lymph movement",
+          "Thermal work out": "Heated ionized water boosts metabolism"
+        }
+      },
+      {
+        "name": "Couple Contrast Therapy",
+        "url": "https://elements.com.sg/services/wellness/ice-bath-therapy/",
+        "description": "Experience the power of contrast therapy together—stay motivated through the cold plunge, regulate your breath as a team, and then unwind side by side with a relaxing massage (Couple Chill & Heal Ritual).",
+        "concerns": [
+          "Recovery",
+          "Connection",
+          "Relaxation"
+        ],
+        "duration": "105 min (45-min contrast + 60-min massage)",
+        "price": "Couple Chill & Heal Ritual: weekdays $298 / weekends $318 (U.P. $434)",
+        "availability": "313@somerset only"
+      },
+      {
+        "name": "Couple Herbal Harmony",
+        "url": "https://elements.com.sg/services/wellness/herbal-bath-therapy/",
+        "description": "Enjoy complete privacy in a room with two individual tubs — each person selects a personalised herbal blend; paired with a full body massage (TCM Herbal Harmony Ritual).",
+        "concerns": [
+          "Relaxation",
+          "Sleep, circulation, detox, hormonal balance (per herbal blend)"
+        ],
+        "duration": "105 min (45-min herbal bath + 60-min massage)",
+        "price": "2 pax: weekdays $298 / weekends $318",
+        "availability": "313@Somerset only"
+      }
+    ]
+  },
+  "servicesExtra": {
+    "facialConcernPages": [
+      {
+        "name": "Aging / Wrinkles / Sagging",
+        "url": "https://elements.com.sg/services/facial/aging-wrinkles-sagging/",
+        "intro": "Caring for Your Skin as It Changes with Time",
+        "recommended": [
+          "INDIBA® Proionic Facial",
+          "HydroLux Facial (Oxylift)",
+          "Nano Fibroblast Facial",
+          "WishPro Facial",
+          "Needle-less Rejuran",
+          "Ace Face Shaper",
+          "LPG Mobilift Facial",
+          "24K Pure Gold Facial"
+        ]
+      },
+      {
+        "name": "Dull / Uneven",
+        "url": "https://elements.com.sg/services/facial/dull-uneven/",
+        "intro": "Facials That Brighten Without Compromise",
+        "recommended": [
+          "24K Pure Gold Facial",
+          "Pearl Light Facial",
+          "Power Dose Facial",
+          "3C Vitamin Glow Facial",
+          "Meridian Bojin Facial",
+          "Nano Fibroblast Facial",
+          "Dermo Peel Facial",
+          "IPL Facial",
+          "HydroLux Facial (Renewal)",
+          "WishPro Facial",
+          "Needle-less Rejuran"
+        ]
+      },
+      {
+        "name": "Dry / Dehydrated",
+        "url": "https://elements.com.sg/services/facial/dry-dehydrated/",
+        "intro": "Hydrate, Restore, Glow",
+        "recommended": [
+          "24K Pure Gold Facial",
+          "HydroLux Facial (Renewal)",
+          "Power Dose Facial",
+          "WishPro Facial",
+          "Needle-less Rejuran"
+        ]
+      },
+      {
+        "name": "Oily / Acne / Open Pores",
+        "url": "https://elements.com.sg/services/facial/oily-acne-open-pores/",
+        "intro": "Clear Skin Starts Here – Facials That Deliver Real Results for Acne, Oily Skin & Open Pores",
+        "recommended": [
+          "Men Facial",
+          "HydroLux Facial (Defense)",
+          "Purifying Black Magnelight Facial",
+          "Dermo Peel Facial",
+          "IPL Facial"
+        ]
+      },
+      {
+        "name": "Sensitive Skin",
+        "url": "https://elements.com.sg/services/facial/sensitive/",
+        "intro": "Hydrate. Soothe. Restore — Even in the Humid Heat.",
+        "recommended": [
+          "WishPro Facial",
+          "Desensitize Facial",
+          "Power Dose Facial"
+        ]
+      },
+      {
+        "name": "Eye Area Treatment",
+        "url": "https://elements.com.sg/services/facial/eye-area-treatment/",
+        "intro": "Facials for your Eye Contour Area — recommended as add-ons during a facial",
+        "recommended": [
+          "24K Pure Gold Eye Treatment",
+          "Hydrating Collagen Eye Treatment",
+          "Eye Bojin Treatment",
+          "INDIBA® Eye Rejuvenation"
+        ]
+      }
+    ],
+    "facialCategoryPageExtras": [
+      {
+        "name": "Glutathione HA+ Ultrasound Facial",
+        "description": "This facial uses ultrasound to infuse the Glutathione Power Dose Ampoule for brighter, smoother and more hydrated skin."
+      },
+      {
+        "name": "ACE Face Shaper Treatment",
+        "description": "Using the latest E-poration technology and LED light therapy to deliver antioxidants and growth factors deep into skin cells for healthy and plump complexion."
+      },
+      {
+        "name": "Purifying Black Magnelight Facial",
+        "description": "This facial uses ionized minerals to draw out impurities, while depositing nutrients into your skin."
+      },
+      {
+        "name": "Face Meridian Restorative Treatment",
+        "description": "This facial stimulates meridians in the face to release blockages for a facelift and radiant skin."
+      },
+      {
+        "name": "Biocell Stem Cell Science Face Treatment",
+        "description": "Uses Microspears to bring about skin peeling while delivering premium active ingredients for healthy skin renewal. Improves pigmentation, wrinkles, elasticity, acne, and pore size."
+      },
+      {
+        "name": "Eye Bojin Treatment",
+        "description": "Designed to bring deep relaxation and relieve eye strain caused by screen use."
+      }
+    ],
+    "wellnessCategoryPage": {
+      "url": "https://elements.com.sg/services/wellness/",
+      "heading": "REMEDIAL THERAPIES",
+      "listed": [
+        {
+          "name": "Medi-Stretch",
+          "description": "A trained therapist stretches your body for you, to promote healing and restoration."
+        },
+        {
+          "name": "Power Moxa",
+          "description": "The modern way of doing moxibustion therapy that is 10X more effective."
+        },
+        {
+          "name": "INDIBA® Pain Management",
+          "description": "INDIBA® Pain Management is a proven system that has been used by leading professional sports teams, hospitals and clinics across Europe for accelerated healing and immediate pain relief."
+        },
+        {
+          "name": "Hyperwave™ Bioelectric Therapy",
+          "description": "Works on releasing tight tendons, ligaments and muscles to improve the body’s defensive “Qi” (Wei Qi) and get the energy moving in the meridians and the muscles."
+        },
+        {
+          "name": "INDIBA® Womb Care",
+          "description": "INDIBA® increases circulation and cell recovery in the womb area to maintain balance. It also firms up the tummy area and reduces fat."
+        },
+        {
+          "name": "Chiropractic",
+          "description": "Chiropractic treatments help get to the root of the problem, to support holistic healing. *Only available at Elements Wellness – 313."
+        }
+      ],
+      "note": "The wellness category page is older and differs from the nav's Wellness menu."
+    },
+    "spaRitualIndexNote": "/spa-ritual/ index page has an empty main content area; nav items are the three above.",
+    "globalFirstTrialNote": "Most service pages show 'Sign Up To Enjoy Your First Trial At $X nett ... | T&C applies. Pre-registration and advance booking required to enjoy this promotion.'"
+  },
+  "images": [
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2022/05/Elements_ION-scaled.jpg",
+      "size": "2560x1707",
+      "desc": "ION Orchard outlet interior: reception with white curved counter, large face mural, product shelves, orchids — good for ION location card/hero"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2022/05/Elements-313-scaled.jpg",
+      "size": "2560x2019",
+      "desc": "313@somerset shopfront: backlit 'ELEMENTS WELLNESS' sign over glass frontage with wood-panel wall"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2022/05/Elements_centrepoint.jpg",
+      "size": "1600x1206",
+      "desc": "The Centrepoint shopfront: bright white/marble reception counter with product display, wood slat walls"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2025/04/homepage.png",
+      "size": "1500x900",
+      "desc": "Elements Wellness storefront (newer) with illuminated signage, wood slats and orchid display — used as homepage hero"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2026/02/EW-Website-Banner1.jpg",
+      "size": "~1536x410 (wide banner)",
+      "desc": "Wide banner of reception/storefront with Elements branding — homepage banner"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2022/05/Onsen-1.jpeg",
+      "size": "1536x1150 variant available (original larger)",
+      "desc": "Koyamaki onsen suite at Centrepoint: square wooden tub bordered by white pebbles, autumn forest mural wall, vanity with orchids"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2022/05/EWFacilities-Onsen-800x800-1.jpg",
+      "size": "800x800",
+      "desc": "Koyamaki onsen tub close-up with autumn forest mural backdrop"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2022/05/EWFacilities-Onsen-1280x400-1.jpg",
+      "size": "1280x400",
+      "desc": "Wide crop of onsen water flowing from wooden spout — onsen page hero banner"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2022/05/EWFacilitiesOnsen3-800x300-1.jpg",
+      "size": "800x300",
+      "desc": "Onsen suite wide shot: wooden tub, pebbles, towels shelving, bamboo wall"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2022/05/EWOnsenBucket-400x300-1.jpg",
+      "size": "400x300",
+      "desc": "Hinoki wooden onsen bucket and ladle (small)"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2022/08/Centrepoint-Couple-Onsen-scaled.jpg",
+      "size": "~2560 wide",
+      "desc": "Couple enjoying the Koyamaki onsen together at Centrepoint, autumn mural backdrop"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2022/05/Cathay-Jacuzzi-scaled.jpg",
+      "size": "2560x1704",
+      "desc": "Private couple jacuzzi with rose petals, autumn-tree window mural (alt: Couple Jacuzzi at Koyamaki Onsen)"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2022/05/Symphony-Jacuzz-300i-scaled.jpg",
+      "size": "2560x1707",
+      "desc": "Jacuzzi tub with rose petals, towels, candles and spa stones close-up"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2025/04/Contrast-Therapy.jpeg",
+      "size": "1024x1536 variant (portrait)",
+      "desc": "Contrast therapy room: freestanding cold plunge tub, wood-slat walls, moody blue lighting (313 Chill & Heal)"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2025/04/Couple-Room.jpg",
+      "size": "1920x1440",
+      "desc": "Couple treatment room with two massage beds, framed art, wood floor"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2025/04/DSC00460-scaled.jpg",
+      "size": "2560x1704",
+      "desc": "Couple treatment room, two beds with warm lighting and framed prints (alt: Couple massage, Couple spa, Couple Onsen)"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2024/06/treatment-room.png",
+      "size": "1500x900",
+      "desc": "Single treatment room: massage bed, warm brown walls, framed art, mirror and basin"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2023/05/edwd-19.png",
+      "size": "2048x1365 variant",
+      "desc": "Private treatment room: bed with rolled towel and tray, mosaic-tile basin counter (alt: private rooms in elements wellness)"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2022/05/EWHomeBanner-1920x1022-1.png",
+      "size": "1920x1022",
+      "desc": "Treatment room with made bed, towel tray and warm backlit wall (alt: Our facilities)"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2025/04/herbal-bath-therapy-1.png",
+      "size": "~1024x683+",
+      "desc": "Wooden herbal bath tub with rose petals (313 Herbal Bath Therapy)"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2025/04/Herbal-Bath-Therapy.png",
+      "size": "1500x900",
+      "desc": "TCM herbal ingredients flat-lay (lotus seeds, herbs, pestle) — herbal bath section image"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2025/04/Couple-Spa-Ritual.png",
+      "size": "1500x900",
+      "desc": "Dim, candle-lit massage bed with folded towel — couple spa ritual mood shot (stock-style)"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2025/04/Ice-Bath-Warm-Soak.png",
+      "size": "1500x900",
+      "desc": "Rippling clear blue water texture — contrast therapy banner"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2024/08/IMG_6933-scaled-e1723601991664.jpg",
+      "size": "~1024x1024+",
+      "desc": "In-house photo: masked therapist performing a treatment with a device on a client's back"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2024/08/IMG_6938-scaled-e1723532735288.jpg",
+      "size": "~800x450+",
+      "desc": "In-house photo: therapist applying red light device to client's back/shoulder"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2024/07/IMG_7472-1.jpg",
+      "size": "2048x1536 variant",
+      "desc": "In-house photo: therapist using microcurrent (Acu-Wave) probes on client's back"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2024/07/IMG_7475.jpg",
+      "size": "2048x1536 variant",
+      "desc": "In-house photo: Acu-Wave probes on back, close-up"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2024/07/IMG_7480-scaled.jpg",
+      "size": "2560x1920",
+      "desc": "In-house photo: Acu-Wave probe treatment on leg"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2026/03/fascia1.jpg",
+      "size": "large (1536x864 variant)",
+      "desc": "In-house photo: Fascia Release Therapy with gold-plated tool on client's back, Elements logo tag"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2026/03/fascia2.jpg",
+      "size": "large (1536x864 variant)",
+      "desc": "In-house photo: gold fascia tool on client's face/jaw"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2026/03/fascia3.jpg",
+      "size": "large (1536x864 variant)",
+      "desc": "In-house photo: fascia tool on client's chest/shoulder"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2026/03/fascia4.jpg",
+      "size": "large (1536x864 variant)",
+      "desc": "In-house photo: fascia tool on back"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2026/03/AquaGlow.jpg",
+      "size": "1152x1536+ (portrait)",
+      "desc": "In-house photo: therapist in uniform giving facial to client in treatment room"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2025/02/0616_GMR_7695-copy.jpg",
+      "size": "2048x1365 variant",
+      "desc": "Therapist applying facial mask with brush; skincare bottles on trolley"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2026/03/NIR-with-model.jpg",
+      "size": "large",
+      "desc": "NIR CellBright facial: therapist using near-infrared device on client wearing goggles"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2026/04/Lymphatic-Sculpt-Facial_KV.png",
+      "size": "large (portrait)",
+      "desc": "Lymphatic Sculpt Facial key visual: hands sculpting woman's face"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2026/06/medi-jet-Medium.jpeg",
+      "size": "medium (portrait)",
+      "desc": "Medi-Jet facial: airjet handpiece on woman's cheek"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2025/10/Probiotic-Key-Visual.jpg",
+      "size": "1500x900",
+      "desc": "Probiotic Facial key visual: glowing-skin model on beige background"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2026/04/The-5-Elements-Massage.png",
+      "size": "1024x1024+",
+      "desc": "The 5 Elements Massage: back massage with five element oil bottles (金 木 水 火 土) on a tray"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2022/09/Massage-Page-banner-scaled.jpg",
+      "size": "2560x1250",
+      "desc": "Close-up back massage hands — wide massage page banner"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2025/04/main-massage.png",
+      "size": "1228x835",
+      "desc": "Therapist massaging woman's shoulder/back"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2024/04/post-massage.png",
+      "size": "6000x2857",
+      "desc": "Abdominal massage close-up (postnatal massage banner)"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2025/04/homepage-massage.png",
+      "size": "~800x640",
+      "desc": "Shoulder massage close-up — homepage massage tile"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2025/04/homepage-facial.png",
+      "size": "~800x640",
+      "desc": "Facial massage close-up — homepage facial tile"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2025/04/homepage-recovery.png",
+      "size": "~800x640",
+      "desc": "Wooden herbal/onsen tub with rose petals — homepage wellness/recovery tile"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2025/04/homepage-slimming.png",
+      "size": "~800x640",
+      "desc": "Abdominal massage — homepage slimming tile"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2022/05/EWHome-Banner1-1920x1022-1.png",
+      "size": "1920x1022",
+      "desc": "Woman enjoying facial massage (stock) — old homepage banner"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2022/05/EWMassage-Banner-1280x780-1.png",
+      "size": "1280x780",
+      "desc": "Woman receiving back massage (stock)"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2022/05/Stretch_1-copy.jpeg",
+      "size": "~800x534+",
+      "desc": "Assisted stretch: therapist stretching client's leg (Medi-Stretch)"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2025/02/Stretch.png",
+      "size": "1024x1024+",
+      "desc": "Therapist-assisted leg stretch (Medi-Stretch)"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2023/09/candles-in-spa.jpg",
+      "size": "large",
+      "desc": "Lit candles spa ambience"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2022/11/shutterstock_118464937-scaled.jpg",
+      "size": "2560x1707",
+      "desc": "Zen sand garden with stone (stock) — calm section background"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2025/01/Antedote-Essential-Oils.png",
+      "size": "large",
+      "desc": "Product: Antedote essential oil blend bottles lineup"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2024/06/IMG_5637.jpg",
+      "size": "~800x800",
+      "desc": "Product: Antedote essential oil bottles (alt: essential oil blends)"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2024/05/Antedote-Body-Shower-Gel.png",
+      "size": "~800x800",
+      "desc": "Product: Antedote Botanicals body shower gel (award-winning)"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2024/05/Antedote-Body-Hand-Lotion.png",
+      "size": "~800x800",
+      "desc": "Product: Antedote Botanical Body & Hand Lotion (award-winning)"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2024/05/Nano-Elixir-Ampoules.png",
+      "size": "1024x1024",
+      "desc": "Product: Clarity Skin Lab Nano Elixir Ampoules (award-winning brightening serum)"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2024/06/Gold-Serum.png",
+      "size": "2048x2048",
+      "desc": "Product: Clarity Skin Lab 24K Gold Serum with cream jar on marble"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2024/07/HAglut_square_straightened.jpg",
+      "size": "2048x2048",
+      "desc": "Product: Clarity Skin Lab HA Glutathione ampoules (Power Dose Facial)"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2024/02/Elements-24K-Gold-Facial.jpeg",
+      "size": "1200x700",
+      "desc": "24K Gold facial: woman with mask and gold flakes"
+    },
+    {
+      "url": "https://elements.com.sg/wp-content/uploads/2025/08/power-dose-facial-2-scaled-e1755237143767.jpeg",
+      "size": "1706x1706",
+      "desc": "Power Dose facial: ultrasound wand on face with ampoule inset"
+    }
+  ],
+  "imagesNotes": "Images marked 'In-house photo' appear to be real Elements Wellness photos (IMG_/DSC_ filenames, Elements logo); many others are stock (shutterstock_ filenames). Award logos/badges and icons were excluded. WordPress resized variants follow -WIDTHxHEIGHT suffix pattern; URLs above are originals where known."
+}

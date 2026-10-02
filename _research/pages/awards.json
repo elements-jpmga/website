@@ -1,0 +1,1121 @@
+{
+ "url": "https://elements.com.sg/awards/",
+ "path": "/awards/",
+ "title": "Awards",
+ "description": "",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "ELEMENTS WELLNESS",
+   "html": "ELEMENTS WELLNESS"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Award-Winning Beauty Care</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Discover our award-winning beauty treatments, recognized for delivering outstanding results and unparalleled care.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Daily Vanity Beauty Treatment Awards 2026",
+   "html": "Daily Vanity Beauty Treatment Awards 2026"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/the-probiotic-facial-awards-80f4081c1583.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Customisable Facial ( &lt; 90 Mins)<br/>Daily Vanity Recommends<br/><b>The Probiotic Facial<br/></b>A fast-acting treatment infusing probiotics to “train” the skin barrier and calm inflammation.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/services/massage/lymphatic-drainage-massage/"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Beauty Insider Spa & Salon Awards 2026",
+   "html": "Beauty Insider Spa & Salon Awards 2026"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/fascia-therapy-awards-164792c5b9bf.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Body Tension Relief Therapy<br/><em>Best Trend Award<br/></em><b>Fascia Release Therapy<br/></b>A pioneering manual therapy using a magnetic 24K Gold Stick to unlock deep myofascial tension.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/services/massage/fascia-release-therapy/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/lymphatic-drainage-massage-awards-2f742870e4e9.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Detoxifying Body Massage Treatment<br/>Beauty Insiders’ Choice Award<br/><b>Lymphatic Drainage Massage<br/></b>A scientific, gentle-touch massage that clears lymphatic pathways to eliminate toxins and bloating.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/services/massage/lymphatic-drainage-massage/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/couple-onsen-awards-14221bb7fea7.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Couple Wellness Ritual Experience<br/>Readers’ Choice Award<br/><b>Couple Koyamaki Onsen Ritual<br/></b>A private 115-minute couple’s retreat featuring a therapeutic, handcrafted Koyamaki Wood Onsen soak.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/spa-ritual/onsen-spa/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/lymphatic-sculpt-facial-awards-1a847ba48538.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Lymphatic Drainage Facial Treatment<br/>Readers’ Choice Award<br/><b>Lymphatic Sculpt Facial<br/></b>A 100% machine-free manual facial that drains fluid retention to sculpt a V-shaped silhouette.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/services/facial/lymphatic-sculpt-facial/"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Daily Vanity Beauty Treatment Awards 2025",
+   "html": "Daily Vanity Beauty Treatment Awards 2025"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/lymphatic-drainage-massage-1-3ae69faf2500.jpg",
+   "alt": "Lymphatic Drainage Massage",
+   "caption": "",
+   "w": 1500,
+   "h": 900
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Body Detox Treatment <br/><em>Reader’s Choice</em><br/><b>Lymphatic Drainage Massage<br/></b>A gentle yet powerful massage that stimulates the lymphatic system to flush out toxins, reduce water retention, and boost overall wellness.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/services/massage/lymphatic-drainage-massage/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/bojin-facial-1-a99b75e82358.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 800,
+   "h": 450
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Eye Treatment<br/><em>DV Recommend &amp; Reader’s Choice</em><br/><b>Eye Bojin Treatment<br/></b>A traditional TCM-inspired therapy that uses a Bojin tool to relieve eye fatigue, reduce puffiness, and improve circulation for brighter, refreshed eyes.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/eye-bojin-treatment/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/sg-spa-salon-winner-2025-badge-2-small-b7847dcb46ab.jpg",
+   "alt": "SG Spa Salon Winner 2025 Badge 2 Small",
+   "caption": "",
+   "w": 320,
+   "h": 320
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Beauty Insider Spa & Salon Awards 2025",
+   "html": "Beauty Insider Spa & Salon Awards 2025"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/contrast-therapy-e8ad81cb7762.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1067,
+   "h": 1600
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Day Spa<br/><em>Bloggers’ Choice Award 2025</em><br/><b>Chill &amp; Heal Ritual<br/></b>A holistic spa journey that melts stress away with soothing massage strokes, calming aromas, and a deeply restorative touch.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/services/wellness/ice-bath-therapy/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/stretch-600x600-1-b1f49b84c2e8.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 600,
+   "h": 600
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Therapeutic Massage<br/><em>Beauty Insiders’ Choice Award 2025</em><br/><b>Muscle &amp; Joint Vitality Massage<br/></b>Designed to relieve tension, improve mobility, and promote recovery—ideal for those with active lifestyles or chronic muscle soreness.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "#"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/prenatal-copy-e1743068060395-eed96b30ae62.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 800,
+   "h": 533
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Prenatal Massage <br/>Readers’ Choice Award<i> 2025</i><br/><strong><b>Prenatal Massage<br/></b></strong>A gentle, specially tailored massage to ease body aches, reduce swelling, and promote deep relaxation for expecting mothers.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/prenatal-massage/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/img-5637-13b3271745a1.jpg",
+   "alt": "Essential oils are harmonious blends of carefully selected botanicals, crafted to deliver therapeutic benefits and enchanting fragrances.",
+   "caption": "",
+   "w": 1600,
+   "h": 1090
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Signature Massage<br/><em>Readers’ Choice Award 2025</em><br/><b>Antedote Aromatherapy Massage</b><br/>A luxurious blend of custom essential oils and expert strokes to calm the mind, restore balance, and reawaken your senses.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/antedote-aromatherapy/"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Harper's Bazaar Spa Award 2024",
+   "html": "Harper's Bazaar Spa Award 2024"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/img-6933-scaled-e1723601991664-8f4cc1105d0b.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1056,
+   "h": 1056
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Detox Experience <br/><strong>Acu-Wave Relief Therapy</strong><br/>This Acu-Wave target stubborn aches, ease joint discomfort, and improve circulation with this specialized therapy designed for lasting relief.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/acuwave-relief-therapy/"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Beauty Insider Spa & Salon Awards 2024",
+   "html": "Beauty Insider Spa & Salon Awards 2024"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/power-dose-3dec2ac891be.jpg",
+   "alt": "brightening glutathione facial treatment",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Whitening / Brightening<br/><strong>Power Dose Brightening Facial</strong><br/>This facial uses ultrasound to infuse the Glutathione Power Dose Ampoule for brighter, smoother and more hydrated skin.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/ha-glutathione-power-dose-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/centrepoint-couple-onsen-db139ce43c0b.jpg",
+   "alt": "Couple Onsen at Centrepoint",
+   "caption": "",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Couple Spa<br/><strong>Couple Koyamaki Onsen Spa Retreat</strong><br/>Experience the time honored Japanese bath ritual in a handcrafted Koyamaki wood tub with energized ion water.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/onsen/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/logo-f74c6699253d.jpg",
+   "alt": "Daily Vanity 2024 logo",
+   "caption": "",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/whatsapp-image-2024-03-26-at-14-05-14-82df51160cd0.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 292,
+   "h": 322
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Daily Vanity Beauty Awards 2024",
+   "html": "Daily Vanity Beauty Awards 2024"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/antedote-body-shower-gel-42253c9025ae.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "t": "html",
+   "html": "<p>Body Wash – Night Shower Gel<br/><strong>Antedote Botanicals Shower Gel</strong><br/>Transform body care with thia luxury shower gel. Invigorate your senses with Sweet Orange and Rose Geranium oils.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "#"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/antedote-body-hand-lotion-faa1578ec0dc.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "t": "html",
+   "html": "<p>Body Lotion – Dry Skin<br/><strong>Antedote Botanical Body &amp; Hand Lotion</strong><br/>An ultra-hydrating moisturizer blended with nut oils that soften skin and boost its natural barrier for protection.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "#"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/nano-elixir-ampoules-c68ce477e166.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "html",
+   "html": "<p>Premium Brightening Serum<br/><strong>Clarity Nano Elixir Ampoules</strong><br/>Experience a level of absorption! The nano-sized liposomes allow for 1.6x more absorption for 2.5x more effective results.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "#"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Harper’s Bazaar Spa Award 2023",
+   "html": "Harper’s Bazaar Spa Award 2023"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/newgold-290f7ac6b798.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1600,
+   "h": 878
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Luxurious Facial<br/><strong>24K Pure Gold Facial</strong><br/>This facial harnesses the remarkable properties of gold to improve collagen levels and suppress dullness. </p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/24k-pure-gold-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/meridian-flush-5e34b4d8d56b.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1500,
+   "h": 790
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Deep Tissue Massage<br/><strong>Signature Tui Na with Meridian Flush Therapy</strong><br/>A deep muscle therapy that releases tension and energizes by using specialized grooved wooden sticks.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/meridian-flush-therapy/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/2021-sww-awards-60a1c569896d.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 300,
+   "h": 300
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Singapore Women's Weekly Spa Awards 2021",
+   "html": "Singapore Women's Weekly Spa Awards 2021"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/onsen-1-42716b282827.jpg",
+   "alt": "Room at Koyamaki Onsen",
+   "caption": "",
+   "w": 1600,
+   "h": 1198
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Couple Spa Retreat<br/><strong>Couple Koyamaki Onsen Spa Retreat</strong><br/>We complete your Onsen Spa experience with real Hinoki wood bath accessories for authenticity.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/onsen/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/shutterstock-88352137-guasha-a73916ba4454.jpg",
+   "alt": "gua sha technique",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Head and Scalp Massage<br/><strong>Myofascial Head/Neck Therapy</strong><br/>uses ‘gua-sha’ and ‘bojin’ techniques to release tightened fascia in the scalp and neck area to lessen tension and headache.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/ginseng-bojin-meridian/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/ewslimming-1280x780-1-ff4b496790a4.jpg",
+   "alt": "picture of woman slimming with measuring tape",
+   "caption": "",
+   "w": 1280,
+   "h": 780
+  },
+  {
+   "t": "html",
+   "html": "<p>Best TCM Tummy Detox Treatment<br/><strong>TCM Tummy Slimming</strong><br/>Helps to contour target areas and detox by Flushing along Meridian channels.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/tcm-slimming-therapy/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/harpaers-bazaar-spa-awards-2021-9684a4162867.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 226,
+   "h": 254
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Harper's Bazaar Spa Awards 2021",
+   "html": "Harper's Bazaar Spa Awards 2021"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/ewhome-firsttrial-619x755-1-39a8b4318121.jpg",
+   "alt": "woman enjoying massage - first trial",
+   "caption": "",
+   "w": 619,
+   "h": 755
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Drainage Massage<br/><strong>TCM Meridian Flush Therapy</strong><br/>Flushing involves using a special wooden bars to ‘scrape’ across muscles. It covers larger areas and also improves lymph flow for detoxification.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/meridian-flush-therapy/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/her-world-singapore-spa-wellness-awards-24a8a3f3de48.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Her World Spa & Wellness Awards 2021",
+   "html": "Her World Spa & Wellness Awards 2021"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/black-magnelight-facial-a84babbfed14.jpg",
+   "alt": "Girl with black mask lies on the table in spa saloon",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Purifying Facial<br/><strong>Purifying Black Magnelight Facial</strong><br/>This facial uses ionized minerals to draw out impurities, while depositing nutrients into your skin.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/purifying-black-magnelight-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/muscle-blade-08ba0edc33bf.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Deep Tissue Massage<br/><strong>Muscle Blading Therapy + Muscle Release Body Massage</strong><br/>uses specialized tools to alleviate muscle tension and improve circulation combined with body massage.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/massage/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/edwd-19-cd9c78aec004.jpg",
+   "alt": "private rooms in elements wellness",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Holistic Spa<br/><strong>Elements Wellness</strong><br/>Offering therapeutic massages, facial treatments, and personalized wellness programs to enhance your health and well-being.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/therapy/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/daily-vanity-award-2019-4f59a5cd596c.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 978,
+   "h": 994
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Daily Vanity Spa & Hair Awards 2019",
+   "html": "Daily Vanity Spa & Hair Awards 2019"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/onsen-1-42716b282827.jpg",
+   "alt": "Room at Koyamaki Onsen",
+   "caption": "",
+   "w": 1600,
+   "h": 1198
+  },
+  {
+   "t": "html",
+   "html": "<p>Couple Spa<br/><strong>Couple Koyamaki Onsen Spa Retreat</strong><br/>Nestled in a private room at Elements Wellness Centrepoint, a unique and exclusive experience awaits – Koyamaki Onsen Therapy.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/onsen/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/her-world-spa-awards-2019-logo-zitzap-89a990ef37ca.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 300,
+   "h": 300
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Her World Spa Awards 2019",
+   "html": "Her World Spa Awards 2019"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/shutterstock-119142040-2-817515c2ee60.jpg",
+   "alt": "Masseur Doing Massage On Woman In Spa Salon",
+   "caption": "",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Top-To-Toe Spa Experience<br/><strong>Spa Ritual</strong><br/>Offering therapeutic massages, facial treatments, and personalized wellness programs to enhance your health and well-being.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/therapy/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/spa-awards-2019-logo-no-winner-ffe78173cd77.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1600,
+   "h": 1600
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "The Singapore Women’s Weekly Spa Awards 2019",
+   "html": "The Singapore Women’s Weekly Spa Awards 2019"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/candles-in-spa-fa5eb5a25064.jpg",
+   "alt": "candles in spa",
+   "caption": "",
+   "w": 1269,
+   "h": 848
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Me-Time Day Spa<br/><strong>Head-to-Toe Spa Ritual</strong><br/>Featuring a comprehensive treatment that pampers and revitalizes every part of your body for ultimate relaxation and well-being.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/massage/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/ewhome-banner1-1920x1022-1-b928c97b5919.jpg",
+   "alt": "Woman enjoying facial",
+   "caption": "",
+   "w": 1600,
+   "h": 852
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Facial – Stem Cell<br/><strong>Biocell Stem Cell Face Treatment</strong><br/>Stem Cell Meso contains bioactive compounds to provoke blood circulation and promote skin’s natural re-birth to reveal new skin.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "#"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/shutterstock-127015220-362d79a06643.jpg",
+   "alt": "beautiful woman enjoying a body massage",
+   "caption": "",
+   "w": 1600,
+   "h": 1081
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Deep Tissue Massage<br/><strong>Elements Ginseng Meridian Therapy</strong><br/>Focuses on meridian channels to release tightness and activate healing. Ginseng compliments by improving energy and relaxation.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/tcm-slimming-therapy/"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Daily Vanity Spa & Hair Awards 2018",
+   "html": "Daily Vanity Spa & Hair Awards 2018"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/prenatal-copy-e1743068060395-eed96b30ae62.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 800,
+   "h": 533
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Prenatal Massage<br/><strong>Prenatal Massage</strong><br/>Relieves discomforts experienced during pregnancy, such as backaches, stiff neck, leg cramps, headaches and edema (or swelling).</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/prenatal-massage/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/ewhomebanner-1920x1022-1-bc687ba9cc50.jpg",
+   "alt": "Our facilities",
+   "caption": "",
+   "w": 1600,
+   "h": 852
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Couple Spa<br/><strong>Elements Wellness</strong><br/>Featuring luxurious treatments, private suites, and personalized services, our spa provides a serene and romantic atmosphere perfect.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "#"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/harpers-bazaar-spa-awards-2018-logo-387e7162114d.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 614,
+   "h": 614
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/her-world-spa-award-2017-1-1024x1024-1-0d220ee6e68c.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1024,
+   "h": 1024
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/3fc30a2cbd349ae3f93ca21cc185419c-69aaac3aba38.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 173,
+   "h": 173
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/beauty-brands-74a7a5831f15.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 128,
+   "h": 128
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/6b2c74b108918a2c65b305d592297160-edd2ea0940c3.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 472,
+   "h": 472
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/elle2016-1-1024x1024-1-77262de1d3b8.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1024,
+   "h": 1024
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/unnamed-2-f332c4db4b41.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 227,
+   "h": 227
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/6591672b6f4d10716d9fe07fa61d79c6-153cca040e10.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1402,
+   "h": 1402
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/unnamed-1-6e3cac1150b6.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 297,
+   "h": 298
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Harper's Bazaar Spa Awards Winner 2018",
+   "html": "Harper's Bazaar Spa Awards Winner 2018"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/shutterstock-317470031-eb6099c53af5.jpg",
+   "alt": "Swedish Massage Singapore",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Detox Experience<br/><strong>Cell Labs Energy Massage Therapy</strong><br/>Distributes energy through the internal system to the entire body for<br/>vitality and health.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "#"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Her World Spa Awards 2017",
+   "html": "Her World Spa Awards 2017"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/endermologieface-bf22073f9d28.jpg",
+   "alt": "endermologie+face",
+   "caption": "",
+   "w": 900,
+   "h": 516
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Firming Facial<br/><strong>LPG Mobilift Facial</strong><br/>Effectively eliminate wrinkles, firming contours, refining and reshaping your face, balancing out your complexion, and improving your skin quality.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/lpg-mobilift-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/chemcial-peel-d2b364959b1f.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1350,
+   "h": 900
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Clarifying Peel Treatment<br/><strong>Reveal Peel Facial</strong><br/>Medical-grade chemical peel that specifically targets dark spots, wrinkles and hyperpigmentation. </p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/skin-rejuvenation-treatment-singapore/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/shutterstock-119142040-2-817515c2ee60.jpg",
+   "alt": "Masseur Doing Massage On Woman In Spa Salon",
+   "caption": "",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Aromatherapy Massage<br/><strong>Aromatherapy Massage</strong><br/>Beneficial for moving lymph flow and aiding in detoxification.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/massage/"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "The Singapore Women's Weekly Spa Awards 2017",
+   "html": "The Singapore Women's Weekly Spa Awards 2017"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/centrepoint-couple-onsen-db139ce43c0b.jpg",
+   "alt": "Couple Onsen at Centrepoint",
+   "caption": "",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Couple Treatment<br/><strong>Couple Massage Retreat With Koyamaki Onsen</strong><br/>Improve circulation, relieve pain, feel more energetic and revitalize your health.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/onsen/"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Harper's Bazaar Spa Award 2017",
+   "html": "Harper's Bazaar Spa Award 2017"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/meridian-flush-5e34b4d8d56b.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1500,
+   "h": 790
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Traditional Remedy Massage<br/><strong>TCM Qi Meridian Wellness Therapy </strong><br/>Improve circulation, relieve pain, feel more energetic and revitalize your health.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/meridian-flush-therapy/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/collagen-whitening-massage-09b4f8778fa7.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1500,
+   "h": 900
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Firming Massage<br/><strong>Collagen Firming Body Massage</strong><br/>This improves blood flow, delivering nutrients and oxygen to skin cells, promoting a healthier, firmer, and smoother complexion</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/collagen-firming-body-massage/"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Harper's Bazaar Spa Award 2016",
+   "html": "Harper's Bazaar Spa Award 2016"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/shutterstock-617411885-scaled-4d83357b4448.jpg",
+   "alt": "Tuina Massage, Meridian Massage",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Anti-Ache Massage<br/><strong>Classic Massage </strong><br/>Helps relieve stress, reduce pain, boost mood and promote relaxation.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/massage/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/shutterstock-1892653492-1af3730aed37.jpg",
+   "alt": "Sensitive skin",
+   "caption": "",
+   "w": 1600,
+   "h": 1066
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Hydrating Facial<br/><strong>Cocoon Premium Therapy</strong></p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/facial/"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "ELLE Beauty Treats 2016",
+   "html": "ELLE Beauty Treats 2016"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/x5a33a7221d980-victoria-coiffure-lpg-new-7c45f58b48f5.jpg",
+   "alt": "LPG MOBILIFT FACIAL brochure",
+   "caption": "",
+   "w": 1140,
+   "h": 1303
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Skin Plumping Treatment<br/><b>LPG Classic Facial</b><br/>Improve circulation, relieve pain, feel more energetic and revitalize your health.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/lpg-mobilift-facial/"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Singapore Women's Weekly Spa Awards 2016",
+   "html": "Singapore Women's Weekly Spa Awards 2016"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/ewmassage-banner-1280x780-1-ade26b5455a3.jpg",
+   "alt": "Woman enjoying massage",
+   "caption": "",
+   "w": 1280,
+   "h": 780
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Firming Massage<br/><b>Collagen Firming Body Massage</b><br/>This improves blood flow, delivering nutrients and oxygen to skin cells, promoting a healthier, firmer, and smoother complexion.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/collagen-firming-body-massage/"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Singapore Women's Weekly Spa Awards 2015",
+   "html": "Singapore Women's Weekly Spa Awards 2015"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/slimming-18e37bf6968a.jpg",
+   "alt": "Slimming Elements",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Anti-Cellulite Treatment<br/><b>3D Lipo Med Slimming </b><br/>The use of low frequency ultrasound technology to break down fat cells below the skin.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/3d-cavitation/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/effe-f97f82686a4d.jpg",
+   "alt": "effe",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Stress Relieving Massage<br/><b>Classic Deep Tissue Sports Massage</b><br/>A sports massage can help speed up recovery when your muscles cramp and strain, which may otherwise take weeks to fully heal.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/sports-massage/"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Singapore Women's Weekly Spa Awards 2014",
+   "html": "Singapore Women's Weekly Spa Awards 2014"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/ewremedial-1280x780-1-689b4569d23b.jpg",
+   "alt": "Remedial Therapy",
+   "caption": "",
+   "w": 1280,
+   "h": 780
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Bust Care <br/><b>LPG Bust Enhancer Treatment</b><br/>Bust massage with GuaSha for lymphatic drainage to aid detoxification and natural flow of hormones.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/shutterstock-128560229-11049e287d48.jpg",
+   "alt": "Masseur Doing Massage On Man",
+   "caption": "",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "t": "html",
+   "html": "<p>Best Sports Massage<br/><b>Classic Deep Tissue Sports Massage</b><br/>A sports massage can help speed up recovery when your muscles cramp and strain, which may otherwise take weeks to fully heal.</p>"
+  },
+  {
+   "t": "button",
+   "text": "learn more",
+   "href": "/sports-massage/"
+  }
+ ]
+}

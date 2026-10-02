@@ -1,0 +1,64 @@
+{
+ "url": "https://elements.com.sg/indiba-slimming/",
+ "path": "/indiba-slimming/",
+ "title": "INDIBA® Slimming in Singapore",
+ "description": "Our INDIBA Slimming treatment targets stubborn fat cells, promoting natural fat reduction and improved body contour. Book an appointment today!",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "INDIBA ® Slimming",
+   "html": "INDIBA<sup>®</sup> Slimming"
+  },
+  {
+   "t": "html",
+   "html": "<p>INDIBA<sup>®</sup> slims targeted areas by shrinking fat cells, activating metabolism and tightening the skin.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>INDIBA<sup>®</sup> slimming uses the patented radiofrequency technology to achieve fat reduction and body contouring through the process of breaking up fat cells, speeding metabolism and draining toxins from your body. This not only reduces fat but improves skin elasticity by stimulating the production of elastin and collagen. Has the added benefit of preventing new formation of fat in the treated areas.</p><p>INDIBA<sup>®</sup> helps cells recover their natural function to perform at their optimal level.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/indiba-proionic-slimming-9139b8b85388.jpg",
+   "alt": "Indiba Proionic Slimming",
+   "caption": "",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Benefits",
+   "html": "Benefits"
+  },
+  {
+   "t": "html",
+   "html": "<ul> <li>Tones and reshapes the body</li> <li>Activates metabolism</li> <li>Reduces fat and the appearance of cellulite without damage to other cells</li> <li>Reduces stretch marks</li> <li>Firms up saggy skin</li> <li>It has the added benefit of improving your body’s cells’ health as it improves nutrients exchange between cells.</li> <li>Restores vital cell functions for overall health</li> <li>INDIBA<sup>®</sup> delves deeper than most other slimming technology, reaching deep stubborn fatty tissues melting them away naturally</li> <li>Studies have shown that INDIBA<sup>®</sup> causes fat cells to stop functioning, reducing fat deposits for good</li> </ul>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Suitable For",
+   "html": "Suitable For"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Cellulite areas like butts and thighs</li><li>Stretch marks</li><li>Abdominal fat</li><li>Flabby arms</li><li>Love handles</li><li>Skin that has lost elasticity</li><li>Water retention</li></ul>"
+  },
+  {
+   "t": "video",
+   "url": "https://www.youtube.com/watch?v=oLnrU0ifnYU"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How It Works",
+   "html": "How It Works"
+  },
+  {
+   "t": "html",
+   "html": "<ul> <li>The INDIBA<sup>®</sup> device is glided over your target area in firm but relaxing strokes.</li> <li>The INDIBA<sup>®</sup> patented radiofrequency of 448 kHz safety increases microcirculation and increases internal heat causing fats to liquefy.</li> <li>Liquified fats are then naturally drained out of the fat cells and leave the body through the lymphatic system, resulting in shrunken (smaller) fat cells.</li> <li>Improved circulation helps activate metabolism and detoxification.</li> <li>Increasing the internal heat of cells also activates collagen production and improves skin elasticity for firming and toning.</li> <li>The recommended treatment time is 30-min for one body area, for e.g. tummy is one area, arms is one area, thighs is one area. You may book multiple sessions to treat multiple body parts in one trip.</li> <li>Medically-backed technology. INDIBA<sup>®</sup> was clinically assessed in various medical centers, the outcome has been very positive: on average, regular treatments have resulted in an 82% in cellulite reduction, 87% in skin tightening, 90% in body shaping, and 95% in pre and post-surgery.</li> </ul>"
+  }
+ ]
+}

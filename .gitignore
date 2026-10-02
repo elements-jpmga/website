@@ -1,0 +1,23 @@
+# Dependencies & build output (recreated by npm install / npm run build)
+node_modules/
+_vendor/
+dist/
+
+# Client-confidential material — never commit to a public repo
+Elements_Restore_Web_App_Developer_Pack/
+Elements_Restore_Web_App_Developer_Pack.zip
+*.zip
+
+# Restore app runtime data: client records, uploaded UBIO PDFs, generated reports, email outbox
+restore/data/
+restore/tools/ocr
+
+# Raw scraped HTML (cleaned copies are kept)
+_research/blog/*.raw.html
+
+# Local / OS
+.DS_Store
+.claude/
+.env
+.env.*
+*.log

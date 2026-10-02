@@ -1,0 +1,81 @@
+{
+ "url": "https://elements.com.sg/singtelred/",
+ "path": "/singtelred/",
+ "title": "Singtel RED Promotions 2026",
+ "description": "Enjoy exclusive Singtel RED promotions in 2025 at Elements Wellness. Treat yourself to the ultimate spa experience with unbeatable deals by booking an appointment today!",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Singtel RED Promotions",
+   "html": "<b>Singtel RED Promotions</b>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/singtel-red-yearlong26-1149x575-1-rhoks8-2bd8d24d67e2.jpg",
+   "alt": "Singtel RED (Yearlong'26) 1149x575",
+   "caption": "",
+   "w": 1600,
+   "h": 800
+  },
+  {
+   "t": "html",
+   "html": "<p>To make an appointment via call / WhatsApp, select your preferred outlet. (This is usually faster.)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><a href=\"https://api.whatsapp.com/send?phone=6589382878&amp;text=Hi,%20I'd%20like%20to%20book%20Singtel%20RED%20Promo\"><strong> Elements – ION</strong></a></p><p>Tel: 6738 3788 / WA: <a href=\"https://api.whatsapp.com/send?phone=6589382878&amp;text=Hi,%20I'd%20like%20to%20book%20Singtel%20RED%20Promo\">8938 2878</a></p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p><a href=\"https://api.whatsapp.com/send?phone=6593578183&amp;text=Hi,%20I'd%20like%20to%20book%20Singtel%20RED%20Promo\"><strong>Elements – Centrepoint</strong></a></p><p>Tel: 6737 8488 / WA: <a href=\"https://api.whatsapp.com/send?phone=6593578183&amp;text=Hi,%20I'd%20like%20to%20book%20Singtel%20RED%20Promo\">9357 8183</a></p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p><a href=\"https://api.whatsapp.com/send?phone=88751677&amp;text=Hi,%20I'd%20like%20to%20book%20Singtel%20RED%20Promo\"><strong>Elements – 313</strong></a></p><p>Tel: 6636 8878 / WA: <a href=\"https://api.whatsapp.com/send?phone=88751677&amp;text=Hi,%20I'd%20like%20to%20book%20Singtel%20RED%20Promo\">9669 6460</a></p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p>Welcome! </p><p>Here is where you make your appointment<strong>.</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong><u>Singtel RED Evergreen 2026</u></strong></p><p>First trial: Choice of one treatment @ $59 nett:<br/>• Signature Restorative Massage (60 mins, U.P. $118)</p><p>or</p><p>• AquaGlow Facial (60 mins, U.P. $118)</p>"
+  },
+  {
+   "t": "button",
+   "text": "Book Now",
+   "href": "#Evergreen"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong><u>Singtel Prestige and Red Birthday 2026</u></strong></p><p>• Couple Koyamaki Onsen Spa Retreat (100-min) + 🎁 Complimentary Birthday Gift (worth $68) | $289 nett (U.P . $680)<br/>– Body Massage (60-min)<br/>– Koyamaki Onsen Therapy in Private Suite (40-min)<br/>– Couple Massage Room</p><p>or</p><p>• Couple Herbal Spa Ritual (105-min) + 🎁 Complimentary Birthday Gift (worth $68) | $289 nett (U.P . $416)<br/>– Herbal Bath Therapy (45-min)<br/>– Full Body Massage (60-min)<br/>– Couple Massage Room</p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "#PRBD"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong><u>Singtel Member Birthday 2026</u></strong></p><p>• Couple Koyamaki Onsen Spa Retreat (100-min) | $289 nett (U.P. $612)<br/>– Body Massage (60-min)<br/>– Koyamaki Onsen Therapy in Private Suite (40-min)<br/>– Couple Massage Room</p><p>or</p><p>• Couple Herbal Spa Ritual (105-min) | $289 nett (U.P. $348)<br/>– Herbal Bath Therapy (45-min)<br/>– Full Body Massage (60-min)<br/>– Couple Massage Room</p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "#MMBD"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Validity: 1st January 2026 – 31st December 2026</strong></p><p>Surcharge Applicable:<br/>✅ For massage only PH/Weekends: +$21.80<br/>✅ Couple Treatment room: +$21.80</p>"
+  },
+  {
+   "t": "html",
+   "html": ".wpforms-container",
+   "widget": "eael-wpforms"
+  }
+ ]
+}

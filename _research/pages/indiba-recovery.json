@@ -1,0 +1,64 @@
+{
+ "url": "https://elements.com.sg/indiba-recovery/",
+ "path": "/indiba-recovery/",
+ "title": "INDIBA® Pro-Recovery in Singapore",
+ "description": "Our Pro-Recovery treatment harnesses the INDIBA® system to alleviate discomfort, improve mobility, and enhance overall well-being. Book an appointment today!",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "INDIBA ® Pro-Recovery",
+   "html": "INDIBA<sup>®</sup> Pro-Recovery"
+  },
+  {
+   "t": "html",
+   "html": "<p>INDIBA<sup>®</sup> Pro-Recovery is a proven system that has been used by leading professional sports teams,<br/>hospitals and clinics across Europe for accelerated healing and immediate pain relief.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>INDIBA<sup>®</sup> is particularly successful in treating injuries and wounds that do not respond to other treatments. </p><p>The technology is supported by multiple medical studies, and used by top tennis player Rafael Nadal, football club Barcelona, the French Tennis Federation, as well as multiple national teams in the 2012 London Olympics.</p><p>INDIBA<sup>®</sup> is applied externally, non-invasive, and uses patented long wave radio frequencies to create intense tissue stimulation for accelerated healing.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/indiba-pain-mgt-2-b561129289fb.jpg",
+   "alt": "Indiba Pain Mgt 2",
+   "caption": "",
+   "w": 640,
+   "h": 640
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Benefits",
+   "html": "Benefits"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Speeds recovery</li><li>Relieves pain while accelerating the body’s own natural healing abilities</li><li>Can improve chronic conditions</li><li>Helps reduce pain from the first application</li><li>The client experiences a soothing deep warmth during the treatment which focuses on relaxation too</li><li>Aids soft and hard tissue rehabilitation</li><li>Able to reach deep resistant tissues</li><li>Is safe to use</li><li>Restores vital cell functions for overall health</li></ul>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Suitable For",
+   "html": "Suitable For"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Musculoskeletal problems (muscles, ligaments, tendons and connective tissues)</li><li>Focuses well for neck, back, knee and shoulder pain</li><li>Osteoarthritis (commonly known as joint “wear and tear”)</li><li>Joint sprains </li><li>Rehabilitation after surgery.</li><li>Sports injuries</li><li>Chronic muscle pain</li><li>Cervical spondylosis</li><li>Arthritis</li><li>Prolapsed intervertebral disc</li><li>Rotator cuff injury</li><li>Carpal Tunnel Syndrome</li><li>Lateral epicondylitis</li></ul>"
+  },
+  {
+   "t": "video",
+   "url": "https://youtu.be/NRyvVtKj3xU"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How It Works",
+   "html": "How It Works"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Raises the internal temperature of cells to increase the supply of oxygen and nutrients for regeneration of tissues for recovery.</li><li>This technology is able to reach deep to focus on more resistant tissues such as joints, ligaments and tendons to repair while easing pain.</li><li>Uses a unique hands-on methodology to channel energy to targeted areas. Combining advanced technology and skilled human touch is the key to this effective and pleasant pain management treatment.</li><li>Improves sluggish lymphatic system and provides general release of tension: e.g. stiff neck, stiff shoulders, tension headaches.</li><li>When muscles or tissues are strained due to overuse, this treatment focuses on healing those microscopic tears in the connective tissues to relieve pain and restore your body. </li></ul>"
+  }
+ ]
+}

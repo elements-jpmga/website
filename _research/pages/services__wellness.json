@@ -1,0 +1,60 @@
+{
+ "url": "https://elements.com.sg/services/wellness/",
+ "path": "/services/wellness/",
+ "title": "Wellness in Singapore",
+ "description": "From relaxing massages to revitalizing facials, our therapies are tailored to your unique needs. Schedule an appointment with us today!",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "REMEDIAL THERAPIES",
+   "html": "REMEDIAL THERAPIES"
+  },
+  {
+   "t": "html",
+   "html": "Medi-Stretch<i></i><i></i><p>A trained therapist stretches your body for you, to promote healing and restoration.</p><p><a href=\"/medi-stretch/\"><b>Learn More</b></a></p> Power Moxa<i></i><i></i><p>The modern way of doing moxibustion therapy that is 10X more effective.</p><p><a href=\"/power-moxa/\"><b>Learn More</b></a></p> INDIBA® Pain Management<i></i><i></i><p>INDIBA® Pain Management is a proven system that has been used by leading professional sports teams, hospitals and clinics across Europe for accelerated healing and immediate pain relief.</p><p><a href=\"/indiba-pain-management/\"><b>Learn More</b></a></p> Hyperwave™ Bioelectric Therapy<i></i><i></i><p>Works on releasing tight tendons, ligaments and muscles to improve the body’s defensive “Qi” (Wei Qi) and get the energy moving in the meridians and the muscles.</p><p><a href=\"/hyperwave-bioelectric-therapy/\"><b>Learn More</b></a></p> INDIBA® Womb Care<i></i><i></i><p>INDIBA® increases circulation and cell recovery in the womb area to maintain balance. It also firms up the tummy area and reduces fat.</p><p><a href=\"/indiba-womb-care/\"><b>Learn More</b></a></p> Chiropractic<i></i><i></i><p>Chiropractic treatments help get to the root of the problem, to support holistic healing.<br/><br/>*Only available at <strong>Elements Wellness – 313</strong>.<br/><br/></p><p><a href=\"/chiropractic/\"><b>Learn More</b></a></p>",
+   "widget": "eael-adv-accordion"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Reviews",
+   "html": "Reviews"
+  },
+  {
+   "t": "gallery",
+   "images": [
+    {
+     "src": "/assets/img/pages/screenshot-2022-09-20-at-3-01-43-pm-36f0eaea41df.jpg",
+     "alt": "Elements Wellness Review - Jerille",
+     "w": 1348,
+     "h": 276
+    },
+    {
+     "src": "/assets/img/pages/screenshot-2022-09-20-at-3-01-57-pm-1b0fad8acb30.jpg",
+     "alt": "Elements Wellness Review - Sabrina",
+     "w": 1324,
+     "h": 308
+    },
+    {
+     "src": "/assets/img/pages/screenshot-2022-09-20-at-3-02-04-pm-626672f9b9c3.jpg",
+     "alt": "Elements Wellness Review - AP",
+     "w": 1332,
+     "h": 350
+    },
+    {
+     "src": "/assets/img/pages/screenshot-2022-09-20-at-3-02-11-pm-8601ffbabeb1.jpg",
+     "alt": "Elements Wellness Review - Foong",
+     "w": 1348,
+     "h": 316
+    },
+    {
+     "src": "/assets/img/pages/screenshot-2022-09-20-at-3-02-21-pm-04e999af7304.jpg",
+     "alt": "Elements Wellness Review - Fanny",
+     "w": 1318,
+     "h": 242
+    }
+   ]
+  }
+ ]
+}

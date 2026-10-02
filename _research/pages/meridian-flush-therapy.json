@@ -1,0 +1,64 @@
+{
+ "url": "https://elements.com.sg/meridian-flush-therapy/",
+ "path": "/meridian-flush-therapy/",
+ "title": "Meridian Flush Therapy in Singapore",
+ "description": "Our Meridian Flush Therapy uses specialized grooved wooden sticks to apply pressure along meridian channels. Book your appointment now!",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Meridian Flush Therapy",
+   "html": "Meridian Flush Therapy"
+  },
+  {
+   "t": "html",
+   "html": "<p>A deep muscle therapy that releases tension and energizes.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Meridian Flush Therapy is an advanced manual therapy that uses specialized grooved wooden sticks to apply pressure along meridian channels on the neck, shoulder, back, and legs. This revives energy flow along the channels and improves circulation while activating the lymphatic system at the same time. </p><p>A plant-based essence containing Mugwort is used to enhance the therapeutic effects of this flushing therapy.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/screenshot-2022-09-06-at-10-06-11-am-f859f205f284.jpg",
+   "alt": "meridian flush therapy treatment",
+   "caption": "",
+   "w": 814,
+   "h": 686
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Benefits",
+   "html": "Benefits"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Provides deep penetration of muscle adhesions and scar tissues for fascial release. This helps manage tension, pain and stiffness</li><li>Builds immunity. Better circulation helps transport white blood cells in your immune system around the body as needed</li><li>Detoxification. Increased lymph flow helps to flush waste and toxins</li><li>Increases anti-inflammation enzymes in your body to control chronic inflammation.</li><li>Supports organ function. Maintains healthy blood and oxygen flow throughout the body for organs to function properly</li><li>Gets rid of ‘dampness’ in the body. Dampness is a concept in TCM where there is stagnation of bodily fluids, leading to accumulation of moisture within the body. The symptoms of dampness are feeling of heaviness, puffiness of the skin, water retention, sluggish energy, and easy weight gain</li><li>Mugwort essence is used in this therapy. It is a plant that aids in eliminating toxins, enhancing circulation, and reducing inflammation. Used in TCM as a body warming herb to counteract infections, promoting stronger body immune system</li></ul>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Suitable For",
+   "html": "Suitable For"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Fatigue, sluggish, lethargy</li><li>Muscle tension, pain and stiffness</li><li>Puffiness</li><li>Water retention</li><li>Muscles soreness from overuse</li><li>Low immunity</li></ul>"
+  },
+  {
+   "t": "video",
+   "url": "https://youtu.be/7Rt290f-MOY"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How It Works",
+   "html": "How It Works"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Therapists perform the ‘flushing’ in a systematic manner along meridian channels to maximize tension release and energy flow.</li><li>Flushing involves using a special wooden bars to ‘scrape’ across muscles. It covers larger areas and also improves lymph flow for detoxification.</li><li>The specialized wooden bars provide even pressure that comfortably releases hardened muscle tissues. They are specially shaped to target muscles and body parts prone to aches and tension to unblock “Qi”. </li></ul>"
+  }
+ ]
+}

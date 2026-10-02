@@ -1,0 +1,108 @@
+{
+ "source": "Google Maps (public listing)",
+ "snapshotDate": "2026-09-30",
+ "total": 1294,
+ "average": 4.5,
+ "averageExact": 4.497,
+ "places": [
+  {
+   "id": "centrepoint",
+   "name": "The Centrepoint",
+   "googleName": "Elements Wellness Centrepoint",
+   "rating": 4.6,
+   "count": 572,
+   "cid": "17727555105088001882",
+   "reviews": [
+    {
+     "author": "Sue S.",
+     "when": "a month ago",
+     "rating": 5,
+     "text": "It was our first time here and we tried the couple massage onsen spa ritual. we really enjoyed it! the massage was really good! and we also love the onsen room. highly recommended!"
+    },
+    {
+     "author": "Jeffrey O.",
+     "when": "a month ago",
+     "rating": 5,
+     "text": "We took the couple package and it was a wonderful experience. We started off with a back scrub, followed by the body massage (with the spa asking you the strength before the service started) and we ended with 40min inside the onsen/steam room."
+    },
+    {
+     "author": "Priscilla S.",
+     "when": "2 months ago",
+     "rating": 5,
+     "text": "Went for the massage and onsen, it was extremely professional and clean! The massage was wonderful, and the onsen was beautiful and so comfortable. I left the place feeling very refreshed and happy, I will definitely come back!! :)"
+    },
+    {
+     "author": "Sharon H.",
+     "when": "6 months ago",
+     "rating": 5,
+     "text": "This was my first visit to Elements Wellness. I booked a back scrub, a 60-minute massage, and a 40-minute private onsen session, and overall I had a satisfying experience. The facilities were clean and well maintained, and I especially liked having the onsen tub all to myself."
+    }
+   ],
+   "mapsUrl": "https://maps.google.com/?cid=17727555105088001882"
+  },
+  {
+   "id": "313",
+   "name": "313@somerset",
+   "googleName": "Elements Wellness 313@Somerset (Orchard)",
+   "rating": 4.5,
+   "count": 416,
+   "cid": "8239580027703794436",
+   "reviews": [
+    {
+     "author": "Della S.",
+     "when": "10 months ago",
+     "rating": 5,
+     "text": "I’ve been a regular customer at Elements Wellness, and today my massage therapist was Liza — she was absolutely amazing! The massage was relaxing and exceptional, just what I needed. I also love the calm ambiance, and the central location makes it super convenient. Highly recommend!"
+    },
+    {
+     "author": "Tavani S.",
+     "when": "4 months ago",
+     "rating": 5,
+     "text": "We had a wonderfully relaxing experience at Elements Wellness 313@Somerset. We did the couple’s massage and contrast bath treatment, and both were excellent from start to finish. The staff were all very friendly, attentive, and welcoming, which made the experience even more enjoyable."
+    },
+    {
+     "author": "C X.",
+     "when": "7 months ago",
+     "rating": 5,
+     "text": "therapist Lan is extremely gentle with her extractions, she has handled my cystic acne prone and rosacea skin really well. i changed therapist twice and felt the most comfortable with her knowledge & expertise. she is kind, sincere, and really cares about treating troubled skin."
+    }
+   ],
+   "mapsUrl": "https://maps.google.com/?cid=8239580027703794436"
+  },
+  {
+   "id": "ion",
+   "name": "ION Orchard",
+   "googleName": "Elements ION Orchard",
+   "rating": 4.3,
+   "count": 306,
+   "cid": "418188688906338962",
+   "reviews": [
+    {
+     "author": "Andrew R.",
+     "when": "2 months ago",
+     "rating": 5,
+     "text": "Wow, really didn't expect the results to be this good. I've had lower back pain for a few weeks and it was affecting my movement, so I decided to try Acuwave & Fascia Therapy with Zhou Li. After just one session, my back felt so much better."
+    },
+    {
+     "author": "Jo Y.",
+     "when": "3 months ago",
+     "rating": 5,
+     "text": "Amazing experience at Elements! I came in for a massage and was impressed from the moment I arrived. The staff at the reception counter were warm, welcoming, and immediately made me feel comfortable. That level of care carried through the entire experience."
+    },
+    {
+     "author": "Lekdri T.",
+     "when": "4 months ago",
+     "rating": 5,
+     "text": "Ira is one of the best therapists I have experience and after 1st trial with her, i signed up for package. I did lymphatic massage with her today and i can feel her determination to remove every knots in me and i bought additional package because of her good massage."
+    },
+    {
+     "author": "P C.",
+     "when": "11 months ago",
+     "rating": 5,
+     "text": "I have been with Spa Elements ION Orchard for many years. I always enjoy my massage sessions with Maya. Maya is caring and skillful. I always feel v relaxed after my massage session n sleeps v well those few nights after going for the massage."
+    }
+   ],
+   "mapsUrl": "https://maps.google.com/?cid=418188688906338962"
+  }
+ ]
+}

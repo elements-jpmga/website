@@ -1,0 +1,351 @@
+{
+ "url": "https://elements.com.sg/antedote-aromatherapy/",
+ "path": "/antedote-aromatherapy/",
+ "title": "Antedote Aromatherapy",
+ "description": "",
+ "blocks": [
+  {
+   "t": "image",
+   "src": "/assets/img/pages/antedote-aromatherapy-poster-1-1-f4fd183ecffd.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1600,
+   "h": 933
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Harmony In Every Drop",
+   "html": "Harmony In Every Drop"
+  },
+  {
+   "t": "html",
+   "html": "<p>At Antedote Aromatherapy, we believe in the profound healing power of nature. Our essential oils are harmonious blends of carefully selected botanicals, crafted to deliver therapeutic benefits and enchanting fragrances.</p><p>Whether you seek serenity amidst chaos, relief from daily stress, or a moment of tranquility to soothe your soul, our unique essential oil blends provide a gentle yet potent “antedote” to life’s challenges.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Every bottle of Antedote essential oil is a harmonious blend of various botanicals, matched for their healing properties and fragrance.</p><p><span>Whether you seek serenity in the midst of chaos, relief from the burdens of the day, or simply a moment of tranquility to soothe the soul, our blends offer a gentle yet potent ‘antedote’ to life’s challenges.</span></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong><span>$28 Nett Per Enhancement (U.P. $38.15)</span></strong></p>"
+  },
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Types of Antedote Aromatherapy",
+   "html": "Types of Antedote Aromatherapy"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/1-1-c9aaf83dc427.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1131,
+   "h": 1600
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>SLEEP Essential Oil Blend</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ingredients: Vetiver + Rose + Lavender</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Prepare your body and mind for a restful night’s sleep with our Sleep essential oil blend. Vetiver and Lavender calm the senses, while Rose brings a touch of serenity to ease you into slumber.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/8-e184e025908a.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1131,
+   "h": 1600
+  },
+  {
+   "t": "html",
+   "html": "<p><strong><span>ENERGIZE Essential Oil Blend</strong></span></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ingredients: Lime + Black Pepper + Geranium</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Feel revitalized with our Energize essential oil blend. The sparkling zest of Lime, delicate heat of Black Pepper, and floral Geranium leave you feeling refreshed and ready to tackle the day.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/2-7d2ac285f727.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1131,
+   "h": 1600
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>UPLIFT Essential Oil Blend</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ingredients: Mulberry + Bergamot</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Encourage a positive mood and improve circulation with our Uplift essential oil blend. Mulberry calms the senses, while Bergamot aids digestion and uplifts your spirits.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/5-eda42b717ae7.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1131,
+   "h": 1600
+  },
+  {
+   "t": "html",
+   "html": "<p><strong><span>HARMONY Essential Oil Blend</strong></span></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ingredients: Clary Sage + Rose + Bergamot</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Achieve balance with our Harmony essential oil blend. This blend helps manage symptoms of PMS and menopause by balancing hormones, thanks to the synergistic effects of Clary Sage, Rose, and Bergamot.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/4-3875f0414950.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1131,
+   "h": 1600
+  },
+  {
+   "t": "html",
+   "html": "<p><strong><span>MUSCLES Essential Oil Blend</strong></span></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ingredients: Eucalyptus + Rosemary + Chamomile</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Relieve tension and soothe tired muscles with our Muscles essential oil blend. Eucalyptus and Rosemary reduce inflammation and swelling, while Chamomile provides a calming effect.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/3-f3ee9e3b2515.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1131,
+   "h": 1600
+  },
+  {
+   "t": "html",
+   "html": "<p><strong><span>STRESS Essential Oil Blend</strong></span></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ingredients: Neroli + Orange</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Reduce stress and anxiety with the uplifting aroma of our Stress essential oil blend. Neroli and Orange help lift your mood and release muscle tension, promoting overall relaxation.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/10-5c860ff650ba.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1131,
+   "h": 1600
+  },
+  {
+   "t": "html",
+   "html": "<p><strong><span>CHEER Essential Oil Blend</strong></span></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ingredients: Vetiver + Geranium + Grapefruit</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Brighten your day with our Cheer essential oil blend. The citrusy, floral, and grounding tones of Vetiver, Geranium, and Grapefruit help relax, comfort, and bring about good feelings.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/9-c3215fad8825.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1131,
+   "h": 1600
+  },
+  {
+   "t": "html",
+   "html": "<p><strong><span>BLISS Essential Oil Blend</strong></span></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ingredients: Chrysanthemum + Black Pepper</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Experience Bliss with our anti-inflammatory essential oil blend. Chrysanthemum soothes the skin and restores emotional balance, while Black Pepper adds a warming touch.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/7-9e59173cf360.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1131,
+   "h": 1600
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>DETOX Essential Oil Blend</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ingredients: Bergamot + Grapefruit + Orange</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Lighten your mood and detoxify your body with our Detox essential oil blend. This sparkling citrus combination aids lymphatic drainage and helps fight cellulite.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><b>SLEEP Essential Oil Blend</b></p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ingredients: Vetiver, Rose, Lavender</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Prepare your body and mind for a restful night’s sleep with our Sleep essential oil blend. Vetiver and Lavender calm the senses, while Rose brings a touch of serenity to ease you into slumber.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>ENERGIZE Essential Oil Blend</strong></p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ingredients: Lime + Black Pepper + Geranium</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Feel revitalized with our Energize essential oil blend. The sparkling zest of Lime, delicate heat of Black Pepper, and floral Geranium leave you feeling refreshed and ready to tackle the day.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>UPLIFT Essential Oil Blend</strong></p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ingridients: Mulberry + Bergamot</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Encourage a positive mood and improve circulation with our Uplift essential oil blend. Mulberry calms the senses, while Bergamot aids digestion and uplifts your spirits.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>HARMONY Essential Oil Blend</strong></p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ingredients: Clary Sage + Rose + Bergamot</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Achieve balance with our Harmony essential oil blend. This blend helps manage symptoms of PMS and menopause by balancing hormones, thanks to the synergistic effects of Clary Sage, Rose, and Bergamot.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>MUSCLES Essential Oil Blend</strong></p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ingredients: Eucalyptus + Rosemary + Chamomile</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Relieve tension and soothe tired muscles with our Muscles essential oil blend. Eucalyptus and Rosemary reduce inflammation and swelling, while Chamomile provides a calming effect.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>STRESS Essential Oil Blend</strong></p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ingredients: Neroli + Orange</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Reduce stress and anxiety with the uplifting aroma of our Stress essential oil blend. Neroli and Orange help lift your mood and release muscle tension, promoting overall relaxation.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>CHEER Essential Oil Blend</strong></p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ingredients: Vetiver + Geranium + Grapefruit</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Brighten your day with our Cheer essential oil blend. The citrusy, floral, and grounding tones of Vetiver, Geranium, and Grapefruit help relax, comfort, and bring about good feelings.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>BLISS Essential Oil Blend</strong></p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ingredients: Chrysanthemum + Black Pepper</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Experience Bliss with our anti-inflammatory essential oil blend. Chrysanthemum soothes the skin and restores emotional balance, while Black Pepper adds a warming touch.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>DETOX Essential Oil Blend</strong></p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ingredients: Bergamot + Grapefruit + Orange</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Lighten your mood and detoxify your body with our Detox essential oil blend. This sparkling citrus combination aids lymphatic drainage and helps fight cellulite.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Purchase and Experience Antedote Aromatherapy Essential Oils",
+   "html": "Purchase and Experience Antedote Aromatherapy Essential Oils"
+  },
+  {
+   "t": "html",
+   "html": "<p>Our essential oils are available in convenient 10ml bottles, perfect for use at home or on the go. For a truly immersive experience, visit our spa, Elements Wellness, where you can enhance your massage with any of our aromatic essential oil blends. Indulge in the ultimate relaxation and rejuvenation that only Antedote Aromatherapy can provide.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><b>Experience harmony in every drop</b> with Antedote Aromatherapy essential oils. Reclaim your well-being today.</p>"
+  }
+ ]
+}

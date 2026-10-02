@@ -1,0 +1,34 @@
+{
+ "url": "https://elements.com.sg/customer-assurance-privacy/",
+ "path": "/customer-assurance-privacy/",
+ "title": "Customer Assurance & Privacy",
+ "description": "Learn how we safeguard your personal information and ensure a secure shopping experience. Your privacy and comfort is our top concern.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Customer Assurance & Privacy",
+   "html": "Customer Assurance & Privacy"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Customer Assurance",
+   "html": "Customer Assurance"
+  },
+  {
+   "t": "html",
+   "html": "<ul> <li> <p>We strive to provide the best quality, value &amp; service to meet the needs of our customers as defined in the Sales of goods Act S14(2), Consumer Protection (Fair Trading) Act and Lemon Law.</p></li> <li> <p>We offer a 5 working days cooling period, (excluding Saturday, Sunday &amp; public holidays) during which you may request for a full refund for all products &amp; packages purchased.</p> </li> <li> <p>We allow for all packages to be transferable or exchangeable for products/services after the 5 working days cooling-off period.</p> </li> <li> <p>Packages purchased have a validity of 1 year from purchase date but may be extended upon written request by the customer before expiry. We will issue a new certificate of insurance upon extension of package validity.</p> </li> <li> <p>We accept original spa vouchers which have to be presented prior to treatment.</p> </li> <li> <p>We do not perform pressure selling by the therapist during treatment &amp; in the treatment room.</p> </li> <li> <p>We will honour all prices stated in the spa menu, shelf talker, advertisement &amp; promotion which includes 9% GST.</p> </li> <li> <p>We will display discounted price clearly in the spa.</p> </li> <li> <p>We accept payment mode in cash (SGD), Nets, Visa, Master, &amp; cheque.</p> </li> <li> <p>We will inform and seek customer approval in advance, for any additional services and top up services or upgrade of product.</p> </li> <li> <p>We will honour the prices quoted at the time of booking for treatments &amp; spa packages &amp; other related services.</p> </li> <li> <p>We serve both male &amp; female customers.</p> </li> <li> <p>We are committed to ensure all customers’ data is strictly private.</p> </li> <li> <p>Service guarantee is to provide (e.g change of therapist within first 10 min of treatment)</p> </li> <li> <p>We are committed to our therapist being formally trained to meet training standards in accordance with prevailing CAT 1 requirement stipulated by the Licensing Authority.</p> </li> </ul>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Privacy Policy",
+   "html": "Privacy Policy"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li><p><b>Your Privacy<br/></b>We use cookies (or similar technologies) to personalise content and ads, to provide social media features and to analyse our traffic. By clicking “Accept”, you agree to this and the sharing of information about your use of our site with our social media, advertising and analytics affiliates who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services.</p><p><b>Strictly Necessary Cookies</b></p><p><b>Always Active<br/></b>Necessary cookies are essential for the website to function, and cannot be switched off in our systems. Without these cookies, services, such as privacy settings, logging in or filing in forms, requested by you cannot be provided. If you set your browser to block these cookies, then the requested functions and services will not work. These cookies do not store any personally identifiable information.</p><p><b>Performance Cookies<br/></b>Performance cookies allow us to understand how visitors interact with the website by counting visits and traffic sources, so that we can measure and improve the performance of our site. They help us measure which pages are the most and least popular and understand how visitors move around the site. All information these cookies collect is aggregated and therefore anonymous. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.</p><p><b>Functional Cookies<br/></b>These cookies are used to recognise you and remember your preferences or settings when you return to our site, to enable the website to provide enhanced functionality and personalisation. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly.</p><p><b>Targeting Cookies<br/></b>These cookies may be set through our site by our advertising affiliates. They do not store directly personal information, but are based on uniquely identifying your browser and internet device. They may be used by those companies to build a profile of your interests and target you with relevant adverts on other sites. If you do not allow these cookies, you will experience less targeted advertising. </p></li></ul>"
+  }
+ ]
+}

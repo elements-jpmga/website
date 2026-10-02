@@ -1,0 +1,4 @@
+node_modules/
+data/
+tools/ocr
+.DS_Store

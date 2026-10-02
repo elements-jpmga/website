@@ -1,0 +1,119 @@
+{
+ "url": "https://elements.com.sg/birthday-member/",
+ "path": "/birthday-member/",
+ "title": "Exclusive Birthday Perks for Spa Members",
+ "description": "As a valued member of the Elements family, we’re thrilled to celebrate your birthday with an exclusive lineup of luxurious treats just for you.",
+ "blocks": [
+  {
+   "t": "html",
+   "html": "<p><strong>🎉 Celebrate YOU this month! 🎉</strong><br/>Enjoy gifts, discounts, and more from Elements Wellness. Exclusive perks just for your special day!</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/omega-light-ad0d58ef65ae.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 400,
+   "h": 400
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>FREE TREATMENT UPGRADES 🌟</strong> <br/>Complimentary upgrade of Aromatherapy during massage &amp; Omega Light Therapy during facial.<br/><em>*Redeemable once during the birthday month.</em></p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/facial-50-7eeb39296f49.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 400,
+   "h": 400
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>BIRTHDAY MONTH SAVINGS 💆‍♀️</strong><br/>Enjoy 50% OFF any à la carte facial treatment.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/onsen-1-e11335058a71.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 400,
+   "h": 400
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>FACILITY ACCESS ♨️</strong> <br/>35% OFF ala carte rates for Koyamaki Onsen Therapy (Elements Centrepoint) / Contrast Therapy or Herbal Bath (Elements 313)<br/><em>*Pre-booking is required.</em></p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/serum-d927c4240226.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 400,
+   "h": 400
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>BIRTHDAY GIFT 🎁 </strong><br/>Receive a travel size Elements Skincare serum or Antedote Essential Oil when you spend at least $500 annually.</p><p><em>*Gift to be collected in-store during the birthday month | While stocks last.</em></p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/msg-1-f63c22b3cfc3.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 400,
+   "h": 400
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>ELEMENTS BEAUTY VOUCHER 🎉</strong><br/>Receive $100 Elements Beauty Voucher when you spend $800 during your birthday month.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/products-a27fd10c345c.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 400,
+   "h": 400
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>PRODUCT VOUCHER 🛍️</strong><br/>Receive $20 OFF retail product purchase when you spend $100 during your birthday month.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/referral-frd-d27a38ef96b3.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 400,
+   "h": 400
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>INVITE A FRIEND 👫 </strong><br/>Bring a friend, and they’ll enjoy 40% off à la carte treatment rates.</p><p><em>* Booking is required.</em></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>T&amp;Cs:</strong></p><p>• One-time redemption per perk during birthday month.<br/>• Valid only for the name registered under the package.<br/>• Perks are non-transferable and valid only for the birthday month.<br/>• Facilities subject to availability, advance booking required.<br/>• Not valid with other promotions, privileges, discount cards or promotional vouchers.<br/>• Elements Wellness reserves the right to amend any of the terms and conditions without prior notice</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>To make an appointment via call / WhatsApp, select your preferred outlet. (This is usually faster.)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<h5><a href=\"https://api.whatsapp.com/send?phone=6589382878&amp;text=Hi,+I+would+like+to+make+an+appointment+(website)\"><strong>Elements – ION</strong></a></h5><p>Tel: 6738 3788 / WA: 8938 2878</p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<h5><a href=\"https://api.whatsapp.com/send?phone=6593578183&amp;text=Hi,+I+would+like+to+make+an+appointment+(website)\"><strong>Elements- Centrepoint</strong></a></h5><p>Tel: 6737 8488 / WA: 9357 8183</p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<h5><a href=\"https://api.whatsapp.com/send?phone=6588751677&amp;text=Hi,+I+would+like+to+make+an+appointment+(website)\"><strong>Elements- 313</strong></a></h5><p>Tel: 6636 8878 / WA: 8875 1677</p>",
+   "widget": "mobile__width-initial"
+  }
+ ]
+}

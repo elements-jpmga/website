@@ -1,0 +1,133 @@
+{
+ "url": "https://elements.com.sg/services/massage/tuina-massage/",
+ "path": "/services/massage/tuina-massage/",
+ "title": "Tuina Massage in Singapore | Meridian Therapy at Elements Wellness",
+ "description": "Tuina massage at Elements Wellness combines acupressure and meridian therapy to relieve pain, ease muscle tension and improve energy. Book your session today!",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Tuina Massage: Authentic Chinese Massage Therapy",
+   "html": "Tuina Massage: Authentic Chinese Massage Therapy"
+  },
+  {
+   "t": "html",
+   "html": "<p>A form of TCM massage therapy that stimulates energy flow in the meridians to restore the body.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Sign Up To Enjoy Your First Trial At $69 nett (60-min, U.P. $158) | T&C applies",
+   "html": "Sign Up To Enjoy Your First Trial At $69 nett (60-min, U.P. $158) | T&C applies"
+  },
+  {
+   "t": "html",
+   "html": "<p>Pre-registration and advance booking required to enjoy this promotion.</p>"
+  },
+  {
+   "t": "html",
+   "html": ".wpforms-container",
+   "widget": "eael-wpforms"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "What Is Tuina Massage?",
+   "html": "What Is Tuina Massage?"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/shutterstock-617411768-scaled-bf8543fefb40.jpg",
+   "alt": "Tuina Massage, Meridian Massage",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Tuina Massage: The Ancient Art of Healing at Elements Wellness</strong><br/><br/>Tuina massage is a renowned Chinese massage therapy rooted in Traditional Chinese Medicine (TCM). Practiced for thousands of years, TCM Tuina restores balance, improves circulation, and naturally relieves pain. At Elements Wellness, we combine this ancient healing art with modern wellness techniques for a deeply therapeutic experience.</p><p>Tuina (推拿)—pronounced “twee-nah”— is an advanced Chinese therapeutic massage that uses acupressure, kneading, rolling, and rhythmic compression to stimulate the body’s meridians and acupoints. While many massage techniques focus on muscle relaxation, TCM Tuina also works with the body’s energy channels, or meridians, to clear blockages and restore harmony.</p><p>This approach follows the same principles as acupuncture but relies on hands instead of needles to stimulate the body’s natural healing processes. At Elements Wellness, our skilled therapists customize each TCM massage to meet individual needs—whether it’s relieving tension, boosting energy, or addressing specific health concerns.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "What Is Tuina Massage Good For?",
+   "html": "What Is Tuina Massage Good For?"
+  },
+  {
+   "t": "html",
+   "html": "<p><b>TCM Tuina</b> is known for its wide range of therapeutic benefits, making it an excellent choice for those seeking natural healing. Some key benefits include:</p>"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li><b>Pain Relief</b>: Helps alleviate chronic pain conditions such as neck stiffness, back pain, joint pain, and muscle soreness.</li></ul>"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li><b>Improve Mobility</b>: Helps restore flexibility and ease joint stiffness, so you can enjoy greater comfort in daily activities.</li></ul>"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li><b>Boosts Blood Circulation: </b>Tuina massage focuses on improving blood circulation by stimulating the body’s energy flow, which brings more oxygen to tissues.</li></ul>"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li><b>Improve Sleep Qualitiy:</b> Tuina promotes deep relaxation and reduces pain, helping young and old enjoy better sleep and stay active in their daily lives.</li></ul>"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li><b>Prevents Toxin Build-up</b>: By clearing blockages, Tuina helps the body naturally eliminate toxins, reducing the risk of health issues.</li></ul>"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li><b>Digestive Support</b>: Can aid in relieving bloating, indigestion, and other digestive discomforts.</li></ul>"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li><b>Feel Balanced &amp; Calm:</b> Tuina encourages relaxation by balancing the body’s energy flow, clearing tension and blockages. Stress reduces, and better sleep follows —naturally supporting your well-being.</li></ul>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Is Meridian Massage the Same as Tuina?",
+   "html": "Is Meridian Massage the Same as Tuina?"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/shutterstock-617411885-f64d97477b25.jpg",
+   "alt": "Tuina Massage, Meridian Massage",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "html",
+   "html": "<p>Meridian massage and Tuina massage share similarities, but they are not exactly the same. While both focus on stimulating the body’s meridians and acupressure points, Tuina is a more comprehensive TCM massage technique that includes specialized manipulations, joint mobilization and muscle work. Meridian massage, on the other hand, primarily targets the meridians to promote Qi flow and may incorporate gentle strokes rather than deep-tissue techniques.</p><p>At Elements Wellness, our Tuina massage sessions combine both meridian work and muscle therapy for a complete healing experience, ensuring optimal relaxation and relief.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Experience the Benefits of Tuina at Elements Wellness",
+   "html": "Experience the Benefits of Tuina at Elements Wellness"
+  },
+  {
+   "t": "html",
+   "html": "<p>Whether you’re dealing with chronic pain, stress, or simply looking to improve your overall well-being, Tuina massage at Elements Wellness is a natural and effective solution. Our experienced therapists use authentic TCM Tuina techniques to restore balance and enhance your vitality.<br/>Book your Tuina massage session today and experience the healing power of Chinese massage at Elements Wellness!</p>"
+  },
+  {
+   "t": "button",
+   "text": "Book an appointment",
+   "href": "#book-appointment"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Frequently Ask Question",
+   "html": "Frequently Ask Question"
+  },
+  {
+   "t": "html",
+   "html": "<i></i><i></i>What is Tuina Massage?<i></i><p>Tuina massage, pronounced, as “Twee-nuh” comprises the Chinese words, Tui, which means “to push” and Na, which means “to lift”. Using this push and lift movement, many therapists would use Tuina to guide the flow of “Qi”. This technique is also accompanied by other manipulation techniques that help people to balance their “Qi” altogether and achieve self-healing remedies within the body and an overall therapeutic experience.</p> <i></i><i></i>What are the techniques used in Tuina massage?<i></i><p>Besides applying pressure to acupoints and different parts of the body, therapists would also utilise varying pressure techniques. They can be applied with different force and speed, and even with longer or shorter durations. Depending on the type of blockage within the body, some Tuina massages can be more “Yang” which refers to a stronger, dynamic and energetic session to remove deep blockages, while others can be more “Ying”, referring to a gentle and more calming session to achieve a meditative type of outcome.</p><p>On this note, there are eight basic techniques involved in a Tuina massage, they are:</p><ul><li>Pushing (tui)</li><li>Holding (na)</li><li>Palpating (mo)</li><li>Rejoining (jie)</li><li>Opposing (duan)</li><li>Lifting (ti)</li><li>Pressing (an)</li><li>Kneading (mo)</li></ul><p>For more specific body issues, specific types of methods can be used as well to heal the body. They are:</p><ul><li>The Rolling Method</li></ul><p>This method focuses on the soft tissues in our body. Using gentler techniques, it helps to treat injuries and sprains.</p><ul><li>The One-finger Pushing Method</li></ul><p>This method utilises one finger to stimulate the acupoint and is often used to treat any internal diseases.</p><ul><li>The Nei Gong method</li></ul><p>This method involves full body manipulation to rejuvenate any depleted body systems. This unique form of technique helps to generate “Nei Gong Qi”, which refers to energy that starts within the body, and energy that later flows outward of the body.</p><ul><li>The Bone Setting Method</li></ul><p>Focusing on the musculoskeletal system, this method helps to remove injuries in the joints and any nerve pain by realigning the joint movements and improving disabilities.</p><p>However, depending on your health problem or the type of pain you wish to address, the therapist may use one or several methods in a session. To enhance the effects of a Tuina massage, you may also couple it with lotions, ointments and herbal poultices.</p> <i></i><i></i>What are the limitations of Tuina massages?<i></i><p>Although a powerful form of therapy, it is impossible for Tuina to cure all health problems. Due to various reasons, some health conditions may not be suitable to be treated with Tuina as they may result in further injury or infections. These include:</p><ul><li>Fevers</li><li>Bone fractures</li><li>Ligament tears</li><li>Tumours</li></ul><p>If you are prone to fractures or inflammation, or if you have an open wound, it is best to seek medical help or consult your doctor first before engaging in Tuina.</p> <i></i><i></i>What side effects may occur from Tuina massage?<i></i><p>While Tuina massage is generally safe, some people may experience some discomfort during or after a session, particularly if they are going for the “Yang” type of treatment. It is important to note that some side effects of this massage may include the following:</p><ul><li>Slight bruising</li><li>Dizziness</li><li>Nausea</li><li>Short-term pain</li></ul> <i></i><i></i>Is Tuina massage safe for pregnant women?<i></i><p>Due to the application of pressure on acupoints of the body, Tuina massage is not recommended for pregnant women as it may affect the baby or the pregnancy. Instead, you can opt for our <a href=\"/prenatal-massage/\">prenatal massages</a> or our relaxing <a href=\"/neck-shoulder-body-massage-singapore/\">neck and shoulder massage</a>.</p>",
+   "widget": "eael-adv-accordion"
+  }
+ ]
+}

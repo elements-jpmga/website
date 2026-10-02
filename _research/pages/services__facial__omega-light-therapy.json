@@ -1,0 +1,65 @@
+{
+ "url": "https://elements.com.sg/services/facial/omega-light-therapy/",
+ "path": "/services/facial/omega-light-therapy/",
+ "title": "Omega Light Therapy",
+ "description": "Revitalize your skin with Omega Light Therapy. This non-invasive LED treatment targets acne, wrinkles, and pigmentation, promoting healing and collagen production for a radiant, youthful glow. Safe for all skin types. Book now!",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Omega Light Therapy",
+   "html": "Omega Light Therapy"
+  },
+  {
+   "t": "html",
+   "html": "<p>Medical-grade LED lights to treat acne, scarring, pigmentation, dullness, aging, and sensitive skin</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "About Omega Light Therapy",
+   "html": "About Omega Light Therapy"
+  },
+  {
+   "t": "video",
+   "url": "https://elements.com.sg/wp-content/uploads/2024/10/Omega-Light-1080-x-1080-px.mp4"
+  },
+  {
+   "t": "html",
+   "html": "<p>Known as a medical grade therapy, Omega light is a non-surgical, painless skin renewal treatment that reverse signs of aging by utilising the proven therapeutic wavelengths of light energy.</p><p>Ideal in treating different skin conditions such as dull skin, acne, suppression of sebaceous glands, acne scars, sensitive skin and reduction of pigmentation.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "What do the colors mean in light therapy?",
+   "html": "What do the colors mean in light therapy?"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Anti-aging (650-730nm; Red Omega light) </strong><br/><em><strong>Fine lines/Open Pores</strong></em><br/>•Reduce open/large pores<br/>•Reduce fine lines<br/>• Stimulate collagen production to repair damaged tissues</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Anti-acne (430-450nm; Blue Omega light) </strong><br/><em><strong>Acne/Sensitivity</strong></em><br/>• Calming action to treat redness caused by acne<br/>• Anti-inflammatory to reduce acne prone condition<br/>• Inhibit sebaceous glands</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Skin Balancer (525-550nm; Green Omega light)</strong><br/><em><strong>Pigmentation/Wrinkles/Dull skin tone/Scars</strong></em><br/>• Lighten pigmentation &amp; sunspots<br/>• Reduce deep wrinkles’ appearance<br/>• Skin brightener<br/>• Speed up healing process of wound/scars</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Collagen Booster (590nm; Red + Green Omega light) </strong><br/><em><strong>Yellow dull skin/Wrinkles/Hormonal acne</strong></em><br/>• Eliminate dull skin by enhancing lymph &amp; blood function<br/>• Reduce deep wrinkles’ appearance<br/>• Stimulate new collagen production to repair damaged &amp; old tissues</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Frequently Ask Question",
+   "html": "Frequently Ask Question"
+  },
+  {
+   "t": "html",
+   "html": "<i></i><i></i>Is Omega Light Therapy suitable for all skin types?<i></i><p>Yes, Omega Light Therapy is suitable for all skin types. It uses different wavelengths of LED light to target various skin concerns, making it a safe and effective treatment for everyone, regardless of skin type or tone.</p> <i></i><i></i>Is there any downtime after Omega Light Therapy?<i></i><p>No, there is no downtime after Omega Light Therapy. You can resume your normal activities immediately following the treatment.</p> <i></i><i></i>How many sessions do I need to see results?<i></i><p>Results vary depending on the condition being treated, but most people see improvements after 3-6 sessions, with ongoing treatments recommended for optimal results.</p> <i></i><i></i>Can Omega Light Therapy be combined with other treatments?<i></i><p>Yes, Omega Light Therapy can be safely combined with other facial treatments to enhance overall results, depending on the customer’s needs. A consultation will be conducted to assess and understand your skin’s specific requirements before tailoring the treatment plan.</p>",
+   "widget": "eael-adv-accordion"
+  }
+ ]
+}

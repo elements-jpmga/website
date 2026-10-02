@@ -1,0 +1,71 @@
+{
+ "url": "https://elements.com.sg/blog/",
+ "path": "/blog/",
+ "title": "Blog",
+ "description": "Stay updated on the latest beauty trends and expert tips for achieving radiant skin and a balanced mind-body connection. Read our blogs here",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "BLOG",
+   "html": "BLOG"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/woman-mud-q5h7nsxo0phlee1nn9o4drznfc6dlv-aef658449ab1.jpg",
+   "alt": "woman mud therapy",
+   "caption": "",
+   "w": 1200,
+   "h": 300
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "The wonder duo: massage & herbal volcanic mud therapy",
+   "html": "The wonder duo: massage & herbal volcanic mud therapy"
+  },
+  {
+   "t": "button",
+   "text": "READ MORE",
+   "href": "/2023/04/24/benefits-of-massage-herbal-volcanic-mud-therapy/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/pearl-light-wordpress-qm3s1wdtinxpkrdbnk-7f5586984481.jpg",
+   "alt": "Pearl Light Facial",
+   "caption": "",
+   "w": 1200,
+   "h": 300
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "A sustainable way for skin tightening of the face!",
+   "html": "A sustainable way for skin tightening of the face!"
+  },
+  {
+   "t": "button",
+   "text": "READ MORE",
+   "href": "/2024/05/30/blog-pearl-light-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/mens-banner-e1743676717906-r3t7pygqzyjgh-3fa95b5e5bdb.jpg",
+   "alt": "Elements facial for men",
+   "caption": "",
+   "w": 1200,
+   "h": 300
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "The Ultimate Guide to Facials for Men",
+   "html": "The Ultimate Guide to Facials for Men"
+  },
+  {
+   "t": "button",
+   "text": "READ MORE",
+   "href": "/2024/07/23/blog-mens-facial/"
+  }
+ ]
+}

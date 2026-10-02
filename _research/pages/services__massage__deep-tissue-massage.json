@@ -1,0 +1,334 @@
+{
+ "url": "https://elements.com.sg/services/massage/deep-tissue-massage/",
+ "path": "/services/massage/deep-tissue-massage/",
+ "title": "Deep Tissue Massage in Singapore",
+ "description": "Releases chronic muscle tension, restores range of movement, and addresses pain that accumulates over time.",
+ "blocks": [
+  {
+   "t": "html",
+   "html": "<p>BODY · MASSAGE THERAPY</p>"
+  },
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Deep Tissue Massage",
+   "html": "Deep Tissue<br/> Massage"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/deep-tissue-massage-web-74ad0266d1cb.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "t": "html",
+   "html": "<p>Releases chronic muscle tension, restores range of movement, and addresses pain that accumulates over time.</p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK THIS TREATMENT",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20Lymphatic%20Sculpt%20Facial%20(website)"
+  },
+  {
+   "t": "html",
+   "html": "<p>60-min · First Trial S$69 · U.P. S$158</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/deep-tissue-massage-web-74ad0266d1cb.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "t": "html",
+   "html": "<p>WHAT IT IS</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Targeted pressure therapy",
+   "html": "Targeted pressure therapy"
+  },
+  {
+   "t": "html",
+   "html": "<p>A firm, focused massage technique that works below the superficial muscle layer to release chronic tension and adhesions in deeper tissue.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WHAT HAPPENS</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Slow, deliberate strokes",
+   "html": "Slow, deliberate strokes"
+  },
+  {
+   "t": "html",
+   "html": "<p>Therapist applies sustained, cross-fibre pressure along the back, shoulders, hips, and legs — targeting the areas where tension holds deepest.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>GOOD FOR</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Your concerns",
+   "html": "Your concerns"
+  },
+  {
+   "t": "html",
+   "html": "<p>– Chronic back and neck pain<br/>– Muscle stiffness from desk work<br/>– Post-exercise soreness and tightness<br/>– Restricted range of movement<br/>– Tension headaches</p>"
+  },
+  {
+   "t": "html",
+   "html": "<h2>“Tension that has built up over months does not release in a single gentle pass — deep tissue work meets the muscle where it actually is.”</h2>"
+  },
+  {
+   "t": "html",
+   "html": "<p>“Tension that has built up over months does not release in a single gentle pass — deep tissue work meets the muscle where it actually is.”</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "TECHNIQUE",
+   "html": "TECHNIQUE"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How This Therapy Works",
+   "html": "How This Therapy Works"
+  },
+  {
+   "t": "html",
+   "html": "<p>Deep tissue massage uses sustained pressure and slow deliberate strokes to reach the deeper layers of muscle and connective tissue — the structures that standard massage does not access.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Sustained pressure</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Firm, held pressure applied at specific points where muscle fibres have knotted — encouraging the tissue to release rather than brace.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Cross-fibre friction</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Strokes applied perpendicular to the muscle fibre direction to break down adhesions and restore normal tissue alignment.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Myofascial release</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Slow, elongating pressure along the fascial sheath — the connective tissue surrounding the muscle — to improve mobility and reduce referred pain.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Trigger point work</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Concentrated pressure on specific hyperirritable spots within the muscle that refer pain or restrict movement in other areas of the body.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Sessions are structured to work progressively — beginning with lighter pressure to warm the tissue before moving into the deeper work. Most clients notice a measurable reduction in tightness by the end of the session; full tissue recovery and improved range of movement typically develop in the 24–48 hours following.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "UNDERSTANDING",
+   "html": "UNDERSTANDING"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Why Muscle Tension Matters",
+   "html": "Why Muscle Tension Matters"
+  },
+  {
+   "t": "html",
+   "html": "<p>Chronic muscle tension is not simply discomfort — it is a structural problem. When muscle fibres remain contracted over extended periods, the fascia surrounding them thickens and adhesions form between tissue layers. The result is restricted movement, referred pain, and a body that compensates by loading stress onto adjacent structures. This is why a stiff lower back often leads to hip tightness or shoulder pain — the body redistributes the work.<br/><br/>Deep tissue massage addresses this at the source. By working through the superficial layers into the deeper musculature, the technique breaks down the adhesions that restrict movement, restores normal length to contracted fibres, and allows the surrounding fascial tissue to move freely again. The effect is cumulative — regular sessions prevent the re-accumulation of the tension patterns that cause chronic discomfort.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "MAY HELP WITH",
+   "html": "MAY HELP WITH"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "What This Therapy May Help With",
+   "html": "What This Therapy May Help With"
+  },
+  {
+   "t": "html",
+   "html": "<p>01</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Chronic back and neck pain",
+   "html": "Chronic back and neck pain"
+  },
+  {
+   "t": "html",
+   "html": "<p>Persistent pain from postural habits, prolonged sitting, or unresolved muscle strain.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>02</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Shoulder and upper back tightness",
+   "html": "Shoulder and upper back tightness"
+  },
+  {
+   "t": "html",
+   "html": "<p>Tension that accumulates through desk work, screen time, and stress-related muscle holding.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>03</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Restricted range of movement",
+   "html": "Restricted range of movement"
+  },
+  {
+   "t": "html",
+   "html": "<p>Stiffness in hips, shoulders, or spine that limits functional mobility or athletic performance.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>04</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Post-exercise soreness",
+   "html": "Post-exercise soreness"
+  },
+  {
+   "t": "html",
+   "html": "<p>Delayed onset muscle soreness or residual tightness following intense physical training.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>05</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Tension headaches",
+   "html": "Tension headaches"
+  },
+  {
+   "t": "html",
+   "html": "<p>Headaches originating from muscle tension in the neck, shoulders, and base of the skull.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>06</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Repetitive strain patterns",
+   "html": "Repetitive strain patterns"
+  },
+  {
+   "t": "html",
+   "html": "<p>Overuse tension from repeated movement patterns in sport, occupation, or daily habit.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "FAQS",
+   "html": "FAQS"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Frequently Asked Questions",
+   "html": "Frequently Asked Questions"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Will the session be painful?",
+   "html": "Will the session be painful?"
+  },
+  {
+   "t": "html",
+   "html": "<p>Deep tissue work involves firm pressure and may produce discomfort at the point of release — particularly in areas of chronic tension. This is different from pain, and your therapist will work within a pressure level you can tolerate. Most clients describe it as productive discomfort: intense at moments, but followed by immediate relief. You should always communicate with your therapist during the session — pressure is adjusted throughout to suit the tissue response.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "How will I feel afterwards?",
+   "html": "How will I feel afterwards?"
+  },
+  {
+   "t": "html",
+   "html": "<p>Some clients notice mild soreness in treated areas for 24–48 hours after the session — a normal response as the tissue adjusts following deep pressure work. Most experience a marked reduction in tightness and improved range of movement within that same window. Drinking water after your session and avoiding intense physical activity for the remainder of the day allows the tissue to recover fully and maximises the result.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "How often should I book?",
+   "html": "How often should I book?"
+  },
+  {
+   "t": "html",
+   "html": "<p>For chronic tension that has accumulated over time, an initial course of sessions — typically two to three over consecutive weeks — allows the tissue to change progressively rather than reverting between visits. Once the presenting tension has resolved, most clients maintain with a monthly session. Your therapist will advise based on how your tissue responds across the first session, and there is no obligation to commit to a programme in advance.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>DEEP TISSUE MASSAGE</p>"
+  },
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Precision work for tension that has been building too long.",
+   "html": "Precision work for tension that has been building too long."
+  },
+  {
+   "t": "html",
+   "html": "<p>Deep tissue massage is not a harder version of relaxation — it is a targeted therapeutic method for addressing chronic muscle dysfunction at its structural source. Each session works progressively, with results that compound over time.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Deep Tissue Massage</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Available in 60-min or 90-min sessions</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>60-min First Trial S$69 · U.P. S$158</p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK A SESSION",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20Lymphatic%20Sculpt%20Facial%20(website)"
+  }
+ ]
+}

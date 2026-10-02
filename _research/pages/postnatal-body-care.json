@@ -1,0 +1,157 @@
+{
+ "url": "https://elements.com.sg/postnatal-body-care/",
+ "path": "/postnatal-body-care/",
+ "title": "Postnatal Body Care in Singapore",
+ "description": "Discover specialized postnatal treatments designed to support your recovery after pregnancy. From postnatal massage to slimming, body contouring, and water retention relief, we help you regain your confidence and well-being. Book your consultation today!",
+ "blocks": [
+  {
+   "t": "image",
+   "src": "/assets/img/pages/wordpress-1228-x-835-homepage-1-6cfc51eefe00.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1228,
+   "h": 835
+  },
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Postnatal Body Care",
+   "html": "Postnatal Body Care"
+  },
+  {
+   "t": "html",
+   "html": "<p>Mummy’s Glow: Post-Pregnancy Rejuvenation</p>",
+   "widget": "tablet__width-inherit"
+  },
+  {
+   "t": "html",
+   "html": "<p>Discover specialized postnatal treatments designed to support your recovery after pregnancy. From womb care to slimming, body contouring, and water retention relief, we help you regain your confidence and well-being.</p><p><strong>Try it now from $89 nett!</strong></p>",
+   "widget": "tablet__width-inherit"
+  },
+  {
+   "t": "html",
+   "html": "<a href=\"#book-appointment\"> <span>Book here! </span> </a>",
+   "widget": "tablet__width-inherit"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Why Postnatal Care Matters",
+   "html": "Why Postnatal Care Matters"
+  },
+  {
+   "t": "html",
+   "html": "<p>Bringing new life into the world is a beautiful journey, but it also brings significant changes to a mother’s body. After pregnancy, your body goes through a critical phase of recovery, where specialized care is essential for restoring your health, strength, and confidence.</p><p><strong><em>Why is this important?</em></strong> At Elements Wellness, we understand the unique challenges that new mothers face, from lingering aches and pains to water retention, and the desire to reclaim your pre-pregnancy body. That’s why we have these postnatal treatments thoughtfully designed to support you through this transformative time.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/post-massage-f3f12c4c68f7.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1600,
+   "h": 762
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/womb-care-db891b95c32d.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>WOMB CARE</strong></p><p><strong>Symptoms</strong>: Discomfort in the womb area, including lower abdominal pain and cramping.</p><p><strong>Treatment</strong>: <strong>Postnatal Massage, lymphatic drainage massage</strong></p><p><strong>Benefits</strong>: Alleviates pain, supports womb recovery, and boosts overall postpartum healing.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/water-retention-d95dba7da9a2.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>WATER RETENTION</strong></p><p><strong>Symptoms</strong>: Bloating, swollen legs or hands, puffy skin and stiffness.</p><p><strong>Treatment</strong>: <strong>Meridian Flush Therapy</strong></p><p><strong>Benefits: </strong>Improves circulation, reduces bloating and swelling.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/slimming-cfb24f74e861.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>FIRMING &amp; CONTOURING</strong></p><p><strong>Symptoms</strong>: Difficulty losing weight and sagging skin around the abdomen, hips, and thighs.</p><p><strong>Treatment</strong>: <strong>Indiba Proionic® Slimming</strong></p><p><strong>Benefits</strong>: Achieve a slimmer, firmer body and tighten skin with non-invasive and painless treatment.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><em>*If you had a natural delivery and there were no complications, it is safe to start post-partum massages from the 5th day after delivery. In the event of Caesarain Section (C-Section), post-partum massages / postnatal body care can only start after the incision has closed properly, usually one month after the C-section.</em></p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/edwd-20-551cb0531ad2.jpg",
+   "alt": "body massage $48 trial promotion",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "html",
+   "html": "<p><strong><span>Postnatal Massage (60-min, U.P. $128.62)</strong></span><br/>Designed to help new mothers recover after childbirth, this therapeutic massage increases blood circulation to areas impacted by delivery. It aids in healing muscle strain, incisions, and tears, while also alleviating back pain—especially beneficial for those who’ve had an epidural.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/lymphatic-drainage-massage-1-807bcdcf8d2a.jpg",
+   "alt": "Menopause Relief Massage",
+   "caption": "",
+   "w": 1228,
+   "h": 835
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Lymphatic Drainage Massage (60-min, U.P. $128.62)</strong><br/>A gentle massage that supports postnatal recovery by encouraging the body’s natural detoxification process. It helps reduce post-pregnancy swelling, boosts circulation, and accelerates healing, providing an overall sense of rejuvenation and balance for new mothers.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/img-0753-94c23f967fea.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "t": "html",
+   "html": "<p><strong><span>Meridian Flush Therapy (30-min, U.P. $103.55)</strong></span><br/>Ideal for managing water retention, particularly after pregnancy. This specialized treatment promotes lymphatic drainage and reduces swelling, helping new mothers feel more comfortable and refreshed. Experience enhanced circulation and relief from post-pregnancy water retention with our advanced, non-invasive therapy.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/indiba-slimming-01e8e26483e2.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1228,
+   "h": 835
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Indiba Proionic® Slimming (30-min, U.P. $215.82)</strong><br/>A non-invasive treatment that helps new mothers regain their body shape by targeting stubborn fat and tightening loose skin. Using advanced radiofrequency technology, it promotes fat reduction, improves circulation, and enhances skin firmness, making it ideal for post-pregnancy body contouring and overall slimming.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>We’re here to support new mothers on their journey to regain confidence and return to their usual lifestyle, feeling even better than before. Our expert team is ready to guide you through the right treatments tailored to your needs. Not sure which option is best for you? Just reach out! Simply fill out the form below, and we’ll get in touch with you shortly.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Sign Up to Enjoy First Trial Postnatal Body Care from $89 nett",
+   "html": "Sign Up to Enjoy First Trial Postnatal Body Care from $89 nett"
+  },
+  {
+   "t": "form",
+   "note": ""
+  }
+ ]
+}

@@ -1,0 +1,286 @@
+{
+ "url": "https://elements.com.sg/services/facial/nir-cellbright-facial/",
+ "path": "/services/facial/nir-cellbright-facial/",
+ "title": "NIR CellBright Facial",
+ "description": "Experience the NIR CellBright Facial. A medical-grade, zero-downtime treatment for instant jawline tightening and a luminous \"Pearl Glow.\" Book your $148 trial today.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "NIR CellBright Facial​",
+   "html": "NIR CellBright Facial​"
+  },
+  {
+   "t": "html",
+   "html": "<h3><b>Advanced Radiance &amp; Collagen Remodeling</b></h3>"
+  },
+  {
+   "t": "html",
+   "html": "<p>A clinical-grade facial that directs near-infrared light deep into the dermis — stimulating collagen to restore firmness and radiance from within.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/nir-with-model-363e9f8936fb.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1200,
+   "h": 800
+  },
+  {
+   "t": "html",
+   "html": "<p>As collagen declines, skin loses firmness and glow.</p><p>NIR CellBright works deep within the skin to tighten, rebuild collagen, and restore a natural, lifted radiance.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>First Trial:</strong> <strong>$148 nett </strong>(75 mins | U.P. $388)</p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20NIR%20CellBright%20Facial%20(website)"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Brighten. Tighten. Glow. — Without Needles or Downtime.",
+   "html": "Brighten. Tighten. Glow. — Without Needles or Downtime."
+  },
+  {
+   "t": "html",
+   "html": "<p>As collagen production slows, skin loses its structural integrity, leading to a “heavy” jawline and dullness. The NIR CellBright Facial isn’t a surface-level treatment; it is a targeted medical-grade light therapy designed to heat the deep dermis to the precise temperature required for collagen fibers to contract and rebuild. We restore the kind of luminous brightness that only comes from healthy skin structure.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Multi-Layer Rejuvenation",
+   "html": "Multi-Layer Rejuvenation"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li><strong>Instant Tightening &amp; Lift:</strong> Immediate contraction of sagging areas.</li><li><strong>Luminous Texture:</strong> A refined surface that reflects light perfectly (The “Pearl Glow”).</li><li><strong>Fairer, Even Skin Tone:</strong> Thermal circulation helps break down melanin deposits.</li><li><strong>Pore Refinement:</strong> Plumps the skin to reduce the appearance of pores.</li><li><strong>Cumulative Growth:</strong> Results peak at 2–4 weeks as new collagen matures.</li></ul>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How it Works: The Deep-Layer Lift",
+   "html": "How it Works: The Deep-Layer Lift"
+  },
+  {
+   "t": "video",
+   "url": "https://www.youtube.com/watch?v=wYkF47OGEUI"
+  },
+  {
+   "t": "html",
+   "html": "<p>Most facials only touch the surface. The Alma™ NIR (Near-Infrared) technology goes deeper. It uses light energy that safely bypasses the surface to heat the water within the dermis to a precise 39°C–42°C. This creates a comfortable “thermal hug” in the deeper layers where your collagen lives.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/nir-84a2aed4fc72.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1200,
+   "h": 800
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "The Visible Result",
+   "html": "The Visible Result"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li><strong>The 30-Minute Result: Immediate Snap-Back</strong><br/>Your existing collagen fibers react to the warmth by tightening instantly—<b>like a spring recoiling</b>. You’ll walk out of the session with a visible lift and a noticeable “lit-from-within” brightness.</li><li><b>The 30-Day Result: Natural Plumping</b><br/>The warmth “wakes up” your skin’s natural repair system. Over the next few weeks, your body produces fresh collagen that naturally plumps the skin from the inside out, softening fine lines, refining pores and defining the jawline.</li></ul>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Effortless Results, Zero Damage",
+   "html": "Effortless Results, Zero Damage"
+  },
+  {
+   "t": "html",
+   "html": "<p>Because the NIR light safely bypasses the surface to work deep within the dermis, you get clinical-grade results without the clinical drawbacks:</p><ul><li><strong>No Needles</strong>: A completely non-invasive and pain-free experience.</li><li><strong>Intact Surfac</strong>e: The top layer of your skin remains perfectly undisturbed.</li><li><strong>Zero Downtime</strong>: Your skin looks better the moment you leave. Go straight from your facial to a dinner date with a fresh, healthy glow—no peeling or redness.</li></ul>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Who It’s For",
+   "html": "Who It’s For"
+  },
+  {
+   "t": "html",
+   "html": "<p>The NIR CellBright Facial is the ideal choice for those noticing the following:</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/nir-icon1-308f22a6768e.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 917,
+   "h": 917
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Jawline “Heaviness”<br/></strong>Sagging cheeks or a blurred, “heavy” lower face.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/mir-icon-d246cfdefab4.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 917,
+   "h": 917
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Stress &amp; Tension<br/></strong>Visible tightness in the jaw (masseter) or “Tech-Neck” lines.<strong><br/></strong></p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/nir-icon3-f12f7e5f80f9.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1049,
+   "h": 1049
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Skin Texture Changes<br/></strong>Enlarged pores, “crepey” skin, or thinning texture.<strong><br/></strong></p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/nir-icon2-e78c803b6842.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1049,
+   "h": 1049
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Dullness &amp; Fatigue<br/></strong> Uneven skin tone or a lack of natural radiance.<strong><br/></strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>The Elements Edge</strong><span>: Because we understand the body’s fascia, this treatment does more than tighten skin. The gentle heat helps relax the superficial fascia and jaw tension that often pulls down on your facial features.</span></p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "The Protocol",
+   "html": "The Protocol"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>1. Deep Cleansing</strong></p><p>Preparing the canvas by removing impurities.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>2. Expert Extraction</strong></p><p>Clearing pores for better light penetration.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>3. Targeted NIR Application</strong></p><p>The lifting and thermal remodelling phase.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>4. Cryo-Infusion</strong></p><p>A cooling “lock-in” to soothe the skin and seal the glow.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>5. Customized Mask</strong></p><p>Tailored to your specific skin concerns.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong><span>6. Aftercare</strong></span></p><p>Protective layers to sustain your results.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Why Trust Elements Wellness?",
+   "html": "Why Trust Elements Wellness?"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "🏆 Multi-Award Winning | 23 Years of Excellence 🏆",
+   "html": "🏆 Multi-Award Winning | 23 Years of Excellence 🏆"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li><strong>Powered by Alma™</strong>: We use world-class technology trusted by global dermatologists.</li><li><strong>Proven Safety</strong>: NIR only heats the subdermal layers. There are zero wounds and zero risk of scarring.</li><li><strong>Lifestyle Ready</strong>: You can apply makeup and resume your normal daily activities immediately after your facial.</li></ul>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/awards-1-b9b2cd5a0406.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1200,
+   "h": 137
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "See the Radiance Our Customers Achieve",
+   "html": "See the Radiance Our Customers Achieve"
+  },
+  {
+   "t": "gallery",
+   "images": [
+    {
+     "src": "/assets/img/pages/updated-1-13059085a79c.jpg",
+     "alt": "Reduces laugh lines",
+     "w": 1080,
+     "h": 800
+    },
+    {
+     "src": "/assets/img/pages/updated-2-ee578be60320.jpg",
+     "alt": "Skin look fairer & evens out skin tone",
+     "w": 1080,
+     "h": 800
+    },
+    {
+     "src": "/assets/img/pages/updated-3-cd4a054c1c10.jpg",
+     "alt": "Boosts your natural glow and give a luminous look. Skin reflects light",
+     "w": 1080,
+     "h": 800
+    },
+    {
+     "src": "/assets/img/pages/updated-4-fb54dc6a07f3.jpg",
+     "alt": "More defined jawline and lifted appearance",
+     "w": 1080,
+     "h": 800
+    }
+   ]
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Experience the Transformation",
+   "html": "Experience the Transformation"
+  },
+  {
+   "t": "html",
+   "html": "<p>Don’t let dull, saggy skin define your age. If you are looking for a non-surgical solution to lift, firm, and brighten, the NIR CellBright Facial is your answer.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>First Trial Special: $148 Nett (U.P. $388) | 75 Minutes </strong></p><p><strong>Limited slots available for first-time customers.</strong></p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20NIR%20CellBright%20Facial%20(website)"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Frequently Asked Questions",
+   "html": "Frequently Asked Questions"
+  },
+  {
+   "t": "html",
+   "html": "<ul> <li> <i></i> <h3>Is it suitable for sensitive skin?</h3> <p>Yes. Because NIR targets the deeper dermis without overheating the surface, it is exceptionally gentle.</p> </li> <li> <i></i> <h3>How is this different from Laser or HIFU?</h3> <p>Laser treatments typically resurface the skin (requiring downtime), while HIFU delivers high-intensity focused ultrasound (often painful). NIR is a pain-free alternative that focuses on bulk heating the dermis for a more comfortable, restorative experience. </p> </li> <li> <i></i> <h3>How many sessions do I need?</h3> <p>For specific concerns, we recommend an 8-session program. Start with 3 sessions spaced 3 weeks apart to align with your skin's natural 28-day cellular renewal cycle. </p> </li> <li> <i></i> <h3>What does it feel like?</h3> <p>A comfortable, relaxing warmth similar to a hot stone massage or basking in warm sunlight.</p> </li> <li> <i></i> <h3>Is this suitable for men?</h3> <p>Absolutely. It is excellent for tightening the jawline and refining larger pores in thicker male skin. </p> </li> </ul>",
+   "widget": "eael-feature-list"
+  }
+ ]
+}

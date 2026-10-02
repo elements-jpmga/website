@@ -1,0 +1,25 @@
+{
+ "url": "https://elements.com.sg/faq-spa-etiquette/",
+ "path": "/faq-spa-etiquette/",
+ "title": "FAQ & Spa Etiquette",
+ "description": "Learn about our services, booking procedures, and what to expect during your visit. Read on to ensure a relaxing experience with us.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "FAQ & Spa Etiquette",
+   "html": "FAQ & Spa Etiquette"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "FAQs",
+   "html": "FAQs"
+  },
+  {
+   "t": "html",
+   "html": "Do I need to bring anything?<i></i><i></i><p>No. Disposable underwear and slippers will be provided for your use in the spa. If you prefer, you may bring along your swimming costume for your Jacuzzi treatment.</p> Should I avoid visiting if I am pregnant?<i></i><i></i><p>Please let us know if you are pregnant so that our spa consultant can recommend the spa treatments most suitable for you. However, you should avoid treatments and body massages using heat, deep pressure and certain aromatic oils.</p> Do I have to disrobe entirely for my spa treatments?<i></i><i></i><p>We provide disposable undergarments for your body treatments. Any area not treated is properly draped to protect your privacy at all times. Your massage therapist will only uncover the part of the body she is working on, ensuring that your modesty is respected at all times.</p> Should I let someone know if I have any allergies or physical ailments?<i></i><i></i><p>Yes. Especially if you have high blood pressure, allergies, or are pregnant. Please notify our spa consultant when booking your spa appointments.</p> How often should I visit the Spa?<i></i><i></i><p>It depends on the spa treatments and specific needs. Some of our clients would come whenever they can find the time. There are those who would come twice a week. Most of our regular spa members visit us once a fortnight as recommended.</p> How do I ensure that the treatment is comfortable for me?<i></i><i></i><p>At any time during the session, should you feel that the pressure or technique is uncomfortable for you, please alert the therapist. Depending on your specific needs or requests, your massage therapist will either perform a customized full-body massage (for general relaxation and stress reduction) or focus on the specific parts of your body that you have requested. Do not hesitate to ask any questions as it is our duty to provide you with our best service.</p>",
+   "widget": "eael-adv-accordion"
+  }
+ ]
+}

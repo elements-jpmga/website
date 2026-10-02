@@ -1,0 +1,51 @@
+{
+ "url": "https://elements.com.sg/book-appointment/",
+ "path": "/book-appointment/",
+ "title": "Make An Appointment Form",
+ "description": "Ready to unwind and pamper yourself? Make an appointment at our 313 outlet for an unforgettable relaxation experience.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Make An Appointment",
+   "html": "Make An Appointment"
+  },
+  {
+   "t": "button",
+   "text": "Book Online",
+   "href": "https://elements.voltade.com/elements/appointment-form"
+  },
+  {
+   "t": "html",
+   "html": "<p>If you prefer, please call or WhatsApp the outlets directly. <br/>For Onsen and Jacuzzi bookings, please WhatsApp the outlets directly.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>If you prefer, please call or WhatsApp the outlets directly. <br/>For Onsen and Jacuzzi bookings, please WhatsApp the outlets directly.</p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<h5><strong><a href=\"https://api.whatsapp.com/send?phone=6589382878&amp;text=Hi,+I+would+like+to+make+an+appointment+(website)\">Elements – ION</a></strong></h5><p>Tel: 6738 3788 / WA: 8938 2878</p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p><a href=\"https://api.whatsapp.com/send?phone=6593578183&amp;text=Hi,+I+would+like+to+make+an+appointment+(website)\"><strong>Elements – Centrepoint</strong></a></p><p>Tel: 6737 8488 / WA: 9357 8183</p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p><a href=\"https://api.whatsapp.com/send?phone=6596696460&amp;text=Hi,+I+would+like+to+make+an+appointment+(website)\"><strong>Elements – 313</strong></a></p><p>Tel: 6636 8878 / WA: 9669 6460</p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p>Or you can email an appointment request here. Please allow 3 business days.</p>"
+  },
+  {
+   "t": "form",
+   "note": ""
+  }
+ ]
+}

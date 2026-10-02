@@ -1,0 +1,318 @@
+{
+ "url": "https://elements.com.sg/acuwave-relief-therapy/",
+ "path": "/acuwave-relief-therapy/",
+ "title": "Acu-Wave Relief Therapy",
+ "description": "Discover Acu-Wave Relief Therapy at Elements Wellness – a non-invasive treatment combining acupressure and wave therapy to relieve chronic pain, improve circulation, and enhance mobility. Ideal for frozen shoulder, back pain, and more.",
+ "blocks": [
+  {
+   "t": "image",
+   "src": "/assets/img/pages/img-6938-scaled-e1723532735288-4cef418702cf.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1600,
+   "h": 1541
+  },
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Acu-wave Comprehensive Relief Therapy",
+   "html": "Acu-wave Comprehensive Relief Therapy"
+  },
+  {
+   "t": "html",
+   "html": "<p>For relief of stubborn aches, joint discomforts and circulation issues.</p><p><strong>Try it now at $80 nett (30-min, U.P $158)</strong></p>",
+   "widget": "tablet__width-inherit"
+  },
+  {
+   "t": "html",
+   "html": "<a href=\"https://api.whatsapp.com/send?phone=6589499605&amp;text=Hi,%20I'd%20like%20to%20book%20Acu-Wave%20Relief%20Therapy​%20(website)%20\"> <span>Book here! </span> </a>",
+   "widget": "tablet__width-inherit"
+  },
+  {
+   "t": "html",
+   "html": "<p>Acu-Wave Comprehensive Relief offers a pathway to optimal health and wellness. Ideal for those dealing with chronic aches, deep discomfort, and soreness, Acu-Wave does more than just ease discomfort—it promotes harmony within the body’s internal systems and enhances the movement of muscles and joints.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Have this problem? Acu-Wave Relief Therapy is ideal for you!</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/joint-pain-2e0377b4d2ac.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 407,
+   "h": 407
+  },
+  {
+   "t": "html",
+   "html": "<p>Joint Pain</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/neck-hump-3bf3555bf084.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 405,
+   "h": 405
+  },
+  {
+   "t": "html",
+   "html": "<p>Neck Hump (Dowager’s Hump)</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/frozen-shoulder-a405b4aa4790.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 414,
+   "h": 414
+  },
+  {
+   "t": "html",
+   "html": "<p>Frozen Shoulder</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/bloated-9406dcc55034.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 404,
+   "h": 404
+  },
+  {
+   "t": "html",
+   "html": "<p>Bloated, Water Retention</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/leg-pain-b5e384fa3f25.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 415,
+   "h": 415
+  },
+  {
+   "t": "html",
+   "html": "<p>Sciatica, Lower Back Pain, Leg Pain &amp; Weakness</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/reproductive-health-4ca084f1e15b.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 397,
+   "h": 397
+  },
+  {
+   "t": "html",
+   "html": "<p>Menstrual Cramps &amp; Irregularities</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How Acu-Wave Works",
+   "html": "How Acu-Wave Works"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Microcurrent at Three Different Frequencies</strong><br/>Microcurrents are low-level electrical currents used in Acu-Wave therapy. Three distinct frequencies of microcurrents are applied to stimulate nerves and vibrate muscles, with their effects amplified when used along meridian channels.</p><p>The primary aim is to accelerate healing and recovery by restoring the body’s natural electrical signals, which may be weakened or disrupted due to injury, poor health, or lifestyle factors. Each frequency plays a unique role in the recovery process, working synergistically to alleviate discomfort and improve painful conditions.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>During the treatment, 3 specific frequencies are applied:</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Targeted Microcurrent Frequencies",
+   "html": "Targeted Microcurrent Frequencies"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/circulation-qt9k3szw3wtgo7tfnv0qq7ptj0yw-e9b4629a6f5a.jpg",
+   "alt": "circulation",
+   "caption": "",
+   "w": 60,
+   "h": 60
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/recovery-qt9k3oap5qn12609fazlvqwik3m289e-c058eff7a10f.jpg",
+   "alt": "recovery",
+   "caption": "",
+   "w": 60,
+   "h": 60
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/trigger-point-qt9k3hpttwe0sw9thq57wakaee-9620b5c21475.jpg",
+   "alt": "trigger point",
+   "caption": "",
+   "w": 60,
+   "h": 60
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Circulation Frequency 循环频率</strong><br/>Energizes your body by opening 5 major acupoints</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Recovery Frequency 复原频率</strong><br/>Reduces inflammation<br/>Adjusts the body’s electrical currents to promote healing</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Trigger Point Frequency 扳机点频率</strong><br/>Remove blockages<br/>Treats deeper layers for long term healing</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/circulation-qt9k3szw3wtgo7tfnv0qq7ptj0yw-e9b4629a6f5a.jpg",
+   "alt": "circulation",
+   "caption": "",
+   "w": 60,
+   "h": 60
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Circulation Frequency 循环频率</strong><br/>Energizes your body by opening 5 major acupoints</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/recovery-qt9k3oap5qn12609fazlvqwik3m289e-c058eff7a10f.jpg",
+   "alt": "recovery",
+   "caption": "",
+   "w": 60,
+   "h": 60
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Recovery Frequency 复原频率</strong><br/>Reduces inflammation<br/>Adjusts the body’s electrical currents to promote healing</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/trigger-point-qt9k3hpttwe0sw9thq57wakaee-9620b5c21475.jpg",
+   "alt": "trigger point",
+   "caption": "",
+   "w": 60,
+   "h": 60
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Trigger Point Frequency 扳机点频率</strong><br/>Remove blockages<br/>Treats deeper layers for long term healing</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>During the treatment, 3 specific frequencies are applied:</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Targeted Microcurrent Frequencies",
+   "html": "Targeted Microcurrent Frequencies"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/circulation-qt9k3szw3wtgo7tfnv0qq7ptj0yw-e9b4629a6f5a.jpg",
+   "alt": "circulation",
+   "caption": "",
+   "w": 60,
+   "h": 60
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Circulation Frequency 循环频率</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Energizing Your Body by Opening 5 Major Acupoints</strong><br/><em>This phase focuses on enhancing circulation.</em></p><p>By applying microcurrents to acupoints located along meridians, it activates and balances the flow of energy, or Qi. Good circulation is essential for overall well-being, ensuring that all cells receive the necessary oxygen and nutrients to function optimally. It also aids in the removal of cellular waste, particularly in clearing toxins from injured tissues. This approach combines the principles of Traditional Chinese Medicine (TCM) with modern microcurrent technology.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/recovery-qt9k3oap5qn12609fazlvqwik3m289e-c058eff7a10f.jpg",
+   "alt": "recovery",
+   "caption": "",
+   "w": 60,
+   "h": 60
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Recovery Frequency 复原频率</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Boosting Your Body’s Healing Factor</strong> <br/><em>This phase focuses on restoration.</em></p><p>Various studies have shown that microcurrent therapy enhances the production of adenosine triphosphate (ATP), the primary energy carrier in cells. Increased ATP levels provide the energy needed for cells to repair and regenerate, speeding up the healing process. Microcurrent therapy can stimulate the production of collagen and elastin, which aids in repairing scar tissues and injured areas<br/>By regulating your body’s electrical currents, ACU-WAVE activates your body’s natural repair and regeneration, reduces inflammation, and speeds up the recovery of damaged tissues, enhancing overall well-being and promoting health.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/trigger-point-qt9k3hpttwe0sw9thq57wakaee-9620b5c21475.jpg",
+   "alt": "trigger point",
+   "caption": "",
+   "w": 60,
+   "h": 60
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Trigger Point Frequency 扳机点频率</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Targeting Deep, Stubborn Pain Points</strong><br/><em>This phase addresses trigger points, the tight, hyperirritable spots within muscles or fascia that cause pain and discomfort.</em></p><p>Acu-Wave Therapy helps release these tight muscle fibers using microcurrents, allowing the muscle to relax and release. Trigger points, often referred to as “muscle knots,” develop from overuse, strain, or injury, causing persistent muscle tension, pain, and sensitivity. Sometimes, trigger points cause referred pain, meaning the pain or discomfort is felt in a different area of the body. For instance, a trigger point in the upper back might cause pain in the shoulder or arm.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Circulation Frequency- Energizing Your Body by Opening 5 Major Acupoints</strong><br/><em>This phase focuses on enhancing circulation.</em></p><p>By applying microcurrents to acupoints located along meridians, it activates and balances the flow of energy, or Qi. Good circulation is essential for overall well-being, ensuring that all cells receive the necessary oxygen and nutrients to function optimally. It also aids in the removal of cellular waste, particularly in clearing toxins from injured tissues. This approach combines the principles of Traditional Chinese Medicine (TCM) with modern microcurrent technology.</p><p><strong>Recovery Frequency – Boosting Your Body’s Healing Factor</strong> <br/><em>This phase focuses on restoration.</em></p><p>Various studies have shown that microcurrent therapy enhances the production of adenosine triphosphate (ATP), the primary energy carrier in cells. Increased ATP levels provide the energy needed for cells to repair and regenerate, speeding up the healing process. Microcurrent therapy can stimulate the production of collagen and elastin, which aids in repairing scar tissues and injured areas<br/>By regulating your body’s electrical currents, ACU-WAVE activates your body’s natural repair and regeneration, reduces inflammation, and speeds up the recovery of damaged tissues, enhancing overall well-being and promoting health.</p><p><strong>Trigger Point Frequency – Targeting Deep, Stubborn Pain Points</strong><br/><em>This phase addresses trigger points, the tight, hyperirritable spots within muscles or fascia that cause pain and discomfort.</em></p><p>Acu-Wave Therapy helps release these tight muscle fibers using microcurrents, allowing the muscle to relax and release. Trigger points, often referred to as “muscle knots,” develop from overuse, strain, or injury, causing persistent muscle tension, pain, and sensitivity. Sometimes, trigger points cause referred pain, meaning the pain or discomfort is felt in a different area of the body. For instance, a trigger point in the upper back might cause pain in the shoulder or arm.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Why Is This Treatment So Good?",
+   "html": "Why Is This Treatment So Good?"
+  },
+  {
+   "t": "video",
+   "url": "https://youtu.be/-LD_fu-wLsk"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Dowager’s Hump</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Problem:</strong> For years, Cecilia struggled with neck and back pain, leading to the development of a Dowager’s Hump. The discomfort made it hard for her to walk straight and her posture worsened.</p><p><strong>Result:</strong> After the first session, she felt immediate relief from the tension in her neck and shoulders. By the <strong><em>fifth session</em></strong>, her neck hump had visibly reduced, she could stand straight again, and the pain that once controlled her life was completely gone, leaving her with significantly improved posture.</p>"
+  },
+  {
+   "t": "video",
+   "url": "https://youtu.be/rP6Z6W5Q350"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Frozen Shoulder</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Problem:</strong> Diana had been dealing with shoulder pain for months and she couldn’t lift her arm without intense discomfort. Simple tasks like reaching for a shelf or putting on a jacket became impossible. </p><p><strong>Result:</strong> Acu-Wave’s gentle vibrations targeted key pressure points around her shoulder, relaxing the muscles and improving blood flow. <em><strong>Immediate results after 1 session</strong></em>, the stiffness eased, allowing her to raise her arm. She could even move her hand behind her back and lift it upwards without the searing pain she had endured for months.</p>"
+  },
+  {
+   "t": "video",
+   "url": "https://youtu.be/fPfufVZTOJU"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Slimming</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Problem:</strong> Amy had been struggling with constant bloating and discomfort around her abdomen. Her waistline seemed stuck, and the bloated feeling just wouldn’t go away. </p><p><strong>Result:</strong> Acu-Wave targeted acupoints with gentle wave-like vibrations to reduce bloating, slim the waistline, stimulate the lymphatic system and enhance detoxification. <strong><em>Noticeable results after 1 session</em></strong>, the bloatedness had significantly decreased, her waistline shrunk from 91 cm to 87 cm, and excess water retention was flushed out.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Discover how this advanced treatment can target the root cause of your symptoms, helping you achieve long-lasting relief and visible results. Ready to start your journey toward a healthier, more comfortable you? Sign up below and book your first session today!</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Sign Up to Enjoy First Trial Acu-Wave Relief Therapy at $80 nett (30-min, U.P. $158)",
+   "html": "Sign Up to Enjoy First Trial Acu-Wave Relief Therapy at $80 nett (30-min, U.P. $158)"
+  }
+ ]
+}

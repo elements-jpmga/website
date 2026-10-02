@@ -1,0 +1,129 @@
+{
+ "url": "https://elements.com.sg/services/wellness/ice-bath-therapy/",
+ "path": "/services/wellness/ice-bath-therapy/",
+ "title": "Ice Bath Therapy Recovery Ritual",
+ "description": "Enhance your recovery with the perfect combo of ice bath therapy and massage. We take your wellness to a higher level at our spa.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Ice Bath & Warm Soak",
+   "html": "Ice Bath & Warm Soak"
+  },
+  {
+   "t": "html",
+   "html": "<p>Contrast Therapy for Recovery</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "What is Contrast Therapy?",
+   "html": "What is Contrast Therapy?"
+  },
+  {
+   "t": "html",
+   "html": "<p>Contrast Bath Therapy—also known as hot and cold immersion therapy or ice bath therapy—is a wellness treatment that alternates between warm and cold water to awaken circulation, reduce inflammation, and support recovery for your body. At Elements Wellness, we offer this powerful therapy in a serene, spa-like setting designed to help you recover faster, and energize you to perform better!</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Why Ice Baths and Massage work so well together",
+   "html": "Why Ice Baths and Massage work so well together"
+  },
+  {
+   "t": "html",
+   "html": "<p>Combining an ice bath with massage therapy elevates your wellness experience by boosting the benefits of both. The ice bath helps stimulate blood flow through vasoconstriction (narrowing of blood vessels) and vasodilation (widening of blood vessels), while massage therapy further promotes muscle relaxation, reduces inflammation, and speeds up recovery. Together, they work synergistically to enhance circulation, reduce tension, and provide deeper healing for your body.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Spa Experience Highlights",
+   "html": "Spa Experience Highlights"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>🌿 Private Room for Comfort &amp; Privacy</strong><br/>Enjoy your session in a tranquil, private space—perfect for full relaxation.</p><p><strong>💑 Couples Welcome</strong><br/>Share the experience with your partner. Our contrast bath setup accommodates two, making it a unique and refreshing bonding ritual.</p><p><strong>💆 Perfect Pre-Massage Ritual</strong><br/>The cold plunge naturally tones your muscles and sharpens circulation—making it ideal to follow up with a massage. Your body will be primed for deeper, more effective results.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/contrast-therapy-e8ad81cb7762.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1067,
+   "h": 1600
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Contrast Therapy Sessions",
+   "html": "Contrast Therapy Sessions"
+  },
+  {
+   "t": "html",
+   "html": "<p>Contrast Hot / Cold Recovery Bath (45-min)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>1 pax, $98 nett</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>2 pax, $148 nett</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Chill &amp; Heal Ritual Promotion</strong><br/>• Warm Bath &amp; Cold Plunge (45-min)<br/>• Full Body Massage (60-min)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Weekdays:<br/>1 pax, $158 nett</p><p>Weekends:<br/>1 pax, $168 nett</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Weekdays:<br/>2 pax, $298 nett</p> <p>Weekends:<br/>2 pax, $318 nett</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How does Cold Plunging (Ice Bath) work",
+   "html": "How does Cold Plunging (Ice Bath) work"
+  },
+  {
+   "t": "html",
+   "html": "<p>You’ll immerse your body in a warm bath that encourages muscle relaxation and increases blood flow. This is followed by a refreshing ice bath or cold plunge, which reduces inflammation and invigorates the senses. The alternating temperatures act like a natural pump for your circulatory system, flushing out toxins, reducing soreness, and flooding your body with fresh, oxygenated blood.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Benefits of Contrast Bath Therapy",
+   "html": "Benefits of Contrast Bath Therapy"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li><p>Relieves muscle tension, joint pain, and post-exercise soreness</p></li><li><p>Reduces inflammation and supports injury recovery</p></li><li><p>Boosts circulation and lymphatic flow</p></li></ul>"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li><p>Recharges energy and mental clarity</p></li><li><p>Strengthens stress response and immune resilience</p></li></ul>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Book Your Session",
+   "html": "Book Your Session"
+  },
+  {
+   "t": "html",
+   "html": "<p>Contrast Bath Therapy is available only at 313@Somerset branch</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Recover, Refresh, and Reconnect.</strong><br/>Whether you’re winding down solo or looking for a shared wellness ritual, our Contrast Bath &amp; Ice Bath Therapy in a private room is a powerful way to support your body and mind.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Book now",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi,%20I'd%20like%20to%20book%20Chill%20and%20Heal%20Ritual%20(website)"
+  }
+ ]
+}

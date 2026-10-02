@@ -1,0 +1,120 @@
+{
+ "url": "https://elements.com.sg/services/facial/aquaglow/",
+ "path": "/services/facial/aquaglow/",
+ "title": "AquaGlow Facial in Singapore",
+ "description": "Experience the AquaGlow Facial: a professional 60-minute manual extraction and hydration treatment. Clear pores, balance moisture, and reset your skin with expert therapist-led care. Book your monthly skin reset today.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "AquaGlow Facial",
+   "html": "AquaGlow Facial"
+  },
+  {
+   "t": "html",
+   "html": "<p>Professional Cleansing and Hydration<br/></p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Sign Up To Enjoy Your First Trial At $69 nett (60-min, U.P. $218) | T&C applies",
+   "html": "Sign Up To Enjoy Your First Trial At $69 nett (60-min, U.P. $218) | T&C applies"
+  },
+  {
+   "t": "html",
+   "html": "<p>Pre-registration and advance booking required to enjoy this promotion.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>The AquaGlow Facial is our classic hands-on treatment, combining thorough cleansing with gentle manual extraction and nourishing hydration. We provide a comprehensive “skin reset” that honours the art of traditional, therapist-led skincare.<br/></p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/aquaglow-aed33f880b96.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1200,
+   "h": 1600
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "About the AquaGlow Facial",
+   "html": "About the AquaGlow Facial"
+  },
+  {
+   "t": "html",
+   "html": "<p>The AquaGlow Facial is a classic, hands-on treatment centred on proper cleansing, careful manual extraction, and hydration support. It is performed with structured technique and attention to detail — not reliant on machines or aggressive resurfacing.</p><p><br/>Designed for regular maintenance, this treatment helps keep pores clear, hydration balanced, and skin comfortably refreshed.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Key Benefits",
+   "html": "Key Benefits"
+  },
+  {
+   "t": "html",
+   "html": "<p>✔️ Clearer pores and reduced congestion<br/>✔️ Balanced hydration<br/>✔️ A fresher, healthier-looking complexion<br/>✔️ Relaxation through facial massage</p><p><em>Consistent care supports stronger, more stable skin over time.</em></p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Ideal For",
+   "html": "Ideal For"
+  },
+  {
+   "t": "html",
+   "html": "<p>✔️ <strong>First-time facial clients</strong>: A perfect, non-intimidating introduction to professional skincare.<br/>✔️ <strong>Most skin types requiring regular maintenance.</strong><br/>✔️ <strong>Skin needing a professional cleanse and hydration reset.<br/></strong>✔️ <strong>Clients who prefer hands-on treatments over machine-based facials.</strong></p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "The AquaGlow Protocol: A 60-Minute Skin Reset",
+   "html": "The AquaGlow Protocol: <br/>A 60-Minute Skin Reset"
+  },
+  {
+   "t": "html",
+   "html": "<p>Our therapists follow a high-touch, systematic approach:</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>1. Cleanse &amp; Prepare</strong></p><p>Double cleansing and gentle exfoliation melt away daily pollutants and soften the skin’s surface for safe extraction.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>2. Steam &amp; Professional Extraction</strong></p><p>Using controlled steam to relax the pores, our therapists perform precise manual extractions to clear blackheads and stubborn congestion.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>3. Botanical Collagen Infusion</strong></p><p>We saturate the skin with a high-potency botanical collagen to soothe post-extraction redness and lock in moisture.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>4. Calming Massage &amp; Mask</strong></p><p>A relaxing facial massage promotes circulation, followed by a calming mask and hydrating finish to leave skin comfortable and refreshed.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Frequently Asked Questions",
+   "html": "Frequently Asked Questions"
+  },
+  {
+   "t": "html",
+   "html": "<ul> <li> <i></i> <h3>Will I be red after the treatment?</h3> <p>Because we prioritise manual precision, any mild redness from extraction typically settles within a few hours, leaving behind a noticeably clearer complexion. </p> </li> <li> <i></i> <h3>Does it hurt?</h3> <p>We use steam and softening enzymes to make extractions as comfortable as possible. While you may feel slight pressure on congested areas, the overall experience remains deeply relaxing.</p> </li> <li> <i></i> <h3>How often should I book?</h3> <p>To keep pores clear and hydration levels optimal, we recommend an AquaGlow reset every 4 weeks.</p> </li> </ul>",
+   "widget": "eael-feature-list"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ready for a Proper Skin Reset?</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Clear pores. Balanced hydration. Relaxed, refreshed skin.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Book your appointment now!",
+   "href": "#book-appointment"
+  }
+ ]
+}

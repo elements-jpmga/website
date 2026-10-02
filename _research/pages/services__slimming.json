@@ -1,0 +1,48 @@
+{
+ "url": "https://elements.com.sg/services/slimming/",
+ "path": "/services/slimming/",
+ "title": "Slimming Treatment in Singapore",
+ "description": "Experience cutting-edge techniques and personalized slimming treatments to achieve your wellness goals. Make your appointment today!",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "SLIMMING",
+   "html": "SLIMMING"
+  },
+  {
+   "t": "html",
+   "html": "TCM Slimming Therapy<i></i><i></i><p>Helps to contour target areas and detox by Flushing along Meridian channels.<br/><a href=\"/tcm-slimming-therapy/\"><b>Learn More</b></a></p> TCM Tummy Trim<i></i><i></i><p>Based on TCM principles to improve digestion and fire up your metabolism for effective, natural, and long-lasting weight management and wellness.<br/><a href=\"/tcm-tummy-trim/\"><b>Learn More</b></a></p> INDIBA® Slimming<i></i><i></i><p>INDIBA<sup>®</sup> slims targeted areas by shrinking fat cells, activating metabolism and tightening the skin.<br/><a href=\"/indiba-slimming/\"><b>Learn More</b></a></p> 3D Cavitation<i></i><i></i><p>Uses ultrasound cavitation technology to disrupt fat cells body sculpting.</p><p><a href=\"/3d-cavitation/\"><b>Learn More</b></a></p> 3D Fat Freeze<i></i><i></i><p>The advanced 3D Lipo Med Cryolipolysis targets fat cells to destroy them through a targeted super-cooling process.</p><p><a href=\"/3d-fat-freeze/\"><b>Learn More</b></a></p>",
+   "widget": "eael-adv-accordion"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Reviews",
+   "html": "Reviews"
+  },
+  {
+   "t": "gallery",
+   "images": [
+    {
+     "src": "/assets/img/pages/screenshot-2022-09-20-at-2-50-06-pm-side-14279e09b256.jpg",
+     "alt": "Elements Wellness Review - Melissa",
+     "w": 1594,
+     "h": 862
+    },
+    {
+     "src": "/assets/img/pages/screenshot-2022-09-20-at-2-55-11-pm-9d1e65555b9c.jpg",
+     "alt": "Elements Wellness Review - Jacqueline",
+     "w": 600,
+     "h": 414
+    },
+    {
+     "src": "/assets/img/pages/screenshot-2022-09-20-at-2-55-00-pm-976570c99eab.jpg",
+     "alt": "Elements Wellness Review - Cassie",
+     "w": 600,
+     "h": 315
+    }
+   ]
+  }
+ ]
+}

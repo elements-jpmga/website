@@ -1,0 +1,14 @@
+{
+ "url": "https://elements.com.sg/gift-vouchers/",
+ "path": "/gift-vouchers/",
+ "title": "Gift Vouchers",
+ "description": "Choose from a selection of gift vouchers, perfect for any special occasion for your loved ones. Purchase a gift voucher and let them have a relaxing day at Elements Wellness today!",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Gift Vouchers",
+   "html": "Gift Vouchers"
+  }
+ ]
+}

@@ -1,0 +1,47 @@
+{
+ "url": "https://elements.com.sg/maybank-yearlong/",
+ "path": "/maybank-yearlong/",
+ "title": "Maybank Yearlong",
+ "description": "Treat yourself to a series of luxurious spa experiences with enticing discounts and perks for Maybank cardholders, promotions available all year! Start reserving your slots today!",
+ "blocks": [
+  {
+   "t": "image",
+   "src": "/assets/img/pages/si-bb6a8c647529.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1280,
+   "h": 400
+  },
+  {
+   "t": "html",
+   "html": "<p>To make an appointment via call / WhatsApp, select your preferred outlet. (This is usually faster.)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<h5><strong><a href=\"https://api.whatsapp.com/send?phone=6589382878&amp;text=Hi,+I+would+like+to+make+an+appointment+(website)\">Elements – ION</a></strong></h5><p>Tel: 6738 3788 / WA: 8938 2878</p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p><a href=\"https://api.whatsapp.com/send?phone=6593578183&amp;text=Hi,+I+would+like+to+make+an+appointment+(website)\"><strong>Elements – Centrepoint</strong></a></p><p>Tel: 6737 8488 / WA: 9357 8183</p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p><a href=\"https://api.whatsapp.com/send?phone=6596696460&amp;text=Hi,+I+would+like+to+make+an+appointment+(website)\"><strong>Elements – 313</strong></a></p><p>Tel: 6636 8878 / WA: 8875 1677</p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p>Welcome! </p><p>Here is where you make your appointment<strong>.</strong></p><p><strong>Please choose one of the following spa treats:</strong><br/><strong>Restorative Body Massage @$59 nett (60-min, UP $118)</strong><br/><strong>OR</strong><br/><strong>HydroLux Facial @$68 nett (60-min, UP $228)</strong></p><p><strong>Validity: 1 January 2025 – 31 December 2025</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Terms &amp; Conditions</strong><br/>Valid till 31 December 2025.<br/>· Valid for customers aged 21 years and above, Singaporeans, PRs, EP and SP Holders, who have not visited Elements Wellness in the last 18 months. Not valid for package holders.<br/>· Surcharge on massage services of S$10nett per pax applies for weekend and PH appointments.<br/>· Optional top-up of S$21 for couple massage treatment room, subject to availability upon request.<br/>· Optional top-up for client doing service: S$108 nett per couple to enjoy a private Jacuzzi session (40-min, Elements 313) / to enjoy a private Koyamaki Onsen Therapy (40-min, Elements Centrepoint).<br/>· Prices are inclusive of 9% GST.<br/>· Please quote ‘Maybank’ promotion when making an appointment subject to availability.<br/>· Not valid with other promotions, privileges, discount cards and promotional vouchers, whichever.<br/>· Elements Wellness Group reserves the right to amend any of the terms and conditions without prior notice.<br/>· Maybank and Elements Wellness Group make no warranty or representation as to the quality, merchantability or fitness for purpose of the goods and/or services. Maybank and Elements Wellness Group shall not at any time be liable for any loss, injury, claim or damage suffered or incurred as a result of the use of the goods and/or services provided.<br/>· Maybank Terms and Conditions for the relevant Maybank Credit or Debit Card and Maybank TREATS General Terms and Conditions apply</p>"
+  },
+  {
+   "t": "form",
+   "note": ""
+  }
+ ]
+}

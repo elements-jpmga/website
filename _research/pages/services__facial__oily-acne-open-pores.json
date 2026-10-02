@@ -1,0 +1,279 @@
+{
+ "url": "https://elements.com.sg/services/facial/oily-acne-open-pores/",
+ "path": "/services/facial/oily-acne-open-pores/",
+ "title": "Facials for Acne, Oily Skin",
+ "description": "Clear acne, control oil, and refine pores with targeted facials at Elements Wellness. Real results, no downtime. Book your first session today.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Acne/Oily Skin Facials",
+   "html": "Acne/Oily Skin Facials"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/facials-for-acne-471ba17ad644.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1500,
+   "h": 900
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Clear Skin Starts Here –Facials That Deliver Real Results for Acne, Oily Skin & Open Pores",
+   "html": "Clear Skin Starts Here –Facials That Deliver Real Results for Acne, Oily Skin & Open Pores"
+  },
+  {
+   "t": "html",
+   "html": "<p>At Elements Wellness, we understand that skin concerns like acne, excessive oiliness, and open pores can affect your confidence. Our customized facial treatments are designed to gently purify, balance, and refine your skin—without harsh methods or downtime.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Why Choose Elements Wellness for Your Skin Concerns?",
+   "html": "Why Choose Elements Wellness for Your Skin Concerns?"
+  },
+  {
+   "t": "html",
+   "html": "<p>With over 24 years of experience in holistic skincare, we combine advanced technology and time-tested techniques to deliver real results with a gentle touch. Whether you’re experiencing active breakouts, persistent shine, or enlarged pores, our professional therapists will tailor a treatment that works for your unique skin.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Real Solutions for Acne-Prone Skin",
+   "html": "Real Solutions for Acne-Prone Skin"
+  },
+  {
+   "t": "html",
+   "html": "<p>Breakouts can be frustrating—but they’re not permanent. Our acne-clearing facials are designed to calm active acne, speed up healing, and prevent future flare-ups.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Control Oily Skin Without Over-Drying",
+   "html": "Control Oily Skin Without Over-Drying"
+  },
+  {
+   "t": "html",
+   "html": "<p>Shiny, greasy skin doesn’t have to be your everyday struggle. Our sebum-balancing facials help regulate oil production and clear out buildup—without stripping your skin.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Minimize Open Pores for a Smooth, Even Look",
+   "html": "Minimize Open Pores for a Smooth, Even Look"
+  },
+  {
+   "t": "html",
+   "html": "<p>Large pores can make skin appear rough and aged. Our pore-refining treatments help tighten and smoothen skin, restoring a more youthful, polished look.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/best-men-facials-singapore-benefits-1050cb114a0b.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 700,
+   "h": 467
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Men Facial",
+   "html": "<a href=\"/services/facial/men_facial/\">Men Facial</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>The ultimate men’s facial experience designed specifically for male skin, targeting oiliness, rough complexion and aging concerns.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/men_facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/hydrolux-ba893f821c4c.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1228,
+   "h": 835
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "HydroLux Facial (Defense)",
+   "html": "<a href=\"/services/facial/hydrolux-facial/\">HydroLux Facial (Defense)</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Includes deep pore cleansing with Nano Oxygen Mist to calm inflammation, fight acne bacteria, and heal without drying the skin.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/hydrolux-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/black-magnelight-facial-a84babbfed14.jpg",
+   "alt": "Girl with black mask lies on the table in spa saloon",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Purifying Black Magnelight Facial",
+   "html": "<a href=\"/services/facial/purifying-black-magnelight-facial/\">Purifying Black Magnelight Facial</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Uses ionized minerals to draw out impurities, while depositing nutrients into your skin.<br/><br/></p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/purifying-black-magnelight-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/dermo-peel-renewal-76182b17e252.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1500,
+   "h": 900
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Dermo Peel Facial",
+   "html": "<a href=\"/services/facial/dermo-peel-facial/\">Dermo Peel Facial</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>An advanced skin resurfacing treatment designed to refine skin texture, target signs of ageing, deep wrinkles and sun damage to reveal a brighter, smoother complexion.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/dermo-peel-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/49277434-xxl-1-07f5793bfc24.jpg",
+   "alt": "Skin Care. Face Beauty Treatment. IPL. Photo Facial Therapy. Ant",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "IPL Facial",
+   "html": "<a href=\"/services/facial/ipl-facial/\">IPL Facial</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Uses light energy to stimulate new collagen to form in the skin to fix many skin issues.<br/><br/></p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/ipl-facial/"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Why Choose Elements Wellness?",
+   "html": "Why Choose Elements Wellness?"
+  },
+  {
+   "t": "html",
+   "html": "<p>✔ Tailored Treatments – Customized to your unique skin type<br/>✔ Expert Therapists – Trained in results-driven, gentle techniques<br/>✔ Safe, Effective Ingredients – Proven to work without irritation<br/>✔ Visible Results – Most clients see improvements in just a few sessions</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "First-Time Clients' Trial Rates",
+   "html": "First-Time Clients' Trial Rates"
+  },
+  {
+   "t": "html",
+   "html": "<p>✨ Includes a complimentary skin consultation<br/>✨ Valid at all Elements Wellness locations<br/>✨ New clients only – limited slots available</p>"
+  },
+  {
+   "t": "button",
+   "text": "Book an appointment",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Book%20Facial%20At%20Elements%20Wellness"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Clear Skin, Healthy Barrier: Treating Acne, Oily Skin & Open Pores with Care",
+   "html": "Clear Skin, Healthy Barrier: Treating Acne, Oily Skin & Open Pores with Care"
+  },
+  {
+   "t": "html",
+   "html": "<p>At Elements Wellness, we believe that clear, glowing skin doesn’t mean compromising the skin’s natural barrier. While we effectively treat acne, control excess oil, and minimize open pores, our focus is on restoring the skin’s health—not disrupting its delicate balance.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Acne: Clearing Breakouts Without Compromising Your Skin",
+   "html": "Acne: Clearing Breakouts Without Compromising Your Skin"
+  },
+  {
+   "t": "html",
+   "html": "<p>Acne is often triggered by a mix of hormonal changes, clogged pores, and excess oil production. When pores become clogged with sebum (oil) and dead skin cells, it creates an ideal environment for bacteria to grow, leading to pimples and breakouts. While our facials are designed to clear acne and reduce breakouts, we take special care to respect your skin’s natural barrier. Our <a href=\"/services/facial/hydrolux-facial/\">HydroLux Acne Defense Facial</a> uses anti-inflammatory ingredients and vortex infusion technology that effectively cleanses and exfoliates to target the root causes of acne, while maintaining a healthy pH balance and protecting the skin from irritation.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Oily Skin: Balancing Oil Production for a Fresh, Healthy Look",
+   "html": "Oily Skin: Balancing Oil Production for a Fresh, Healthy Look"
+  },
+  {
+   "t": "html",
+   "html": "<p>While oily skin can help protect against environmental stressors, excessive oil production can lead to clogged pores and an uneven, shiny complexion. Oily skin can feel frustrating, but stripping it away completely can lead to dryness and irritation. Our approach is to clear excess oil without over-drying the skin. With our <a href=\"/services/facial/purifying-black-magnelight-facial/\">Black Magnelight Facial</a>, we focus on balancing oil production while nourishing and restoring your skin’s natural moisture levels, leaving you with a matte, yet healthy complexion.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Open Pores: Refining Skin Without Disrupting Its Balance",
+   "html": "Open Pores: Refining Skin Without Disrupting Its Balance"
+  },
+  {
+   "t": "html",
+   "html": "<p>Open or enlarged pores occur when skin loses elasticity, often due to aging, sun exposure, or excess oil production. Our IPL Facial works to minimize open pores by tightening and refining the skin while controlling sebum levels. We do this gently, ensuring that your skin’s natural barrier remains intact and your pH balance is maintained for long-lasting, glowing results.<br/>Our goal is simple: to restore your skin’s natural balance, leaving it healthy, glowing, and protected. Whether you’re dealing with acne, oily skin, or enlarged pores, we approach each treatment with care to restore your skin to its healthiest state, respecting its delicate barrier every step of the way.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Frequently Asked Questions on Acne or Oily Skin Facials",
+   "html": "Frequently Asked Questions on Acne or Oily Skin Facials"
+  },
+  {
+   "t": "faq",
+   "items": [
+    {
+     "q": "Will extractions make my acne worse or leave scars?",
+     "a": "<p>When done professionally, extractions help reduce clogged pores and prevent breakouts. Our therapists are trained to perform gentle extractions, minimising trauma to the skin and helping it heal faster — no harsh squeezing involved.</p>"
+    },
+    {
+     "q": "Can this facial help reduce acne scars or post-inflammatory marks?",
+     "a": "<p>This facial primarily targets active acne and excess oil, but by improving skin texture and reducing inflammation, it can support skin recovery. For deep scarring, we may recommend pairing this with LED light therapy or targeted treatments — which we’ll advise on during your consultation.</p>"
+    },
+    {
+     "q": "How often should I come for an acne or oily skin facial?",
+     "a": "<p>For oily or acne-prone skin, we usually recommend coming in every 2 to 4 weeks initially, depending on your skin condition. Once things stabilise, you can switch to maintenance facials every 4–6 weeks.</p>"
+    },
+    {
+     "q": "Will my pores really shrink after this facial?",
+     "a": "<p>Pores don’t physically shrink, but we can minimise their appearance by clearing buildup, refining skin texture, and improving elasticity. With consistent care, pores look smaller and less visible over time.</p>"
+    }
+   ]
+  }
+ ]
+}

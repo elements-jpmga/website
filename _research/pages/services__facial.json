@@ -1,0 +1,139 @@
+{
+ "url": "https://elements.com.sg/services/facial/",
+ "path": "/services/facial/",
+ "title": "Facial Treatment in Singapore",
+ "description": "Elements Wellness' affordable facial treatments are tailored to nourish and restore your natural radiance. Contact us today to schedule an appointment!",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "FACIAL",
+   "html": "FACIAL"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Sign Up to enjoy your first trial at $69 nett (60-min, U.P. $118) | T&C applies",
+   "html": "Sign Up to enjoy your first trial at $69 nett (60-min, U.P. $118) | T&C applies"
+  },
+  {
+   "t": "form",
+   "note": ""
+  },
+  {
+   "t": "html",
+   "html": "<p>Embark on a transformative journey as our expert aestheticians tailor each facial treatment to your unique skin needs. Using a blend of natural, nourishing ingredients and cutting-edge technology, our facials are designed to purify, hydrate, and revitalize your skin from within. Whether you seek to combat fine lines, get rid of blemishes, enjoy a <a href=\"/skin-brightening/\">skin-brightening facial</a> or simply unwind in serene bliss, our curated facial menu offers a range of options to suit all skin types. Unveil the true beauty that lies beneath, as we restore your skin’s natural glow and leave you feeling refreshed and utterly pampered. Step into a world of tranquility at Elements Wellness and let your skin bask in the luminous glow it deserves.</p>"
+  },
+  {
+   "t": "html",
+   "html": "Glutathione HA+ Ultrasound Facial<i></i><i></i><p>This facial uses ultrasound to infuse the Glutathione Power Dose Ampoule for brighter, smoother and more hydrated skin.</p><p><a href=\"/ha-glutathione-power-dose-facial/\"><b>Learn More</b></a></p> Needle-less Rejuran® Facial<i></i><i></i><p>Infuses the next generation skin healer – Rejuran c-PDRN® into skin cells for dramatic results. </p><p><a href=\"/needleless-rejuran-facial/\"><b>Learn More</b></a></p> ACE Face Shaper Treatment<i></i><i></i><p>Using the latest E-poration technology and LED light therapy to deliver antioxidants and growth factors deep into skin cells for healthy and plump complexion.</p><p><a href=\"/ace-face-shaper/\"><b>Learn More</b></a></p> LPG Mobilift Facial<i></i><i></i><p>100% natural mechanical stimulation of dormant skin cells reverse signs of aging. </p><p><a href=\"/lpg-mobilift-facial/\"><b>Learn More</b></a></p> INDIBA® Proionic Gravity Defy Facial<i></i><i></i><p>A facial that uses medical-grade radiofrequency technology that firms skin and improves skin appearance and health.</p><p><a href=\"/indiba-proionic-gravity-defy-facial/\"><b>Learn More</b></a></p> 24K Pure Gold Facial<i></i><i></i><p>Uses pure gold to boost collagen and cell renewal. Gold has been used by royalty for centuries for anti-aging purposes.</p><p><a href=\"/24k-pure-gold-facial/\"><b>Learn More</b></a></p> Purifying Black Magnelight Facial<i></i><i></i><p>This facial uses ionized minerals to draw out impurities, while depositing nutrients into your skin.</p><p><a href=\"/purifying-black-magnelight-facial/\"><b>Learn More</b></a></p> Face Meridian Restorative Treatment<i></i><i></i><p>This facial stimulates meridians in the face to release blockages for a facelift and radiant skin.</p><p><a href=\"/face-meridian-restorative-treatment/\"><b>Learn More</b></a></p> IPL Facial (Intense Pulsed Light)<i></i><i></i><p>Uses light energy to improve the appearance of your skin and reverse signs of aging and damage.</p><p><a href=\"/ipl-facial-intense-pulsed-light/\"><b>Learn More</b></a></p> Biocell Stem Cell Science Face Treatment<i></i><i></i><p>Uses Microspears to bring about skin peeling while delivering premium active ingredients for healthy skin renewal. Improves pigmentation, wrinkles, elasticity, acne, and pore size.</p><p><a href=\"/biocell-stem-cell-science-face-treatment/\"><b>Learn More</b></a></p> Eye Bojin Treatment<i></i><i></i><p>Designed to bring deep relaxation and relieve eye strain caused by screen use.</p><p><a href=\"/eye-bojin-treatment/\"><b>Learn More</b></a></p>",
+   "widget": "eael-adv-accordion"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Reviews",
+   "html": "Reviews"
+  },
+  {
+   "t": "gallery",
+   "images": [
+    {
+     "src": "/assets/img/pages/screenshot-2022-06-28-at-11-49-03-am-963481e84299.jpg",
+     "alt": "Elements Wellness Review - Evadne 1",
+     "w": 1352,
+     "h": 276
+    },
+    {
+     "src": "/assets/img/pages/untitled-7-b1f29be32c3d.jpg",
+     "alt": "Elements Wellness Review - Alsyah",
+     "w": 600,
+     "h": 200
+    },
+    {
+     "src": "/assets/img/pages/untitled-6-c611959e4e7b.jpg",
+     "alt": "Elements Wellness Review - Marilou",
+     "w": 600,
+     "h": 200
+    },
+    {
+     "src": "/assets/img/pages/untitled-4-8e44582204d5.jpg",
+     "alt": "Elements Wellness Review - Thian",
+     "w": 600,
+     "h": 200
+    },
+    {
+     "src": "/assets/img/pages/untitled-5-ff8b87211cca.jpg",
+     "alt": "Elements Wellness Review - Yining",
+     "w": 600,
+     "h": 200
+    },
+    {
+     "src": "/assets/img/pages/untitled-1-971dc5ffce9f.jpg",
+     "alt": "Elements Wellness Review - Ranjini",
+     "w": 600,
+     "h": 200
+    },
+    {
+     "src": "/assets/img/pages/untitled-2-049bbf462f5c.jpg",
+     "alt": "Elements Wellness Review - AJ",
+     "w": 600,
+     "h": 200
+    },
+    {
+     "src": "/assets/img/pages/untitled-10-573b8c498121.jpg",
+     "alt": "Elements Wellness Review - Jayne",
+     "w": 600,
+     "h": 200
+    },
+    {
+     "src": "/assets/img/pages/reviews-9d7d843889cf.jpg",
+     "alt": "Elements Wellness Review - Chloe",
+     "w": 600,
+     "h": 200
+    },
+    {
+     "src": "/assets/img/pages/untitled-8-85e3cc684c34.jpg",
+     "alt": "Elements Wellness Review - Maria",
+     "w": 600,
+     "h": 200
+    },
+    {
+     "src": "/assets/img/pages/untitled-9-77c19f634b12.jpg",
+     "alt": "Elements Wellness Review - Xiuyi",
+     "w": 600,
+     "h": 200
+    }
+   ]
+  },
+  {
+   "t": "html",
+   "html": "<h2>Facial Treatment</h2><p>Professional facials offer you more than just good skincare, it can also contribute to your overall senses of well-being. Facials benefit your skin’s health, appearance, which can boost your confidence and the facial experience offers “me-time”, relaxation, and a great chance to recharge. If you have specific skin concerns, a well-trained beautician can help advise and provide treatment options to treat skin problems in non-invasive ways. Regular facials help maintain skin health, prevent serious issues, and give your skin constant radiance. Setting aside time for a facial appointment grants you dedicated moments for self, which is important for overall wellness</p><h3>What is a facial service?</h3><p>A facial is a professional skincare treatment with protocols aimed at improving the health and appearance of the skin on the face. A standard facial involves deep cleansing, exfoliation, extraction, a massage and mask, and a final application of skin protection. There are facials that are more advanced in technique or technology, and they are tailored to focus on treating specific issues, like <a href=\"/anti-aging/\">anti-aging</a>, <a href=\"/skin-rejuvenation-treatment-singapore/\">skin rejuvenation</a>, wrinkles, saggy skin, pigmentation, acne, oiliness, and others. Choosing between a standard facial and an advanced facial depends on your skin’s needs, concerns, and your desired level of results. If you have specific skin issues you want to address, you might consider advanced facial treatments. However, standard facials are also great for relaxation and general skin maintenance and can offer significant benefits too. Facials keep your skin well-hydrated and balanced. Regular facials can help your skin become more youthful, resilient and radiant.</p><p>Additionally, a facial can be accompanied by a face mask or exfoliating scrubs. For more complicated facials, they can vary using light treatments, chemical peels and more, depending on the type of results you’re looking for and your skin type.</p><h3>What are the benefits of facial?</h3><p>A good facial does deep cleansing with exfoliation and extraction to remove dead skin cells, clogs and reduces the accumulation of impurities. This helps reveal clearer, smoother, and healthier-looking skin and also prevents breakouts and congestion.</p><p>The next important part of a facial is to infuse proper moisture into the skin. While daily homecare moisturization is important, a professional facial can help to ‘push’ hydration into deeper skin layers. Thirsty skin absorbs the much-needed moisture and is soothed and ready for rejuvenation. Proper hydration is the start of good skin, without proper moisture, skin just cannot function healthily.</p><p>Facials offer customized skincare as trained beauticians or aestheticians analyze your skin issues to recommend treatments catered to your goals. Facials can be customized by choosing targeted ingredients, techniques or technology. Customized facials ensure that the treatment is effective in targeting your specific concerns for noticeable results.</p><h3>What are the types of facial available?</h3><p>With many types of facials available, it is good to familiarise yourself with the types of benefits they bring, and if they’re suitable for you. Feel free to choose the one that is best suited to your needs.</p><h4>Bojin Facial Treatment</h4><p>Bojin is a traditional Chinese-based technique using buffalo horn tools to massage along meridian points to improve circulation and release muscle tension. This has an instant lifting and brightening effect that is much sought after by clients. The longer term benefit of Bojin facial is improved circulation, which brings fresh oxygen and nutrients to your skin, helping rejuvenate and energize for brighter, firmer complexion. Regular Bojin facials also help to improve facial contours by achieving a lifted V-shape face through muscle modelling.</p><p>An <a href=\"/eye-bojin-treatment/\">Eye Bojin</a> treatment targets the eye area through Bojin techniques to increase circulation, relax the muscles and release tight tissues. Clients experience a lightness and comfort after the session.</p><p>If you’re experiencing symptoms pertaining to your vision such as eye strains, dry eyes, temporary blurry vision, or feeling of tightness at the eye area, eye bojin treatment can help to provide relief and improve the appearance at this area as well. Other benefits include:</p><ul><li>Relieves stress</li><li>Promotes better sleep</li><li>Reduces crow’s feet</li></ul><h4>Skin-Lifting Facial</h4><p>Skin-lifting facial focuses on improving the appearance of sagging or aging skin by promoting firmness, elasticity, and a more lifted look. There are various techniques and technology used for skin lifting in facials and its main focus is to:</p><ul><li>Firm the skin</li><li>Reduce sagging skin around eyes, nasolabial folds and jowls.</li><li>Brighten complexion</li><li>Detoxifies the effects of stress, pollution, and lack of sleep</li><li>Improve collagen production in skin</li></ul><p>A skin-lifting facial like <a href=\"/lpg-mobilift-facial/\">LPG Mobilift Facial</a> uses mechanical stimulation to encourage natural skin rejuvenation by stimulating blood circulation, lymphatic drainage, and tissue mobilization. The ENDERMOLIFT® technique increases the radiance of your skin and reduces fatigue shown on the skin by boosting the production of collagen (firmness), elastin (suppleness), and hyaluronic acid (volume and hydration), naturally present in our skin.</p><p><a href=\"/indiba-proionic-gravity-defy-facial/\">INDIBA® Proionic Gravity Defy Facial</a> uses radiofrequency to increase the internal temperature of skin tissues, thereby increasing circulation and tightening skin fibres. It also improves collagen production over time, giving the longer term effect of firmness.</p><p><a href=\"/ace-face-shaper/\">ACE Face Shaper Facial</a> is a sculpting plus infusion facial, using Electroporation and Electrical Muscle Stimulation (EMS) to exercise facial muscles to tone them for a lifted look, and also increase absorption of active ingredients that help skin improve its appearance.</p><p>To reverse the signs of ageing, consider going for skin-lifting facials such as the <a href=\"/lpg-mobilift-facial/\">LPG Mobilift Facial</a>. Using the ENDERMOLIFT technique, it helps to increase the radiance of your skin and reduce fatigue shown on the skin. With this facial, your skin will be better able to produce hyaluronic acid, which helps your skin to restore its hydration and improve suppleness.</p><p>Oftentimes, a skin-lifting facial program may include various modalities, as each has its specific benefits, including variety gives your skin a holistic treatment. In the long run, you may even notice see lesser wrinkles, a more contoured face and overall, improved skin quality and balanced complexion.</p><h4>Brightening Glow Facial</h4><p>If you face dull skin, uneven skin tone or sun damage, skin brightening facials may be the perfect solution! As an anti-ageing infusion facial, the <a href=\"/ha-glutathione-power-dose-facial/\">Glutathione HA+ Power Dose Ultrasound Facial</a> uses ultrasound for deep penetration of Glutathione, a powerful skin brightener, into the epidermis. The signature powerdose ampoule used in this facial contains a potent cocktail of potent antioxidants and skin hydrators that helps build collagen and give skin a noticeable radiance.</p><p>While also soaking the skin in nutrients, this facial provides deep hydration, brightens and protects your skin, and reduces skin blemishes. Other benefits include:</p><ul><li>Provides deep hydration</li><li>Rejuvenates the skin</li><li>Repairs tissues and stimulates collagen production</li><li>Brightens skin and removes pigmentation by decreasing melanin</li><li>Improves elasticity and reverses anti-ageing effects</li><li>Reduces skin blemishes</li><li>Reduces wrinkles</li></ul><h4>Gold Facial</h4><p>To treat yourself to a luxurious facial treatment, why not opt for the <a href=\"/24k-pure-gold-facial/\">24k Pure Gold Facial</a>? Since the time of Cleopatra, 24k pure gold facials use gold that is massaged into the skin which helps to tighten, lift, brighten and give your skin a beautiful glow.</p><p>With pure gold, your skin’s collagen production is greatly boosted to reverse the signs of ageing and helps your skin to better renew cells in your body. Gold also helps to stimulate cellular growth in the deepest layer of your skin. This allows a healthy regeneration of cells that results in firmer skin cells. Other benefits include:</p><ul><li>Slows down melanin secretion and reduces pigmentation</li><li>Achieves a dewy and radiant complexion</li><li>Reduces the appearance of wrinkles</li><li>Hydrates skin</li><li>Firms and lifts the skin</li></ul><h4>Facial IPL</h4><p><a href=\"/ipl-facial-intense-pulsed-light/\">IPL Facial (Intense Pulsed Light)</a> therapy is another technology option for treating skin concerns. IPL facials use light to improve the appearance of your skin, offering a different approach from traditional facials. IPL usses broad-spectrum light with varying wavelengths to penetrate the skin and treat many skin conditions such as pigmentation, acne, wrinkles and even enlarged pores.</p><p>Facial IPL also helps you to achieve a healthier and more radiant complexion by stimulating new collagen to form in your skin. Other benefits include:</p><ul><li>Reduce uneven skin</li><li>Brightens skin tone</li><li>Promotes healthier and younger-looking skin</li></ul><h3>Which facial is suitable for each skin type?</h3><p>Choosing the right facial for your specific skin type is essential to achieve the best results and avoid potential issues. Here are some pointers to keep in mind when deciding which facial is suitable for your skin type.</p><h4>1. Normal to Dry Skin</h4><p>If you have normal to dry skin, you may go for moisturizing and deep cleansing facials. A steam treatment is also suitable to remove extra residue on the skin.</p><p>However, if you have dry skin, we recommend that you avoid over-exfoliating and follow up with a hydrating serum or a mask after your facial to avoid dryness.</p><p>Suitable Facials: Moisturizing facials, deep cleansing facials, and facials with hydrating masks work well for normal to dry skin. Improving moisture levels is fundamental to having good skin.</p><p>Steam treatments done at professional facials can open pores effectively for deeper cleansing and help to remove dead skin cells and residue.</p><p>Caution: Avoid over-exfoliation as it can lead to skin dryness.</p><h4>2. Combination Skin</h4><p>The ideal facial treatments that benefit combination skin are those that address the unique challenges of both dry and oily skin types. This is particularly valuable as combination skin often faces these multiple skin concerns simultaneously.</p><p>Recommended Facials:</p><ul><li>Brightening facials that use oil-free hydration and antioxidants that help brighten skin. Combination skin tends to suffer from uneven skin tone and brightening ingredients can help to even it out. Oil free hydration can solve the dry zones without causing further oiliness.</li><li>IPL facials can also help combination skin, as IPL is able to treat multiple skin conditions simultaneously.</li><li>Chemical peels, or microdermabrasion facials are tailored to target specific issues in each area of your skin, promoting a smoother and more harmoniously balanced complexion.</li></ul><h4>3. Oily Skin</h4><p>Oily skin often comes with concerns like excess shine, enlarged pores, congestion and breakouts. Facials that do deep cleansing, control oil levels, clear congestion, unclog pores and shrink the appearance of pores help to balance and refresh skin, making skin softer.</p><p>Recommended Facials:</p><ul><li>Facials with steaming and extraction would help in clearing impurities and congestion.</li><li>Facials with microdermabrasion, diamond peel or chemical peel help with exfoliation and clearing clogs.</li><li>IPL (Intense Pulsed Light) can help with oil control, shrinking pores and clearing acne.</li></ul><h3>Post-facial aftercare</h3><p>Stay Hydrated: After your facial, it’s essential to stay well-hydrated. Drinking plenty of water helps flush out toxins and keeps your skin hydrated, enhancing the benefits of your facial treatment. Proper hydration supports a radiant complexion and aids in the skin’s natural healing process.</p><p>Sun Protection: Protecting your skin from the sun is crucial post-facial. UV radiation can damage the skin and diminish the effects of your treatment. Apply a broad-spectrum sunscreen with SPF 30 or higher, and if possible, avoid prolonged sun exposure immediately after your facial to maintain your skin’s health and appearance.</p><p>Gentle Skincare: Keep your skincare routine gentle and straightforward after a facial. Avoid harsh exfoliants or strong active ingredients for a few days. Instead, use mild, hydrating products to soothe and maintain your skin’s newfound radiance. Consult with your beautician for personalized product recommendations to prolong the benefits of your facial.</p><p>Following these post-facial aftercare tips ensures that you maximize the results of your treatment and maintain healthy, glowing skin.</p><p>At Elements Wellness, we have a range of facials beyond those mentioned here. They include <a href=\"/ace-face-shaper/\">Face Shaper</a>, <a href=\"/purifying-black-magnelight-facial/\">Magnelight Facial</a>, <a href=\"/face-meridian-restorative-treatment/\">Face Restorative Treatments</a> and more. For the full list, visit this <a href=\"/facial/\">page</a>.</p><h3>Frequently Asked Questions on Facial Treatment in Singapore</h3>"
+  },
+  {
+   "t": "faq",
+   "items": [
+    {
+     "q": "How much do facials cost in Singapore?",
+     "a": "<p>In Singapore, the prices of facial treatments can go as low as $30, to as high as $700 in varying wellness centres and facial spa locations. However, if you want to splurge a little, you can opt for the more comprehensive package and get a full suite of facial treatments. These treatments would usually be more expensive and cost between $130 to $200.</p>"
+    },
+    {
+     "q": "How often can you do facials?",
+     "a": "<p>Varying factors like your skin issues, skin type, age and lifestyle may determine the frequency of your facial. As general rule of thumb, going for facials every 3 to 4 weeks is beneficial as your skin. However, if you have specific skin issues you want to solve, going more frequently would help you achieve your skin goals better.</p><p>You can work out a facial schedule with your beautician.</p>"
+    },
+    {
+     "q": "Can you do a facial if you have sensitive skin?",
+     "a": "<p>Yes, you can still enjoy the benefits of facial if you have sensitive skin. However, it is essential to choose facials specifically designed for sensitive skin types. Inform your beautician of your sensitive skin, so that they can create sensitive skin-friendly facials othat focus on hydration and calming ingredients to minimize the risk of irritation. There are facials that can help manage flare ups and redness, keeping inflammation under control.</p>"
+    },
+    {
+     "q": "Is too much facial harmful to the skin?",
+     "a": "<p>We recommend a facial routine of every 3-4 weeks for maintenance. If you are treating specific skin issues, a higher frequency is recommended with the supervision of your beauty therapist.</p><p>Doing facials infrequently means that your skin does not enjoy the full benefits. But, there are some risks when facials are overdone, especially those that use harsh ingredients.</p><p>Excessive facials, especially those involving aggressive exfoliation techniques, can strip away the skin’s natural oils, causing dryness, irritation, and increased sensitivity. It’s crucial to space out facials appropriately to allow the skin to regenerate. If you would like facials more frequently, you can alternate between the types of facials to enjoy the full benefits. For e.g., if you had a peeling facial done this week, you can do a nourishing hydration facial 1-2 weeks later, to help skin regenerate and see fresher skin.</p><p>We want to respect your skin barrier, which is crucial for maintaining optimal skin health. The skin barrier can be compromised when the wrong type of facial is done or done too frequently. It’s recommended to consult with a skincare professional who can advise on an appropriate frequency of facials to avoid weakening the skin’s defense mechanisms.</p>"
+    }
+   ]
+  },
+  {
+   "t": "html",
+   "html": "<h3>Invest in a Facial Treatment Today</h3><p>Facials are great if you want to keep your skin in optimal health and achieve youthful-looking skin. At the same time, they also help to reverse the damage caused by lifestyles such environment.</p><p>Whether you’re looking for a brightening, hydrating, cleansing facial or simply a pampering facial massage session, speak to our consultants and find the right facial for you. We also offer <a href=\"/massage/\">relaxing body massages</a> such as <a href=\"/tui-na-massage/\">Tui na massage</a> and <a href=\"/swedish-massage/\">Swedish massage</a>.</p><p>The Elements Wellness is available in three spas around Singapore — ION Orchard, The Centrepoint and 313@Somerset. We’d love to share more about our facial treatments and you may <a href=\"/contact-us/\">contact us</a> to learn more.</p>"
+  }
+ ]
+}

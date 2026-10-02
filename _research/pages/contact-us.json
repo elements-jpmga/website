@@ -1,0 +1,157 @@
+{
+ "url": "https://elements.com.sg/contact-us/",
+ "path": "/contact-us/",
+ "title": "Contact Us",
+ "description": "Have questions or need assistance? We are here to help! Our friendly service team is ready to assist you anytime, from bookings to queries!",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "LOCATIONS",
+   "html": "LOCATIONS"
+  },
+  {
+   "t": "html",
+   "html": "<p>To make a booking, please call or WhatsApp your preferred location <a href=\"/make-an-appointment-form/\">here</a></p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/elements-ion-scaled-ppf0rfu9kjv0hcooeibo-501aca9c3b10.jpg",
+   "alt": "Elements_ION",
+   "caption": "",
+   "w": 600,
+   "h": 350
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "ION Orchard",
+   "html": "ION Orchard"
+  },
+  {
+   "t": "list",
+   "items": [
+    "#B1-30 ION Orchard",
+    "6738 3788",
+    "8938 2878",
+    "ion@elements.com.sg"
+   ]
+  },
+  {
+   "t": "html",
+   "html": "<p>Monday – Friday: 11am to 9:00pm<br/>Weekends &amp; PH: 10:30am to 8:00pm</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/whatsapp-icon-cc886681db24.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 728,
+   "h": 192
+  },
+  {
+   "t": "map",
+   "src": "https://maps.google.com/maps?q=Elements%20Wellness%20ION&t=m&z=13&output=embed&iwloc=near"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/elements-313-scaled-ppf0ycxhvnbzy0muzzzt-33a223dfa7ba.jpg",
+   "alt": "Elements 313",
+   "caption": "",
+   "w": 600,
+   "h": 350
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "313@somerset",
+   "html": "313@somerset"
+  },
+  {
+   "t": "list",
+   "items": [
+    "#B2-50/51, 313@somerset",
+    "6636 8878",
+    "8875 1677",
+    "313@elements.com.sg"
+   ]
+  },
+  {
+   "t": "html",
+   "html": "<p>Monday – Friday: 11am to 9:00pm<br/>Weekends &amp; PH: 10:30am to 8:00pm</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/whatsapp-icon-cc886681db24.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 728,
+   "h": 192
+  },
+  {
+   "t": "map",
+   "src": "https://maps.google.com/maps?q=Elements%20Wellness%20313&t=m&z=15&output=embed&iwloc=near"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/elements-centrepoint-ppezpcfql9pnya0pujj-ff208cfc90de.jpg",
+   "alt": "Elements_centrepoint",
+   "caption": "",
+   "w": 600,
+   "h": 350
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "The Centrepoint",
+   "html": "The Centrepoint"
+  },
+  {
+   "t": "list",
+   "items": [
+    "#02-28 The Centrepoint",
+    "6737 8488",
+    "9357 8183",
+    "cpoint@elements.com.sg"
+   ]
+  },
+  {
+   "t": "html",
+   "html": "<p>Monday – Friday: 11am to 9:00pm<br/>Weekends &amp; PH: 10:30am to 8:00pm</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/whatsapp-icon-cc886681db24.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 728,
+   "h": 192
+  },
+  {
+   "t": "map",
+   "src": "https://maps.google.com/maps?q=Elements%20Wellness%20Centrepoint&t=m&z=15&output=embed&iwloc=near"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "CONTACT US",
+   "html": "CONTACT US"
+  },
+  {
+   "t": "html",
+   "html": "<p>For partnership, collaboration or feedback.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/whatsapp-icon-cc886681db24.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 728,
+   "h": 192
+  },
+  {
+   "t": "form",
+   "note": ""
+  }
+ ]
+}

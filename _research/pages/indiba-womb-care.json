@@ -1,0 +1,64 @@
+{
+ "url": "https://elements.com.sg/indiba-womb-care/",
+ "path": "/indiba-womb-care/",
+ "title": "INDIBA® Womb Care",
+ "description": "INDIBA® Womb Care technology harmonizes and rejuvenates the womb area, addressing various gynecological concerns. Book an appointment today!",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "INDIBA ® Womb Care",
+   "html": "INDIBA<sup>®</sup> Womb Care"
+  },
+  {
+   "t": "html",
+   "html": "<p>INDIBA<sup>®</sup> increases circulation and cell recovery in the womb area to maintain balance. It also firms up the tummy area and reduces fat.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Using INDIBA<sup>®</sup>’s patented radio-frequency of 448 kHz to increase micro-circulation and cell recovery for optimum women’s health. A womb that is poor in circulation leads to many concerns and hormonal imbalance. INDIBA directs warmth to the womb and ovaries to facilitate better circulation, helping ease menstrual discomforts and maintain good womb health.</p><p>It is also a good postpartum therapy to restore the uterus and help shed excess fat.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/cellulite-reduction-b09a92387ca6.jpg",
+   "alt": "cellulite reduction treatment",
+   "caption": "",
+   "w": 1600,
+   "h": 900
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Benefits",
+   "html": "Benefits"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>A comfortable non-invasive deep therapy</li><li>Improves and relieves menstrual cramp condition</li><li>Improves circulation of blood and energy at the womb </li><li>Strengthens the wombs</li><li>Ovaries maintenance</li><li>Enhances lymphatic drainage</li><li>Aids in detoxification</li><li>Improves body cells’ health by improving nutrients exchange at a cellular level</li><li>Studies have shown that INDIBA causes fat cells to stop functioning, reducing fat deposits for good.</li><li>Effectively tones and firms skin as micro-circulation increases collagen regeneration to tighten skin and reduce appearance of cellulite.</li></ul>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Suitable For",
+   "html": "Suitable For"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Menstrual cramps </li><li>Irregular periods </li><li>Premenstrual syndrome </li><li>“cold/chilly” womb and has difficulty in conceiving</li><li>Menopause </li><li>Constipation </li><li>Poor digestion and bloating stomach </li><li>Vaginal Discharge concerns</li><li>Water retention</li><li>Lower backaches</li><li>Loose tummy skin</li></ul>"
+  },
+  {
+   "t": "video",
+   "url": "https://youtu.be/7tuMzfiORPA"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How It Works",
+   "html": "How It Works"
+  },
+  {
+   "t": "html",
+   "html": "<p><b>The Three Important effects from INDIBA Therapy</b></p><ol><li> Recovers cell’s vital functions in all types of tissue. Encourages the cell balancing effects in the uterus for better womb health.</li><li> Increases the internal temperature which leads to improvement of blood flow, cell and tissue oxygenation and detoxification. This helps relieve pain and cramps.</li><li> Activation of metabolism and enzymes, which increases synthesis of collagen and elastin for skin firming and disrupts fat cells which are eliminated through the lymphatic system.</li></ol><p><br/><br/><br/></p>"
+  }
+ ]
+}

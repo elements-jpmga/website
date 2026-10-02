@@ -1,0 +1,146 @@
+{
+ "url": "https://elements.com.sg/aug2025-referral-camapaign/",
+ "path": "/aug2025-referral-camapaign/",
+ "title": "Referral Aug 2025",
+ "description": "Learn how to earn rewards by sharing the gift of relaxation with your loved ones. Browse our most asked questions about referral programs here.",
+ "blocks": [
+  {
+   "t": "image",
+   "src": "/assets/img/pages/referral1-76e000367cce.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1300,
+   "h": 300
+  },
+  {
+   "t": "html",
+   "html": "<p>As our valued clients, you are the best source of referrals! Here’s how our <strong>Referral Program</strong> works:</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/power-dose-facial-2-scaled-e175523714376-066b756c4fda.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1600,
+   "h": 1600
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "For Your Friends",
+   "html": "For Your Friends"
+  },
+  {
+   "t": "html",
+   "html": "<p>Your friend can enjoy an exclusive first-trial price of <b>$68</b> for the <a href=\"/services/facial/power-dose-facial/\">Power Dose Facial 60min</a> (U.P. $188). And, they take home a <b>travel sized serum</b> worth $59 after the facial!</p><p>This offer is valid only for first-time visitors to Elements Wellness.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/serum-d927c4240226.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 400,
+   "h": 400
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "For You",
+   "html": "For You"
+  },
+  {
+   "t": "html",
+   "html": "<p>When your friend completes their first session, you will receive one <b>full-sized Elements Skincare serum </b>(U.P. $139) as a thank-you gift. </p><p>Your friend has to quote your name and mobile number when making the appointment.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Make Referral Appointment Now",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I%27d%20like%20to%20book%20Power%20Dose%20Facial%20(Referral%20Aug2025)"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Power Dose Facial",
+   "html": "Power Dose Facial"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/ewproductfacial-800x800-1-d452aebcee59.jpg",
+   "alt": "hydrating facial first trial banner",
+   "caption": "",
+   "w": 800,
+   "h": 800
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Why your friends will love Power Dose Facial?",
+   "html": "Why your friends will love Power Dose Facial?"
+  },
+  {
+   "t": "html",
+   "html": "<p><b>Made for Singapore’s Climate</b><br/>Crafted based on 22 years of skincare expertise and feedback from clients living in Singapore, this treatment was designed with tropical skin needs in mind—balancing hydration, calming redness, and tackling sun-induced pigmentation.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><b>Visible Results, Instantly</b><br/>You’ll see a real difference. We recommend taking a before-and-after photo—Glutathione works fast to revive and illuminate skin tone.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><b>Safe for All Skin Types, Including Sensitive</b><br/>Free from harsh ingredients and heat-based tools, the Power Dose Brightening Facial is gentle enough for even the most reactive skin. We use high-quality actives from Switzerland to ensure maximum results with minimal irritation.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Meet the Glow-Boosting Ingredients",
+   "html": "Meet the Glow-Boosting Ingredients"
+  },
+  {
+   "t": "card",
+   "img": "/assets/img/pages/instant-brightening-b0fc1a5b3884.jpg",
+   "title": "Instant brightening effect with Glutathione",
+   "html": "",
+   "href": ""
+  },
+  {
+   "t": "card",
+   "img": "/assets/img/pages/full-layer-hydration-8208642b3b49.jpg",
+   "title": "Full-layer hydration from multi-molecular Hyaluronic Acid",
+   "html": "",
+   "href": ""
+  },
+  {
+   "t": "card",
+   "img": "/assets/img/pages/calm-and-protects-687013a65933.jpg",
+   "title": "Calms and protects sensitized or irritated skin with Tremella Fuciformis",
+   "html": "",
+   "href": ""
+  },
+  {
+   "t": "card",
+   "img": "/assets/img/pages/combination-skin-c8cdcf8bc181.jpg",
+   "title": "Lightweight formula ideal for humid climates and combination skin",
+   "html": "",
+   "href": ""
+  },
+  {
+   "t": "card",
+   "img": "/assets/img/pages/refines-pores-0e9c5b193e3f.jpg",
+   "title": "Minimizes pigmentation and refines pores with Niacinamide",
+   "html": "",
+   "href": ""
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/ha-glutathione-ampoule-ccaca811a3bc.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 466,
+   "h": 466
+  },
+  {
+   "t": "html",
+   "html": "<p><b>Important Notes</b></p> <ul> <li> <p>The referral is valid <b>only if your friend redeems the offer during their first visit</b>.</p> </li> <li> <p>There is <b>no limit</b> to the number of friends you can refer—earn a serum for each successful referral!</p> </li> <li> <p>The promotion is valid until <b>31 December 2025</b>.</p> </li> <li> <p>Referrer gifts must be redeemed <b>within 3 months</b> from the date of issue.</p> </li> </ul>"
+  }
+ ]
+}

@@ -1,0 +1,122 @@
+{
+ "url": "https://elements.com.sg/services/massage/postnatal-massage/",
+ "path": "/services/massage/postnatal-massage/",
+ "title": "Postnatal Massage in Singapore",
+ "description": "Elements Postnatal massage is specifically tailored to restore the new mother’s body to pre-pregnancy conditions. It helps realign the body weight to its original distribution and tones the over-stretched skin. Post-natal massage also provides the much needed relaxation and stress relieve from new mothering duties.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Postnatal Massage",
+   "html": "Postnatal Massage"
+  },
+  {
+   "t": "html",
+   "html": "<p>The golden opportunity to heal and restore after giving birth. </p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Sign Up To Enjoy Your First Trial At $98 Nett (60-min, U.P. $228) | T&C applies",
+   "html": "Sign Up To Enjoy Your First Trial At $98 Nett (60-min, U.P. $228) | T&C applies"
+  },
+  {
+   "t": "html",
+   "html": "<p>Pre-registration and advance booking required to enjoy this promotion.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 6,
+   "text": "About our PostNatal Massage",
+   "html": "About our PostNatal Massage"
+  },
+  {
+   "t": "html",
+   "html": "<p>Post-natal or post-partum period for mothers is an invaluable chance for new mothers to recover. Postnatal massage is specifically tailored to restore the new mother’s body to pre-pregnancy conditions. It helps realign the body weight to its original distribution and tones the over-stretched skin. Post-natal massage also provides the much needed relaxation and stress relieve from new mothering duties.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/s-e1712114512318-51f8b17e4e03.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 383,
+   "h": 254
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/babyfeet-3ab14a700928.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 800,
+   "h": 533
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How Postnatal Massage Works",
+   "html": "How Postnatal Massage Works"
+  },
+  {
+   "t": "html",
+   "html": "<ul> <li>Postnatal massages are adapted to accommodate the mother’s bodily changes. For e.g, you might lie on your side with the support of pillows and cushions.</li> <li>If you had a natural delivery and there were no complications, it is safe to start post-partum massages from the 5th day after delivery. In the event of Caesarain Section (C-Section), post-partum massages can only start after the incision has closed properly, usually one month after the C-section.</li> </ul>"
+  },
+  {
+   "t": "heading",
+   "level": 6,
+   "text": "benefits of postnatal (Post Partum) massage",
+   "html": "benefits of postnatal (Post Partum) massage"
+  },
+  {
+   "t": "faq",
+   "items": [
+    {
+     "q": "Womb Recovery",
+     "a": "<p>Postnatal massage can aid in the recovery process by increasing blood circulation to areas affected by childbirth, helping to heal any tears, incisions, or muscle strain.</p>"
+    },
+    {
+     "q": "Uterus Contraction",
+     "a": "<p>Aids in restoring the abdominal muscle wall and uterus to their pre-pregnancy state by promoting circulation and muscle relaxation, facilitating the body’s natural healing processes. Has the effect of flattening the tummy. </p>"
+    },
+    {
+     "q": "Relieves Discomfort",
+     "a": "<p>Postnatal massage treats soreness and tension in areas such as the lower back, hips, and shoulders, which may have been strained during pregnancy and labor. It can help reduce backaches for those who have taken Epidural.</p>"
+    },
+    {
+     "q": "Aids In Slimming",
+     "a": "<p>Postnatal massage treat soreness and tension in areas such as the lower back, hips and shoulders, which may have been strained during pregnancy and labor.</p>"
+    },
+    {
+     "q": "Improves Posture",
+     "a": "<p>By targeting areas of tension and realigning the body, postnatal massage can help improve posture, which may have been affected by the changes in the body during pregnancy. </p>"
+    },
+    {
+     "q": "Relaxing",
+     "a": "<p>Massage calms and reduces stress, which is essential for new mothers adjusting to the demands of caring for a newborn.</p>"
+    },
+    {
+     "q": "Enhances Emotional Well-Being",
+     "a": "<p>Postnatal massage can stimulate the release of endorphins, the body’s natural feel-good hormones, helping to alleviate postpartum blues and promote a positive emotional state.</p>"
+    },
+    {
+     "q": "Supports Breastfeeding",
+     "a": "<p>Certain massage techniques, can help improve milk flow and reduce the risk of clogged ducts, which can be beneficial for breastfeeding mothers.</p>"
+    }
+   ]
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Should I get a Post-partum Massage?",
+   "html": "<br/>Should I get a Post-partum Massage?"
+  },
+  {
+   "t": "html",
+   "html": "<p>Deciding whether to do postpartum massage depends on various factors such as your overall health, any complications during pregnancy or childbirth, and your comfort level with massage therapy. Postpartum massage can offer numerous benefits in terms of promoting healing, reducing discomfort, and supporting emotional well-being during the recovery period after childbirth.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Book an appointment",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi,%20I'd%20like%20to%20book%20Postnatal%20Massage%20(website)"
+  }
+ ]
+}

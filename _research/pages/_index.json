@@ -1,0 +1,447 @@
+{
+ "/3d-cavitation/": {
+  "title": "3D Cavitation in Singapore",
+  "blocks": 12,
+  "file": "3d-cavitation.json"
+ },
+ "/3d-fat-freeze/": {
+  "title": "3D Fat Freeze Treatment in Singapore",
+  "blocks": 13,
+  "file": "3d-fat-freeze.json"
+ },
+ "/acuwave-relief-therapy/": {
+  "title": "Acu-Wave Relief Therapy",
+  "blocks": 58,
+  "file": "acuwave-relief-therapy.json"
+ },
+ "/antedote-aromatherapy/": {
+  "title": "Antedote Aromatherapy",
+  "blocks": 72,
+  "file": "antedote-aromatherapy.json"
+ },
+ "/appointment-booking-cancellation-policy/": {
+  "title": "Elements Wellness Appointment Booking & Cancellation Policy",
+  "blocks": 1,
+  "file": "appointment-booking-cancellation-policy.json"
+ },
+ "/aug2025-referral-camapaign/": {
+  "title": "Referral Aug 2025",
+  "blocks": 23,
+  "file": "aug2025-referral-camapaign.json"
+ },
+ "/awards/": {
+  "title": "Awards",
+  "blocks": 188,
+  "file": "awards.json"
+ },
+ "/biocell-stem-cell-science-face-treatment/": {
+  "title": "Biocell Facial",
+  "blocks": 16,
+  "file": "biocell-stem-cell-science-face-treatment.json"
+ },
+ "/birthday-member/": {
+  "title": "Exclusive Birthday Perks for Spa Members",
+  "blocks": 20,
+  "file": "birthday-member.json"
+ },
+ "/blog/": {
+  "title": "Blog",
+  "blocks": 10,
+  "file": "blog.json"
+ },
+ "/book-appointment/": {
+  "title": "Make An Appointment Form",
+  "blocks": 9,
+  "file": "book-appointment.json"
+ },
+ "/bridal-facial/": {
+  "title": "Bridal Facials in Singapore",
+  "blocks": 23,
+  "file": "bridal-facial.json"
+ },
+ "/collagen-firming-body-massage/": {
+  "title": "Collagen Firming Body Massage in Singapore",
+  "blocks": 25,
+  "file": "collagen-firming-body-massage.json"
+ },
+ "/contact-us/": {
+  "title": "Contact Us",
+  "blocks": 24,
+  "file": "contact-us.json"
+ },
+ "/customer-assurance-privacy/": {
+  "title": "Customer Assurance & Privacy",
+  "blocks": 5,
+  "file": "customer-assurance-privacy.json"
+ },
+ "/eye-bojin-treatment/": {
+  "title": "Eye Bojin Treatment in Singapore",
+  "blocks": 11,
+  "file": "eye-bojin-treatment.json"
+ },
+ "/faq-spa-etiquette/": {
+  "title": "FAQ & Spa Etiquette",
+  "blocks": 3,
+  "file": "faq-spa-etiquette.json"
+ },
+ "/gift-vouchers/": {
+  "title": "Gift Vouchers",
+  "blocks": 1,
+  "file": "gift-vouchers.json"
+ },
+ "/indiba-recovery/": {
+  "title": "INDIBA\u00ae Pro-Recovery in Singapore",
+  "blocks": 11,
+  "file": "indiba-recovery.json"
+ },
+ "/indiba-slimming/": {
+  "title": "INDIBA\u00ae Slimming in Singapore",
+  "blocks": 11,
+  "file": "indiba-slimming.json"
+ },
+ "/indiba-womb-care/": {
+  "title": "INDIBA\u00ae Womb Care",
+  "blocks": 11,
+  "file": "indiba-womb-care.json"
+ },
+ "/make-an-appointment-ion/": {
+  "title": "Make An Appointment Form - ION",
+  "blocks": 3,
+  "file": "make-an-appointment-ion.json"
+ },
+ "/maybank-yearlong/": {
+  "title": "Maybank Yearlong",
+  "blocks": 8,
+  "file": "maybank-yearlong.json"
+ },
+ "/medi-stretch/": {
+  "title": "Medi Stretch",
+  "blocks": 11,
+  "file": "medi-stretch.json"
+ },
+ "/meridian-flush-and-hyperwave/": {
+  "title": "Meridian Flush and Hyperwave",
+  "blocks": 39,
+  "file": "meridian-flush-and-hyperwave.json"
+ },
+ "/meridian-flush-therapy/": {
+  "title": "Meridian Flush Therapy in Singapore",
+  "blocks": 11,
+  "file": "meridian-flush-therapy.json"
+ },
+ "/moxibustion/": {
+  "title": "Meridian Moxibustion",
+  "blocks": 19,
+  "file": "moxibustion.json"
+ },
+ "/our-story/": {
+  "title": "Our Story",
+  "blocks": 3,
+  "file": "our-story.json"
+ },
+ "/postnatal-body-care/": {
+  "title": "Postnatal Body Care in Singapore",
+  "blocks": 26,
+  "file": "postnatal-body-care.json"
+ },
+ "/power-moxa/": {
+  "title": "Power Moxa Treatment in Singapore",
+  "blocks": 12,
+  "file": "power-moxa.json"
+ },
+ "/promotions/": {
+  "title": "Promotions",
+  "blocks": 74,
+  "file": "promotions.json"
+ },
+ "/referral-faq/": {
+  "title": "Referral FAQ",
+  "blocks": 5,
+  "file": "referral-faq.json"
+ },
+ "/services/": {
+  "title": "Services",
+  "blocks": 1,
+  "file": "services.json"
+ },
+ "/services/facial/": {
+  "title": "Facial Treatment in Singapore",
+  "blocks": 10,
+  "file": "services__facial.json"
+ },
+ "/services/facial/24k-pure-gold-facial/": {
+  "title": "24K Gold Facial Treatment in Singapore",
+  "blocks": 32,
+  "file": "services__facial__24k-pure-gold-facial.json"
+ },
+ "/services/facial/3c-vitamin-glow-facial/": {
+  "title": "3C Vitamin Glow Facial in Singapore",
+  "blocks": 48,
+  "file": "services__facial__3c-vitamin-glow-facial.json"
+ },
+ "/services/facial/aging-wrinkles-sagging/": {
+  "title": "Facials for Wrinkles, Sagging & Aging Skin",
+  "blocks": 59,
+  "file": "services__facial__aging-wrinkles-sagging.json"
+ },
+ "/services/facial/aquaglow/": {
+  "title": "AquaGlow Facial in Singapore",
+  "blocks": 23,
+  "file": "services__facial__aquaglow.json"
+ },
+ "/services/facial/dermo-peel-facial/": {
+  "title": "Dermo Peel Facial in Singapore",
+  "blocks": 41,
+  "file": "services__facial__dermo-peel-facial.json"
+ },
+ "/services/facial/dry-dehydrated/": {
+  "title": "Best facials for dry dehydrated skin in Singapore",
+  "blocks": 32,
+  "file": "services__facial__dry-dehydrated.json"
+ },
+ "/services/facial/dull-uneven/": {
+  "title": "Facials for Dull Pigmented Skin",
+  "blocks": 63,
+  "file": "services__facial__dull-uneven.json"
+ },
+ "/services/facial/eye-area-treatment/": {
+  "title": "Eye Area Facial Treatment for wrinkles and crows feet",
+  "blocks": 24,
+  "file": "services__facial__eye-area-treatment.json"
+ },
+ "/services/facial/hydrolux-facial/": {
+  "title": "HydroLux Facial in Singapore",
+  "blocks": 42,
+  "file": "services__facial__hydrolux-facial.json"
+ },
+ "/services/facial/indiba-proionic-facial/": {
+  "title": "INDIBA\u00ae Proionic Gravity Defy Facial",
+  "blocks": 20,
+  "file": "services__facial__indiba-proionic-facial.json"
+ },
+ "/services/facial/ipl-facial/": {
+  "title": "IPL Facial in Singapore",
+  "blocks": 25,
+  "file": "services__facial__ipl-facial.json"
+ },
+ "/services/facial/lpg-mobilift-facial/": {
+  "title": "LPG Mobilift Facial",
+  "blocks": 19,
+  "file": "services__facial__lpg-mobilift-facial.json"
+ },
+ "/services/facial/lymphatic-sculpt-facial/": {
+  "title": "Lymphatic Sculpt Facial Singapore | Hand-Led Contouring & Detox",
+  "blocks": 85,
+  "file": "services__facial__lymphatic-sculpt-facial.json"
+ },
+ "/services/facial/medi-jet-facial/": {
+  "title": "Medi-Jet Facial in Singapore | Pioneered in Korea",
+  "blocks": 123,
+  "file": "services__facial__medi-jet-facial.json"
+ },
+ "/services/facial/men_facial/": {
+  "title": "Men's Facial in Singapore",
+  "blocks": 23,
+  "file": "services__facial__men_facial.json"
+ },
+ "/services/facial/meridian-bojin-facial/": {
+  "title": "Meridian Bojin Facial",
+  "blocks": 29,
+  "file": "services__facial__meridian-bojin-facial.json"
+ },
+ "/services/facial/nano-fibroblast-facial/": {
+  "title": "Nano Fibroblast | Skin Rejuvenation",
+  "blocks": 32,
+  "file": "services__facial__nano-fibroblast-facial.json"
+ },
+ "/services/facial/needleless-rejuran-facial/": {
+  "title": "Needle-less Rejuran Facial",
+  "blocks": 49,
+  "file": "services__facial__needleless-rejuran-facial.json"
+ },
+ "/services/facial/nir-cellbright-facial/": {
+  "title": "NIR CellBright Facial",
+  "blocks": 49,
+  "file": "services__facial__nir-cellbright-facial.json"
+ },
+ "/services/facial/oily-acne-open-pores/": {
+  "title": "Facials for Acne, Oily Skin",
+  "blocks": 47,
+  "file": "services__facial__oily-acne-open-pores.json"
+ },
+ "/services/facial/omega-light-therapy/": {
+  "title": "Omega Light Therapy",
+  "blocks": 12,
+  "file": "services__facial__omega-light-therapy.json"
+ },
+ "/services/facial/pearl-light-facial/": {
+  "title": "Pearl Light Facial",
+  "blocks": 50,
+  "file": "services__facial__pearl-light-facial.json"
+ },
+ "/services/facial/power-dose-facial/": {
+  "title": "Power Dose Brightening Facial | Skin Brightening Treatment",
+  "blocks": 35,
+  "file": "services__facial__power-dose-facial.json"
+ },
+ "/services/facial/probiotic-facial/": {
+  "title": "Probiotic Facial in Singapore",
+  "blocks": 28,
+  "file": "services__facial__probiotic-facial.json"
+ },
+ "/services/facial/sensitive/": {
+  "title": "Sensitive Skin Facials in Singapore",
+  "blocks": 33,
+  "file": "services__facial__sensitive.json"
+ },
+ "/services/facial/wishpro-facial/": {
+  "title": "WishPro Facial",
+  "blocks": 35,
+  "file": "services__facial__wishpro-facial.json"
+ },
+ "/services/massage/": {
+  "title": "Massage and Wellness Spa in Singapore",
+  "blocks": 62,
+  "file": "services__massage.json"
+ },
+ "/services/massage/couple-massage/": {
+  "title": "Couples Spa & Massage",
+  "blocks": 20,
+  "file": "services__massage__couple-massage.json"
+ },
+ "/services/massage/deep-tissue-massage/": {
+  "title": "Deep Tissue Massage in Singapore",
+  "blocks": 68,
+  "file": "services__massage__deep-tissue-massage.json"
+ },
+ "/services/massage/fascia-release-therapy/": {
+  "title": "Fascia Therapy in Singapore | Targeted Release for Tension",
+  "blocks": 35,
+  "file": "services__massage__fascia-release-therapy.json"
+ },
+ "/services/massage/ginseng-bojin-meridian-massage/": {
+  "title": "Bojin Meridian Massage | Deep Healing & Tension Release",
+  "blocks": 24,
+  "file": "services__massage__ginseng-bojin-meridian-massage.json"
+ },
+ "/services/massage/lymphatic-drainage-massage/": {
+  "title": "Lymphatic Drainage Massage in Singapore | Detox & Treat Water Retention",
+  "blocks": 40,
+  "file": "services__massage__lymphatic-drainage-massage.json"
+ },
+ "/services/massage/massage-enhancements/": {
+  "title": "Massage Enhancements",
+  "blocks": 77,
+  "file": "services__massage__massage-enhancements.json"
+ },
+ "/services/massage/muscle-joints-massage/": {
+  "title": "Muscle and Joint Vitality Massage in Singapore",
+  "blocks": 40,
+  "file": "services__massage__muscle-joints-massage.json"
+ },
+ "/services/massage/postnatal-massage/": {
+  "title": "Postnatal Massage in Singapore",
+  "blocks": 15,
+  "file": "services__massage__postnatal-massage.json"
+ },
+ "/services/massage/prenatal-massage/": {
+  "title": "Prenatal Massage in Singapore",
+  "blocks": 35,
+  "file": "services__massage__prenatal-massage.json"
+ },
+ "/services/massage/sports-massage/": {
+  "title": "Best Sports Massage in Singapore | Pain Relief & Recovery",
+  "blocks": 72,
+  "file": "services__massage__sports-massage.json"
+ },
+ "/services/massage/swedish-massage/": {
+  "title": "Swedish Massage in Singapore",
+  "blocks": 33,
+  "file": "services__massage__swedish-massage.json"
+ },
+ "/services/massage/the-5-elements-massage/": {
+  "title": "The 5 Elements Massage in Singapore",
+  "blocks": 106,
+  "file": "services__massage__the-5-elements-massage.json"
+ },
+ "/services/massage/tuina-massage/": {
+  "title": "Tuina Massage in Singapore | Meridian Therapy at Elements Wellness",
+  "blocks": 25,
+  "file": "services__massage__tuina-massage.json"
+ },
+ "/services/slimming/": {
+  "title": "Slimming Treatment in Singapore",
+  "blocks": 4,
+  "file": "services__slimming.json"
+ },
+ "/services/wellness/": {
+  "title": "Wellness in Singapore",
+  "blocks": 4,
+  "file": "services__wellness.json"
+ },
+ "/services/wellness/herbal-bath-therapy/": {
+  "title": "TCM Herbal Bath Therapy",
+  "blocks": 28,
+  "file": "services__wellness__herbal-bath-therapy.json"
+ },
+ "/services/wellness/ice-bath-therapy/": {
+  "title": "Ice Bath Therapy Recovery Ritual",
+  "blocks": 25,
+  "file": "services__wellness__ice-bath-therapy.json"
+ },
+ "/services/wellness/red-light-therapy/": {
+  "title": "Red Light Therapy in Singapore | Rejuvenate & Heal at Elements Wellness",
+  "blocks": 49,
+  "file": "services__wellness__red-light-therapy.json"
+ },
+ "/shop/": {
+  "title": "Shop",
+  "blocks": 1,
+  "file": "shop.json"
+ },
+ "/singtelred/": {
+  "title": "Singtel RED Promotions 2026",
+  "blocks": 15,
+  "file": "singtelred.json"
+ },
+ "/singtelsg/": {
+  "title": "Singtel",
+  "blocks": 10,
+  "file": "singtelsg.json"
+ },
+ "/skin-brightening/": {
+  "title": "Skin Brightening Treatment in Singapore",
+  "blocks": 42,
+  "file": "skin-brightening.json"
+ },
+ "/skin-rejuvenation-treatment-singapore/": {
+  "title": "Skin Rejuvenation Treatment in Singapore",
+  "blocks": 34,
+  "file": "skin-rejuvenation-treatment-singapore.json"
+ },
+ "/spa-ritual/": {
+  "title": "Spa Ritual",
+  "blocks": 1,
+  "file": "spa-ritual.json"
+ },
+ "/spa-ritual/onsen-spa/": {
+  "title": "Koyamaki Onsen",
+  "blocks": 10,
+  "file": "spa-ritual__onsen-spa.json"
+ },
+ "/tcm-slimming-therapy/": {
+  "title": "TCM Slimming Therapy in Singapore",
+  "blocks": 11,
+  "file": "tcm-slimming-therapy.json"
+ },
+ "/tcm-tummy-trim/": {
+  "title": "TCM Tummy Trim in Singapore",
+  "blocks": 11,
+  "file": "tcm-tummy-trim.json"
+ },
+ "/uob-lady/": {
+  "title": "UOB Lady's Card 2026",
+  "blocks": 14,
+  "file": "uob-lady.json"
+ }
+}

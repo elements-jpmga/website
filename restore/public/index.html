@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Elements Restore</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f6f6f8">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2372181b'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='-apple-system,Arial' font-weight='600' font-size='30' fill='%23fff'%3ER%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<div class="shell">
+
+  <!-- Icon rail -->
+  <nav class="rail" aria-label="Main">
+    <a class="rail-logo" href="#/" aria-label="Elements Restore"><span>E</span></a>
+    <a class="rail-today" href="#/" data-today title="Assessments started today">
+      <b data-today-count>0</b><small>Today</small>
+    </a>
+    <a class="rail-btn" href="#/" data-nav="home" title="Board"><svg viewBox="0 0 24 24"><rect x="3.5" y="4" width="5" height="16" rx="1.6"/><rect x="9.5" y="4" width="5" height="11" rx="1.6"/><rect x="15.5" y="4" width="5" height="8" rx="1.6"/></svg></a>
+    <a class="rail-btn" href="#/clients" data-nav="clients" title="Clients"><svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 19.5c1.2-3.4 4-5 7-5s5.8 1.6 7 5"/></svg></a>
+    <a class="rail-btn" href="#/rules" data-nav="rules" title="Rules"><svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h14"/><circle cx="9" cy="7" r="2" class="f"/><circle cx="15" cy="12" r="2" class="f"/><circle cx="10" cy="17" r="2" class="f"/></svg></a>
+    <button class="rail-btn" type="button" data-inbox-toggle title="Activity"><svg viewBox="0 0 24 24"><path d="M6.5 16.5V11a5.5 5.5 0 0 1 11 0v5.5l1.5 1.5H5z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg><i class="dot" data-inbox-dot hidden></i></button>
+    <button class="rail-btn" type="button" data-palette title="Command menu (⌘K)"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.2-4.2"/></svg></button>
+    <span class="rail-sep"></span>
+    <button class="rail-add" type="button" data-new title="New assessment"><svg viewBox="0 0 24 24"><path d="M12 6v12M6 12h12"/></svg></button>
+  </nav>
+
+  <!-- Workspace sidebar -->
+  <aside class="side" aria-label="Workspace">
+    <div class="side-head"><img src="/logo.png" alt="Elements Wellness" class="side-logo"><span class="side-app">Restore</span></div>
+    <label class="side-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.2-4.2"/></svg><input id="side-q" placeholder="Search clients…" autocomplete="off"><kbd>⌘K</kbd></label>
+    <div class="side-group">
+      <a href="#/" data-filter="mine"><svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 19.5c1.2-3.4 4-5 7-5s5.8 1.6 7 5"/></svg>My assessments<span data-count="mine"></span></a>
+      <a href="#/" data-filter="all"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 9h8M8 12.5h8M8 16h5"/></svg>All assessments<span data-count="all"></span></a>
+    </div>
+    <div class="side-group">
+      <span class="side-label"><svg viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"/></svg>Needs action</span>
+      <a href="#/" data-filter="confirm"><i class="sd" style="--c:#ff9f0a"></i>To confirm<span data-count="confirm"></span></a>
+      <a href="#/" data-filter="report"><i class="sd" style="--c:#0a84ff"></i>Plan &amp; report<span data-count="report"></span></a>
+      <a href="#/" data-filter="send"><i class="sd" style="--c:#bf5af2"></i>Ready to send<span data-count="send"></span></a>
+    </div>
+    <div class="side-group">
+      <span class="side-label"><svg viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"/></svg>Recent clients</span>
+      <div data-recent-clients></div>
+    </div>
+    <label class="me">
+      <span class="avatar" id="avatar">?</span>
+      <span class="me-text"><small>Signed in as</small><input id="staff" placeholder="Your name" autocomplete="off" aria-label="Staff name"></span>
+    </label>
+  </aside>
+
+  <!-- Main -->
+  <div class="main"><main id="app" class="app"></main></div>
+
+  <!-- Activity inbox -->
+  <aside class="inbox" aria-label="Activity">
+    <div class="inbox-head"><h2>Activity</h2><button class="icon-btn" type="button" data-inbox-toggle aria-label="Close activity"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></button></div>
+    <div class="inbox-tabs" role="tablist">
+      <button type="button" class="on" data-inbox-tab="all"><svg viewBox="0 0 24 24"><path d="M5 7h3M5 12h3M5 17h3M11 7h8M11 12h8M11 17h8"/></svg>All</button>
+      <button type="button" data-inbox-tab="report"><svg viewBox="0 0 24 24"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20z"/><path d="M14 3.5V8h4"/></svg>Reports</button>
+      <button type="button" data-inbox-tab="email"><svg viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m4.5 7 7.5 6 7.5-6"/></svg>Emails</button>
+    </div>
+    <div class="inbox-list" data-inbox-list></div>
+  </aside>
+</div>
+
+<!-- Command palette -->
+<div class="palette" data-palette-root hidden>
+  <div class="palette-box" role="dialog" aria-modal="true" aria-label="Command menu">
+    <label class="palette-input"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.2-4.2"/></svg><input placeholder="Run command or find a client…" autocomplete="off" data-palette-input><button type="button" class="icon-btn" data-palette-close aria-label="Close"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></button></label>
+    <div class="palette-list" data-palette-list></div>
+  </div>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="/app.js"></script>
+</body>
+</html>

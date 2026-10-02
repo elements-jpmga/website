@@ -1,0 +1,13 @@
+{
+  "name": "elements-wellness-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Elements Wellness website revamp \u2014 static front-end",
+  "scripts": {
+    "build": "node build.mjs",
+    "serve": "node serve.mjs",
+    "dev": "node build.mjs && node serve.mjs",
+    "reviews": "node scripts/update-reviews.mjs"
+  }
+}

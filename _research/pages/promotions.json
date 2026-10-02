@@ -1,0 +1,335 @@
+{
+ "url": "https://elements.com.sg/promotions/",
+ "path": "/promotions/",
+ "title": "Promotions",
+ "description": "Flexible pricing for massage, facial, spa services. Single session available, no package required. Choose the plan that suits your needs, whether you're a one-time user or a dedicated member.",
+ "blocks": [
+  {
+   "t": "html",
+   "html": "<p><strong>PROMOTION</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<h2>Experience expert-led treatments at special first-visit and online rates.</h2>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "BODY MASSAGE",
+   "html": "BODY MASSAGE"
+  },
+  {
+   "t": "html",
+   "html": "<p><b>Body Massage</b> (60 min) <span>[MOST BOOKED]<br/></span>Choose your massage style (Tuina/ Sports/ Deep Tissue/ Swedish)<br/></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>FIRST VISIT*<br/>$69 (U.P. $158)</p><p><em>Packages available</em></p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20body%20massage%20(website)"
+  },
+  {
+   "t": "html",
+   "html": "<p><b><strong><a href=\"/services/massage/the-5-elements-massage/\">THE 5 ELEMENTS MASSAGE </a><span>(60 min<span>)</span><a href=\"/services/massage/the-5-elements-massage/\"><span> [MORE INFO]</span></a> </strong></b></span><br/>Choose your element (金/木/水/火/土) · Deepen your treatment<br/></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WEB PROMO<br/>$98 (U.P. $229)</p><p><em>Packages available</em></p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20Couple%20Aromatherapy%20Massage%20(website)"
+  },
+  {
+   "t": "html",
+   "html": "<p><b><strong>Couple Aromatherapy Massage <span>(60 min)</strong></b></span><br/>For 2 pax<br/>Includes: Couple Room access and a signature Antedote Aromatherapy enhancement.<br/></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WEB PROMO<br/>$195 (U.P. $313.80)</p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20Couple%20Aromatherapy%20Massage%20(website)"
+  },
+  {
+   "t": "html",
+   "html": "<p><b><strong>Lymphatic Drainage Massage <span>(60 min)</strong></b></span><br/>Rhythmic technique to reduce fluid retention.<br/></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>FIRST VISIT*<br/>$98 (U.P. $228)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WEB PROMO<br/>$148 (U.P. $228)</p><p><em>Packages available</em></p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20Lymphatic%20Drainage%20Massage%20(website)"
+  },
+  {
+   "t": "html",
+   "html": "<p><b><strong>Pre/ Postnatal Massage <span>(60 min)</strong></b></span><br/>Safe, therapist-guided care for mothers.<br/></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>FIRST VISIT*<br/>$98 (U.P. $228)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WEB PROMO<br/>$128 (U.P. $228)</p> <p><em>Packages available</em></p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20Pre/Postnatal%20Massage%20(website)"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "BODY RECOVERY",
+   "html": "BODY RECOVERY"
+  },
+  {
+   "t": "html",
+   "html": "<p><b><strong>INDIBA Body Therapy <span>(30 min)</strong></b></span><br/>(Slimming / Pain Management/ Wombcare)<br/></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>FIRST VISIT*<br/>$109​ (U.P. $400)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WEB PROMO<br/>$188 (U.P. $400)</p><p><em>Packages available</em></p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20INDIBA%20Body%20Therapy%20(website)"
+  },
+  {
+   "t": "html",
+   "html": "<p><b><strong>Customised Pain Management Therapy <span>(30 min)</strong></b></span><br/>(Acuwave/ Meridian Flush Therapy/ Infraray Moxibustion)<br/></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>FIRST VISIT*<br/>$69 (U.P. $138)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WEB PROMO<br/>$98 (U.P. $138)</p><p><em>Packages available</em></p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20Customised%20Pain%20Management%20Therapy%20(website)"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "FACIAL TREATMENTS",
+   "html": "FACIAL TREATMENTS"
+  },
+  {
+   "t": "html",
+   "html": "<p><b><strong>AquaGlow Facial <span>(60 min) <span>[MOST BOOKED]</span></strong></b></span><br/>For a clean, refreshed, and naturally radiant complexion.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>FIRST VISIT*<br/>$69​ (U.P. $118)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WEB PROMO<br/>$98 (U.P. $118)</p><p><em>Packages available</em></p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20Aqua%20Glow%20Facial%20(website)"
+  },
+  {
+   "t": "html",
+   "html": "<p><b><strong>Probiotic Facial <span>(75 min) <span>[MOST BOOKED]</span></strong></b></span><br/>(Hydrating/ Soothing/ Brightening/ Anti-aging/ Anti-acne)<br/></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>FIRST VISIT*<br/>$129 (U.P. $228)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WEB PROMO<br/>$188 (U.P. $228)</p><p><em>Packages available</em></p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20Probiotic%20Facial%20(website)"
+  },
+  {
+   "t": "html",
+   "html": "<p><b><strong>HA Power Dose Facial <span>(60 min)</strong></b></span><br/><span>Plumps and restores skin with a concentrated dose.</span><br/></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>FIRST VISIT*<br/>$99​ (U.P. $188)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WEB PROMO<br/>$128 (U.P. $188)</p><p><em>Packages available</em></p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20HA%20Power%20Dose%20Facial%20(website)"
+  },
+  {
+   "t": "html",
+   "html": "<p><b><strong>Customised Facial Solution Treatment <span>(90 min)</strong></b></span><br/><span>(Indiba/ LPG /IPL /Wishpro /Needleless Rejuran/ Skin Booster) </span><br/></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>FROM<br/>$288</p><p><em>Packages available</em></p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20Customised%20Facial%20Solution%20Treatment%20(website)"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "ONSEN RITUALS",
+   "html": "ONSEN RITUALS"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "(Centrepoint only)",
+   "html": "(Centrepoint only)"
+  },
+  {
+   "t": "html",
+   "html": "<p><b><strong>Solo Koyamaki Onsen Spa Ritual <span>(115 min)</strong></b></span><br/>For 1 pax<br/>Includes: 40-min Private Onsen, 60-min Ocha Body Massage, and 15-min Back Scrub</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WEEKDAYS<br/>$165 (U.P. $293)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WEEKENDS<br/>$185 (U.P. $293)</p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20Solo%20Koyamaki%20Onsen%20(website)"
+  },
+  {
+   "t": "html",
+   "html": "<p><b><strong>Couple Koyamaki Onsen Spa Ritual <span>(115 min)</strong></b></span><br/>For 2 pax<br/>Includes: 40-min Private Onsen, 60-min Ocha Body Massage, 15-min Back Scrub, and Couple Room access<br/></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WEEKDAYS<br/>$288 (U.P. $490)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WEEKENDS<br/>$323 (U.P. $490)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<a href=\"https://api.whatsapp.com/send?phone=6589499605&amp;text=Hi%20I'm%20enquiring%20about%20Couple%20Koyamaki%20Onsen%20(website)\"> <span>BOOK NOW </span> </a>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p><b><strong>Koyamaki Onsen <span>(40 min)</strong></b></span><br/>Private Onsen only (Body Massage is not included)<br/></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>SOLO<br/>$98 (U.P. $118)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>COUPLE<br/>$148 (U.P. $198)</p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20Koyamaki%20Onsen%20Facilities%20(website)"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "CHILL & HEAL RITUALS",
+   "html": "CHILL & HEAL RITUALS"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "(313@somerset only)",
+   "html": "(313@somerset only)"
+  },
+  {
+   "t": "html",
+   "html": "<p><b><strong>Solo Chill &amp; Heal Ritual <span>(105 min)</strong></b></span><br/>For 1 pax<br/>Includes: 60-min Body Massage, and 45-min Contrast Therapy<br/></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WEEKDAYS<br/>$158 (U.P. $236)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WEEKENDS<br/>$168 (U.P. $236)</p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20Solo%20Chill%20and%20Heal%20Ritual%20(website)"
+  },
+  {
+   "t": "html",
+   "html": "<p><b><strong>Couple Chill &amp; Heal Ritual <span>(105 min)</strong></b></span><br/>For 2 pax<br/>Includes: 60-min Body Massage, 45-min Contrast Therapy, and Couple Room access.<br/></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WEEKDAYS<br/>$298 (U.P. $434)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WEEKENDS<br/>$318 (U.P. $434)</p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20Couple%20Chill%20and%20Heal%20Ritual%20(website)"
+  },
+  {
+   "t": "html",
+   "html": "<p><b><strong>Chill &amp; Heal Therapy <span>(45 min)</strong></b></span><br/>Contrast Therapy only, Body Massage is not included.<br/></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>SOLO<br/>$98 (U.P. $118)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>COUPLE<br/>$148 (U.P. $198)</p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20Chill%20and%20Heal%20Facilities%20(website)"
+  },
+  {
+   "t": "html",
+   "html": "<p>* The <b>first trial promotion</b> is valid for local residents who are first-time visitors to Elements Wellness and pay by local debit/credit card or PayNow.</p><p>Website promotion is available to all customers on any day, subject to availability. Simply quote ‘website promotion’ when making an appointment. </p><p>All prices stated are after GST.</p><p>For queries and appointments, please click <span><a href=\"https://api.whatsapp.com/send?phone=6589499605&amp;text=Hi%20I’m%20browsing%20your%20website%20and%20would%20like%20to%20enquire%20about%20your%20 treatments\">here.</a></span></p>"
+  }
+ ]
+}

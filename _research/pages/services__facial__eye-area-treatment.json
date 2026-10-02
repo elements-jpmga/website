@@ -1,0 +1,157 @@
+{
+ "url": "https://elements.com.sg/services/facial/eye-area-treatment/",
+ "path": "/services/facial/eye-area-treatment/",
+ "title": "Eye Area Facial Treatment for wrinkles and crows feet",
+ "description": "Facial treatments that reduce dark eye circles, puffiness and signs of aging around the eye area.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Facials for your Eye Contour Area",
+   "html": "Facials for your Eye Contour Area"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "What’s the purpose of Eye Contour Area treatment facials?",
+   "html": "What’s the purpose of Eye Contour Area treatment facials?"
+  },
+  {
+   "t": "html",
+   "html": "<p>Because our eyes are among the first features people notice, it’s only natural to want them to look bright and youthful. The skin around the eyes is the thinnest and most delicate— it lacks oil glands, and is more susceptible to signs of aging such as fine lines, wrinkles,crows feet, dark circles, and puffiness. That’s why targeted eye contour treatments are essential for maintaining a refreshed, youthful appearance.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/eye-trt-dd605f8ae940.jpg",
+   "alt": "24K Gold Eye Treatment, Bojin Eye Treatment, Collagen Eye Treatment, INDIBA Eye Treatment",
+   "caption": "",
+   "w": 1131,
+   "h": 1600
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "What Causes Signs of Tiredness Around the Eyes?",
+   "html": "What Causes Signs of Tiredness Around the Eyes?"
+  },
+  {
+   "t": "html",
+   "html": "<p>As we age or when fatigued, blood circulation and lymphatic drainage around the eyes slow down. The delicate, thin skin in this area easily shows the effects, leading to puffiness, dark circles, crow’s feet, and fine wrinkles. Dehydration and skin fragility make these signs more noticeable, making the eye contour area especially vulnerable to early aging.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Can it really help with Crows Feet?",
+   "html": "Can it really help with Crows Feet?"
+  },
+  {
+   "t": "html",
+   "html": "<p>Crows feet refer to the wrinkles that appear around the outer corners of the eyes and stretches out towards to the temples. They are the natural result of collagen production declining with age. Consistent care and nourishment can definitely reduce the appearance of these wrinkles.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Types of Eye Treatment Facials Elements Wellness provides",
+   "html": "Types of Eye Treatment Facials Elements Wellness provides"
+  },
+  {
+   "t": "html",
+   "html": "<p>We recommend adding eye area treatments during a facial to optimise your time spent.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "24K Pure Gold Eye Treatment",
+   "html": "24K Pure Gold Eye Treatment"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/gold-eye-3f1fa89a274a.jpg",
+   "alt": "24K Gold Eye Treatment, Bojin Eye Treatment, Collagen Eye Treatment, INDIBA Eye Treatment",
+   "caption": "",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "t": "html",
+   "html": "<p>This luxurious treatment features 24K pure nano gold flakes suspended in a nourishing serum to deeply hydrate and revitalize the delicate eye area. It helps lift, brighten, and rejuvenate, leaving the skin looking refreshed and radiant.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Hydrating Collagen Eye Treatment",
+   "html": "Hydrating Collagen Eye Treatment"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/collagen-eye-bc04c32d5132.jpg",
+   "alt": "24K Gold Eye Treatment, Bojin Eye Treatment, Collagen Eye Treatment, INDIBA Eye Treatment",
+   "caption": "",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "t": "html",
+   "html": "<p>This treatment uses plant-based collagen to reduce visible signs of aging around the eyes. Either massaged in or infused with a machine, it deeply hydrates and revitalizes the delicate skin, leaving your eyes looking refreshed and youthful.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Eye Bojin Treatment",
+   "html": "Eye Bojin Treatment"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/eye-bojin-0bd5c6044387.jpg",
+   "alt": "24K Gold Eye Treatment, Bojin Eye Treatment, Collagen Eye Treatment, INDIBA Eye Treatment",
+   "caption": "",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "t": "html",
+   "html": "<p>Rooted in Traditional Chinese Medicine (TCM), the Eye Bojin treatment uses a specialized tool to massage key acupressure points around the eyes and forehead. This improves circulation, reduces puffiness, and common concerns like eye strain, dark circles, and wrinkles, promoting a refreshed and lifted appearance.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "INDIBA® Eye Rejuvenation",
+   "html": "INDIBA® Eye Rejuvenation"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/indiba-eye-c5aa6a143d60.jpg",
+   "alt": "24K Gold Eye Treatment, Bojin Eye Treatment, Collagen Eye Treatment, INDIBA Eye Treatment",
+   "caption": "",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "t": "html",
+   "html": "<p>This is an advanced eye treatment that has visible results and also improves skin health. Using the patented INDIBA® Proionic System that can work over the eyelids, it tightens skin, improves collagen formation and increases micro-circulation, making it effective for addressing puffy eye bags, saggy eyelids, fine lines, crows feet, and dark circles. <br/>By improving blood flow, oxygenating tissues and detoxifying, INDIBA® delivers visible results after just one session, reducing wrinkles and expression lines.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Frequently Asked Questions",
+   "html": "Frequently Asked Questions"
+  },
+  {
+   "t": "faq",
+   "items": [
+    {
+     "q": "Can I add an eye treatment to my regular facial?",
+     "a": "<p>Yes! We recommend adding an eye area treatment to your facial session to maximize your time and results.</p>"
+    },
+    {
+     "q": "Are these treatments safe for the delicate eye area?",
+     "a": "<p>Yes, all our treatments are specifically formulated for the thin and sensitive skin around the eyes, using gentle techniques and effective technologies.</p>"
+    },
+    {
+     "q": "Will I experience any downtime after an eye facial?",
+     "a": "<p>No downtime is required. These treatments are non-invasive and gentle, allowing you to return to your normal routine immediately after the session.</p>"
+    }
+   ]
+  }
+ ]
+}

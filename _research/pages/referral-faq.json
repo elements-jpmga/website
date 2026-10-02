@@ -1,0 +1,37 @@
+{
+ "url": "https://elements.com.sg/referral-faq/",
+ "path": "/referral-faq/",
+ "title": "Referral FAQ",
+ "description": "Learn how to earn rewards by sharing the gift of relaxation with your loved ones. Browse our most asked questions about referral programs here.",
+ "blocks": [
+  {
+   "t": "image",
+   "src": "/assets/img/pages/referral-2-bf8972d4f2c0.jpg",
+   "alt": "referral program banner 2",
+   "caption": "",
+   "w": 1600,
+   "h": 369
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/referral-efc562172926.jpg",
+   "alt": "referral program banner",
+   "caption": "",
+   "w": 1000,
+   "h": 300
+  },
+  {
+   "t": "html",
+   "html": "<p>Welcome!</p><p>Your friend has referred you to enjoy any of the following treatments at an exclusive first trial rate. </p><p>To make an appointment, please fill up the form and we’ll tend to your request.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>As our valued clients, you are the best source of referrals. Here is how our Referral Program works:</p><ul><li>You are an active member of Elements Wellness Group.</li><li>Your friend enjoys an exclusive first-trial discount.</li><li>Your friend makes an appointment for their first session at our spa and quotes your name &amp; mobile number. If your friend does the first visit without using your referral, the referral will not be valid.</li><li>*Once they have completed their trial and proceed to spend a minimum of $680 (before GST) on a package under their account, your 8% Referral Cashback will be credited into your account! Congratulations!</li><li>Referral Cashback is calculated based on package sales nett of GST and capped at $180 per referral.</li><li>Note that Referral Cashback is limited to the Referral’s first package purchase during the first visit.</li><li>This promotion is valid till 31 Dec 2023.</li><li>Referral Cashback must be utilized within 3 months.</li></ul><p><strong>Frequently Asked Questions</strong></p><p><b>1. Who is eligible to participate in the referral program?</b></p><p>As an active member of Elements Wellness Group, you are eligible to participate in the referral program.</p><p><b>2. How does the referral program work?<br/></b></p><p>If your friend makes an appointment for their first session at our spa and provides your name and mobile number as the referrer, you’ll be eligible for the referral program.</p><p><b>3. What happens if my friend visits the spa without using my referral?</b></p><p>If your friend completes their first visit without using your referral, the referral would not be valid, and you would not be eligible for the referral cashback.</p><p><b>4. How do I earn the Referral Cashback?</b></p><p>Once your referred friend completes their trial session and proceeds to spend a minimum of $680 (before GST) on a package under their account, you’ll receive an 8% Referral Cashback credited into your account.</p><p><b>5. How is the Referral Cashback calculated?</b></p><p>The Referral Cashback is calculated based on the package sales amount, net of GST, and is capped at $180 per referral.</p><p><b>6. Can I earn Referral Cashback for multiple referrals?</b></p><p>Yes, you can earn Referral Cashback for multiple successful referrals, as long as each referral meets the program’s terms and conditions.</p><p><b>7. When will I receive the Referral Cashback?</b></p><p>The Referral Cashback will be credited into your account after your referred friend completes their first package purchase and fulfills the minimum spending requirement.</p><p><b>8. Is there a time limit for earning and using the Referral Cashback?</b></p><p>Yes, the referral promotion is valid until 31st October 2023, and the Referral Cashback must be utilized within 3 months from the date of credit.</p><p><b>9. Can the Referral Cashback be used for any spa service or package?</b></p><p>The Referral Cashback can only be used for spa packages and services offered by Elements Wellness Group.</p><p><b>10. Is there a limit to the number of Referral Cashbacks I can accumulate?</b></p><p>There is no limit to the number of Referral Cashbacks you can earn, as long as each referral meets the program’s criteria.</p><p><b>11. Can I transfer or redeem the Referral Cashback for cash?</b></p><p>No, the Referral Cashback is non-transferable and cannot be redeemed for cash. It can only be used towards spa packages at Elements Wellness Group.</p><p><b>12. Where can I check my Referral Cashback balance?</b></p><p>You can inquire about your Referral Cashback balance with our friendly staff at any Elements Wellness Group spa outlet.</p><p><b>13. Are there any other terms and conditions I should be aware of?</b></p><p>Please refer to the full terms and conditions of the referral program on our website or inquire with our staff at any of our spa outlets.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Make Referral Appointment Now",
+   "href": "/referral/"
+  }
+ ]
+}

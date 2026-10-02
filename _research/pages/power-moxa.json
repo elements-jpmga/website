@@ -1,0 +1,76 @@
+{
+ "url": "https://elements.com.sg/power-moxa/",
+ "path": "/power-moxa/",
+ "title": "Power Moxa Treatment in Singapore",
+ "description": "Experience the therapeutic benefits of Power Moxa to enhance your well-being and restore balance. Make your appointment with us today!",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Power Moxa",
+   "html": "Power Moxa"
+  },
+  {
+   "t": "html",
+   "html": "<p>The modern way of doing moxibustion therapy that is 10X more effective. Based on the TCM principles of nourishing with warmth to dispel the cold.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Power Moxa applies modern technology to TCM Moxibustion therapy to enhance results. Using high firepower and smokeless burning of Mugwort or 艾灸, it is able to consistently and safely deliver enhanced moxibustion.</p><p>Power Moxa is a heat therapy that comfortably and naturally expels ‘cold’ from your body to combat ailments and build your health. By positioning the moxa at specific acupoints, it uses heat and herbs to get your “Qi” moving. Great for improving energy, immunity and anti-aging.</p><p>Despite living in the tropical climate, we can be over-exposed to ‘coldness’ (for e.g. too much air-conditioning, over consumption of cold drinks and high humidity). This leads to common ailments, aches and pains, when prolonged is not good for our bodies as it leads to stagnation of “Qi”.</p><p>TCM believes “Qi” blockages cause physical as well as mental health issues, so by moving these energies along meridian channels you can improve both physical and mental health over time.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/moxa-f257c6c39932.jpg",
+   "alt": "power moxa treatment",
+   "caption": "",
+   "w": 1600,
+   "h": 1600
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Benefits",
+   "html": "Benefits"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Pleasant, warm, comfortable and painless therapy, to be enjoyed by both young and old</li><li>10 times more effective than traditional moxibustion, as the strong firepower enables continuous infusion of moxa</li><li>Covers a larger area with higher penetration power, for more results.</li><li>Helps with improving energy and well-being, especially in people who feel sluggish</li><li>Builds immunity and fights aging</li><li>Restores energy flow in 12 meridian channels</li><li>With the strong firepower, the pure ‘yang’ from moxa (mugwort herbs) is able to penetrate deeply into the body</li></ul>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Suitable For",
+   "html": "Suitable For"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Muscle pain due to arthritis, injury, muscle stiffness, rheumatism.</li><li>Muscle soreness due to over-exposure to air-con</li><li>Poor digestion</li><li>Fatigue, lethargy, sluggishness</li><li>Slow metabolism</li><li>Cold limbs</li><li>Water retention</li><li>Menstrual cramps</li></ul>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/screenshot-2022-07-01-at-10-36-25-am-1d34b87b1ff4.jpg",
+   "alt": "Power Moxa TCM blends",
+   "caption": "",
+   "w": 1372,
+   "h": 976
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How It Works",
+   "html": "How It Works"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>The Power Moxa machine is placed over the treatment area, where you’ll feel the comfortable warmth.</li><li>5 Elements TCM herbal oil is applied to the treatment area to enhance treatment benefits.</li><li>Advanced Intelligent Heat Control technology burns Moxa (mugwort herb) at high fire power for continuous infusion of moxa into your body.</li><li>Smokeless and safe.</li><li>6 aged moxa pallets are used simultaneously to cover a larger body area and for deeper penetration.</li><li>10x more effective than traditional moxibustion.</li></ul>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/screenshot-2022-07-01-at-10-36-25-am-1d34b87b1ff4.jpg",
+   "alt": "Power Moxa TCM blends",
+   "caption": "",
+   "w": 1372,
+   "h": 976
+  }
+ ]
+}

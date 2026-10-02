@@ -1,0 +1,64 @@
+{
+ "url": "https://elements.com.sg/medi-stretch/",
+ "path": "/medi-stretch/",
+ "title": "Medi Stretch",
+ "description": "Relieve tension, improve flexibility, and enhance your well-being with this innovative therapy. Book your session at Elements Wellness today",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Medi Stretch",
+   "html": "Medi Stretch"
+  },
+  {
+   "t": "html",
+   "html": "<p>A trained therapist stretches your body for you, to promote healing, relieve pain, restore movement and enable you to return to activities you love.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Medi Stretch is an assisted stretch therapy, done by a certified therapist using the Dynamic Corrective Stretch Method. The trained therapist does the stretching for you, according to your comfort level. This ensures that your body is stable and properly aligned to benefit from stretching, and it also reaches muscles and tendons that cannot be effectively self-stretched.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/stretch-1-copy-78f41509d94e.jpg",
+   "alt": "medi stretch first trial banner",
+   "caption": "",
+   "w": 1000,
+   "h": 667
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Benefits",
+   "html": "Benefits"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Helps you to stretch muscles that cannot be effectively self-stretched</li><li>Helps to reduce soreness after exercising or strenuous labor</li><li>Speeds up recovery times</li><li>Increases blood circulation</li><li>Lowers risk of injuries</li><li>Improves posture </li><li>Releases tightness in muscles</li><li>Activates the fascia and tendons to help keep them supple and flexible.</li><li>Improves mobility and flexibility</li><li>Improves nerve transmission. Helps with the movement of the nerves through the joints and muscles by loosening surrounding stiff muscles and joints</li><li>Boosts mood, feels good and helps with relaxation</li></ul>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Suitable For",
+   "html": "Suitable For"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Muscle pain due to over-exercising</li><li>Lower back pain/stiffness</li><li>Poor posture &amp; flexibility</li><li>Overexercising</li><li>Overuse of computer or digital devices</li><li>Injury</li><li>Stress</li><li>Fatigue</li><li>Imbalanced muscles</li></ul>"
+  },
+  {
+   "t": "video",
+   "url": "https://youtu.be/Zh3QHGWPAs0"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How It Works",
+   "html": "How It Works"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Done by a certified therapist using the Dynamic Corrective Stretch Method</li><li>A trained professional helps your body to stretch further while preventing injuries. Some muscles cannot be effectively self-stretched, and you may unintentionally injure yourself over time with improper positioning.</li><li>The Medi Stretch therapist would stabilize your body in proper alignment to stretch safely and effectively.</li><li>This therapy pays attention to stretch reflex, which is your body’s defense mechanism against injury. If a muscle is stretched (lengthened) too far or too quickly, it would contract as a reflex. The therapist would pay attention to your stretch reflex, so as to effectively lengthen your muscle over time.</li><li>You communicate your comfort level to the therapist and remain in control of the session.</li></ul>"
+  }
+ ]
+}

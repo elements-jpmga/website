@@ -1,0 +1,578 @@
+{
+ "url": "https://elements.com.sg/services/facial/medi-jet-facial/",
+ "path": "/services/facial/medi-jet-facial/",
+ "title": "Medi-Jet Facial in Singapore | Pioneered in Korea",
+ "description": "Delivers clinical-grade actives deep into the dermis — no needles, no downtime, no recovery time.",
+ "blocks": [
+  {
+   "t": "html",
+   "html": "<p>MEDI-FACIAL · MEDISPA RANGE</p>"
+  },
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Medi-Jet Facial",
+   "html": "Medi-Jet<br/> Facial"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/medi-jet-medium-fcf18f3b50c3.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 512,
+   "h": 640
+  },
+  {
+   "t": "html",
+   "html": "<p>Delivers clinical-grade actives deep into the dermis — no needles, no downtime, no recovery time.</p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK THIS TREATMENT",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi,%20I'd%20like%20to%20book%20Medi-Jet%20Facial%20(website)"
+  },
+  {
+   "t": "html",
+   "html": "<p>Pioneered in Korea · 90-mins · First Trial S$344 · U.P. S$688</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/medi-jet-medium-fcf18f3b50c3.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 512,
+   "h": 640
+  },
+  {
+   "t": "html",
+   "html": "<p>WHAT IT IS</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Needle-free dermis delivery",
+   "html": "Needle-free dermis delivery"
+  },
+  {
+   "t": "html",
+   "html": "<p>A technology-led facial that uses micro-airjet pressure to open temporary micro-pathways in the skin, allowing clinical-grade actives to reach the dermis without a single needle.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WHAT HAPPENS</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Infusion at depth",
+   "html": "Infusion at depth"
+  },
+  {
+   "t": "html",
+   "html": "<p>The Medi-Jet handpiece delivers a pressurised stream of concentrated actives across the full face, followed by a tailored treatment mask to seal in the infusion.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>GOOD FOR</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Who is suits",
+   "html": "Who is suits"
+  },
+  {
+   "t": "html",
+   "html": "<p>– Pigmentation &amp; uneven skin tone<br/>– Fine lines &amp; loss of firmness<br/>– Dull or dehydrated skin<br/>– Skin that isn’t responding to topicals<br/>– Sensitive skin unsuitable for laser</p>"
+  },
+  {
+   "t": "html",
+   "html": "<h2>“The same actives your aesthetic doctor injects — delivered by controlled airjet pressure, <br/>with none of the needles, none of the bruising, and none of the recovery time.”</h2>"
+  },
+  {
+   "t": "html",
+   "html": "<p>“The same active your aesthetic doctor injects — delivered by controlled airjet pressure, with none of the needles, none of the bruising, and none of the recovery time.”</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "HOW IT WORKS",
+   "html": "HOW IT WORKS"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Micro-airjet pressure that opens the skin — not pierces it",
+   "html": "Micro-airjet pressure that opens the skin — not pierces it"
+  },
+  {
+   "t": "html",
+   "html": "<p>The skin’s outer barrier blocks roughly 97% of what is applied to its surface. Medi-Jet bypasses this barrier using controlled micro-airjet technology: a pressurised stream that momentarily opens micro-pathways in the epidermis, allowing the active cocktail to penetrate directly to the dermis — the layer where collagen, elastin, and skin density are built and maintained.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Cleanse</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Double cleanse to remove surface impurities and prepare the skin for optimal absorption.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Enzyme Peel</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>A mild enzymatic exfoliant clears the uppermost skin layer, allowing the airjet to work without obstruction.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Facial Massage</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Manual massage stimulates circulation and prepares the tissue before infusion.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Medi-Jet Infusion</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>The micro-airjet delivers your chosen active cocktail past the epidermis to the dermis — the treatment’s core mechanism.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Treatment Mask</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>A sealing mask locks in the infused actives and begins the post-treatment calming and repair phase.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>The protocol follows a precise sequence: preparation, delivery, and consolidation. You leave with actives already working at cellular depth — not sitting on the surface waiting to be absorbed.</p><p>Choose your formulation before the session — Radiance or Rejuvenate — and the Medi-Jet protocol is built around it from step one.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>01</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>CLEANSE</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>02</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>ENZYME PEEL</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>03</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>MASSAGE</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>04</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>MEDI-JET</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Core infusion step</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>05</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>MASK</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "WHY DEPTH MATTERS",
+   "html": "WHY DEPTH MATTERS"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Why most actives never reach where they need to go",
+   "html": "Why most actives never reach where they need to go"
+  },
+  {
+   "t": "html",
+   "html": "<p>The epidermis is an effective barrier — it keeps the environment out, and it keeps most of what you apply on the surface. Active ingredients in skincare, however well formulated, rarely cross the epidermal barrier in meaningful concentrations. The dermis — where collagen and elastin are produced, where skin density is regulated — stays largely untreated.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>REGULAR FACIAL DEVICE</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Surface only",
+   "html": "Surface only"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "~3%",
+   "html": "~3%"
+  },
+  {
+   "t": "html",
+   "html": "<p>Active ingredients sit on the skin surface. The skin barrier blocks most of what is applied — only a fraction reaches below the epidermis.</p>"
+  },
+  {
+   "t": "html",
+   "html": "MEDI-JET — THE DIFFERENCE"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Deep. No needles.",
+   "html": "Deep. No needles."
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Dermis",
+   "html": "Dermis"
+  },
+  {
+   "t": "html",
+   "html": "<p>Micro-airjet opens pathways without breaking the skin. Actives reach the dermis evenly — while activating the skin’s own renewal response.</p>"
+  },
+  {
+   "t": "html",
+   "html": "NEEDLE INJECTION"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Deep — but at a cost",
+   "html": "Deep — but at a cost"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Invasive",
+   "html": "Invasive"
+  },
+  {
+   "t": "html",
+   "html": "<p>Needles bypass the barrier and deliver actives directly to the dermis. Results can be strong, but so are the risks: discomfort, bruising, and recovery time.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Medi-Jet occupies the space between these two approaches — the depth of an injection, without the trauma. Actives reach the dermis intact, in controlled concentration, and the skin’s natural renewal processes are engaged alongside the infusion.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "YOUR FORMULATION",
+   "html": "YOUR FORMULATION"
+  },
+  {
+   "t": "html",
+   "html": "<p>2% Hyaluronic Acid</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Two cocktails. One mechanism. Very different outcomes.",
+   "html": "Two cocktails. One mechanism. Very different outcomes."
+  },
+  {
+   "t": "html",
+   "html": "<p>The Medi-Jet protocol remains constant across both formulations. What changes is the active cocktail — chosen at the start of your session based on your skin concern. Both use 2% Hyaluronic Acid as the hydration base, ensuring the dermis is primed to receive the full cocktail at maximum depth.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "RADIANCE",
+   "html": "RADIANCE"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Radiance Cocktail",
+   "html": "Radiance Cocktail"
+  },
+  {
+   "t": "html",
+   "html": "<p>ASH + ASB — Hyaluronic + Brightening blend. For pigmentation, uneven skin tone, and dullness that persists despite a regular skincare routine.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Floods the dermis with deep, lasting hydration — plumping fine lines and restoring bounce.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Oligopeptide-34</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Blocks melanin production at the cellular root, fading existing pigmentation and preventing new spots.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Niacinamide B3</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Strengthens the skin barrier, calms sensitivity, and evens skin tone over time.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ethyl Ascorbic Acid (Vit C)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Brightens and protects against free radical damage.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Glutathione</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>A potent antioxidant that inhibits melanin and restores luminosity.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "REJUVENATE",
+   "html": "REJUVENATE"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Radiance Cocktail",
+   "html": "Radiance Cocktail"
+  },
+  {
+   "t": "html",
+   "html": "<p>ASH + ASR — Hyaluronic + Rejuvenating blend. For fine lines, loss of firmness, and skin that has lost density and definition over time.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>2% Hyaluronic Acid</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Deep hydration base — primes the dermis to receive the full cocktail at maximum depth.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Growth Factors (×4)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Stimulate collagen and elastin synthesis, rebuilding the skin’s structural support from within.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Copper Tripeptide</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Activates fibroblasts, accelerates tissue repair, and firms skin visibly.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>14 Vitamins + 24 Amino Acids</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>A complete cellular nutrition complex — restoring density, radiance, and resilience.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Glutathione + Coenzymes</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Antioxidant protection and cellular energy renewal — combating oxidative ageing.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "WHAT IT ADDRESSES",
+   "html": "WHAT IT ADDRESSES"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Skin concerns this treatment is built for",
+   "html": "Skin concerns this treatment is built for"
+  },
+  {
+   "t": "html",
+   "html": "<p>01</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Pigmentation & Dark Spots",
+   "html": "Pigmentation & Dark Spots"
+  },
+  {
+   "t": "html",
+   "html": "<p>Oligopeptide-34 targets melanin production at the cellular root — fading existing marks while slowing the formation of new ones.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>02</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Dullness & Uneven Skin Tone",
+   "html": "Dullness & Uneven Skin Tone"
+  },
+  {
+   "t": "html",
+   "html": "<p>Vitamin C and Glutathione delivered at dermis depth restore luminosity that surface-level brighteners cannot reach.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>03</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Fine Lines & Loss of Firmness",
+   "html": "Fine Lines & Loss of Firmness"
+  },
+  {
+   "t": "html",
+   "html": "<p>Growth factors and Copper Tripeptide stimulate collagen and elastin production — addressing the structural cause, not just the surface appearance.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>04</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Skin Dehydration",
+   "html": "Skin Dehydration"
+  },
+  {
+   "t": "html",
+   "html": "<p>2% Hyaluronic Acid infused at dermis level provides lasting hydration — not the temporary surface plump of a topical application.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>05</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Skin That Has Plateaued",
+   "html": "Skin That Has Plateaued"
+  },
+  {
+   "t": "html",
+   "html": "<p>For skin that is well-maintained but no longer responding to topicals — dermis delivery provides the uplift that surface application cannot.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>06</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Sensitivity to Invasive Treatments",
+   "html": "Sensitivity to Invasive Treatments"
+  },
+  {
+   "t": "html",
+   "html": "<p>A needle-free path to dermis-level results — suitable for clients who want the efficacy of a skin booster without the discomfort or recovery time.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "FAQS",
+   "html": "FAQS"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Common questions",
+   "html": "Common questions"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Is the Medi-Jet treatment painful, and what can I expect during the session?",
+   "html": "Is the Medi-Jet treatment painful, and what can I expect during the session?"
+  },
+  {
+   "t": "html",
+   "html": "<p>Medi-Jet is comfortable throughout. The airjet device produces a light, controlled pressure as it moves across the skin — most clients describe a mild tingling at most. There is no breaking of the skin, no injection sensation, and no numbing required. The 90-minute session runs as a complete protocol — cleanse, enzyme peel, massage, infusion, and mask — with each stage building on the last. You can return to your normal routine immediately after.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "How do I choose between the Radiance and Rejuvenate formulations?",
+   "html": "How do I choose between the Radiance and Rejuvenate formulations?"
+  },
+  {
+   "t": "html",
+   "html": "<p>The choice comes down to your primary skin concern. Radiance is built for pigmentation, uneven skin tone, dullness, and dark spots — its cocktail centres on brightening actives and melanin regulation. Rejuvenate addresses fine lines, loss of firmness, and skin that has lost density over time — its cocktail contains Growth Factors, Copper Tripeptide, and a full cellular nutrition complex. If your concerns span both categories, discuss with your therapist before the session — they will guide you to the formulation that addresses your most pressing concern, and note the secondary one for a follow-up course.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "How many sessions do I need, and when will I see results?",
+   "html": "How many sessions do I need, and when will I see results?"
+  },
+  {
+   "t": "html",
+   "html": "<p>Many clients notice a visible improvement in hydration, luminosity, and skin tone immediately after the first session — this is the acute effect of dermis-level hydration. For concerns such as pigmentation, fine lines, or firmness, the deeper structural changes build over a course of treatments. A course of four to six sessions, spaced two to four weeks apart, is typically recommended for sustained results. Your therapist will advise a maintenance frequency once the initial course is complete, based on how your skin responds.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>ELEMENTS WELLNESS · MEDI-FACIAL</p>"
+  },
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Dermis-level results. No needles. No downtime.",
+   "html": "Dermis-level results. <br/> No needles. No downtime."
+  },
+  {
+   "t": "html",
+   "html": "<p>Medi-Jet is a precise delivery system — one that puts clinical-grade actives exactly where the skin needs them, at a depth that topical application cannot reach. It does not mimic a needle. It simply removes the need for one.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Medi-Jet Facial</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>90 minutes · Formulation: Radiance or Rejuvenate<br/>ION Orchard · Centrepoint · 313 Somerset</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>First Trial S$344 · U.P. S$688</p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK A SESSION",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi,%20I'd%20like%20to%20book%20Medi-Jet%20Facial%20(website)"
+  }
+ ]
+}

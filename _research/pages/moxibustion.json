@@ -1,0 +1,124 @@
+{
+ "url": "https://elements.com.sg/moxibustion/",
+ "path": "/moxibustion/",
+ "title": "Meridian Moxibustion",
+ "description": "",
+ "blocks": [
+  {
+   "t": "image",
+   "src": "/assets/img/pages/img-7483-scaled-e1721724832624-f8a69f339301.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1510,
+   "h": 1600
+  },
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Meridian Moxibustion",
+   "html": "Meridian Moxibustion"
+  },
+  {
+   "t": "html",
+   "html": "<p>To stimulate the flow of Qi, strengthen the blood and maintain general health.</p><p><strong>Try it now at $79 nett (30-min, U.P. $198)<br/></strong></p>",
+   "widget": "tablet__width-inherit"
+  },
+  {
+   "t": "html",
+   "html": "<a href=\"#MoxiAppointment\"> <span>Book here! </span> </a>",
+   "widget": "tablet__width-inherit"
+  },
+  {
+   "t": "html",
+   "html": "<p><b>What is Moxibustion? </b></p><p>Moxibustion is a traditional Chinese medicine (TCM) therapy that involves burning dried mugwort (moxa) near the skin to stimulate healing. The heat from the burning moxa warms specific points on the body, promoting the flow of Qi (energy) where there is stagnation, dispelling cold and dampness, and enhancing overall health.</p><p>At Elements Wellness, we use premium aged moxa sticks that burn at lower temperatures, while its therapeutic warming benefits penetrate even deeper. </p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/img-7472-1-905ab102af27.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "t": "html",
+   "html": "<p><b>Benefits of Moxibustion</b></p> <ul> <li><b>Pain Relief</b>: Effective for chronic pain conditions such as arthritis, muscle pain, and menstrual cramps.</li> <li><b>Boosts Immunity</b>: Strengthens the immune system and enhances the body’s natural defenses.</li> <li><b>Improves Digestion</b>: Treats digestive issues like bloating, diarrhoea, and stomach pain.</li> <li><b>Balances Hormones</b>: Helps regulate menstrual cycles and alleviate menopause symptoms.</li> <li><b>Promotes Relaxation</b>: Reduces stress and anxiety, promoting overall relaxation and mental well-being.</li></ul>"
+  },
+  {
+   "t": "html",
+   "html": "<p><b>Who is Suitable for Moxibustion?</b></p><p>Moxibustion is usually recommended for clients with a ‘weak’ or ‘cold’ body constitution. The warmth and improved circulation is usually experienced after a session. </p><p>Moxibustion is often used for the following health issues (but not limited to):</p>"
+  },
+  {
+   "t": "card",
+   "img": "/assets/img/pages/muscle-ache-eb2ffdc657e5.jpg",
+   "title": "Chronic Pain",
+   "html": "Those suffering from conditions like arthritis and fibromyalgia",
+   "href": ""
+  },
+  {
+   "t": "card",
+   "img": "/assets/img/pages/image-for-website-3-copy-f86b0801b6eb.jpg",
+   "title": "Women with menstural issue",
+   "html": "Those experiencing menstrual cramps, irregular periods, or menopause symptoms",
+   "href": ""
+  },
+  {
+   "t": "card",
+   "img": "/assets/img/pages/poor-digestion-211f22f4a8f4.jpg",
+   "title": "Digestive Disorders",
+   "html": "Those with indigestion or irritable bowel syndrome (IBS)",
+   "href": ""
+  },
+  {
+   "t": "card",
+   "img": "/assets/img/pages/fatigue-f8c32272c5f3.jpg",
+   "title": "Weak Immune System",
+   "html": "People who frequently fall ill or have low immunity",
+   "href": ""
+  },
+  {
+   "t": "card",
+   "img": "/assets/img/pages/image-for-website-3-3311afcbcbbd.jpg",
+   "title": "Experiencing Stress & Anxiety",
+   "html": "Anyone dealing with high levels of stress or anxiety",
+   "href": ""
+  },
+  {
+   "t": "card",
+   "img": "/assets/img/pages/fatigue-279d0b3f3e11.jpg",
+   "title": "Fatigue and lethargy",
+   "html": "Those who feel tired too often",
+   "href": ""
+  },
+  {
+   "t": "html",
+   "html": "<p><b>Elements Premium Moxibustion</b></p><p>At Elements Wellness, we deliver premium Moxibustion therapy by maintaining standards in these two aspects: using high quality Moxa and precise application.</p><ul><li><strong>Precise application</strong></li></ul><p>Our skilled therapists would analyse your requirements to apply Moxa along the relevant meridians, to ensure that improved circulation brings about healing. </p><ul><li><strong>High Quality Mugwort (艾草)</strong></li></ul><p>We use premium aged smokeless Moxa sticks during Moxibustion, to ensure efficacy and comfort for our clients. The aged Moxa has burns at a slower rate to releasing its healing properties that can penetrate deeper.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Here are the reasons why quality Moxa or Mugwort plays a key role in the success of the treatment:</p><ul><li><b>Warming Effect</b>: Mugwort has a natural warming quality, which enhances its ability to dispel cold and dampness from the body. This warming effect is essential for relieving conditions related to cold stagnation, such as joint pain and digestive issues.</li><li><b>Invigorating Qi and Blood</b>: Mugwort is known for its ability to invigorate the flow of Qi and blood, helping to alleviate pain and improve circulation. This property is beneficial for treating conditions caused by stagnation and blockages in the body’s energy pathways.</li><li><b>Antibacterial and Anti-inflammatory</b>: Mugwort has antibacterial and anti-inflammatory properties, which can help in reducing inflammation and preventing infections when used in moxibustion.</li><li><b>Calming:</b> The aroma from burning mugwort calms the mind and enhances the overall healing experience.</li></ul>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/img-7475-f708dbab03bc.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/img-7483-scaled-e1721724832624-f8a69f339301.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1510,
+   "h": 1600
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Sign Up to Enjoy First Trial Meridian Moxibustion at $79 nett (30-min, U.P. $198)",
+   "html": "Sign Up to Enjoy First Trial Meridian Moxibustion at $79 nett (30-min, U.P. $198)"
+  }
+ ]
+}

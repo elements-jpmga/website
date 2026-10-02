@@ -1,0 +1,56 @@
+{
+ "url": "https://elements.com.sg/singtelsg/",
+ "path": "/singtelsg/",
+ "title": "Singtel",
+ "description": "Catch Elements Wellness Live on Singtel’s TikTok! Elements Wellness adopts a holistic approach through the power of technology, products, ancient healing traditions andthe magic of touch to provide the best treatments for wellness and beauty.",
+ "blocks": [
+  {
+   "t": "image",
+   "src": "/assets/img/pages/tsoutside-ttch-visual-b-1920x1080-eposte-942ca553155e.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1600,
+   "h": 906
+  },
+  {
+   "t": "html",
+   "html": "<p>To make an appointment via call / WhatsApp, select your preferred outlet. (This is usually faster.)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<h5><strong><a href=\"https://api.whatsapp.com/send?phone=6589382878&amp;text=Hi,+I+would+like+to+make+an+appointment+(website)\">Elements – ION</a></strong></h5><p>Tel: 6738 3788 / WA: 8938 2878</p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p><a href=\"https://api.whatsapp.com/send?phone=6593578183&amp;text=Hi,+I+would+like+to+make+an+appointment+(website)\"><strong>Elements – Centrepoint</strong></a></p><p>Tel: 6737 8488 / WA: 9357 8183</p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p><a href=\"https://api.whatsapp.com/send?phone=6596696460&amp;text=Hi,+I+would+like+to+make+an+appointment+(website)\"><strong>Elements – 313</strong></a></p><p>Tel: 6636 8878 / WA: 9669 6460</p>",
+   "widget": "mobile__width-initial"
+  },
+  {
+   "t": "html",
+   "html": "<p>Welcome! </p><p>Here is where you make your appointment<strong>.</strong></p><p><strong>FIRST TRIAL</strong></p><p><strong>1. First-trial Body Massage $48 nett (60-min, U.P. $118)</strong></p><p><strong>2. First-trial Acu-Wave Relief Therapy $68 nett (30-min, U.P. $138)</strong></p><p><strong>3. First-trial AquaGlow $58 nett (60-min, U.P. $118)</strong></p><p><strong>4. First-trial Pearl Light Facial $99 nett (75-min, U.P. $288)</strong></p><p><strong>Validity: 21 January 2025 – 21 February 2025</strong></p><p>Surcharge Applicable:<br/>PH/Weekends: +$10 nett<br/>Couple Treatment room: +$21.80 nett</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>5. 10ml Antedote Aromatherapy Oil $29 (U.P. $49)<br/></strong><em>Purchase 2 bottles and above to get FREE Delivery! <br/>Enter Coupon: <strong>FREESHIP</strong><br/></em></p>"
+  },
+  {
+   "t": "button",
+   "text": "BUY",
+   "href": "/product/singtelsg/"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Terms &amp; Conditions<br/></strong>· Valid till 21 February 2025.<br/>· Valid for customers aged 21 years and above, Singaporeans, PRs, EP and SP Holders, who have not visited Elements Wellness before. Not valid for package holders.<br/>· Surcharge on massage services of S$10nett per pax applies for weekend and PH appointments.<br/>· Optional top-up of S$21 for couple massage treatment room, subject to availability upon request.<br/>· Prices are inclusive of 9% GST.<br/>· Not valid with other promotions, privileges, discount cards and promotional vouchers, whichever.<br/>· Elements Wellness reserves the right to amend any of the terms and conditions without prior notice.</p>"
+  },
+  {
+   "t": "form",
+   "note": ""
+  }
+ ]
+}

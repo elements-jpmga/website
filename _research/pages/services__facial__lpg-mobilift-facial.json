@@ -1,0 +1,101 @@
+{
+ "url": "https://elements.com.sg/services/facial/lpg-mobilift-facial/",
+ "path": "/services/facial/lpg-mobilift-facial/",
+ "title": "LPG Mobilift Facial",
+ "description": "LPG Mobilift Facial uses ENDERMOLIFT TECHNOLOGY to lift, firm, and tone your face and neck. Make an appointment with us now.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "LPG Mobilift Facial",
+   "html": "LPG Mobilift Facial"
+  },
+  {
+   "t": "html",
+   "html": "<p>100% natural mechanical stimulation of dormant skin cells reverse signs of aging.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Sign Up To Enjoy Your First Trial At $128 nett (90-min, U.P. $598) | T&C applies",
+   "html": "Sign Up To Enjoy Your First Trial At $128 nett (90-min, U.P. $598) | T&C applies"
+  },
+  {
+   "t": "html",
+   "html": "<p>Pre-registration and advance booking required to enjoy this promotion.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "What is LPG Mobilift Facial?",
+   "html": "What is LPG Mobilift Facial?"
+  },
+  {
+   "t": "html",
+   "html": "<p>LPG Mobilift uses the ENDERMOLIFT technique which provides fast, visible results: radiance and anti-fatigue effect.</p><p>The results amplify with each session, effectively eliminating wrinkles, firming contours, refining and reshaping your face, balancing out your complexion, and by and far improving your skin quality.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/x5a33a7221d980-victoria-coiffure-lpg-new-7c45f58b48f5.jpg",
+   "alt": "LPG MOBILIFT FACIAL brochure",
+   "caption": "",
+   "w": 1140,
+   "h": 1303
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Benefits of LPG Mobilift Facial",
+   "html": "Benefits of LPG Mobilift Facial"
+  },
+  {
+   "t": "html",
+   "html": "<p>Natural and non-invasive anti-aging skin therapy</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Smoothes wrinkles</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Firms the skin, reducing sagging skin around eyes (droopy eyelids), nasolabial folds (laugh lines) and jowls</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Brightens dull complexion by increasing lymphatic microcirculation which detoxifies the effects of stress, pollution, lack of sleep</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How LPG Mobilift Facial Works",
+   "html": "How LPG Mobilift Facial Works"
+  },
+  {
+   "t": "video",
+   "url": "https://www.youtube.com/watch?v=-D-RoQj8Oe8"
+  },
+  {
+   "t": "html",
+   "html": "<p>Research conducted by Prof. Philippe Humbert from the University Hospital of Besancon (France), proved that mechanical stimulation from LPG Mobilift treatment is able to reveal a firmer, younger looking skin by:</p><ul><li>Boosting the skin’s ability to produce hyaluronic acid to restore the skin’s volume and hydration</li><li>Promoting collagen production to prevent aging and fine lines and</li><li>Encouraging natural synthesis of elastic fibers to improve skin’s suppleness</li></ul>"
+  },
+  {
+   "t": "html",
+   "html": "<p>The patented LPG handpiece gives a real ‘skin workout’ with the motorized flaps. This moving action sends signals to skin cells and awakens the natural production of fibroblasts (rejuvenating cells) which boosts their production of collagen (firmness), elastin (suppleness), and hyaluronic acid (volume and hydration), naturally present in our skin.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "LPG Mobilift Facial for Natural Anti-Aging and Skin Firming",
+   "html": "LPG Mobilift Facial for Natural Anti-Aging and Skin Firming"
+  },
+  {
+   "t": "html",
+   "html": "<p>The LPG Mobilift Facial at Elements Wellness uses the patented Endermolift™ technology to deliver gentle, mechanical stimulation that reactivates collagen and elastin production. This non-invasive treatment helps smooth wrinkles, firm the skin, and restore radiance—perfect for those seeking natural anti-aging solutions without downtime.</p><p>🌿 Reveal firmer, more youthful skin—book your LPG Mobilift Facial today!</p>"
+  },
+  {
+   "t": "button",
+   "text": "Book an appointment",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi,%20I'd%20like%20to%20book%20LPG%20Mobilift%20Facial%20(website)"
+  }
+ ]
+}

@@ -1,0 +1,218 @@
+{
+ "url": "https://elements.com.sg/services/facial/wishpro-facial/",
+ "path": "/services/facial/wishpro-facial/",
+ "title": "WishPro Facial",
+ "description": "WishPro's personalized technology and serum help to stimulate collagen production in your face. Schedule an appointment with us today.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "WishPro Facial",
+   "html": "WishPro Facial"
+  },
+  {
+   "t": "html",
+   "html": "<p>The Ultimate Collagen Boost for your skin</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Sign Up To Enjoy Your First Trial At $148 nett (75-min, U.P. $498) | T&C applies",
+   "html": "Sign Up To Enjoy Your First Trial At $148 nett (75-min, U.P. $498) | T&C applies"
+  },
+  {
+   "t": "html",
+   "html": "<p>Pre-registration and advance booking required to enjoy this promotion.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WISHPro offers a range of 7 serums customisable to your skin’s unique needs. </p> <p>This one-of-a-kind technology infuses vital serums and nutrients deep into the skin stimulating elastin, <br/>collagen and toning muscle fibers for sustained skin rejuvenation.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/wishpromagetic-84133627388b.jpg",
+   "alt": "magnetic infused wishpro capsules",
+   "caption": "",
+   "w": 1600,
+   "h": 870
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "WHY DOES MY SKIN NEED THIS?",
+   "html": "WHY DOES MY SKIN NEED THIS?"
+  },
+  {
+   "t": "html",
+   "html": "Counter the slow in collagen production. Collagen production in the skin starts to slow down from as early 25 years, causing skin to age resulting in dull skin."
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "HOW WISHPRO HELPS YOU",
+   "html": "HOW WISHPRO HELPS YOU"
+  },
+  {
+   "t": "html",
+   "html": "<p>WISHPro Magnetic Infusion Technology offers the ultimate skincare customization to take care of your skin’s demands. You get personalized technology and serum in each facial, all designed to stimulate collagen production.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/wishpro4-82441d443d38.jpg",
+   "alt": "wishpro collagen infusion banner",
+   "caption": "",
+   "w": 1600,
+   "h": 500
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/wishproface-dc8d9cb416ac.jpg",
+   "alt": "wishpro facial treatment",
+   "caption": "",
+   "w": 1600,
+   "h": 321
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/ew-wishpro-sweb-1-6fd0fb9474d2.jpg",
+   "alt": "wishpro capsules poster",
+   "caption": "",
+   "w": 1280,
+   "h": 1600
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/wishcap-01-e1682328386324-506f07c78794.jpg",
+   "alt": "wishpro anti-aging 6ml",
+   "caption": "",
+   "w": 1600,
+   "h": 1600
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "ANTI-AGING",
+   "html": "ANTI-AGING"
+  },
+  {
+   "t": "html",
+   "html": "Powerful antioxidants in Jojoba oil help smooth fine lines and wrinkles"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/wishcap-02-e1682327585847-c8667dffdad1.jpg",
+   "alt": "wishpro peel exfoliator capsule 6ml",
+   "caption": "",
+   "w": 1600,
+   "h": 1600
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "PEEL EXFOLIATOR",
+   "html": "PEEL EXFOLIATOR"
+  },
+  {
+   "t": "html",
+   "html": "Renews and revitalizes your skin with Sweet Almond Oil enriched with cellulose peeling"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/wishcap-03-e1682329045477-6ed2199ef180.jpg",
+   "alt": "wishpro brightening capsule 6ml",
+   "caption": "",
+   "w": 1600,
+   "h": 1600
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "BRIGHTENING",
+   "html": "BRIGHTENING"
+  },
+  {
+   "t": "html",
+   "html": "Lighten and even out skin tone by blocking epidermal melanin, and regulates biosynthesis"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/wishcap-04-e1682329378413-b985a4b0253e.jpg",
+   "alt": "wishpro BTX infusion capsule 6ml",
+   "caption": "",
+   "w": 1600,
+   "h": 1600
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "BTX INFUSION",
+   "html": "BTX INFUSION"
+  },
+  {
+   "t": "html",
+   "html": "Topical treatment that mimics the effects of Botox® in the skin without negative side effects"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/wishcap-05-e1682329490315-7c356a75dcda.jpg",
+   "alt": "wishpro collagen infusion 6ml",
+   "caption": "",
+   "w": 1600,
+   "h": 1600
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "COLLAGEN INFUSION",
+   "html": "COLLAGEN INFUSION"
+  },
+  {
+   "t": "html",
+   "html": "<p>Pure collagen base to protect from radiation, slow down skin aging and cell degradation</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/wishcap-07-e1682329619226-b4d0cfe71ec6.jpg",
+   "alt": "wishpro WISH contour 6ml",
+   "caption": "",
+   "w": 1600,
+   "h": 1600
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "WISH CONTOUR",
+   "html": "WISH CONTOUR"
+  },
+  {
+   "t": "html",
+   "html": "<p>Restore youthful appearance, targeting specific depths and treat localised facial concern</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/wishcap-06-e1682330165249-5a3f15839efb.jpg",
+   "alt": "wishpro WISH care 6ml",
+   "caption": "",
+   "w": 1600,
+   "h": 1600
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "WISH CARE",
+   "html": "WISH CARE"
+  },
+  {
+   "t": "html",
+   "html": "<p>Abyssine® 657 Based – expolysaccharides from extremophile living in deep sea hydrothermal vent</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/ew-wishpro-cta-1-317277efcea0.jpg",
+   "alt": "cta banner for wishpro treatment",
+   "caption": "",
+   "w": 1600,
+   "h": 571
+  }
+ ]
+}

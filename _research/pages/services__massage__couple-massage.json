@@ -1,0 +1,122 @@
+{
+ "url": "https://elements.com.sg/services/massage/couple-massage/",
+ "path": "/services/massage/couple-massage/",
+ "title": "Couples Spa & Massage",
+ "description": "Experience personalized couples spa treatments at Elements. Enjoy side-by-side massages in private serene rooms.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Reconnect and Relax Together",
+   "html": "Reconnect and Relax Together"
+  },
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Couples Spa & Couples Massage at Elements",
+   "html": "Couples Spa & Couples Massage at Elements"
+  },
+  {
+   "t": "html",
+   "html": "<p>At Elements, we offer shared experiences that bring people closer. Our couples spa and couples massage treatments are thoughtfully designed for two—so you and your partner can unwind, rejuvenate, and relax together in a peaceful space built for shared experiences.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Our Couples Spa Treatments",
+   "html": "Our Couples Spa Treatments"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Couples Massage",
+   "html": "Couples Massage"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/couple-room-copy-1344851feaa6.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1295,
+   "h": 741
+  },
+  {
+   "t": "html",
+   "html": "<p>Enjoy side-by-side massages in the same room, each tailored to your individual preferences— whether you and your partner favor different techniques or pressure levels, our therapists ensure both of you have a relaxing and customized experience. </p> <p>Starts from $195 per couple.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Book here",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Book%20couples%20massage"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Couple Spa - Koyamaki Onsen Ritual",
+   "html": "Couple Spa - Koyamaki Onsen Ritual"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/centrepoint-couple-onsen-db139ce43c0b.jpg",
+   "alt": "Couple Onsen at Centrepoint",
+   "caption": "",
+   "w": 1600,
+   "h": 1200
+  },
+  {
+   "t": "html",
+   "html": "<p>Unwind together in a private Japanese Onsen, then melt into side-by-side massage therapy that soothes the body and calms the mind—your perfect escape for connection and relaxation.</p><p>Includes:<br/>• Body Massage (60-min)<br/>• Back Scrub (15-min)<br/>• Koyamaki Onsen Therapy in Private Suite (40-min)<br/>• Couple Massage Room</p>"
+  },
+  {
+   "t": "button",
+   "text": "find out more",
+   "href": "/product/couple-koyamaki-onsen-spa-ritual-115-min/"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Couples Herbal Rebalance Ritual",
+   "html": "Couples Herbal Rebalance Ritual"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/herbal-bath-therapy-1-845f12b56f04.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "t": "html",
+   "html": "<p>Enjoy complete privacy in a room with two individual tubs — ideal for couples or friends. Each person selects a personalized herbal blend to match their wellness needs.</p>"
+  },
+  {
+   "t": "button",
+   "text": "find out more",
+   "href": "/services/wellness/herbal-bath-therapy/"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Couples Contrast Therapy Ritual",
+   "html": "Couples Contrast Therapy Ritual"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/contrast-therapy-e8ad81cb7762.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1067,
+   "h": 1600
+  },
+  {
+   "t": "html",
+   "html": "<p>Experience the power of contrast therapy together—stay motivated through the cold plunge, regulate your breath as a team, and then unwind side by side with a relaxing massage. It’s the perfect balance of recovery, connection, and deep relaxation.</p>"
+  },
+  {
+   "t": "button",
+   "text": "find out more",
+   "href": "/services/wellness/ice-bath-therapy/"
+  }
+ ]
+}

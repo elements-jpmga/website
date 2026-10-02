@@ -1,0 +1,403 @@
+{
+ "url": "https://elements.com.sg/services/massage/sports-massage/",
+ "path": "/services/massage/sports-massage/",
+ "title": "Best Sports Massage in Singapore | Pain Relief & Recovery",
+ "description": "Professional sports massage in Singapore. Experienced therapists at affordable rates. Relieve tight muscles and recover faster. Book first trial today!",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Sports Massage",
+   "html": "Sports Massage"
+  },
+  {
+   "t": "html",
+   "html": "<p>Relieves tight muscles &amp; pain. Improves recovery &amp; flexibility.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Sign Up To Enjoy Your First Trial From $69 Nett (60-min, U.P. $158) | T&C applies",
+   "html": "Sign Up To Enjoy Your First Trial From $69 Nett (60-min, U.P. $158) | T&C applies"
+  },
+  {
+   "t": "html",
+   "html": "<p>Pre-registration and advance booking required to enjoy this promotion.</p>"
+  },
+  {
+   "t": "html",
+   "html": ".wpforms-container",
+   "widget": "eael-wpforms"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "What is Sports Massage?",
+   "html": "What is Sports Massage?"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/back-massage-sport-massage-3e54fd66fcb5.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1228,
+   "h": 835
+  },
+  {
+   "t": "html",
+   "html": "<p>Sports massage is targeted massage therapy focused on preventing and treating injuries and supporting muscle recovery. Depending on the client’s needs, different techniques are used to reduce muscle tension and improve joint mobility and range of motion. Although it’s called sports massage, this therapy is for all types of people and all fitness levels.</p><p>Our trained therapists use various techniques including deep tissue massage, trigger point therapy, stretching and Swedish massage. Unlike traditional relaxation massages, sports massage is often more intense and tailored to specific areas of the body under stress from physical activity.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Is Sports Massage only for athletes?",
+   "html": "Is Sports Massage only for athletes?"
+  },
+  {
+   "t": "html",
+   "html": "<p>Despite the name, Sports Massage is beneficial for anyone who suffers from muscle tension, pain, muscle imbalances, joint pain or tension due to some form of activity. It could be from exercising, lifestyle or your job.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Sports Massage is ideal for:",
+   "html": "Sports Massage is ideal for:"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/1-e5ca0c5064e1.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>PERSISTENT TENSION AND PAIN</strong><br/>For anyone dealing with stubborn, long-standing tension in areas like the back, shoulders, and legs, this massage provides relief where you need it most. It’s perfect for chronic muscle tightness that just won’t go away by itself.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/2-1-800ff6068ec0.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>OFFICE WORKERS</strong><br/>Reduces tension from poor posture and long hours at a desk. Office workers often experience neck, back, and shoulder strain due to prolonged sitting and repetitive movements (like typing) leading to muscle fatigue and tension.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/strain-c28a8eed9996.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>REPETITIVE STRAIN</strong><br/>Some jobs or lifestyles are exposed to repetitive motions which cause strain on the joints and muscle groups. Sports massage helps with relieving the affected muscle group by releasing tension, improving circulation and encouraging healing. </p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/workout-3c04b14ddc99.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>ANYONE WHO WORKS OUT</strong><br/>Relieves muscle stiffness and soreness, and speeds up recovery. Helps you enjoy your workouts when your muscles are well maintained and restored. </p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/4-e0f4fed6b773.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>RUNNERS</strong><br/>Helps improve flexibility and prevent injury in the legs, hips, and calves.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/3-1-33b65c43e194.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>WEIGHTS LIGHTING</strong><br/>Eases tightness in muscles from intense lifting and supports recovery.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How to know if a Sports Massage would be helpful for you?",
+   "html": "How to know if a Sports Massage would be helpful for you?"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/how-u-know-7d0c386a894c.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "html",
+   "html": "<p>If you feel restricted in your movement by tight muscles</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>If you have a recent muscle strain or experience tenderness in the tissue near an injury</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>If your muscles are sore from exercise or repetitive action</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>If you want to speed up recovery for better performance at your favourite sport</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Benefits of Sports Massage",
+   "html": "Benefits of Sports Massage"
+  },
+  {
+   "t": "html",
+   "html": "<p>Injury Prevention</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>○ Identifies and addresses muscle imbalances and tightness before they lead to injuries.<br/>○ Improves flexibility and range of motion, reducing the risk of strains and sprains.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Enhanced Performance</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>○ Increases blood flow to muscles, improving endurance and strength.<br/>○ Reduces muscle fatigue, allowing for better performance during training or competition.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Faster Recovery</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>○ Improves Lymphatic Drainange and promotes the removal of lactic acid and metabolic waste from muscles.<br/>○ Reduces soreness and speeds up healing after intense workouts, injuries or strenuous work.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Pain Relief</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>○ Alleviates chronic pain caused by overuse or repetitive motions.<br/>○ Targets trigger points and knots to release tension and restore function.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Is a Sports Massage different from a Deep Tissue Massage?",
+   "html": "Is a Sports Massage different from a Deep Tissue Massage?"
+  },
+  {
+   "t": "html",
+   "html": "<p>Sports massage and deep tissue massage are different, though they share some similarities. Here’s how they compare:</p>"
+  },
+  {
+   "t": "html",
+   "html": "<h3>Sports Massage</h3> <h3>Deep Tissue Massage</h3> Focuses on Performance & Recovery – Helps improve flexibility, prevent injuries, and speed up recovery after intense workouts or injuries. Focuses on General Muscle Health – While it helps with recovery, it’s not as specific as a sports massage. Targets specific muscle groups - Primarily designed for athletes, active individuals, and those experiencing repetitive strain from work or lifestyle, focusing on specific muscle groups used in their activities. Ideal for Chronic Pain & Muscle Tension – Works on deeper muscle layers to relieve knots, stiffness, and tension. Beneficial for anyone dealing with muscle pain, postural issues, or stress-related tension. Uses a Combination of Techniques – Incorporates deep tissue work, stretching and trigger point therapy. Uses Slow, Firm Pressure – Targets adhesions and tight muscles with slow strokes and deep pressure.",
+   "widget": "ha-comparison-table"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Why choose Elements Wellness (Singapore) for Sports Massage?",
+   "html": "Why choose Elements Wellness (Singapore) for Sports Massage?"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li><strong>We have a long history in providing quality massages for the Singapore market</strong>. Our founder is an Olympic swimmer who brought deep understanding on what a good sports massage should achieve for the client.</li><li><strong>Experienced Therapists</strong> – Our therapists have a minimum of 5 years of professional massage experience.</li><li><strong>Convenient Location</strong> – Our locations are located near MRT stations, and easily accessible.</li><li><strong>Trusted by Athletes &amp; Professionals</strong> – We are recognized as one of the best sports massage clinics in Singapore for pain relief and performance enhancement.</li></ul>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Complementary Therapy with Sports Massage",
+   "html": "Complementary Therapy with Sports Massage"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/medi-stretch-58b03fbe2561.jpg",
+   "alt": "professional stretching",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "html",
+   "html": "<p><strong><span>Medi Stretch (Professional Stretch Therapy)</strong></span></p><p>Whether you live an active lifestyle, or have had a lifetime of not exercising, Medi Stretch is important for you. Medi Stretch is Therapist Assisted Stretching, it does more than just deepen the basic stretch. With the assistance of a therapist, a greater number of muscles and fascia can be more effectively stretched and activated across their full range of motion.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/meridian-flush-5e34b4d8d56b.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1500,
+   "h": 790
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Meridian Flush</strong></p><p>During this TCM inspired therapy, the therapist uses a specialized wooden tool to relieve tension, knots and decrease pain. This technique is helpful in breaking up adhesions that have formed in muscles and fascia leading to improved flexibility.</p><p>The therapist will gently, but firmly, roll the curved edge of the wooden tool across your skin with short or long strokes, this process is called “flushing”. It helps release tight fascia, muscle adhesions and improve lymph flow. Meridian Flush begins with mild pressure, activating the capillaries beneath the skin’s surface and pressure is gradually increased until it gets to the source of the pain.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/rlt-2-451c0f6b31b8.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1228,
+   "h": 835
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Red Light Therapy</strong></p><p>Red Light Therapy uses low-level wavelengths to penetrate deep into the skin, promoting cellular repair, reducing inflammation, and improving circulation. It enhances muscle recovery, relieves tension, and accelerates healing by increasing oxygen flow and collagen production. Also, it helps alleviate pain, reduce stiffness, and support overall relaxation, making it a powerful complementary therapy for enhanced wellness.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Book Your Sports Massage Today!</p>"
+  },
+  {
+   "t": "button",
+   "text": "SIGN UP",
+   "href": "#SPORTS-APPOINTMENT"
+  },
+  {
+   "t": "html",
+   "html": "<p>|</p>"
+  },
+  {
+   "t": "button",
+   "text": "WhatsApp us",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Book%20Sports%20Massage%20First%20Trial%20$69%20nett%20(web)"
+  },
+  {
+   "t": "html",
+   "html": "<p>|</p>"
+  },
+  {
+   "t": "button",
+   "text": "book online",
+   "href": "https://elements.voltade.com/elements/appointment-form?sid=0hc2bxyykhpbcub"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Conveniently Located for You",
+   "html": "Conveniently Located for You"
+  },
+  {
+   "t": "html",
+   "html": "<p>Our <b>Sports Massage</b> is available at multiple locations in <strong>Orchard, </strong>making it easy for you to access rejuvenating care in Singapore.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/elements-ion-scaled-ppf0rfu9kjv0hcooeibo-501aca9c3b10.jpg",
+   "alt": "Elements_ION",
+   "caption": "",
+   "w": 600,
+   "h": 350
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "ION Orchard",
+   "html": "ION Orchard"
+  },
+  {
+   "t": "list",
+   "items": [
+    "#B1-30 ION Orchard",
+    "6738 3788",
+    "8938 2878",
+    "ion@elements.com.sg"
+   ]
+  },
+  {
+   "t": "html",
+   "html": "<p>Monday – Friday: 11am to 9:00pm<br/>Weekends &amp; PH: 10:30am to 8:00pm</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/elements-centrepoint-ppezpcfql9pnya0pujj-ff208cfc90de.jpg",
+   "alt": "Elements_centrepoint",
+   "caption": "",
+   "w": 600,
+   "h": 350
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "The Centrepoint",
+   "html": "The Centrepoint"
+  },
+  {
+   "t": "list",
+   "items": [
+    "#02-28 The Centrepoint",
+    "6737 8488",
+    "9357 8183",
+    "cpoint@elements.com.sg"
+   ]
+  },
+  {
+   "t": "html",
+   "html": "<p>Monday – Friday: 11am to 9:00pm<br/>Weekends &amp; PH: 10:30am to 8:00pm</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/elements-313-scaled-ppf0ycxhvnbzy0muzzzt-33a223dfa7ba.jpg",
+   "alt": "Elements 313",
+   "caption": "",
+   "w": 600,
+   "h": 350
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "313@somerset",
+   "html": "313@somerset"
+  },
+  {
+   "t": "list",
+   "items": [
+    "#B2-50/51, 313@somerset",
+    "6636 8878",
+    "9669 6460",
+    "313@elements.com.sg"
+   ]
+  },
+  {
+   "t": "html",
+   "html": "<p>Monday – Friday: 11am to 9:00pm<br/>Weekends &amp; PH: 10:30am to 8:00pm</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Frequently Ask Question",
+   "html": "Frequently Ask Question"
+  },
+  {
+   "t": "html",
+   "html": "<i></i><i></i>How to know if a Sports Massage would be helpful for you?<i></i><p>If you feel restricted in your movement by tight muscles<br/>If you have a recent muscle strain or experience tenderness in the tissue near an injury<br/>If your muscles are sore from exercise or repetitive action<br/>If you want to speed up recovery for better performance at your favourite sport</p> <i></i><i></i>How often should I get a sports massage? <i></i><p>It depends on your activity level and goals. Competitive athletes may benefit from weekly sessions, while recreational athletes might opt for bi-weekly or monthly massages. If your lifestyle exposes you to repetitive motions, you could benefit from weekly or bi-weekly sessions to sort out muscle imbalances.</p> <i></i><i></i>Is sports massage painful? <i></i><p>Some techniques may cause mild discomfort, especially if you have tight muscles or knots. However, it should never be unbearable—communicate with your therapist to adjust pressure.</p> <i></i><i></i>Does sports massage help with lower back pain during running?<i></i><p>We have had many clients with this issue. Yes, sports massage can effectively relieve lower back pain for runners. It reduces muscle tension, improves flexibility, enhances blood flow, and addresses imbalances that cause pain. By targeting the lower back, hips, and glutes, sports massage helps prevent and alleviate pain, improving performance and recovery. Regular sessions can keep you running pain-free!</p> <i></i><i></i>Can sports massage help with old injuries?<i></i><p>Yes! Sports massage can break down scar tissue, improve mobility, and reduce pain associated with old injuries.</p> <i></i><i></i>How long does a session last? <i></i><p>Sessions typically range from 60 to 90 minutes, depending on your needs and goals.</p>",
+   "widget": "eael-adv-accordion"
+  }
+ ]
+}

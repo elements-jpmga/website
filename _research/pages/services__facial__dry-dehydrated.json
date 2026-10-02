@@ -1,0 +1,201 @@
+{
+ "url": "https://elements.com.sg/services/facial/dry-dehydrated/",
+ "path": "/services/facial/dry-dehydrated/",
+ "title": "Best facials for dry dehydrated skin in Singapore",
+ "description": "Relieve dry, dehydrated skin with our hydrating facials. Discover nourishing treatments that restore moisture and glow at Elements Wellness.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Best Facials for Dry & Dehydrated Skin",
+   "html": "Best Facials for Dry & Dehydrated Skin"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/facials-for-dry-skin-e1744693423169-84ff9a0ffad5.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 652,
+   "h": 900
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Hydrate, Restore, Glow",
+   "html": "Hydrate, Restore, Glow"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Facials for Dry & Dehydrated Skin at Elements Wellness",
+   "html": "Facials for Dry & Dehydrated Skin at Elements Wellness"
+  },
+  {
+   "t": "html",
+   "html": "<p>Is your skin feeling tight, flaky, or dull? Dry and dehydrated skin needs more than just moisture—it craves deep, long-lasting hydration and nourishment. At Elements Wellness, we specialize in hydrating facials that restore your skin’s moisture barrier, replenish lost hydration, and leave your complexion looking smooth, supple, and radiant. Whether your skin is naturally dry or suffering from dehydration, our professional facials are tailored to meet your skin’s needs.</p><p><strong>Explore our curated selection of facials tailored for dry and dehydrated skin:</strong></p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/shutterstock-1141355066-5cc9e299e7d8.jpg",
+   "alt": "24k Gold facial",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "24K Pure Gold Facial",
+   "html": "<a href=\"/services/facial/24k-pure-gold-facial/\">24K Pure Gold Facial</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Award-winning facial harnesses the remarkable properties of gold to improve collagen levels and suppress dullness.<br/><br/></p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/24k-pure-gold-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/hydrolux-ba893f821c4c.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1228,
+   "h": 835
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "HydroLux Facial (Renewal)",
+   "html": "<a href=\"/services/facial/hydrolux-facial/\">HydroLux Facial (Renewal)</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Uses Hydro-Cleanse, a gentle vortex technology that removes impurities while hydrating the skin—cleansing deeply without dryness or damage.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/hydrolux-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/power-dose-3dec2ac891be.jpg",
+   "alt": "brightening glutathione facial treatment",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Power Dose Facial",
+   "html": "<a href=\"/services/facial/power-dose-facial/\">Power Dose Facial</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Experience a soothing, highly effective facial that infuses a blend of active ingredients, known to calm, restore and brighten skin.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/power-dose-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/wishpro-ba68a0f7ff88.jpg",
+   "alt": "wishpro",
+   "caption": "",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "WishPro Facial",
+   "html": "<a href=\"/services/facial/wishpro-facial/\">WishPro Facial</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>The Hydration Capsule delivers hyaluronic acid deep into the skin to intensely hydrate, plump, and restore softness to dry, dehydrated skin.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/wishpro-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/needleless-rejuran-c282262a9486.jpg",
+   "alt": "needleless rejuran",
+   "caption": "",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Needle-less Rejuran",
+   "html": "<a href=\"/services/facial/needleless-rejuran-facial/\">Needle-less Rejuran</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>A non-invasive skin treatment designed to rejuvenate and heal the skin without the use of needles or injections.<br/><br/></p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/needleless-rejuran-facial/"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Why Choose Elements Wellness for Hydrating Facials?",
+   "html": "Why Choose Elements Wellness for Hydrating Facials?"
+  },
+  {
+   "t": "html",
+   "html": "<p>At Elements Wellness, we understand the unique needs of dry and dehydrated skin. Our facials are carefully curated to provide long-lasting hydration, repair damaged moisture barriers, and restore the healthy glow your skin deserves. Each treatment is customized to your skin’s individual needs, ensuring a tailored, results-driven experience.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Book Your Hydrating Facial Today",
+   "html": "Book Your Hydrating Facial Today"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ready to restore your skin’s moisture and achieve a fresh, glowing complexion? Book your hydrating facial at Elements Wellness today and experience the ultimate in skincare luxury. Our expert estheticians are here to guide you toward the best facial for your dry or dehydrated skin.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Book an appointment",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Book%20Facial%20for%20dry/dehydrated%20skin%20at%20Elements%20Wellness"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Frequently Asked Questions on Dry & Dehydrated Skin Treatment",
+   "html": "Frequently Asked Questions on Dry & Dehydrated Skin Treatment"
+  },
+  {
+   "t": "faq",
+   "items": [
+    {
+     "q": "How do I know if I have dry skin or dehydrated skin?",
+     "a": "<p>Dry skin is a skin type that lacks oil, while dehydrated skin is a condition that lacks water. You may experience tightness, flakiness, or dullness. During our consultation, our therapists will assess your skin type and condition before recommending the right treatment.</p>"
+    },
+    {
+     "q": "Will one facial be enough to fix my dehydrated skin?",
+     "a": "<p>One facial can give instant hydration, but dehydrated skin needs consistent care. For long-lasting results, we usually recommend a series of treatments and a good at-home routine. We’ll guide you on what works best for your skin’s recovery.</p>"
+    },
+    {
+     "q": "Can I wear makeup after the facial?",
+     "a": "<p>It’s best to let your skin breathe for at least 6–8 hours post-facial, but yes — you can wear makeup after that if needed. We recommend a light, hydrating base instead of heavy foundation right after.</p>"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,68 @@
+{
+ "url": "https://elements.com.sg/3d-cavitation/",
+ "path": "/3d-cavitation/",
+ "title": "3D Cavitation in Singapore",
+ "description": "Our 3D Cavitation technology targets stubborn fat cells, helping you achieve a more contoured and toned physique. Book an appointment today!",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "3D Cavitation",
+   "html": "3D Cavitation"
+  },
+  {
+   "t": "html",
+   "html": "<p>Uses ultrasound cavitation technology to disrupt fat cells body sculpting.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Ultrasound Cavitation is the use of low frequency ultrasound technology to break down fat cells below the skin. It is a non-surgical method of reducing cellulite and localized fat, helping to contour the body.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/hardwa2-scaled-1-89a443380409.jpg",
+   "alt": "Hardware cosmetology. Body care. Spa treatment. Ultrasound cavitation body contouring treatment. Woman getting anti-cellulite and anti-fat therapy in beauty salon",
+   "caption": "",
+   "w": 1600,
+   "h": 1221
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Benefits",
+   "html": "Benefits"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Ideal for targeting small areas to reduce fat for body contouring and sculpting.</li><li>Safer alternative to liposuction or surgery</li><li>No downtime</li></ul>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Suitable For",
+   "html": "Suitable For"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Areas where fat accumulates</li><li>Upper arms</li><li>Abdomen</li><li>Love handles</li><li>Thighs</li></ul>"
+  },
+  {
+   "t": "video",
+   "url": "https://www.youtube.com/watch?v=pdl9CL-Ar5Q"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How It Works",
+   "html": "How It Works"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>The therapist glides the cavitation handpiece over the targeted area, delivering low-frequency ultrasound waves.</li><li>Ultrasound Cavitation uses a strong wave of low frequency ultrasound to “vibrate” the fat cell walls, causing them to disintegrate into a liquid state, and then naturally metabolized by your body and expelled. The result is natural fat loss.</li><li>You may experience a warm painless sensation during the treatment.</li><li>There are some immediate results and will continue to see reduction of fat over a few weeks. (Provided that the clients stick to a balanced healthy diet without overeating).</li></ul>"
+  },
+  {
+   "t": "html",
+   "html": "<p>At Elements Wellness, we also provide a range of other services like <a href=\"/neck-shoulder-body-massage-singapore/\">neck and shoulder massage</a>, <a href=\"/swedish-massage/\">swedish massage</a> as well as <a href=\"/skin-rejuvenation-treatment-singapore/\">skin rejuvenation facial</a>. </p>"
+  }
+ ]
+}

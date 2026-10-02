@@ -1,0 +1,510 @@
+{
+ "url": "https://elements.com.sg/services/massage/the-5-elements-massage/",
+ "path": "/services/massage/the-5-elements-massage/",
+ "title": "The 5 Elements Massage in Singapore",
+ "description": "Combines manual drainage and connective tissue massage with Anesi Cellular 3 to de-puff, lift, and stop glycation.",
+ "blocks": [
+  {
+   "t": "html",
+   "html": "<p>MASSAGE &amp; RECOVERY</p>"
+  },
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "The 5 Elements Massage",
+   "html": "The 5 Elements<br/> Massage"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/the-5-elements-massage-0a8abab9badc.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "html",
+   "html": "<p>A TCM massage series. You always choose the element you need.</p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK THIS TREATMENT",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20Lymphatic%20Sculpt%20Facial%20(website)"
+  },
+  {
+   "t": "html",
+   "html": "<p>60-mins · First Trial S$98 · U.P. S$229</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/the-5-elements-massage-0a8abab9badc.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "html",
+   "html": "<p>WHAT IT IS</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "A TCM-based therapeutic massage",
+   "html": "A TCM-based therapeutic massage"
+  },
+  {
+   "t": "html",
+   "html": "<p>A TCM massage series built on five elements — Wood, Fire, Earth, Metal, Water — each mapping to a distinct physical and emotional state, with its own treatment plan.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WHAT HAPPENS</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Element matched, then treated",
+   "html": "Element matched, then treated"
+  },
+  {
+   "t": "html",
+   "html": "<p>You select your element based on how you’re feeling today — your therapist then delivers a full-body massage with the corresponding oil blend and enhancement.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>GOOD FOR</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Conditions addressed",
+   "html": "Conditions addressed"
+  },
+  {
+   "t": "html",
+   "html": "<p>– Muscle tension and physical stiffness</p><p>– Poor circulation or persistent coldness</p><p>– Digestive discomfort and bloating</p><p>– Low energy and fatigue</p><p>– Stress, anxiety, or difficulty sleeping</p>"
+  },
+  {
+   "t": "html",
+   "html": "<h2>“Your body isn’t the same visit to visit. The 5 Elements framework is how you treat it on its own terms — </h2><h2>you decide, your therapist delivers.”</h2>"
+  },
+  {
+   "t": "html",
+   "html": "<p>“Your body isn’t the same visit to visit.</p><p>The 5 Elements framework is how you treat it on its own terms — you decide, your therapist delivers.”</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "HOW IT WORKS",
+   "html": "HOW IT WORKS"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How This Therapy Works",
+   "html": "How This Therapy Works"
+  },
+  {
+   "t": "html",
+   "html": "<p>The 5 Elements Massage pairs skilled full-body bodywork with an element-specific oil blend and a targeted enhancement. You choose your element at booking or on arrival — based on how you’re feeling today — and your therapist delivers the corresponding treatment from there.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Element oil</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>The massage oil for your chosen element is applied throughout — each blend formulated to support the physical and emotional state that element addresses.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Full-body massage</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Choose your massage style — Sports, Tuina, Deep Tissue, or Swedish — each applied with technique and pressure suited to your element.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Element enhancement</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>A targeted add-on closes the session — Muscle Blade (Wood), Infra Ray Moxibustion (Fire), Herbal Volcanic Warming Mask (Earth), Cupping (Metal), or Back Scrub (Water).</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Each session follows your choice. Come in knowing your element, or take a moment on arrival to decide — the element cards below are there to help.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "THE ELEMENTS",
+   "html": "THE ELEMENTS"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Choose your element",
+   "html": "Choose your element"
+  },
+  {
+   "t": "html",
+   "html": "<p>Each element governs a set of organs, a tissue type, and a recognisable pattern of physical and emotional symptoms. Select the one that corresponds to how you’re arriving today — your therapist will confirm the match at the start of your session.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>METAL</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Sluggish</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><em>Feeling down</em></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>LUNGS · SKIN · BREATHING</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><em>Dampness accumulates — felt as fatigue and water retention.</em></p><p><em> </em></p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/3-dff8143cee04.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Cupping</strong></p> <p>Draws “Qi” to the surface, clears stagnation, and restores the body’s energy flow. Performed with the Metal Blend — formulated to clear and uplift.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WOOD</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Tension</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><em>Irritable</em></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>LIVER · GALLBLADDER · TENDONS</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><em>Muscle knots in the neck and upper back. Headaches that cluster at the temples.</em></p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/-87d3e44fc9c6.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Muscle Blade</strong><br/>Reaches the fascia and connective tissue that hands alone cannot release. Performed with the Wood Blend — formulated to release deep muscular tension.<br/></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>WATER</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Fatigue</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><em>Anxiety</em></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>KIDNEYS · LOWER BACK · VITALITY</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><em>Deep-seated exhaustion. Feeling stressed and unsettled.</em></p><p><em> </em></p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/-caebe4c541ac.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Back Scrub</strong></p><p>Prepares the lower back tissue so the massage reaches deeper along the kidney meridian. Performed with the Water Blend — formulated to restore and ground.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>FIRE</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Poor circulation</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><em>Unmotivated</em></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>HEART · BLOOD VESSELS · SLEEP</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><em>Cold hands or feet. Difficulty sleeping and a sense of withdrawal.</em></p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/-df1d8bbe2dc4.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Infra Ray Moxibustion</strong></p><p>Penetrating heat that restores circulation and supports deep rest. Performed with the Fire Blend — formulated to warm and revive.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>ION Orchard</p><p><strong>Red Light Therapy</strong></p><p>Red light technology that works at the cellular level to improve circulation and support tissue recovery.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><span>EARTH</span></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Poor Digestion</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><em>Worry</em></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>SPLEEN · STOMACH · LYMPH</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><em>Bloating, heaviness after meals. A general sense of being weighed down.</em></p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/-620a2bf9fe18.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1000,
+   "h": 1000
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Herbal Volcanic Warming Mask</strong></p><p>Applied to the abdomen — warms the digestive and lymphatic pathways from the outside in. Performed with the Earth Blend — formulated to support digestive ease.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Your therapist confirms the element selection at the start of each session. If you’re unsure which element fits, share how you’re feeling and they will guide you.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "WHY IT MATTERS",
+   "html": "WHY IT MATTERS"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Why the 5 Elements Framework Matter",
+   "html": "Why the 5 Elements Framework Matter"
+  },
+  {
+   "t": "html",
+   "html": "<p>In Traditional Chinese Medicine, the body and mind are never treated separately. Each of the five elements — Wood, Fire, Earth, Metal, Water — governs not just a set of organs, but a mood, a tension pattern, a way of moving through the world. When one element is out of balance, you feel it: in your muscles, your sleep, your energy, your emotional steadiness.</p><p>The 5 Elements Massage honours that connection. Your chosen element shapes every part of the session — the oil blend selected for your state, the massage style applied to your body, the enhancement that closes the treatment. Nothing is generic. Every choice is made for where you are today.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "CONDITIONS",
+   "html": "CONDITIONS"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "What This Therapy May Help With",
+   "html": "What This Therapy May Help With"
+  },
+  {
+   "t": "html",
+   "html": "<p>01</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Muscle tension and stiffness",
+   "html": "Muscle tension and stiffness"
+  },
+  {
+   "t": "html",
+   "html": "<p>Particularly in the neck, upper back, and shoulders — addressed through deep fascial work and the Muscle Blade (Wood element).</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>02</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Poor circulation and cold extremities",
+   "html": "Poor circulation and cold extremities"
+  },
+  {
+   "t": "html",
+   "html": "<p>Addressed through penetrating heat, Infra Ray Moxibustion, and the warming Fire blend (Fire element).</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>03</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Digestive discomfort and bloating",
+   "html": "Digestive discomfort and bloating"
+  },
+  {
+   "t": "html",
+   "html": "<p>Addressed through abdominal work, the Herbal Volcanic Warming Mask, and the Earth blend (Earth element).</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>04</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Fatigue and water retention",
+   "html": "Fatigue and water retention"
+  },
+  {
+   "t": "html",
+   "html": "<p>Addressed through cupping to clear stagnation, paired with the Metal blend (Metal element).</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>05</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Deep exhaustion and anxiety",
+   "html": "Deep exhaustion and anxiety"
+  },
+  {
+   "t": "html",
+   "html": "<p>Addressed through targeted lower back work along the kidney meridian, the Back Scrub, and the restorative Water blend (Water element).</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>06</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Stress accumulation and poor sleep",
+   "html": "Stress accumulation and poor sleep"
+  },
+  {
+   "t": "html",
+   "html": "<p>Multiple elements may apply; your therapist will identify the primary pattern and build the session to address it first.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "FAQS",
+   "html": "FAQS"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Frequently Asked Questions",
+   "html": "Frequently Asked Questions"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Do I choose my own element, or does the therapist choose for me?",
+   "html": "Do I choose my own element, or does the therapist choose for me?"
+  },
+  {
+   "t": "html",
+   "html": "<p>You choose. If you’re unsure which element fits how you’re feeling today, your therapist is happy to talk it through with you — but the decision is always yours.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "What if my symptoms cross more than one element?",
+   "html": "What if my symptoms cross more than one element?"
+  },
+  {
+   "t": "html",
+   "html": "<p>If two elements feel equally relevant, choose the one that describes your most pressing concern today. There’s no wrong answer — and no fixed element. The series gives you the freedom to explore a different element on your next visit.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "How is this different from a standard massage?",
+   "html": "How is this different from a standard massage?"
+  },
+  {
+   "t": "html",
+   "html": "<p>Each massage in the 5 Elements series combines a customised oil blend and a matched enhancement, thoughtfully organised to treat not just how your body feels, but how you feel.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>THE 5 ELEMENTS MASSAGE</p>"
+  },
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "How you feel today deserves a treatment made for today.",
+   "html": "How you feel today deserves a treatment made for today."
+  },
+  {
+   "t": "html",
+   "html": "<p>The 5 Elements series is built on a simple idea: that how you feel today deserves a treatment made for today. Your chosen element brings together a customised oil blend, a matched enhancement, and skilled full-body bodywork. The result is a treatment that honours both your body and your state of mind.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>The 5 Elements Massage</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Full-body therapeutic massage<br/>Element-specific oil blend<br/>Enhancement treatment included</p><p>Available at all three locations<br/>313 Somerset · Centrepoint · ION Orchard</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>First Trial S$98 · U.P. S$229</p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK A SESSION",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi%20I'm%20enquiring%20about%20Lymphatic%20Sculpt%20Facial%20(website)"
+  }
+ ]
+}

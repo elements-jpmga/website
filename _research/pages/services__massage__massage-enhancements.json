@@ -1,0 +1,390 @@
+{
+ "url": "https://elements.com.sg/services/massage/massage-enhancements/",
+ "path": "/services/massage/massage-enhancements/",
+ "title": "Massage Enhancements",
+ "description": "Boost your massage with guasha, cupping and more. Personalised add-ons to your massage, designed to deepen relief, relaxation, and recovery.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Massage Enhancements: Guasha, Cupping, and more....",
+   "html": "Massage Enhancements: Guasha, Cupping, and more...."
+  },
+  {
+   "t": "html",
+   "html": "<p>Take your massage to the next level with powerful add-on treatments designed to deepen relaxation and boost results. Personalise your session with treatments that complement your body’s needs—because sometimes, a little extra makes all the difference.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/mud-b3758c6d86bd.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Herbal Volcanic Mud",
+   "html": "Herbal Volcanic Mud"
+  },
+  {
+   "t": "html",
+   "html": "<p>Our Herbal Volcanic Mud is a rich blend of herbal extracts combined with mineral-rich volcanic mud, designed to be applied directly to the skin. This therapeutic treatment helps to relieve fatigue, ease muscle and joint pain, and soothe menstrual discomfort. The powerful combination of herbal extracts and volcanic mud promotes deep transdermal absorption, drawing out toxins from beneath the skin’s surface. Your body will feel a gentle tingling as the heated blend of herbs work on your tired muscles, warming and detoxifying your entire system. <strong>Benefits of Herbal Volcanic Mud:</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Water Retention</strong><br/>Reduces edema and lymph stagnation</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Womb Care</strong><br/>Improve overall womb health</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Constipation</strong><br/>Relieve bloatedness</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Muscle and Joint Pain</strong><br/>Pain Relief, Relieve fatigue (Back Spine, Tummy, Knee or Other joint area</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Excess Wind</strong><br/>Dispels wind-cold-damp pathogens out of the body</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Menstrual Problem</strong><br/>Relieve menstrual problems such as cramps</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/cupping-3f42811e60f6.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Cupping Therapy",
+   "html": "Cupping Therapy"
+  },
+  {
+   "t": "html",
+   "html": "<p>Cupping uses warm glass cups to create a gentle vacuum, allowing them to ‘stick’ to the skin. This therapy helps draw out stagnation, reduce inflammation, and restore the natural flow of energy. Cupping that supports your body’s self-healing process—perfect for relieving aches, stress, and fatigue.<br/>In some cases, the cup may be gently moved across the skin while suction is active—a technique known as <em>gliding cupping</em>—which helps stimulate the flow of Qi and revitalize circulation throughout the body. <strong>Benefits of Cupping Therapy:</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Calms the Body</strong><br/>Promotes relaxation and eases stress</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Boosts Circulation</strong><br/>Improves blood flow for faster healing</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Enhances Massage</strong><br/>Deepens relief and speeds recovery</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Eases Muscle Tension</strong><br/>Releases tightness and relieves soreness</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Supports Immunity</strong><br/>Helps relieve colds, coughs, and congestion</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Aids Detox</strong><br/>Flushes out toxins and reduces inflammation</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/guasha-2156242999d1.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Guasha",
+   "html": "Guasha"
+  },
+  {
+   "t": "html",
+   "html": "<p>Gua Sha (skin scraping) involves gently scraping the skin with a smooth, flat stone (usually tourmaline or jade) to stimulate circulation and promote healing. This natural therapy helps address a variety of concerns, including chronic pain, inflammation, and muscle tension. Gua Sha is also known to support lymphatic drainage, aid in muscle recovery, and may even alleviate symptoms related to perimenopause. It’s a holistic treatment that revitalizes the body while encouraging balance and overall wellness. <strong>Benefits of Guasha:</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Releases Tension &amp; Tight Fascia</strong><br/>Eases stiffness and improves flexibility</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Stimulates Energy Flow</strong><br/>Unblocks stagnant qi to restore balance</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Improves Skin Tone &amp; Firmness</strong><br/>Lifts and sculpts naturally with regular use</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Promotes Detoxification</strong><br/>Supports lymphatic drainage and clears waste buildup</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Reduces Inflammation</strong><br/>Helps calm soreness and chronic tension</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Aids Recovery</strong><br/>Speeds up healing from fatigue, stress, or overuse</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/antedote-essential-oils-18d50be63d75.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 800,
+   "h": 800
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Antedote Aromatherapy",
+   "html": "Antedote Aromatherapy"
+  },
+  {
+   "t": "html",
+   "html": "<p>Our essential oils are harmonious blends of carefully selected botanicals, crafted to deliver therapeutic benefits and enchanting fragrances. Add your chosen blend to your massage and enjoy the scent while your body reaps the benefits.</p><p>Whether you seek serenity amidst chaos, relief from daily stress, or a moment of tranquility to soothe your soul, our unique essential oil blends provide a gentle yet potent “antedote” to life’s challenges.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/1-1-c9aaf83dc427.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1131,
+   "h": 1600
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>SLEEP Essential Oil Blend</strong><br/>Vetiver + Rose + Lavender</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Prepare your body and mind for a restful night’s sleep with Sleep essential oil blend. Vetiver and Lavender calm the senses, while Rose brings a touch of serenity to ease you into slumber.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/8-e184e025908a.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1131,
+   "h": 1600
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>ENERGIZE Essential Oil Blend</strong><br/>Lime + Black Pepper + Geranium</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Feel revitalized with our Energize essential oil blend. The sparkling zest of Lime, delicate heat of Black Pepper, and floral Geranium leave you feeling refreshed and ready to tackle the day.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/2-7d2ac285f727.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1131,
+   "h": 1600
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>UPLIFT Essential Oil Blend</strong><br/>Mulberry + Bergamot</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Encourage a positive mood and improve circulation with our Uplift essential oil blend. Mulberry calms the senses, while Bergamot aids digestion and uplifts your spirits.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/5-eda42b717ae7.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1131,
+   "h": 1600
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>HARMONY Essential Oil Blend</strong><br/>Clary Sage + Rose + Bergamot</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Achieve balance with our Harmony essential oil blend. This blend helps manage symptoms of PMS and menopause by balancing hormones.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/4-3875f0414950.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1131,
+   "h": 1600
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>MUSCLES Essential Oil Blend</strong><br/>Eucalyptus + Rosemary + Chamomile</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Relieve tension and soothe tired muscles with our Muscles essential oil blend. Eucalyptus and Rosemary reduce inflammation and swelling, while Chamomile provides a calming effect.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/3-f3ee9e3b2515.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1131,
+   "h": 1600
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>STRESS Essential Oil Blend</strong><br/>Neroli + Orange</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Reduce stress and anxiety with the uplifting aroma of our Stress essential oil blend. Neroli and Orange help lift your mood and release muscle tension, promoting overall relaxation.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/10-5c860ff650ba.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1131,
+   "h": 1600
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>CHEER Essential Oil Blend</strong><br/>Vetiver + Geranium + Grapefruit</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Brighten your day with our Cheer essential oil blend. The citrusy, floral, and grounding tones of Vetiver, Geranium, and Grapefruit help relax, comfort, and bring about good feelings.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/9-c3215fad8825.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1131,
+   "h": 1600
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>BLISS Essential Oil Blend</strong><br/>Chrysanthemum + Black Pepper</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Experience Bliss with our anti-inflammatory essential oil blend. Chrysanthemum soothes the skin and restores emotional balance, while Black Pepper adds a warming touch.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/7-9e59173cf360.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1131,
+   "h": 1600
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>DETOX Essential Oil Blend</strong><br/>Bergamot + Grapefruit + Orange</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Lighten your mood and detoxify your body with our Detox essential oil blend. This sparkling citrus combination aids lymphatic drainage and helps fight cellulite.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/muscle-blade-08ba0edc33bf.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Muscle Blade Therapy",
+   "html": "Muscle Blade Therapy"
+  },
+  {
+   "t": "html",
+   "html": "<p>We use a warm, specially shaped tool to scrape and glide over muscles and trigger points. The technique targets tight fascia, knots, and soft tissue restrictions to restore mobility and relieve tension.</p><p>It’s similar in technique to Guasha, but generally used more for deep tissue work, often with firmer pressure and on deeper muscle layers. </p><p><strong>Benefits of Muscle Blade Therapy:</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Breaks Down Tough Knots</strong><br/>Effectively targets muscle adhesions that resist regular massage</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Restores Mobility</strong><br/>Loosens tight fascia to improve flexibility and movement</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Eases Chronic Discomfort</strong><br/>Alleviates lingering aches from stress, posture, or overuse</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Supports Injury Recovery</strong><br/>Encourages circulation and speeds up tissue repair</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Improves Muscle Function</strong><br/>Helps muscles perform better by clearing built-up tension</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Enhances Treatment Results</strong><br/>Amplifies the effects of massage</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/moxa-0e3ea413215e.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Infra-Ray Moxa Therapy",
+   "html": "Infra-Ray Moxa Therapy"
+  },
+  {
+   "t": "html",
+   "html": "<p>A modern adaptation of traditional moxibustion. Instead of burning dried mugwort (moxa) near the skin to generate heat, this therapy uses infrared rays to deliver deep, targeted warmth to acupuncture points or affected areas. It blends Traditional Chinese Medicine principles with infrared technology for a safer, smoke-free, and more consistent treatment.</p><p><strong>Benefits of Infra-Ray Moxa Therapy:</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Warms the Body Internally</strong><br/>Ideal for those with poor circulation, cold limbs, or fatigue from internal cold</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Relieves Pain &amp; Muscle Stiffness</strong><br/>Effective for joint pain, backaches, menstrual cramps, or muscle tension</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Boosts Circulation &amp; Qi Flow</strong><br/>Enhances blood flow and energy movement</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Strengthens the Immune System</strong><br/>Supports the body’s natural defenses</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Improves Digestion &amp; Organ Health</strong><br/>Often used to support spleen, kidney, or stomach functions in TCM</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Clears Dampness &amp; Cold</strong><br/>Helps dispel cold-damp conditions that can cause sluggishness or swelling</p>"
+  }
+ ]
+}

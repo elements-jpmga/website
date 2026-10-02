@@ -1,0 +1,374 @@
+{
+ "url": "https://elements.com.sg/services/massage/",
+ "path": "/services/massage/",
+ "title": "Massage and Wellness Spa in Singapore",
+ "description": "Discover professional massage therapy in Singapore at Elements Wellness. Relieve stress, treat pain or relax with different types of massage.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "MASSAGE",
+   "html": "MASSAGE"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Sign Up To Enjoy Your First Trial At $69 nett (60-min, U.P. $153) | T&C applies",
+   "html": "Sign Up To Enjoy Your First Trial At $69 nett (60-min, U.P. $153) | T&C applies"
+  },
+  {
+   "t": "html",
+   "html": "<p>Pre-registration and advance booking required to enjoy this promotion.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/edwd-19-cd9c78aec004.jpg",
+   "alt": "private rooms in elements wellness",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Best-in-Class Massage",
+   "html": "Best-in-Class Massage"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Whole-body benefits. A happier, healthier you.</strong><br/>At Elements Wellness, massage is more than just a moment of relaxation—it’s a therapeutic experience designed to restore balance, relieve tension, and help you feel your best inside and out. Whether you’re here to manage stress, address discomfort, or simply treat yourself, our skilled therapists tailor each session to meet your individual needs.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Types of Massage Services at Elements Wellness",
+   "html": "Types of Massage Services at Elements Wellness"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Essential Massage",
+   "html": "Essential Massage"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/tuina-massage-icon-575e29c4eb63.jpg",
+   "alt": "tuina massage icon",
+   "caption": "",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Tuina Massage",
+   "html": "Tuina Massage"
+  },
+  {
+   "t": "html",
+   "html": "<p>A form of TCM massage therapy that stimulates energy flow in the meridians to restore the body.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn More",
+   "href": "/services/massage/tuina-massage/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/swedish-massage-icon-d150ec010846.jpg",
+   "alt": "swedish massage icon",
+   "caption": "",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Swedish Massage",
+   "html": "Swedish Massage"
+  },
+  {
+   "t": "html",
+   "html": "<p>Uses long, flowing strokes, kneading, and other rhythmic techniques to relax muscles, release tension, and improve circulation.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn More",
+   "href": "/services/massage/swedish-massage/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/sports-massage-icon-234d2aeb87ab.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Sports Massage",
+   "html": "Sports Massage"
+  },
+  {
+   "t": "html",
+   "html": "<p>Targets muscle tension &amp; pain, imbalances, and joint pain. Promotes recovery and better mobility.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn More",
+   "href": "/services/massage/sports-massage/"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Specialized Massage",
+   "html": "Specialized Massage"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/lymphatic-drainage-massage-icon-a6d9d45155ba.jpg",
+   "alt": "lymphatic drainage massage icon",
+   "caption": "",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Lymphatic Drainage Massage",
+   "html": "Lymphatic Drainage Massage"
+  },
+  {
+   "t": "html",
+   "html": "<p>For detoxification and treating water retenting. A gentle massage that encourages the movement of lymph fluids around the body.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn More",
+   "href": "/services/massage/lymphatic-drainage-massage/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/synergy-massage-ba6b21371983.jpg",
+   "alt": "synergy massage icon",
+   "caption": "",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Muscle & Joint Vitality Massage",
+   "html": "Muscle & Joint Vitality Massage"
+  },
+  {
+   "t": "html",
+   "html": "<p>Relieve stiffness, pain and restore mobility with 3 Pillars of Recovery: <br/>Pain management, Fascia &amp; Tendon activation and Muscles Relaxation.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn More",
+   "href": "/services/massage/muscle-joints-massage/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/ginseng-meridian-therapy-icon-b0dbafd1dbdb.jpg",
+   "alt": "ginseng meridian therapy icon",
+   "caption": "",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Ginseng Bojin Meridian Massage",
+   "html": "Ginseng Bojin Meridian Massage"
+  },
+  {
+   "t": "html",
+   "html": "<p>Targets deeper tissues and works along meridian points to release deep-seated tension and chronic pain, using special</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn More",
+   "href": "/services/massage/ginseng-bojin-meridian-massage/"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Female Care Massage",
+   "html": "Female Care Massage"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/prenatal-massage-85e441d59c27.jpg",
+   "alt": "prenatal massage icon",
+   "caption": "",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Prenatal Massage",
+   "html": "Prenatal Massage"
+  },
+  {
+   "t": "html",
+   "html": "<p>Relieves discomforts experienced during pregnancy, such as backaches, stiff neck, leg cramps, headaches and edema (or swelling).</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn More",
+   "href": "/services/massage/prenatal-massage/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/postnatal-massage-099b3f0887b9.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Postnatal Massage",
+   "html": "Postnatal Massage"
+  },
+  {
+   "t": "html",
+   "html": "<p>Specifically tailored to restore the new mother’s body to pre-pregnancy conditions, realign the body weight and tones the over-stretched skin.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn More",
+   "href": "/services/massage/postnatal-massage/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/menopause-massage-f28cf88bf058.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1080,
+   "h": 1080
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Menopause Massage",
+   "html": "Menopause Massage"
+  },
+  {
+   "t": "html",
+   "html": "<p>Designed with your comfort in mind: a calming experience that promotes relaxation, supports hormonal balance, and helps ease symptoms.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn More",
+   "href": "/services/massage/menopause-massage/"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Reviews",
+   "html": "Reviews"
+  },
+  {
+   "t": "html",
+   "html": "<p> <span><span></span></span><span></span>I had a 1 hour massage &amp; 40mins onsen. The experience was awesome. The massage bed is heated and is very comfortable. The wooden onsen tub is large enough for... Read more 3 people. Private onsen is great without having to share with the public. </p> <img alt=\"Google Logo\" loading=\"lazy\" src=\"/assets/img/pages/google-small-icon-5a546404d9e5.jpg\"/> <img alt=\"Victoria Joy Avatar\" loading=\"lazy\" src=\"/assets/img/pages/acg8ockwtnommeyihwhxah9maa7i63wnapuehgg9-33887298c5ee.jpg\"/> Victoria Joy<br/><span> </span> <p> <span><span></span></span><span></span>I had my usual body massage here with Wangli (very good as always), but was introduced to their MediStretch 30min add on treatment. It is a dynamic, manual stretching that... Read more we can’t usually do ourselves, and it really helped loosen all my tightness and made me feel alive again! Recommended for people who do lots of exercise or just want to feel extra loosened up. </p> <img alt=\"Google Logo\" loading=\"lazy\" src=\"/assets/img/pages/google-small-icon-5a546404d9e5.jpg\"/> <img alt=\"Chryselda Widjaja Avatar\" loading=\"lazy\" src=\"/assets/img/pages/afdzucra8kolyxw3hnoistnq8k8rvsh-3n6oyztl-f1cedc36bf5b.jpg\"/> Chryselda Widjaja<br/><span> </span> <p> <span><span></span></span><span></span>I went for the couple spa with onsen. The spa was extremely rejuvenating for both my spouse and I. It was a lovely session to recharge ourselves. Highly recommend the... Read more Koyamaki Onsen Couple package for those attached ones. The masseuse was great as they will adjust the intensity of massage to your liking. The ambience was just right too. Definitely one of the better spa places out here. </p> <img alt=\"Google Logo\" loading=\"lazy\" src=\"/assets/img/pages/google-small-icon-5a546404d9e5.jpg\"/> <img alt=\"Abdul Rauf Avatar\" loading=\"lazy\" src=\"/assets/img/pages/alv-ujwyxoa6jwdnzhgv7ncrccv3grz98-btfu4q-483206a5eed0.jpg\"/> Abdul Rauf<br/><span> </span> <p> <span><span></span></span><span></span>My fiánce booked the couple onsen spa + full body massage for us &amp; we visited on a weekday. First impression was that the spa looked very high class and... Read more everything was clean, instructions were given clearly. The private Onsen spa was relaxing and provided with basic shower amenities. Time limit was 1 hr and even though I could not finish blow drying my hair, the staff allowed me to continue using the mirror &amp; dryer to dry my hair and touch up my hair after the massage. Moving on to the massage: it was awesome. 👏🏻 As both of us had indicated the style of the massage to be ‘ firm’ , the massage was pretty intense ( painful at times to us massage noobs) but really helped loosen the tensed muscles and it was - SHIOK! Highly recommend this 1hr full body massage. Ps: Highly recommend for girls to experience the onsen spa, it makes you have that instant glow on your skin after it! Note: the onsen spa requires you to be fully naked (even though private room). </p> <img alt=\"Google Logo\" loading=\"lazy\" src=\"/assets/img/pages/google-small-icon-5a546404d9e5.jpg\"/> <img alt=\"uni ng Avatar\" loading=\"lazy\" src=\"/assets/img/pages/afdzucraidpmrw4u02e9u0mnmu6muwqkis4i04iv-440e8f25a8a8.jpg\"/> uni ng<br/><span> </span> <p> <span><span></span></span><span></span>Oasis in the city. Many thanks to Jessamine - in fantastic hands, felt amazing after Swedish massage, Moxi &amp; medi-Stretch combo. Melted into a puddle, great at working out... Read more tension/knots whilst relaxing enough to nod off 😋 Thoroughly enjoyed my experience at Elements Wellness Centrepoint. Lovely ambience, setting &amp; staff. (Also highly recommend their onsen experience, great soak for sore muscles. Love their nemaki too haha) </p> <img alt=\"Google Logo\" loading=\"lazy\" src=\"/assets/img/pages/google-small-icon-5a546404d9e5.jpg\"/> <img alt=\"A P Avatar\" loading=\"lazy\" src=\"/assets/img/pages/aitbvmmsnlulo3wh3ntcel6dtcitpfpbt-k4eht8-510a92f4290c.jpg\"/> A P<br/><span> </span> <p> <span><span></span></span><span></span>The overall service was good 🙂 facilities are clean and had awesome experience. We like the warm bed and trully relaxing. Thanks again </p> <img alt=\"Google Logo\" loading=\"lazy\" src=\"/assets/img/pages/google-small-icon-5a546404d9e5.jpg\"/> <img alt=\"Dikae Uy Avatar\" loading=\"lazy\" src=\"/assets/img/pages/afdzucq1b3vi99dn9ezswivlxpdjorpil5xwys6n-dbe5534b48bd.jpg\"/> Dikae Uy<br/><span> </span> <p> <span><span></span></span><span></span>I did the new treatment Medi Stretch which was to relive some of the muscle pressure i felt working on a desk job. It was done marvellously by Jessamine. She... Read more was my therapist for quite a while now and I totally recommend her to new customers. </p> <img alt=\"Google Logo\" loading=\"lazy\" src=\"/assets/img/pages/google-small-icon-5a546404d9e5.jpg\"/> <img alt=\"Jerille Rosero Avatar\" loading=\"lazy\" src=\"/assets/img/pages/afdzucohjhc2pir6uelmuk6bkxtuhvbpwceubj6d-cd0929362bdd.jpg\"/> Jerille Rosero<br/><span> </span> <p> <span><span></span></span><span></span>My second visit to Elements Wellness at Centrepoint. Got the body scrub, massage and onsen package. Our masseurs, Asy and Nicole were really knowledgeable, honest and professional. There were... Read more no hardselling and Asy focused on educating about how different massages will benefit us like blood flow, muscle relaxation etc. Onsen was great as well to end of the massage session. Would definitely visit again 🙂 </p> <img alt=\"Google Logo\" loading=\"lazy\" src=\"/assets/img/pages/google-small-icon-5a546404d9e5.jpg\"/> <img alt=\"Priscilla Avatar\" loading=\"lazy\" src=\"/assets/img/pages/alv-ujwvwm-nykqdfa45mgl32-aghely9-cejqsk-c9dfd69748a1.jpg\"/> Priscilla<br/><span> </span> <p> <span><span></span></span><span></span>Irwin has been extremely friendly and patient with us (me and my gf) and went the extra mile to customize and explain thoroughly the different packages. And there was no... Read more hard selling at all too! Massage itself was great and destressing! Place is comfy, warm and cosy! </p> <img alt=\"Google Logo\" loading=\"lazy\" src=\"/assets/img/pages/google-small-icon-5a546404d9e5.jpg\"/> <img alt=\"Nicholas Lee Avatar\" loading=\"lazy\" src=\"/assets/img/pages/afdzucr7996lz53g2tbizebqf-606vgffqftabvh-1d44c361fbe3.jpg\"/> Nicholas Lee<br/><span> </span>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/elements-ion-scaled-ppf0rfu9kjv0hcooeibo-501aca9c3b10.jpg",
+   "alt": "Elements_ION",
+   "caption": "",
+   "w": 600,
+   "h": 350
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "ION Orchard",
+   "html": "ION Orchard"
+  },
+  {
+   "t": "list",
+   "items": [
+    "#B1-30 ION Orchard",
+    "6738 3788",
+    "8938 2878",
+    "ion@elements.com.sg"
+   ]
+  },
+  {
+   "t": "map",
+   "src": "https://maps.google.com/maps?q=Elements%20Wellness%20ION&t=m&z=13&output=embed&iwloc=near"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/elements-centrepoint-ppezpcfql9pnya0pujj-ff208cfc90de.jpg",
+   "alt": "Elements_centrepoint",
+   "caption": "",
+   "w": 600,
+   "h": 350
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "The Centrepoint",
+   "html": "The Centrepoint"
+  },
+  {
+   "t": "list",
+   "items": [
+    "#02-28 The Centrepoint",
+    "6737 8488",
+    "9357 8183",
+    "cpoint@elements.com.sg"
+   ]
+  },
+  {
+   "t": "map",
+   "src": "https://maps.google.com/maps?q=Elements%20Wellness%20Centrepoint&t=m&z=15&output=embed&iwloc=near"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/elements-313-scaled-ppf0ycxhvnbzy0muzzzt-33a223dfa7ba.jpg",
+   "alt": "Elements 313",
+   "caption": "",
+   "w": 600,
+   "h": 350
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "313@somerset",
+   "html": "313@somerset"
+  },
+  {
+   "t": "list",
+   "items": [
+    "#B2-50/51, 313@somerset",
+    "6636 8878",
+    "9669 6460",
+    "313@elements.com.sg"
+   ]
+  },
+  {
+   "t": "map",
+   "src": "https://maps.google.com/maps?q=Elements%20Wellness%20313&t=m&z=15&output=embed&iwloc=near"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Massage Services in Singapore",
+   "html": "Massage Services in Singapore"
+  },
+  {
+   "t": "html",
+   "html": "<p>At Elements Wellness, you can escape the hectic pace of life and immerse yourself in a complete relaxation experience for your mind, body, and soul. Our wellness centres offer a wide array of rejuvenating and therapeutic body massages, each thoughtfully designed to bring harmony to every part of your body and offer a luxurious and soulful retreat.</p><p>Started by two massage enthusiasts, who were seeking a good spa massage in Singapore to relieve their bodies from muscle tension and sore muscles. However good quality massages were scarce back then. This inspired them to create a team and start their own sanctuary, aiming for the best massage in Singapore. To sharpen their craft, the team dived into the intricacies of good therapy, built unique protocols and collaborated with their internal team of passionate individuals to establish the massage sanctuary from ground up.</p><p>Elements Wellness emerged with a clear purpose of making wellness treatments and beauty therapies accessible to everyone. Within our wellness centres, we offer a comprehensive range of treatments that can be customized to the specific needs of our clients. Whether you seek general relaxation or have specific requirements such as pain management, detoxification, joint mobility, detoxification, headaches, etc., our comprehensive range of services has something for everyone. Our commitment lies in providing a space where everyone can experience the benefits of our wellness and beauty offerings.</p><h3>What are the benefits of having regular massages?</h3><p>Body massages have been recognised as an integral part of medicinal works in society today. It is the therapeutic practice of manipulation of the body’s soft tissues, such as muscles, skin, tendons, and ligaments, using various techniques like rubbing, kneading, and pressing, to relieve tension and ease pain.</p><p>Studies have discovered other benefits of massage such as reduced stress, chronic pain management, increased relaxation, improved immunity systems and lesser muscle and joint pain. Due to the outstanding results, and the versatility of this natural therapy, body massage treatments has been practised over time and applied to different parts of the body from the face to arms, legs and even muscles and joints. This has led to the development of a range of massage types, which will be covered later.</p><p>At Elements Wellness, our affordable massage services are performed by trained therapists, with the goal of promoting relaxation, relieving muscle tension, reducing stress, and to enhance overall well-being.</p><h3>How often should you get a massage?</h3><p>While there are no standard guidelines or definite number for the number of massage sessions to get, it is often dependent on the type, spa treatment and specific needs an individual have. However, as massages are often associated with relaxation and pampering sessions, they should occur less than massages treating injuries or medical conditions.</p><p>However, it is best to always consult a doctor or massage therapist before the session to determine the best frequency and duration for your body and your ability to handle the pressure.</p><h3>What are the types of massage services offered?</h3><p>At Elements Wellness, we offer a myriad of body massage in Singapore, catered to suit different needs and address different health conditions. Below is a quick guide on the types of massages and their benefits.</p><h4>Tui Na Massage</h4><p><a href=\"/tui-na-massage/\">Tui Na massage</a>, which means “to push”, is a technique using the hands and fingers applied to pressure points — a concept similar to acupuncture, but without the use of needles — and massage acupoints and meridian channels to release any trapped energy in the body and at the same time, help to stimulate the flow of “Qi” (energy).</p><p>As Tui Na uses the principle of healthy flowing “QI”, the therapist kneads, rolls, presses, and rubs acupoints to remove blockages, release tension, soreness, aches and pains to improve better circulation of blood and energy. Tui Na is good for individuals looking to release tight muscles and ligaments. Otherwise, it is a great massage therapy choice to generally improve the body’s “Qi” or energy for better health.</p><h4>Swedish Massage</h4><p>As one of the most common and well-known types of massage, <a href=\"/swedish-massage/\">Swedish massage</a> is often used for relaxation and relieving any muscle aches. Using long gliding strokes along the body, especially on the back, this technique helps individuals to relax and ease their muscles in a comfortable way.</p><p>Swedish massage is also a suitable choice for a good pampering session or a lightweight massage option as light to moderate pressure is used during the session, yet, it improves blood circulation, lymphatic drainage and stimulates nerve endings, overall increasing the well-being and health of individuals.</p><h4>Sports Massage</h4><p>For sports enthusiasts, a good way to relieve strained muscles would be through a <a href=\"/sports-massage/\">sports massage</a>. This technique helps to target the sore areas of your body through repetitive movements and pressure applied consistently to the body. It reduces muscle tension, joint tightness or stiffness, along with increased blood circulation that is linked directly to the healing of any body injuries. When our body is eased, it can easily heal injuries quickly.</p><p>Apart from sports enthusiasts, individuals who may be suffering from improper sleep due to their jobs or lifestyles may also opt for a sports massage. Targeting the cramped and strained muscles, sports massage can help to relieve stress, increase immunity and improve the quality of sleep.</p><h4>Lymphatic Drainage Massage</h4><p>When the body’s lymphatic system is congested, it will lead to higher water retention which results in symptoms such as bloatedness and constipation. On an emotional level, it may also lead to sluggishness and increased headaches. To mitigate this, a <a href=\"/lymphatic-drainage-massage/\">lymphatic drainage massage</a> can help to stimulate the movement of lymph fluids to help them naturally pass out of the body.</p><p>As a form of gentle massage, this technique aids the body to better naturally move and drain the fluids, in turn, removing any unwanted waste and toxins from our body. For some, lymphatic drainage massage can help with weight loss, while in general, this massage can alleviate conditions such as sinus and acne, as well as improve skin radiance and elasticity.</p><h4>Elements Ginseng Meridian Therapy</h4><p>Using specially shaped water buffalo horns, the <a href=\"/elements-ginseng-meridian-therapy/\">Elements Ginseng Meridian Therapy</a>, also known as EGMT for short, targets certain points in our body and penetrates deep into the muscle layers to relieve tight muscles. At the same time, the EGMT technique utilised the knowledge of meridian pathways to release “knots” or blockages in the body within the body’s muscular structure.</p><p>In addition, the EGMT method targets acupoints to unblock meridian channels, which sees many benefits such as lesser muscle or joint stiffness, greater energy flow, anti-ageing benefits and relief to tight tendons and ligaments.</p><h4>Synergy Massage</h4><p>While hand and bodily movements are used in massages, essential oils are also an alternative form of massage, or can also be used alongside other types of massages. Using essential oils extracted from plants (4 types of powerful botanical oil blends), a <a href=\"/synergy-massage/\">synergy massage</a> helps to enhance the well-being and health of individuals as the oils stimulate different areas of the body such as hormones, lymphatic detox and provide muscle relief.</p><p>Several health benefits can be seen from this technique such as better pain management, improved moods and overall higher quality of life and ability to relax.</p><h4>Prenatal Massage</h4><p>For mothers who pass the 4th month of their pregnancy, a great way to relieve both mental and physical stress is through a <a href=\"/prenatal-massage/\">prenatal massage</a>. Designed specifically and adapted to each and every mother’s bodily changes, this massage helps to reduce stress hormones and relax the body’s muscles.</p><p>With this technique, mothers can expect lesser pain in their joints, and better blood flow and lymph circulation. Prenatal massage can also help to reduce the body’s swelling as water retention is improved due to better blood circulation as well. In terms of emotional benefits, mothers can help to relieve themselves of stress, depression or anxiety caused by hormonal changes.</p><h3>Taking Care of the Mind and Soul</h3><p>Opting for different type of massages are a great choice to relieve the body. But for a more comprehensive experience, the Elements Wellness also introduce other services that are directed simply towards beauty, relaxation and self-pampering.</p><h4>Face, Slimming and Therapy</h4><p>Besides body massage, we don’t shy away from other treatments that may help us improve our self-confidence and enhance beauty. An inclusive range of treatments is available for other areas of the body. For instance, <u><a href=\"/facial/\">facials</a></u> including eye care, skin brightening, face shaping and facial treatments are available; while <u><a href=\"/slimming/\">slimming treatments</a></u> for tummy trimming and fat freezing are also available options as well.</p><p>Other forms of <u><a href=\"/therapy/\">therapy</a></u> will also include stretching, pain management, womb care, chiropractic and more.</p><h4>Onsen Therapy</h4><p>For a more unique type of therapy, the Elements Wellness offer an exclusive <u><a href=\"/koyamaki-onsen/\">Koyamaki Onsen</a></u> retreat. Located at Elements Wellness Centrepoint, the therapy experience is nestled in a private room to provide you with a Japanese bath ritual.</p><p>Indulge in a handcrafted Koyamaki wood tub filled with energised ion water to treat yourself to a sacred beauty therapy. The Onsen experience is completed with real Hinoki wood bath accessories, an autumn Japanese garden backdrop and aromatic scents to keep you calm and relaxed throughout the session.</p><h4>Private Jacuzzi Therapy</h4><p>You may also prefer to venture into a private jacuzzi experience. With <u><a href=\"/jacuzzi-facility/\">Jacuzzi @ 313</a></u>, it uses the power of hydrotherapy to relax your muscles or any tense tissues with powerful jet streams of water. This perfect spa therapy is also curated in a private room to provide you with the utmost comfort and relaxing time alone.</p><h3>Locate us</h3><p>Whether you’re looking to ease physical pains, or improve your health mentally and emotionally, experiment with massages and the different types of techniques to find the one that is best suited for you and your needs. We also offer <a href=\"/facial/\">facial treatments</a> tailored specially for your unique skin needs.</p><p>The Elements Wellness is available in three stores around the country — ION Orchard, The Centrepoint and 313@Somerset. Speak to our massage therapists if you’re wanting to solve any health issues or conditions with massage in Singapore, or <u><a href=\"/contact-us/\">contact us</a></u> to inquire more about our services.</p>"
+  }
+ ]
+}

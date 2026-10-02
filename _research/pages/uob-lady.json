@@ -1,0 +1,72 @@
+{
+ "url": "https://elements.com.sg/uob-lady/",
+ "path": "/uob-lady/",
+ "title": "UOB Lady's Card 2026",
+ "description": "Treat yourself to a series of luxurious spa experiences with enticing discounts and perks for UOB cardholders, promotions available all year! Start reserving your slots today!",
+ "blocks": [
+  {
+   "t": "image",
+   "src": "/assets/img/pages/ew-uob-banner-2-17c4dfd10ecc.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1280,
+   "h": 400
+  },
+  {
+   "t": "html",
+   "html": "<p>To make an appointment via call / WhatsApp, select your preferred outlet. (This is usually faster.)</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong><a href=\"https://api.whatsapp.com/send?phone=6589382878&amp;text=Hi,%20I'd%20like%20to%20book%20UOB%20Promo\"><span>Elements – ION</a></strong></span></p><p>Tel: 6738 3788 / WA: <a href=\"https://api.whatsapp.com/send?phone=6589382878&amp;text=Hi,%20I'd%20like%20to%20book%20UOB%20Promo\">8938 2878</a></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><a href=\"https://api.whatsapp.com/send?phone=6593578183&amp;text=Hi,%20I'd%20like%20to%20book%20UOB%20Promo\"><strong>Elements – Centrepoint</strong></a></p><p>Tel: 6737 8488 / WA: <a href=\"https://api.whatsapp.com/send?phone=6593578183&amp;text=Hi,%20I'd%20like%20to%20book%20UOB%20Promo\">9357 8183</a></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><a href=\"https://api.whatsapp.com/send?phone=88751677&amp;text=Hi,%20I'd%20like%20to%20book%20UOB%20Promo\"><strong>Elements – 313</strong></a></p><p>Tel: 6636 8878 / WA: <a href=\"https://api.whatsapp.com/send?phone=88751677&amp;text=Hi,%20I'd%20like%20to%20book%20UOB%20Promo\">9669 6460</a></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Welcome! </p><p>Here is where you make your appointment.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>BIRTHDAY<br/></strong><strong>For UOB Lady’s Debit or Credit Cards</strong></p><p>• Complimentary Collagen Infusion with AquaGlow Facial @ S$55 nett (60-min, U.P S$183)</p><p>OR</p><p>• Complimentary Aromatherapy with Anti-Stress Massage @ S$55 nett (45-min, U.P S$111)</p><p>OR</p><p>• Complimentary Omega Light with Needle-less Rejuran Facial @S$188 nett (75-min, U.P. S$416)</p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "#UOBYL"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>BIRTHDAY<br/></strong><strong>For UOB Lady’s Solitaire Cards</strong></p> <p>• Complimentary Bright Eye Treatment with AquaGlow Facial @ S$59 nett (60-min, U.P S$176)</p> <p>OR</p> <p>• Complimentary Enhancements* with Anti-Stress Massage @ S$59 nett (60-min, U.P S$158)<br/><em>*Enhancements: Backscrub, Premium Oil Upgrade, Guasha, Infra-Ray Moxa</em></p> <p>OR</p> <p>• 1-for-1 Needle-less Rejuran® Facial at S$288 nett (75-min per session, U.P. S$656)</p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "#UOBBD1"
+  },
+  {
+   "t": "html",
+   "html": "<p><b>YEARLONG PROMOTION<br/></b><strong>UOB Lady’s Debit Card or UOB Lady’s Credit Card</strong></p><p>• Relaxation Body Massage @ S$59 nett (60-min, U.P S$118)</p><p>OR</p><p>• AquaGlow Facial @ S$59 nett (60-min, U.P S$118)</p><p>OR</p><p>• Detox Lymphatic Therapy @88 nett (60-min, U.P S$158)</p>"
+  },
+  {
+   "t": "button",
+   "text": "BOOK NOW",
+   "href": "#UOBBD"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Validity: 1 January 2026 – 31 December 2026</strong></p><p>Surcharge Applicable:<br/>PH/Weekends: +$5 nett<br/>Couple Treatment room: +$21.80 nett<br/>Festive surcharge: S$21nett per pax applies for facial appointments during blackout period</p>"
+  },
+  {
+   "t": "html",
+   "html": ".wpforms-container",
+   "widget": "eael-wpforms"
+  }
+ ]
+}

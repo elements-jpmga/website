@@ -1,0 +1,64 @@
+{
+ "url": "https://elements.com.sg/tcm-tummy-trim/",
+ "path": "/tcm-tummy-trim/",
+ "title": "TCM Tummy Trim in Singapore",
+ "description": "Achieve a toned and sculpted waistline with our TCM Tummy Trim at Elements Wellness. Call us to book your appointment today!",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "TCM Tummy Trim",
+   "html": "TCM Tummy Trim"
+  },
+  {
+   "t": "html",
+   "html": "<p>Based on TCM principles to improve digestion and fire up your metabolism for effective, natural, and long-lasting weight management and wellness. </p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>This treatment adopts a holistic approach that works along abdominal acupoints and meridian channels to restore the body’s natural balance, thus helping improve digestion, break down fat deposits and balance metabolism to shed excess weight.</p> <p>Flushing along meridian channels opens up circulation and lymph flow while Cupping reaches fat located in the deeper levels. Adopts a duo approach of targeting accumulated fats and working on improving digestive health. A healthy gut is crucial for wellness and long term weight management.</p> <p>Also targets bloating and contours the waistline.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/screenshot-2022-09-06-at-10-12-12-am-bdd7c313383f.jpg",
+   "alt": "Screenshot 2022-09-06 at 10.12.12 AM",
+   "caption": "",
+   "w": 808,
+   "h": 684
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Benefits",
+   "html": "Benefits"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>Holistic approach that works to restore the body’s natural balance for long term benefits</li><li>Contours waistline and removes excessive air for a slimmer appearance</li><li>Improves metabolism to shed excess weight</li><li>Works on improving digestion</li><li>Natural detoxification through improved lymph flow</li><li>Non-invasive</li><li>Aims to harmonize your body to reduce cravings and appetite and curb your hunger hormones.</li><li>Cumulative benefits on your body as it starts to rebalance itself over time</li></ul>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Suitable For",
+   "html": "Suitable For"
+  },
+  {
+   "t": "html",
+   "html": "<ul><li>People who experience bloatedness, water retention, puffiness of skin </li><li>Weight gain around the waist</li><li>Sluggish digestion or constipation</li><li>Low energy, find that you are gaining weight fast</li><li>Sedentary lifestyle</li><li>People with “dampness” as described in TCM</li></ul>"
+  },
+  {
+   "t": "video",
+   "url": "www.youtube.com/watch?v=6ddEEfCYOIU"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "How It Works",
+   "html": "How It Works"
+  },
+  {
+   "t": "html",
+   "html": "<p><b>Flushing<br/></b>Flushing meridian channels at your abdominal area helps to improve the blood flow through muscle and tissue. This treatment focuses on improving circulation along meridian channels, thus influencing how your digestive organs can effectively digest food. The improved circulation can result in better and more efficient digestion, which supports your body to respond better to changes in diet and lifestyle and store less fat. Plus, by boosting the blood flow around the abdominal area and enabling lymphatic drainage, it not only helps improve digestion, but also can help manage your appetite.</p><p>Another added benefit of this specialized abdominal Flushing is that it expels “wind” or bloatedness, a common symptom that results in bulging stomach and discomfort.</p><p><b>Cupping<br/></b>Cupping is done along specific acupressure points, this creates a vacuum suction that draws stagnant blood to the skin surface and also loosens tissues and fat deposits. It stimulates the circulatory system allowing fresh blood to flow to your digestive system and boost energy to metabolize body fats and let it naturally pass out through the lymphatic system. Cupping is also able to target fat located in the deeper levels, once the fats are disrupted, it is easily liquified and naturally passed out through the body’s excretory system, achieving desired results.</p><p><b>Tone and Detox Ampoule and Lotion <br/></b>Ginger and Lemongrass are used to expel “wind” and stimulate blood circulation, as this helps reduce bloatedness and ‘dampness’. These powerful natural ingredients support detoxification and toning, and also moisturize your skin.</p>"
+  }
+ ]
+}

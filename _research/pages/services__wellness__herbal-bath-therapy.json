@@ -1,0 +1,145 @@
+{
+ "url": "https://elements.com.sg/services/wellness/herbal-bath-therapy/",
+ "path": "/services/wellness/herbal-bath-therapy/",
+ "title": "TCM Herbal Bath Therapy",
+ "description": "Experience private herbal bath therapy with custom TCM blends that relax, detox, and restore. Perfect solo or for couples. Book your healing soak today.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Herbal Bath Therapy",
+   "html": "Herbal Bath Therapy"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "A Private Healing Experience for One or Two",
+   "html": "A Private Healing Experience for One or Two"
+  },
+  {
+   "t": "html",
+   "html": "<p>A herbal bath at Elements Wellness is a therapeutic ritual deeply rooted in Traditional Chinese Medicine (TCM). As the warm water opens your pores, the infused herbs work to soothe tired muscles, calm the mind, detox the body, and nourish the skin.</p><p>Enjoy complete privacy in a room with two individual tubs — ideal for couples or friends. Each person selects a personalized herbal blend to match their wellness needs. Coming solo is just as meaningful. In today’s busy world, taking time to care for your body and mind is a powerful act of self-care.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "What Makes Our Herbal Bath Therapy Unique?",
+   "html": "What Makes Our Herbal Bath Therapy Unique?"
+  },
+  {
+   "t": "html",
+   "html": "<p>Our Herbal Bath Therapy is not just relaxing — it’s therapeutic and rooted in TCM wisdom.<br/>What sets us apart is the variety of our herbal formulas. With targeted blends to support sleep, circulation, fertility, detoxification, hormonal balance, and more, we’re able to address wellness concerns while you relax fully. As you soak in the warm infusion, the benefits are absorbed through the skin to restore your body from within</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Our Signature Herbal Blends:",
+   "html": "Our Signature Herbal Blends:"
+  },
+  {
+   "t": "html",
+   "html": "<ul> <li>Insomnia Relief</li> <li>Muscle Recovery and Circulation</li> <li>Detox and Weight Loss</li> <li>Men’s Fertility and Vitality (Men only)</li> <li>Uterus warming and dampness removing (women only)</li> </ul>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Herbal Bath: Standalone or Combine with other therapy</strong><br/>Our Herbal Bath Therapy is a complete wellness treatment on its own — but it also makes the perfect pairing with other therapies.</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/herbal-bath-therapy-1-845f12b56f04.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "t": "html",
+   "html": "<p><b>Herbal Bath</b><b><br/></b></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>TCM Herbal Bath <br/>(45-min, U.P. $128 per pax)</p> <p>Select the herbal blend that most suits your need. </p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><b>Paired with Massage</b><b><br/></b></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>TCM Herbal Harmony Ritual</p> <ul> <li>Herbal Bath Therapy (45-min)</li> <li>Full Body Massage (60-min)</li> <li>Weekdays: <br/>$158 – 1 Pax<br/>$298 – 2 Pax</li> <li>Weekends: <br/>$168 – 1 Pax<br/>$318 – 2 Pax</li> </ul> <p>The improved circulation from the herbal bath enhances the relaxation and benefits of your massage.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><b>Paired with Facial</b><b><br/></b></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>TCM Herbal Beauty Ritual </p><ul><li>Herbal Bath Therapy (45-min)</li><li>Facial of your choice</li></ul><p>As the warmth of the herbal bath helps to open pores and relax you, your skin can absorb the full benefits of the facial.</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><b>Let nature’s wisdom soak into your skin.</b></p><p>Herb Bath Therapy is available only at 313@Somerset branch</p>"
+  },
+  {
+   "t": "button",
+   "text": "Book your Herbal Bath Therapy",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Hi,%20I'd%20like%20to%20book%20Herbal%20Bath%20Therapy%20(website)"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "TCM Herbal Bath Menu and the Benefits",
+   "html": "TCM Herbal Bath Menu and the Benefits"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "失眠调理 – Insomnia Relief Herbal Bath",
+   "html": "失眠调理 – Insomnia Relief Herbal Bath"
+  },
+  {
+   "t": "html",
+   "html": "<p>Key Ingredients: Polygonum multiflorum, Silk Tree Flower, Chrysanthemum, Magnetite, Scutellaria, Mugwort <br/>Benefits: <br/>– Promotes restful sleep <br/>– Calms anxiety and stress <br/>– Detoxifies and reduces internal heat <br/>– Enhances deep relaxation </p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "舒经活络 – Muscle Recovery & Circulation Herbal Bath",
+   "html": "舒经活络 – Muscle Recovery & Circulation Herbal Bath"
+  },
+  {
+   "t": "html",
+   "html": "<p>Key Ingredients: Carthamus, Ligusticum, Angelica, Cinnamon Twig, Mugwort, Rose <br/>Benefits:<br/>– Relieves muscle pain and joint stiffness <br/>– Boosts circulation and flexibility <br/>– Supports post-exercise recovery <br/>– Deeply soothing and relaxing</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "排毒瘦身 – Detox & Weight Loss Herbal Bath",
+   "html": "排毒瘦身 – Detox & Weight Loss Herbal Bath"
+  },
+  {
+   "t": "html",
+   "html": "<p>Key Ingredients: Lotus Leaf, Angelica, Rose, Dāng Guī, Carthamus, Atractylodes <br/>Benefits:<br/>– Encourages sweating and detoxification <br/>– Aids digestion and reduces water retention <br/>– Brightens skin and boosts energy <br/>– Supports a healthy metabolism</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "宫寒祛湿 – Uterus-Warming & Dampness-Removing (Women Only)",
+   "html": "宫寒祛湿 – Uterus-Warming & Dampness-Removing (Women Only)"
+  },
+  {
+   "t": "html",
+   "html": "<p>Key Ingredients: Leonurus, Rose, Safflower, Cinnamon, Privet Fruit, Angelica, Mugwort <br/>Benefits: <br/>– Warms the uterus and enhances blood flow <br/>– Eases menstrual discomfort and cold symptoms <br/>– Promotes hormonal balance and fertility <br/>– Supports digestion and detox</p>"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "备孕调理 – Men’s Fertility & Vitality (Men Only)",
+   "html": "备孕调理 – Men’s Fertility & Vitality (Men Only)"
+  },
+  {
+   "t": "html",
+   "html": "<p>Key Ingredients: Dāng Guī, Horny Goat Weed, Goji Berry, Rehmannia, Psoralea, Astragalus, Carthamus, Mugwort <br/>Benefits:<br/>– Strengthens reproductive health <br/>– Enhances sperm quality and energy <br/>– Supports vitality and circulation <br/>– Boosts overall male wellness </p>"
+  }
+ ]
+}

@@ -1,0 +1,391 @@
+{
+ "url": "https://elements.com.sg/services/facial/dull-uneven/",
+ "path": "/services/facial/dull-uneven/",
+ "title": "Facials for Dull Pigmented Skin",
+ "description": "At Elements Wellness, our facials brighten dull, uneven or pigmented skin using nutrient-rich formulas or advanced, skin-safe technology without harm.",
+ "blocks": [
+  {
+   "t": "heading",
+   "level": 1,
+   "text": "Facials for Dull, Uneven or Pigmented Skin",
+   "html": "Facials for Dull, Uneven or Pigmented Skin"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/skin-brightening1-ebeeb395e94c.jpg",
+   "alt": "skin brightening",
+   "caption": "",
+   "w": 810,
+   "h": 529
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Facials That Brighten Without Compromise</strong></p>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Is your skin looking tired, uneven, or just not as radiant as it could be? At Elements Wellness, we offer a carefully curated selection of brightening facials designed to refresh your natural glow—without harshness or damage. Choose from nutrient-powered facials that feed your skin with natural goodness, or technology-powered facials that use safe, proven innovations to bring your skin back to life.</p><p>Whatever you choose, every treatment is guided by our core philosophy: <em>respect your skin, and it will reward you.</em></p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/shutterstock-1141355066-5cc9e299e7d8.jpg",
+   "alt": "24k Gold facial",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "24K Pure Gold Facial",
+   "html": "<a href=\"/services/facial/24k-pure-gold-facial/\">24K Pure Gold Facial</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Award-winning facial harnesses the remarkable properties of gold to improve collagen levels and suppress dullness.<br/><br/></p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/24k-pure-gold-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/pearl-light-wordpress-6df9d85a0a44.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1200,
+   "h": 900
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Pearl Light Facial",
+   "html": "<a href=\"/services/facial/pearl-light-facial/\">Pearl Light Facial</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Naturally boosts collagen to smooth skin, brighten dullness, and even out skin tone—no needles or supplements needed.<br/><br/></p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/pearl-light-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/power-dose-3dec2ac891be.jpg",
+   "alt": "brightening glutathione facial treatment",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Power Dose Facial",
+   "html": "<a href=\"/services/facial/power-dose-facial/\">Power Dose Facial</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Experience a soothing, highly effective facial that infuses a blend of active ingredients, known to calm, restore and brighten skin.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/power-dose-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/0616-gmr-7695-copy-e454e574ab47.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "3C Vitamin Glow Facial",
+   "html": "<a href=\"/services/facial/3c-vitamin-glow-facial/\">3C Vitamin Glow Facial</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Features the skincare superstar Vitamin C in three advanced forms, freshly activated in a luxurious facial designed to brighten, rejuvenate, and refine your skin.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/indiba-proionic-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/bojin-facial-1-a99b75e82358.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 800,
+   "h": 450
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Meridian Bojin Facial",
+   "html": "<a href=\"/services/facial/meridian-bojin-facial/\">Meridian Bojin Facial</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Traditional Chinese Medicine techniques to stimulate meridian points on the face for an instant facelift and radiant skin.<br/><br/></p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/meridian-bojin-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/cover-image-nano-fibroblast-e17437515592-1f6a3dc02060.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1600,
+   "h": 1514
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Nano Fibrolast Facial",
+   "html": "<a href=\"/services/facial/nano-fibroblast-facial/\">Nano Fibrolast Facial</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Stimulates collagen production by creating micro-channels which also allow active ingredients to be better absorbed.<br/><br/></p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/nano-fibroblast-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/dermo-peel-renewal-76182b17e252.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1500,
+   "h": 900
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Dermo Peel Facial",
+   "html": "<a href=\"/services/facial/dermo-peel-facial/\">Dermo Peel Facial</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Designed to refine skin texture, target signs of ageing, deep wrinkles and sun damage to reveal a brighter, smoother complexion.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/dermo-peel-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/49277434-xxl-1-07f5793bfc24.jpg",
+   "alt": "Skin Care. Face Beauty Treatment. IPL. Photo Facial Therapy. Ant",
+   "caption": "",
+   "w": 1600,
+   "h": 1067
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "IPL Facial",
+   "html": "<a href=\"/services/facial/ipl-facial/\">IPL Facial</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Uses light energy to stimulate new collagen to form in the skin to fix many skin issues.<br/><br/></p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/ipl-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/hydrolux-ba893f821c4c.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 1228,
+   "h": 835
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "HydroLux Facial (Renewal)",
+   "html": "<a href=\"/services/facial/hydrolux-facial/\">HydroLux Facial (Renewal)</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>This facial removes impurities, evens out skin tone, and restores a healthy, luminous glow with a brightening antioxidant ampoule.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/hydrolux-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/wishpro-ba68a0f7ff88.jpg",
+   "alt": "wishpro",
+   "caption": "",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "WishPro Facial",
+   "html": "<a href=\"/services/facial/wishpro-facial/\">WishPro Facial</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>The Brightening Capsule helps lighten and even out skin tone by blocking epidermal melanin and regulating melanin biosynthesis.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/wishpro-facial/"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/needleless-rejuran-c282262a9486.jpg",
+   "alt": "needleless rejuran",
+   "caption": "",
+   "w": 540,
+   "h": 540
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Needle-less Rejuran",
+   "html": "<a href=\"/services/facial/needleless-rejuran-facial/\">Needle-less Rejuran</a>"
+  },
+  {
+   "t": "html",
+   "html": "<p>Delivers c-PDRN® and potent antioxidants deep into the skin to activate natural healing and collagen production—key to achieving healthy, glowing skin.</p>"
+  },
+  {
+   "t": "button",
+   "text": "Learn more",
+   "href": "/services/facial/needleless-rejuran-facial/"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>The Science Behind Radiant Skin</strong></p><p>Healthy, glowing skin reflects light best when its surface is smooth and well-hydrated. However, daily exposure to UV rays, environmental pollutants, and stress can lead to dryness, uneven texture, and dullness, which does not reflect well. Our Brightening Facials are designed to support skin renewal, improve surface smoothness and clarity to enhance light reflection, helping the skin appear more luminous and refreshed.</p>"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Is a Brightening Facial Right for You?",
+   "html": "Is a Brightening Facial Right for You?"
+  },
+  {
+   "t": "heading",
+   "level": 3,
+   "text": "Book a brightening facial if you’re experiencing:",
+   "html": "Book a brightening facial if you’re experiencing:"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/content-1-45085dcfed17.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 675,
+   "h": 675
+  },
+  {
+   "t": "html",
+   "html": "<p>Dull or sallow skin tone</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/content-3-783b28674c38.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 675,
+   "h": 675
+  },
+  {
+   "t": "html",
+   "html": "<p>Uneven patches or blotchiness</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/content-2-6d20db89656f.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 675,
+   "h": 675
+  },
+  {
+   "t": "html",
+   "html": "<p>Dark spots from sun exposure</p>"
+  },
+  {
+   "t": "image",
+   "src": "/assets/img/pages/content-1-45085dcfed17.jpg",
+   "alt": "",
+   "caption": "",
+   "w": 675,
+   "h": 675
+  },
+  {
+   "t": "html",
+   "html": "<p>Lack of glow or skin fatigue</p>"
+  },
+  {
+   "t": "html",
+   "html": "<p><strong>Discover how the right facial can bring back your glow—gently and effectively</strong></p>"
+  },
+  {
+   "t": "button",
+   "text": "Book now",
+   "href": "https://api.whatsapp.com/send?phone=6589499605&text=Book%20brightening%20facial%20and%20need%20a%20consult"
+  },
+  {
+   "t": "heading",
+   "level": 2,
+   "text": "Frequently Asked Questions on Dull, Uneven or Pigmented Skin",
+   "html": "Frequently Asked Questions on Dull, Uneven or Pigmented Skin"
+  },
+  {
+   "t": "faq",
+   "items": [
+    {
+     "q": "Do your brightening facials use chemical peels?",
+     "a": "<p>Yes, we use professionally formulated chemical peels when deeper exfoliation is needed. These peels are pH-balanced and enriched with nourishing ingredients to ensure they’re gentle, safe, and non-damaging. They help resurface the skin for improved glow, clarity, and smoothness—without compromising your skin barrier.</p>"
+    },
+    {
+     "q": "Are brightening facials safe for sensitive skin?",
+     "a": "<p>Absolutely. We have treatments are designed to be effective yet non-aggressive. We ensure every step respects your skin’s natural balance and needs.</p>"
+    },
+    {
+     "q": "How often should I get a brightening facial?",
+     "a": "<p>Most clients benefit from a brightening facial every 3 to 4 weeks to maintain optimal results. Regular treatments support healthy cell turnover, improve skin tone, and keep your complexion glowing.</p>"
+    },
+    {
+     "q": "What’s the difference between nutrient-powered and technology-powered facials?",
+     "a": "<p>Nutrient-powered facials use ingredients like Vitamin C, pure gold, and botanical extracts to nourish and brighten the skin. Technology-powered facials use technology and machines to activate cell turnover. Both are gentle, results-driven, and suitable for most skin types.</p>"
+    },
+    {
+     "q": "What should I do after a brightening facial?",
+     "a": "<p>After your facial, we recommend keeping your skincare simple and hydrating for the next 1–2 days. Use a gentle cleanser, soothing moisturiser, and broad-spectrum SPF to protect your freshly treated skin. Avoid exfoliating products or active ingredients like retinol for at least 48 hours. Our therapists will give you clear post-care guidance tailored to the specific treatment you received, ensuring your skin stays calm, nourished, and glowing.</p>"
+    },
+    {
+     "q": "How long do the results of a brightening facial last?",
+     "a": "<p>After your first facial, you can expect your skin to look more radiant, smooth, and refreshed for about 10 to 14 days after a brightening facial. With regular sessions—ideally every 3 to 4 weeks—you’ll notice more lasting improvements in skin tone, clarity, and overall glow. And eventually, you can have perpetually radiant skin. Proper home care and sun protection help maintain your results between treatments.</p>"
+    }
+   ]
+  }
+ ]
+}

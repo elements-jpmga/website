@@ -1,0 +1,371 @@
+{
+  "version": "v1.0 (Engine v4 · Spec 29 Sep 2026)",
+  "domains": {
+    "stress": {
+      "label": "Stress Load",
+      "reading": "stress_index",
+      "readingLabel": "Stress Index",
+      "idealRange": "Stress Index: <25",
+      "bands": [
+        {
+          "min": null,
+          "max": 25,
+          "outcome": "Low",
+          "severity": 0
+        },
+        {
+          "min": 25,
+          "max": 35,
+          "outcome": "Mild",
+          "severity": 1
+        },
+        {
+          "min": 35,
+          "max": 60,
+          "outcome": "Elevated",
+          "severity": 2
+        },
+        {
+          "min": 60,
+          "max": null,
+          "outcome": "High",
+          "severity": 3
+        }
+      ],
+      "explanations": {
+        "Low": "Your Stress Index is within the favourable range used for the Restore assessment. Stress Load reflects how much stress the body is carrying internally, which can be influenced by physical, mental and emotional demands.",
+        "Mild": "Your body appears to be carrying a mild level of stress at the time of assessment. Stress Load reflects how much stress the body is carrying internally, which can be influenced by physical, mental and emotional demands.",
+        "Elevated": "Your body appears to be carrying a higher level of stress at the time of assessment. Stress Load reflects how much stress the body is carrying internally, which can be influenced by physical, mental and emotional demands.",
+        "High": "Your body appears to be carrying a high level of stress at the time of assessment. Stress Load reflects how much stress the body is carrying internally, which can be influenced by physical, mental and emotional demands."
+      }
+    },
+    "recovery": {
+      "label": "Recovery Capacity",
+      "reading": "pulse_complexity",
+      "readingLabel": "Pulse Complexity",
+      "idealRange": "Pulse Complexity: 30+",
+      "bands": [
+        {
+          "min": null,
+          "max": 20,
+          "outcome": "Needs Support",
+          "severity": 3
+        },
+        {
+          "min": 20,
+          "max": 30,
+          "outcome": "Reduced",
+          "severity": 2
+        },
+        {
+          "min": 30,
+          "max": null,
+          "outcome": "Favourable",
+          "severity": 0
+        }
+      ],
+      "explanations": {
+        "Favourable": "Your pulse pattern falls within the favourable range used for the Restore assessment. Recovery Capacity reflects how well your body appears able to adapt and recover from physical or emotional demands.",
+        "Reduced": "Your pulse pattern suggests your body may currently have less capacity to adapt and recover from physical or emotional demands than the favourable range.",
+        "Needs Support": "Your pulse pattern suggests your body would benefit from support to adapt and recover from physical or emotional demands."
+      }
+    },
+    "circulation": {
+      "label": "Circulation",
+      "readings": [
+        "vascular_age_type",
+        "vascular_age_index"
+      ],
+      "readingLabel": "Vascular Age Type | Vascular Age Index",
+      "idealRange": "Type: A-B\nIndex: -30 to +5",
+      "typeGroups": {
+        "A": "AB",
+        "B": "AB",
+        "C": "CD",
+        "D": "CD",
+        "E": "EG",
+        "F": "EG",
+        "G": "EG"
+      },
+      "indexBands": [
+        {
+          "min": null,
+          "max": 6,
+          "key": "favourable"
+        },
+        {
+          "min": 6,
+          "max": 21,
+          "key": "monitor"
+        },
+        {
+          "min": 21,
+          "max": null,
+          "key": "review"
+        }
+      ],
+      "matrix": {
+        "AB": {
+          "favourable": [
+            "Favourable",
+            0
+          ],
+          "monitor": [
+            "Favourable - Monitor Index",
+            1
+          ],
+          "review": [
+            "Favourable Pattern - Index Needs Review",
+            3
+          ]
+        },
+        "CD": {
+          "favourable": [
+            "Monitor",
+            2
+          ],
+          "monitor": [
+            "Monitor",
+            2
+          ],
+          "review": [
+            "Needs Attention",
+            3
+          ]
+        },
+        "EG": {
+          "favourable": [
+            "Needs Attention",
+            3
+          ],
+          "monitor": [
+            "Needs Attention",
+            3
+          ],
+          "review": [
+            "Needs Attention",
+            3
+          ]
+        }
+      },
+      "explanations": {
+        "Favourable": "Your blood flow and artery-related readings are within the favourable range.",
+        "Favourable - Monitor Index": "Your artery-condition pattern is favourable. Your current Vascular Age Index is slightly above the ideal range, so it is worth monitoring at your next review.",
+        "Favourable Pattern - Index Needs Review": "Your artery-condition pattern is favourable, but your current Vascular Age Index reading is well above the ideal range and should be reviewed with your consultant.",
+        "Monitor": "Your artery-condition pattern suggests circulation would benefit from attention. Circulation reflects how well blood and fluids appear to be moving around the body.",
+        "Needs Attention": "Your circulation readings suggest this area would benefit from support. Circulation reflects how well blood and fluids appear to be moving around the body."
+      }
+    }
+  },
+  "priority": {
+    "threshold": 2,
+    "maintainProgram": "CIRCULATION",
+    "programByDomain": {
+      "stress": "STRESS",
+      "recovery": "RECOVERY",
+      "circulation": "CIRCULATION"
+    },
+    "focus": {
+      "stress": "Reduce stress load, ease tension and support relaxation and recovery.",
+      "recovery": "Support better recovery and body rebalancing.",
+      "circulation": "Support healthy blood flow and fluid movement.",
+      "maintain": "Maintain healthy circulation and overall wellbeing while all Restore domains are within the no-attention range."
+    },
+    "focusLine": {
+      "stress": "relaxation, releasing accumulated tension and supporting recovery from stress",
+      "recovery": "supporting better recovery and body rebalancing",
+      "circulation": "supporting healthy blood flow and fluid movement"
+    }
+  },
+  "programs": {
+    "STRESS": {
+      "name": "STRESS Restore Program",
+      "benefit": "Supports relaxation, reduces accumulated tension and encourages recovery from stress.",
+      "components": [
+        {
+          "n": 1,
+          "options": [
+            "Relaxing Massage"
+          ],
+          "duration": "30 min",
+          "blurb": "A calming massage component to ease physical tension and support overall relaxation."
+        },
+        {
+          "n": 2,
+          "options": [
+            "Myofascial Head/Neck Therapy",
+            "Medi-Stretch Therapy"
+          ],
+          "duration": "30 min",
+          "blurb": "A targeted manual therapy component selected according to where tension and restriction are most relevant."
+        },
+        {
+          "n": 3,
+          "options": [
+            "PEMF",
+            "Acu-Wave Relief Therapy"
+          ],
+          "duration": "15 min",
+          "blurb": "A supporting modality included as part of the primary Restore treatment session."
+        }
+      ],
+      "enhancer": "5 Elements Massage",
+      "supplement": {
+        "title": "Stress & relaxation support",
+        "text": "Where suitable, your consultant may recommend approved wellness supplements to support relaxation, sleep or everyday stress management after reviewing suitability."
+      },
+      "everyday": [
+        [
+          "Sleep",
+          "Give your body enough time to recover."
+        ],
+        [
+          "Recovery time",
+          "Balance demanding days with intentional rest."
+        ],
+        [
+          "Regular movement",
+          "Maintain activity without constantly adding physical stress."
+        ]
+      ]
+    },
+    "RECOVERY": {
+      "name": "RECOVERY Restore Program",
+      "benefit": "Supports physical recovery, muscular release and the body's ability to recover from physical demands.",
+      "components": [
+        {
+          "n": 1,
+          "options": [
+            "Deep Tissue Massage"
+          ],
+          "duration": "30 min",
+          "blurb": "A firmer massage component to release muscular tension and support physical recovery."
+        },
+        {
+          "n": 2,
+          "options": [
+            "Ginseng Bojin Meridian Therapy",
+            "Fascia Release Therapy"
+          ],
+          "duration": "30 min",
+          "blurb": "A targeted release component selected according to where tightness and restriction are most relevant."
+        },
+        {
+          "n": 3,
+          "options": [
+            "PEMF",
+            "Acu-Wave Therapy"
+          ],
+          "duration": "15 min",
+          "blurb": "A supporting modality included as part of the primary Restore treatment session."
+        }
+      ],
+      "enhancer": "Red Light Therapy",
+      "supplement": {
+        "title": "Recovery support",
+        "text": "Where suitable, your consultant may recommend approved wellness supplements to support recovery and rebalancing after reviewing suitability."
+      },
+      "everyday": [
+        [
+          "Rest",
+          "Allow recovery time between physically demanding days."
+        ],
+        [
+          "Hydration",
+          "Support your body's recovery with regular fluids."
+        ],
+        [
+          "Gentle movement",
+          "Keep moving lightly on rest days rather than stopping completely."
+        ]
+      ]
+    },
+    "CIRCULATION": {
+      "name": "CIRCULATION Restore Program",
+      "benefit": "Supports healthy blood flow, fluid movement and feelings of lightness.",
+      "components": [
+        {
+          "n": 1,
+          "options": [
+            "Lymphatic Drainage Massage"
+          ],
+          "duration": "30 min",
+          "blurb": "A gentle, rhythmic massage component to support fluid movement and a feeling of lightness."
+        },
+        {
+          "n": 2,
+          "options": [
+            "Meridian Flush Therapy",
+            "TCM Qi Meridian Therapy"
+          ],
+          "duration": "30 min",
+          "blurb": "A meridian-based component selected according to your consultant's assessment."
+        },
+        {
+          "n": 3,
+          "options": [
+            "PEMF",
+            "Acu-Wave Therapy"
+          ],
+          "duration": "15 min",
+          "blurb": "A supporting modality included as part of the primary Restore treatment session."
+        }
+      ],
+      "enhancer": "Compression Therapy",
+      "supplement": {
+        "title": "Circulation support",
+        "text": "Where suitable, your consultant may recommend approved wellness supplements to support healthy circulation after reviewing suitability."
+      },
+      "everyday": [
+        [
+          "Movement",
+          "Regular walking and light activity support healthy blood flow."
+        ],
+        [
+          "Hydration",
+          "Drink enough water through the day."
+        ],
+        [
+          "Posture breaks",
+          "Change position regularly during long periods of sitting."
+        ]
+      ]
+    }
+  },
+  "plan": [
+    {
+      "priorities": 0,
+      "duration": "Ongoing maintenance",
+      "frequency": "Once every 2 weeks",
+      "basis": "Based on all Restore domains being within the no-attention range in this assessment."
+    },
+    {
+      "priorities": 1,
+      "duration": "3 months",
+      "frequency": "1-2 sessions per week",
+      "basis": "Based on one Restore Priority identified in this assessment."
+    },
+    {
+      "priorities": 2,
+      "duration": "6 months",
+      "frequency": "Month 1: 2 sessions/week; Months 2-6: 1 session/week",
+      "basis": "Based on two Restore Priorities identified in this assessment."
+    },
+    {
+      "priorities": 3,
+      "duration": "6 months",
+      "frequency": "Months 1-2: 2 sessions/week; Months 3-6: 1 session/week",
+      "basis": "Based on three Restore Priorities identified in this assessment."
+    }
+  ],
+  "report": {
+    "brandLine": "Where Relaxation Becomes Restoration.",
+    "profileTitle": "Your Restore Profile",
+    "profileSub": "A snapshot of your current stress, recovery and circulation.",
+    "planTitle": "Your Restore Plan",
+    "reviewWindow": "8-12 weeks",
+    "reviewText": "Repeating the assessment under similar conditions lets us compare trends in Stress Load, Recovery Capacity and Circulation, and adjust your Restore Plan if needed.",
+    "sessionNote": "Each session combines three treatment components as one Restore treatment. Your consultant will select the suitable option where alternatives are shown.",
+    "disclaimer": "For general wellness guidance only. This report is not a medical diagnosis and does not replace advice from a qualified healthcare professional."
+  }
+}
