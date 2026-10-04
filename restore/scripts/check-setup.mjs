@@ -26,7 +26,7 @@ else {
     ref = decodeURIComponent(u.username).split('.')[1] || null;
     if (!/pooler\.supabase\.com$/.test(u.hostname)) warn(`Host is ${u.hostname} — this is not the Session pooler`, 'Render needs the "Session pooler" link (the direct db.xxx.supabase.co link does not work from Render)');
     if (u.port && u.port !== '5432') warn(`Port is ${u.port}`, 'Use the Session pooler link (port 5432), not the Transaction pooler (6543)');
-    if (!u.hostname.includes('ap-southeast-1')) warn('The database is not in Singapore (ap-southeast-1)', 'Fine to keep, but client data would be stored outside Singapore');
+    if (/pooler\.supabase\.com$/.test(u.hostname) && !u.hostname.includes('ap-southeast-1')) warn('The database is not in Singapore (ap-southeast-1)', 'Fine to keep, but client data would be stored outside Singapore');
     try {
       const { default: postgres } = await import('postgres');
       const sql = postgres(dbUrl, { ssl: 'require', max: 1, prepare: false, connect_timeout: 15, onnotice: () => {} });
