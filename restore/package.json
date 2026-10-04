@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Elements Restore \u2014 staff web app: UBIO upload \u2192 confirm readings \u2192 interpretation engine \u2192 Restore Profile PDF",
+  "description": "Elements Restore — staff web app: UBIO upload → confirm readings → interpretation engine → Restore Profile PDF",
   "engines": {
     "node": ">=22.5"
   },
