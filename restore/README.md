@@ -10,7 +10,20 @@ npm test          # engine acceptance tests (spec §13 + band edges)
 npm run test:extract   # extraction check against the Leslie sample PDFs
 ```
 
-Requirements: macOS (the OCR tool uses the built-in Vision framework), Node 22.5+, `python3` with PyMuPDF (used to rasterise PDF pages), and Chrome (used for PDF output; the Playwright Chrome-for-Testing build or the installed Google Chrome).
+Requirements on a laptop: Node 22.5+, `python3` with PyMuPDF (rasterises PDF pages) and Chrome (PDF output). OCR uses Apple Vision on a Mac when `npm run setup` has built `tools/ocr`, and Tesseract (bundled English model in `tools/tessdata`, nothing downloaded) everywhere else. With no environment variables set, data stays on the laptop (SQLite + `data/`) and sign-in is off.
+
+## Going live (assess.elements.com.sg)
+Render runs the `Dockerfile` (Playwright image with Chromium + PyMuPDF + Tesseract). Supabase provides Postgres, private file storage and staff sign-in. With `NODE_ENV=production` (set in the Dockerfile) the server refuses to start unless all of these are set:
+
+| Variable | From |
+|---|---|
+| `DATABASE_URL` | Supabase → Connect → Session pooler URI (password filled in) |
+| `SUPABASE_URL` | Supabase → Project Settings → Data API → Project URL |
+| `SUPABASE_PUBLISHABLE_KEY` | Supabase → Project Settings → API Keys → Publishable key (legacy `SUPABASE_ANON_KEY` also accepted) |
+| `SUPABASE_SECRET_KEY` | Supabase → Project Settings → API Keys → Secret key (legacy `SUPABASE_SERVICE_ROLE_KEY` also accepted). Server only. |
+| `RESEND_API_KEY`, `MAIL_FROM` | Resend (email is refused online until this is set) |
+
+On first start the server creates its tables (row level security on, no access for Supabase's public Data API roles) and a private storage bucket `restore-files`. Staff accounts are created in Supabase → Authentication → Users; public sign-up should be turned off. Health check: `GET /healthz`.
 
 ## How it maps to the build spec
 | Spec | Where |
@@ -20,7 +33,7 @@ Requirements: macOS (the OCR tool uses the built-in Vision framework), Node 22.5
 | §6 Fixed programs, OR-options only | `PUT /api/assessments/:id/selections/:program` rejects anything outside the defined options; Component 3 is part of the primary treatment; the enhancer is a separate optional tick. |
 | §8 Client report | `src/report.mjs` — HTML template mirroring `03_Elements_Restore_Profile_Leslie_v5.pdf`, printed to A4 PDF. |
 | §9 Screens | `public/` — Assessments, Upload, Confirm readings, Results, Recommendation, Suitability/notes, Report, client History; plus a read-only Rules page. |
-| §10 Data model | `src/db.mjs` — SQLite tables: clients, assessments, uploads (originals kept, SHA-256), confirmed_readings, domain_results, priorities, program_selections, plans, reports, rule_sets. |
+| §10 Data model | `src/db.mjs` — Postgres (Supabase) or SQLite tables: clients, assessments, uploads (originals kept, SHA-256), confirmed_readings, domain_results, priorities, program_selections, plans, reports, rule_sets. |
 | §13 Acceptance tests | `tests/engine.test.mjs` — Leslie, Maintain, two-priority, three-priority, spreadsheet example, band edges, invalid input. |
 
 ## Extraction
@@ -35,7 +48,7 @@ Anything missing or low-confidence is flagged for manual entry — never guessed
 Add a new file `rules/v2.json` (bump `version`). The newest file becomes active for new assessments; old assessments keep their version so historical reports stay reproducible. Phase 2: an admin UI to edit this in the browser.
 
 ## Not in this MVP (Phase 2)
-Restore Review trend charts, supplements/lifestyle libraries, CRM/booking integration, multi-user login (staff name is recorded from the header field), admin editor for rules.
+Restore Review trend charts, supplements/lifestyle libraries, CRM/booking integration, admin editor for rules.
 
 ## Emailing the report to the client
 After the PDF is generated, the Report step has an **Email the report to the client** panel: client email (remembered on the client record), consultant name, outlet, subject and message, plus a consent tick box. The client receives the PDF as an attachment only — no link into the system. Every send is logged (to, by whom, when, provider, status) under **Email history**.

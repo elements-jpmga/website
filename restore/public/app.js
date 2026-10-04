@@ -28,6 +28,7 @@
     if (!raw && body !== undefined) headers['Content-Type'] = 'application/json';
     const res = await fetch(url, { method, headers: { ...headers, ...(raw?.headers || {}) }, body: raw ? raw.body : body !== undefined ? JSON.stringify(body) : undefined });
     const data = await res.json().catch(() => ({}));
+    if (res.status === 401) showSignin();
     if (!res.ok) throw Object.assign(new Error(data.error || res.statusText), { status: res.status, errors: data.errors });
     return data;
   };
@@ -527,5 +528,36 @@ If you have any questions, simply reply to this email or speak to us at your nex
     }
   });
   $('[data-new]').addEventListener('click', () => newAssessmentModal());
-  render();
+
+  /* ---- staff sign-in (when the server has it turned on) ---- */
+  function showSignin() {
+    const box = $('[data-signin]'); if (!box.hidden) return;
+    box.hidden = false; $('#si-email').focus();
+  }
+  $('[data-signin-form]').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const f = e.currentTarget, btn = $('button[type=submit]', f), out = $('[data-signin-err]');
+    btn.disabled = true; out.textContent = '';
+    try {
+      const res = await fetch('/api/auth/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: f.email.value, password: f.password.value }) });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || 'Could not sign in');
+      location.reload();
+    } catch (err) { out.textContent = err.message; btn.disabled = false; f.password.select(); }
+  });
+  $('[data-signout]').addEventListener('click', async (e) => {
+    e.preventDefault();
+    await fetch('/api/auth/logout', { method: 'POST' }).catch(() => {});
+    location.hash = '#/'; location.reload();
+  });
+  (async () => {
+    let me = { authEnabled: false };
+    try { me = await (await fetch('/api/auth/me')).json(); } catch {}
+    if (me.authEnabled && !me.staff) return showSignin();
+    if (me.staff) {
+      staffInput.value = me.staff.name; staffInput.readOnly = true; staffInput.title = me.staff.email;
+      setAvatar(); $('[data-signout]').hidden = false;
+    }
+    render();
+  })();
 })();

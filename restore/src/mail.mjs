@@ -35,9 +35,8 @@ export function reportEmailHtml({ clientName, message, consultant, outlet }) {
 </table></td></tr></table></body></html>`;
 }
 
-export async function sendReportEmail({ to, subject, html, text, pdfPath, pdfName }) {
+export async function sendReportEmail({ to, subject, html, text, pdf, pdfName }) {
   const p = provider();
-  const pdf = fs.readFileSync(pdfPath);
   if (p === 'resend') {
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST', headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
