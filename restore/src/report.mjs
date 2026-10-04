@@ -136,8 +136,9 @@ h2 { font-size: 8.5pt; font-weight: 700; text-transform: uppercase; letter-spaci
 </body></html>`;
 }
 
-// PDF via Chromium (playwright-core; uses the Chrome for Testing build already on this machine or a system Chrome).
-export async function htmlToPdf(html, outPath) {
+// PDF via Chromium (playwright-core). On a Mac: the Chrome for Testing build or Google Chrome; on the server: the
+// Chromium bundled in the Playwright Docker image. Returns the PDF bytes.
+export async function htmlToPdf(html) {
   const { chromium } = await import('playwright-core');
   const candidates = [
     process.env.CHROME_PATH,
@@ -145,14 +146,13 @@ export async function htmlToPdf(html, outPath) {
     '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
   ].filter(Boolean);
   const executablePath = candidates.find((p) => fs.existsSync(p));
-  const browser = await chromium.launch(executablePath ? { executablePath } : { channel: 'chrome' });
+  const browser = await chromium.launch(executablePath ? { executablePath } : process.platform === 'darwin' ? { channel: 'chrome' } : { args: ['--disable-dev-shm-usage'] });
   try {
     const page = await browser.newPage();
     await page.setContent(html, { waitUntil: 'load' });
     await page.evaluate(() => document.fonts.ready);
-    await page.pdf({ path: outPath, format: 'Letter', printBackground: true, preferCSSPageSize: true, margin: { top: 0, right: 0, bottom: 0, left: 0 } });
+    return await page.pdf({ format: 'Letter', printBackground: true, preferCSSPageSize: true, margin: { top: 0, right: 0, bottom: 0, left: 0 } });
   } finally { await browser.close(); }
-  return outPath;
 }
 
 export { here };

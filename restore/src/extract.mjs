@@ -1,4 +1,5 @@
-// UBIO PDF extraction: render page 1 → OCR (Apple Vision, offline) → locate the required fields.
+// UBIO PDF extraction: render page 1 → OCR → locate the required fields.
+// OCR runs on this server: Apple Vision on a Mac (tools/ocr), Tesseract everywhere else (OCR_ENGINE overrides).
 // Every field carries a confidence and the OCR line it came from, so staff can verify against the source.
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
@@ -10,6 +11,8 @@ const run = promisify(execFile);
 const here = path.dirname(fileURLToPath(import.meta.url));
 const OCR_BIN = path.resolve(here, '../tools/ocr');
 const PY = process.env.PYTHON || 'python3';
+const TESSDATA = path.resolve(here, '../tools/tessdata');
+export const ocrEngine = process.env.OCR_ENGINE || (fs.existsSync(OCR_BIN) ? 'apple-vision' : 'tesseract');
 
 export async function renderPage(pdfPath, pngPath, dpi = 200) {
   const script = `import fitz,sys\nd=fitz.open(sys.argv[1]); p=d[0]; p.get_pixmap(dpi=${dpi}).save(sys.argv[2]); print(d.page_count)`;
@@ -17,12 +20,38 @@ export async function renderPage(pdfPath, pngPath, dpi = 200) {
 }
 
 export async function ocr(pngPath) {
-  if (!fs.existsSync(OCR_BIN)) throw new Error('OCR tool not built. Run: npm run setup');
-  const { stdout } = await run(OCR_BIN, [pngPath], { maxBuffer: 16 * 1024 * 1024 });
-  return JSON.parse(stdout).map((o) => ({ ...o, cy: o.y + o.h / 2, cx: o.x + o.w / 2 }));
+  const lines = ocrEngine === 'tesseract' ? await tesseract(pngPath) : await appleVision(pngPath);
+  return lines.map((o) => ({ ...o, cy: o.y + o.h / 2, cx: o.x + o.w / 2 }));
 }
 
-// Text layer first (in case a future UBIO export has real text), OCR otherwise.
+async function appleVision(pngPath) {
+  if (!fs.existsSync(OCR_BIN)) throw new Error('OCR tool not built. Run: npm run setup');
+  const { stdout } = await run(OCR_BIN, [pngPath], { maxBuffer: 16 * 1024 * 1024 });
+  return JSON.parse(stdout);
+}
+
+// Tesseract (Apache-2.0) with the bundled English model — nothing leaves the server.
+// Sparse-text mode is needed for the UBIO layout (large coloured numbers, titles); numeric/letter words are
+// also returned on their own so a value is found even when Tesseract joins it to neighbouring text.
+async function tesseract(pngPath) {
+  const { createWorker, PSM } = await import('tesseract.js');
+  const worker = await createWorker('eng', 1, { langPath: TESSDATA, cachePath: TESSDATA, gzip: false, cacheMethod: 'none', ...(process.env.OCR_DEBUG ? { logger: (m) => console.log(m) } : {}) });
+  try {
+    await worker.setParameters({ tessedit_pageseg_mode: PSM.SPARSE_TEXT });
+    const buf = fs.readFileSync(pngPath);
+    const W = buf.readUInt32BE(16), H = buf.readUInt32BE(20);
+    const { data } = await worker.recognize(pngPath, {}, { blocks: true });
+    const box = (text, conf, b) => ({ text, confidence: conf / 100, x: b.x0 / W, y: b.y0 / H, w: (b.x1 - b.x0) / W, h: (b.y1 - b.y0) / H });
+    const out = [];
+    for (const blk of data.blocks || []) for (const par of blk.paragraphs) for (const ln of par.lines) {
+      const text = ln.text.trim(); if (!text) continue;
+      out.push(box(text, ln.confidence, ln.bbox));
+      if (ln.words.length > 1) for (const w of ln.words) { const t = w.text.trim(); if (/^[-+]?\d+(\.\d+)?$|^[A-G]$/.test(t)) out.push(box(t, w.confidence, w.bbox)); }
+    }
+    return out;
+  } finally { await worker.terminate(); }
+}
+
 export async function pdfLines(pdfPath, pngPath) {
   await renderPage(pdfPath, pngPath);
   return ocr(pngPath);
@@ -65,11 +94,16 @@ function stressFields(lines) {
     const cands = lines.filter((l) => l.x < 0.2 && l.y > label.y && l.y < label.y + 0.12 && /^-?\d+(\.\d+)?$/.test(l.text.trim())).sort((a, b) => a.y - b.y);
     if (cands[0]) si = field(num(cands[0].text), cands[0].confidence, cands[0].text);
   }
+  // Fallback anchor when the white-on-black label isn't read: the number sits directly above "(38%)"
+  const pct = lines.find((l) => l.x < 0.2 && /^\(\d+\s*%\)/.test(l.text.trim()));
+  if (!si && pct) {
+    const cands = lines.filter((l) => l.x < 0.2 && l.y < pct.y && l.y > pct.y - 0.08 && /^-?\d+(\.\d+)?$/.test(l.text.trim())).sort((a, b) => b.y - a.y);
+    if (cands[0]) si = field(num(cands[0].text), cands[0].confidence, cands[0].text, 'Located above the stress percentage');
+  }
   out.stress_index = si || field(null, 0, null, 'Stress Index number not found beneath the Stress Index label');
   const pc = lines.find((l) => /complexity\s*=\s*-?\d/i.test(l.text));
   out.pulse_complexity = pc ? field(num(pc.text.match(/complexity\s*=\s*(-?\d+(?:\.\d+)?)/i)[1]), pc.confidence, pc.text) : field(null, 0, null, 'Pulse Complexity not found');
   // Archived-only values (not used by the engine)
-  const pct = lines.find((l) => /^\(\d+%\)$/.test(l.text.trim()));
   out.archive = { stress_percent: pct ? num(pct.text) : null };
   return out;
 }
@@ -103,5 +137,13 @@ export async function extractUbio(pdfPath, pngPath) {
   const lines = await pdfLines(pdfPath, pngPath);
   const kind = detectKind(lines);
   const fields = kind === 'stress' ? stressFields(lines) : kind === 'vascular' ? vascularFields(lines) : common(lines);
-  return { kind, fields, lineCount: lines.length, engine: 'apple-vision' };
+  return { kind, fields, lineCount: lines.length, engine: ocrEngine };
+}
+
+// Field rules applied to OCR lines from any engine ({text, confidence 0-1, x, y, w, h} normalised to the page)
+export function fieldsFromLines(lines) {
+  lines = lines.map((o) => ({ ...o, cy: o.y + o.h / 2, cx: o.x + o.w / 2 }));
+  const kind = detectKind(lines);
+  const fields = kind === 'stress' ? stressFields(lines) : kind === 'vascular' ? vascularFields(lines) : common(lines);
+  return { kind, fields, lineCount: lines.length };
 }

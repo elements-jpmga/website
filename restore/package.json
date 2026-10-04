@@ -10,11 +10,13 @@
   "scripts": {
     "setup": "swiftc -O tools/ocr.swift -o tools/ocr && npm install",
     "start": "node server.mjs",
-    "test": "node --test tests/",
+    "test": "node --test \"tests/*.test.mjs\"",
     "test:extract": "node tests/extract.check.mjs"
   },
   "dependencies": {
-    "nodemailer": "^6.10.1",
-    "playwright-core": "^1.50.0"
+    "nodemailer": "^10.0.14",
+    "playwright-core": "1.63.0",
+    "postgres": "^3.4.9",
+    "tesseract.js": "^6.0.1"
   }
 }
