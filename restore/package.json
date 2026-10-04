@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Elements Restore — staff web app: UBIO upload → confirm readings → interpretation engine → Restore Profile PDF",
+  "description": "Elements Restore \u2014 staff web app: UBIO upload \u2192 confirm readings \u2192 interpretation engine \u2192 Restore Profile PDF",
   "engines": {
     "node": ">=22.5"
   },
@@ -11,7 +11,8 @@
     "setup": "swiftc -O tools/ocr.swift -o tools/ocr && npm install",
     "start": "node server.mjs",
     "test": "node --test \"tests/*.test.mjs\"",
-    "test:extract": "node tests/extract.check.mjs"
+    "test:extract": "node tests/extract.check.mjs",
+    "check": "node scripts/check-setup.mjs"
   },
   "dependencies": {
     "nodemailer": "^10.0.14",
