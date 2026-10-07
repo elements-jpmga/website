@@ -398,3 +398,7 @@ pre.json { background: #16161a; color: #f2f2f5; border-radius: var(--r); padding
 .signin-help { margin: 0; text-align: center; }
 .me .signout { flex: none; margin-left: auto; }
 .me:has(.signout:not([hidden])) { cursor: default; }
+
+/* AI writing buttons */
+.label-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.label-row .btn svg { width: 14px; height: 14px; }

@@ -121,5 +121,31 @@ else {
 }
 if (from && !/^[^<>]*<[^\s@<>]+@[^\s@<>]+>$|^[^\s@]+@[^\s@]+$/.test(from)) bad('MAIL_FROM format', 'Use: Elements Wellness <restore@elements.com.sg>');
 
+/* 6 AI */
+head('6. AI (OPENAI_API_KEY) — optional');
+const ok_ = e('OPENAI_API_KEY'), aiModel = e('OPENAI_MODEL') || 'gpt-5-mini';
+if (!ok_) warn('Not set — the app works without AI (no AI check on uploads, no "Draft with AI" buttons)', 'platform.openai.com → API keys → Create new secret key');
+else if (!ok_.startsWith('sk-')) bad('Does not look like an OpenAI API key (should start with sk-)', 'Create one at platform.openai.com → API keys. A ChatGPT subscription login is not an API key');
+else {
+  try {
+    const r = await fetch(`https://api.openai.com/v1/models/${encodeURIComponent(aiModel)}`, { headers: { Authorization: `Bearer ${ok_}` } });
+    const body = await r.json().catch(() => ({}));
+    if (r.status === 401) bad('OpenAI rejected the key', 'Check you copied the whole key, or create a new one at platform.openai.com → API keys');
+    else if (r.status === 404) {
+      const list = await fetch('https://api.openai.com/v1/models', { headers: { Authorization: `Bearer ${ok_}` } }).then((x) => x.json()).catch(() => ({}));
+      const gpts = (list.data || []).map((m) => m.id).filter((id) => /^gpt-|^o\d/.test(id) && !/audio|realtime|tts|transcribe|search|image/.test(id)).sort().slice(-12);
+      bad(`Model "${aiModel}" is not available to this key`, `Set OPENAI_MODEL to one of: ${gpts.join(', ') || '(none listed)'}`);
+    } else if (!r.ok) bad(`OpenAI error ${r.status}: ${body.error?.message || ''}`);
+    else {
+      // tiny test call: checks billing/credits are set up
+      const t = await fetch('https://api.openai.com/v1/chat/completions', { method: 'POST', headers: { Authorization: `Bearer ${ok_}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ model: aiModel, messages: [{ role: 'user', content: 'Reply with OK' }], store: false }) });
+      const tb = await t.json().catch(() => ({}));
+      if (t.ok) ok(`Key works with ${aiModel} — AI check and writing help will turn on`);
+      else if (t.status === 429 && /quota|billing/i.test(tb.error?.message || '')) bad('Key is valid but the OpenAI account has no credit', 'platform.openai.com → Settings → Billing → add credit (a few dollars lasts a long time)');
+      else bad(`Test request failed (${t.status}): ${tb.error?.message || ''}`);
+    }
+  } catch (err) { bad('Could not reach OpenAI: ' + err.message); }
+}
+
 console.log(`\n${failed ? `❌ ${failed} thing${failed === 1 ? '' : 's'} to fix` : '✅ Ready — paste these values into Render'}${warned ? ` · ${warned} warning${warned === 1 ? '' : 's'}` : ''}`);
 process.exit(failed ? 1 : 0);

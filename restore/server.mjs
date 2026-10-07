@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { db, DATA_DIR, id, now, Rules, Clients, Assessments, Uploads, Readings, Results, Selections, Plans, Reports, Emails, Activity } from './src/db.mjs';
 import * as files from './src/files.mjs';
 import * as auth from './src/auth.mjs';
+import * as ai from './src/ai.mjs';
 import { sendReportEmail, reportEmailHtml, provider as mailProvider } from './src/mail.mjs';
 import { evaluate, validateReadings } from './src/engine.mjs';
 import { extractUbio, ocrEngine } from './src/extract.mjs';
@@ -60,7 +61,7 @@ route('POST', '/api/auth/logout', async (req, res) => { if (auth.enabled) await 
 route('POST', '/api/auth/password', async (req, res) => { const b = await json(req); const r = await auth.changePassword(req, b.password); r.status === 200 ? send(res, 200, { ok: true }) : err(res, r.status, r.error); });
 
 /* ---------- Config ---------- */
-route('GET', '/api/config', async (req, res) => send(res, 200, { rules: activeRules, rulesVersions: await Rules.list(), templateVersion: TEMPLATE_VERSION, mailProvider: mailProvider(), ocrEngine, storage: files.storageKind, database: db.kind }));
+route('GET', '/api/config', async (req, res) => send(res, 200, { rules: activeRules, rulesVersions: await Rules.list(), templateVersion: TEMPLATE_VERSION, mailProvider: mailProvider(), ocrEngine, storage: files.storageKind, database: db.kind, ai: { enabled: ai.enabled, model: ai.enabled ? ai.model : null } }));
 
 /* ---------- Clients ---------- */
 route('GET', '/api/clients', async (req, res, { url }) => send(res, 200, await Clients.search(url.searchParams.get('q') || '')));
@@ -86,7 +87,7 @@ route('POST', '/api/assessments/:aid/uploads', async (req, res, { params }) => {
   fs.writeFileSync(tmpPdf, buf);
   let extraction, previewKey = null;
   try {
-    try { extraction = await extractUbio(tmpPdf, tmpPng); }
+    try { extraction = await extractUbio(tmpPdf, tmpPng, ai.enabled ? { aiRead: ai.readUbio, merge: ai.mergeReadings } : {}); }
     catch (e) { console.error('extraction failed:', e.message); extraction = { kind: 'unknown', fields: {}, error: e.message }; }
     const stored = await files.put(`uploads/${a.assessment_id}/${upload_id}.pdf`, buf, 'application/pdf');
     if (fs.existsSync(tmpPng)) previewKey = await files.put(`uploads/${a.assessment_id}/${upload_id}.png`, fs.readFileSync(tmpPng), 'image/png');
@@ -142,6 +143,16 @@ route('PUT', '/api/assessments/:aid/notes', async (req, res, { params }) => {
   await Plans.notes(a.assessment_id, { consultant_notes: b.consultant_notes || '', suitability: b.suitability || {}, contraindication_notes: b.contraindication_notes || '' });
   send(res, 200, await Assessments.full(a.assessment_id));
 });
+
+// AI writing help: returns a draft for staff to edit; nothing is saved or sent from here.
+const aiDraft = (fn) => async (req, res, { params }) => {
+  if (!ai.enabled) return err(res, 400, 'AI is not set up on this server (add OPENAI_API_KEY)');
+  const a = await Assessments.full(params.aid); if (!a?.result) return err(res, 400, 'Run the engine first');
+  try { send(res, 200, { text: await fn(a, await rulesFor(a)), model: ai.model }); }
+  catch (e) { console.error('AI draft failed:', e.message); err(res, 502, 'AI could not write a draft right now: ' + e.message); }
+};
+route('POST', '/api/assessments/:aid/ai/notes', aiDraft(ai.draftNotes));
+route('POST', '/api/assessments/:aid/ai/email', aiDraft(ai.draftEmail));
 
 // Report: HTML preview + PDF generation (saved to the client record, re-downloadable)
 route('GET', '/api/assessments/:aid/report.html', async (req, res, { params, url }) => {
@@ -242,4 +253,4 @@ http.createServer(async (req, res) => {
     console.error(e);
     if (!res.headersSent) err(res, e.status || (e.errors ? 422 : 500), e.message, e.errors ? { errors: e.errors } : {});
   }
-}).listen(PORT, () => console.log(`Elements Restore → http://localhost:${PORT}  (rules ${activeRules.version}; database ${db.kind}; files ${files.storageKind}${files.remote ? '' : ' in ' + DATA_DIR}; OCR ${ocrEngine}; sign-in ${auth.enabled ? 'on' : 'off'}; email ${mailProvider()})`));
+}).listen(PORT, () => console.log(`Elements Restore → http://localhost:${PORT}  (rules ${activeRules.version}; database ${db.kind}; files ${files.storageKind}${files.remote ? '' : ' in ' + DATA_DIR}; OCR ${ocrEngine}${ai.enabled ? ' + AI check (' + ai.model + ')' : ''}; sign-in ${auth.enabled ? 'on' : 'off'}; email ${mailProvider()})`));
