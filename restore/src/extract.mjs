@@ -52,6 +52,13 @@ async function tesseract(pngPath) {
   } finally { await worker.terminate(); }
 }
 
+// Page image for the AI reader: only the readings area — cropped below the header (name, age, date) and above the
+// vascular "Previous Test Results" table (past test dates), so none of those are sent.
+export async function renderForAi(pdfPath, pngPath) {
+  const script = `import fitz,sys\nd=fitz.open(sys.argv[1]); p=d[0]; r=p.rect\np.get_pixmap(dpi=150, clip=fitz.Rect(0, r.height*0.095, r.width, r.height*0.595)).save(sys.argv[2])`;
+  await run(PY, ['-c', script, pdfPath, pngPath]);
+}
+
 export async function pdfLines(pdfPath, pngPath) {
   await renderPage(pdfPath, pngPath);
   return ocr(pngPath);
@@ -133,11 +140,24 @@ function vascularFields(lines) {
   return out;
 }
 
-export async function extractUbio(pdfPath, pngPath) {
-  const lines = await pdfLines(pdfPath, pngPath);
-  const kind = detectKind(lines);
-  const fields = kind === 'stress' ? stressFields(lines) : kind === 'vascular' ? vascularFields(lines) : common(lines);
-  return { kind, fields, lineCount: lines.length, engine: ocrEngine };
+// aiRead (optional): async (pngPath) => readings — a second reader whose answers are compared with the built-in one.
+export async function extractUbio(pdfPath, pngPath, { aiRead, merge } = {}) {
+  await renderPage(pdfPath, pngPath);
+  const aiPng = pngPath.replace(/\.png$/, '') + '-ai.png';
+  const [lines, ai] = await Promise.all([
+    ocr(pngPath),
+    aiRead ? renderForAi(pdfPath, aiPng).then(() => aiRead(aiPng)).catch((e) => ({ error: e.message })) : null,
+  ]);
+  let kind = detectKind(lines);
+  let fields = kind === 'stress' ? stressFields(lines) : kind === 'vascular' ? vascularFields(lines) : common(lines);
+  let aiInfo;
+  if (ai && merge) {
+    // The built-in reader couldn't tell which report this is but the AI could: apply that layout's rules first
+    if (kind === 'unknown' && (ai.kind === 'stress' || ai.kind === 'vascular')) fields = ai.kind === 'stress' ? stressFields(lines) : vascularFields(lines);
+    const m = merge(kind, fields, ai);
+    kind = m.kind; fields = m.fields; aiInfo = m.ai;
+  }
+  return { kind, fields, lineCount: lines.length, engine: ocrEngine, ...(aiInfo ? { ai: aiInfo } : {}) };
 }
 
 // Field rules applied to OCR lines from any engine ({text, confidence 0-1, x, y, w, h} normalised to the page)

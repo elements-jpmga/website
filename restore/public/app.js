@@ -37,6 +37,21 @@
   let config = null;
   const loadConfig = async () => { config ||= await api('GET', '/api/config'); return config; };
 
+  /* ---- AI writing help (only when the server has an OpenAI key) ---- */
+  const aiOn = () => !!config?.ai?.enabled;
+  const ICON_AI = '<svg viewBox="0 0 24 24"><path d="M12 3.5l1.9 5.1 5.1 1.9-5.1 1.9L12 17.5l-1.9-5.1L5 10.5l5.1-1.9z"/><path d="M18.5 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg>';
+  async function aiFill(btn, textarea, url, what) {
+    const cur = textarea.value.trim();
+    if (cur && what === 'notes' && !confirm('Replace the current notes with an AI draft?')) return;
+    const label = btn.innerHTML; btn.disabled = true; btn.innerHTML = '<span class="spin"></span>Writing…';
+    try {
+      const r = await api('POST', url);
+      textarea.value = r.text; textarea.dispatchEvent(new Event('input', { bubbles: true })); textarea.focus();
+      toast('AI draft added — please read and edit before saving');
+    } catch (e) { toast(e.message, true); }
+    finally { btn.disabled = false; btn.innerHTML = label; }
+  }
+
   /* ---- workflow stage of an assessment (drives board columns and progress rings) ---- */
   const STAGES = [
     { id: 'upload', label: 'Awaiting upload', color: '#ff8a3d', pct: 10 },
@@ -387,11 +402,12 @@
       <div class="panel"><h2>Suitability flags</h2><p class="small muted">Record what was discussed. These notes personalise the treatment route only — they never rewrite the domain scores.</p>
         <div class="form">${flags.map(([k, l]) => `<label class="check"><input type="checkbox" data-flag="${k}" ${s[k] ? 'checked' : ''}><span>${l}</span></label>`).join('')}
         <div class="field"><label>Contraindication notes</label><textarea id="n-contra" placeholder="Anything that affects which options are suitable…">${esc(p.contraindication_notes || '')}</textarea></div></div></div>
-      <div class="panel"><h2>Consultant notes</h2><p class="small muted">Client discussion, goals and anything to remember for the next Restore Review.</p>
+      <div class="panel"><div class="panel-head"><h2>Consultant notes</h2>${aiOn() ? `<button class="btn ghost sm" type="button" id="n-ai">${ICON_AI}Draft with AI</button>` : ''}</div><p class="small muted">Client discussion, goals and anything to remember for the next Restore Review. Internal only — not printed on the client's report.</p>
         <div class="field"><textarea id="n-notes" style="min-height:220px">${esc(p.consultant_notes || '')}</textarea></div>
         <div class="btn-row" style="margin-top:16px"><button class="btn" id="save">Save notes</button><a class="btn primary" href="#/assessment/${a.assessment_id}/report">Preview report →</a></div><div id="saved" class="small muted" style="margin-top:8px"></div></div></div>`;
     const save = async () => { const suitability = Object.fromEntries([...el.querySelectorAll('[data-flag]')].map((c) => [c.dataset.flag, c.checked])); await api('PUT', `/api/assessments/${a.assessment_id}/notes`, { consultant_notes: $('#n-notes').value, suitability, contraindication_notes: $('#n-contra').value }); $('#saved').textContent = 'Saved ' + new Date().toLocaleTimeString(); };
     $('#save').addEventListener('click', () => save().then(() => toast('Notes saved')).catch((e) => toast(e.message, true)));
+    if (aiOn()) $('#n-ai').addEventListener('click', () => aiFill($('#n-ai'), $('#n-notes'), `/api/assessments/${a.assessment_id}/ai/notes`, 'notes'));
     el.querySelector('a.primary').addEventListener('click', () => save().catch(() => {}));
   }
 
@@ -409,7 +425,7 @@
           <div class="form">
             <div class="row"><div class="field"><label for="e-to">Client email</label><input id="e-to" type="email" value="${esc(a.client_email || '')}" placeholder="client@email.com" autocomplete="off"></div><div class="field"><label for="e-from">From (consultant name)</label><input id="e-from" value="${esc(staff() === 'staff' ? '' : staff())}" placeholder="Your name"></div></div>
             <div class="row"><div class="field"><label for="e-outlet">Outlet</label><select id="e-outlet"><option value="">—</option><option>ION Orchard</option><option>The Centrepoint</option><option>313@somerset</option></select></div><div class="field"><label for="e-subject">Subject</label><input id="e-subject" value="Your Elements Restore Profile — ${esc(fmtDay(a.assessed_at || a.created_at))}"></div></div>
-            <div class="field"><label for="e-msg">Message</label><textarea id="e-msg">Thank you for completing your Restore assessment with us. Attached is your Restore Profile with your Stress Load, Recovery Capacity and Circulation results, and the Restore Plan we discussed.
+            <div class="field"><div class="label-row"><label for="e-msg">Message</label>${aiOn() ? `<button class="btn ghost sm" type="button" id="e-ai">${ICON_AI}Write with AI</button>` : ''}</div><textarea id="e-msg">Thank you for completing your Restore assessment with us. Attached is your Restore Profile with your Stress Load, Recovery Capacity and Circulation results, and the Restore Plan we discussed.
 
 If you have any questions, simply reply to this email or speak to us at your next visit.</textarea></div>
             <label class="check"><input type="checkbox" id="e-consent"><span>The client has agreed to receive their Restore Profile at this email address.</span></label>
@@ -433,6 +449,7 @@ If you have any questions, simply reply to this email or speak to us at your nex
     const consent = $('#e-consent'), sendBtn = $('#e-send');
     const check = () => sendBtn.disabled = !(consent.checked && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('#e-to').value.trim()));
     consent.addEventListener('change', check); $('#e-to').addEventListener('input', check);
+    if (aiOn() && $('#e-ai')) $('#e-ai').addEventListener('click', () => aiFill($('#e-ai'), $('#e-msg'), `/api/assessments/${a.assessment_id}/ai/email`, 'message'));
     $('#e-preview').addEventListener('click', () => window.open(`/api/reports/${latest.report_id}/email-preview?message=${encodeURIComponent($('#e-msg').value)}&from=${encodeURIComponent($('#e-from').value)}&outlet=${encodeURIComponent($('#e-outlet').value)}`, '_blank'));
     sendBtn.addEventListener('click', async () => {
       sendBtn.disabled = true; $('#e-status').innerHTML = '<span class="spin"></span> Sending…';
