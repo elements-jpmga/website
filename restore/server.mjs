@@ -151,7 +151,6 @@ const aiDraft = (fn) => async (req, res, { params }) => {
   try { send(res, 200, { text: await fn(a, await rulesFor(a)), model: ai.model }); }
   catch (e) { console.error('AI draft failed:', e.message); err(res, 502, 'AI could not write a draft right now: ' + e.message); }
 };
-route('POST', '/api/assessments/:aid/ai/notes', aiDraft(ai.draftNotes));
 route('POST', '/api/assessments/:aid/ai/email', aiDraft(ai.draftEmail));
 
 // Report: HTML preview + PDF generation (saved to the client record, re-downloadable)

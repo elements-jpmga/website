@@ -40,9 +40,8 @@
   /* ---- AI writing help (only when the server has an OpenAI key) ---- */
   const aiOn = () => !!config?.ai?.enabled;
   const ICON_AI = '<svg viewBox="0 0 24 24"><path d="M12 3.5l1.9 5.1 5.1 1.9-5.1 1.9L12 17.5l-1.9-5.1L5 10.5l5.1-1.9z"/><path d="M18.5 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg>';
-  async function aiFill(btn, textarea, url, what) {
+  async function aiFill(btn, textarea, url) {
     const cur = textarea.value.trim();
-    if (cur && what === 'notes' && !confirm('Replace the current notes with an AI draft?')) return;
     const label = btn.innerHTML; btn.disabled = true; btn.innerHTML = '<span class="spin"></span>Writing…';
     try {
       const r = await api('POST', url);
@@ -240,8 +239,10 @@
   /* =====================================================================
      Assessment workflow
      ===================================================================== */
-  const STEPS = [['upload', 'Upload'], ['confirm', 'Confirm readings'], ['results', 'Results'], ['recommend', 'Recommendation'], ['notes', 'Suitability & notes'], ['report', 'Report']];
-  const stepIndex = (a) => (a.result ? 6 : a.uploads?.length ? 2 : 1); // highest reachable step index (1-based)
+  // Treatments come straight from the client's fixed programmes (OR-options are chosen by the consultant during the session,
+  // exactly as the Leslie sample report says), so there is no separate recommendation or notes step.
+  const STEPS = [['upload', 'Upload'], ['confirm', 'Confirm readings'], ['results', 'Results'], ['report', 'Report']];
+  const stepIndex = (a) => (a.result ? 4 : a.uploads?.length ? 2 : 1); // highest reachable step index (1-based)
 
   route(/^\/assessment\/([^/]+)(?:\/(\w+))?$/, async (aid, step) => {
     const a = await api('GET', `/api/assessments/${aid}`);
@@ -257,7 +258,7 @@
       <nav class="tabs">${STEPS.map(([k, t], i) => `<a href="#/assessment/${aid}/${k}" class="${i === si ? 'on' : ''} ${i + 1 < reach || (i + 1 <= reach && i < si) ? 'done' : ''} ${i + 1 > reach ? 'locked' : ''}"><span class="step-n">${i + 1 < reach || (i + 1 <= reach && i < si) ? '✓' : i + 1}</span>${t}</a>`).join('')}</nav>
       <div id="step"></div>`;
     const el = $('#step');
-    ({ upload: stepUpload, confirm: stepConfirm, results: stepResults, recommend: stepRecommend, notes: stepNotes, report: stepReport })[step](el, a, rules);
+    ({ upload: stepUpload, confirm: stepConfirm, results: stepResults, report: stepReport })[step](el, a, rules);
   });
 
   /* ---- Step 1: Upload ---- */
@@ -370,56 +371,22 @@
       <div class="grid grid-2" style="margin-top:20px">
         <div class="priority-box"><h3 style="color:#d8d0c7">Restore Priorit${R.priorities.length > 1 ? 'ies' : 'y'}</h3><div class="big">${esc(R.priorityLabel)}</div><p>${esc(R.priorityText)}</p></div>
         <div><div class="plan-strip"><div><span class="eyebrow">Program${R.programs.length > 1 ? 's' : ''}</span><b>${R.programs.join(' + ')}</b></div><div><span class="eyebrow">Plan duration</span><b>${esc(R.plan.duration)}</b></div><div><span class="eyebrow">Frequency</span><b style="font-size:14px">${esc(R.plan.frequency)}</b></div></div>
-          <p class="small muted" style="margin-top:12px">${esc(R.plan.basis)} Every domain with severity ${rules.priority.threshold}+ becomes a priority (severity 3 listed before 2). Consultant notes cannot change these scores.</p></div>
+          <p class="small muted" style="margin-top:12px">${esc(R.plan.basis)} Every domain with severity ${rules.priority.threshold}+ becomes a priority (severity 3 listed before 2).</p></div>
       </div>
+      <div class="panel" style="margin-top:20px"><h2>Treatment recommendation</h2><p class="small muted">The matching fixed Restore Program${R.programs.length > 1 ? 's' : ''}, exactly as printed on the client's report. Where alternatives are shown, the consultant selects the suitable option during the session.</p>
+        <div class="grid grid-${Math.min(R.programs.length, 3)}" style="margin-top:12px">${R.programs.map((code) => { const p = rules.programs[code]; return `<div class="prog"><h3>${esc(p.name)}</h3><p class="small muted" style="margin:0 0 10px">${esc(p.benefit)}</p><ol class="comps-list">${p.components.map((c) => `<li><b>${c.options.map(esc).join(' <span class="or">OR</span> ')}</b> — ${esc(c.duration)}<br><span class="small muted">${esc(c.blurb)}</span></li>`).join('')}</ol><p class="small" style="margin:8px 0 0">Optional enhancer: <b>${esc(p.enhancer)}</b></p></div>`; }).join('')}</div></div>
       <div class="panel" style="margin-top:20px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap"><div class="small muted">Confirmed by ${esc(a.readings?.confirmed_by || '—')} · ${fmtDate(a.readings?.confirmed_at)}${a.readings?.corrections?.length ? ` · ${a.readings.corrections.length} value${a.readings.corrections.length > 1 ? 's' : ''} corrected manually` : ' · no manual corrections'} · rules ${esc(R.rulesVersion)}</div>
-        <div class="btn-row"><a class="btn ghost" href="#/assessment/${a.assessment_id}/confirm">Edit readings</a><a class="btn primary" href="#/assessment/${a.assessment_id}/recommend">Choose treatment route →</a></div></div>`;
+        <div class="btn-row"><a class="btn ghost" href="#/assessment/${a.assessment_id}/confirm">Edit readings</a><a class="btn primary" href="#/assessment/${a.assessment_id}/report">Continue to report →</a></div></div>`;
   }
 
-  /* ---- Step 4: Recommendation ---- */
-  function stepRecommend(el, a, rules) {
-    const R = a.result;
-    const sel = (p) => a.selections.find((s) => s.program === p) || {};
-    el.innerHTML = `<div class="grid grid-2">${R.programs.map((code) => { const p = rules.programs[code]; const s = sel(code); return `
-      <div class="program" data-program="${code}"><div><span class="eyebrow">${R.maintain ? 'Maintain · default pathway' : 'Restore Priority · ' + esc(Object.keys(rules.priority.programByDomain).find((k) => rules.priority.programByDomain[k] === code))}</span><div class="name">${esc(p.name)}</div><p class="small muted" style="margin:6px 0 0">${esc(p.benefit)}</p></div>
-        ${p.components.map((c, i) => `<div class="comp"><div class="n">${c.n}</div><div><b>${i === 0 ? 'Fixed component' : 'Choose one'} — ${esc(c.duration)}</b><div class="small muted">${esc(c.blurb)}</div>
-          ${c.options.length === 1 ? `<span class="fixed">${esc(c.options[0])}</span>` : `<div class="opts">${c.options.map((o) => `<label class="opt"><input type="radio" name="${code}-c${c.n}" value="${esc(o)}" ${s['component' + c.n] === o ? 'checked' : ''}><span>${esc(o)}</span></label>`).join('')}</div>`}</div></div>`).join('')}
-        <label class="enh"><input type="checkbox" name="${code}-enh" ${s.enhancer ? 'checked' : ''}><span><b>Optional enhancer:</b> ${esc(p.enhancer)}</span></label>
-        <div class="small" data-saved></div></div>`; }).join('')}</div>
-      <div class="panel" style="margin-top:20px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap"><div class="small muted">Component 3 (PEMF / Acu-Wave) is part of the primary treatment, not an add-on. Only the permitted OR-options can be selected; the enhancer is optional.</div><div class="btn-row"><a class="btn ghost" href="#/assessment/${a.assessment_id}/results">Back</a><a class="btn primary" href="#/assessment/${a.assessment_id}/notes">Suitability &amp; notes →</a></div></div>`;
-    el.querySelectorAll('.program').forEach((pg) => pg.addEventListener('change', async () => {
-      const code = pg.dataset.program;
-      const body = { component2: pg.querySelector(`input[name="${code}-c2"]:checked`)?.value || null, component3: pg.querySelector(`input[name="${code}-c3"]:checked`)?.value || null, enhancer: pg.querySelector(`input[name="${code}-enh"]`).checked };
-      try { await api('PUT', `/api/assessments/${a.assessment_id}/selections/${code}`, body); pg.querySelector('[data-saved]').innerHTML = '<span class="muted">Saved ✓</span>'; } catch (e) { toast(e.message, true); }
-    }));
-  }
-
-  /* ---- Step 5: Suitability & notes ---- */
-  function stepNotes(el, a) {
-    const p = a.plan || {}; const s = p.suitability || {};
-    const flags = [['pregnancy', 'Pregnancy / postnatal'], ['cardiac', 'Heart condition or pacemaker (relevant for PEMF)'], ['bp', 'High or low blood pressure'], ['skin', 'Skin conditions / open wounds'], ['injury', 'Recent injury or surgery'], ['medication', 'Medication or medical treatment to consider'], ['pressure', 'Prefers lighter pressure']];
-    el.innerHTML = `<div class="grid grid-2">
-      <div class="panel"><h2>Suitability flags</h2><p class="small muted">Record what was discussed. These notes personalise the treatment route only — they never rewrite the domain scores.</p>
-        <div class="form">${flags.map(([k, l]) => `<label class="check"><input type="checkbox" data-flag="${k}" ${s[k] ? 'checked' : ''}><span>${l}</span></label>`).join('')}
-        <div class="field"><label>Contraindication notes</label><textarea id="n-contra" placeholder="Anything that affects which options are suitable…">${esc(p.contraindication_notes || '')}</textarea></div></div></div>
-      <div class="panel"><div class="panel-head"><h2>Consultant notes</h2>${aiOn() ? `<button class="btn ghost sm" type="button" id="n-ai">${ICON_AI}Draft with AI</button>` : ''}</div><p class="small muted">Client discussion, goals and anything to remember for the next Restore Review. Internal only — not printed on the client's report.</p>
-        <div class="field"><textarea id="n-notes" style="min-height:220px">${esc(p.consultant_notes || '')}</textarea></div>
-        <div class="btn-row" style="margin-top:16px"><button class="btn" id="save">Save notes</button><a class="btn primary" href="#/assessment/${a.assessment_id}/report">Preview report →</a></div><div id="saved" class="small muted" style="margin-top:8px"></div></div></div>`;
-    const save = async () => { const suitability = Object.fromEntries([...el.querySelectorAll('[data-flag]')].map((c) => [c.dataset.flag, c.checked])); await api('PUT', `/api/assessments/${a.assessment_id}/notes`, { consultant_notes: $('#n-notes').value, suitability, contraindication_notes: $('#n-contra').value }); $('#saved').textContent = 'Saved ' + new Date().toLocaleTimeString(); };
-    $('#save').addEventListener('click', () => save().then(() => toast('Notes saved')).catch((e) => toast(e.message, true)));
-    if (aiOn()) $('#n-ai').addEventListener('click', () => aiFill($('#n-ai'), $('#n-notes'), `/api/assessments/${a.assessment_id}/ai/notes`, 'notes'));
-    el.querySelector('a.primary').addEventListener('click', () => save().catch(() => {}));
-  }
-
-  /* ---- Step 6: Report ---- */
+  /* ---- Step 4: Report ---- */
   function stepReport(el, a) {
-    const missing = a.result.programs.filter((code) => { const s = a.selections.find((x) => x.program === code) || {}; return !s.component2 || !s.component3; });
     const latest = a.reports[0];
     const prov = config?.mailProvider || 'outbox';
     const provNote = prov === 'outbox' ? '<div class="warn-box" style="margin-bottom:12px">No email provider is configured yet — emails are saved to the outbox folder instead of being sent. Set RESEND_API_KEY or SMTP_* on the server to send for real.</div>' : '';
     el.innerHTML = `<div class="grid grid-side">
       <div>
-        <div class="panel"><div class="panel-head"><h2>Preview</h2><button class="btn ghost sm" type="button" id="view-full"><svg viewBox="0 0 24 24"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg>View full report</button></div>${missing.length ? `<div class="warn-box" style="margin-bottom:12px">OR-options not yet chosen for ${missing.join(', ')} — the report will show both options. <a class="link" href="#/assessment/${a.assessment_id}/recommend">Choose now</a></div>` : ''}<iframe class="report-frame" src="/api/assessments/${a.assessment_id}/report.html?screen=1" title="Restore Profile preview"></iframe></div>
+        <div class="panel"><div class="panel-head"><h2>Preview</h2><button class="btn ghost sm" type="button" id="view-full"><svg viewBox="0 0 24 24"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg>View full report</button></div><iframe class="report-frame" src="/api/assessments/${a.assessment_id}/report.html?screen=1" title="Restore Profile preview"></iframe></div>
         <div class="panel" id="email-panel" style="margin-top:20px"><h2>Email the report to the client</h2>
           ${latest ? `${provNote}<p class="small muted">Sends the PDF generated ${fmtDate(latest.generated_at)} as an attachment. The client receives only the PDF — no link into this system.</p>
           <div class="form">
@@ -449,7 +416,7 @@ If you have any questions, simply reply to this email or speak to us at your nex
     const consent = $('#e-consent'), sendBtn = $('#e-send');
     const check = () => sendBtn.disabled = !(consent.checked && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('#e-to').value.trim()));
     consent.addEventListener('change', check); $('#e-to').addEventListener('input', check);
-    if (aiOn() && $('#e-ai')) $('#e-ai').addEventListener('click', () => aiFill($('#e-ai'), $('#e-msg'), `/api/assessments/${a.assessment_id}/ai/email`, 'message'));
+    if (aiOn() && $('#e-ai')) $('#e-ai').addEventListener('click', () => aiFill($('#e-ai'), $('#e-msg'), `/api/assessments/${a.assessment_id}/ai/email`));
     $('#e-preview').addEventListener('click', () => window.open(`/api/reports/${latest.report_id}/email-preview?message=${encodeURIComponent($('#e-msg').value)}&from=${encodeURIComponent($('#e-from').value)}&outlet=${encodeURIComponent($('#e-outlet').value)}`, '_blank'));
     sendBtn.addEventListener('click', async () => {
       sendBtn.disabled = true; $('#e-status').innerHTML = '<span class="spin"></span> Sending…';
