@@ -7,7 +7,7 @@
 import fs from 'node:fs';
 
 const KEY = process.env.OPENAI_API_KEY || '';
-export const model = process.env.OPENAI_MODEL || 'gpt-5-mini';
+export const model = process.env.OPENAI_MODEL || 'gpt-5.4-mini';
 const BASE = (process.env.OPENAI_BASE_URL || 'https://api.openai.com/v1').replace(/\/+$/, '');
 export const enabled = Boolean(KEY);
 
@@ -85,6 +85,9 @@ export function mergeReadings(kind, fields, ai) {
 /* ---------- 2 & 3. Writing help (results only — no client name or contact details) ---------- */
 const STYLE = `You write for Elements Wellness, an award-winning spa and wellness group in Singapore. Warm, calm, professional, British/Singapore English spelling. Wellness language only: never diagnose, never claim to treat or cure a medical condition, never mention medication. Do not invent readings, outcomes, treatments, durations or frequencies — use only what is given. Do not change or second-guess any result, priority or plan.`;
 
+// Same wording as the Suitability step in the staff app
+const FLAG_LABELS = { pregnancy: 'pregnancy / postnatal', cardiac: 'heart condition or pacemaker (relevant for PEMF)', bp: 'high or low blood pressure', skin: 'skin conditions / open wounds', injury: 'recent injury or surgery', medication: 'medication or medical treatment to consider', pressure: 'prefers lighter pressure' };
+
 function brief(a, rules) {
   const r = a.result;
   const progs = r.programs.map((code) => {
@@ -92,7 +95,7 @@ function brief(a, rules) {
     const comps = p.components.map((c, i) => (i === 0 ? c.options[0] : i === 1 ? s.component2 || c.options.join(' or ') : s.component3 || c.options.join(' or ')));
     return `${p.name}: ${comps.join(' + ')}${s.enhancer ? ` + optional enhancer ${p.enhancer}` : ''}. Benefit: ${p.benefit}`;
   });
-  const flags = Object.entries(a.plan?.suitability || {}).filter(([, v]) => v).map(([k]) => k);
+  const flags = Object.entries(a.plan?.suitability || {}).filter(([, v]) => v).map(([k]) => FLAG_LABELS[k] || k);
   return [
     `Client: ${a.client_age ? `age ${a.client_age}` : 'age not recorded'}${a.client_sex ? `, ${a.client_sex.toLowerCase()}` : ''}.`,
     'Restore results (from the rules engine — final):',
@@ -116,7 +119,7 @@ export async function draftNotes(a, rules) {
 export async function draftEmail(a, rules) {
   const out = await call({
     name: 'client_email', schema: { type: 'object', additionalProperties: false, required: ['message'], properties: { message: { type: 'string' } } },
-    system: `${STYLE}\nWrite ONLY the body paragraphs of an email to the client that accompanies their attached Restore Profile PDF. No greeting line (no "Dear …"), no sign-off, no name, no subject. 2–3 short paragraphs, under 120 words, separated by a blank line. Thank them, explain their Restore Priority and plan in simple encouraging words, and invite them to reply or speak to the team at their next visit. Do not quote numbers unless helpful; never alarm.`,
+    system: `${STYLE}\nWrite ONLY the body paragraphs of an email to the client that accompanies their attached Restore Profile PDF. No greeting line (no "Dear …"), no sign-off, no name, no subject. 2–3 short paragraphs, under 120 words, separated by a blank line. Start by thanking them for completing their Restore assessment with us (the spa prepared the profile, not the client). Explain their Restore Priority and plan in simple encouraging words, and invite them to reply or speak to the team at their next visit. Do not quote numbers unless helpful; never alarm.`,
     user: brief(a, rules),
   });
   return out.message.trim();

@@ -123,7 +123,7 @@ if (from && !/^[^<>]*<[^\s@<>]+@[^\s@<>]+>$|^[^\s@]+@[^\s@]+$/.test(from)) bad('
 
 /* 6 AI */
 head('6. AI (OPENAI_API_KEY) — optional');
-const ok_ = e('OPENAI_API_KEY'), aiModel = e('OPENAI_MODEL') || 'gpt-5-mini';
+const ok_ = e('OPENAI_API_KEY'), aiModel = e('OPENAI_MODEL') || 'gpt-5.4-mini';
 if (!ok_) warn('Not set — the app works without AI (no AI check on uploads, no "Draft with AI" buttons)', 'platform.openai.com → API keys → Create new secret key');
 else if (!ok_.startsWith('sk-')) bad('Does not look like an OpenAI API key (should start with sk-)', 'Create one at platform.openai.com → API keys. A ChatGPT subscription login is not an API key');
 else {
