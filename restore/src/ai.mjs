@@ -1,7 +1,6 @@
-// Optional OpenAI assistance (OPENAI_API_KEY). Three jobs, all reviewed by staff before anything is used:
+// Optional OpenAI assistance (OPENAI_API_KEY). Two jobs, both reviewed by staff before anything is used:
 //   1. readUbio  — second reader for the four engine readings (page image cropped so no name/age/date is sent)
-//   2. draftNotes — internal consultant notes from the engine results
-//   3. draftEmail — the message paragraph of the client email
+//   2. draftEmail — the message paragraph of the client email
 // The AI never changes readings, scores, priorities, programmes or the plan: those come only from the rules engine.
 // No client name or contact details are sent for the writing jobs.
 import fs from 'node:fs';
@@ -82,20 +81,15 @@ export function mergeReadings(kind, fields, ai) {
   return { kind: useKind, fields: out, ai: { model, kind: ai.kind, agreed: keys.every((k) => out[k]?.note?.includes('AI check agrees')) } };
 }
 
-/* ---------- 2 & 3. Writing help (results only — no client name or contact details) ---------- */
+/* ---------- 2. Writing help (results only — no client name or contact details) ---------- */
 const STYLE = `You write for Elements Wellness, an award-winning spa and wellness group in Singapore. Warm, calm, professional, British/Singapore English spelling. Wellness language only: never diagnose, never claim to treat or cure a medical condition, never mention medication. Do not invent readings, outcomes, treatments, durations or frequencies — use only what is given. Do not change or second-guess any result, priority or plan.`;
-
-// Same wording as the Suitability step in the staff app
-const FLAG_LABELS = { pregnancy: 'pregnancy / postnatal', cardiac: 'heart condition or pacemaker (relevant for PEMF)', bp: 'high or low blood pressure', skin: 'skin conditions / open wounds', injury: 'recent injury or surgery', medication: 'medication or medical treatment to consider', pressure: 'prefers lighter pressure' };
 
 function brief(a, rules) {
   const r = a.result;
   const progs = r.programs.map((code) => {
-    const p = rules.programs[code]; const s = (a.selections || []).find((x) => x.program === code) || {};
-    const comps = p.components.map((c, i) => (i === 0 ? c.options[0] : i === 1 ? s.component2 || c.options.join(' or ') : s.component3 || c.options.join(' or ')));
-    return `${p.name}: ${comps.join(' + ')}${s.enhancer ? ` + optional enhancer ${p.enhancer}` : ''}. Benefit: ${p.benefit}`;
+    const p = rules.programs[code];
+    return `${p.name}: ${p.components.map((c) => c.options.join(' or ')).join(' + ')} (the consultant chooses where alternatives are shown), optional enhancer ${p.enhancer}. Benefit: ${p.benefit}`;
   });
-  const flags = Object.entries(a.plan?.suitability || {}).filter(([, v]) => v).map(([k]) => FLAG_LABELS[k] || k);
   return [
     `Client: ${a.client_age ? `age ${a.client_age}` : 'age not recorded'}${a.client_sex ? `, ${a.client_sex.toLowerCase()}` : ''}.`,
     'Restore results (from the rules engine — final):',
@@ -103,17 +97,7 @@ function brief(a, rules) {
     `Restore Priority: ${r.priorityLabel}. ${r.priorityText}`,
     `Programme(s): ${progs.join(' | ')}`,
     `Restore Plan: ${r.plan.duration}, ${r.plan.frequency}. Next review in ${rules.report.reviewWindow}.`,
-    flags.length ? `Suitability points the consultant ticked: ${flags.join(', ')}.` : '',
   ].filter(Boolean).join('\n');
-}
-
-export async function draftNotes(a, rules) {
-  const out = await call({
-    name: 'consultant_notes', schema: { type: 'object', additionalProperties: false, required: ['notes'], properties: { notes: { type: 'string' } } },
-    system: `${STYLE}\nYou are drafting INTERNAL notes for the consultant (the client does not see them). Plain text, no markdown headings. Under 160 words. Sections as short lines: "Focus:", "Talking points:" (2–4 bullets with "- "), "During treatment:" (1–2 bullets), "Next review:". Practical and specific to these results.`,
-    user: brief(a, rules),
-  });
-  return out.notes.trim();
 }
 
 export async function draftEmail(a, rules) {

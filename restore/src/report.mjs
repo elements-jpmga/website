@@ -8,7 +8,7 @@ import path from 'node:path';
 import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-export const TEMPLATE_VERSION = 'profile-v5-letterhead-3.0';
+export const TEMPLATE_VERSION = 'profile-v5-letterhead-3.1';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const logoData = (() => { const p = path.join(here, '../public/logo-white.png'); return fs.existsSync(p) ? 'data:image/png;base64,' + fs.readFileSync(p).toString('base64') : ''; })();
 const esc = (s = '') => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -32,16 +32,14 @@ const idealHtml = (s) => s.split('\n').map((line) => { const i = line.indexOf(':
 export function reportHtml({ assessment, rules, selections = [], plan = {} }) {
   const R = assessment.result; const rep = rules.report;
   const client = assessment.client_name; const date = fmtDate(assessment.assessed_at || assessment.created_at);
-  const selFor = (p) => selections.find((s) => s.program === p) || {};
-  const comp = (c, chosen) => {
-    const label = chosen && c.options.includes(chosen) ? chosen : c.options.join(' OR ');
-    return `<tr><td class="k">${c.n}. ${esc(label)} — ${esc(c.duration)}</td><td class="v">${esc(c.blurb)}</td></tr>`;
-  };
+  // The fixed programme exactly as the client's sample prints it: alternatives joined with OR, the consultant
+  // chooses during the session, enhancer listed as optional.
+  const comp = (c) => `<tr><td class="k">${c.n}. ${esc(c.options.join(' OR '))} — ${esc(c.duration)}</td><td class="v">${esc(c.blurb)}</td></tr>`;
   const programs = R.programs.map((code) => {
-    const p = rules.programs[code]; const s = selFor(code);
+    const p = rules.programs[code];
     return `<div class="program-name">${esc(p.name)}</div>
-      <table class="comps">${comp(p.components[0])}${comp(p.components[1], s.component2)}${comp(p.components[2], s.component3)}</table>
-      <p class="body">${esc(rep.sessionNote)} ${s.enhancer ? `Enhancer selected: ${esc(p.enhancer)}.` : `Optional enhancer: ${esc(p.enhancer)}.`}</p>`;
+      <table class="comps">${p.components.map(comp).join('')}</table>
+      <p class="body">${esc(rep.sessionNote)} Optional enhancer: ${esc(p.enhancer)}.</p>`;
   }).join('');
   const first = rules.programs[R.programs[0]];
   const everyday = first.everyday.map(([k, v]) => `<p class="every"><b>${esc(k)}:</b> ${esc(v)}</p>`).join('');
