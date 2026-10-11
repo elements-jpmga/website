@@ -188,16 +188,72 @@
     $$('[data-new-inline]', app).forEach((b) => b.addEventListener('click', () => newAssessmentModal()));
   }
   function renderBoardOnly() { const holder = $('#board-holder'); if (!holder) return; holder.innerHTML = boardHtml(applyFilter(lastList)); bindBoard(); }
+  /* ---- Home dashboard: big start box, today at a glance, unfinished work ---- */
+  const NEXT = { upload: ['upload', 'Upload UBIO PDFs'], confirm: ['confirm', 'Check readings'], report: ['report', 'Make the report'], send: ['report', 'Send to client'] };
+  function dashboardHtml(all) {
+    const weekAgo = Date.now() - 7 * 864e5;
+    const n = (st) => all.filter((a) => stageOf(a) === st).length;
+    const tiles = [
+      ['To check', n('confirm'), 'confirm', '#ff9f0a'],
+      ['Report to make', n('report'), 'report', '#0a84ff'],
+      ['Ready to send', n('send'), 'send', '#bf5af2'],
+      ['Sent this week', all.filter((a) => a.emails > 0 && a.last_email_at && new Date(a.last_email_at).getTime() > weekAgo).length, 'all', '#22b35e'],
+    ];
+    const open = all.filter((a) => stageOf(a) !== 'sent').slice(0, 6);
+    const hour = new Date().getHours(); const hello = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
+    return `<section class="dash">
+      <div class="start-card">
+        <div class="start-copy"><span class="eyebrow">${esc(hello)}${staff() !== 'staff' ? ', ' + esc(staff()) : ''}</span><h1>Start a new assessment</h1>
+          <ol class="start-steps"><li><b>1</b>Upload the 2 UBIO PDFs</li><li><b>2</b>Check the readings</li><li><b>3</b>Send the report</li></ol></div>
+        <form class="start-form" id="start-form" autocomplete="off">
+          <label for="start-name">Client name</label>
+          <div class="start-row"><input id="start-name" placeholder="Client's name" required><button class="btn start-btn" type="submit">${ICON.plus}Start</button></div>
+          <div class="start-sugg" id="start-sugg" hidden></div>
+          <p class="start-hint">Age, sex and date fill in from the UBIO PDF. Returning client? Pick them from the list so their history stays together.</p>
+        </form>
+      </div>
+      <div class="tiles">${tiles.map(([t, v, f, c]) => `<button class="tile" type="button" data-tile="${f}" style="--c:${c}"><span>${t}</span><b>${v}</b></button>`).join('')}</div>
+      ${open.length ? `<div class="panel resume"><div class="panel-head"><h2>Pick up where you left off</h2><span class="small muted">${open.length} unfinished</span></div>
+        ${open.map((a) => { const st = stageOf(a); const [step, label] = NEXT[st]; return `<div class="resume-row"><span class="resume-who">${ava(a.client_name)}<span><b>${esc(a.client_name)}</b><br><span class="small muted">${esc(STAGES.find((x) => x.id === st).label)} · ${ago(a.created_at)}</span></span></span><a class="btn sm" href="#/assessment/${a.assessment_id}/${step}">${esc(label)} →</a></div>`; }).join('')}</div>` : ''}
+    </section>`;
+  }
+  function bindDashboard() {
+    const form = $('#start-form'); if (!form) return;
+    const input = $('#start-name'), box = $('#start-sugg');
+    let matches = [], t;
+    const startFor = async (client_id) => { const a = await api('POST', '/api/assessments', { client_id }); go(`/assessment/${a.assessment_id}/upload`); };
+    const draw = () => {
+      const name = input.value.trim();
+      box.hidden = !name;
+      box.innerHTML = matches.map((c) => `<button type="button" class="sugg" data-id="${c.client_id}">${ava(c.name)}<span><b>${esc(c.name)}</b><br><span class="small muted">${c.age ? 'Age ' + c.age + ' · ' : ''}${c.assessments} previous assessment${c.assessments === 1 ? '' : 's'}</span></span><em>Start for this client →</em></button>`).join('')
+        + (name ? `<button type="submit" class="sugg new">${ICON.plus}<span><b>New client: ${esc(name)}</b><br><span class="small muted">Create and start</span></span></button>` : '');
+      $$('[data-id]', box).forEach((b) => b.addEventListener('click', () => startFor(b.dataset.id).catch((e) => toast(e.message, true))));
+    };
+    input.addEventListener('input', () => { clearTimeout(t); const q = input.value.trim(); if (!q) { matches = []; return draw(); } t = setTimeout(async () => { try { matches = (await api('GET', '/api/clients?q=' + encodeURIComponent(q))).slice(0, 4); } catch { matches = []; } draw(); }, 180); });
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); const name = input.value.trim(); if (!name) return input.focus();
+      const exact = matches.find((c) => c.name.trim().toLowerCase() === name.toLowerCase());
+      if (exact && !confirm(`${exact.name} is already a client. Start a new assessment for them? (Cancel to create a different client with the same name.)`)) {
+        try { const c = await api('POST', '/api/clients', { name }); await startFor(c.client_id); } catch (err) { toast(err.message, true); } return;
+      }
+      try { if (exact) return await startFor(exact.client_id); const c = await api('POST', '/api/clients', { name }); await startFor(c.client_id); } catch (err) { toast(err.message, true); }
+    });
+    $$('[data-tile]').forEach((b) => b.addEventListener('click', () => { filter = b.dataset.tile; render(); }));
+    if (matchMedia('(min-width: 900px)').matches) input.focus();
+  }
+
   route(/^\/$/, async () => {
     lastList = await api('GET', '/api/assessments');
     const list = applyFilter(lastList);
+    const home = filter === 'all' || filter === 'mine';
     app.innerHTML = `
+      ${home ? dashboardHtml(lastList) : ''}
       ${crumbs([['Restore', '/'], [FILTERS[filter]]])}
       <div class="page-head"><h1>${esc(FILTERS[filter])}</h1><div class="btn-row"><button class="btn" id="new">${ICON.plus}New assessment</button></div></div>
       <nav class="tabs"><button type="button" data-view="board" class="${view === 'board' ? 'on' : ''}">${ICON.board}Board</button><button type="button" data-view="list" class="${view === 'list' ? 'on' : ''}">${ICON.list}List</button><span class="spacer"></span><button class="tool" type="button" data-palette>⌘K &nbsp;Command menu</button></nav>
       <div id="board-holder">${boardHtml(list)}</div>`;
-    bindBoard();
-    $('#new').addEventListener('click', () => newAssessmentModal());
+    bindBoard(); bindDashboard();
+    $('#new').addEventListener('click', () => (home && $('#start-name') ? ($('#start-name').focus(), $('#start-name').scrollIntoView({ block: 'center' })) : newAssessmentModal()));
     $$('[data-view]', app).forEach((b) => b.addEventListener('click', () => { view = b.dataset.view; try { localStorage.setItem('restore-view', view); } catch {} $$('[data-view]', app).forEach((x) => x.classList.toggle('on', x === b)); renderBoardOnly(); }));
     $$('[data-palette]', app).forEach((b) => b.addEventListener('click', openPalette));
   });
