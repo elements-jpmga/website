@@ -87,7 +87,7 @@ route('POST', '/api/assessments/:aid/uploads', async (req, res, { params }) => {
   fs.writeFileSync(tmpPdf, buf);
   let extraction, previewKey = null;
   try {
-    try { extraction = await extractUbio(tmpPdf, tmpPng, ai.enabled ? { aiRead: ai.readUbio, merge: ai.mergeReadings } : {}); }
+    try { extraction = await extractUbio(tmpPdf, tmpPng, ai.enabled ? { aiRead: ai.readUbio, aiModel: ai.model } : {}); }
     catch (e) { console.error('extraction failed:', e.message); extraction = { kind: 'unknown', fields: {}, error: e.message }; }
     const stored = await files.put(`uploads/${a.assessment_id}/${upload_id}.pdf`, buf, 'application/pdf');
     if (fs.existsSync(tmpPng)) previewKey = await files.put(`uploads/${a.assessment_id}/${upload_id}.png`, fs.readFileSync(tmpPng), 'image/png');
@@ -252,4 +252,4 @@ http.createServer(async (req, res) => {
     console.error(e);
     if (!res.headersSent) err(res, e.status || (e.errors ? 422 : 500), e.message, e.errors ? { errors: e.errors } : {});
   }
-}).listen(PORT, () => console.log(`Elements Restore → http://localhost:${PORT}  (rules ${activeRules.version}; database ${db.kind}; files ${files.storageKind}${files.remote ? '' : ' in ' + DATA_DIR}; OCR ${ocrEngine}${ai.enabled ? ' + AI check (' + ai.model + ')' : ''}; sign-in ${auth.enabled ? 'on' : 'off'}; email ${mailProvider()})`));
+}).listen(PORT, () => console.log(`Elements Restore → http://localhost:${PORT}  (rules ${activeRules.version}; database ${db.kind}; files ${files.storageKind}${files.remote ? '' : ' in ' + DATA_DIR}; readings ${ai.enabled ? 'ChatGPT (' + ai.model + '), backup ' + ocrEngine : ocrEngine}; sign-in ${auth.enabled ? 'on' : 'off'}; email ${mailProvider()})`));
