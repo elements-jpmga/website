@@ -205,12 +205,8 @@
       <div class="start-card">
         <div class="start-copy"><span class="eyebrow">${esc(hello)}${staff() !== 'staff' ? ', ' + esc(staff()) : ''}</span><h1>Start a new assessment</h1>
           <ol class="start-steps"><li><b>1</b>Upload the 2 UBIO PDFs</li><li><b>2</b>Check the readings</li><li><b>3</b>Send the report</li></ol></div>
-        <form class="start-form" id="start-form" autocomplete="off">
-          <label for="start-name">Client name</label>
-          <div class="start-row"><input id="start-name" placeholder="Client's name" required><button class="btn start-btn" type="submit">${ICON.plus}Start</button></div>
-          <div class="start-sugg" id="start-sugg" hidden></div>
-          <p class="start-hint">Age, sex and date fill in from the UBIO PDF. Returning client? Pick them from the list so their history stays together.</p>
-        </form>
+        <div class="start-action"><button class="btn start-btn" type="button" id="start-new">${ICON.plus}Start new assessment</button>
+          <p class="start-hint">Opens a short form for the client's details. Age, sex and date fill in from the UBIO PDF.</p></div>
       </div>
       <div class="tiles">${tiles.map(([t, v, f, c]) => `<button class="tile" type="button" data-tile="${f}" style="--c:${c}"><span>${t}</span><b>${v}</b></button>`).join('')}</div>
       ${open.length ? `<div class="panel resume"><div class="panel-head"><h2>Pick up where you left off</h2><span class="small muted">${open.length} unfinished</span></div>
@@ -218,28 +214,8 @@
     </section>`;
   }
   function bindDashboard() {
-    const form = $('#start-form'); if (!form) return;
-    const input = $('#start-name'), box = $('#start-sugg');
-    let matches = [], t;
-    const startFor = async (client_id) => { const a = await api('POST', '/api/assessments', { client_id }); go(`/assessment/${a.assessment_id}/upload`); };
-    const draw = () => {
-      const name = input.value.trim();
-      box.hidden = !name;
-      box.innerHTML = matches.map((c) => `<button type="button" class="sugg" data-id="${c.client_id}">${ava(c.name)}<span><b>${esc(c.name)}</b><br><span class="small muted">${c.age ? 'Age ' + c.age + ' · ' : ''}${c.assessments} previous assessment${c.assessments === 1 ? '' : 's'}</span></span><em>Start for this client →</em></button>`).join('')
-        + (name ? `<button type="submit" class="sugg new">${ICON.plus}<span><b>New client: ${esc(name)}</b><br><span class="small muted">Create and start</span></span></button>` : '');
-      $$('[data-id]', box).forEach((b) => b.addEventListener('click', () => startFor(b.dataset.id).catch((e) => toast(e.message, true))));
-    };
-    input.addEventListener('input', () => { clearTimeout(t); const q = input.value.trim(); if (!q) { matches = []; return draw(); } t = setTimeout(async () => { try { matches = (await api('GET', '/api/clients?q=' + encodeURIComponent(q))).slice(0, 4); } catch { matches = []; } draw(); }, 180); });
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault(); const name = input.value.trim(); if (!name) return input.focus();
-      const exact = matches.find((c) => c.name.trim().toLowerCase() === name.toLowerCase());
-      if (exact && !confirm(`${exact.name} is already a client. Start a new assessment for them? (Cancel to create a different client with the same name.)`)) {
-        try { const c = await api('POST', '/api/clients', { name }); await startFor(c.client_id); } catch (err) { toast(err.message, true); } return;
-      }
-      try { if (exact) return await startFor(exact.client_id); const c = await api('POST', '/api/clients', { name }); await startFor(c.client_id); } catch (err) { toast(err.message, true); }
-    });
+    $('#start-new')?.addEventListener('click', () => newAssessmentModal());
     $$('[data-tile]').forEach((b) => b.addEventListener('click', () => { filter = b.dataset.tile; render(); }));
-    if (matchMedia('(min-width: 900px)').matches) input.focus();
   }
 
   route(/^\/$/, async () => {
@@ -253,32 +229,53 @@
       <nav class="tabs"><button type="button" data-view="board" class="${view === 'board' ? 'on' : ''}">${ICON.board}Board</button><button type="button" data-view="list" class="${view === 'list' ? 'on' : ''}">${ICON.list}List</button><span class="spacer"></span><button class="tool" type="button" data-palette>⌘K &nbsp;Command menu</button></nav>
       <div id="board-holder">${boardHtml(list)}</div>`;
     bindBoard(); bindDashboard();
-    $('#new').addEventListener('click', () => (home && $('#start-name') ? ($('#start-name').focus(), $('#start-name').scrollIntoView({ block: 'center' })) : newAssessmentModal()));
+    $('#new').addEventListener('click', () => newAssessmentModal());
     $$('[data-view]', app).forEach((b) => b.addEventListener('click', () => { view = b.dataset.view; try { localStorage.setItem('restore-view', view); } catch {} $$('[data-view]', app).forEach((x) => x.classList.toggle('on', x === b)); renderBoardOnly(); }));
     $$('[data-palette]', app).forEach((b) => b.addEventListener('click', openPalette));
   });
 
   function newAssessmentModal(preClient) {
     const m = document.createElement('div'); m.className = 'modal-bg';
-    m.innerHTML = `<div class="modal"><h2>New Restore assessment</h2>
-      <div class="form">
-        <div class="field"><label>Existing client</label><div class="search"><input id="m-q" placeholder="Search name…" autocomplete="off"><button class="btn sm ghost" id="m-qb" type="button">Search</button></div><div id="m-list" class="small"></div></div>
-        <div class="divider"></div>
-        <h3>Or create a client</h3>
-        <div class="row"><div class="field"><label>Name</label><input id="m-name"></div><div class="field"><label>Age</label><input id="m-age" type="number" min="1" max="120"></div></div>
-        <div class="row"><div class="field"><label>Sex</label><select id="m-sex"><option value="">—</option><option>Female</option><option>Male</option></select></div><div class="field"><label>Email (for sending the report)</label><input id="m-email" type="email" placeholder="client@email.com"></div></div>
-        <div class="field"><label>Contact reference (optional)</label><input id="m-ref" placeholder="Mobile / member no."></div>
-        <div class="btn-row"><button class="btn" id="m-create" type="button">Create client &amp; start</button><button class="btn ghost" id="m-cancel" type="button">Cancel</button></div>
+    m.innerHTML = `<div class="modal new-modal" role="dialog" aria-modal="true" aria-label="New assessment"><h2>New assessment</h2>
+      <div class="seg" role="tablist"><button type="button" class="on" data-mode="new">New client</button><button type="button" data-mode="returning">Returning client</button></div>
+      <form class="form" data-pane="new" autocomplete="off">
+        <div class="field"><label for="m-name">Client name <span class="req">*</span></label><input id="m-name" required placeholder="e.g. Leslie Tan"></div>
+        <div class="row"><div class="field"><label for="m-email">Email <span class="muted">(for the report)</span></label><input id="m-email" type="email" placeholder="client@email.com"></div>
+          <div class="field"><label for="m-ref">Mobile / member no. <span class="muted">(optional)</span></label><input id="m-ref"></div></div>
+        <p class="small muted" style="margin:0">Age, sex and assessment date are filled in automatically from the UBIO PDF.</p>
+        <div class="btn-row"><button class="btn" type="submit">Start assessment →</button><button class="btn ghost" type="button" data-cancel>Cancel</button></div>
+      </form>
+      <div class="form" data-pane="returning" hidden>
+        <div class="field"><label for="m-q">Search by name</label><input id="m-q" placeholder="Start typing a name…" autocomplete="off"></div>
+        <div id="m-list" class="pick-list"><p class="small muted">Type at least 2 letters.</p></div>
+        <div class="btn-row"><button class="btn ghost" type="button" data-cancel>Cancel</button></div>
       </div></div>`;
     document.body.appendChild(m);
-    const close = () => m.remove();
-    $('#m-cancel', m).addEventListener('click', close); m.addEventListener('click', (e) => e.target === m && close());
-    document.addEventListener('keydown', function esc_(e) { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', esc_); } });
-    const start = async (client_id) => { const a = await api('POST', '/api/assessments', { client_id }); close(); go(`/assessment/${a.assessment_id}/upload`); };
-    const search = async () => { const cs = await api('GET', '/api/clients?q=' + encodeURIComponent($('#m-q', m).value)); $('#m-list', m).innerHTML = cs.slice(0, 8).map((c) => `<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)"><span style="display:flex;align-items:center;gap:10px">${ava(c.name)}<span><b>${esc(c.name)}</b> <span class="muted">· age ${c.age ?? '—'} · ${c.assessments} prior</span></span></span><button class="btn sm" data-id="${c.client_id}" type="button">Start</button></div>`).join('') || '<p class="muted">No match.</p>'; $('#m-list', m).querySelectorAll('button').forEach((b) => b.addEventListener('click', () => start(b.dataset.id))); };
-    $('#m-qb', m).addEventListener('click', search); $('#m-q', m).addEventListener('keydown', (e) => e.key === 'Enter' && search());
-    $('#m-create', m).addEventListener('click', async () => { try { const c = await api('POST', '/api/clients', { name: $('#m-name', m).value, age: $('#m-age', m).value, sex: $('#m-sex', m).value, contact_ref: $('#m-ref', m).value, email: $('#m-email', m).value }); await start(c.client_id); } catch (e) { toast(e.message, true); } });
-    if (preClient) start(preClient); else setTimeout(() => $('#m-q', m).focus(), 50);
+    const onKey = (e) => { if (e.key === 'Escape') close(); };
+    const close = () => { m.remove(); document.removeEventListener('keydown', onKey); };
+    document.addEventListener('keydown', onKey);
+    $$('[data-cancel]', m).forEach((b) => b.addEventListener('click', close)); m.addEventListener('click', (e) => e.target === m && close());
+    let busy = false;
+    const start = async (client_id) => { if (busy) return; busy = true; try { const a = await api('POST', '/api/assessments', { client_id }); close(); go(`/assessment/${a.assessment_id}/upload`); } catch (e) { busy = false; toast(e.message, true); } };
+    const mode = (k) => { $$('[data-mode]', m).forEach((b) => b.classList.toggle('on', b.dataset.mode === k)); $$('[data-pane]', m).forEach((p) => (p.hidden = p.dataset.pane !== k)); $(k === 'new' ? '#m-name' : '#m-q', m).focus(); };
+    $$('[data-mode]', m).forEach((b) => b.addEventListener('click', () => mode(b.dataset.mode)));
+    $('[data-pane="new"]', m).addEventListener('submit', async (e) => {
+      e.preventDefault(); if (busy) return;
+      const name = $('#m-name', m).value.trim(); if (!name) return $('#m-name', m).focus();
+      try { busy = true; const c = await api('POST', '/api/clients', { name, email: $('#m-email', m).value.trim(), contact_ref: $('#m-ref', m).value.trim() }); busy = false; await start(c.client_id); }
+      catch (err) { busy = false; toast(err.message, true); }
+    });
+    let t;
+    $('#m-q', m).addEventListener('input', () => {
+      clearTimeout(t); const q = $('#m-q', m).value.trim(); const list = $('#m-list', m);
+      if (q.length < 2) { list.innerHTML = '<p class="small muted">Type at least 2 letters.</p>'; return; }
+      t = setTimeout(async () => {
+        let cs = []; try { cs = await api('GET', '/api/clients?q=' + encodeURIComponent(q)); } catch {}
+        list.innerHTML = cs.slice(0, 8).map((c) => `<button type="button" class="pick" data-id="${c.client_id}">${ava(c.name)}<span><b>${esc(c.name)}</b><br><span class="small muted">${c.age ? 'Age ' + c.age + ' · ' : ''}${c.assessments} previous assessment${c.assessments === 1 ? '' : 's'}${c.email ? ' · ' + esc(c.email) : ''}</span></span><em>Start →</em></button>`).join('') || '<p class="small muted">No client found. Use <b>New client</b> instead.</p>';
+        $$('[data-id]', list).forEach((b) => b.addEventListener('click', () => start(b.dataset.id)));
+      }, 200);
+    });
+    if (preClient) start(preClient); else setTimeout(() => $('#m-name', m).focus(), 50);
   }
 
   /* =====================================================================
