@@ -51,6 +51,17 @@
     finally { btn.disabled = false; btn.innerHTML = label; }
   }
 
+  // Which reader produced the values: ChatGPT, or the built-in reader (ChatGPT off, unavailable or incomplete)
+  const readBy = (e) => {
+    if (!e) return '—';
+    if (e.engine === 'chatgpt') return `ChatGPT <span class="chip ai-ok">✓ ${esc(e.ai?.model || '')}</span>`;
+    const base = e.engine === 'apple-vision' ? 'Built-in reader (Apple Vision)' : 'Built-in reader';
+    if (!e.ai) return `${base} <span class="muted">· ChatGPT off</span>`;
+    if (e.ai.error) return `${base} <span class="chip pending">ChatGPT unavailable — backup used</span>`;
+    if (e.ai.incomplete) return `${base} <span class="chip ai-diff">ChatGPT couldn't read every value — backup used</span>`;
+    return e.ai.agreed ? `${base} + ChatGPT <span class="chip ai-ok">✓ agrees</span>` : `${base} + ChatGPT <span class="chip ai-diff">values differed</span>`; // uploads from the earlier two-reader version
+  };
+
   /* ---- workflow stage of an assessment (drives board columns and progress rings) ---- */
   const STAGES = [
     { id: 'upload', label: 'Awaiting upload', color: '#ff8a3d', pct: 10 },
@@ -294,7 +305,7 @@
   }
   const uploadCard = (u) => {
     const f = u.extraction?.fields || {}; const keys = u.kind === 'stress' ? ['stress_index', 'pulse_complexity'] : ['vascular_age_type', 'vascular_age_index'];
-    const kv = [['File', u.filename], ['Detected', u.extraction?.kind || '—'], ['Client', f.client_name?.value ?? '—'], ['Date', f.assessed_at?.value ? fmtDate(f.assessed_at.value) : '—'], ...keys.map((k) => [labelOf(k), f[k]?.value ?? '<span class="muted">not found</span>'])];
+    const kv = [['File', u.filename], ['Detected', u.extraction?.kind || '—'], ['Client', f.client_name?.value ?? '—'], ['Date', f.assessed_at?.value ? fmtDate(f.assessed_at.value) : '—'], ...keys.map((k) => [labelOf(k), f[k]?.value ?? '<span class="muted">not found</span>']), ['Read by', readBy(u.extraction)]];
     return `<div class="upload-card"><img src="/api/uploads/${u.upload_id}/preview" alt="" onerror="this.style.display='none'"><div><div class="kv">${kv.map(([k, v]) => `<span>${k}</span><span><b>${v}</b></span>`).join('')}</div>
       ${u.extraction?.warning ? `<div class="warn-box" style="margin-top:10px">${esc(u.extraction.warning)}</div>` : ''}${u.extraction?.error ? `<div class="bad-box" style="margin-top:10px">Could not read this PDF automatically: ${esc(u.extraction.error)}. Enter the values manually on the next step.</div>` : ''}
       <p class="small" style="margin:10px 0 0"><a class="link" href="/api/uploads/${u.upload_id}/file" target="_blank">Open original PDF</a></p></div></div>`;

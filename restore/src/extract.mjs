@@ -24,6 +24,13 @@ export async function ocr(pngPath) {
   return lines.map((o) => ({ ...o, cy: o.y + o.h / 2, cx: o.x + o.w / 2 }));
 }
 
+// Just the top strip of the page (report title, "name / sex / age", date) as its own sharp image — read on this server
+// when ChatGPT reads the values, so the client's name and the date never leave it.
+export async function renderHeader(pdfPath, pngPath) {
+  const script = `import fitz,sys\nd=fitz.open(sys.argv[1]); p=d[0]; r=p.rect\np.get_pixmap(dpi=300, clip=fitz.Rect(0, 0, r.width, r.height*0.1)).save(sys.argv[2])`;
+  await run(PY, ['-c', script, pdfPath, pngPath]);
+}
+
 async function appleVision(pngPath) {
   if (!fs.existsSync(OCR_BIN)) throw new Error('OCR tool not built. Run: npm run setup');
   const { stdout } = await run(OCR_BIN, [pngPath], { maxBuffer: 16 * 1024 * 1024 });
@@ -140,24 +147,36 @@ function vascularFields(lines) {
   return out;
 }
 
-// aiRead (optional): async (pngPath) => readings — a second reader whose answers are compared with the built-in one.
-export async function extractUbio(pdfPath, pngPath, { aiRead, merge } = {}) {
+const READINGS = { stress: ['stress_index', 'pulse_complexity'], vascular: ['vascular_age_type', 'vascular_age_index'] };
+
+// aiRead (optional): ChatGPT reads the four engine readings from the cropped readings area; this server reads only the
+// header (title, name, age, date), which never leaves the server. If ChatGPT fails, misses a value or disagrees with the
+// report title, the built-in reader reads the whole page instead, so an upload never fails. Staff confirm every value.
+export async function extractUbio(pdfPath, pngPath, { aiRead, aiModel } = {}) {
   await renderPage(pdfPath, pngPath);
-  const aiPng = pngPath.replace(/\.png$/, '') + '-ai.png';
-  const [lines, ai] = await Promise.all([
-    ocr(pngPath),
-    aiRead ? renderForAi(pdfPath, aiPng).then(() => aiRead(aiPng)).catch((e) => ({ error: e.message })) : null,
+  if (!aiRead) return builtIn(pngPath);
+  const aiPng = pngPath.replace(/\.png$/, '') + '-ai.png', headPng = pngPath.replace(/\.png$/, '') + '-head.png';
+  const [head, ai] = await Promise.all([
+    renderHeader(pdfPath, headPng).then(() => ocr(headPng)),
+    renderForAi(pdfPath, aiPng).then(() => aiRead(aiPng)).catch((e) => ({ error: e.message })),
   ]);
-  let kind = detectKind(lines);
-  let fields = kind === 'stress' ? stressFields(lines) : kind === 'vascular' ? vascularFields(lines) : common(lines);
-  let aiInfo;
-  if (ai && merge) {
-    // The built-in reader couldn't tell which report this is but the AI could: apply that layout's rules first
-    if (kind === 'unknown' && (ai.kind === 'stress' || ai.kind === 'vascular')) fields = ai.kind === 'stress' ? stressFields(lines) : vascularFields(lines);
-    const m = merge(kind, fields, ai);
-    kind = m.kind; fields = m.fields; aiInfo = m.ai;
+  const keys = READINGS[ai.kind] || [];
+  const titleKind = detectKind(head);
+  if (!ai.error && keys.length && keys.every((k) => ai[k] != null) && (titleKind === 'unknown' || titleKind === ai.kind)) {
+    const src = `ChatGPT (${aiModel})`;
+    const fields = { ...common(head), archive: {} };
+    for (const k of keys) fields[k] = field(k === 'vascular_age_type' ? String(ai[k]).toUpperCase() : ai[k], 0.95, src);
+    return { kind: ai.kind, fields, lineCount: head.length, engine: 'chatgpt', ai: { model: aiModel, read: true } };
   }
-  return { kind, fields, lineCount: lines.length, engine: ocrEngine, ...(aiInfo ? { ai: aiInfo } : {}) };
+  const full = await builtIn(pngPath);
+  return { ...full, ai: ai.error ? { model: aiModel, error: ai.error } : { model: aiModel, incomplete: true, kind: ai.kind } };
+}
+
+async function builtIn(pngPath) {
+  const lines = await ocr(pngPath);
+  const kind = detectKind(lines);
+  const fields = kind === 'stress' ? stressFields(lines) : kind === 'vascular' ? vascularFields(lines) : common(lines);
+  return { kind, fields, lineCount: lines.length, engine: ocrEngine };
 }
 
 // Field rules applied to OCR lines from any engine ({text, confidence 0-1, x, y, w, h} normalised to the page)

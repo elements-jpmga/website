@@ -1,5 +1,5 @@
 // Optional OpenAI assistance (OPENAI_API_KEY). Two jobs, both reviewed by staff before anything is used:
-//   1. readUbio  — second reader for the four engine readings (page image cropped so no name/age/date is sent)
+//   1. readUbio  — reads the four engine readings from the UBIO page (cropped so no name/age/date is sent)
 //   2. draftEmail — the message paragraph of the client email
 // The AI never changes readings, scores, priorities, programmes or the plan: those come only from the rules engine.
 // No client name or contact details are sent for the writing jobs.
@@ -60,25 +60,6 @@ export async function readUbio(pngPath) {
     name: 'ubio_readings', schema: READ_SCHEMA, system: READ_SYSTEM,
     user: [{ type: 'text', text: 'Read the values from this report page.' }, { type: 'image_url', image_url: { url: `data:image/png;base64,${b64}`, detail: 'high' } }],
   });
-}
-
-// Combines the built-in reader's fields with the AI's: agreement raises confidence, any difference is flagged for staff.
-export function mergeReadings(kind, fields, ai) {
-  if (!ai) return { kind, fields };
-  if (ai.error) return { kind, fields, ai: { error: ai.error } };
-  const useKind = kind !== 'unknown' ? kind : ai.kind;
-  const keys = useKind === 'stress' ? ['stress_index', 'pulse_complexity'] : useKind === 'vascular' ? ['vascular_age_type', 'vascular_age_index'] : [];
-  const out = { ...fields };
-  const same = (a, b) => (typeof a === 'number' && typeof b === 'number' ? Math.abs(a - b) < 1e-9 : String(a).toUpperCase() === String(b).toUpperCase());
-  for (const k of keys) {
-    const ocr = fields[k] || { value: null, confidence: 0 };
-    const a = ai[k];
-    if (a == null) { out[k] = { ...ocr, note: [ocr.note, 'AI could not read this value'].filter(Boolean).join(' · ') }; continue; }
-    if (ocr.value == null) { out[k] = { value: a, confidence: 0.8, source: `AI (${model})`, note: 'Read by AI only — please check against the PDF', needsReview: true }; continue; }
-    if (same(ocr.value, a)) { out[k] = { ...ocr, confidence: Math.max(ocr.confidence, 0.97), note: [ocr.note, 'AI check agrees'].filter(Boolean).join(' · '), needsReview: false }; continue; }
-    out[k] = { value: a, confidence: 0.5, source: `AI (${model})`, note: `Built-in reader read ${ocr.value}, AI read ${a} — please check against the PDF`, needsReview: true };
-  }
-  return { kind: useKind, fields: out, ai: { model, kind: ai.kind, agreed: keys.every((k) => out[k]?.note?.includes('AI check agrees')) } };
 }
 
 /* ---------- 2. Writing help (results only — no client name or contact details) ---------- */
