@@ -445,4 +445,4 @@ pre.json { background: #16161a; color: #f2f2f5; border-radius: var(--r); padding
 .resume .resume-row:first-of-type { border-top: 0; }
 .resume-who { display: flex; align-items: center; gap: 10px; min-width: 0; }
 @media (max-width: 900px) { .start-card { grid-template-columns: minmax(0, 1fr); gap: 18px; padding: 22px 18px; } .start-card h1 { font-size: 22px; } .tiles { grid-template-columns: 1fr 1fr; } .start-sugg { top: 84px; } .btn.start-btn { padding: 0 16px; } }
-@media (max-width: 560px) { .start-row { flex-direction: column; } .btn.start-btn { width: 100%; } .start-sugg { top: 142px; } }
+@media (max-width: 560px) { .start-row { flex-direction: column; } .start-row input { flex: none; } .btn.start-btn { width: 100%; } .start-sugg { top: 142px; } }
