@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { esc, icon, btn, faqList } from './ui.mjs';
+import { resolveUrl } from './data.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dir = path.join(root, '_research/pages');
@@ -19,7 +20,8 @@ export const oldPage = (p) => {
 
 const strip = (h = '') => h.replace(/<[^>]+>/g, ' ').replace(/&nbsp;|&#8211;|&#8217;/g, ' ').replace(/\s+/g, ' ').trim();
 const isLabel = (t) => t.length > 1 && t.length <= 42 && t === t.toUpperCase() && /[A-Z]/.test(t) && !/[.!?]$/.test(t);
-const fixHref = (h = '#') => (/^https?:\/\/(www\.)?elements\.com\.sg/.test(h) ? h.replace(/^https?:\/\/(www\.)?elements\.com\.sg/, '') : h) || '#';
+// Internal links in old copy point at old URLs: send them to the page that replaced it
+const fixHref = (h = '#') => { const local = /^https?:\/\/(www\.)?elements\.com\.sg/.test(h) ? h.replace(/^https?:\/\/(www\.)?elements\.com\.sg/, '') || '/' : h; return (local.startsWith('/') && !/\.(pdf|jpe?g|png|webp)$/i.test(local) ? resolveUrl(local) : local) || '#'; };
 const bookLink = (t, h) => (/book|appointment/i.test(t) && (!h || h === '#' || /wpforms|#/.test(h)) ? '/book-appointment/' : fixHref(h));
 const listify = (html) => {
   // "– item" / "• item" paragraphs → proper lists
@@ -32,6 +34,7 @@ const listify = (html) => {
   }
   flush(); return out;
 };
+const fixLinks = (html) => html.replace(/href="([^"]*)"/g, (m, h) => `href="${fixHref(h)}"`);
 const ytEmbed = (u = '') => { const m = u.match(/(?:v=|youtu\.be\/|embed\/)([\w-]{6,})/); return m ? `https://www.youtube-nocookie.com/embed/${m[1]}` : u; };
 
 /** Remove blocks that our page hero already shows (label, title, hero image, tagline, book button, price line). */
@@ -78,15 +81,15 @@ export function renderBlocks(blocks, opts = {}) {
         if (isLabel(t)) out.push(`<span class="cf-label" data-reveal>${esc(t)}</span>`);
         else if (/^[“"]/.test(t) && t.length < 320) out.push(`<blockquote class="cf-quote" data-reveal>${esc(t.replace(/^[“"]|[”"]$/g, ''))}</blockquote>`);
         else if (t.length < 60 && !/[.!?:]$/.test(t) && /^<p>(<strong>|<b>)?[^<]{2,60}(<\/strong>|<\/b>)?<\/p>$/.test(b.html.trim())) out.push(`<h3 class="cf-h3 small" data-reveal>${esc(t)}</h3>`);
-        else out.push(`<div class="cf-prose prose" data-reveal>${listify(b.html)}</div>`);
+        else out.push(`<div class="cf-prose prose" data-reveal>${listify(fixLinks(b.html))}</div>`);
         break;
       }
       case 'image': if (!seenImg.has(b.src)) { seenImg.add(b.src); imgRun.push(b); } break;
       case 'gallery': out.push(`<div class="cf-gallery c3">${b.images.filter((i) => !seenImg.has(i.src)).map((i) => { seenImg.add(i.src); return `<figure data-reveal><img src="${i.src}" alt="${esc(i.alt)}" loading="lazy"></figure>`; }).join('')}</div>`); break;
       case 'button': out.push(`<div class="cf-actions" data-reveal>${btn(bookLink(b.text, b.href), b.text.replace(/\s+/g, ' ').toLowerCase().replace(/^\w/, (c) => c.toUpperCase()))}</div>`); break;
       case 'list': out.push(`<ul class="checklist" data-reveal>${b.items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>`); break;
-      case 'faq': out.push(`<div class="cf-faq">${faqList(b.items.map((i) => ({ q: i.q, a: i.a })))}</div>`); break;
-      case 'card': out.push(`<div class="cf-card" data-reveal>${b.img ? `<img src="${b.img}" alt="" loading="lazy">` : ''}<div>${b.title ? `<h3>${esc(b.title)}</h3>` : ''}${b.html ? `<div class="prose">${b.html}</div>` : ''}${b.href ? `<a class="link-arrow" href="${fixHref(b.href)}">Learn more ${icon.arrow}</a>` : ''}</div></div>`); break;
+      case 'faq': out.push(`<div class="cf-faq">${faqList(b.items.map((i) => ({ q: i.q, a: fixLinks(i.a) })))}</div>`); break;
+      case 'card': out.push(`<div class="cf-card" data-reveal>${b.img ? `<img src="${b.img}" alt="" loading="lazy">` : ''}<div>${b.title ? `<h3>${esc(b.title)}</h3>` : ''}${b.html ? `<div class="prose">${fixLinks(b.html)}</div>` : ''}${b.href ? `<a class="link-arrow" href="${fixHref(b.href)}">Learn more ${icon.arrow}</a>` : ''}</div></div>`); break;
       case 'quote': out.push(`<blockquote class="cf-quote" data-reveal>${esc(b.text)}${b.who ? `<cite>${esc(b.who)}</cite>` : ''}</blockquote>`); break;
       case 'video': if (b.url) out.push(`<div class="cf-video" data-reveal><iframe src="${ytEmbed(b.url)}" title="Video" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`); break;
       case 'map': if (b.src) out.push(`<div class="cf-video map" data-reveal><iframe src="${b.src}" title="Map" loading="lazy"></iframe></div>`); break;
@@ -97,4 +100,14 @@ export function renderBlocks(blocks, opts = {}) {
   flushImgs();
   // Group consecutive cards into a grid
   return out.join('\n').replace(/(<div class="cf-card"[\s\S]*?<\/div><\/div>\n?){2,}/g, (m) => `<div class="cf-cards">${m}</div>`);
+}
+
+/** The prose that follows a heading on an old page (until the next heading) — used for single items on shared pages. */
+export function sectionAfter(page, re) {
+  if (!page) return '';
+  const i = page.blocks.findIndex((b) => b.t === 'heading' && re.test(strip(b.text)));
+  if (i < 0) return '';
+  const out = [];
+  for (const b of page.blocks.slice(i + 1)) { if (b.t === 'heading') break; if (b.t === 'html') out.push(fixLinks(b.html)); if (b.t === 'list') out.push(`<ul>${b.items.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>`); }
+  return out.join('');
 }

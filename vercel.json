@@ -1,0 +1,1497 @@
+{
+  "buildCommand": "node build.mjs",
+  "outputDirectory": "dist",
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/services/facial/nir-cellbright-facial/",
+      "destination": "/nir-cellbright-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/nir-cellbright-facial",
+      "destination": "/nir-cellbright-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/24k-pure-gold-facial/",
+      "destination": "/24k-pure-gold-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/24k-pure-gold-facial",
+      "destination": "/24k-pure-gold-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/meridian-bojin-facial/",
+      "destination": "/meridian-bojin-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/meridian-bojin-facial",
+      "destination": "/meridian-bojin-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/lymphatic-sculpt-facial/",
+      "destination": "/lymphatic-sculpt-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/lymphatic-sculpt-facial",
+      "destination": "/lymphatic-sculpt-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/lpg-mobilift-facial/",
+      "destination": "/lpg-mobilift-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/lpg-mobilift-facial",
+      "destination": "/lpg-mobilift-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/nano-fibroblast-facial/",
+      "destination": "/nano-fibroblast-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/nano-fibroblast-facial",
+      "destination": "/nano-fibroblast-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/dermo-peel-facial/",
+      "destination": "/dermo-peel-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/dermo-peel-facial",
+      "destination": "/dermo-peel-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/3c-vitamin-glow-facial/",
+      "destination": "/3c-vitamin-glow-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/3c-vitamin-glow-facial",
+      "destination": "/3c-vitamin-glow-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/aquaglow/",
+      "destination": "/aquaglow-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/aquaglow",
+      "destination": "/aquaglow-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/power-dose-facial/",
+      "destination": "/power-dose-brightening-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/power-dose-facial",
+      "destination": "/power-dose-brightening-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/probiotic-facial/",
+      "destination": "/probiotic-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/probiotic-facial",
+      "destination": "/probiotic-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/hydrolux-facial/",
+      "destination": "/hydrolux-cryo-glow-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/hydrolux-facial",
+      "destination": "/hydrolux-cryo-glow-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/ipl-facial/",
+      "destination": "/ipl-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/ipl-facial",
+      "destination": "/ipl-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/wishpro-facial/",
+      "destination": "/wishpro-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/wishpro-facial",
+      "destination": "/wishpro-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/needleless-rejuran-facial/",
+      "destination": "/needleless-rejuran-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/needleless-rejuran-facial",
+      "destination": "/needleless-rejuran-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/indiba-proionic-facial/",
+      "destination": "/indiba-gravity-defy-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/indiba-proionic-facial",
+      "destination": "/indiba-gravity-defy-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/medi-jet-facial/",
+      "destination": "/medi-jet-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/medi-jet-facial",
+      "destination": "/medi-jet-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/medi-stretch/",
+      "destination": "/medi-stretch-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/medi-stretch",
+      "destination": "/medi-stretch-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/fascia-release-therapy/",
+      "destination": "/fascia-release-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/fascia-release-therapy",
+      "destination": "/fascia-release-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/indiba-recovery/",
+      "destination": "/indiba-pro-recovery/",
+      "permanent": true
+    },
+    {
+      "source": "/indiba-recovery",
+      "destination": "/indiba-pro-recovery/",
+      "permanent": true
+    },
+    {
+      "source": "/indiba-slimming/",
+      "destination": "/indiba-proionic-slimming/",
+      "permanent": true
+    },
+    {
+      "source": "/indiba-slimming",
+      "destination": "/indiba-proionic-slimming/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/swedish-massage/",
+      "destination": "/swedish-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/swedish-massage",
+      "destination": "/swedish-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/deep-tissue-massage/",
+      "destination": "/deep-tissue-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/deep-tissue-massage",
+      "destination": "/deep-tissue-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/sports-massage/",
+      "destination": "/sports-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/sports-massage",
+      "destination": "/sports-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/tuina-massage/",
+      "destination": "/tuina-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/tuina-massage",
+      "destination": "/tuina-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/prenatal-massage/",
+      "destination": "/prenatal-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/prenatal-massage",
+      "destination": "/prenatal-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/postnatal-massage/",
+      "destination": "/postnatal-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/postnatal-massage",
+      "destination": "/postnatal-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/lymphatic-drainage-massage/",
+      "destination": "/lymphatic-drainage-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/lymphatic-drainage-massage",
+      "destination": "/lymphatic-drainage-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/the-5-elements-massage/",
+      "destination": "/5-elements-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/the-5-elements-massage",
+      "destination": "/5-elements-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/ginseng-bojin-meridian-massage/",
+      "destination": "/ginseng-bojin-meridian-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/ginseng-bojin-meridian-massage",
+      "destination": "/ginseng-bojin-meridian-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/acuwave-relief-therapy/",
+      "destination": "/acu-wave-relief-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/acuwave-relief-therapy",
+      "destination": "/acu-wave-relief-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/moxibustion/",
+      "destination": "/meridian-moxibustion-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/moxibustion",
+      "destination": "/meridian-moxibustion-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/services/wellness/red-light-therapy/",
+      "destination": "/red-light-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/services/wellness/red-light-therapy",
+      "destination": "/red-light-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/spa-ritual/onsen-spa/",
+      "destination": "/koyamaki-onsen-ritual/",
+      "permanent": true
+    },
+    {
+      "source": "/spa-ritual/onsen-spa",
+      "destination": "/koyamaki-onsen-ritual/",
+      "permanent": true
+    },
+    {
+      "source": "/services/wellness/ice-bath-therapy/",
+      "destination": "/chill-and-heal-ritual/",
+      "permanent": true
+    },
+    {
+      "source": "/services/wellness/ice-bath-therapy",
+      "destination": "/chill-and-heal-ritual/",
+      "permanent": true
+    },
+    {
+      "source": "/services/wellness/herbal-bath-therapy/",
+      "destination": "/tcm-herbal-harmony-ritual/",
+      "permanent": true
+    },
+    {
+      "source": "/services/wellness/herbal-bath-therapy",
+      "destination": "/tcm-herbal-harmony-ritual/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/couple-massage/",
+      "destination": "/couple-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/couple-massage",
+      "destination": "/couple-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/aging-wrinkles-sagging/",
+      "destination": "/fine-lines-firmness/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/aging-wrinkles-sagging",
+      "destination": "/fine-lines-firmness/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/dull-uneven/",
+      "destination": "/dull-tired-skin/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/dull-uneven",
+      "destination": "/dull-tired-skin/",
+      "permanent": true
+    },
+    {
+      "source": "/skin-brightening/",
+      "destination": "/pigmentation-uneven-skin-tone/",
+      "permanent": true
+    },
+    {
+      "source": "/skin-brightening",
+      "destination": "/pigmentation-uneven-skin-tone/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/dry-dehydrated/",
+      "destination": "/dry-dehydrated-skin/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/dry-dehydrated",
+      "destination": "/dry-dehydrated-skin/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/oily-acne-open-pores/",
+      "destination": "/congestion-breakouts/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/oily-acne-open-pores",
+      "destination": "/congestion-breakouts/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/sensitive/",
+      "destination": "/sensitive-reactive-skin/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/sensitive",
+      "destination": "/sensitive-reactive-skin/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/muscle-joints-massage/",
+      "destination": "/stiffness-limited-mobility/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/muscle-joints-massage",
+      "destination": "/stiffness-limited-mobility/",
+      "permanent": true
+    },
+    {
+      "source": "/services/slimming/",
+      "destination": "/body-contouring/",
+      "permanent": true
+    },
+    {
+      "source": "/services/slimming",
+      "destination": "/body-contouring/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/eye-area-treatment/",
+      "destination": "/eye-treatments/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/eye-area-treatment",
+      "destination": "/eye-treatments/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/omega-light-therapy/",
+      "destination": "/facial-boosters/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/omega-light-therapy",
+      "destination": "/facial-boosters/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/massage-enhancements/",
+      "destination": "/massage-recovery-boosters/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/massage-enhancements",
+      "destination": "/massage-recovery-boosters/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/",
+      "destination": "/facials/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial",
+      "destination": "/facials/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/",
+      "destination": "/massage-and-recovery/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage",
+      "destination": "/massage-and-recovery/",
+      "permanent": true
+    },
+    {
+      "source": "/spa-ritual/",
+      "destination": "/spa-experiences/",
+      "permanent": true
+    },
+    {
+      "source": "/spa-ritual",
+      "destination": "/spa-experiences/",
+      "permanent": true
+    },
+    {
+      "source": "/our-story/",
+      "destination": "/about-elements/",
+      "permanent": true
+    },
+    {
+      "source": "/our-story",
+      "destination": "/about-elements/",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us/",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/services/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/services/wellness/",
+      "destination": "/massage-and-recovery/",
+      "permanent": true
+    },
+    {
+      "source": "/services/wellness",
+      "destination": "/massage-and-recovery/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/men_facial/",
+      "destination": "/facials/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/men_facial",
+      "destination": "/facials/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/pearl-light-facial/",
+      "destination": "/facials/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/pearl-light-facial",
+      "destination": "/facials/",
+      "permanent": true
+    },
+    {
+      "source": "/bridal-facial/",
+      "destination": "/facials/",
+      "permanent": true
+    },
+    {
+      "source": "/bridal-facial",
+      "destination": "/facials/",
+      "permanent": true
+    },
+    {
+      "source": "/biocell-stem-cell-science-face-treatment/",
+      "destination": "/facials/",
+      "permanent": true
+    },
+    {
+      "source": "/biocell-stem-cell-science-face-treatment",
+      "destination": "/facials/",
+      "permanent": true
+    },
+    {
+      "source": "/skin-rejuvenation-treatment-singapore/",
+      "destination": "/fine-lines-firmness/",
+      "permanent": true
+    },
+    {
+      "source": "/skin-rejuvenation-treatment-singapore",
+      "destination": "/fine-lines-firmness/",
+      "permanent": true
+    },
+    {
+      "source": "/eye-bojin-treatment/",
+      "destination": "/eye-treatments/",
+      "permanent": true
+    },
+    {
+      "source": "/eye-bojin-treatment",
+      "destination": "/eye-treatments/",
+      "permanent": true
+    },
+    {
+      "source": "/postnatal-body-care/",
+      "destination": "/postnatal-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/postnatal-body-care",
+      "destination": "/postnatal-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/antedote-aromatherapy/",
+      "destination": "/massage-recovery-boosters/",
+      "permanent": true
+    },
+    {
+      "source": "/antedote-aromatherapy",
+      "destination": "/massage-recovery-boosters/",
+      "permanent": true
+    },
+    {
+      "source": "/collagen-firming-body-massage/",
+      "destination": "/body-contouring/",
+      "permanent": true
+    },
+    {
+      "source": "/collagen-firming-body-massage",
+      "destination": "/body-contouring/",
+      "permanent": true
+    },
+    {
+      "source": "/tcm-tummy-trim/",
+      "destination": "/body-contouring/",
+      "permanent": true
+    },
+    {
+      "source": "/tcm-tummy-trim",
+      "destination": "/body-contouring/",
+      "permanent": true
+    },
+    {
+      "source": "/3d-cavitation/",
+      "destination": "/body-contouring/",
+      "permanent": true
+    },
+    {
+      "source": "/3d-cavitation",
+      "destination": "/body-contouring/",
+      "permanent": true
+    },
+    {
+      "source": "/3d-fat-freeze/",
+      "destination": "/body-contouring/",
+      "permanent": true
+    },
+    {
+      "source": "/3d-fat-freeze",
+      "destination": "/body-contouring/",
+      "permanent": true
+    },
+    {
+      "source": "/power-moxa/",
+      "destination": "/meridian-moxibustion-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/power-moxa",
+      "destination": "/meridian-moxibustion-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/meridian-flush-and-hyperwave/",
+      "destination": "/meridian-flush-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/meridian-flush-and-hyperwave",
+      "destination": "/meridian-flush-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/health-analysis/",
+      "destination": "/elements-restore/",
+      "permanent": true
+    },
+    {
+      "source": "/health-analysis",
+      "destination": "/elements-restore/",
+      "permanent": true
+    },
+    {
+      "source": "/shop/",
+      "destination": "/products/",
+      "permanent": true
+    },
+    {
+      "source": "/shop",
+      "destination": "/products/",
+      "permanent": true
+    },
+    {
+      "source": "/product/solo-koyamaki-onsen-spa-ritual-115-min/",
+      "destination": "/koyamaki-onsen-ritual/",
+      "permanent": true
+    },
+    {
+      "source": "/product/solo-koyamaki-onsen-spa-ritual-115-min",
+      "destination": "/koyamaki-onsen-ritual/",
+      "permanent": true
+    },
+    {
+      "source": "/product/couple-koyamaki-onsen-spa-ritual-115-min/",
+      "destination": "/koyamaki-onsen-ritual/",
+      "permanent": true
+    },
+    {
+      "source": "/product/couple-koyamaki-onsen-spa-ritual-115-min",
+      "destination": "/koyamaki-onsen-ritual/",
+      "permanent": true
+    },
+    {
+      "source": "/product/repeat-trial-body-massage/",
+      "destination": "/promotions/",
+      "permanent": true
+    },
+    {
+      "source": "/product/repeat-trial-body-massage",
+      "destination": "/promotions/",
+      "permanent": true
+    },
+    {
+      "source": "/product/first-trial-weekend-tuina-massage/",
+      "destination": "/promotions/",
+      "permanent": true
+    },
+    {
+      "source": "/product/first-trial-weekend-tuina-massage",
+      "destination": "/promotions/",
+      "permanent": true
+    },
+    {
+      "source": "/locations/the-centrepoint/",
+      "destination": "/locations/centrepoint/",
+      "permanent": true
+    },
+    {
+      "source": "/locations/the-centrepoint",
+      "destination": "/locations/centrepoint/",
+      "permanent": true
+    },
+    {
+      "source": "/onsen/",
+      "destination": "/koyamaki-onsen-ritual/",
+      "permanent": true
+    },
+    {
+      "source": "/onsen",
+      "destination": "/koyamaki-onsen-ritual/",
+      "permanent": true
+    },
+    {
+      "source": "/massage/",
+      "destination": "/massage-and-recovery/",
+      "permanent": true
+    },
+    {
+      "source": "/massage",
+      "destination": "/massage-and-recovery/",
+      "permanent": true
+    },
+    {
+      "source": "/facial/",
+      "destination": "/facials/",
+      "permanent": true
+    },
+    {
+      "source": "/facial",
+      "destination": "/facials/",
+      "permanent": true
+    },
+    {
+      "source": "/therapy/",
+      "destination": "/massage-and-recovery/",
+      "permanent": true
+    },
+    {
+      "source": "/therapy",
+      "destination": "/massage-and-recovery/",
+      "permanent": true
+    },
+    {
+      "source": "/ha-glutathione-power-dose-facial/",
+      "destination": "/power-dose-brightening-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/ha-glutathione-power-dose-facial",
+      "destination": "/power-dose-brightening-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/ginseng-bojin-meridian/",
+      "destination": "/ginseng-bojin-meridian-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/ginseng-bojin-meridian",
+      "destination": "/ginseng-bojin-meridian-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/menopause-massage/",
+      "destination": "/massage-and-recovery/",
+      "permanent": true
+    },
+    {
+      "source": "/services/massage/menopause-massage",
+      "destination": "/massage-and-recovery/",
+      "permanent": true
+    },
+    {
+      "source": "/tui-na-massage/",
+      "destination": "/tuina-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/tui-na-massage",
+      "destination": "/tuina-massage/",
+      "permanent": true
+    },
+    {
+      "source": "/indiba-proionic-gravity-defy-facial/",
+      "destination": "/indiba-gravity-defy-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/indiba-proionic-gravity-defy-facial",
+      "destination": "/indiba-gravity-defy-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/ipl-facial-intense-pulsed-light/",
+      "destination": "/ipl-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/ipl-facial-intense-pulsed-light",
+      "destination": "/ipl-facial/",
+      "permanent": true
+    },
+    {
+      "source": "/anti-aging/",
+      "destination": "/fine-lines-firmness/",
+      "permanent": true
+    },
+    {
+      "source": "/anti-aging",
+      "destination": "/fine-lines-firmness/",
+      "permanent": true
+    },
+    {
+      "source": "/neck-shoulder-body-massage-singapore/",
+      "destination": "/neck-shoulder-back-tension/",
+      "permanent": true
+    },
+    {
+      "source": "/neck-shoulder-body-massage-singapore",
+      "destination": "/neck-shoulder-back-tension/",
+      "permanent": true
+    },
+    {
+      "source": "/elements-ginseng-meridian-therapy/",
+      "destination": "/ginseng-bojin-meridian-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/elements-ginseng-meridian-therapy",
+      "destination": "/ginseng-bojin-meridian-therapy/",
+      "permanent": true
+    },
+    {
+      "source": "/slimming/",
+      "destination": "/body-contouring/",
+      "permanent": true
+    },
+    {
+      "source": "/slimming",
+      "destination": "/body-contouring/",
+      "permanent": true
+    },
+    {
+      "source": "/koyamaki-onsen/",
+      "destination": "/koyamaki-onsen-ritual/",
+      "permanent": true
+    },
+    {
+      "source": "/koyamaki-onsen",
+      "destination": "/koyamaki-onsen-ritual/",
+      "permanent": true
+    },
+    {
+      "source": "/jacuzzi-facility/",
+      "destination": "/locations/centrepoint/",
+      "permanent": true
+    },
+    {
+      "source": "/jacuzzi-facility",
+      "destination": "/locations/centrepoint/",
+      "permanent": true
+    },
+    {
+      "source": "/synergy-massage/",
+      "destination": "/massage-and-recovery/",
+      "permanent": true
+    },
+    {
+      "source": "/synergy-massage",
+      "destination": "/massage-and-recovery/",
+      "permanent": true
+    },
+    {
+      "source": "/ace-face-shaper/",
+      "destination": "/facials/",
+      "permanent": true
+    },
+    {
+      "source": "/ace-face-shaper",
+      "destination": "/facials/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/ace-face-shaper-facial/",
+      "destination": "/facials/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/ace-face-shaper-facial",
+      "destination": "/facials/",
+      "permanent": true
+    },
+    {
+      "source": "/purifying-black-magnelight-facial/",
+      "destination": "/congestion-breakouts/",
+      "permanent": true
+    },
+    {
+      "source": "/purifying-black-magnelight-facial",
+      "destination": "/congestion-breakouts/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/purifying-black-magnelight-facial/",
+      "destination": "/congestion-breakouts/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/purifying-black-magnelight-facial",
+      "destination": "/congestion-breakouts/",
+      "permanent": true
+    },
+    {
+      "source": "/face-meridian-restorative-treatment/",
+      "destination": "/facials/",
+      "permanent": true
+    },
+    {
+      "source": "/face-meridian-restorative-treatment",
+      "destination": "/facials/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/desensitize-facial/",
+      "destination": "/sensitive-reactive-skin/",
+      "permanent": true
+    },
+    {
+      "source": "/services/facial/desensitize-facial",
+      "destination": "/sensitive-reactive-skin/",
+      "permanent": true
+    },
+    {
+      "source": "/referral/",
+      "destination": "/referral-faq/",
+      "permanent": true
+    },
+    {
+      "source": "/referral",
+      "destination": "/referral-faq/",
+      "permanent": true
+    },
+    {
+      "source": "/product/singtelsg/",
+      "destination": "/singtelsg/",
+      "permanent": true
+    },
+    {
+      "source": "/product/singtelsg",
+      "destination": "/singtelsg/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/daily-vanity-2026-best-customisable-facial-90-mins/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/daily-vanity-2026-best-customisable-facial-90-mins",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/beauty-insider-2026-best-body-tension-relief-therapy/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/beauty-insider-2026-best-body-tension-relief-therapy",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/beauty-insider-2026-best-detoxifying-body-massage-treatment/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/beauty-insider-2026-best-detoxifying-body-massage-treatment",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/beauty-insider-2026-best-couple-wellness-ritual-experience/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/beauty-insider-2026-best-couple-wellness-ritual-experience",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/beauty-insider-2026-best-lymphatic-drainage-facial-treatment/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/beauty-insider-2026-best-lymphatic-drainage-facial-treatment",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/daily-vanity-2025-best-body-detox-treatment/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/daily-vanity-2025-best-body-detox-treatment",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/daily-vanity-2025-best-eye-treatment/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/daily-vanity-2025-best-eye-treatment",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/beauty-insider-2025-best-day-spa/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/beauty-insider-2025-best-day-spa",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/beauty-insider-2025-best-therapeutic-massage/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/beauty-insider-2025-best-therapeutic-massage",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/beauty-insider-2025-best-prenatal-massage/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/beauty-insider-2025-best-prenatal-massage",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/beauty-insider-2025-best-signature-massage/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/beauty-insider-2025-best-signature-massage",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/harpers-bazaar-2024-best-detox-experience/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/harpers-bazaar-2024-best-detox-experience",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/beauty-insider-2024-best-whitening-brightening/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/beauty-insider-2024-best-whitening-brightening",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/beauty-insider-2024-best-couple-spa/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/beauty-insider-2024-best-couple-spa",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/daily-vanity-2024-body-wash-night-shower-gel/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/daily-vanity-2024-body-wash-night-shower-gel",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/daily-vanity-2024-body-lotion-dry-skin/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/daily-vanity-2024-body-lotion-dry-skin",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/daily-vanity-2024-premium-brightening-serum/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/daily-vanity-2024-premium-brightening-serum",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/harpers-bazaar-2023-best-luxurious-facial/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/harpers-bazaar-2023-best-luxurious-facial",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/harpers-bazaar-2023-best-deep-tissue-massage/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/harpers-bazaar-2023-best-deep-tissue-massage",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2021-best-couple-spa-retreat/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2021-best-couple-spa-retreat",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2021-best-head-and-scalp-massage/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2021-best-head-and-scalp-massage",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2021-best-tcm-tummy-detox-treatment/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2021-best-tcm-tummy-detox-treatment",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/harpers-bazaar-2021-best-drainage-massage/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/harpers-bazaar-2021-best-drainage-massage",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/her-world-2021-best-purifying-facial/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/her-world-2021-best-purifying-facial",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/her-world-2021-best-deep-tissue-massage/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/her-world-2021-best-deep-tissue-massage",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/her-world-2021-best-holistic-spa/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/her-world-2021-best-holistic-spa",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/daily-vanity-2019-couple-spa/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/daily-vanity-2019-couple-spa",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/her-world-2019-best-top-to-toe-spa-experience/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/her-world-2019-best-top-to-toe-spa-experience",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2019-best-me-time-day-spa/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2019-best-me-time-day-spa",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2019-best-facial-stem-cell/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2019-best-facial-stem-cell",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2019-best-deep-tissue-massage/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2019-best-deep-tissue-massage",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/daily-vanity-2018-best-prenatal-massage/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/daily-vanity-2018-best-prenatal-massage",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/daily-vanity-2018-best-couple-spa/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/daily-vanity-2018-best-couple-spa",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/harpers-bazaar-2018-best-detox-experience/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/harpers-bazaar-2018-best-detox-experience",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/her-world-2017-best-firming-facial/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/her-world-2017-best-firming-facial",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/her-world-2017-best-clarifying-peel-treatment/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/her-world-2017-best-clarifying-peel-treatment",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/her-world-2017-best-aromatherapy-massage/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/her-world-2017-best-aromatherapy-massage",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2017-best-couple-treatment/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2017-best-couple-treatment",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/harpers-bazaar-2017-best-traditional-remedy-massage/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/harpers-bazaar-2017-best-traditional-remedy-massage",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/harpers-bazaar-2017-best-firming-massage/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/harpers-bazaar-2017-best-firming-massage",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/harpers-bazaar-2016-best-anti-ache-massage/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/harpers-bazaar-2016-best-anti-ache-massage",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/harpers-bazaar-2016-best-hydrating-facial/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/harpers-bazaar-2016-best-hydrating-facial",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/elle-2016-best-skin-plumping-treatment/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/elle-2016-best-skin-plumping-treatment",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2016-best-firming-massage/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2016-best-firming-massage",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2015-best-anti-cellulite-treatment/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2015-best-anti-cellulite-treatment",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2015-best-stress-relieving-massage/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2015-best-stress-relieving-massage",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2014-best-bust-care/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2014-best-bust-care",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2014-best-sports-massage/",
+      "destination": "/awards/",
+      "permanent": true
+    },
+    {
+      "source": "/awards/singapore-womens-weekly-2014-best-sports-massage",
+      "destination": "/awards/",
+      "permanent": true
+    }
+  ]
+}

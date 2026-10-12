@@ -1,9 +1,13 @@
-// Inner page templates. Each returns { path, html }.
-import { site, categories, services, concerns, outlets, awards, posts, faqs, products, promotions, promoTerms, voucherItems, blogTopics, story, policies, etiquette } from '../data.mjs';
-import { layout, esc, icon, btn, linkArrow, ring, faqList, logo, crumbs, serviceCard } from '../ui.mjs';
-import { oldPage, splitHero, renderBlocks, pageIndex } from '../content.mjs';
-import { shopProducts, googleFor } from '../data.mjs';
+// Inner page templates (client sitemap 2026). Each returns { path, html }.
+import fs from 'node:fs';
+import { site, groups, services, outlets, awards, posts, faqs, promotions, promoTerms, voucherItems, blogTopics, story, policies, etiquette, facialConcerns, massageConcerns, concernPagesAll, productBrands } from '../data.mjs';
+import * as SM from '../sitemap.mjs';
+import { layout, esc, icon, btn, linkArrow, faqList, logo, crumbs, serviceCard } from '../ui.mjs';
+import { oldPage, splitHero, renderBlocks, sectionAfter } from '../content.mjs';
+import { googleFor } from '../data.mjs';
 import { googleCard, starRow, fmtNum, gLogo } from '../ui.mjs';
+
+const restoreRules = JSON.parse(fs.readFileSync(new URL('../../restore/rules/v1.json', import.meta.url), 'utf8'));
 
 const pageHero = ({ eyebrow, title, lede, trail, img, dark = false, extra = '' }) => `
 <section class="page-hero ${dark ? 'dark' : ''}">
@@ -32,165 +36,209 @@ const ctaBand = (title = 'Ready when you are', sub = 'Book online, call or Whats
 const bc = (s) => ({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: s.map(([n, u], i) => ({ '@type': 'ListItem', position: i + 1, name: n, item: site.url + (u || '') })) });
 const faqSchema = (list) => ({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: list.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a.replace(/<[^>]+>/g, '') } })) });
 
-/* ---------- Services overview ---------- */
-export function servicesIndex() {
-  const trail = [['Home', '/'], ['Treatments']];
-  const body = pageHero({ eyebrow: 'All treatments', title: 'Treatments<br><span class="thin">for every body</span>', lede: 'Massage, facials, wellness therapies, slimming and spa rituals — search by how you feel, or browse by category.', trail,
-    extra: `<div style="margin-top:36px" data-reveal><button class="hero-finder" type="button" data-finder style="margin:0;background:var(--ivory);border-color:var(--line);color:var(--ink)">${icon.search}<span class="hf-text" style="color:var(--stone)">Search a treatment or concern…</span><span class="btn btn-sm" aria-hidden="true"><span>Find</span></span></button></div>` }) + `
+const copyNote = (status, what = 'Page copy') => status === 'new' ? `<p class="placeholder-note copy-note" data-reveal>✦ ${what} to be supplied by Elements</p>` : status === 'adapt' ? `<p class="placeholder-note copy-note" data-reveal>✦ Existing copy carried over — to be updated for the new page</p>` : '';
+const groupOf = (id) => groups.find((g) => g.id === id);
+const concernsFor = (s) => concernPagesAll.filter((c) => c.treatments.some((t) => t.id === s.id));
+const oldBody = (source, title, skip = []) => { const old = source ? oldPage(source) : null; if (!old) return { old: null, h: { rest: [] }, html: '' }; const h = splitHero(old, title); return { old, h, html: h.rest.length ? renderBlocks(h.rest, { skipImages: [h.heroImg, ...skip] }) : '' }; };
+const tile = (u, label, img, sub = '') => `<a class="card concern-card" href="${u}" data-reveal><div class="card-media"><img src="${img}" alt="" loading="lazy"></div><div class="card-body"><h3>${esc(label)}</h3>${sub ? `<p>${esc(sub)}</p>` : ''}<div class="meta"><span>Explore →</span></div></div></a>`;
+
+/* ---------- Main landing pages: Facials · Massage & Recovery ---------- */
+export function treatmentLanding(groupId) {
+  const g = groupOf(groupId); const L = groupId === 'facials' ? SM.landing.facials : SM.landing.massage;
+  const list = services.filter((s) => s.group === groupId);
+  const cps = groupId === 'facials' ? facialConcerns : massageConcerns;
+  const trail = [['Home', '/'], [g.label]];
+  const { h, html } = oldBody(L.source, groupId === 'facials' ? 'Facial' : 'Massage');
+  const focused = groupId === 'facials'
+    ? SM.facialShared.filter((p) => p.group === 'focused').map((p) => tile(p.url, p.label, `/assets/img/${p.img}`, p.items.length + ' options')).join('')
+    : SM.womensWellness.map((id) => list.find((s) => s.id === id)).map((s) => serviceCard(s)).join('');
+  const boost = groupId === 'facials' ? SM.facialShared.find((p) => p.group === 'boosters') : SM.massageBoosters;
+  const body = pageHero({ title: esc(g.label), lede: esc(h.tagline || g.blurb), trail, img: h.heroImg || g.hero }) + `
+${copyNote(L.copy, 'Overview copy')}
+${html ? `<section class="section-sm"><div class="content-flow wide">${html}</div></section>` : ''}
+<section class="section-sm"><div class="wrap"><div class="head-row"><div><span class="eyebrow">By concern</span><h2 style="margin-top:14px">Start with <span class="thin">how you feel.</span></h2></div></div>
+  <div class="cards-4">${cps.map((c) => tile(c.url, c.label, c.img, c.treatments.length + ' treatments')).join('')}</div></div></section>
+<section class="section-sm bg-ivory"><div class="wrap"><div class="head-row"><div><span class="eyebrow">Focused care</span><h2 style="margin-top:14px">${groupId === 'facials' ? 'Eyes <span class="thin">&amp; neck.</span>' : 'Women’s <span class="thin">wellness.</span>'}</h2></div>${linkArrow(boost.url, 'See the boosters')}</div>
+  <div class="cards-${groupId === 'facials' ? '2' : '4'}">${focused}</div></div></section>
+<section class="section-sm"><div class="wrap"><div class="head-row"><div><span class="eyebrow">By treatment</span><h2 style="margin-top:14px">All ${esc(g.label.toLowerCase())} <span class="thin">treatments.</span></h2></div></div>
+  <div class="svc-list">${list.map((s) => serviceCard(s)).join('')}</div></div></section>` + ctaBand();
+  return { path: g.url, html: layout({ title: `${g.label} in Singapore | Elements Wellness`, description: g.blurb, path: g.url, active: groupId, bodyClass: 'page-light', schema: [bc(trail)], body }) };
+}
+
+/* ---------- Concern pages (discovery pathways) ---------- */
+export function concernPage(c) {
+  const g = groupOf(c.group);
+  const trail = [['Home', '/'], [g.label, g.url], [c.label]];
+  const { old, h, html } = oldBody(c.source, c.label);
+  const body = pageHero({ eyebrow: `${g.label} · by concern`, title: esc(c.label), lede: esc(h.tagline || c.intro || ''), trail, img: h.heroImg || c.img }) + `
+${copyNote(c.copy)}
+${html ? `<section class="section-sm"><div class="content-flow wide">${html}</div></section>` : ''}
+<section class="section-sm"><div class="wrap"><div class="head-row"><div><span class="eyebrow">Recommended</span><h2 style="margin-top:14px">Treatments <span class="thin">for this concern.</span></h2></div>${linkArrow(g.url, 'All ' + g.label.toLowerCase())}</div>
+  <div class="svc-list">${c.treatments.map((s) => serviceCard(s)).join('')}</div></div></section>` + ctaBand();
+  return { path: c.url, html: layout({ title: `${c.label} — ${g.label} in Singapore | Elements Wellness`, description: old?.description || `${g.label} at Elements Wellness for ${c.label.toLowerCase()}.`, path: c.url, active: c.group, bodyClass: 'page-light', schema: [bc(trail)], body }) };
+}
+
+/* ---------- Shared pages: Eye Treatments · Neck Treatments · Facial Boosters · Massage & Recovery Boosters ---------- */
+const itemSource = {
+  'Bojin Eye Treatment': [/Eye Bojin/i], '24K Pure Gold Eye Treatment': [/24K Pure Gold Eye/i], 'Hydrating Collagen Eye Treatment': [/Hydrating Collagen Eye/i],
+  'Infra Ray Moxibustion / Muscle Blade': [/Infra/i], 'Volcanic Mud Mask': [/Volcanic/i], 'Guasha / Bojin': [/Gua ?sha/i], Cupping: [/Cupping/i],
+};
+export function sharedPage(p, groupId) {
+  const g = groupOf(groupId); const title = p.title || p.label;
+  const trail = [['Home', '/'], [g.label, g.url], [title]];
+  const old = p.source ? oldPage(p.source) : null;
+  const intro = old ? splitHero(old, title) : { rest: [] };
+  const items = p.items.map((name) => {
+    let desc = itemSource[name] ? sectionAfter(old, itemSource[name][0]) : '';
+    if (!desc && name === 'Omega Light Therapy' && old) desc = intro.tagline ? `<p>${esc(intro.tagline)}</p>` : '';
+    return { name, desc };
+  });
+  const isBooster = /boosters/.test(p.url);
+  const body = pageHero({ eyebrow: `${g.label} · ${isBooster ? 'add-ons' : 'focused care'}`, title: esc(title), lede: esc(isBooster ? 'Add-on options to deepen your treatment. Your therapist will advise which suit you.' : (intro.tagline || '')), trail, img: intro.heroImg || `/assets/img/${p.img}` }) + `
+${copyNote(p.copy)}
 <section class="section-sm"><div class="wrap">
-  ${categories.map((c, i) => `
-  <div style="margin-bottom:clamp(64px,8vw,120px)" id="${c.id}">
-    <div class="head-row"><div><span class="eyebrow" data-reveal>${esc(c.label)}</span><h2 data-split style="margin-top:18px">${esc(c.label)}</h2></div><div style="max-width:520px"><p class="lede" data-reveal style="margin-bottom:18px">${esc(c.blurb)}</p>${linkArrow(c.url, 'View ' + c.label.toLowerCase())}</div></div>
-    <div class="cards-4">${services.filter((s) => s.category === c.id && !s.hidden).slice(0, 4).map((s) => serviceCard(s)).join('')}</div>
-  </div>`).join('')}
-</div></section>` + ctaBand();
-  return { path: '/services/', html: layout({ title: 'Spa Treatments in Singapore — Massage, Facial, Wellness & Slimming | Elements Wellness', description: 'Browse every Elements Wellness treatment: TCM and sports massage, results-driven facials, recovery therapies, INDIBA® slimming and onsen rituals across three Orchard Road outlets.', path: '/services/', active: 'services', bodyClass: 'page-light', schema: [bc(trail)], body }) };
-}
-
-/* ---------- Category page ---------- */
-export function categoryPage(c) {
-  const list = services.filter((s) => s.category === c.id && !s.hidden);
-  const trail = [['Home', '/'], ['Treatments', '/services/'], [c.label]];
-  const concernIds = [...new Set(list.flatMap((s) => s.concerns))];
-  const chips = concerns.filter((x) => concernIds.includes(x.id));
-  const sub = c.subpages || [];
-  const old = oldPage(c.url); const oh = old ? splitHero(old, c.label) : { rest: [] };
-  const body = pageHero({ title: esc(c.label), lede: esc(oh.tagline || c.blurb), trail, img: oh.heroImg || c.hero || c.img }) + `
-${old && oh.rest.length ? `<section class="section-sm"><div class="content-flow wide">${renderBlocks(oh.rest, { skipImages: [oh.heroImg] })}</div></section>` : ''}
-<section class="section-sm"><div class="wrap"><div class="head-row"><div><span class="eyebrow">All ${esc(c.label.toLowerCase())} treatments</span><h2 style="margin-top:14px">Browse <span class="thin">by concern.</span></h2></div></div>
-  ${sub.length ? `<div style="margin-bottom:56px"><div class="finder-label">Shop by skin concern</div><div class="cat-filter">${sub.map((p) => `<a class="chip" href="${p.url}">${esc(p.label)}</a>`).join('')}</div></div>` : ''}
-  <div class="cat-filter" data-filter-group="#svc-list" role="group" aria-label="Filter by concern">
-    <button class="chip" type="button" data-filter="all" aria-pressed="true">All ${list.length}</button>
-    ${chips.map((x) => `<button class="chip" type="button" data-filter="${x.id}" aria-pressed="false">${esc(x.label)}</button>`).join('')}
+  <div class="opt-table" role="table" aria-label="${esc(title)}">
+    <div class="opt-row opt-head" role="row"><span role="columnheader">Option</span><span role="columnheader">${isBooster ? 'Added time' : 'Duration'}</span><span role="columnheader">Price</span><span role="columnheader">Suitable with</span></div>
+    ${items.map((i) => `<div class="opt-row" role="row" data-reveal><div role="cell"><h3>${esc(i.name)}</h3>${i.desc ? `<div class="prose small-prose">${i.desc}</div>` : '<p class="placeholder-note">Description to be supplied</p>'}</div><span role="cell">To be confirmed</span><span role="cell">To be confirmed</span><span role="cell">${isBooster ? 'To be confirmed' : 'Add to any facial'}</span></div>`).join('')}
   </div>
-  <div class="svc-list" id="svc-list">${list.map((s) => serviceCard(s)).join('')}</div>
-</div></section>
-${c.faqs?.length ? `<section class="section bg-ivory"><div class="wrap-narrow"><span class="eyebrow" data-reveal>${esc(c.label)} FAQ</span><h2 data-split style="margin:20px 0 40px">Before you book</h2>${faqList(c.faqs)}</div></section>` : ''}
-` + ctaBand();
-  return { path: c.url, html: layout({ title: old?.title ? `${old.title} | Elements Wellness` : `${c.label} in Singapore | Elements Wellness`, description: old?.description || c.metaDescription || c.blurb, path: c.url, active: 'services', bodyClass: 'page-light', schema: [bc(trail), ...(c.faqs?.length ? [faqSchema(c.faqs)] : [])], body }) };
+  <p class="form-note" style="margin-top:18px">${isBooster ? 'These options are added to a booked treatment and do not have their own pages.' : 'These treatments are recommended as add-ons during a facial.'}</p>
+</div></section>` + ctaBand();
+  return { path: p.url, html: layout({ title: `${title} | ${g.label} | Elements Wellness`, description: `${title} at Elements Wellness: ${p.items.join(', ')}.`, path: p.url, active: groupId, bodyClass: 'page-light', schema: [bc(trail)], body }) };
 }
 
-/* ---------- Concern sub-page (e.g. facial concern pages kept from old site) ---------- */
-export function concernPage(c, sp) {
-  const rec = sp.recommended.map((n) => services.find((s) => s.category === 'facial' && !s.alias && (s.name.toLowerCase().includes(n.toLowerCase().replace(/\s*\(.*\)|®/g, '').replace(' facial', '').trim()) || n.toLowerCase().includes(s.name.toLowerCase().replace(/®|\s*\(.*\)/g, '').replace(' facial', ''))))).filter(Boolean);
-  const list = [...new Set([...rec, ...services.filter((s) => s.category === c.id && s.concerns.includes(sp.concern))])];
-  const trail = [['Home', '/'], ['Treatments', '/services/'], [c.label, c.url], [sp.label]];
-  const old = oldPage(sp.url); const oh = old ? splitHero(old, sp.label) : { rest: [] };
-  const body = pageHero({ eyebrow: `${c.label} · by concern`, title: esc(sp.label), lede: esc(oh.tagline || sp.blurb), trail, img: oh.heroImg }) + `
-${old && oh.rest.length ? `<section class="section-sm"><div class="content-flow wide">${renderBlocks(oh.rest, { skipImages: [oh.heroImg] })}</div></section>` : ''}
-<section class="section-sm"><div class="wrap"><div class="head-row"><div><span class="eyebrow">Recommended</span><h2 style="margin-top:14px">Treatments <span class="thin">for this concern.</span></h2></div></div><div class="svc-list">${(list.length ? list : services.filter((s) => s.category === c.id).slice(0, 6)).map((s) => serviceCard(s)).join('')}</div></div></section>` + ctaBand();
-  return { path: sp.url, html: layout({ title: old?.title ? `${old.title} | Elements Wellness` : `${sp.label} Facial Treatments in Singapore | Elements Wellness`, description: old?.description || sp.blurb, path: sp.url, active: 'services', bodyClass: 'page-light', schema: [bc(trail)], body }) };
-}
-
-/* ---------- Service detail ---------- */
+/* ---------- Treatment & ritual pages ---------- */
 export function servicePage(s) {
-  const c = categories.find((x) => x.id === s.category);
-  const trail = [['Home', '/'], ['Treatments', '/services/'], [c.label, c.url], [s.name]];
-  const related = services.filter((x) => x.id !== s.id && !x.hidden && (x.category === s.category || x.concerns.some((k) => s.concerns.includes(k)))).slice(0, 3);
+  const g = groupOf(s.group);
+  const trail = [['Home', '/'], [g.label, g.url], [s.name]];
+  const cps = concernsFor(s);
+  const related = services.filter((x) => x.id !== s.id && x.group === s.group && (cps.some((c) => c.treatments.includes(x)) || !cps.length)).slice(0, 3);
   const aw = awards.filter((a) => a.serviceIds?.includes(s.id));
   const avail = outlets.filter((o) => !s.outlets || s.outlets.includes(o.id));
-  const old = oldPage(s.url);
+  const old = s.source ? oldPage(s.source) : null;
   const h = old ? splitHero(old, s.name) : { rest: [] };
   const heroImg = h.heroImg || s.img;
-  const lede = h.tagline || s.short;
+  const lede = h.tagline || (s.isNew ? '' : s.short);
   const priceLine = h.price || [s.duration, s.price ? `${s.priceNote || ''} ${s.price}`.trim() : '', s.up ? `U.P. ${s.up}` : ''].filter(Boolean).join(' · ');
+  const options = s.options ? `<section class="section-sm bg-ivory"><div class="wrap"><div class="head-row"><div><span class="eyebrow">Options &amp; prices</span><h2 style="margin-top:14px">Choose <span class="thin">your ritual.</span></h2></div></div>
+    <div class="opt-table" role="table"><div class="opt-row opt-head" role="row"><span role="columnheader">Option</span><span role="columnheader">Duration</span><span role="columnheader">Price</span><span role="columnheader"></span></div>
+    ${s.options.map(([n, d, pr], i) => `<div class="opt-row" role="row" data-reveal><div role="cell"><h3>${esc(n)}</h3></div><span role="cell">${esc(d)}</span><span role="cell">${esc(pr)}</span><span role="cell">${btn(`/book-appointment/?treatment=${s.id}&option=${i}`, i === 0 ? 'Book' : 'Buy', 'btn-sm')}</span></div>`).join('')}</div>
+    <p class="form-note" style="margin-top:16px">Prices include GST. Inclusions for each option and the online purchase method are to be confirmed by Elements.</p></div></section>` : '';
+  const coupleRituals = s.id === 'couple-massage' ? `<section class="section-sm bg-ivory"><div class="wrap"><div class="head-row"><div><span class="eyebrow">For two</span><h2 style="margin-top:14px">Couple <span class="thin">rituals.</span></h2></div>${linkArrow('/spa-experiences/', 'All spa experiences')}</div><div class="cards-3">${services.filter((x) => x.ritual).map((x) => serviceCard(x)).join('')}</div></div></section>` : '';
   const body = `
 <section class="page-hero"><div class="wrap">
   ${crumbs(trail)}
   <div class="svc-hero">
     <div>
-      <span class="eyebrow" data-reveal="drop">${esc(h.label || c.label)}${s.tag ? ' · ' + esc(s.tag) : ''}</span>
+      <span class="eyebrow" data-reveal="drop">${esc(g.label)}${s.tag ? ' · ' + esc(s.tag) : ''}</span>
       <h1 data-split style="margin-top:18px;font-size:clamp(34px,4.8vw,72px)">${esc(s.name)}</h1>
-      <p class="lede" data-reveal style="margin-top:20px">${esc(lede)}</p>
+      ${lede ? `<p class="lede" data-reveal style="margin-top:20px">${esc(lede)}</p>` : ''}
       <div class="svc-facts" data-reveal>
-        <div><small>Duration</small><b>${esc(s.duration || 'Ask us')}</b></div>
-        <div><small>${esc(s.priceNote || 'Price')}</small><b>${esc(s.price || 'Enquire')}</b>${s.up ? ` <s class="muted" style="font-size:13px">U.P. ${esc(s.up)}</s>` : ''}</div>
+        <div><small>Duration</small><b>${esc(s.duration || (s.isNew ? 'To be confirmed' : 'Ask us'))}</b></div>
+        <div><small>${esc(s.priceNote || 'Price')}</small><b>${esc(s.price || (s.isNew ? 'To be confirmed' : 'Enquire'))}</b>${s.up ? ` <s class="muted" style="font-size:13px">U.P. ${esc(s.up)}</s>` : ''}</div>
         <div><small>Available at</small><b style="font-size:14px">${avail.map((o) => esc(o.short)).join(' · ')}</b></div>
       </div>
-      <div class="hero-actions" style="justify-content:flex-start;margin-top:28px" data-reveal>${btn(`/book-appointment/?treatment=${s.id}`, 'Book this treatment')}${btn(site.whatsapp, 'Ask a therapist', 'btn-ghost', 'target="_blank" rel="noopener"')}</div>
+      <div class="hero-actions" style="justify-content:flex-start;margin-top:28px" data-reveal>${btn(`/book-appointment/?treatment=${s.id}`, s.ritual ? 'Book this ritual' : 'Book this treatment')}${btn(site.whatsapp, 'Ask a therapist', 'btn-ghost', 'target="_blank" rel="noopener"')}</div>
       ${priceLine ? `<p class="small muted" data-reveal style="margin-top:14px;font-size:13px">${esc(priceLine)}</p>` : ''}
     </div>
     <div class="svc-hero-media" data-clip><img src="${heroImg}" alt="${esc(s.name)} at Elements Wellness"></div>
   </div>
 </div></section>
 <div class="reading-bar" aria-hidden="true"></div>
+${copyNote(s.copy, 'Treatment description')}
 <section class="section-sm"><div class="wrap svc-body">
   <aside class="svc-aside">
-    <div class="book-box"><small>${esc(s.priceNote || '')}${s.duration ? ' · ' + esc(s.duration) : ''}</small><div class="price">${esc(s.price || 'Enquire')}${s.up ? ` <s style="font-size:15px;opacity:.6">${esc(s.up)}</s>` : ''}</div><small>All prices after GST. First-trial offers for first-time local visitors.</small>${btn(`/book-appointment/?treatment=${s.id}`, 'Book now', 'btn-light')}</div>
-    ${aw.length ? `<div class="panel-soft"><span class="eyebrow">Award-winning</span><div class="awards-inline" style="margin-top:12px">${aw.map((a) => `<a href="${a.url}" title="${esc(a.title)}">${a.logo ? `<img src="${a.logo}" alt="${esc(a.title)}">` : `<span class="pill-award">${esc(a.publicationShort)} ${a.year}</span>`}</a>`).join('')}</div></div>` : ''}
+    <div class="book-box"><small>${esc(s.priceNote || '')}${s.duration ? ' · ' + esc(s.duration) : ''}</small><div class="price">${esc(s.price || (s.isNew ? 'To be confirmed' : 'Enquire'))}${s.up ? ` <s style="font-size:15px;opacity:.6">${esc(s.up)}</s>` : ''}</div><small>All prices after GST. First-trial offers for first-time local visitors.</small>${btn(`/book-appointment/?treatment=${s.id}`, 'Book Now', 'btn-light')}</div>
+    ${aw.length ? `<div class="panel-soft"><span class="eyebrow">Award-winning</span><div class="awards-inline" style="margin-top:12px">${aw.map((a) => `<a href="/awards/#${a.slug}" title="${esc(a.title)}">${a.logo ? `<img src="${a.logo}" alt="${esc(a.title)}">` : `<span class="pill-award">${esc(a.publicationShort)} ${a.year}</span>`}</a>`).join('')}</div>${linkArrow('/awards/', 'Awards & Recognition')}</div>` : ''}
   </aside>
   <div class="content-flow" style="padding-inline:0;max-width:none">
-    ${old && h.rest.length ? renderBlocks(h.rest, { skipImages: [heroImg] }) : `
-    <div class="cf-prose prose" data-reveal>${(s.description || s.short).split('\n\n').map((p) => `<p>${esc(p)}</p>`).join('')}</div>
-    ${s.targets?.length ? `<span class="cf-label">What it targets</span><ul class="checklist" data-reveal>${s.targets.map((b) => `<li>${esc(b)}</li>`).join('')}</ul>` : ''}`}
-    ${s.elements && !(old && h.rest.length) ? `<div class="el-grid">${Object.entries(s.elements).map(([k, v]) => { const [feel, organs, enh] = v.split(' — '); const g = { Metal: '金', Wood: '木', Water: '水', Fire: '火', Earth: '土' }[k]; return `<div class="el-card" data-reveal><span class="glyph">${g}</span><h3>${esc(k)}</h3><p><b>${esc(feel || '')}</b></p><p class="muted">${esc(organs || '')}</p><small>Enhancement · ${esc(enh || '')}</small></div>`; }).join('')}</div>` : ''}
-    <span class="cf-label">Good for</span>
-    <div class="suitable" data-reveal>${s.concerns.map((k) => concerns.find((x) => x.id === k)).filter(Boolean).map((x) => `<a href="/services/?concern=${x.id}" data-finder="concern:${x.id}"><span>${esc(x.label)}</span></a>`).join('')}</div>
+    ${old && h.rest.length ? renderBlocks(h.rest, { skipImages: [heroImg] }) : s.isNew ? '<div class="cf-prose prose"><p class="placeholder-note">What the treatment is, who it suits, what to expect and its benefits — to be supplied by Elements.</p></div>' : `
+    <div class="cf-prose prose" data-reveal>${(s.description || s.short).split('\n\n').map((p) => `<p>${esc(p)}</p>`).join('')}</div>`}
+    ${cps.length ? `<span class="cf-label">Good for</span><div class="suitable" data-reveal>${cps.map((c) => `<a href="${c.url}"><span>${esc(c.label)}</span></a>`).join('')}</div>` : ''}
   </div>
 </div></section>
-${related.length ? `<section class="section bg-ivory"><div class="wrap"><div class="head-row"><div><span class="eyebrow">Pairs well with</span><h2 style="margin-top:14px">You may <span class="thin">also like.</span></h2></div>${linkArrow(c.url, 'All ' + c.label.toLowerCase())}</div><div class="cards-3">${related.map((r) => serviceCard(r)).join('')}</div></div></section>` : ''}
+${options}${coupleRituals}
+${related.length ? `<section class="section ${options || coupleRituals ? '' : 'bg-ivory'}"><div class="wrap"><div class="head-row"><div><span class="eyebrow">Pairs well with</span><h2 style="margin-top:14px">You may <span class="thin">also like.</span></h2></div>${linkArrow(g.url, 'All ' + g.label.toLowerCase())}</div><div class="cards-3">${related.map((r) => serviceCard(r)).join('')}</div></div></section>` : ''}
 ` + ctaBand(`Book your ${esc(s.name.replace(/^The /, ''))}`);
-  const schema = [bc(trail), { '@context': 'https://schema.org', '@type': 'Service', name: s.name, serviceType: c.label, description: old?.description || s.short, provider: { '@type': 'DaySpa', name: 'Elements Wellness', url: site.url }, areaServed: 'Singapore', ...(s.priceNum ? { offers: { '@type': 'Offer', price: s.priceNum, priceCurrency: 'SGD' } } : {}) }];
-  return { path: s.url, html: layout({ title: old?.title ? `${old.title} | Elements Wellness` : `${s.name} Singapore | ${c.label} | Elements Wellness`, description: old?.description || s.meta || s.short, path: s.url, active: 'services', bodyClass: 'page-light', schema, ogImage: heroImg, body }) };
+  const schema = [bc(trail), { '@context': 'https://schema.org', '@type': 'Service', name: s.name, serviceType: g.label, description: old?.description || s.short, provider: { '@type': 'DaySpa', name: 'Elements Wellness', url: site.url }, areaServed: 'Singapore', ...(s.priceNum ? { offers: { '@type': 'Offer', price: s.priceNum, priceCurrency: 'SGD' } } : {}) }];
+  return { path: s.url, html: layout({ title: `${s.name} in Singapore | Elements Wellness`, description: old?.description || s.meta || s.short, path: s.url, active: s.group, bodyClass: 'page-light', schema, ogImage: heroImg, body }) };
 }
 
-/* ---------- Spa ritual + onsen ---------- */
-export function spaRitual() {
-  const c = categories.find((x) => x.id === 'spa-ritual');
-  const list = services.filter((s) => s.category === 'spa-ritual');
-  const trail = [['Home', '/'], ['Spa Ritual']];
-  const body = pageHero({ eyebrow: 'Spa rituals', title: 'Rituals made<br><span class="thin">for slowing down</span>', lede: esc(c.blurb), trail, img: '/assets/img/couple-onsen-2.jpg' }) + `
-<section class="section-sm"><div class="wrap"><div class="cards-3">${list.map((s) => serviceCard(s)).join('')}</div></div></section>` + ctaBand('Make time for two');
-  return { path: '/spa-ritual/', html: layout({ title: 'Spa Rituals & Couple Spa Packages in Singapore | Elements Wellness', description: c.blurb, path: '/spa-ritual/', active: 'ritual', bodyClass: 'page-light', schema: [bc(trail)], body }) };
+/* ---------- Spa Experiences overview ---------- */
+export function spaLanding() {
+  const g = groupOf('spa');
+  const trail = [['Home', '/'], [g.label]];
+  const list = services.filter((s) => s.group === 'spa');
+  const body = pageHero({ eyebrow: 'Spa experiences', title: 'Rituals made<br><span class="thin">for slowing down</span>', lede: esc(g.blurb), trail, img: g.img }) + `
+${copyNote(SM.landing.spa.copy, 'Overview copy')}
+<section class="section-sm"><div class="wrap"><div class="cards-4">${list.map((s) => serviceCard(s)).join('')}</div></div></section>` + ctaBand('Make time for two');
+  return { path: g.url, html: layout({ title: 'Spa Experiences — Onsen, Contrast & Herbal Rituals in Singapore | Elements Wellness', description: g.blurb, path: g.url, active: 'spa', bodyClass: 'page-light', schema: [bc(trail)], body }) };
 }
 
-/* ---------- Awards ---------- */
-export function awardsIndex() {
-  const trail = [['Home', '/'], ['Awards']];
-  const years = [...new Set(awards.map((a) => a.year))].sort((a, b) => b - a);
-  const body = pageHero({ eyebrow: 'Recognition', title: 'Award-winning,<br><span class="thin">year after year</span>', lede: `${awards.length} awards from Singapore’s leading beauty and lifestyle titles since 2014. Each award has its own page and links to the treatment it celebrates.`, trail, dark: true }) + `
+/* ---------- Elements Restore (launch planned for November) ---------- */
+export function restorePage() {
+  const trail = [['Home', '/'], ['Elements Restore']];
+  const R = restoreRules; const D = R.domains;
+  const rf = [
+    { q: 'What do I receive?', a: 'A printed or emailed Restore Profile with your Stress Load, Recovery Capacity and Circulation, your Restore Priority, and a Restore Plan with the matching Restore Program, plan duration and recommended frequency.' },
+    { q: 'How are recommendations made?', a: 'Your readings are applied to a fixed set of Elements Restore rules. Every domain that needs attention becomes a Restore Priority, and each priority has its own fixed Restore Program. Your consultant chooses between the approved options within that program.' },
+    { q: 'Is this a medical test?', a: esc(R.report.disclaimer) },
+    { q: 'How often should I repeat it?', a: `We suggest a Restore Review after ${esc(R.report.reviewWindow)}. ${esc(R.report.reviewText)}` },
+  ];
+  const body = pageHero({ eyebrow: 'Elements Restore · launching November', title: 'Elements<br><span class="thin">Restore</span>', lede: esc(R.report.brandLine) + ' ' + esc(R.report.profileSub), trail, dark: true,
+    extra: `<div class="hero-actions" style="justify-content:flex-start;margin-top:36px" data-reveal>${btn('/book-appointment/?treatment=elements-restore', 'Book an assessment', 'btn-light')}${btn('#how', 'How it works', 'btn-ghost-light')}</div>` }) + `
+${copyNote('new', 'Final page copy (this draft uses the Elements Restore report wording)')}
+<section class="section" id="how"><div class="wrap">
+  <div class="head-row"><div><span class="eyebrow">The assessment</span><h2 style="margin-top:14px">Three domains, <span class="thin">one clear picture.</span></h2></div><p class="lede">Two quick in-spa readings — a stress reading and a vascular reading — are turned into your Restore Profile.</p></div>
+  <div class="cards-3">${['stress', 'recovery', 'circulation'].map((k) => `<div class="card" data-reveal><div class="card-body"><span class="eyebrow">${esc(D[k].readingLabel)}</span><h3 style="margin-top:10px">${esc(D[k].label)}</h3><p>${esc(Object.values(D[k].explanations)[0].split('. ').slice(1).join('. ') || Object.values(D[k].explanations)[0])}</p><div class="meta"><span>Ideal: ${esc(D[k].idealRange.replace(/\n/g, ' · '))}</span></div></div></div>`).join('')}</div>
+</div></section>
+<section class="section-sm bg-ivory"><div class="wrap grid-2" style="align-items:start">
+  <div><span class="eyebrow">What you receive</span><h2 style="margin:16px 0 20px">Profile, priority, <span class="thin">plan &amp; review.</span></h2>
+    <ol class="ha-list"><li><span>01</span><b>Restore Profile</b> — your Stress Load, Recovery Capacity and Circulation with ideal ranges.</li><li><span>02</span><b>Restore Priority</b> — the domain(s) that need attention today, or Maintain.</li><li><span>03</span><b>Restore Plan</b> — the matching Restore Program, plan duration and recommended frequency.</li><li><span>04</span><b>Restore Review</b> — repeat the assessment after ${esc(R.report.reviewWindow)} to compare trends.</li></ol></div>
+  <div><span class="eyebrow">Plan length</span><div class="opt-table" style="margin-top:16px">${R.plan.map((p) => `<div class="opt-row"><div><h3>${p.priorities === 0 ? 'Maintain' : p.priorities + ' Restore Priorit' + (p.priorities > 1 ? 'ies' : 'y')}</h3></div><span>${esc(p.duration)}</span><span style="grid-column:span 2">${esc(p.frequency)}</span></div>`).join('')}</div></div>
+</div></section>
+<section class="section-sm"><div class="wrap"><div class="head-row"><div><span class="eyebrow">Restore Programs</span><h2 style="margin-top:14px">One fixed program <span class="thin">per priority.</span></h2></div></div>
+  <div class="cards-3">${Object.values(R.programs).map((p) => `<div class="card" data-reveal><div class="card-body"><h3>${esc(p.name)}</h3><p>${esc(p.benefit)}</p><ul class="checklist small-prose">${p.components.map((c) => `<li>${c.options.map(esc).join(' or ')} — ${esc(c.duration)}</li>`).join('')}</ul><div class="meta"><span>Optional enhancer: ${esc(p.enhancer)}</span></div></div></div>`).join('')}</div></div></section>
+<section class="section bg-sand"><div class="wrap-narrow"><span class="eyebrow" data-reveal>Questions</span><h2 data-split style="margin:20px 0 40px">Before you book</h2>${faqList(rf)}</div></section>` + ctaBand('Understand your body first', 'Book an Elements Restore assessment at any of our three outlets.');
+  return { path: '/elements-restore/', html: layout({ title: 'Elements Restore — Stress, Recovery & Circulation Assessment | Elements Wellness', description: 'Elements Restore turns two quick in-spa readings into a Restore Profile, Restore Priority and Restore Plan, with a review to track progress.', path: '/elements-restore/', active: 'restore', schema: [bc(trail), faqSchema(rf)], body }) };
+}
+
+/* ---------- Products (catalogue structure; inventory from Elements) ---------- */
+export function productsPage(kind = '') {
+  const label = kind === 'skincare' ? 'Skincare' : kind === 'supplements' ? 'Supplements' : 'Products';
+  const url = kind ? `/products/${kind}/` : '/products/';
+  const trail = kind ? [['Home', '/'], ['Products', '/products/'], [label]] : [['Home', '/'], ['Products']];
+  const body = pageHero({ eyebrow: 'Products', title: kind ? esc(label) : 'Take the results<br><span class="thin">home with you</span>', lede: kind === 'skincare' ? 'The professional skincare we use and recommend in our facials.' : kind === 'supplements' ? 'Wellness supplements selected by Elements to support your treatments between visits.' : 'The skincare and supplements sold by Elements — browse by category or by brand.', trail }) + `
+${copyNote('new', 'Brand, skincare and supplement inventory')}
 <section class="section-sm"><div class="wrap">
-  <div class="cat-filter" data-filter-group="#award-list" role="group" aria-label="Filter by year"><button class="chip" type="button" data-filter="all" aria-pressed="true">All years</button>${years.map((y) => `<button class="chip" type="button" data-filter="y${y}" aria-pressed="false">${y}</button>`).join('')}</div>
-  <div id="award-list">${awards.map((a) => `
-    <a class="award-row" href="${a.url}" data-tags="y${a.year}" data-reveal data-cursor="View">
+  ${kind ? '' : `<div class="cards-2" style="margin-bottom:56px">${tile('/products/skincare/', 'Skincare', '/assets/img/facial-mask.jpg', 'Professional skincare from the brands we use in treatment.')}${tile('/products/supplements/', 'Supplements', '/assets/img/herbal-flatlay.jpg', 'Wellness support between visits.')}</div>`}
+  <div class="head-row"><div><span class="eyebrow">By brand</span><h2 style="margin-top:14px">Our <span class="thin">brands.</span></h2></div></div>
+  ${productBrands.length ? '' : '<div class="empty-state"><p>Each carried brand gets its own page — introducing the brand, why Elements carries it and its products with selection guidance. Brands and products will appear here once Elements supplies the inventory.</p></div>'}
+</div></section>` + ctaBand('Not sure which product suits you?', 'Ask your therapist at your next visit, or WhatsApp us.');
+  return { path: url, html: layout({ title: `${label} | Elements Wellness Singapore`, description: 'Skincare and supplements sold by Elements Wellness.', path: url, active: 'products', bodyClass: 'page-light', schema: [bc(trail)], body }) };
+}
+
+/* ---------- Awards & Recognition: verified awards by year, awarding organisation, category and treatment ---------- */
+export function awardsIndex() {
+  const trail = [['Home', '/'], ['Awards & Recognition']];
+  const years = [...new Set(awards.map((a) => a.year))].sort((a, b) => b - a);
+  const orgs = [...new Set(awards.map((a) => a.publicationShort))].sort();
+  const orgKey = (o) => 'o-' + o.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  const body = pageHero({ eyebrow: 'Recognition', title: 'Awards &amp;<br><span class="thin">Recognition</span>', lede: `${awards.length} awards from Singapore’s leading beauty and lifestyle titles since 2014 — by year, awarding organisation, category and recognised treatment.`, trail, dark: true }) + `
+<section class="section-sm"><div class="wrap">
+  <div class="finder-label">By year</div>
+  <div class="cat-filter" data-filter-group="#award-list" role="group" aria-label="Filter by year"><button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>${years.map((y) => `<button class="chip" type="button" data-filter="y${y}" aria-pressed="false">${y}</button>`).join('')}</div>
+  <div class="finder-label" style="margin-top:14px">By awarding organisation</div>
+  <div class="cat-filter" data-filter-group="#award-list" role="group" aria-label="Filter by organisation">${orgs.map((o) => `<button class="chip" type="button" data-filter="${orgKey(o)}" aria-pressed="false">${esc(o)}</button>`).join('')}</div>
+  <div id="award-list" class="award-table">${awards.map((a) => { const s = services.find((x) => a.serviceIds?.includes(x.id)); return `
+    <div class="award-row" id="${a.slug}" data-tags="y${a.year} ${orgKey(a.publicationShort)}" data-reveal>
       <span class="yr">${a.year}</span>
       ${a.logo ? `<img src="${a.logo}" alt="" loading="lazy">` : `<span class="award-mono">${esc(a.publicationShort.split(' ').map((w) => w[0]).join('').slice(0, 3))}</span>`}
-      <div><h3>${esc(a.title)}</h3><p>${esc(a.publication)}${a.treatment ? ' · ' + esc(a.treatment) : ''}${a.label ? ' · <em style="font-style:normal;color:var(--maroon)">' + esc(a.label) + '</em>' : ''}</p></div>
-      <span class="link-arrow">View ${icon.arrow}</span>
-    </a>`).join('')}
+      <div><h3>${esc(a.title)}</h3><p>${esc(a.publication)}${a.category && a.category !== a.title ? ' · ' + esc(a.category) : ''}${a.label ? ' · <em style="font-style:normal;color:var(--maroon)">' + esc(a.label) + '</em>' : ''}</p></div>
+      ${s ? `<a class="link-arrow" href="${s.url}">${esc(s.name)} ${icon.arrow}</a>` : `<span class="small muted">${esc(a.treatment || '')}</span>`}
+    </div>`; }).join('')}
   </div>
 </div></section>` + ctaBand('Experience the award winners');
-  return { path: '/awards/', html: layout({ title: 'Awards & Accolades | Elements Wellness Singapore', description: 'Elements Wellness awards from Daily Vanity, Beauty Insider, Harper’s Bazaar, Her World, Women’s Weekly and more — and the treatments that won them.', path: '/awards/', active: 'awards', schema: [bc(trail)], body }) };
-}
-
-export function awardPage(a) {
-  const trail = [['Home', '/'], ['Awards', '/awards/'], [a.title]];
-  const svcs = services.filter((s) => a.serviceIds?.includes(s.id));
-  const others = [...awards.filter((x) => x.slug !== a.slug && x.year === a.year), ...awards.filter((x) => x.year !== a.year)].slice(0, 4);
-  const body = `
-<section class="page-hero"><div class="wrap">
-  ${crumbs(trail)}
-  <div class="grid-2">
-    <div>
-      <span class="eyebrow" data-reveal>${esc(a.publication)}${a.label ? ' · ' + esc(a.label) : ''}</span>
-      <h1 data-split style="margin-top:22px;font-size:clamp(32px,4.6vw,72px)">${esc(a.title)}</h1>
-      <p class="lede" data-reveal style="margin-top:24px">${esc(a.summary || `Elements Wellness was recognised by ${a.publication} in ${a.year}${a.category ? ` for ${a.category}` : ''}.`)}</p>
-      <div class="svc-facts" data-reveal><div><small>Year</small><b>${a.year}</b></div><div><small>Awarded by</small><b style="font-size:15px">${esc(a.publicationShort)}</b></div><div><small>Treatment</small><b style="font-size:15px">${esc(a.treatment || '—')}</b></div></div>
-      <div class="hero-actions" style="justify-content:flex-start;margin-top:32px" data-reveal>${svcs[0] ? btn(svcs[0].url, 'See the treatment') : btn('/services/', 'Explore treatments')}${a.source ? btn(a.source, 'Award source', 'btn-ghost', 'target="_blank" rel="noopener"') : ''}</div>
-    </div>
-    <div data-reveal>
-      <div class="award-hero-badge">
-        <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="c-${a.slug}" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs><text><textPath href="#c-${a.slug}">${esc(a.publication)} · ${a.year} · Elements Wellness · ${esc(a.publication)} · ${a.year} ·</textPath></text></svg>
-        ${a.logo ? `<img src="${a.logo}" alt="${esc(a.title)}">` : `<div style="text-align:center"><div class="h2" style="color:var(--maroon)">${a.year}</div><small class="caps" style="font-family:var(--f-display);font-weight:700;letter-spacing:.2em;font-size:11px;color:var(--stone);text-transform:uppercase">${esc(a.publicationShort)}</small></div>`}
-      </div>
-    </div>
-  </div>
-</div></section>
-${svcs.length ? `<section class="section-sm bg-ivory"><div class="wrap"><span class="eyebrow">The winning treatment${svcs.length > 1 ? 's' : ''}</span><div class="cards-3" style="margin-top:32px">${svcs.map((s) => serviceCard(s)).join('')}</div></div></section>` : ''}
-<section class="section-sm"><div class="wrap"><div class="head-row"><h2 style="font-size:clamp(24px,2.6vw,36px)">More accolades</h2>${linkArrow('/awards/', 'All awards')}</div>
-<div id="more">${others.map((o) => `<a class="award-row" href="${o.url}"><span class="yr">${o.year}</span>${o.logo ? `<img src="${o.logo}" alt="" loading="lazy">` : `<span class="award-mono">${esc(o.publicationShort.split(' ').map((w) => w[0]).join('').slice(0, 3))}</span>`}<div><h3>${esc(o.title)}</h3><p>${esc(o.publication)}</p></div><span class="link-arrow">View ${icon.arrow}</span></a>`).join('')}</div></div></section>` + ctaBand();
-  const schema = [bc(trail), { '@context': 'https://schema.org', '@type': 'WebPage', name: a.title, about: { '@type': 'DaySpa', name: 'Elements Wellness', award: `${a.title} (${a.publication}, ${a.year})` } }];
-  return { path: a.url, html: layout({ title: `${a.title} — ${a.publicationShort} ${a.year} | Elements Wellness`, description: `${a.treatment || 'Elements Wellness'} won ${a.title} at the ${a.publication}. ${a.summary || 'See the award-winning treatment and book at our Orchard Road outlets.'}`.slice(0, 300), path: a.url, active: 'awards', bodyClass: 'page-light', schema, body }) };
+  return { path: '/awards/', html: layout({ title: 'Awards & Recognition | Elements Wellness Singapore', description: 'Elements Wellness awards from Daily Vanity, Beauty Insider, Harper’s Bazaar, Her World, Women’s Weekly and more — and the treatments that won them.', path: '/awards/', bodyClass: 'page-light', schema: [bc(trail)], body }) };
 }
 
 /* ---------- Blog ---------- */
@@ -234,82 +282,6 @@ export function postPage(p) {
   return { path: p.url, html: layout({ title: `${p.title} | Elements Wellness Journal`, description: p.excerpt, path: p.url, bodyClass: 'page-light', schema, ogImage: p.img, body }) };
 }
 
-/* ---------- Health analysis ---------- */
-export function healthAnalysis() {
-  const trail = [['Home', '/'], ['Health Analysis']];
-  const hf = [
-    { q: 'How long does the analysis take?', a: 'The machine analysis itself is quick. Your therapist then spends time walking you through your Elements report on iPad.' },
-    { q: 'Is my information kept private?', a: 'Yes. Your analysis and report are stored only in the secure Elements staff system and are never shown publicly on the website.' },
-    { q: 'Can I compare results over time?', a: 'Yes. Each analysis is saved to your customer record, so your therapist can show your progress between visits.' },
-    { q: 'Do I have to buy treatments afterwards?', a: 'No. The report explains what the results mean. Any treatment or supplement suggestions are for you to consider.' },
-  ];
-  const body = pageHero({ eyebrow: 'New at Elements', title: 'Health<br><span class="thin">Analysis</span>', lede: 'A simple, personal report that turns a technical machine scan into clear insights — explained face-to-face by your therapist.', trail, dark: true,
-    extra: `<div class="hero-actions" style="justify-content:flex-start;margin-top:36px" data-reveal>${btn('/book-appointment/?treatment=health-analysis', 'Book an analysis', 'btn-light')}${btn('#how', 'How it works', 'btn-ghost-light')}</div>` }) + `
-<section class="section" id="how" data-steps><div class="wrap steps">
-  <div>
-    <div class="step-intro"><span class="eyebrow">How it works</span><h2 style="margin-top:20px">From scan<br>to clarity</h2></div>
-    ${[
-      ['Analyse', 'Complete a quick machine analysis in the spa. It produces a detailed technical PDF.', '/assets/img/acuwave.jpg'],
-      ['Simplify', 'Our system reads the PDF and creates an Elements-formatted summary: your overall picture, key findings and the areas that matter most.', '/assets/img/private-room.jpg'],
-      ['Explain', 'Your therapist reviews the summary, adds personal notes and walks you through it on iPad — no jargon, just what it means for you.', '/assets/img/aquaglow.jpg'],
-      ['Track', 'Your report is saved to your record so every future analysis shows your progress.', '/assets/img/red-light.jpg'],
-    ].map(([t, p, img], i) => `<div class="step"><div class="step-img-mobile"><img src="${img}" alt="" loading="lazy"></div><div class="num"><span>0${i + 1}</span></div><h3>${t}</h3><p>${p}</p></div>`).join('')}
-  </div>
-  <div><div class="steps-media"><img src="/assets/img/acuwave.jpg" alt="" loading="lazy"><img src="/assets/img/private-room.jpg" alt="" loading="lazy"><img src="/assets/img/aquaglow.jpg" alt="" loading="lazy"><img src="/assets/img/red-light.jpg" alt="" loading="lazy"><span class="count">01 / 04</span></div></div>
-</div></section>
-<section class="section bg-sand"><div class="wrap grid-2">
-  <div><span class="eyebrow" data-reveal>Your Elements report</span><h2 data-split style="margin:20px 0 28px">What you'll<br>take away</h2>
-  <ul class="benefits" data-reveal style="grid-template-columns:1fr">${['Your name and analysis date', 'An overall summary in plain language', 'Key findings and important areas to discuss', 'A simple reading breakdown', 'Therapist notes and suggested next steps', 'History to compare with previous analyses'].map((b) => `<li>${b}</li>`).join('')}</ul></div>
-  <div data-reveal>
-    <div class="voucher" data-tilt style="aspect-ratio:.78;background:var(--ivory);color:var(--ink);justify-content:flex-start;gap:18px">
-      <div style="display:flex;justify-content:space-between;align-items:center"><span style="color:var(--maroon)">${logo()}</span><small class="muted">Sample report</small></div>
-      <div><small class="muted">Client</small><div class="h3">Jane Tan · 12 Sep 2026</div></div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">${[['Balance', 86], ['Sleep', 62], ['Circulation', 74]].map(([k, v]) => `<div style="background:var(--cream);border-radius:4px;padding:14px"><small class="muted" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-family:var(--f-display);font-weight:700">${k}</small><div class="h2" style="font-size:34px;color:var(--maroon)"><span data-count="${v}">0</span></div><div style="height:4px;background:var(--sand);border-radius:4px;overflow:hidden"><i style="display:block;height:100%;width:${v}%;background:var(--maroon)"></i></div></div>`).join('')}</div>
-      <div style="background:var(--blush);border-radius:4px;padding:16px;font-size:14px"><b style="font-family:var(--f-display);letter-spacing:.14em;text-transform:uppercase;font-size:11px;color:var(--maroon)">Therapist note</b><br>Tension concentrated in shoulders and lower back. Recommend Meridian Flush Therapy weekly for 4 weeks, then reassess.</div>
-      <small class="muted" style="margin-top:auto">Illustrative example only — the final report layout will follow Elements' key points.</small>
-    </div>
-  </div>
-</div></section>
-<section class="section"><div class="wrap-narrow"><span class="eyebrow" data-reveal>FAQ</span><h2 data-split style="margin:20px 0 40px">Health Analysis questions</h2>${faqList(hf)}</div></section>` + ctaBand('Understand your body first');
-  return { path: '/health-analysis/', html: layout({ title: 'Health Analysis in Singapore — Personal Wellness Report | Elements Wellness', description: 'Elements Health Analysis turns a machine scan into a simple, personal report explained by your therapist on iPad, with history saved for progress tracking.', path: '/health-analysis/', active: 'health', schema: [bc(trail), faqSchema(hf)], body }) };
-}
-
-/* ---------- Shop / products ---------- */
-export function shopIndex() {
-  const trail = [['Home', '/'], ['Supplements']];
-  const body = pageHero({ eyebrow: 'Shop', title: 'Buy online,<br><span class="thin">enjoy in spa.</span>', lede: 'Onsen rituals and massage trials to purchase online, plus the new therapist-recommended supplement range.', trail }) + `
-<section class="section-sm" style="padding-top:0"><div class="wrap">
-  <div class="head-row"><div><span class="eyebrow">Shop</span><h2 style="margin-top:14px">Rituals &amp; <span class="thin">trials to buy online.</span></h2></div></div>
-  <div class="cards-4" style="margin-bottom:64px">${shopProducts.map((p) => `<a class="card" href="${p.url}" data-reveal><div class="card-media"><img src="${p.img}" alt="${esc(p.imgAlt || p.name)}" loading="lazy"></div><div class="card-body"><h3>${esc(p.name)}</h3><p>${esc(p.desc.slice(0, 120))}${p.desc.length > 120 ? '…' : ''}</p><div class="meta"><span style="font-size:18px">${esc(p.price)}</span><span>View →</span></div></div></a>`).join('')}</div>
-  <div class="head-row"><div><span class="eyebrow">Supplements · new</span><h2 style="margin-top:14px">Continue your <span class="thin">results at home.</span></h2></div><span class="placeholder-note">Range, images and pricing to be supplied by Elements</span></div>
-  <div class="cards-3">
-${products.map((p) => `<a class="card" href="${p.url}" data-reveal><div class="card-media product-media" style="border-radius:0;aspect-ratio:1"><div class="bottle"><div class="lbl"><div>${logo()}<em>${esc(p.short)}</em></div></div></div></div><div class="card-body"><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p><div class="meta"><span>${esc(p.price)}</span><span>View →</span></div></div></a>`).join('')}
-</div></div></section>` + ctaBand('Not sure which supplement?', 'Start with a Health Analysis and your therapist will recommend what suits you.');
-  return { path: '/shop/', html: layout({ title: 'Wellness Supplements | Elements Wellness Singapore', description: 'Therapist-recommended wellness supplements from Elements Wellness to continue your results between visits.', path: '/shop/', bodyClass: 'page-light', schema: [bc(trail)], body }) };
-}
-
-export function productPage(p) {
-  const trail = [['Home', '/'], ['Supplements', '/shop/'], [p.name]];
-  const rel = services.filter((s) => p.serviceIds?.includes(s.id));
-  const body = `
-<section class="page-hero"><div class="wrap">
-  ${crumbs(trail)}
-  <div class="grid-2">
-    <div class="product-media" data-reveal><div class="bottle" style="width:30%"><div class="lbl"><div>${logo()}<em>${esc(p.short)}</em></div></div></div></div>
-    <div>
-      <span class="placeholder-note" data-reveal>✦ Placeholder product — details to be supplied</span>
-      <h1 data-split style="margin-top:22px;font-size:clamp(32px,4.4vw,64px)">${esc(p.name)}</h1>
-      <p class="lede" data-reveal style="margin-top:20px">${esc(p.desc)}</p>
-      <div class="h2" style="color:var(--maroon);margin:24px 0;font-size:36px" data-reveal>${esc(p.price)}</div>
-      <ul class="benefits" data-reveal>${p.benefits.map((b) => `<li>${esc(b)}</li>`).join('')}</ul>
-      <div class="hero-actions" style="justify-content:flex-start" data-reveal>${btn('/contact-us/?product=' + p.slug, 'Enquire / reserve')}${btn('/health-analysis/', 'Get a recommendation', 'btn-ghost')}</div>
-    </div>
-  </div>
-</div></section>
-${rel.length ? `<section class="section-sm bg-ivory"><div class="wrap"><span class="eyebrow">Pairs with</span><div class="cards-3" style="margin-top:28px">${rel.map((s) => serviceCard(s)).join('')}</div></div></section>` : ''}` + ctaBand();
-  return { path: p.url, html: layout({ title: `${p.name} | Elements Wellness Supplements`, description: p.desc, path: p.url, bodyClass: 'page-light', schema: [bc(trail), { '@context': 'https://schema.org', '@type': 'Product', name: p.name, description: p.desc, brand: 'Elements Wellness' }], body }) };
-}
-
 /* ---------- Promotions ---------- */
 export function promotionsPage() {
   const trail = [['Home', '/'], ['Promotions']];
@@ -330,8 +302,10 @@ ${[...new Set(promotions.map((p) => p.group))].map((g) => { const list = promoti
 /* ---------- Gift vouchers ---------- */
 export function giftVouchers() {
   const trail = [['Home', '/'], ['Gift Vouchers']];
+  const gv = SM.supportPages.find((x) => x.url === '/gift-vouchers/');
   const amounts = [100, 200, 300];
   const body = pageHero({ eyebrow: 'Gift vouchers', title: 'The gift of<br><span class="thin">feeling well</span>', lede: 'Choose a value or a treatment. Redeemable at ION Orchard, 313@somerset and The Centrepoint.', trail }) + `
+${copyNote(gv.copy)}
 <section class="section-sm" style="padding-top:0"><div class="wrap grid-2" style="align-items:start">
   <div data-reveal style="position:sticky;top:120px">
     <div class="voucher" data-tilt>
@@ -359,13 +333,13 @@ export function giftVouchers() {
     { q: 'Do vouchers expire?', a: 'Validity is shown on each voucher. Please contact us if you have questions about your voucher terms.' },
   ])}</div></section>
 <section class="section-sm"><div class="wrap"><span class="eyebrow" data-reveal>Treatment vouchers</span><h2 data-split style="margin:20px 0 40px">Or gift an experience</h2><div class="cards-3">${voucherItems.filter((v) => !/Spa Voucher/.test(v.name)).map((v) => `<div class="card" data-reveal><div class="card-body"><h3>${esc(v.name)}</h3><p>${esc(v.desc)}</p><div class="meta"><span style="font-size:18px">${esc(v.price)}</span></div></div></div>`).join('')}</div></div></section>` + ctaBand();
-  return { path: '/gift-vouchers/', html: layout({ title: 'Spa Gift Vouchers Singapore | Elements Wellness', description: 'Give an Elements Wellness gift voucher for massage, facials, onsen rituals and more, redeemable at three Orchard Road outlets.', path: '/gift-vouchers/', bodyClass: 'page-light', schema: [bc(trail)], body }) };
+  return { path: '/gift-vouchers/', html: layout({ title: 'Spa Gift Vouchers Singapore | Elements Wellness', description: 'Give an Elements Wellness gift voucher for massage, facials, onsen rituals and more, redeemable at three Orchard Road outlets.', path: '/gift-vouchers/', active: 'gift', bodyClass: 'page-light', schema: [bc(trail)], body }) };
 }
 
 /* ---------- Locations ---------- */
 export function outletPage(o) {
-  const trail = [['Home', '/'], ['Contact', '/contact-us/'], [o.name]];
-  const list = services.filter((s) => !s.hidden && (!s.outlets || s.outlets.includes(o.id)));
+  const trail = [['Home', '/'], ['Locations', '/locations/'], [o.name]];
+  const list = services.filter((s) => !s.outlets || s.outlets.includes(o.id));
   const exclusive = services.filter((s) => s.outlets && s.outlets.length === 1 && s.outlets[0] === o.id);
   const others = outlets.filter((x) => x.id !== o.id);
   const tel = o.phone.replace(/\s/g, ''), wa = o.whatsapp.replace(/\s/g, '');
@@ -386,7 +360,7 @@ export function outletPage(o) {
 </div></section>
 ${o.gallery?.length ? `<section class="section-sm" style="padding-top:0"><div class="wrap"><div class="cf-gallery c3">${o.gallery.map((g) => `<figure data-reveal><img src="/assets/img/${g}" alt="Elements Wellness ${esc(o.name)}" loading="lazy"></figure>`).join('')}</div></div></section>` : ''}
 ${exclusive.length ? `<section class="section-sm bg-ivory"><div class="wrap"><div class="head-row"><h2 style="font-size:clamp(24px,2.6vw,36px)">Only at <span class="thin">${esc(o.short)}.</span></h2></div><div class="cards-3">${exclusive.map((s) => serviceCard(s)).join('')}</div></div></section>` : ''}
-<section class="section-sm"><div class="wrap"><div class="head-row"><h2 style="font-size:clamp(24px,2.6vw,36px)">Treatments <span class="thin">here.</span></h2><button class="link-arrow" type="button" data-finder="outlet:${o.id}">Search this outlet ${icon.arrow}</button></div><div class="cards-4">${list.filter((s) => s.signature && !exclusive.includes(s)).slice(0, 8).map((s) => serviceCard(s)).join('')}</div></div></section>
+<section class="section-sm"><div class="wrap"><div class="head-row"><h2 style="font-size:clamp(24px,2.6vw,36px)">Available <span class="thin">treatments.</span></h2><button class="link-arrow" type="button" data-finder="outlet:${o.id}">Search this outlet ${icon.arrow}</button></div>${groups.map((g) => { const l = list.filter((s) => s.group === g.id); return l.length ? `<div class="outlet-svc"><h3><a href="${g.url}">${esc(g.label)}</a></h3><p>${l.map((s) => `<a href="${s.url}">${esc(s.name)}</a>`).join(' · ')}</p></div>` : ''; }).join('')}</div></section>
 ${(() => { const g = googleFor(o.id); if (!g) return ''; return `<section class="section-sm bg-sand" data-google-reviews><div class="wrap">
   <div class="head-row"><div><h2 style="font-size:clamp(24px,2.6vw,36px)">What guests say <span class="thin">about ${esc(o.short)}.</span></h2>
     <div class="g-flex" style="margin-top:18px" data-rv-place="${g.id}"><div class="g-flex-num"><span data-rv-rating>${g.rating.toFixed(1)}</span><small>/ 5</small></div><div><div class="g-flex-stars">${starRow(g.rating)}</div><p><b data-rv-count>${fmtNum(g.count)}</b> Google reviews for ${esc(g.googleName)}</p></div></div></div>
@@ -412,6 +386,14 @@ const outletCard = (o) => `<article class="card outlet-card" data-reveal>
   </div>
 </article>`;
 
+export function locationsPage() {
+  const trail = [['Home', '/'], ['Locations']];
+  const body = pageHero({ eyebrow: 'Locations', title: 'Three outlets<br><span class="thin">on Orchard Road.</span>', lede: esc(site.hoursSummary), trail }) + `
+${copyNote('new', 'Short introduction')}
+<section class="section-sm" style="padding-top:0"><div class="wrap"><div class="cards-3">${outlets.map(outletCard).join('')}</div></div></section>` + ctaBand();
+  return { path: '/locations/', html: layout({ title: 'Locations — ION Orchard, 313@somerset, The Centrepoint | Elements Wellness', description: 'Elements Wellness spas at ION Orchard, 313@somerset and The Centrepoint: addresses, opening hours, directions and booking.', path: '/locations/', bodyClass: 'page-light', schema: [bc(trail)], body }) };
+}
+
 export function contactPage() {
   const trail = [['Home', '/'], ['Contact']];
   const body = pageHero({ title: 'Three outlets<br><span class="thin">on Orchard Road.</span>', lede: `To make a booking, please call or WhatsApp your preferred location. For general enquiries, email ${site.email}.`, trail }) + `
@@ -426,7 +408,7 @@ export function contactPage() {
     <button class="btn" type="submit"><span>Send message</span>${icon.arrow}</button>
   </form><div class="form-success"><div class="h3">Message sent</div><p style="margin:8px 0 0">Thank you — we'll be in touch shortly. (Front-end preview; the form connects to email/CRM in the backend phase.)</p></div></div>
 </div></section>`;
-  return { path: '/contact-us/', html: layout({ title: 'Contact Elements Wellness — ION Orchard, 313@somerset, The Centrepoint', description: 'Contact Elements Wellness: addresses, phone, WhatsApp and opening hours for our ION Orchard, 313@somerset and The Centrepoint spas.', path: '/contact-us/', bodyClass: 'page-light', schema: [bc(trail)], body }) };
+  return { path: '/contact/', html: layout({ title: 'Contact Elements Wellness — ION Orchard, 313@somerset, The Centrepoint', description: 'Contact Elements Wellness: addresses, phone, WhatsApp and opening hours for our ION Orchard, 313@somerset and The Centrepoint spas.', path: '/contact/', bodyClass: 'page-light', schema: [bc(trail)], body }) };
 }
 
 export function bookPage(path = '/book-appointment/') {
@@ -435,7 +417,7 @@ export function bookPage(path = '/book-appointment/') {
 <section class="section-sm" style="padding-top:0"><div class="wrap grid-2" style="align-items:start">
   <form class="form" data-demo>
     <div class="field"><label>Outlet</label><div class="opt-grid">${outlets.map((o, i) => `<label class="opt"><input type="radio" name="outlet" value="${o.id}" ${i === 0 ? 'checked' : ''}><span><b>${esc(o.short)}</b>${esc(o.feature)}</span></label>`).join('')}</div></div>
-    <div class="field"><label for="b-cat">Treatment</label><select id="b-cat" required><option value="">Select a treatment…</option>${categories.map((c) => `<optgroup label="${esc(c.label)}">${services.filter((s) => s.category === c.id && !s.hidden).map((s) => `<option value="${s.id}">${esc(s.name)}</option>`).join('')}</optgroup>`).join('')}<option value="health-analysis">Health Analysis</option><option value="unsure">Not sure — please advise</option></select></div>
+    <div class="field"><label for="b-cat">Treatment</label><select id="b-cat" required><option value="">Select a treatment…</option>${groups.map((g) => `<optgroup label="${esc(g.label)}">${services.filter((s) => s.group === g.id).map((s) => `<option value="${s.id}">${esc(s.name)}</option>`).join('')}</optgroup>`).join('')}<option value="elements-restore">Elements Restore assessment</option><option value="unsure">Not sure — please advise</option></select></div>
     <div class="row"><div class="field"><label for="b-date">Preferred date</label><input id="b-date" type="date" required></div><div class="field"><label for="b-time">Preferred time</label><select id="b-time">${['11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'].map((t) => `<option>${t}</option>`).join('')}</select></div></div>
     <div class="row"><div class="field"><label for="b-name">Name</label><input id="b-name" required autocomplete="name"></div><div class="field"><label for="b-phone">Mobile</label><input id="b-phone" type="tel" required autocomplete="tel"></div></div>
     <div class="field"><label for="b-promo">Promo code (optional)</label><input id="b-promo"></div>
@@ -453,17 +435,28 @@ export function bookPage(path = '/book-appointment/') {
 
 export function faqPage() {
   const trail = [['Home', '/'], ['FAQ & Spa Etiquette']];
-  const body = pageHero({ eyebrow: 'Help', title: 'FAQ &amp;<br><span class="thin">spa etiquette</span>', lede: 'Everything you need to know before, during and after your visit.', trail }) + `
-<section class="section-sm" style="padding-top:0"><div class="wrap grid-2" style="align-items:start">
-  <div><span class="eyebrow">Frequently asked</span><div style="margin-top:24px">${faqList(faqs)}</div></div>
-  <div class="bg-ivory" style="border-radius:var(--radius-lg);padding:clamp(24px,3vw,44px);position:sticky;top:120px"><span class="eyebrow">Spa etiquette</span><ol class="ha-list" style="border-color:var(--line)">${etiquette.map((e, i) => `<li style="color:var(--ink-soft);border-color:var(--line)"><span>${String(i + 1).padStart(2, '0')}</span>${esc(e)}</li>`).join('')}</ol></div>
+  const sections = [
+    ['First visit', 'first-visit', etiquette.slice(0, 2)],
+    ['Preparing for your treatment', 'preparation', []],
+    ['Privacy & comfort', 'privacy', etiquette.slice(2, 5)],
+    ['Pricing terms', 'pricing', promoTerms.slice(0, 4)],
+  ];
+  const body = pageHero({ eyebrow: 'Visitor information', title: 'FAQ &amp;<br><span class="thin">spa etiquette</span>', lede: 'First-visit guidance, preparation, privacy, comfort, pricing terms and general questions.', trail }) + `
+${copyNote('adapt')}
+<section class="section-sm" style="padding-top:0"><div class="wrap">
+  <nav class="cat-filter" aria-label="On this page">${sections.map(([t, id]) => `<a class="chip" href="#${id}">${t}</a>`).join('')}<a class="chip" href="#booking">Booking rules</a><a class="chip" href="#general">General questions</a></nav>
+  <div class="faq-sections">
+    ${sections.map(([t, id, items]) => `<div class="faq-sec" id="${id}"><h2 class="cf-h2">${t}</h2>${items.length ? `<ul class="checklist">${items.map((e) => `<li>${esc(e)}</li>`).join('')}</ul>` : ''}<p class="placeholder-note">${t} copy to be supplied by Elements</p></div>`).join('')}
+    <div class="faq-sec" id="booking"><h2 class="cf-h2">Booking rules</h2><p>To make a booking, please call or WhatsApp your preferred outlet, or use Book Now. A summary of our booking, rescheduling and cancellation rules goes here — the full policy is on a separate page.</p><p>${linkArrow('/appointment-booking-cancellation-policy/', 'Booking & Cancellation Policy')}</p></div>
+    <div class="faq-sec" id="general"><h2 class="cf-h2">General questions</h2>${faqList(faqs)}</div>
+  </div>
 </div></section>` + ctaBand();
-  return { path: '/faq-spa-etiquette/', html: layout({ title: 'FAQ & Spa Etiquette | Elements Wellness', description: 'Answers to common questions about booking, arriving, treatments and spa etiquette at Elements Wellness Singapore.', path: '/faq-spa-etiquette/', bodyClass: 'page-light', schema: [bc(trail), faqSchema(faqs)], body }) };
+  return { path: '/faq-spa-etiquette/', html: layout({ title: 'FAQ & Spa Etiquette | Elements Wellness', description: 'First-visit guidance, preparation, privacy, comfort, pricing terms and common questions about visiting Elements Wellness Singapore.', path: '/faq-spa-etiquette/', bodyClass: 'page-light', schema: [bc(trail), faqSchema(faqs)], body }) };
 }
 
 export function storyPage() {
-  const trail = [['Home', '/'], ['Our Story']];
-  const body = pageHero({ eyebrow: 'Our story · How we began', title: 'A million massages<br><span class="thin">and counting</span>', lede: esc(story.lede), trail, img: '/assets/img/ion-interior.jpg' }) + `
+  const trail = [['Home', '/'], ['About Elements']];
+  const body = pageHero({ eyebrow: 'About Elements · Our story', title: 'A million massages<br><span class="thin">and counting</span>', lede: esc(story.lede), trail, img: '/assets/img/ion-interior.jpg' }) + `
 <section class="section"><div class="wrap-narrow">
   <p class="statement" data-fill style="text-align:left;max-width:none;font-size:clamp(24px,3vw,44px)">${esc(story.statement)}</p>
 </div></section>
@@ -474,7 +467,7 @@ export function storyPage() {
 <section class="section"><div class="wrap">
   <div class="promises" data-reveal>${story.stats.map(([n, l]) => `<div class="promise"><div class="h2" style="color:var(--maroon)">${n}</div><h3 style="margin-top:10px">${l}</h3></div>`).join('')}</div>
 </div></section>` + ctaBand('Become part of the story');
-  return { path: '/our-story/', html: layout({ title: 'Our Story | Elements Wellness Singapore', description: story.lede, path: '/our-story/', bodyClass: 'page-light', schema: [bc(trail)], body }) };
+  return { path: '/about-elements/', html: layout({ title: 'About Elements | Elements Wellness Singapore', description: story.lede, path: '/about-elements/', bodyClass: 'page-light', schema: [bc(trail)], body }) };
 }
 
 export function policyPage(p) {
@@ -488,26 +481,6 @@ export function notFound() {
   const body = pageHero({ eyebrow: '404', title: 'Lost in<br><span class="thin">the steam</span>', lede: 'This page has moved or no longer exists. Try the treatment finder, or head home.', trail: [['Home', '/'], ['Not found']],
     extra: `<div class="hero-actions" style="justify-content:flex-start;margin-top:32px">${btn('/', 'Back home')}<button class="btn btn-ghost" type="button" data-finder><span>Find a treatment</span>${icon.arrow}</button></div>` });
   return { path: '/404.html', file: true, html: layout({ title: 'Page not found | Elements Wellness', description: 'Page not found.', path: '/404.html', bodyClass: 'page-light', body }) };
-}
-
-export function wcProductPage(p) {
-  const trail = [['Home', '/'], ['Shop', '/shop/'], [p.name]];
-  const body = `
-<section class="page-hero"><div class="wrap">
-  ${crumbs(trail)}
-  <div class="grid-2">
-    <div class="svc-hero-media" data-clip style="aspect-ratio:1"><img src="${p.img}" alt="${esc(p.imgAlt || p.name)}"></div>
-    <div>
-      <span class="eyebrow" data-reveal="drop">Shop</span>
-      <h1 data-split style="margin-top:18px;font-size:clamp(30px,4vw,56px)">${esc(p.name)}</h1>
-      <div class="h2" style="color:var(--maroon);margin:20px 0;font-size:36px" data-reveal>${esc(p.price)}</div>
-      <div class="cf-prose prose" data-reveal>${p.descHtml}</div>
-      <div class="hero-actions" style="justify-content:flex-start;margin-top:24px" data-reveal>${btn('/book-appointment/', 'Buy & book')}${btn(site.whatsapp, 'WhatsApp us', 'btn-ghost', 'target="_blank" rel="noopener"')}</div>
-      <p class="form-note" style="margin-top:14px">Online checkout connects in the backend phase; the price and inclusions are as listed on the current shop.</p>
-    </div>
-  </div>
-</div></section>` + ctaBand();
-  return { path: p.url, html: layout({ title: `${p.name} | Elements Wellness Shop`, description: p.desc.slice(0, 160), path: p.url, bodyClass: 'page-light', schema: [bc(trail), { '@context': 'https://schema.org', '@type': 'Product', name: p.name, description: p.desc, image: site.url + p.img, offers: { '@type': 'Offer', price: p.price.replace('S$', ''), priceCurrency: 'SGD' } }], body }) };
 }
 
 // Any other page of the old site (campaign pages, referral, legacy treatment pages…) — same content, new layout.

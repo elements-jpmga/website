@@ -4,7 +4,7 @@ This repository holds two projects for Elements Wellness (Singapore):
 
 | Folder | What it is | Run |
 |---|---|---|
-| `/` (root) | **Website revamp** — static site generator for elements.com.sg (157 pages, same sitemap and content as the current site, new design) | `npm run dev` → http://localhost:4321 |
+| `/` (root) | **Website revamp** — static site generator for elements.com.sg, structured to the client sitemap (*Elements_Website_Sitemap_2026*, 12 Oct 2026): 88 sitemap pages, old content carried over where it exists, 301s from every old URL | `npm run dev` → http://localhost:4321 |
 | `restore/` | **Elements Restore** — staff-only web app: upload UBIO PDFs → confirm readings → Restore engine → client Restore Profile PDF → email to client | `cd restore && npm run setup && npm start` → http://localhost:4400 |
 
 Requirements: Node.js 22.5+. The Restore app also needs macOS (PDF text recognition uses Apple Vision), Python 3 with PyMuPDF, and Google Chrome (for PDF output).
@@ -25,7 +25,9 @@ npm run build    # build only
 ## Structure
 - `build/data.mjs`: all content (services, concerns, outlets, awards, promos, blog, products). It is seeded from the live site crawl in `_research/`. In production this is the CMS.
 - `build/ui.mjs`: the shell (header + mega menu, mobile menu, treatment finder, footer, SEO head).
-- `build/pages/`: page templates. `build.mjs` writes **132 pages**, `sitemap.xml`, `robots.txt` and `_redirects`.
+- `build/sitemap.mjs`: **the client sitemap** — navigation, every page URL, which old page each one takes its copy from, copy status, and old URL → new URL redirects.
+- `build/pages/`: page templates. `build.mjs` writes the pages, `sitemap.xml`, `robots.txt`, `_redirects`, `vercel.json` (301s for Vercel) and `docs/sitemap-copy-status.csv` (which pages are new / need copy).
+- `node scripts/check-links.mjs` after a build: every internal link must reach a page directly.
 - `src/assets/css/main.css`: design system (v2, Clarté Med-style reference): Manrope in light sentence case with fading-word headlines, pill labels, rounded photo cards, maroon → wine gradients. The wordmark keeps the logo's tracked Quicksand capitals. Palette: Elements maroon `#72181B`.
 - `src/assets/js/main.js`: all motion — preloader, fade / drop-in reveals, the steam-to-spa hero (canvas; the pointer parts the steam), Lenis smooth scroll, the fanned photo stack, the Google-review carousel (auto-advancing, with placeholder guest photos) plus review marquee, steps image crossfade, five-elements ring, concern hover-image list, magnetic buttons, page-transition fade and the finder overlay. Motion respects `prefers-reduced-motion`.
 
