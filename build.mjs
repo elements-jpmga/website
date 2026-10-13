@@ -31,6 +31,7 @@ add(P.productsPage());
 add(P.productsPage('skincare'));
 add(P.productsPage('supplements'));
 add(P.giftVouchers());
+add(P.giftThankYou(), { inSitemap: false });
 add(P.promotionsPage());
 add(P.locationsPage());
 outlets.forEach((o) => add(P.outletPage(o)));

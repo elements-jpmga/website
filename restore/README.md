@@ -61,3 +61,13 @@ Provider is picked from the server environment:
 | none | Outbox mode: the email is written to `data/outbox/*.eml` (openable in Mail/Outlook) so the flow can be tested |
 
 `MAIL_FROM` (default `Elements Wellness <restore@elements.com.sg>`) and `MAIL_REPLY_TO` (default `ask@elements.com.sg`) set the sender. The sending domain must be verified with the provider before real sends.
+
+## Gift vouchers (Elements' own system, replacing Gift Up)
+Staff app → **Gift vouchers** (`public/gift.js`, API in `src/gift/`). Tables `gift_*` live beside the Restore tables.
+- **WESS codes:** each item has a pool of running numbers generated in WESS (`gift_codes`). A sale takes the oldest unused code. Pools are topped up by pasting/uploading codes (duplicates skipped). At or below the item's alert level (default 10) an alert opens in the app and an email goes to `notify_emails`.
+- **Issue:** staff (counter / complimentary) via Vouchers → Issue; website purchases arrive through Stripe (`STRIPE_*`, phase 2). Each voucher gets an A5 e-voucher PDF (card design + value + QR + code + terms), emailed to the recipient now or on a chosen date; the buyer gets a receipt; Elements gets a "voucher sold" email.
+- **Redeem:** staff look up the code (dashboard or scan) and mark it redeemed at an outlet — no partial use. Then redeem in WESS as usual.
+- **Card designs:** Canva custom size 1800 × 1200 px (3:2), JPG/PNG under 4 MB, keep text 100 px from the edges and the lower third clear.
+- **Gift Up migration:** `GIFTUP_API_KEY` (read-only key) → Vouchers → Settings → Import. Copies every voucher, order, unused code and the card design; re-running only adds what is new.
+- Public endpoints for the website: `GET /api/gift/public/catalog`, `GET /api/gift/public/check?code=`, `POST /api/gift/public/checkout` (creates a Stripe Checkout session), `GET /api/gift/public/order?session_id=` (thank-you page), `POST /api/gift/stripe/webhook`.
+- **Stripe:** `STRIPE_SECRET_KEY` (sk_test_/sk_live_), `STRIPE_WEBHOOK_SECRET` (from Developers → Webhooks → endpoint `https://assess.elements.com.sg/api/gift/stripe/webhook`, event `checkout.session.completed`). Without a key the website shows vouchers but says online payment is not switched on. `PUBLIC_SITE_URL` (default https://elements.com.sg) is where Stripe returns customers; `PUBLIC_SITE_ORIGINS` adds extra allowed origins. The website page (`src/assets/js/gift.js`) talks to the staff app; locally it uses http://localhost:4400.

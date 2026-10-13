@@ -135,7 +135,8 @@
   const go = (hash) => { location.hash = hash; };
   async function render() {
     const h = location.hash.replace(/^#/, '') || '/';
-    const section = h.startsWith('/rules') ? 'rules' : h.startsWith('/client') ? 'clients' : 'home';
+    const section = h.startsWith('/gift') ? 'gift' : h.startsWith('/rules') ? 'rules' : h.startsWith('/client') ? 'clients' : 'home';
+    document.body.classList.toggle('in-gift', section === 'gift');
     $$('[data-nav]').forEach((a) => a.classList.toggle('on', a.dataset.nav === section));
     $$('[data-filter]').forEach((a) => a.classList.toggle('on', section === 'home' && h === '/' && a.dataset.filter === filter));
     document.body.classList.remove('inbox-open');
@@ -576,6 +577,10 @@ If you have any questions, simply reply to this email or speak to us at your nex
     }
   });
   $('[data-new]').addEventListener('click', () => newAssessmentModal());
+
+  // Shared helpers for the other sections (gift.js registers its own routes with these)
+  window.RestoreApp = { $, $$, app, esc, fmtDate, fmtDay, ago, ava, api, toast, route, go, crumbs, ICON, staff, loadConfig, render: () => render() };
+  document.dispatchEvent(new Event('restore:ready'));
 
   /* ---- staff sign-in (when the server has it turned on) ---- */
   function showSignin() {
