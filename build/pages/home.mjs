@@ -6,7 +6,7 @@ export default function home() {
 
   // Hero: full-bleed slides with a few words each, like a resort site — centred title, one line, one outlined button
   const slides = [
-    { img: '/assets/img/onsen-1.jpg', alt: 'Private Koyamaki onsen suite at Elements Wellness, The Centrepoint', title: 'Where wellness meets results', sub: 'Therapeutic massage, results-driven facials and private onsen rituals — three sanctuaries on Orchard Road.', cta: 'Book now', href: '/book-appointment/' },
+    { img: '/assets/img/hero-reception.jpg', alt: 'Elements Wellness reception at night', title: 'Where wellness meets results', sub: 'Therapeutic massage, results-driven facials and private onsen rituals — three sanctuaries on Orchard Road.', cta: 'Book now', href: '/book-appointment/' },
     { img: '/assets/img/jacuzzi.jpg', alt: 'Private couple jacuzzi suite with rose petals', title: 'Koyamaki Onsen', sub: 'Singapore’s first private onsen suites — soak, scrub and massage. For one, or for two.', cta: 'Discover the onsen', href: '/koyamaki-onsen-ritual/' },
     { img: '/assets/img/main-massage.jpg', alt: 'Therapeutic massage at Elements Wellness', title: 'Massage & Recovery', sub: 'TCM techniques, skilled hands and recovery technology for bodies that work hard.', cta: 'Explore massage', href: '/massage-and-recovery/' },
     { img: '/assets/img/facial-mask.jpg', alt: 'Facial treatment at Elements Wellness', title: 'Facials', sub: 'Results-driven facials for glow, firmness and clarity you can see.', cta: 'Explore facials', href: '/facials/' },
@@ -39,10 +39,15 @@ export default function home() {
   </div>
 </section>`;
 
+  // Logo wall: a fixed grid where one logo at a time swaps for another from the pool (no scrolling marquee)
+  const wallLogos = pressLogos.map((a) => ({ img: a.img, title: a.title, url: a.url || '' }));
   const awardsStrip = `
 <section class="awards-strip" aria-label="Awards and press">
-  <div class="label"><span class="caps">Award-winning · As featured in</span><a class="link-arrow award-all" href="/awards/">Awards &amp; Recognition ${icon.arrow}</a></div>
-  <div class="marquee" style="--gap:72px;--dur:45s"><div class="marquee-track">${marqueeAwards}</div></div>
+  <div class="wrap">
+    <div class="label"><span class="caps">Award-winning · As featured in</span><a class="link-arrow award-all" href="/awards/">Awards &amp; Recognition ${icon.arrow}</a></div>
+    <div class="logo-wall" data-logo-wall>${wallLogos.slice(0, 8).map((a, i) => `<div class="logo-cell" data-i="${i}">${a.url ? `<a href="${a.url}" title="${esc(a.title)}">` : ''}<img class="award-logo" src="${a.img}" alt="${esc(a.title)}" loading="lazy">${a.url ? '</a>' : ''}</div>`).join('')}</div>
+    <script>window.EW_LOGOS=${JSON.stringify(wallLogos)}</script>
+  </div>
 </section>`;
 
   const approach = `

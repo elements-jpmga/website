@@ -33,17 +33,16 @@
       if (curtain && !reduced) { gsap.set(curtain, { opacity: 1, visibility: 'visible' }); gsap.to(curtain, { opacity: 0, duration: .6, ease: 'power2.out', onComplete: () => gsap.set(curtain, { visibility: 'hidden' }) }); }
       onDone(); return;
     }
-    // Home: wordmark + counter on maroon, then both panels lift away like a curtain (the quick version on repeat visits in a session)
-    const front = loader.querySelector('.loader-front'), back = loader.querySelector('.loader-back'), wm = loader.querySelector('.loader-logo'), tag = loader.querySelector('.loader-tag'), line = loader.querySelector('.loader-line i'), count = loader.querySelector('.loader-count'), inner = loader.querySelector('.loader-inner');
-    const n = { v: 0 }, hold = firstVisit ? 1.5 : .6;
+    // Home: "Elements" rises in, "Wellness" drops in under it, both fade slowly, then the maroon screen opens from the middle
+    const top = loader.querySelector('.loader-top'), bottom = loader.querySelector('.loader-bottom'), inner = loader.querySelector('.loader-inner'), l1 = loader.querySelector('.l1'), l2 = loader.querySelector('.l2');
+    const k = firstVisit ? 1 : .55;
     gsap.timeline({ onComplete: () => { loader.style.display = 'none'; } })
-      .fromTo(wm, { opacity: 0, y: 18, scale: .97 }, { opacity: 1, y: 0, scale: 1, duration: .9, ease: 'power3.out' }, 0)
-      .fromTo(tag, { opacity: 0, y: 10 }, { opacity: .75, y: 0, duration: .7 }, .25)
-      .to(n, { v: 100, duration: hold, ease: 'power2.inOut', onUpdate: () => { count.textContent = Math.round(n.v); line.style.transform = `scaleX(${n.v / 100})`; } }, .15)
-      .to(inner, { opacity: 0, y: -16, duration: .4, ease: 'power2.in' }, '-=.05')
-      .add(onDone, '-=.05')
-      .to(front, { yPercent: -100, duration: 1, ease: 'expo.inOut' }, '-=.15')
-      .to(back, { yPercent: -100, duration: 1, ease: 'expo.inOut' }, '<.12');
+      .fromTo(l1, { opacity: 0, y: 14, letterSpacing: '.5em' }, { opacity: 1, y: 0, letterSpacing: '.2em', duration: 1.1 * k, ease: 'power3.out' }, 0)
+      .fromTo(l2, { opacity: 0, y: -22 }, { opacity: 1, y: 0, duration: .9 * k, ease: 'power3.out' }, .55 * k)
+      .to(inner, { opacity: 0, duration: 1 * k, ease: 'power2.inOut' }, `+=${.5 * k}`)
+      .add(onDone, '-=.2')
+      .to(top, { yPercent: -100, duration: 1.2, ease: 'expo.inOut' }, '-=.3')
+      .to(bottom, { yPercent: 100, duration: 1.2, ease: 'expo.inOut' }, '<');
   };
   const leavePage = (href) => {
     if (!curtain || reduced) { window.location.href = href; return; }
@@ -172,6 +171,23 @@
     $('[data-slide-prev]', sec)?.addEventListener('click', () => show(i - 1, true));
     $('[data-slide-next]', sec)?.addEventListener('click', () => show(i + 1, true));
     new IntersectionObserver(([en]) => (en.isIntersecting ? restart() : clearInterval(timer))).observe(sec);
+  }
+
+  /* ---------- Logo wall: every couple of seconds one cell swaps its logo for one not on the wall ---------- */
+  function logoWall() {
+    const wall = $('[data-logo-wall]'), pool = window.EW_LOGOS; if (!wall || !pool || reduced) return;
+    const cells = $$('.logo-cell', wall); if (pool.length <= cells.length) return;
+    let showing = cells.map((_, i) => i), last = -1, timer;
+    const swap = () => {
+      let c; do { c = Math.floor(Math.random() * cells.length); } while (c === last); last = c;
+      const hidden = pool.map((_, i) => i).filter((i) => !showing.includes(i)); const next = hidden[Math.floor(Math.random() * hidden.length)];
+      const cell = cells[c], img = $('img', cell), a = $('a', cell); showing[c] = next; const L = pool[next];
+      gsap.timeline()
+        .to(img, { yPercent: -45, opacity: 0, duration: .45, ease: 'power2.in' })
+        .add(() => { img.src = L.img; img.alt = L.title; if (a) { a.href = L.url || a.href; a.title = L.title; } })
+        .fromTo(img, { yPercent: 45, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .8, ease: 'power3.out' });
+    };
+    new IntersectionObserver(([en]) => { clearInterval(timer); if (en.isIntersecting) timer = setInterval(swap, 2200); }).observe(wall);
   }
 
   /* ---------- Hero finder rotator ---------- */
@@ -360,7 +376,7 @@
     const w = $('[data-rv-write]'); if (w && d.places[0]?.writeReviewUrl) w.href = d.places[0].writeReviewUrl;
     const up = $('[data-rv-updated]'); if (up) up.textContent = 'Live from Google · updated ' + new Date(d.snapshotDate).toLocaleDateString('en-SG', { day: 'numeric', month: 'short', year: 'numeric' });
   }
-  const boot = () => { heroSlides(); liveReviews(); reveals(); rise(); mapLocations(); steps(); concerns(); carousel(); sigTiles(); revealCards(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
+  const boot = () => { heroSlides(); logoWall(); liveReviews(); reveals(); rise(); mapLocations(); steps(); concerns(); carousel(); sigTiles(); revealCards(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
   (document.fonts?.ready || Promise.resolve()).then(() => enterPage(() => { steamHero(); boot(); }));
   window.addEventListener('load', () => ScrollTrigger.refresh());
 })();
