@@ -99,7 +99,7 @@
     const titleLines = $$('.hero-title .line > span', hero), fadeIns = $$('[data-hero-in]', hero);
     const seen = sessionStorage.getItem('ew-steam') === '1'; sessionStorage.setItem('ew-steam', '1');
     const speed = seen ? .6 : 1;
-    const state = { density: 1, mx: -9999, my: -9999 };
+    const state = { density: .09, mx: -9999, my: -9999 };
     let ctx, W, H, parts = [], sprite, running = true;
     if (canvas && !reduced) {
       ctx = canvas.getContext('2d');
@@ -109,7 +109,7 @@
       s.fillStyle = g; s.fillRect(0, 0, 256, 256);
       const resize = () => { const dpr = Math.min(window.devicePixelRatio || 1, 1.5); W = hero.offsetWidth; H = hero.offsetHeight; canvas.width = W * dpr; canvas.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
       resize(); window.addEventListener('resize', resize);
-      const N = W < 700 ? 34 : 70;
+      const N = W < 700 ? 14 : 26;
       const spawn = (init) => ({ x: Math.random() * W, y: init ? Math.random() * H * 1.1 : H + 150 + Math.random() * 200, r: (W < 700 ? 140 : 220) + Math.random() * (W < 700 ? 200 : 380), vx: (Math.random() - .5) * .25, vy: -(.25 + Math.random() * .55), a: .5 + Math.random() * .5, rot: Math.random() * Math.PI * 2, vr: (Math.random() - .5) * .002, wob: Math.random() * 1000, ox: 0, oy: 0 });
       for (let i = 0; i < N; i++) parts.push(spawn(true));
       hero.addEventListener('pointermove', (e) => { const r = hero.getBoundingClientRect(); state.mx = e.clientX - r.left; state.my = e.clientY - r.top; });
@@ -133,16 +133,15 @@
     }
     if (reduced) { gsap.set(veil, { opacity: 0 }); gsap.set(img, { filter: 'blur(0px) brightness(1)', scale: 1.04 }); gsap.set([...titleLines, ...fadeIns], { yPercent: 0, y: 0, opacity: 1 }); state.density = .2; return; }
     gsap.set(titleLines, { y: 0, yPercent: 115 }); gsap.set(fadeIns, { opacity: 0, y: 18 });
+    gsap.set(veil, { opacity: 0 });
     gsap.timeline()
-      .to(veil, { opacity: 0, duration: 1.8 * speed, ease: 'power2.out' }, 0)
-      .to(img, { filter: 'blur(0px) brightness(1)', scale: 1.04, duration: 2.6 * speed, ease: 'power3.out' }, 0)
-      .to(state, { density: .13, duration: 3.4 * speed, ease: 'power2.out' }, .4 * speed)
+      .fromTo(img, { scale: 1.08 }, { scale: 1.04, duration: 2.6 * speed, ease: 'power3.out' }, 0)
       .to(titleLines, { yPercent: 0, duration: 1.2, stagger: .12, ease: 'expo.out' }, .8 * speed)
       .to(fadeIns, { opacity: 1, y: 0, duration: 1, stagger: .1 }, 1.1 * speed);
     gsap.timeline({ scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } })
       .to(img, { yPercent: 10, ease: 'none' }, 0)
       .to($('.hero-content', hero), { yPercent: -12, opacity: 0, ease: 'none' }, 0)
-      .to(state, { density: .05, ease: 'none' }, 0);
+      .to(state, { density: .04, ease: 'none' }, 0);
   }
 
   /* ---------- Hero slides: crossfade every few seconds; words swap with a soft lift ---------- */

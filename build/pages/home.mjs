@@ -23,6 +23,7 @@ export default function home() {
       <div class="hero-actions" data-hero-in><a class="btn btn-light" href="${slides[0].href}" data-slide-cta><span>${esc(slides[0].cta)}</span></a></div>
     </div>
   </div>
+  <a class="hero-reviews" href="#reviews" data-hero-in aria-label="Google rating ${google.average.toFixed(1)} out of 5 from ${fmtNum(google.total)} reviews">${gLogo}<b data-rv-avg>${google.average.toFixed(1)}</b>${starRow(google.average)}<span><span data-rv-total>${fmtNum(google.total)}</span> Google reviews</span></a>
   <div class="hero-dots" role="tablist" aria-label="Slides">${slides.map((sl, i) => `<button type="button" role="tab" aria-selected="${i === 0}" aria-label="${esc(sl.title)}" class="${i === 0 ? 'is-on' : ''}" data-slide-to="${i}"><i></i></button>`).join('')}</div>
   <div class="hero-nav"><button type="button" data-slide-prev aria-label="Previous slide"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 2 4 8l6 6"/></svg></button><button type="button" data-slide-next aria-label="Next slide"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m6 2 6 6-6 6"/></svg></button></div>
   <script>window.EW_SLIDES=${JSON.stringify(slides.map(({ title, sub, cta, href }) => ({ title, sub, cta, href })))}</script>
