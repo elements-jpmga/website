@@ -311,28 +311,38 @@ const giftFaq = [
 export function giftVouchers() {
   const trail = [['Home', '/'], ['Gift Vouchers']];
   const gv = SM.supportPages.find((x) => x.url === '/gift-vouchers/');
-  const fallback = voucherItems.map((v) => `<div class="gv-item"><span class="gv-kind">${/Spa Voucher/.test(v.name) ? 'Spa credit' : 'Treatment'}</span><b>${esc(v.name)}</b><small>${esc(v.desc)}</small><span class="gv-price">${esc(v.price)}</span></div>`).join('');
-  const body = pageHero({ eyebrow: 'Gift vouchers', title: 'The gift of<br><span class="thin">feeling well</span>', lede: 'Choose a spa credit or a treatment, pick a card, add a message — and we email it to them, today or on the day you choose. Redeemable at all three Orchard Road outlets.', trail }) + `
+  const fallback = voucherItems.map((v) => /Spa Voucher/.test(v.name) ? `<div class="gv-amount"><b>${esc(v.price)}</b><span>Spa credit · any treatment</span></div>` : `<div class="gv-item"><span class="gv-kind">Treatment</span><b>${esc(v.name)}</b><span class="gv-price">${esc(v.price)}</span></div>`).join('');
+  const body = pageHero({ eyebrow: 'Gift vouchers', title: 'The gift of<br><span class="thin">feeling well</span>', lede: 'Pick an amount or a treatment, choose a card and the words on it, and we email it to them beautifully — today or on the day you choose. Redeemable at all three Orchard Road outlets.', trail,
+    extra: `<ul class="gv-trust" data-reveal><li>Emailed instantly or on a date</li><li>Valid 12 months</li><li>ION Orchard · 313@somerset · Centrepoint</li><li>Secure payment by Stripe</li></ul>` }) + `
 ${copyNote(gv.copy)}
 <div class="wrap"><div class="warn-box gv-notice" data-gift-notice hidden></div></div>
-<section class="section-sm" style="padding-top:0" data-gift-shop><div class="wrap gv-layout">
-  <div class="gv-main">
-    <div class="gv-step" id="choose"><div class="gv-step-head"><span class="num">1</span><h2>Choose a voucher</h2></div><div class="gv-grid" data-gift-items>${fallback}</div></div>
-    <div class="gv-step" id="design"><div class="gv-step-head"><span class="num">2</span><h2>Choose a card</h2></div><div class="gv-designs" data-gift-designs><p class="muted small">Card designs load in a moment…</p></div></div>
-    <div class="gv-step" id="details"><div class="gv-step-head"><span class="num">3</span><h2>Who is it for?</h2></div>
-      <form class="form" data-gift-form autocomplete="on">
-        <div class="row"><div class="field"><label for="gv-rn">Recipient's name</label><input id="gv-rn" name="recipient_name" required maxlength="80"></div><div class="field"><label for="gv-re">Recipient's email</label><input id="gv-re" name="recipient_email" type="email" placeholder="Leave blank to send it to yourself"></div></div>
-        <div class="field"><label for="gv-msg">Your message <span class="muted">(printed on the voucher, optional)</span></label><textarea id="gv-msg" name="message" maxlength="240" placeholder="Take an hour for yourself…"></textarea></div>
+<section class="section-sm gv-shop" style="padding-top:0" data-gift-shop><div class="wrap gv-layout">
+  <div class="gv-step gv-s1" id="choose"><div class="gv-step-head"><span class="num">1</span><h2>What would you like to gift?</h2></div>
+    <div class="gv-tabs" role="tablist" data-gift-tabs><button type="button" class="on" data-kind="value" role="tab" aria-selected="true">Spa credit<small>Choose an amount · any treatment</small></button><button type="button" data-kind="treatment" role="tab" aria-selected="false">A treatment<small>Massage, facial or onsen ritual</small></button></div>
+    <div class="gv-grid" data-gift-items>${fallback}</div>
+  </div>
+  <aside class="gv-side" data-gift-side hidden><div class="gv-sticky"><div data-gift-preview></div><p class="small muted gv-side-note">This is how the card arrives — as a PDF with their unique code and QR, plus the same words in the email.</p></div></aside>
+  <div class="gv-step gv-s2" id="design" data-gift-step hidden><div class="gv-step-head"><span class="num">2</span><h2>Make it personal</h2></div>
+    <div class="gv-block"><span class="gv-label">The occasion</span><div class="gv-chips" data-gift-occasions></div></div>
+    <div class="gv-block"><span class="gv-label">Card design</span><div class="gv-designs" data-gift-designs><p class="muted small">Card designs load in a moment…</p></div></div>
+    <form class="form gv-words" data-gift-words>
+      <div class="row"><div class="field"><label for="gv-head">Headline on the card</label><input id="gv-head" name="headline" maxlength="40" placeholder="A gift for you"></div></div>
+      <div class="field"><label for="gv-msg">Your message <span class="muted">(printed on the voucher, optional)</span></label><textarea id="gv-msg" name="message" maxlength="240" placeholder="Take an hour for yourself…"></textarea><span class="gv-count"><span data-gift-count>0</span>/240</span></div>
+    </form>
+  </div>
+  <div class="gv-step gv-s3" id="details" data-gift-step hidden><div class="gv-step-head"><span class="num">3</span><h2>Send it &amp; pay</h2></div>
+    <form class="form" data-gift-form autocomplete="on">
+      <div class="gv-recipient" data-gift-recipient>
+        <div class="row"><div class="field"><label for="gv-rn">Recipient's name</label><input id="gv-rn" name="recipient_name" maxlength="80"></div><div class="field"><label for="gv-re">Recipient's email</label><input id="gv-re" name="recipient_email" type="email" placeholder="Leave blank to send it to yourself"></div></div>
         <div class="row"><div class="field"><label for="gv-when">Send it</label><select id="gv-when" name="send_when"><option value="now">Now</option><option value="later">On a date (e.g. their birthday)</option></select></div><div class="field" data-send-date hidden><label for="gv-date">Send on</label><input id="gv-date" name="send_date" type="date"></div></div>
         <div class="divider"></div>
-        <div class="row"><div class="field"><label for="gv-bn">Your name</label><input id="gv-bn" name="buyer_name" required maxlength="80" autocomplete="name"></div><div class="field"><label for="gv-be">Your email <span class="muted">(for your receipt)</span></label><input id="gv-be" name="buyer_email" type="email" required autocomplete="email"></div></div>
-        <div class="row"><div class="field"><label for="gv-from">Sign it from</label><input id="gv-from" name="from_name" maxlength="80" placeholder="Defaults to your name"></div><div class="field"><label for="gv-bp">Mobile <span class="muted">(optional)</span></label><input id="gv-bp" name="buyer_phone" type="tel" autocomplete="tel"></div></div>
-        <div class="gv-pay"><div><span class="eyebrow">Total</span><div class="h2" data-gift-total>—</div></div><button class="btn" type="submit" disabled><span>Continue to secure payment</span>${icon.arrow}</button></div>
-        <p class="form-note" data-gift-error style="color:#9b1c1c"></p>
-        <p class="form-note">Payment is taken securely by Stripe (card, Apple Pay, Google Pay or PayNow). Prices include GST. By buying you agree to the voucher terms below.</p>
-      </form></div>
-  </div>
-  <aside class="gv-side"><div class="gv-sticky"><span class="eyebrow">Your voucher</span><div data-gift-preview style="margin-top:12px"></div><p class="small muted" style="margin-top:12px">The recipient receives this card as a PDF with their unique code and QR.</p></div></aside>
+      </div>
+      <div class="row"><div class="field"><label for="gv-bn">Your name</label><input id="gv-bn" name="buyer_name" required maxlength="80" autocomplete="name"></div><div class="field"><label for="gv-be">Your email <span class="muted">(for your receipt)</span></label><input id="gv-be" name="buyer_email" type="email" required autocomplete="email"></div></div>
+      <div class="row"><div class="field" data-gift-from><label for="gv-from">Sign it from</label><input id="gv-from" name="from_name" maxlength="80" placeholder="Defaults to your name"></div><div class="field"><label for="gv-bp">Mobile <span class="muted">(optional)</span></label><input id="gv-bp" name="buyer_phone" type="tel" autocomplete="tel"></div></div>
+      <div class="gv-pay"><div><span class="eyebrow">Total</span><div class="h2" data-gift-total>—</div><span class="small muted" data-gift-summary></span></div><button class="btn" type="submit" disabled><span>Continue to secure payment</span>${icon.arrow}</button></div>
+      <p class="form-note" data-gift-error style="color:#9b1c1c"></p>
+      <p class="form-note">Payment is taken securely by Stripe (card, Apple Pay, Google Pay or PayNow). Prices include GST. By buying you agree to the voucher terms below.</p>
+    </form></div>
 </div></section>
 <section class="section-sm bg-ivory"><div class="wrap grid-2" style="align-items:start">
   <div><span class="eyebrow" data-reveal>Already have a voucher?</span><h2 data-split style="margin:16px 0 20px">Check <span class="thin">a voucher.</span></h2><form class="form gv-check" data-gift-check><div class="field"><label for="gv-code">Voucher code</label><input id="gv-code" placeholder="e.g. EWG1-200GIFT-0082 (C01241-8)" required></div><button class="btn btn-ghost" type="submit"><span>Check</span>${icon.arrow}</button><div data-gift-check-out style="margin-top:12px"></div></form></div>
