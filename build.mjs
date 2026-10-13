@@ -32,6 +32,7 @@ add(P.shopIndex());
 products.forEach((p) => add(P.productPage(p)));
 add(P.promotionsPage());
 add(P.giftVouchers());
+add(P.giftThankYou(), { inSitemap: false });
 outlets.forEach((o) => add(P.outletPage(o)));
 add(P.contactPage());
 add(P.bookPage('/book-appointment/'));

@@ -327,39 +327,50 @@ ${[...new Set(promotions.map((p) => p.group))].map((g) => { const list = promoti
   return { path: '/promotions/', html: layout({ title: 'Spa Promotions & First Trial Offers in Singapore | Elements Wellness', description: 'Current Elements Wellness promotions: first-visit massage and facial trials, INDIBA® body therapy, Koyamaki onsen rituals and couple packages.', path: '/promotions/', active: 'promotions', bodyClass: 'page-light', schema: [bc(trail)], body }) };
 }
 
-/* ---------- Gift vouchers ---------- */
+/* ---------- Gift vouchers (buy online via the Elements staff system + Stripe) ---------- */
+const giftFaq = [
+  { q: 'How does the recipient get the voucher?', a: 'By email, as a PDF with their code — straight away, or on the date you choose. You receive a receipt with the code as well.' },
+  { q: 'Where can vouchers be redeemed?', a: 'At all three Elements Wellness outlets: ION Orchard, 313@somerset and The Centrepoint. Call or WhatsApp the outlet to book, and show the voucher on the day.' },
+  { q: 'How long is a voucher valid?', a: '12 months from the issue date. The expiry date is printed on the voucher, and we send a reminder a month before it expires.' },
+  { q: 'Can a voucher be used in parts?', a: 'No — each voucher is used in one visit. A spa credit voucher can be put towards any treatment; a treatment voucher is for that treatment.' },
+  { q: 'Can I check a voucher?', a: 'Yes — use the “Check a voucher” box on this page to see its status and expiry date.' },
+  { q: 'What if I need help?', a: 'Email ask@elements.com.sg with your order number, or WhatsApp any outlet.' },
+];
 export function giftVouchers() {
   const trail = [['Home', '/'], ['Gift Vouchers']];
-  const amounts = [100, 200, 300];
-  const body = pageHero({ eyebrow: 'Gift vouchers', title: 'The gift of<br><span class="thin">feeling well</span>', lede: 'Choose a value or a treatment. Redeemable at ION Orchard, 313@somerset and The Centrepoint.', trail }) + `
-<section class="section-sm" style="padding-top:0"><div class="wrap grid-2" style="align-items:start">
-  <div data-reveal style="position:sticky;top:120px">
-    <div class="voucher" data-tilt>
-      <div style="display:flex;justify-content:space-between;align-items:start">${logo()}<small style="letter-spacing:.2em;text-transform:uppercase;font-family:var(--f-display);font-weight:700;font-size:10.5px;opacity:.7">Gift voucher</small></div>
-      <div><small style="opacity:.7">A moment of calm, worth</small><div class="amt" data-v="200">S$200</div></div>
-      <svg class="v-ring" viewBox="0 0 100 100" fill="none" stroke="currentColor"><circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="30" stroke-dasharray="1 3"/></svg>
-    </div>
+  const fallback = voucherItems.map((v) => `<div class="gv-item"><span class="gv-kind">${/Spa Voucher/.test(v.name) ? 'Spa credit' : 'Treatment'}</span><b>${esc(v.name)}</b><small>${esc(v.desc)}</small><span class="gv-price">${esc(v.price)}</span></div>`).join('');
+  const body = pageHero({ eyebrow: 'Gift vouchers', title: 'The gift of<br><span class="thin">feeling well</span>', lede: 'Choose a spa credit or a treatment, pick a card, add a message — and we email it to them, today or on the day you choose. Redeemable at all three Orchard Road outlets.', trail }) + `
+<div class="wrap"><div class="warn-box gv-notice" data-gift-notice hidden></div></div>
+<section class="section-sm" style="padding-top:0" data-gift-shop><div class="wrap gv-layout">
+  <div class="gv-main">
+    <div class="gv-step" id="choose"><div class="gv-step-head"><span class="num">1</span><h2>Choose a voucher</h2></div><div class="gv-grid" data-gift-items>${fallback}</div></div>
+    <div class="gv-step" id="design"><div class="gv-step-head"><span class="num">2</span><h2>Choose a card</h2></div><div class="gv-designs" data-gift-designs><p class="muted small">Card designs load in a moment…</p></div></div>
+    <div class="gv-step" id="details"><div class="gv-step-head"><span class="num">3</span><h2>Who is it for?</h2></div>
+      <form class="form" data-gift-form autocomplete="on">
+        <div class="row"><div class="field"><label for="gv-rn">Recipient's name</label><input id="gv-rn" name="recipient_name" required maxlength="80"></div><div class="field"><label for="gv-re">Recipient's email</label><input id="gv-re" name="recipient_email" type="email" placeholder="Leave blank to send it to yourself"></div></div>
+        <div class="field"><label for="gv-msg">Your message <span class="muted">(printed on the voucher, optional)</span></label><textarea id="gv-msg" name="message" maxlength="240" placeholder="Take an hour for yourself…"></textarea></div>
+        <div class="row"><div class="field"><label for="gv-when">Send it</label><select id="gv-when" name="send_when"><option value="now">Now</option><option value="later">On a date (e.g. their birthday)</option></select></div><div class="field" data-send-date hidden><label for="gv-date">Send on</label><input id="gv-date" name="send_date" type="date"></div></div>
+        <div class="divider"></div>
+        <div class="row"><div class="field"><label for="gv-bn">Your name</label><input id="gv-bn" name="buyer_name" required maxlength="80" autocomplete="name"></div><div class="field"><label for="gv-be">Your email <span class="muted">(for your receipt)</span></label><input id="gv-be" name="buyer_email" type="email" required autocomplete="email"></div></div>
+        <div class="row"><div class="field"><label for="gv-from">Sign it from</label><input id="gv-from" name="from_name" maxlength="80" placeholder="Defaults to your name"></div><div class="field"><label for="gv-bp">Mobile <span class="muted">(optional)</span></label><input id="gv-bp" name="buyer_phone" type="tel" autocomplete="tel"></div></div>
+        <div class="gv-pay"><div><span class="eyebrow">Total</span><div class="h2" data-gift-total>—</div></div><button class="btn" type="submit" disabled><span>Continue to secure payment</span>${icon.arrow}</button></div>
+        <p class="form-note" data-gift-error style="color:#9b1c1c"></p>
+        <p class="form-note">Payment is taken securely by Stripe (card, Apple Pay, Google Pay or PayNow). Prices include GST. By buying you agree to the voucher terms below.</p>
+      </form></div>
   </div>
-  <div>
-    <form class="form" data-demo>
-      <div class="field"><label>Choose a value</label><div class="cat-filter" style="margin:0">${amounts.map((a) => `<button class="chip" type="button" data-amount="${a}" aria-pressed="${a === 200}">S$${a}</button>`).join('')}</div></div>
-      <div class="field"><label for="gv-type">Or a treatment</label><select id="gv-type"><option>Any value (credit)</option>${voucherItems.filter((v) => !/Spa Voucher/.test(v.name)).map((v) => `<option>${esc(v.name)} — ${esc(v.price)}</option>`).join('')}</select></div>
-      <div class="row"><div class="field"><label for="gv-to">Recipient name</label><input id="gv-to" required></div><div class="field"><label for="gv-from">From</label><input id="gv-from" required></div></div>
-      <div class="field"><label for="gv-email">Recipient email</label><input id="gv-email" type="email" required></div>
-      <div class="field"><label for="gv-msg">Message</label><textarea id="gv-msg" placeholder="Take an hour for yourself…"></textarea></div>
-      <button class="btn" type="submit"><span>Continue to payment</span>${icon.arrow}</button>
-      <p class="form-note">Vouchers are issued and tracked in the Elements gift-card system with a unique code, balance and expiry.</p>
-    </form>
-    <div class="form-success"><div class="h3">Thank you</div><p style="margin:8px 0 0">This is a front-end preview — payment and voucher issuing connect in the backend phase.</p></div>
-  </div>
+  <aside class="gv-side"><div class="gv-sticky"><span class="eyebrow">Your voucher</span><div data-gift-preview style="margin-top:12px"></div><p class="small muted" style="margin-top:12px">The recipient receives this card as a PDF with their unique code and QR.</p></div></aside>
 </div></section>
-<section class="section bg-ivory"><div class="wrap-narrow"><span class="eyebrow" data-reveal>Voucher FAQ</span><h2 data-split style="margin:20px 0 40px">How vouchers work</h2>${faqList([
-    { q: 'Where can vouchers be redeemed?', a: 'At all three Elements Wellness outlets: ION Orchard, 313@somerset and The Centrepoint.' },
-    { q: 'How do I check my balance?', a: 'Our front desk can look up your voucher by code or name and tell you the remaining balance and expiry.' },
-    { q: 'Do vouchers expire?', a: 'Validity is shown on each voucher. Please contact us if you have questions about your voucher terms.' },
-  ])}</div></section>
-<section class="section-sm"><div class="wrap"><span class="eyebrow" data-reveal>Treatment vouchers</span><h2 data-split style="margin:20px 0 40px">Or gift an experience</h2><div class="cards-3">${voucherItems.filter((v) => !/Spa Voucher/.test(v.name)).map((v) => `<div class="card" data-reveal><div class="card-body"><h3>${esc(v.name)}</h3><p>${esc(v.desc)}</p><div class="meta"><span style="font-size:18px">${esc(v.price)}</span></div></div></div>`).join('')}</div></div></section>` + ctaBand();
-  return { path: '/gift-vouchers/', html: layout({ title: 'Spa Gift Vouchers Singapore | Elements Wellness', description: 'Give an Elements Wellness gift voucher for massage, facials, onsen rituals and more, redeemable at three Orchard Road outlets.', path: '/gift-vouchers/', bodyClass: 'page-light', schema: [bc(trail)], body }) };
+<section class="section-sm bg-ivory"><div class="wrap grid-2" style="align-items:start">
+  <div><span class="eyebrow" data-reveal>Already have a voucher?</span><h2 data-split style="margin:16px 0 20px">Check <span class="thin">a voucher.</span></h2><form class="form gv-check" data-gift-check><div class="field"><label for="gv-code">Voucher code</label><input id="gv-code" placeholder="e.g. EWG1-200GIFT-0082 (C01241-8)" required></div><button class="btn btn-ghost" type="submit"><span>Check</span>${icon.arrow}</button><div data-gift-check-out style="margin-top:12px"></div></form></div>
+  <div><span class="eyebrow" data-reveal>Voucher terms</span><h2 data-split style="margin:16px 0 20px">Good to <span class="thin">know.</span></h2><ul class="checklist" data-reveal><li>12 months validity from the issue date.</li><li>Proper identification is required to redeem the voucher. We reserve the right to decline where identification is not provided.</li><li>Call or WhatsApp your preferred outlet to make an appointment; the voucher must be presented on the day.</li><li>Each voucher is used in one visit and is not exchangeable for cash.</li></ul></div>
+</div></section>
+<section class="section"><div class="wrap-narrow"><span class="eyebrow" data-reveal>Voucher FAQ</span><h2 data-split style="margin:20px 0 40px">How vouchers work</h2>${faqList(giftFaq)}</div></section>` + ctaBand('Prefer to buy in person?', 'Vouchers are also available at the counter of any outlet.');
+  return { path: '/gift-vouchers/', html: layout({ title: 'Spa Gift Vouchers Singapore | Elements Wellness', description: 'Give an Elements Wellness gift voucher for massage, facials, onsen rituals and more — emailed today or on a date you choose, redeemable at three Orchard Road outlets.', path: '/gift-vouchers/', active: 'gift', bodyClass: 'page-light', schema: [bc(trail), faqSchema(giftFaq)], scripts: ['/assets/js/gift.js'], body }) };
+}
+export function giftThankYou() {
+  const trail = [['Home', '/'], ['Gift Vouchers', '/gift-vouchers/'], ['Thank you']];
+  const body = pageHero({ eyebrow: 'Gift vouchers', title: 'Thank you', lede: '', trail }) + `<section class="section-sm" style="padding-top:0"><div class="wrap-narrow" data-gift-thanks><p class="lede"><span class="spin"></span> Confirming your payment…</p></div></section>` + ctaBand('Book their visit', 'Call or WhatsApp any outlet to reserve a time.');
+  return { path: '/gift-vouchers/thank-you/', html: layout({ title: 'Thank you | Elements Wellness Gift Vouchers', description: 'Your gift voucher order confirmation.', path: '/gift-vouchers/thank-you/', active: 'gift', bodyClass: 'page-light', schema: [bc(trail)], scripts: ['/assets/js/gift.js'], noindex: true, body }) };
 }
 
 /* ---------- Locations ---------- */

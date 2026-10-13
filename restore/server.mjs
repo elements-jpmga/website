@@ -20,6 +20,9 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const PORT = +process.env.PORT || 4400;
 const PUBLIC = path.join(here, 'public');
 const PROD = process.env.NODE_ENV === 'production';
+// Where customers buy vouchers (used for Stripe return links and CORS). Comma-separated extra origins allowed via PUBLIC_SITE_ORIGINS.
+export const PUBLIC_SITE_URL = (process.env.PUBLIC_SITE_URL || 'https://elements.com.sg').replace(/\/+$/, '');
+const ALLOWED_ORIGINS = [PUBLIC_SITE_URL, 'https://www.elements.com.sg', ...(process.env.PUBLIC_SITE_ORIGINS || '').split(',').map((s) => s.trim()).filter(Boolean), ...(PROD ? [] : ['http://localhost:4321', 'http://127.0.0.1:4321'])];
 
 // Online, client health data must sit behind staff sign-in, in Postgres and private storage — refuse to start otherwise.
 if (PROD) {
@@ -226,7 +229,7 @@ route('GET', '/api/reports/:rid/file', async (req, res, { params }) => {
 });
 
 /* ---------- Gift vouchers (Elements' own system) ---------- */
-registerGiftRoutes({ route, send, err, json, readBody, staff, sendFile });
+registerGiftRoutes({ route, send, err, json, readBody, staff, sendFile, allowedOrigins: ALLOWED_ORIGINS });
 startGiftScheduler();
 
 /* ---------- Server ---------- */
@@ -236,6 +239,12 @@ http.createServer(async (req, res) => {
   res.setHeader('X-Frame-Options', 'SAMEORIGIN');
   res.setHeader('Referrer-Policy', 'same-origin');
   res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+  // The public website (elements.com.sg, or the local preview) calls the public gift endpoints from the browser
+  if (url.pathname.startsWith('/api/gift/public/') || url.pathname === '/api/gift/stripe/webhook') {
+    const origin = req.headers.origin || '';
+    if (origin && ALLOWED_ORIGINS.includes(origin)) { res.setHeader('Access-Control-Allow-Origin', origin); res.setHeader('Vary', 'Origin'); res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS'); res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); res.setHeader('Access-Control-Max-Age', '600'); }
+    if (req.method === 'OPTIONS') { res.writeHead(204); return res.end(); }
+  }
   if (PROD) res.setHeader('Strict-Transport-Security', 'max-age=31536000');
   try {
     for (const r of routes) {
