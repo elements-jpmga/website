@@ -128,10 +128,10 @@ export default function home() {
     </div>
     <div class="paths" data-rise>
       ${cards.map((c) => `<article class="path-card" data-rise-item>
-        <a class="path-media" href="${c.url}" aria-label="${esc(c.label)}"><img src="${c.img}" alt="" loading="lazy"></a>
+        <a class="path-media" href="${c.url}" aria-label="${esc(c.label)}"><img src="${c.img}" alt="" loading="lazy"><img class="path-swap" alt="" aria-hidden="true"></a>
         <div class="path-body">
           <h3><a href="${c.url}">${esc(c.label)}</a></h3>
-          <ul class="path-list">${pick(c).map((t) => `<li><a href="${t.url}"><span>${esc(t.name)}</span>${price(t) ? `<small>${esc(price(t))}</small>` : ''}</a></li>`).join('')}</ul>
+          <ul class="path-list">${pick(c).map((t) => `<li><a href="${t.url}" data-img="${t.img || ''}"><span>${esc(t.name)}</span>${price(t) ? `<small>${esc(price(t))}</small>` : ''}</a></li>`).join('')}</ul>
           <a class="link-arrow" href="${c.url}">View all ${esc(c.label.toLowerCase())} ${icon.arrow}</a>
         </div>
       </article>`).join('')}

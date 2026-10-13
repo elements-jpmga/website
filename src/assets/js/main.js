@@ -227,6 +227,18 @@
     });
   }
 
+  /* ---------- Treatment cards: hovering a treatment shows its photo on the card ---------- */
+  function pathPhotos() {
+    if (isTouch) return;
+    $$('.path-card').forEach((card) => {
+      const swap = $('.path-swap', card); if (!swap) return;
+      const links = $$('.path-list a[data-img]', card).filter((a) => a.dataset.img);
+      card.addEventListener('pointerenter', () => links.forEach((a) => { const i = new Image(); i.src = a.dataset.img; }), { once: true });
+      links.forEach((a) => a.addEventListener('pointerenter', () => { if (swap.getAttribute('src') !== a.dataset.img) { swap.classList.remove('on'); swap.src = a.dataset.img; } requestAnimationFrame(() => swap.classList.add('on')); }));
+      $('.path-list', card).addEventListener('pointerleave', () => swap.classList.remove('on'));
+    });
+  }
+
   /* ---------- Locations map: Singapore zooms into Orchard Road once; tap a pin and its card (photos + details) opens in the empty corner ---------- */
   function mapLocations() {
     const sec = $('[data-map]'); if (!sec) return;
@@ -394,7 +406,7 @@
     const w = $('[data-rv-write]'); if (w && d.places[0]?.writeReviewUrl) w.href = d.places[0].writeReviewUrl;
     const up = $('[data-rv-updated]'); if (up) up.textContent = 'Live from Google · updated ' + new Date(d.snapshotDate).toLocaleDateString('en-SG', { day: 'numeric', month: 'short', year: 'numeric' });
   }
-  const boot = () => { heroSlides(); logoWall(); liveReviews(); reveals(); rise(); mapLocations(); steps(); concerns(); carousel(); sigTiles(); revealCards(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
+  const boot = () => { heroSlides(); logoWall(); pathPhotos(); liveReviews(); reveals(); rise(); mapLocations(); steps(); concerns(); carousel(); sigTiles(); revealCards(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
   (document.fonts?.ready || Promise.resolve()).then(() => enterPage(() => { steamHero(); boot(); }));
   window.addEventListener('load', () => ScrollTrigger.refresh());
 })();
