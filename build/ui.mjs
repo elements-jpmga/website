@@ -1,5 +1,7 @@
 // Shared UI pieces: icons, logo, layout shell (header, menus, finder, footer).
-import { site, services, categories, outlets } from './data.mjs';
+import { site, services, groups, outlets, facialConcerns, massageConcerns } from './data.mjs';
+import { facialShared, massageBoosters, spaPages, womensWellness } from './sitemap.mjs';
+const womens = () => womensWellness.map((id) => services.find((s) => s.id === id));
 
 export const esc = (s = '') => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -68,48 +70,65 @@ export const serviceCard = (s, extra = '') => `
   </div>
 </a>`;
 
-const megaMenu = () => {
-  const cols = categories.map((c) => `<div class="mega-col"><h4><a href="${c.url}">${esc(c.label)}</a></h4>${services.filter((s) => s.category === c.id && !s.hidden).slice(0, 9).map((s) => `<a href="${s.url}">${esc(s.name)}</a>`).join('')}${services.filter((s) => s.category === c.id).length > 9 ? `<a href="${c.url}" style="color:var(--maroon)">View all →</a>` : ''}</div>`).join('');
-  return `<div class="mega"><div class="wrap mega-inner">${cols}
-    <a class="mega-feature" href="/spa-ritual/onsen-spa/"><img src="/assets/img/couple-onsen-2.jpg" alt="" loading="lazy"><div><span class="eyebrow">Spa Ritual</span><div class="h3" style="margin-top:8px">Koyamaki Onsen Spa @ The Centrepoint</div></div></a>
+// Mega menus follow the sitemap: By Concern · Focused Care · By Treatment, plus a separate Boosters link. No prices.
+const mlink = (u, t) => `<a href="${u}">${esc(t)}</a>`;
+const megaFacials = () => {
+  const focused = facialShared.filter((p) => p.group === 'focused'), boost = facialShared.find((p) => p.group === 'boosters');
+  return `<div class="mega"><div class="wrap mega-inner mega-3">
+    <div class="mega-col"><h4>By Concern</h4>${facialConcerns.map((c) => mlink(c.url, c.label)).join('')}</div>
+    <div class="mega-col"><h4>Focused Care</h4>${focused.map((p) => mlink(p.url, p.label)).join('')}<h4 class="mega-sub"><a href="${boost.url}">Boosters</a></h4><h4 class="mega-sub"><a href="/facials/">All Facials</a></h4></div>
+    <div class="mega-col mega-wide"><h4>By Treatment</h4><div class="mega-list c2">${services.filter((s) => s.group === 'facials').map((s) => mlink(s.url, s.name)).join('')}</div></div>
   </div></div>`;
 };
+const megaMassage = () => {
+  const list = services.filter((s) => s.group === 'massage');
+  return `<div class="mega"><div class="wrap mega-inner mega-3">
+    <div class="mega-col"><h4>By Concern</h4>${massageConcerns.map((c) => mlink(c.url, c.label)).join('')}</div>
+    <div class="mega-col"><h4>Focused Care</h4><span class="mega-heading">Women’s Wellness</span>${womens().map((s) => mlink(s.url, s.name)).join('')}<h4 class="mega-sub"><a href="${massageBoosters.url}">Boosters</a></h4><h4 class="mega-sub"><a href="/massage-and-recovery/">All Massage &amp; Recovery</a></h4></div>
+    <div class="mega-col mega-wide"><h4>By Treatment</h4><div class="mega-list c3">${list.map((s) => mlink(s.url, s.name)).join('')}</div></div>
+  </div></div>`;
+};
+const dropSpa = () => `<div class="mega mega-small"><div class="mega-inner mega-1"><div class="mega-col">${mlink('/spa-experiences/', 'All Spa Experiences')}${spaPages.map((p) => mlink(p.url, p.name)).join('')}</div></div></div>`;
+const dropProducts = () => `<div class="mega mega-small"><div class="mega-inner mega-1"><div class="mega-col">${mlink('/products/', 'All Products')}${mlink('/products/skincare/', 'Skincare')}${mlink('/products/supplements/', 'Supplements')}</div></div></div>`;
+
+const navItem = (label, url, key, active, menu) => menu
+  ? `<div class="has-mega${menu.startsWith('<div class="mega mega-small') ? ' has-drop' : ''}"><a class="nav-link" href="${url}" ${active === key ? 'aria-current="page"' : ''}>${esc(label)} ${icon.chev}</a>${menu}</div>`
+  : `<a class="nav-link" href="${url}" ${active === key ? 'aria-current="page"' : ''}>${esc(label)}</a>`;
 
 export const header = (active = '') => `
 <a class="skip" href="#main">Skip to content</a>
+<div class="utility-row"><div class="wrap utility-inner"><a href="/promotions/" ${active === 'promotions' ? 'aria-current="page"' : ''}>Promotions</a></div></div>
 <header class="header">
   <div class="wrap header-inner">
     <a href="/" aria-label="Elements Wellness — home"><img class="logo-img" src="/assets/img/logo-white.png" alt="Elements Wellness" width="1119" height="253"></a>
     <nav class="nav-left" aria-label="Primary">
-      <div class="has-mega"><a class="nav-link" href="/services/" ${active === 'services' ? 'aria-current="page"' : ''}>Treatments ${icon.chev}</a>${megaMenu()}</div>
-      <a class="nav-link" href="/spa-ritual/" ${active === 'ritual' ? 'aria-current="page"' : ''}>Spa Ritual</a>
-      <a class="nav-link" href="/health-analysis/" ${active === 'health' ? 'aria-current="page"' : ''}>Health Analysis</a>
-      <a class="nav-link" href="/promotions/" ${active === 'promotions' ? 'aria-current="page"' : ''}>Promotions</a>
-      <a class="nav-link" href="/awards/" ${active === 'awards' ? 'aria-current="page"' : ''}>Awards</a>
+      ${navItem('Facials', '/facials/', 'facials', active, megaFacials())}
+      ${navItem('Massage & Recovery', '/massage-and-recovery/', 'massage', active, megaMassage())}
+      ${navItem('Spa Experiences', '/spa-experiences/', 'spa', active, dropSpa())}
+      ${navItem('Elements Restore', '/elements-restore/', 'restore', active)}
+      ${navItem('Products', '/products/', 'products', active, dropProducts())}
+      ${navItem('Gift Vouchers', '/gift-vouchers/', 'gift', active)}
     </nav>
     <div class="nav-right">
-      <a class="nav-link" href="/gift-vouchers/">Gift Vouchers</a>
-      <a class="nav-link" href="/shop/">Shop</a>
       <button class="nav-search" type="button" data-finder aria-label="Find a treatment">${icon.search}<span>Find</span></button>
-      <a class="btn btn-sm" href="/book-appointment/"><span>Book</span>${icon.arrow}</a>
+      <a class="btn btn-sm" href="/book-appointment/"><span>Book Now</span>${icon.arrow}</a>
       <button class="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
     </div>
   </div>
 </header>
 <div class="mobile-menu" aria-label="Mobile">
   <nav>
-    <details><summary>Treatments</summary><div class="sub">${categories.map((c) => `<a href="${c.url}">${esc(c.label)}</a>`).join('')}<a href="/services/">All treatments</a></div></details>
-    <a href="/spa-ritual/">Spa Ritual</a>
-    <a href="/health-analysis/">Health Analysis</a>
-    <a href="/promotions/">Promotions</a>
+    <details><summary>Facials</summary><div class="sub"><a href="/facials/">All Facials</a><b class="sub-h">By Concern</b>${facialConcerns.map((c) => mlink(c.url, c.label)).join('')}<b class="sub-h">Focused Care</b>${facialShared.map((p) => mlink(p.url, p.label)).join('')}<b class="sub-h">By Treatment</b>${services.filter((s) => s.group === 'facials').map((s) => mlink(s.url, s.name)).join('')}</div></details>
+    <details><summary>Massage &amp; Recovery</summary><div class="sub"><a href="/massage-and-recovery/">All Massage &amp; Recovery</a><b class="sub-h">By Concern</b>${massageConcerns.map((c) => mlink(c.url, c.label)).join('')}<b class="sub-h">Women’s Wellness</b>${womens().map((s) => mlink(s.url, s.name)).join('')}${mlink(massageBoosters.url, 'Boosters')}<b class="sub-h">By Treatment</b>${services.filter((s) => s.group === 'massage').map((s) => mlink(s.url, s.name)).join('')}</div></details>
+    <details><summary>Spa Experiences</summary><div class="sub"><a href="/spa-experiences/">All Spa Experiences</a>${spaPages.map((p) => mlink(p.url, p.name)).join('')}</div></details>
+    <a href="/elements-restore/">Elements Restore</a>
+    <details><summary>Products</summary><div class="sub"><a href="/products/">All Products</a><a href="/products/skincare/">Skincare</a><a href="/products/supplements/">Supplements</a></div></details>
     <a href="/gift-vouchers/">Gift Vouchers</a>
-    <a href="/shop/">Supplements</a>
-    <a href="/awards/">Awards</a>
-    <a href="/blog/">Journal</a>
-    <details><summary>Visit</summary><div class="sub">${outlets.map((o) => `<a href="${o.url}">${esc(o.name)}</a>`).join('')}<a href="/contact-us/">Contact</a></div></details>
+    <a href="/promotions/">Promotions</a>
+    <details><summary>Locations</summary><div class="sub"><a href="/locations/">All Locations</a>${outlets.map((o) => mlink(o.url, o.name)).join('')}</div></details>
   </nav>
   <div class="mm-foot">
-    <a class="btn btn-light" href="/book-appointment/"><span>Book Appointment</span>${icon.arrow}</a>
+    <a class="btn btn-light" href="/book-appointment/"><span>Book Now</span>${icon.arrow}</a>
     <div class="socials">${socials()}</div>
   </div>
 </div>`;
@@ -125,14 +144,14 @@ const finder = () => `
       <label class="finder-input">${icon.search}<input type="search" placeholder="Search a treatment or how you feel…" aria-label="Search treatments"></label>
       <div class="finder-tabs" role="group" aria-label="Search by">
         <button class="chip" type="button" data-mode="concern" aria-pressed="true">By concern</button>
-        <button class="chip" type="button" data-mode="category" aria-pressed="false">By treatment type</button>
+        <button class="chip" type="button" data-mode="category" aria-pressed="false">By section</button>
         <button class="chip" type="button" data-mode="outlet" aria-pressed="false">By outlet</button>
       </div>
       <div class="finder-grid">
         <div><div class="finder-label">Choose one</div><div class="finder-opts"></div></div>
         <div><div class="finder-label finder-results-label">All treatments</div><div class="finder-results"></div></div>
       </div>
-      <p class="finder-note">Treatment and concern lists are managed by Elements Wellness in the CMS. Not sure? <a class="link-arrow" href="/health-analysis/">Start with a Health Analysis</a></p>
+      <p class="finder-note">Not sure where to start? <a class="link-arrow" href="/elements-restore/">Discover Elements Restore</a></p>
     </div>
   </div>
 </div>`;
@@ -148,16 +167,15 @@ const footer = () => `
         <div class="form-success" style="background:transparent;color:var(--blush);padding:12px 0">Thank you — you're on the list.</div>
         <div class="socials">${socials()}</div>
       </div>
-      <div><h4>Treatments</h4><ul>${categories.map((c) => `<li><a href="${c.url}">${esc(c.label)}</a></li>`).join('')}<li><a href="/health-analysis/">Health Analysis</a></li></ul></div>
-      <div><h4>Visit</h4><ul>${outlets.map((o) => `<li><a href="${o.url}">${esc(o.name)}</a></li>`).join('')}<li><a href="/contact-us/">Contact</a></li><li><a href="/book-appointment/">Book Appointment</a></li></ul></div>
-      <div><h4>Elements</h4><ul><li><a href="/our-story/">Our Story</a></li><li><a href="/awards/">Awards</a></li><li><a href="/blog/">Journal</a></li><li><a href="/promotions/">Promotions</a></li><li><a href="/gift-vouchers/">Gift Vouchers</a></li><li><a href="/shop/">Supplements</a></li></ul></div>
-      <div><h4>Help</h4><ul><li><a href="/faq-spa-etiquette/">FAQ &amp; Spa Etiquette</a></li><li><a href="/appointment-booking-cancellation-policy/">Booking &amp; Cancellation</a></li><li><a href="/customer-assurance-privacy/">Customer Assurance &amp; Privacy</a></li><li><a href="mailto:${site.email}">${site.email}</a></li></ul></div>
+      <div><h4>Locations</h4><ul><li><a href="/locations/">All Locations</a></li>${outlets.map((o) => `<li><a href="${o.url}">${esc(o.name)}</a></li>`).join('')}</ul></div>
+      <div><h4>Elements</h4><ul><li><a href="/about-elements/">About Elements</a></li><li><a href="/awards/">Awards &amp; Recognition</a></li><li><a href="/contact/">Contact</a></li></ul></div>
+      <div><h4>Help</h4><ul><li><a href="/faq-spa-etiquette/">FAQ &amp; Spa Etiquette</a></li><li><a href="/appointment-booking-cancellation-policy/">Booking &amp; Cancellation Policy</a></li><li><a href="/customer-assurance-privacy/">Customer Assurance &amp; Privacy</a></li><li><a href="mailto:${site.email}">${site.email}</a></li></ul></div>
     </div>
     <div class="footer-word" aria-hidden="true">Elements</div>
-    <div class="footer-bottom"><span>© ${new Date().getFullYear()} Elements Wellness Pte. Ltd. All rights reserved.</span><nav><a href="/customer-assurance-privacy/">Privacy</a><a href="/appointment-booking-cancellation-policy/">Policies</a><a href="/sitemap.xml">Sitemap</a></nav></div>
+    <div class="footer-bottom"><span>© ${new Date().getFullYear()} Elements Wellness Pte. Ltd. All rights reserved.</span><nav><a href="/customer-assurance-privacy/">Privacy</a><a href="/appointment-booking-cancellation-policy/">Booking Policy</a><a href="/sitemap.xml">Sitemap</a></nav></div>
   </div>
 </footer>
-<div class="fab"><a class="wa" href="${site.whatsapp}" target="_blank" rel="noopener" aria-label="WhatsApp us">${icon.wa}</a><a class="bk" href="/book-appointment/" aria-label="Book now">${icon.arrow}<span>Book now</span></a></div>`;
+<div class="fab"><a class="wa" href="${site.whatsapp}" target="_blank" rel="noopener" aria-label="WhatsApp us">${icon.wa}</a><a class="bk" href="/book-appointment/" aria-label="Book Now">${icon.arrow}<span>Book now</span></a></div>`;
 
 export const layout = ({ title, description, path, body, active = '', bodyClass = '', schema = [], ogImage = '/assets/img/onsen-1.jpg', scripts = [], noindex = false }) => `<!doctype html>
 <html lang="en-SG" class="no-js">

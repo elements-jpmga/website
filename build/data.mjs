@@ -4,6 +4,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import * as SM from './sitemap.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p) => (fs.existsSync(path.join(root, p)) ? fs.readFileSync(path.join(root, p), 'utf8') : '');
@@ -13,6 +14,10 @@ const img = (n) => `/assets/img/${n}`;
 const slugify = (s) => s.toLowerCase().replace(/[’'®]/g, '').replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const norm = (u = '') => u.replace(/^https?:\/\/[^/]+/, '').split('#')[0].replace(/\/?$/, '/');
 const lastSeg = (u = '') => norm(u).split('/').filter(Boolean).pop() || '';
+// Old-site URL → its page in the new sitemap (for links inside carried-over content)
+const redirectMap = new Map(SM.redirects);
+export const resolveUrl = (u = '') => { const [pathPart, hash = ''] = u.split('#'); const p = norm(pathPart); return (redirectMap.get(p) || (pathPart ? p : '')) + (hash ? '#' + hash : ''); };
+
 
 export const site = {
   url: 'https://elements.com.sg',
@@ -57,7 +62,7 @@ const outletAbout = {
 const hours = [['Mon – Fri', '11am – 9pm'], ['Sat, Sun & PH', '10:30am – 8pm']];
 export const outlets = [
   { id: 'ion', name: 'ION Orchard', short: 'ION Orchard', url: '/locations/ion-orchard/', feature: 'Beside Orchard MRT', street: '2 Orchard Turn, #B1-30', postal: '238801', address: '2 Orchard Turn, #B1-30<br>ION Orchard, Singapore 238801', addressPlain: '#B1-30 ION Orchard, 2 Orchard Turn, Singapore 238801', phone: '6738 3788', whatsapp: '8938 2878', email: 'ion@elements.com.sg', img: img('ion-interior.jpg'), mapQuery: 'ION Orchard 2 Orchard Turn B1-30', blurb: 'Our ION Orchard spa sits right beside Orchard MRT — an easy escape for massage, facials and recovery therapy in the heart of the shopping belt.' },
-  { id: 'centrepoint', name: 'The Centrepoint', short: 'Centrepoint', url: '/locations/the-centrepoint/', feature: 'Home of the Koyamaki Onsen', street: '176 Orchard Road, #02-28', postal: '238843', address: '176 Orchard Road, #02-28<br>The Centrepoint, Singapore 238843', addressPlain: '#02-28 The Centrepoint, 176 Orchard Road, Singapore 238843', phone: '6737 8488', whatsapp: '9357 8183', email: 'cpoint@elements.com.sg', img: img('centrepoint-front.jpg'), mapQuery: 'The Centrepoint 176 Orchard Road 02-28', blurb: 'The Centrepoint is home to our award-winning private Koyamaki onsen suites — soak, scrub and massage in a ritual built for one or two.' },
+  { id: 'centrepoint', name: 'The Centrepoint', short: 'Centrepoint', url: '/locations/centrepoint/', feature: 'Home of the Koyamaki Onsen', street: '176 Orchard Road, #02-28', postal: '238843', address: '176 Orchard Road, #02-28<br>The Centrepoint, Singapore 238843', addressPlain: '#02-28 The Centrepoint, 176 Orchard Road, Singapore 238843', phone: '6737 8488', whatsapp: '9357 8183', email: 'cpoint@elements.com.sg', img: img('centrepoint-front.jpg'), mapQuery: 'The Centrepoint 176 Orchard Road 02-28', blurb: 'The Centrepoint is home to our award-winning private Koyamaki onsen suites — soak, scrub and massage in a ritual built for one or two.' },
   { id: '313', name: '313@somerset', short: '313@somerset', url: '/locations/313-somerset/', feature: 'Contrast therapy & herbal baths', street: '313 Orchard Road, #B2-50/51', postal: '238895', address: '313 Orchard Road, #B2-50/51<br>313@somerset, Singapore 238895', addressPlain: '#B2-50/51 313@somerset, 313 Orchard Road, Singapore 238895', phone: '6636 8878', whatsapp: '8875 1677', email: '313@elements.com.sg', img: img('313-front.jpg'), mapQuery: '313@somerset 313 Orchard Road B2-50', blurb: 'At 313@somerset, recover like an athlete with our Chill & Heal contrast therapy and TCM herbal baths, alongside the full treatment menu.' },
 ].map((o) => ({ ...o, ...outletAbout[o.id] })).map((o) => {
   const r = (research.outlets || []).find((x) => x.name && x.name.toLowerCase().includes(o.short.toLowerCase().slice(0, 5)));
@@ -81,27 +86,18 @@ export const concerns = [
   { id: 'together', label: 'Time together', phrase: 'a date for two', blurb: 'Couple rituals, private onsen and shared relaxation.', img: img('couple-onsen-2.jpg') },
 ];
 
-/* ---------------- Categories ---------------- */
-const rs = research.servicesExtra || {};
-const concernPages = rs.facialConcernPages || [];
-const cpIntro = (u, fb) => concernPages.find((p) => norm(p.url) === u)?.intro || fb;
-export const categories = [
-  { id: 'massage', label: 'Massage', url: '/services/massage/', element: 'Wood', glyph: '木', img: img('main-massage.jpg'), hero: img('massage-banner.jpg'), blurb: 'Not every body needs the same massage. From TCM Tuina to sports and lymphatic techniques, our therapists work with your body — not a script.' },
-  { id: 'facial', label: 'Facial', url: '/services/facial/', element: 'Water', glyph: '水', img: img('lymphatic-sculpt.jpg'), hero: img('facial-mask.jpg'), blurb: 'Results-driven facials that pair skilled hands with professional-grade products and advanced skin technology — for clarity, firmness and glow you can see.',
-    subpages: [
-      ['Aging / Wrinkles / Sagging', '/services/facial/aging-wrinkles-sagging/', 'ageing', 'Caring for your skin as it changes with time.'],
-      ['Dull / Uneven', '/services/facial/dull-uneven/', 'dull-skin', 'Facials that brighten without compromise.'],
-      ['Dry / Dehydrated', '/services/facial/dry-dehydrated/', 'dry-skin', 'Hydrate, restore, glow.'],
-      ['Oily / Acne / Open Pores', '/services/facial/oily-acne-open-pores/', 'acne', 'Clear skin starts here — facials that deliver real results for acne, oily skin and open pores.'],
-      ['Sensitive Skin', '/services/facial/sensitive/', 'sensitive', 'Hydrate. Soothe. Restore — even in the humid heat.'],
-      ['Eye Area Treatment', '/services/facial/eye-area-treatment/', 'puffiness', 'Treatments for the delicate eye contour — recommended as add-ons during a facial.'],
-    ].map(([label, url, concern, blurb]) => ({ label, url, concern, blurb: cpIntro(url, blurb), recommended: concernPages.find((p) => norm(p.url) === url)?.recommended || [] })) },
-  { id: 'wellness', label: 'Wellness', url: '/services/wellness/', element: 'Fire', glyph: '火', img: img('contrast-therapy.jpg'), hero: img('red-light.jpg'), blurb: 'Recovery and restoration — contrast therapy, herbal baths, red light, moxibustion, Acu-Wave and INDIBA®. Ancient healing traditions meet modern science.' },
-  { id: 'slimming', label: 'Slimming', url: '/services/slimming/', element: 'Earth', glyph: '土', img: img('indiba.jpg'), hero: img('cat-slimming.jpg'), blurb: 'Contour, de-bloat and reshape with TCM slimming therapy, INDIBA® radiofrequency, cavitation and fat-freeze technology.' },
-  { id: 'spa-ritual', label: 'Spa Ritual', url: '/spa-ritual/', element: 'Metal', glyph: '金', img: img('couple-onsen-2.jpg'), hero: img('jacuzzi.jpg'), blurb: 'Private Koyamaki onsen, Chill & Heal contrast and TCM herbal rituals — designed for one, or for two.' },
+/* ---------------- Main treatment sections (client sitemap 2026) ---------------- */
+export const groups = [
+  { id: 'facials', label: 'Facials', url: '/facials/', img: img('lymphatic-sculpt.jpg'), hero: img('facial-mask.jpg'), blurb: 'Results-driven facials that pair skilled hands with professional-grade products and advanced skin technology — for clarity, firmness and glow you can see.' },
+  { id: 'massage', label: 'Massage & Recovery', url: '/massage-and-recovery/', img: img('main-massage.jpg'), hero: img('massage-banner.jpg'), blurb: 'Therapeutic massage, TCM therapies and recovery technology — compare the options and choose the right starting point for your body.' },
+  { id: 'spa', label: 'Spa Experiences', url: '/spa-experiences/', img: img('couple-onsen-2.jpg'), hero: img('jacuzzi.jpg'), blurb: 'Private Koyamaki onsen, Chill & Heal contrast and TCM herbal rituals — designed for one, or for two.' },
 ];
+// Old site categories (used only to read legacy data)
+const rs = research.servicesExtra || {};
+const concernPagesOld = rs.facialConcernPages || [];
+const oldCats = { massage: 'Massage', facial: 'Facial', wellness: 'Wellness', slimming: 'Slimming', 'spa-ritual': 'Spa Ritual' };
 
-/* ---------------- Services (every current URL retained) ---------------- */
+/* ---------------- Legacy services (old site data: prices, images, awards) ---------------- */
 const S = (id, name, url, category, image, concernIds, short, extra = {}) => ({ id, name, url, category, img: img(image), concerns: concernIds, short, ...extra });
 const raw = [
   // Massage
@@ -182,11 +178,10 @@ const money = (s = '') => {
 };
 const availability = (a = '') => /313/i.test(a) ? ['313'] : /centrepoint/i.test(a) ? ['centrepoint'] : /ion/i.test(a) && !/all/i.test(a) ? ['ion'] : null;
 
-export const services = raw.map((s) => {
+const legacy = raw.map((s) => {
   const r = researchServices.find((x) => x.url && norm(x.url) === norm(s.url) && (!s.alias || x.name === s.name))
     || (s.alias ? researchServices.find((x) => x.name === s.name) : null);
-  const cat = categories.find((c) => c.id === s.category);
-  const m = { ...s, categoryLabel: cat.label, keywords: '', targets: [] };
+  const m = { ...s, categoryLabel: oldCats[s.category], keywords: '', targets: [] };
   if (r) {
     if (r.description) m.description = r.description;
     if (r.duration) m.duration = r.duration.replace(/\s*\(.*\)$/, '').replace(/\bmin\b/, 'min');
@@ -201,7 +196,48 @@ export const services = raw.map((s) => {
   m.hidden = s.hidden || (!!s.alias && s.category !== 'spa-ritual');
   return m;
 });
+const legacyById = Object.fromEntries(legacy.map((s) => [s.id, s]));
+
+/* ---------------- Treatments (one page each, top-level URLs per the sitemap) ---------------- */
+const NEW_SHORT = 'New treatment — details coming soon.';
+const mk = (group) => (t) => {
+  const L = legacyById[t.id] || {};
+  return {
+    ...L, id: t.id, name: t.name, url: t.url, group, source: t.source, copy: t.copy, isNew: !t.source,
+    img: L.img || img(t.img || 'candles.jpg'), short: L.short || NEW_SHORT, concerns: L.concerns || [], keywords: L.keywords || '',
+    womens: !!t.womens, ritual: !!t.ritual, options: t.options || null, buy: t.buy || null, outlets: t.outlet ? [t.outlet] : L.outlets, hidden: false,
+  };
+};
+export const services = [
+  ...SM.facialTreatments.map(mk('facials')),
+  ...SM.massageTreatments.map(mk('massage')),
+  ...SM.spaPages.map(mk('spa')),
+];
 const byId = Object.fromEntries(services.map((s) => [s.id, s]));
+
+/* ---------------- Concern pages (discovery pathways; a treatment can appear in several) ---------------- */
+// DRAFT treatment assignments — Elements to confirm against the v4 inventory. Aqua Glow has no concern assignment.
+const assign = {
+  '/fine-lines-firmness/': ['indiba-facial', 'hydrolux', 'nano-fibroblast', 'wishpro', 'rejuran', 'lpg-mobilift', '24k-gold', 'nir-cellbright'],
+  '/dull-tired-skin/': ['3c-vit-glow', 'power-dose', 'nir-cellbright', '24k-gold', 'meridian-bojin-facial', 'medi-jet'],
+  '/pigmentation-uneven-skin-tone/': ['ipl', 'power-dose', '3c-vit-glow', 'dermo-peel'],
+  '/dry-dehydrated-skin/': ['hydrolux', 'power-dose', 'rejuran', '24k-gold', 'medi-jet'],
+  '/congestion-breakouts/': ['medi-jet', 'probiotic', 'ipl', 'dermo-peel'],
+  '/sensitive-reactive-skin/': ['probiotic', 'wishpro', 'hydrolux'],
+  '/puffiness-facial-definition/': ['lymphatic-sculpt', 'lpg-mobilift', 'meridian-bojin-facial', 'hanbang-fascia'],
+  '/uneven-texture-pores/': ['dermo-peel', 'medi-jet', 'nano-fibroblast', 'rejuran'],
+  '/neck-shoulder-back-tension/': ['deep-tissue', 'tuina', 'myofascial-head-neck', 'fascia', 'acuwave', 'sports'],
+  '/water-retention-circulation/': ['lymphatic', 'meridian-flush', 'ginseng-bojin', 'moxibustion', 'red-light'],
+  '/stress-fatigue-poor-sleep/': ['swedish', '5-elements-massage', 'tcm-qi', 'moxibustion', 'red-light'],
+  '/tech-neck-headaches/': ['myofascial-head-neck', 'tuina', 'acuwave', 'medi-stretch'],
+  '/post-workout-recovery/': ['sports', 'deep-tissue', 'deepba-recovery', 'indiba-recovery', 'red-light', 'medi-stretch'],
+  '/stiffness-limited-mobility/': ['medi-stretch', 'fascia', 'acuwave', 'indiba-recovery', 'deepba-recovery'],
+  '/body-contouring/': ['tcm-slimming', 'deepba-slim', 'indiba-slimming', 'catabolic-tummy'],
+};
+const concernPage = (group) => (c) => ({ ...c, group, img: img(c.img), treatments: (assign[c.url] || []).map((id) => byId[id]).filter(Boolean), intro: concernPagesOld.find((p) => norm(p.url) === c.source)?.intro || '' });
+export const facialConcerns = SM.facialConcerns.map(concernPage('facials'));
+export const massageConcerns = SM.massageConcerns.map(concernPage('massage'));
+export const concernPagesAll = [...facialConcerns, ...massageConcerns];
 
 /* ---------------- Awards (48, each with its own page) ---------------- */
 const logoFor = (pub, year) => {
@@ -219,14 +255,14 @@ const pubShort = (p) => p.replace(/\b(Beauty Treatment Awards|Spa & Salon Awards
 const linkAlias = { onsen: 'onsen', 'ha-glutathione-power-dose-facial': 'power-dose', 'ginseng-bojin-meridian': 'ginseng-bojin', 'prenatal-massage': 'prenatal', 'sports-massage': 'sports', 'lpg-mobilift-facial': 'lpg-mobilift', '24k-pure-gold-facial': '24k-gold' };
 const matchService = (a) => {
   const t = (a.treatment || '').toLowerCase().replace(/^the\s+/, '');
-  const byName = services.find((s) => !s.alias && t && (t.includes(s.name.toLowerCase().replace(/\s*\(.*\)/, '')) || s.name.toLowerCase().includes(t)));
+  const byName = legacy.find((s) => !s.alias && t && (t.includes(s.name.toLowerCase().replace(/\s*\(.*\)/, '')) || s.name.toLowerCase().includes(t)));
   if (/probiotic/.test(t)) return 'probiotic';
   if (/chill & heal/.test(t)) return 'contrast';
   if (/onsen/.test(t)) return 'onsen';
   if (byName) return byName.id;
   const seg = lastSeg(a.link || '');
   if (linkAlias[seg]) return linkAlias[seg];
-  const bySeg = services.find((s) => !s.alias && lastSeg(s.url) === seg);
+  const bySeg = legacy.find((s) => !s.alias && lastSeg(s.url) === seg);
   return bySeg?.id || null;
 };
 export const awards = (research.awards || []).map((a) => {
@@ -237,12 +273,12 @@ export const awards = (research.awards || []).map((a) => {
   return {
     slug, url: `/awards/${slug}/`, year: a.year, publication: pub, publicationShort: short, category: a.category || '', label: a.awardLabel || '',
     title: a.category || a.treatment, treatment: a.treatment || '', summary: a.description || '',
-    serviceIds: sid ? [sid] : [], logo: logoFor(pub, a.year),
+    serviceIds: sid && byId[sid] ? [sid] : [], logo: logoFor(pub, a.year),
   };
 }).sort((a, b) => b.year - a.year);
 // Press & award logos for the marquee.
 export const pressLogos = [
-  ...[...new Map(awards.filter((a) => a.logo).map((a) => [a.logo, a])).values()].map((a) => ({ img: a.logo, title: a.publication, url: a.url })),
+  ...[...new Map(awards.filter((a) => a.logo).map((a) => [a.logo, a])).values()].map((a) => ({ img: a.logo, title: a.publication, url: `/awards/#${a.slug}` })),
   { img: img('awards/thesmartlocal.png'), title: 'TheSmartLocal' },
   { img: img('awards/mothership.png'), title: 'Mothership' },
 ];
@@ -286,7 +322,7 @@ export const promotions = (research.promotions?.items || []).map((p) => {
   const pr = p.prices || {};
   const lead = pr.firstVisit ? [pr.firstVisit, 'First visit'] : pr.weekdays ? [pr.weekdays, 'Weekdays'] : pr.webPromo ? [pr.webPromo, 'Web promo'] : pr.from ? [pr.from, 'From'] : pr.solo ? [pr.solo.split(' ')[0], 'Solo'] : ['', ''];
   const rows = [['First visit', pr.firstVisit], ['Web promo', pr.webPromo], ['Weekdays', pr.weekdays], ['Weekends', pr.weekends], ['Solo', pr.solo], ['Couple', pr.couple], ['Usual', pr.usual]].filter(([, v]) => v && v !== lead[0]);
-  const url = promoLinks[p.name] || (/onsen/i.test(p.name + p.category) ? '/spa-ritual/onsen-spa/' : /chill/i.test(p.name + p.category) ? '/services/wellness/ice-bath-therapy/' : '/book-appointment/');
+  const url = resolveUrl(promoLinks[p.name] || (/onsen/i.test(p.name + p.category) ? '/koyamaki-onsen-ritual/' : /chill/i.test(p.name + p.category) ? '/chill-and-heal-ritual/' : '/book-appointment/'));
   return { group: p.category.replace(/\s*\(.*\)/, ''), groupNote: (p.category.match(/\((.*)\)/) || [])[1] || '', title: p.name, desc: p.description, duration: p.duration, price: lead[0], priceLabel: lead[1], rows, tag: p.tag ? p.tag.toLowerCase().replace(/^\w/, (c) => c.toUpperCase()) : '', img: promoImg(p.name, p.category), url };
 });
 
@@ -324,15 +360,8 @@ export const shopProducts = wc.map((p) => ({
   descHtml: (p.description || p.short_description || '').replace(/<img[^>]*>/g, ''), img: p.localImg || p.images?.[0]?.src || '', imgAlt: p.images?.[0]?.alt || '',
 }));
 
-/* ---------------- Supplements — PLACEHOLDERS until Elements supplies range ---------------- */
-export const products = [
-  { slug: 'daily-balance', name: 'Daily Balance Complex', short: 'Daily balance', desc: 'Everyday wellness support to complement your treatment programme.', benefits: ['Supports overall wellbeing', 'Recommended after Health Analysis', 'Simple daily routine'], serviceIds: ['5-elements-massage', 'meridian-flush'] },
-  { slug: 'deep-rest', name: 'Deep Rest Formula', short: 'Rest & sleep', desc: 'Night-time support for calm and restful sleep.', benefits: ['Supports relaxation', 'Pairs with red light therapy', 'Evening routine'], serviceIds: ['red-light', 'herbal-bath'] },
-  { slug: 'glow-collagen', name: 'Glow Collagen', short: 'Skin glow', desc: 'Beauty-from-within support to extend your facial results.', benefits: ['Supports skin hydration', 'Pairs with facials', 'Daily sachet'], serviceIds: ['nano-fibroblast', '3c-vit-glow'] },
-  { slug: 'lean-and-light', name: 'Lean & Light', short: 'Body & detox', desc: 'Support for your slimming programme and a lighter-feeling body.', benefits: ['Supports digestion', 'Pairs with TCM slimming', 'Daily routine'], serviceIds: ['tcm-tummy-trim', 'indiba-slimming'] },
-  { slug: 'recovery-plus', name: 'Recovery Plus', short: 'Recovery', desc: 'Post-workout and post-treatment recovery support.', benefits: ['Supports muscle recovery', 'Pairs with contrast therapy', 'For active lifestyles'], serviceIds: ['contrast', 'sports'] },
-  { slug: 'womens-harmony', name: 'Women’s Harmony', short: 'Women’s health', desc: 'Gentle support for women’s balance through every stage.', benefits: ['Supports hormonal balance', 'Pairs with INDIBA® Womb Care', 'Gentle formula'], serviceIds: ['indiba-womb', 'moxibustion'] },
-].map((p) => ({ ...p, price: 'Price TBC', url: `/shop/${p.slug}/` }));
+/* ---------------- Products — catalogue structure; brands and products come from Elements' inventory ---------------- */
+export const productBrands = []; // { slug, name, intro, why, products: [{ slug, name, category: 'skincare'|'supplements', desc, price }] }
 
 /* ---------------- Story ---------------- */
 export const story = {
@@ -349,10 +378,10 @@ export const policies = [
 
 /* ---------------- Finder dataset (sent to the browser) ---------------- */
 export const finderData = () => ({
-  concerns: concerns.map(({ id, label }) => ({ id, label })),
-  categories: categories.map(({ id, label }) => ({ id, label })),
+  concerns: concernPagesAll.map(({ url, label, treatments }) => ({ id: url.replace(/\//g, ''), label, ids: treatments.map((t) => t.id) })),
+  categories: groups.map(({ id, label }) => ({ id, label })),
   outlets: outlets.map(({ id, name }) => ({ id, label: name })),
-  services: services.filter((s) => !s.hidden).map((s) => ({ id: s.id, name: s.name, url: s.url, category: s.category, categoryLabel: s.categoryLabel, img: s.img, concerns: s.concerns, outlets: s.outlets || null, keywords: s.keywords, duration: s.duration || '' })),
+  services: services.map((s) => ({ id: s.id, name: s.name, url: s.url, category: s.group, categoryLabel: groups.find((g) => g.id === s.group).label, img: s.img, concerns: concernPagesAll.filter((c) => c.treatments.some((t) => t.id === s.id)).map((c) => c.url.replace(/\//g, '')), outlets: s.outlets || null, keywords: s.keywords, duration: s.duration || '' })),
 });
 
-export { byId };
+export { byId, legacyById };

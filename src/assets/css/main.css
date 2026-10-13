@@ -36,7 +36,7 @@
 
   --ease: cubic-bezier(.2, .8, .2, 1);
   --header-h: 76px;
-  --banner-h: 0px;
+  --banner-h: 32px;
   --shadow: 0 24px 60px -30px rgba(74, 14, 17, .35);
 }
 
@@ -434,7 +434,7 @@ html.js:not(.reduced) .fan img { transform: translate(-50%, -50%) rotate(0deg) t
 
 .footer { background: linear-gradient(180deg, #5a1114 0%, #2a0709 100%); color: rgba(255, 255, 255, .78); padding-top: clamp(56px, 7vw, 100px); overflow: hidden; position: relative; }
 .footer a:hover { color: #fff; }
-.footer-grid { display: grid; grid-template-columns: 1.4fr repeat(4, 1fr); gap: 36px; }
+.footer-grid { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: 36px; }
 .footer h4 { font-size: 12px; letter-spacing: .04em; color: #fff; margin: 0 0 14px; font-weight: 700; }
 .footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 14px; }
 .newsletter { display: flex; margin-top: 20px; border-bottom: 1px solid rgba(255, 255, 255, .3); max-width: 360px; }
@@ -606,9 +606,9 @@ html.js:not(.reduced) .hero [data-hero-in] { opacity: 0; }
 html.reduced [data-reveal], html.reduced [data-clip] { opacity: 1 !important; transform: none !important; }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 1400px) { .nav-left .nav-link:nth-child(5) { display: none; } .nav-right .nav-link:nth-child(2) { display: none; } }
+@media (max-width: 1400px) { .nav-left { gap: 18px; } .nav-link { font-size: 13.5px; } }
 @media (max-width: 1180px) {
-  .nav-left .nav-link:nth-child(n+4) { display: none; }
+  .nav-search span { display: none; } .nav-search { width: 40px; padding: 0; justify-content: center; }
   .mega-inner { grid-template-columns: repeat(3, 1fr); }
   .mega-feature { display: none; }
   .promises { grid-template-columns: 1fr 1fr; }
@@ -651,7 +651,6 @@ html.reduced [data-reveal], html.reduced [data-clip] { opacity: 1 !important; tr
 }
 @media (max-width: 640px) {
   body { font-size: 15px; }
-  :root { --banner-h: 30px; }
   .announce { font-size: 11px; }
   .cards-3, .cards-4, .cards-2, .svc-list, .opt-grid, .form .row, .benefits, .tcards, .promises, .el-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -931,6 +930,61 @@ h6 { font-size: 16px; line-height: 1.2; }
 .statement { font-family: var(--f-head); font-weight: 400; letter-spacing: 0; }
 .footer h4 { font-family: var(--f-text); }
 
+/* ================= Client sitemap 2026 additions ================= */
+/* Utility row above the main navigation */
+.utility-row { position: absolute; top: 0; left: 0; right: 0; z-index: 51; height: var(--banner-h); background: var(--wine-deep); color: rgba(255, 255, 255, .85); font-size: 12.5px; font-weight: 500; }
+.utility-inner { height: 100%; display: flex; align-items: center; justify-content: flex-end; gap: 22px; }
+.utility-row a { opacity: .85; transition: opacity .2s; } .utility-row a:hover, .utility-row a[aria-current] { opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 1100px) { .nav-left, .nav-right .btn { display: none; } .burger { display: block; } }
+
+/* Mega menus: By Concern · Focused Care · By Treatment */
+.mega-inner.mega-3 { grid-template-columns: minmax(190px, 1fr) minmax(190px, 1fr) minmax(0, 2.4fr); }
+.mega-list.c2 { columns: 2; column-gap: 28px; } .mega-list.c3 { columns: 3; column-gap: 24px; }
+.mega-list a { break-inside: avoid; }
+.mega-col .mega-sub { margin-top: 20px; } .mega-col .mega-sub a { font-size: 12px; font-weight: 700; color: var(--maroon); padding: 0; }
+.mega-heading { display: block; font-size: 11.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--stone); margin: 2px 0 4px; }
+.has-mega.has-drop { position: relative; }
+.has-drop .mega-small { left: -22px; right: auto; width: 250px; max-width: none; }
+.mega-inner.mega-1 { grid-template-columns: 1fr; padding: 16px 22px 18px; gap: 0; }
+.mega-1 .mega-col a:first-child { font-weight: 600; color: var(--maroon); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 4px; }
+@media (max-width: 1280px) { .mega-list.c3 { columns: 2; } }
+.mobile-menu .sub .sub-h { display: block; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--rose, #c99a8f); margin: 14px 0 2px 12px; font-weight: 700; }
+
+/* Concern / section tiles */
+.concern-card .card-media { aspect-ratio: 4 / 3; }
+
+/* Options & prices tables (rituals, shared add-on pages, Restore plan) */
+.opt-table { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.opt-row { display: grid; grid-template-columns: minmax(0, 2.2fr) 1fr 1.2fr 1fr; gap: 20px; align-items: center; padding: 18px 4px; border-bottom: 1px solid var(--line); }
+.opt-row h3 { font-size: 17px; margin: 0 0 4px; }
+.opt-row > span { font-size: 14.5px; }
+.opt-head { padding: 10px 4px; font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--stone); }
+.small-prose, .small-prose p { font-size: 14px; color: var(--ink-soft); margin: 4px 0 0; }
+@media (max-width: 760px) { .opt-row { grid-template-columns: 1fr 1fr; } .opt-row > div { grid-column: 1 / -1; } .opt-head { display: none; } }
+
+/* "Copy to be supplied" notices for Elements' review */
+.copy-note { display: flex; width: fit-content; margin: 0 auto 8px; }
+.empty-state { border: 1px dashed var(--line); border-radius: var(--r); padding: 28px; color: var(--ink-soft); max-width: 760px; }
+
+/* FAQ & Spa Etiquette sections */
+.faq-sections { display: grid; gap: 48px; margin-top: 28px; }
+.faq-sec .cf-h2 { margin-bottom: 14px; }
+
+/* Awards & Recognition rows (filters by year + organisation) */
+.award-table .award-row { scroll-margin-top: 140px; }
+.award-row .link-arrow { white-space: nowrap; }
+.awards-strip .label { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.award-all { font-size: 13px; }
+
+/* Outlet pages: available treatments by section */
+.outlet-svc { padding: 16px 0; border-bottom: 1px solid var(--line); }
+.outlet-svc h3 { font-size: 17px; margin-bottom: 6px; }
+.outlet-svc p { line-height: 2; }
+.outlet-svc a:not(:hover) { color: var(--ink-soft); }
+
+/* Home: three treatment sections */
+.sig-row.sig-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 960px) { .award-row .link-arrow { white-space: normal; } .award-row > * { min-width: 0; } }
 /* ---------- Gift vouchers: buy online ---------- */
 .gv-layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 48px; align-items: start; }
 .gv-step { margin-bottom: 48px; } .gv-step-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; } .gv-step-head .num { width: 34px; height: 34px; border-radius: 50%; background: var(--maroon); color: #fff; display: grid; place-items: center; font-family: var(--f-display); font-weight: 700; font-size: 13px; } .gv-step-head h2 { font-size: clamp(22px, 2.4vw, 30px); margin: 0; }
