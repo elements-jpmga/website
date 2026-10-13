@@ -211,7 +211,7 @@ ${process.env.LIVE_REVIEWS ? '<meta name="ew-live-reviews" content="1">' : ''}
 ${schema.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('\n')}
 </head>
 <body class="${bodyClass}">
-<div class="loader" aria-hidden="true"><img class="loader-logo" src="/assets/img/logo-white.png" alt="Elements Wellness" width="1119" height="253"></div>
+<div class="loader" aria-hidden="true"><div class="loader-back"></div><div class="loader-front"><div class="loader-inner"><img class="loader-logo" src="/assets/img/logo-white.png" alt="Elements Wellness" width="1119" height="253"><span class="loader-tag">Where wellness meets real results</span><div class="loader-line"><i></i></div><span class="loader-count">0</span></div></div></div>
 <div class="curtain" aria-hidden="true"><img class="loader-logo" src="/assets/img/logo-white.png" alt="" width="1119" height="253"></div>
 ${header(active)}
 <main id="main">

@@ -287,6 +287,8 @@ export const pressLogos = [
 // Google ratings & reviews per outlet — snapshot in src/data/google-reviews.json, refreshed live by /api/reviews
 export const google = JSON.parse(read('src/data/google-reviews.json') || '{"total":0,"average":0,"places":[]}');
 export const googleFor = (outletId) => google.places.find((p) => p.id === outletId);
+// Singapore outline (OpenStreetMap, simplified) as an SVG path in a 1000×660 box; the three outlets sit around (470, 355) on Orchard Road
+export const sgOutline = (read('src/data/singapore-outline.txt') || '').trim();
 
 export const reviews = [
   { name: 'Brad Bones', text: 'I come back weekly to see my super star Nicole! My wife also enjoys. Amazing at what they do!' },

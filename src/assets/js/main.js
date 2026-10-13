@@ -33,14 +33,17 @@
       if (curtain && !reduced) { gsap.set(curtain, { opacity: 1, visibility: 'visible' }); gsap.to(curtain, { opacity: 0, duration: .6, ease: 'power2.out', onComplete: () => gsap.set(curtain, { visibility: 'hidden' }) }); }
       onDone(); return;
     }
-    // Home only: solid maroon screen with the wordmark, then a soft fade out
-    const wm = loader.querySelector('.loader-logo');
-    // the steam reveal starts underneath while the loader fades, so the spa is already emerging
+    // Home: wordmark + counter on maroon, then both panels lift away like a curtain (the quick version on repeat visits in a session)
+    const front = loader.querySelector('.loader-front'), back = loader.querySelector('.loader-back'), wm = loader.querySelector('.loader-logo'), tag = loader.querySelector('.loader-tag'), line = loader.querySelector('.loader-line i'), count = loader.querySelector('.loader-count'), inner = loader.querySelector('.loader-inner');
+    const n = { v: 0 }, hold = firstVisit ? 1.5 : .6;
     gsap.timeline({ onComplete: () => { loader.style.display = 'none'; } })
-      .fromTo(wm, { opacity: 0, y: 12, scale: .96 }, { opacity: 1, y: 0, scale: 1, duration: .8, ease: 'power3.out' }, 0)
-      .to(wm, { opacity: 0, y: -8, duration: .35, ease: 'power2.in' }, '+=.35')
-      .add(onDone, '-=.1')
-      .to(loader, { opacity: 0, duration: .7, ease: 'power2.inOut' }, '-=.15');
+      .fromTo(wm, { opacity: 0, y: 18, scale: .97 }, { opacity: 1, y: 0, scale: 1, duration: .9, ease: 'power3.out' }, 0)
+      .fromTo(tag, { opacity: 0, y: 10 }, { opacity: .75, y: 0, duration: .7 }, .25)
+      .to(n, { v: 100, duration: hold, ease: 'power2.inOut', onUpdate: () => { count.textContent = Math.round(n.v); line.style.transform = `scaleX(${n.v / 100})`; } }, .15)
+      .to(inner, { opacity: 0, y: -16, duration: .4, ease: 'power2.in' }, '-=.05')
+      .add(onDone, '-=.05')
+      .to(front, { yPercent: -100, duration: 1, ease: 'expo.inOut' }, '-=.15')
+      .to(back, { yPercent: -100, duration: 1, ease: 'expo.inOut' }, '<.12');
   };
   const leavePage = (href) => {
     if (!curtain || reduced) { window.location.href = href; return; }
@@ -143,6 +146,34 @@
       .to(state, { density: .05, ease: 'none' }, 0);
   }
 
+  /* ---------- Hero slides: crossfade every few seconds; words swap with a soft lift ---------- */
+  function heroSlides() {
+    const sec = $('[data-slides]'), data = window.EW_SLIDES; if (!sec || !data) return;
+    const imgs = $$('[data-slide-img]', sec), dots = $$('[data-slide-to]', sec), title = $('[data-slide-title]', sec), sub = $('[data-slide-sub]', sec), cta = $('[data-slide-cta]', sec);
+    let i = 0, timer, busy = false;
+    const fill = (n) => { title.textContent = data[n].title; sub.textContent = data[n].sub; cta.querySelector('span').textContent = data[n].cta; cta.href = data[n].href; };
+    const show = (n, user) => {
+      n = (n + data.length) % data.length; if (n === i || busy) return; const from = i; i = n;
+      dots.forEach((d, j) => { d.classList.toggle('is-on', j === n); d.setAttribute('aria-selected', j === n); });
+      if (reduced) { imgs.forEach((im, j) => im.classList.toggle('is-on', j === n)); fill(n); return; }
+      busy = true;
+      gsap.timeline({ onComplete: () => { busy = false; } })
+        .to([title, sub, cta], { opacity: 0, y: -14, duration: .45, stagger: .05, ease: 'power2.in' }, 0)
+        .set(imgs[n], { opacity: 0, scale: 1.08, zIndex: 2 }, 0).add(() => imgs[n].classList.add('is-on'), 0)
+        .to(imgs[n], { opacity: 1, duration: 1.4, ease: 'power2.inOut' }, 0)
+        .to(imgs[n], { scale: 1.04, duration: 6, ease: 'none' }, 0)
+        .add(() => { imgs[from].classList.remove('is-on'); gsap.set(imgs[from], { clearProps: 'all' }); gsap.set(imgs[n], { zIndex: 1 }); }, 1.4)
+        .add(fill.bind(null, n), .5)
+        .fromTo([title, sub, cta], { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: .9, stagger: .08, ease: 'power3.out' }, .6);
+      if (user) restart();
+    };
+    const restart = () => { clearInterval(timer); if (!reduced) timer = setInterval(() => show(i + 1), 6500); };
+    dots.forEach((d) => d.addEventListener('click', () => show(+d.dataset.slideTo, true)));
+    $('[data-slide-prev]', sec)?.addEventListener('click', () => show(i - 1, true));
+    $('[data-slide-next]', sec)?.addEventListener('click', () => show(i + 1, true));
+    new IntersectionObserver(([en]) => (en.isIntersecting ? restart() : clearInterval(timer))).observe(sec);
+  }
+
   /* ---------- Hero finder rotator ---------- */
   const rot = $('.hf-rotator');
   if (rot && !reduced) { const words = (rot.dataset.words || '').split('|').filter(Boolean); let i = 0; setInterval(() => { i = (i + 1) % words.length; gsap.timeline().to(rot, { y: -8, opacity: 0, duration: .35, ease: 'power2.in' }).add(() => { rot.textContent = words[i]; }).fromTo(rot, { y: 8, opacity: 0 }, { y: 0, opacity: 1, duration: .5 }); }, 2600); }
@@ -167,6 +198,45 @@
     $$('.page-hero-media img, .svc-hero-media img').forEach((img) => gsap.fromTo(img, { yPercent: -8 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }));
     // Fanned photo stack opens as it appears
     $$('[data-fan]').forEach((f) => { const imgs = $$('img', f); const rots = [-12, 0, 12], xs = [-60, 0, 60]; const m = window.innerWidth < 640 ? .78 : 1; gsap.to(imgs, { rotate: (i) => rots[i], x: (i) => xs[i] * m, duration: 1.2, ease: 'power3.out', stagger: .06, scrollTrigger: { trigger: f, start: 'top 85%', once: true } }); });
+  }
+
+  /* ---------- Treatment cards: rise into place with perspective, then drift gently with the scroll ---------- */
+  function rise() {
+    $$('[data-rise]').forEach((grid) => {
+      const items = $$('[data-rise-item]', grid); if (!items.length) return;
+      if (reduced) { gsap.set(items, { opacity: 1 }); return; }
+      gsap.set(grid, { perspective: 1200 });
+      gsap.fromTo(items, { y: 140, opacity: 0, rotateX: 9, scale: .96, transformOrigin: '50% 100%' }, { y: 0, opacity: 1, rotateX: 0, scale: 1, duration: 1.5, stagger: .13, ease: 'expo.out', scrollTrigger: { trigger: grid, start: 'top 82%', once: true }, clearProps: 'rotateX,scale' });
+      if (window.innerWidth > 960) items.forEach((it, i) => gsap.fromTo(it, { y: i % 2 ? 36 : 0 }, { y: i % 2 ? -24 : 0, ease: 'none', immediateRender: false, scrollTrigger: { trigger: grid, start: 'top bottom', end: 'bottom top', scrub: 1.2 } }));
+    });
+  }
+
+  /* ---------- Map of Singapore: one tap shows an outlet, a second tap opens its page ---------- */
+  function mapLocations() {
+    const sec = $('[data-map]'); if (!sec) return;
+    const items = $$('[data-map-item]', sec), pins = $$('[data-map-pin]', sec);
+    const open = (id, user) => {
+      items.forEach((it) => {
+        const on = it.dataset.mapItem === id, was = it.classList.contains('is-on');
+        it.classList.toggle('is-on', on); $('.map-item-head', it).setAttribute('aria-expanded', on);
+        const body = $('.map-item-body', it);
+        if (reduced) { body.style.height = on ? 'auto' : '0'; return; }
+        if (on && !was) gsap.fromTo(body, { height: 0 }, { height: 'auto', duration: .7, ease: 'power3.out', onComplete: () => ScrollTrigger.refresh() });
+        else if (!on && was) gsap.to(body, { height: 0, duration: .5, ease: 'power3.inOut' });
+      });
+      pins.forEach((p) => p.classList.toggle('is-on', p.dataset.mapPin === id));
+      if (user && !reduced) { const p = pins.find((x) => x.dataset.mapPin === id); if (p) gsap.fromTo($('.lens-ring', p), { attr: { r: 6 }, opacity: 1 }, { attr: { r: 22 }, opacity: 0, duration: .9, ease: 'power2.out', onComplete: () => gsap.set($('.lens-ring', p), { attr: { r: 14 }, clearProps: 'opacity' }) }); }
+    };
+    items.forEach((it) => {
+      $('.map-item-head', it).addEventListener('click', () => (it.classList.contains('is-on') ? leavePage(it.dataset.url) : open(it.dataset.mapItem, true)));
+      it.addEventListener('pointerenter', () => pins.forEach((p) => p.classList.toggle('is-hot', p.dataset.mapPin === it.dataset.mapItem)));
+      it.addEventListener('pointerleave', () => pins.forEach((p) => p.classList.remove('is-hot')));
+    });
+    pins.forEach((p) => { p.style.cursor = 'pointer'; p.addEventListener('click', () => { const it = items.find((x) => x.dataset.mapItem === p.dataset.mapPin); if (!it) return; if (p.classList.contains('is-on')) leavePage(it.dataset.url); else { open(p.dataset.mapPin, true); if (window.innerWidth <= 960) scrollTo(it); } }); });
+    // first outlet open from the start; the island draws itself in as the section arrives
+    const first = items.find((it) => it.classList.contains('is-on')); if (first) { $('.map-item-body', first).style.height = 'auto'; pins.forEach((p) => p.classList.toggle('is-on', p.dataset.mapPin === first.dataset.mapItem)); }
+    const land = $('.sg-land', sec);
+    if (land && !reduced) { const len = land.getTotalLength(); gsap.set(land, { strokeDasharray: len, strokeDashoffset: len, fillOpacity: 0 }); gsap.timeline({ scrollTrigger: { trigger: sec, start: 'top 70%', once: true } }).to(land, { strokeDashoffset: 0, duration: 2.2, ease: 'power2.inOut' }).to(land, { fillOpacity: 1, duration: 1 }, '-=1.2').from($('.sg-orchard', sec), { opacity: 0, scale: .6, transformOrigin: '340px 238px', duration: .8, ease: 'back.out(2)' }, '-=.6').from($('.sg-link', sec), { opacity: 0, duration: .6 }, '-=.3').from($('.map-lens', sec), { opacity: 0, scale: .85, duration: .9, ease: 'power3.out' }, '-=.4'); }
   }
 
   /* ---------- Steps: image crossfade by scroll position ---------- */
@@ -290,7 +360,7 @@
     const w = $('[data-rv-write]'); if (w && d.places[0]?.writeReviewUrl) w.href = d.places[0].writeReviewUrl;
     const up = $('[data-rv-updated]'); if (up) up.textContent = 'Live from Google · updated ' + new Date(d.snapshotDate).toLocaleDateString('en-SG', { day: 'numeric', month: 'short', year: 'numeric' });
   }
-  const boot = () => { liveReviews(); reveals(); steps(); concerns(); carousel(); sigTiles(); revealCards(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
+  const boot = () => { heroSlides(); liveReviews(); reveals(); rise(); mapLocations(); steps(); concerns(); carousel(); sigTiles(); revealCards(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
   (document.fonts?.ready || Promise.resolve()).then(() => enterPage(() => { steamHero(); boot(); }));
   window.addEventListener('load', () => ScrollTrigger.refresh());
 })();
