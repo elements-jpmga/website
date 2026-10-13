@@ -227,44 +227,36 @@
     });
   }
 
-  /* ---------- Locations map: Singapore zooms into Orchard Road; tap a card or pin to focus it, tap again to open the outlet ---------- */
+  /* ---------- Locations map: Singapore zooms into Orchard Road once; tap a pin and its card (photos + details) opens in the empty corner ---------- */
   function mapLocations() {
     const sec = $('[data-map]'); if (!sec) return;
     const stage = $('[data-omap]', sec), sg = $('.omap-sg', sec), street = $('.omap-street', sec);
-    const cards = $$('[data-card]', sec), pins = $$('[data-pin]', street), malls = $$('[data-mall]', street);
+    const pins = $$('[data-pin]', street), malls = $$('[data-mall]', street), pops = $$('[data-pop]', sec);
     const W = 1200, H = 790;
     const pinXY = (id) => { const t = pins.find((p) => p.dataset.pin === id).getAttribute('transform').match(/translate\(([\d.]+) ([\d.]+)\)/); return [+t[1], +t[2]]; };
-    // fit a box of map units into the stage's own shape so nothing important is ever cropped
-    const fit = (x0, y0, x1, y1) => { const a = stage.clientWidth / Math.max(1, stage.clientHeight); let w = x1 - x0, h = y1 - y0; if (w / h < a) w = h * a; else h = w / a; const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2; return [Math.min(Math.max(cx - w / 2, 0), Math.max(0, W - w)), Math.min(Math.max(cy - h / 2, 0), Math.max(0, H - h)), w, h].map((n) => Math.round(n * 10) / 10); };
-    const overview = () => { const xy = pins.map((p) => pinXY(p.dataset.pin)); const xs = xy.map((p) => p[0]), ys = xy.map((p) => p[1]); return fit(Math.min(...xs) - 90, Math.min(...ys) - 80, Math.max(...xs) + 90, Math.max(...ys) + 60); };
-    const vbFor = (id) => { const [x, y] = pinXY(id); return fit(x - 170, y - 110, x + 170, y + 80); };
-    street.setAttribute('viewBox', overview().join(' '));
-    let lastSize = '';
-    new ResizeObserver(() => { const k = stage.clientWidth + 'x' + stage.clientHeight; if (k === lastSize) return; lastSize = k; gsap.to(street, { attr: { viewBox: (current ? vbFor(current) : overview()).join(' ') }, duration: .5, ease: 'power2.out' }); }).observe(stage);
+    // frame all three pins to the map's own shape (pins sit to the upper right, leaving the lower left free for the card)
+    const fit = () => { const xy = pins.map((p) => pinXY(p.dataset.pin)); const xs = xy.map((p) => p[0]), ys = xy.map((p) => p[1]); const a = stage.clientWidth / Math.max(1, stage.clientHeight); const wide = window.innerWidth > 900;
+      let x0 = Math.min(...xs) - (wide ? 380 : 70), x1 = Math.max(...xs) + 90, y0 = Math.min(...ys) - 90, y1 = Math.max(...ys) + (wide ? 160 : 60); let w = x1 - x0, h = y1 - y0; if (w / h < a) { const d = h * a - w; x0 -= d / 2; w = h * a; } else { const d = w / a - h; y0 -= d / 2; h = w / a; }
+      x0 = Math.min(Math.max(x0, 0), Math.max(0, W - w)); y0 = Math.min(Math.max(y0, 0), Math.max(0, H - h)); return [x0, y0, w, h].map((n) => Math.round(n * 10) / 10).join(' '); };
+    street.setAttribute('viewBox', fit());
+    new ResizeObserver(() => street.setAttribute('viewBox', fit())).observe(stage);
     let current = null;
-    const focus = (id, animate = true) => {
+    const open = (id) => {
       current = id;
-      cards.forEach((c) => c.classList.toggle('is-on', c.dataset.card === id));
-      if (animate && window.innerWidth <= 900 && stage.getBoundingClientRect().top < 0) scrollTo(stage);
       pins.forEach((p) => p.classList.toggle('is-on', p.dataset.pin === id));
       malls.forEach((m) => m.classList.toggle('is-on', m.dataset.mall === id));
-      const vb = id ? vbFor(id) : overview();
-      if (reduced || !animate) street.setAttribute('viewBox', vb.join(' '));
-      else gsap.to(street, { attr: { viewBox: vb.join(' ') }, duration: 1.1, ease: 'power3.inOut' });
+      pops.forEach((c) => { const on = c.dataset.pop === id; c.classList.toggle('is-open', on); c.setAttribute('aria-hidden', !on); });
+      const c = pops.find((x) => x.dataset.pop === id);
+      if (c && !reduced) gsap.fromTo($$('.omap-ph-img, .omap-pop-body > *', c), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .7, stagger: .05, ease: 'power3.out', delay: .15 });
+      if (c && window.innerWidth <= 900) setTimeout(() => scrollTo(c), 150);
     };
-    const go = (id) => { const c = cards.find((x) => x.dataset.card === id); if (c) leavePage(c.querySelector('.omap-actions a').href); };
-    cards.forEach((c) => {
-      c.addEventListener('click', (e) => { if (e.target.closest('a')) return; current === c.dataset.card ? go(c.dataset.card) : focus(c.dataset.card); });
-      c.addEventListener('keydown', (e) => { if (e.key === 'Enter') c.click(); });
-      c.addEventListener('pointerenter', () => pins.forEach((p) => p.classList.toggle('is-hot', p.dataset.pin === c.dataset.card)));
-      c.addEventListener('pointerleave', () => pins.forEach((p) => p.classList.remove('is-hot')));
+    pins.forEach((p) => { p.addEventListener('click', () => open(p.dataset.pin)); p.addEventListener('keydown', (e) => { if (e.key === 'Enter') open(p.dataset.pin); }); });
+    pops.forEach((c) => {
+      $('[data-pop-close]', c).addEventListener('click', () => open(null));
+      $$('[data-ph-img]', c).forEach((b) => b.addEventListener('click', () => { if (b.classList.contains('is-big')) return; const a = $('.is-big img', c), i = $('img', b); [a.src, i.src] = [i.src, a.src]; if (!reduced) gsap.fromTo(a, { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: .6 }); }));
     });
-    pins.forEach((p) => {
-      const act = () => (current === p.dataset.pin ? go(p.dataset.pin) : focus(p.dataset.pin));
-      p.addEventListener('click', act); p.addEventListener('keydown', (e) => { if (e.key === 'Enter') act(); });
-    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && current) open(null); });
     if (reduced) { sg.style.display = 'none'; return; }
-    // intro: island → zoom into the Orchard Road dot → street map settles, roads fade up, pins drop in
     gsap.set(street, { opacity: 0 }); gsap.set($$('.om-pin-in', street), { opacity: 0, y: -40 }); gsap.set($$('.om-road, .om-bld, .om-park', street), { opacity: 0 });
     ScrollTrigger.create({ trigger: stage, start: 'top 72%', once: true, onEnter: () => {
       const dot = $('.sg-dot', sg).getBoundingClientRect(), box = stage.getBoundingClientRect();

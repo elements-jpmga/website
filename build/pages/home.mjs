@@ -202,35 +202,37 @@ export default function home() {
 
   // Locations: the Singapore outline zooms into Orchard Road, our own red street map draws in with a pin per outlet; three cards below
   const M = orchardMap;
+  const photos = (o) => [...new Set([o.img, ...(o.gallery || []).map((g) => '/assets/img/' + g)])].slice(0, 3);
   const vb0 = '240 250 720 320';
   const mapLocs = `
 <section class="section bg-deep map-sec" id="locations" data-map>
   <div class="wrap">
     <div class="head-row"><div><h2 data-split>Three sanctuaries <span class="thin">on Orchard Road.</span></h2></div><div><p class="lede" data-reveal>${esc(site.hoursSummary)}</p><div data-reveal style="margin-top:14px">${linkArrow('/locations/', 'All locations')}</div></div></div>
-    <div class="omap-layout">
+    <div class="omap-wrap">
     <div class="omap" data-omap>
       <svg class="omap-sg" viewBox="0 0 1000 446" aria-hidden="true" focusable="false"><path class="sg-land" d="${sgOutline}"/><circle class="sg-dot" cx="340" cy="238" r="7"/></svg>
-      <svg class="omap-street" viewBox="${vb0}" preserveAspectRatio="xMidYMid meet" data-vb0="${vb0}" role="img" aria-label="Map of Orchard Road showing the three Elements Wellness outlets">
+      <svg class="omap-street" viewBox="${vb0}" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Map of Orchard Road showing the three Elements Wellness outlets">
         <rect x="0" y="0" width="${M.w}" height="${M.h}" class="om-land"/>
         <path class="om-park" d="${M.parks}"/>
         <path class="om-bld" d="${M.buildings}"/>
         <path class="om-road om-walk" d="${M.roads.walk}"/><path class="om-road om-minor" d="${M.roads.minor}"/><path class="om-road om-mid" d="${M.roads.mid}"/><path class="om-road om-major" d="${M.roads.major}"/><path class="om-road om-orchard" d="${M.roads.orchard}"/>
         ${outlets.map((o) => `<path class="om-mall" data-mall="${o.id}" d="${M.malls[o.id] || ''}"/>`).join('')}
         ${Object.entries(M.mrt).map(([n, [x, y]]) => `<g class="om-mrt" transform="translate(${x} ${y})"><g class="om-mrt-scale"><rect x="-7" y="-7" width="14" height="14" rx="3"/><text x="12" y="4">${n} MRT</text></g></g>`).join('')}
-        ${outlets.map((o, i) => { const [x, y] = M.pins[o.id]; return `<g class="om-pin" data-pin="${o.id}" transform="translate(${x} ${y})" tabindex="0" role="button" aria-label="${esc(o.name)}"><g class="om-pin-in"><g class="om-pin-scale"><circle class="om-pulse" r="16"/><path class="om-drop" d="M0 0 C -4 -9 -13 -14 -13 -24 A 13 13 0 1 1 13 -24 C 13 -14 4 -9 0 0 Z"/><circle class="om-dot" cx="0" cy="-24" r="5"/><text class="om-label" x="0" y="-46">${esc(o.short)}</text></g></g></g>`; }).join('')}
+        ${outlets.map((o) => { const [x, y] = M.pins[o.id]; return `<g class="om-pin" data-pin="${o.id}" transform="translate(${x} ${y})" tabindex="0" role="button" aria-label="${esc(o.name)}"><g class="om-pin-in"><g class="om-pin-scale"><circle class="om-pulse" r="16"/><path class="om-drop" d="M0 0 C -4 -9 -13 -14 -13 -24 A 13 13 0 1 1 13 -24 C 13 -14 4 -9 0 0 Z"/><circle class="om-dot" cx="0" cy="-24" r="5"/><text class="om-label" x="0" y="-46">${esc(o.short)}</text></g></g></g>`; }).join('')}
       </svg>
       <span class="omap-credit">Map data © OpenStreetMap contributors</span>
     </div>
-    <div class="omap-cards">
-      ${outlets.map((o, i) => { const g = googleFor(o.id) || { rating: 0, count: 0 }; const wa = o.whatsapp.replace(/\s/g, ''); return `<article class="omap-card" data-card="${o.id}" tabindex="0">
-        <div class="omap-card-top"><span class="omap-no">0${i + 1}</span><span class="omap-score" data-rv-place="${o.id}"><b data-rv-rating>${g.rating.toFixed(1)}</b> ${starRow(g.rating)} <small><span data-rv-count>${fmtNum(g.count)}</span> reviews</small></span></div>
-        <h3>${esc(o.name)}</h3>
-        <p class="omap-addr">${o.address}</p>
-        <div class="omap-more"><p class="omap-dir">${esc(o.directions || '')}</p>
-        <p class="omap-contact"><a href="tel:+65${o.phone.replace(/\s/g, '')}">${esc(o.phone)}</a> · <a href="https://wa.me/65${wa}" target="_blank" rel="noopener">WhatsApp</a></p></div>
-        <div class="omap-actions">${btn(o.url, 'View outlet', 'btn-light btn-sm')}${btn('https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent('Elements Wellness ' + o.mapQuery), 'Directions', 'btn-ghost-light btn-sm', 'target="_blank" rel="noopener"')}</div>
+      ${outlets.map((o, i) => { const g = googleFor(o.id) || { rating: 0, count: 0 }; const wa = o.whatsapp.replace(/\s/g, ''); const ph = photos(o); return `<article class="omap-pop" data-pop="${o.id}" aria-hidden="true">
+        <button type="button" class="omap-pop-close" data-pop-close aria-label="Close"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3l10 10M13 3 3 13"/></svg></button>
+        <div class="omap-pop-photos">${ph.map((src, j) => `<button type="button" class="omap-ph-img ${j === 0 ? 'is-big' : ''}" data-ph-img><img src="${src}" alt="Elements Wellness ${esc(o.name)}" loading="lazy"></button>`).join('')}</div>
+        <div class="omap-pop-body">
+          <div class="omap-card-top"><h3>${esc(o.name)}</h3><span class="omap-score" data-rv-place="${o.id}"><b data-rv-rating>${g.rating.toFixed(1)}</b> ${starRow(g.rating)} <small><span data-rv-count>${fmtNum(g.count)}</span> reviews</small></span></div>
+          <p class="omap-addr">${o.address}</p>
+          <p class="omap-dir">${esc(o.directions || '')}</p>
+          <p class="omap-contact"><a href="tel:+65${o.phone.replace(/\s/g, '')}">${esc(o.phone)}</a> · <a href="https://wa.me/65${wa}" target="_blank" rel="noopener">WhatsApp</a></p>
+          <div class="omap-actions">${btn(o.url, 'View outlet', 'btn-light btn-sm')}${btn('https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent('Elements Wellness ' + o.mapQuery), 'Directions', 'btn-ghost-light btn-sm', 'target="_blank" rel="noopener"')}</div>
+        </div>
       </article>`; }).join('')}
-    </div>
     </div>
   </div>
 </section>`;

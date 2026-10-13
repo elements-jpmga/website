@@ -1249,5 +1249,35 @@ h3, .h3 { letter-spacing: .02em; color: var(--ink); }
 .omap-card a { color: #fff; } .omap-contact a { border-bottom: 1px solid rgba(255, 255, 255, .4); }
 .omap-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 12px; }
 .omap-actions .btn { border-bottom: 0; }
-.om-pin-scale { transform: scale(.62); } .om-mrt-scale { transform: scale(.62); }
+.om-pin-scale { transform: scale(.85); } .om-mrt-scale { transform: scale(.72); }
 @media (max-width: 900px) { .omap-layout { grid-template-columns: 1fr; } .omap { aspect-ratio: 4 / 3; min-height: 0; } .om-pin-scale { transform: scale(1.45); } .om-mrt-scale { transform: scale(1.25); } }
+
+/* outlet photos: slide out over the right of the map when an outlet is picked */
+.omap-photos { position: absolute; z-index: 4; top: 12px; right: 12px; bottom: 12px; width: 40%; max-width: 440px; display: flex; flex-direction: column; background: rgba(30, 6, 8, .82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .6), inset 0 0 0 1px rgba(255, 255, 255, .14); transform: translateX(calc(100% + 24px)); opacity: 0; pointer-events: none; transition: transform .7s var(--ease), opacity .5s; }
+.omap-photos.is-open { transform: none; opacity: 1; pointer-events: auto; }
+.omap-ph { display: none; margin: 0; padding: 12px; gap: 8px; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr) minmax(0, .5fr) auto; flex: 1; min-height: 0; } .omap-ph.is-on { display: grid; }
+.omap-ph-img { position: relative; padding: 0; border: 0; background: #1a0405; overflow: hidden; cursor: pointer; min-height: 0; } .omap-ph-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1s var(--ease); } .omap-ph-img:hover img { transform: scale(1.05); }
+.omap-ph-img.is-big { grid-column: 1 / -1; cursor: default; }
+.omap-ph figcaption { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 6px 4px 2px; color: #fff; } .omap-ph figcaption b { font-family: var(--f-head); font-weight: 400; font-size: 20px; } .omap-ph figcaption .link-arrow { color: #fff; }
+.omap-ph-close { position: absolute; z-index: 2; top: 20px; right: 20px; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: rgba(0, 0, 0, .45); color: #fff; cursor: pointer; transition: background .3s; } .omap-ph-close:hover { background: rgba(0, 0, 0, .7); } .omap-ph-close svg { width: 13px; height: 13px; }
+.omap-thumbs { display: none; }
+@media (max-width: 900px) { .omap-photos { display: none; } .omap-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 4px 0 4px; } .omap-thumbs img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; } .omap-card.is-on .omap-more { max-height: 320px; } }
+
+/* map v3: one big map, a card pops into the empty lower-left corner when a pin is tapped */
+.omap-layout { display: block; } .omap-wrap { position: relative; margin-top: clamp(28px, 3.5vw, 44px); } .omap-wrap .omap { margin-top: 0; }
+.omap { margin-top: clamp(28px, 3.5vw, 44px); aspect-ratio: 3 / 2; min-height: 0; max-height: 78vh; width: 100%; }
+.om-pin .om-pulse { animation: om-pulse 2.6s ease-out infinite; } .om-pin:nth-of-type(2) .om-pulse { animation-delay: .8s; } .om-pin:nth-of-type(3) .om-pulse { animation-delay: 1.6s; }
+.om-pin.is-on .om-pulse { animation-duration: 1.8s; }
+.omap-pop { position: absolute; z-index: 4; left: 20px; bottom: 20px; width: min(400px, 44%); max-height: calc(100% - 40px); overflow: auto; background: rgba(30, 6, 8, .9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .6), inset 0 0 0 1px rgba(255, 255, 255, .16); color: #fff; transform: translateY(24px); opacity: 0; visibility: hidden; transition: transform .6s var(--ease), opacity .45s, visibility 0s .6s; }
+.omap-pop.is-open { transform: none; opacity: 1; visibility: visible; transition: transform .6s var(--ease), opacity .45s, visibility 0s; }
+.omap-pop-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 10px 10px 0; } .omap-pop-photos .omap-ph-img { aspect-ratio: 16 / 10; } .omap-pop-photos .omap-ph-img.is-big { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+.omap-pop-body { padding: 14px 18px 18px; display: grid; gap: 6px; }
+.omap-pop-body .omap-card-top h3 { color: #fff; font-size: 22px; margin: 0; }
+.omap-pop p { margin: 0; font-size: 13.5px; line-height: 1.5; color: rgba(255, 255, 255, .86); } .omap-pop .omap-dir { color: rgba(255, 255, 255, .66); } .omap-pop a { color: #fff; } .omap-pop .omap-contact a { border-bottom: 1px solid rgba(255, 255, 255, .4); }
+.omap-pop-close { position: absolute; z-index: 2; top: 18px; right: 18px; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; background: rgba(0, 0, 0, .5); color: #fff; cursor: pointer; } .omap-pop-close svg { width: 12px; height: 12px; }
+@media (max-width: 900px) {
+  .omap { aspect-ratio: 4 / 3; max-height: none; }
+  .omap-pop { position: relative; left: auto; bottom: auto; width: auto; max-height: none; margin-top: 12px; display: none; transform: none; }
+  .omap-pop.is-open { display: block; }
+  .omap { margin-bottom: 0; }
+}
