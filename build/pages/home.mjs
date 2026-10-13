@@ -27,7 +27,6 @@ export default function home() {
   <div class="hero-dots" role="tablist" aria-label="Slides">${slides.map((sl, i) => `<button type="button" role="tab" aria-selected="${i === 0}" aria-label="${esc(sl.title)}" class="${i === 0 ? 'is-on' : ''}" data-slide-to="${i}"><i></i></button>`).join('')}</div>
   <div class="hero-nav"><button type="button" data-slide-prev aria-label="Previous slide"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 2 4 8l6 6"/></svg></button><button type="button" data-slide-next aria-label="Next slide"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m6 2 6 6-6 6"/></svg></button></div>
   <script>window.EW_SLIDES=${JSON.stringify(slides.map(({ title, sub, cta, href }) => ({ title, sub, cta, href })))}</script>
-  <div class="scroll-cue" aria-hidden="true"></div>
 </section>`;
 
   const introStrip = `
@@ -39,13 +38,13 @@ export default function home() {
   </div>
 </section>`;
 
-  // Logo wall: a fixed grid where one logo at a time swaps for another from the pool (no scrolling marquee)
+  // Logo wall: two plain rows where one logo at a time swaps for another from the pool (no scrolling marquee)
   const wallLogos = pressLogos.map((a) => ({ img: a.img, title: a.title, url: a.url || '' }));
   const awardsStrip = `
 <section class="awards-strip" aria-label="Awards and press">
   <div class="wrap">
     <div class="label"><span class="caps">Award-winning · As featured in</span><a class="link-arrow award-all" href="/awards/">Awards &amp; Recognition ${icon.arrow}</a></div>
-    <div class="logo-wall" data-logo-wall>${wallLogos.slice(0, 8).map((a, i) => `<div class="logo-cell" data-i="${i}">${a.url ? `<a href="${a.url}" title="${esc(a.title)}">` : ''}<img class="award-logo" src="${a.img}" alt="${esc(a.title)}" loading="lazy">${a.url ? '</a>' : ''}</div>`).join('')}</div>
+    <div class="logo-wall" data-logo-wall>${wallLogos.slice(0, 10).map((a, i) => `<div class="logo-cell" data-i="${i}">${a.url ? `<a href="${a.url}" title="${esc(a.title)}">` : ''}<img class="award-logo" src="${a.img}" alt="${esc(a.title)}" loading="lazy">${a.url ? '</a>' : ''}</div>`).join('')}</div>
     <script>window.EW_LOGOS=${JSON.stringify(wallLogos)}</script>
   </div>
 </section>`;

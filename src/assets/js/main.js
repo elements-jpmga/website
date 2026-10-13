@@ -38,7 +38,7 @@
     const k = firstVisit ? 1 : .55;
     gsap.timeline({ onComplete: () => { loader.style.display = 'none'; } })
       .fromTo(l1, { opacity: 0, y: 14, letterSpacing: '.5em' }, { opacity: 1, y: 0, letterSpacing: '.2em', duration: 1.1 * k, ease: 'power3.out' }, 0)
-      .fromTo(l2, { opacity: 0, y: -22 }, { opacity: 1, y: 0, duration: .9 * k, ease: 'power3.out' }, .55 * k)
+      .fromTo(l2, { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: .9 * k, ease: 'power3.out' }, .55 * k)
       .to(inner, { opacity: 0, duration: 1 * k, ease: 'power2.inOut' }, `+=${.5 * k}`)
       .add(onDone, '-=.2')
       .to(top, { yPercent: -100, duration: 1.2, ease: 'expo.inOut' }, '-=.3')
@@ -176,8 +176,9 @@
   /* ---------- Logo wall: every couple of seconds one cell swaps its logo for one not on the wall ---------- */
   function logoWall() {
     const wall = $('[data-logo-wall]'), pool = window.EW_LOGOS; if (!wall || !pool || reduced) return;
-    const cells = $$('.logo-cell', wall); if (pool.length <= cells.length) return;
-    let showing = cells.map((_, i) => i), last = -1, timer;
+    const cells = $$('.logo-cell', wall).filter((c) => c.offsetParent !== null); if (pool.length <= cells.length) return;
+    let showing0 = $$('.logo-cell', wall).map((_, i) => i);
+    let showing = showing0, last = -1, timer;
     const swap = () => {
       let c; do { c = Math.floor(Math.random() * cells.length); } while (c === last); last = c;
       const hidden = pool.map((_, i) => i).filter((i) => !showing.includes(i)); const next = hidden[Math.floor(Math.random() * hidden.length)];

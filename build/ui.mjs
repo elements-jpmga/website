@@ -103,7 +103,6 @@ const navItem = (label, url, key, active, menu) => menu
 
 export const header = (active = '') => `
 <a class="skip" href="#main">Skip to content</a>
-<div class="utility-row"><div class="wrap utility-inner"><a href="/promotions/" ${active === 'promotions' ? 'aria-current="page"' : ''}>Promotions</a></div></div>
 <header class="header">
   <div class="wrap header-inner">
     <a href="/" aria-label="Elements Wellness — home"><img class="logo-img" src="/assets/img/logo-white.png" alt="Elements Wellness" width="1119" height="253"></a>
@@ -130,7 +129,6 @@ export const header = (active = '') => `
     <a href="/elements-restore/">Elements Restore</a>
     <details><summary>Products</summary><div class="sub"><a href="/products/">All Products</a><a href="/products/skincare/">Skincare</a><a href="/products/supplements/">Supplements</a></div></details>
     <a href="/gift-vouchers/">Gift Vouchers</a>
-    <a href="/promotions/">Promotions</a>
     <details><summary>Locations</summary><div class="sub"><a href="/locations/">All Locations</a>${outlets.map((o) => mlink(o.url, o.name)).join('')}</div></details>
   </nav>
   <div class="mm-foot">
@@ -174,7 +172,7 @@ const footer = () => `
         <div class="socials">${socials()}</div>
       </div>
       <div><h4>Locations</h4><ul><li><a href="/locations/">All Locations</a></li>${outlets.map((o) => `<li><a href="${o.url}">${esc(o.name)}</a></li>`).join('')}</ul></div>
-      <div><h4>Elements</h4><ul><li><a href="/about-elements/">About Elements</a></li><li><a href="/awards/">Awards &amp; Recognition</a></li><li><a href="/contact/">Contact</a></li></ul></div>
+      <div><h4>Elements</h4><ul><li><a href="/about-elements/">About Elements</a></li><li><a href="/awards/">Awards &amp; Recognition</a></li><li><a href="/promotions/">Promotions</a></li><li><a href="/contact/">Contact</a></li></ul></div>
       <div><h4>Help</h4><ul><li><a href="/faq-spa-etiquette/">FAQ &amp; Spa Etiquette</a></li><li><a href="/appointment-booking-cancellation-policy/">Booking &amp; Cancellation Policy</a></li><li><a href="/customer-assurance-privacy/">Customer Assurance &amp; Privacy</a></li><li><a href="mailto:${site.email}">${site.email}</a></li></ul></div>
     </div>
     <div class="footer-word" aria-hidden="true">Elements</div>
