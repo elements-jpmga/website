@@ -35,6 +35,8 @@ CREATE INDEX IF NOT EXISTS gift_vouchers_code ON gift_vouchers (code);
 CREATE INDEX IF NOT EXISTS gift_vouchers_order ON gift_vouchers (order_id);
 CREATE INDEX IF NOT EXISTS gift_events_voucher ON gift_events (voucher_id);
 `);
+// Columns added after the first release (CREATE TABLE IF NOT EXISTS does not add them to existing tables)
+for (const sql of ['ALTER TABLE gift_orders ADD COLUMN cart_json TEXT', 'ALTER TABLE gift_orders ADD COLUMN return_base TEXT']) { try { await db.exec(sql); } catch {} }
 if (db.kind === 'postgres') {
   // Same lock-down as the Restore tables: only this server reads them, never Supabase's public Data API
   await db.exec(TABLES.map((t) => `ALTER TABLE ${t} ENABLE ROW LEVEL SECURITY;`).join('\n') + `
@@ -157,6 +159,8 @@ export const Orders = {
   },
   get: (order_id) => db.get('SELECT * FROM gift_orders WHERE order_id = ?', order_id),
   byStripeSession: (sid) => db.get('SELECT * FROM gift_orders WHERE stripe_session_id = ?', sid),
+  setCheckout: (order_id, { stripe_session_id, cart, return_base }) => db.run('UPDATE gift_orders SET stripe_session_id = ?, cart_json = ?, return_base = ? WHERE order_id = ?', stripe_session_id, JSON.stringify(cart), return_base || null, order_id),
+  cart: (o) => (o.cart_json ? JSON.parse(o.cart_json) : []),
   byGiftup: (gid) => db.get('SELECT * FROM gift_orders WHERE giftup_order_id = ?', gid),
   markPaid: (order_id, { payment_intent } = {}) => db.run(`UPDATE gift_orders SET status = 'paid', paid_at = ?, stripe_payment_intent = COALESCE(?, stripe_payment_intent) WHERE order_id = ?`, now(), payment_intent || null, order_id),
   setStatus: (order_id, status) => db.run('UPDATE gift_orders SET status = ? WHERE order_id = ?', status, order_id),

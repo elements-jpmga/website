@@ -159,7 +159,7 @@ const footer = () => `
 </footer>
 <div class="fab"><a class="wa" href="${site.whatsapp}" target="_blank" rel="noopener" aria-label="WhatsApp us">${icon.wa}</a><a class="bk" href="/book-appointment/" aria-label="Book now">${icon.arrow}<span>Book now</span></a></div>`;
 
-export const layout = ({ title, description, path, body, active = '', bodyClass = '', schema = [], ogImage = '/assets/img/onsen-1.jpg' }) => `<!doctype html>
+export const layout = ({ title, description, path, body, active = '', bodyClass = '', schema = [], ogImage = '/assets/img/onsen-1.jpg', scripts = [], noindex = false }) => `<!doctype html>
 <html lang="en-SG" class="no-js">
 <head>
 <meta charset="utf-8">
@@ -174,6 +174,7 @@ export const layout = ({ title, description, path, body, active = '', bodyClass 
 <meta property="og:image" content="${site.url}${ogImage}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#72181b">
+${noindex ? '<meta name="robots" content="noindex">' : ''}
 ${process.env.LIVE_REVIEWS ? '<meta name="ew-live-reviews" content="1">' : ''}
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://api.fontshare.com"><link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
@@ -200,6 +201,7 @@ ${finder()}
 <script src="/assets/vendor/SplitText.min.js" defer></script>
 <script src="/assets/vendor/lenis.min.js" defer></script>
 <script src="/assets/js/main.js" defer></script>
+${scripts.map((src) => `<script src="${src}" defer></script>`).join('\n')}
 </body>
 </html>`;
 

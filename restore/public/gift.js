@@ -21,6 +21,7 @@ const initGift = () => {
     app.innerHTML = `${head('Gift vouchers', `<a class="btn ghost" href="#/gift/orders">All orders</a><a class="btn" href="#/gift/issue">${ICON.plus}Issue a voucher</a>`)}
       ${alertBars(s.alerts)}
       ${s.mail === 'outbox' ? '<div class="warn-box" style="margin-bottom:12px">Email is not set up on this server — vouchers are saved to the outbox instead of being sent.</div>' : ''}
+      ${!s.stripe ? '<div class="warn-box" style="margin-bottom:12px">Online payment is off — the website shows vouchers but cannot take payment until the Stripe keys are added on the server.</div>' : s.stripe === 'test' ? '<div class="warn-box" style="margin-bottom:12px">Stripe is in <b>test mode</b>: website payments are not real.</div>' : ''}
       <div class="kpis">
         <div class="kpi ${diff > 0 ? 'up' : ''}"><span>Sales this month</span><b>${money(s.thisMonth.revenue)}</b><small>${s.thisMonth.orders} order${s.thisMonth.orders === 1 ? '' : 's'}${diff != null ? ` · ${diff >= 0 ? '+' : ''}${diff}% vs last month` : ''}</small></div>
         <div class="kpi"><span>Outstanding (unused)</span><b>${money(s.outstanding.value)}</b><small>${s.outstanding.vouchers} active · ${s.outstanding.units} treatment voucher${s.outstanding.units === 1 ? '' : 's'}</small></div>
