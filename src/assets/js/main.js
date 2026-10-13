@@ -261,7 +261,7 @@
     const pinXY = (id) => { const t = pins.find((p) => p.dataset.pin === id).getAttribute('transform').match(/translate\(([\d.]+) ([\d.]+)\)/); return [+t[1], +t[2]]; };
     // frame all three pins to the map's own shape (pins sit to the upper right, leaving the lower left free for the card)
     const fit = () => { const xy = pins.map((p) => pinXY(p.dataset.pin)); const xs = xy.map((p) => p[0]), ys = xy.map((p) => p[1]); const a = stage.clientWidth / Math.max(1, stage.clientHeight); const wide = window.innerWidth > 900;
-      let x0 = Math.min(...xs) - (wide ? 380 : 70), x1 = Math.max(...xs) + 90, y0 = Math.min(...ys) - 90, y1 = Math.max(...ys) + (wide ? 160 : 60); let w = x1 - x0, h = y1 - y0; if (w / h < a) { const d = h * a - w; x0 -= d / 2; w = h * a; } else { const d = w / a - h; y0 -= d / 2; h = w / a; }
+      let x0 = Math.min(...xs) - (wide ? 470 : 70), x1 = Math.max(...xs) + 90, y0 = Math.min(...ys) - 90, y1 = Math.max(...ys) + (wide ? 160 : 60); let w = x1 - x0, h = y1 - y0; if (w / h < a) { const d = h * a - w; x0 -= d / 2; w = h * a; } else { const d = w / a - h; y0 -= d / 2; h = w / a; }
       x0 = Math.min(Math.max(x0, 0), Math.max(0, W - w)); y0 = Math.min(Math.max(y0, 0), Math.max(0, H - h)); return [x0, y0, w, h].map((n) => Math.round(n * 10) / 10).join(' '); };
     street.setAttribute('viewBox', fit());
     new ResizeObserver(() => street.setAttribute('viewBox', fit())).observe(stage);
@@ -272,7 +272,7 @@
       malls.forEach((m) => m.classList.toggle('is-on', m.dataset.mall === id));
       pops.forEach((c) => { const on = c.dataset.pop === id; c.classList.toggle('is-open', on); c.setAttribute('aria-hidden', !on); });
       const c = pops.find((x) => x.dataset.pop === id);
-      if (c && !reduced) gsap.fromTo($$('.omap-ph-img, .omap-pop-body > *', c), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .7, stagger: .05, ease: 'power3.out', delay: .15 });
+      if (c && !reduced) gsap.fromTo($$('.omap-pop-over > *, .omap-actions, .omap-pop-body > *, .omap-pop-photos .omap-ph-img', c), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .7, stagger: .05, ease: 'power3.out', delay: .15 });
       if (c && window.innerWidth <= 900) setTimeout(() => scrollTo(c), 150);
     };
     pins.forEach((p) => { p.addEventListener('click', () => open(p.dataset.pin)); p.addEventListener('keydown', (e) => { if (e.key === 'Enter') open(p.dataset.pin); }); });

@@ -1285,3 +1285,16 @@ h3, .h3 { letter-spacing: .02em; color: var(--ink); }
 /* treatment cards: the hovered treatment's photo fades over the category photo */
 .path-media .path-swap { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .45s var(--ease); z-index: 0; } .path-media .path-swap.on { opacity: 1; }
 .path-media .path-swap:not([src]) { display: none; }
+
+/* outlet card v2: name, rating and address on the main photo; buttons straight underneath */
+.omap-pop { width: min(360px, 34%); }
+.omap-pop-hero { position: relative; margin: 10px 10px 0; }
+.omap-pop-hero .omap-ph-img { display: block; width: 100%; aspect-ratio: 4 / 3; cursor: default; }
+.omap-pop-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20, 4, 6, 0) 35%, rgba(20, 4, 6, .88) 100%); pointer-events: none; }
+.omap-pop-over { position: absolute; z-index: 1; left: 14px; right: 14px; bottom: 12px; display: grid; gap: 4px; color: #fff; }
+.omap-pop-over h3 { color: #fff; font-size: 22px; margin: 0; text-shadow: 0 1px 10px rgba(0, 0, 0, .4); }
+.omap-pop-over .omap-addr { font-size: 12.5px; line-height: 1.45; color: rgba(255, 255, 255, .9); margin: 0; }
+.omap-pop .omap-actions { padding: 12px 10px 0; margin: 0; gap: 8px; } .omap-pop .omap-actions .btn { flex: 1; }
+.omap-pop-body { padding: 12px 14px 4px; gap: 6px; }
+.omap-pop-photos { padding: 8px 10px 10px; } .omap-pop-photos .omap-ph-img { aspect-ratio: 16 / 10; } .omap-pop-photos .omap-ph-img.is-big { grid-column: auto; }
+@media (max-width: 900px) { .omap-pop { width: auto; } .omap-pop-hero .omap-ph-img { aspect-ratio: 16 / 10; } }

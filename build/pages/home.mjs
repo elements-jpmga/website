@@ -224,14 +224,14 @@ export default function home() {
     </div>
       ${outlets.map((o, i) => { const g = googleFor(o.id) || { rating: 0, count: 0 }; const wa = o.whatsapp.replace(/\s/g, ''); const ph = photos(o); return `<article class="omap-pop" data-pop="${o.id}" aria-hidden="true">
         <button type="button" class="omap-pop-close" data-pop-close aria-label="Close"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3l10 10M13 3 3 13"/></svg></button>
-        <div class="omap-pop-photos">${ph.map((src, j) => `<button type="button" class="omap-ph-img ${j === 0 ? 'is-big' : ''}" data-ph-img><img src="${src}" alt="Elements Wellness ${esc(o.name)}" loading="lazy"></button>`).join('')}</div>
+        <div class="omap-pop-hero"><button type="button" class="omap-ph-img is-big" data-ph-img><img src="${ph[0]}" alt="Elements Wellness ${esc(o.name)}" loading="lazy"></button>
+          <div class="omap-pop-over"><h3>${esc(o.name)}</h3><span class="omap-score" data-rv-place="${o.id}"><b data-rv-rating>${g.rating.toFixed(1)}</b> ${starRow(g.rating)} <small><span data-rv-count>${fmtNum(g.count)}</span> reviews</small></span><p class="omap-addr">${o.address}</p></div></div>
+        <div class="omap-actions">${btn(o.url, 'View outlet', 'btn-light btn-sm')}${btn('https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent('Elements Wellness ' + o.mapQuery), 'Directions', 'btn-ghost-light btn-sm', 'target="_blank" rel="noopener"')}</div>
         <div class="omap-pop-body">
-          <div class="omap-card-top"><h3>${esc(o.name)}</h3><span class="omap-score" data-rv-place="${o.id}"><b data-rv-rating>${g.rating.toFixed(1)}</b> ${starRow(g.rating)} <small><span data-rv-count>${fmtNum(g.count)}</span> reviews</small></span></div>
-          <p class="omap-addr">${o.address}</p>
           <p class="omap-dir">${esc(o.directions || '')}</p>
           <p class="omap-contact"><a href="tel:+65${o.phone.replace(/\s/g, '')}">${esc(o.phone)}</a> · <a href="https://wa.me/65${wa}" target="_blank" rel="noopener">WhatsApp</a></p>
-          <div class="omap-actions">${btn(o.url, 'View outlet', 'btn-light btn-sm')}${btn('https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent('Elements Wellness ' + o.mapQuery), 'Directions', 'btn-ghost-light btn-sm', 'target="_blank" rel="noopener"')}</div>
         </div>
+        <div class="omap-pop-photos">${ph.slice(1).map((src) => `<button type="button" class="omap-ph-img" data-ph-img><img src="${src}" alt="Elements Wellness ${esc(o.name)}" loading="lazy"></button>`).join('')}</div>
       </article>`; }).join('')}
     </div>
   </div>
