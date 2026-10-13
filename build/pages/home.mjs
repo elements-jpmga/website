@@ -210,7 +210,8 @@ export default function home() {
     <div class="head-row"><div><h2 data-split>Find us</h2></div><div><p class="lede" data-reveal>${esc(site.hoursSummary)}</p><div data-reveal style="margin-top:14px">${linkArrow('/locations/', 'All locations')}</div></div></div>
     <div class="omap-wrap">
     <div class="omap" data-omap>
-      <svg class="omap-sg" viewBox="0 0 1000 446" aria-hidden="true" focusable="false"><path class="sg-land" d="${sgOutline}"/><circle class="sg-dot" cx="340" cy="238" r="7"/></svg>
+      <svg class="omap-sg" viewBox="-360 -229 1400 933" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><path class="sg-land" d="${sgOutline}"/><circle class="sg-ring" cx="340" cy="238" r="7"/><circle class="sg-ring" cx="340" cy="238" r="7"/><circle class="sg-dot" cx="340" cy="238" r="7"/></svg>
+      <div class="omap-burst" aria-hidden="true"></div>
       <svg class="omap-street" viewBox="${vb0}" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Map of Orchard Road showing the three Elements Wellness outlets">
         <rect x="0" y="0" width="${M.w}" height="${M.h}" class="om-land"/>
         <path class="om-park" d="${M.parks}"/>

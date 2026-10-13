@@ -1336,3 +1336,8 @@ h3, .h3 { letter-spacing: .02em; color: var(--ink); }
 /* old pages: skin-type icons with their names, in a row */
 .cf-icon-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 18px 14px; margin: 8px 0 28px; }
 .cf-icon-item { display: grid; justify-items: center; gap: 8px; text-align: center; font-size: 13px; color: var(--ink-2); } .cf-icon-item img { width: 56px; height: 56px; object-fit: contain; }
+
+/* map intro */
+.omap-sg .sg-ring { fill: none; stroke: #fff; stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.omap-sg .sg-land { stroke-width: 1.2; }
+.omap-burst { position: absolute; z-index: 3; left: 50%; top: 50%; width: 70vmin; height: 70vmin; margin: -35vmin 0 0 -35vmin; border-radius: 50%; box-shadow: 0 0 0 1px rgba(255, 255, 255, .55), inset 0 0 60px rgba(255, 220, 220, .18); pointer-events: none; }

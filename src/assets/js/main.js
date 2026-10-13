@@ -294,19 +294,33 @@
     });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && current) open(null); });
     if (reduced) { sg.style.display = 'none'; return; }
-    gsap.set(street, { opacity: 0 }); gsap.set($$('.om-pin-in', street), { opacity: 0, y: -40 }); gsap.set($$('.om-road, .om-bld, .om-park', street), { opacity: 0 });
-    ScrollTrigger.create({ trigger: stage, start: 'top 72%', once: true, onEnter: () => {
-      const dot = $('.sg-dot', sg).getBoundingClientRect(), box = stage.getBoundingClientRect();
-      gsap.set(sg, { transformOrigin: `${dot.left + dot.width / 2 - box.left}px ${dot.top + dot.height / 2 - box.top}px` });
-      gsap.timeline()
-        .from(sg, { opacity: 0, scale: .92, duration: .7, ease: 'power2.out' })
-        .to(sg, { scale: 14, duration: 1.5, ease: 'power3.in' }, '+=.35')
-        .to(sg, { opacity: 0, duration: .45 }, '-=.45')
-        .fromTo(street, { opacity: 0, scale: 1.25, transformOrigin: '50% 50%' }, { opacity: 1, scale: 1, duration: 1.2, ease: 'power3.out' }, '-=.5')
-        .to($$('.om-park, .om-bld', street), { opacity: 1, duration: .8 }, '-=.9')
-        .to($$('.om-road', street), { opacity: 1, duration: .9, stagger: .08 }, '-=.8')
-        .to(pins.slice().sort((a, b) => pinXY(a.dataset.pin)[0] - pinXY(b.dataset.pin)[0]).map((p) => $('.om-pin-in', p)), { opacity: 1, y: 0, duration: .8, stagger: .18, ease: 'back.out(2)' }, '-=.4')
-        .add(() => { sg.style.display = 'none'; }, '+=.2');
+    // Intro: Singapore with the Orchard Road dot dead centre → the camera dives into the dot → the street map opens from the middle
+    const DX = 340, DY = 238, dot = $('.sg-dot', sg), rings = $$('.sg-ring', sg), burst = $('.omap-burst', sec);
+    const aspect = () => stage.clientWidth / Math.max(1, stage.clientHeight);
+    const box = (w) => { const h = w / aspect(); return [DX - w / 2, DY - h / 2, w, h].map((n) => Math.round(n * 100) / 100).join(' '); };
+    const W0 = Math.max(1400, 933 * aspect()), W1 = 22;
+    sg.setAttribute('viewBox', box(W0));
+    gsap.set(sg, { opacity: 0 }); gsap.set(street, { clipPath: 'circle(0% at 50% 50%)' }); gsap.set(burst, { scale: 0, opacity: 0 });
+    gsap.set($$('.om-pin-in', street), { opacity: 0, y: -40 }); gsap.set($$('.om-road, .om-bld, .om-park, .om-mrt', street), { opacity: 0 });
+    gsap.set(rings, { attr: { r: 7 }, opacity: 0 });
+    ScrollTrigger.create({ trigger: stage, start: 'top 70%', once: true, onEnter: () => {
+      const tl = gsap.timeline();
+      tl.to(sg, { opacity: 1, duration: .9, ease: 'power2.out' })
+        .fromTo(dot, { attr: { r: 0 } }, { attr: { r: 9 }, duration: .6, ease: 'back.out(3)' }, '-=.4')
+        .to(rings, { attr: { r: 70 }, opacity: 0, duration: 1.4, stagger: .35, ease: 'power2.out', startAt: { attr: { r: 9 }, opacity: .9 } }, '-=.1')
+        // dive: the viewBox shrinks around the dot (which stays the same size on screen), so the island rushes past the edges
+        .to(sg, { attr: { viewBox: box(W1) }, duration: 1.7, ease: 'power4.inOut' }, '-=.6')
+        .to(dot, { attr: { r: 9 * W1 / W0 }, duration: 1.7, ease: 'power4.inOut' }, '<')
+        // the street map opens out from the middle in a widening circle, with a soft ring riding its edge
+        .to(street, { clipPath: 'circle(75% at 50% 50%)', duration: 1.3, ease: 'power3.inOut' }, '-=.35')
+        .fromTo(street, { scale: 1.18, transformOrigin: '50% 50%' }, { scale: 1, duration: 1.6, ease: 'power3.out' }, '<')
+        .to(burst, { scale: 1, opacity: 1, duration: .5, ease: 'power2.out' }, '<')
+        .to(burst, { scale: 2.6, opacity: 0, duration: 1.1, ease: 'power2.out' }, '<.3')
+        .to($$('.om-park, .om-bld', street), { opacity: 1, duration: .8 }, '<.2')
+        .to($$('.om-road', street), { opacity: 1, duration: .9, stagger: .08 }, '<')
+        .to($$('.om-mrt', street), { opacity: 1, duration: .6 }, '-=.4')
+        .to(pins.slice().sort((a, b) => pinXY(a.dataset.pin)[0] - pinXY(b.dataset.pin)[0]).map((p) => $('.om-pin-in', p)), { opacity: 1, y: 0, duration: .8, stagger: .18, ease: 'back.out(2)' }, '-=.5')
+        .add(() => { sg.style.display = 'none'; burst.style.display = 'none'; gsap.set(street, { clearProps: 'clipPath' }); });
     } });
   }
 
