@@ -13,6 +13,8 @@ import { sendReportEmail, reportEmailHtml, provider as mailProvider } from './sr
 import { evaluate, validateReadings } from './src/engine.mjs';
 import { extractUbio, ocrEngine } from './src/extract.mjs';
 import { reportHtml, htmlToPdf, TEMPLATE_VERSION } from './src/report.mjs';
+import { registerGiftRoutes } from './src/gift/routes.mjs';
+import { startScheduler as startGiftScheduler } from './src/gift/voucher.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const PORT = +process.env.PORT || 4400;
@@ -222,6 +224,10 @@ route('GET', '/api/reports/:rid/file', async (req, res, { params }) => {
   const buf = await files.get(r.pdf_path); if (!buf) return err(res, 410, 'The PDF file for this report is missing — generate it again');
   sendFile(res, buf, 'application/pdf', `Elements-Restore-${(a?.client_name || 'client').replace(/\W+/g, '-')}-${r.generated_at.slice(0, 10)}.pdf`);
 });
+
+/* ---------- Gift vouchers (Elements' own system) ---------- */
+registerGiftRoutes({ route, send, err, json, readBody, staff, sendFile });
+startGiftScheduler();
 
 /* ---------- Server ---------- */
 http.createServer(async (req, res) => {

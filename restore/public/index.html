@@ -37,6 +37,7 @@
     </a>
     <a class="rail-btn" href="#/" data-nav="home" title="Board"><svg viewBox="0 0 24 24"><rect x="3.5" y="4" width="5" height="16" rx="1.6"/><rect x="9.5" y="4" width="5" height="11" rx="1.6"/><rect x="15.5" y="4" width="5" height="8" rx="1.6"/></svg></a>
     <a class="rail-btn" href="#/clients" data-nav="clients" title="Clients"><svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 19.5c1.2-3.4 4-5 7-5s5.8 1.6 7 5"/></svg></a>
+    <a class="rail-btn" href="#/gift" data-nav="gift" title="Gift vouchers"><svg viewBox="0 0 24 24"><rect x="3.5" y="8" width="17" height="12" rx="2"/><path d="M3.5 12h17M12 8v12M12 8c-2.5 0-4.5-1.2-4.5-2.8S9.5 3 12 5.3C14.5 3 16.5 3.7 16.5 5.2S14.5 8 12 8z"/></svg></a>
     <a class="rail-btn" href="#/rules" data-nav="rules" title="Rules"><svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h14"/><circle cx="9" cy="7" r="2" class="f"/><circle cx="15" cy="12" r="2" class="f"/><circle cx="10" cy="17" r="2" class="f"/></svg></a>
     <button class="rail-btn" type="button" data-inbox-toggle title="Activity"><svg viewBox="0 0 24 24"><path d="M6.5 16.5V11a5.5 5.5 0 0 1 11 0v5.5l1.5 1.5H5z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0"/></svg><i class="dot" data-inbox-dot hidden></i></button>
     <button class="rail-btn" type="button" data-palette title="Command menu (⌘K)"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.2-4.2"/></svg></button>
@@ -57,6 +58,17 @@
       <a href="#/" data-filter="confirm"><i class="sd" style="--c:#ff9f0a"></i>To confirm<span data-count="confirm"></span></a>
       <a href="#/" data-filter="report"><i class="sd" style="--c:#0a84ff"></i>Plan &amp; report<span data-count="report"></span></a>
       <a href="#/" data-filter="send"><i class="sd" style="--c:#bf5af2"></i>Ready to send<span data-count="send"></span></a>
+    </div>
+    <div class="side-group gift-group">
+      <span class="side-label"><svg viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"/></svg>Gift vouchers</span>
+      <a href="#/gift" data-gift="dash">Dashboard</a>
+      <a href="#/gift/orders" data-gift="orders">Orders &amp; vouchers</a>
+      <a href="#/gift/issue" data-gift="issue">Issue a voucher</a>
+      <a href="#/gift/codes" data-gift="codes">WESS codes<span data-gift-alert></span></a>
+      <a href="#/gift/designs" data-gift="designs">Card designs</a>
+      <a href="#/gift/items" data-gift="items">Items for sale</a>
+      <a href="#/gift/reports" data-gift="reports">Reports</a>
+      <a href="#/gift/settings" data-gift="settings">Settings</a>
     </div>
     <div class="side-group">
       <span class="side-label"><svg viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"/></svg>Recent clients</span>
@@ -94,5 +106,6 @@
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 <script src="/app.js"></script>
+<script src="/gift.js"></script>
 </body>
 </html>
