@@ -149,12 +149,14 @@ export async function deliver(voucher_id, { by = null, resend = false } = {}) {
 }
 
 /* ---------------- Scheduler: scheduled sends, expiry, reminders ---------------- */
-let ticking = false;
+let ticking = false, lastGiftupSync = 0;
 export async function tick() {
   if (ticking) return; ticking = true;
   try {
     for (const { voucher_id } of await Vouchers.dueToSend()) { try { await deliver(voucher_id); } catch (e) { console.error('scheduled send failed:', e.message); await Events.add({ voucher_id, type: 'send_failed', detail: { error: e.message } }); } }
     await Vouchers.sweepExpired();
+    // Daily Gift Up sync while both systems run, so this stays accurate until Gift Up is switched off
+    if (Date.now() - lastGiftupSync > 24 * 3600e3) { lastGiftupSync = Date.now(); const gu = await import('./giftup.mjs'); if (gu.enabled() && (await Settings.get('giftup_auto_sync')) !== false) { try { const r = await gu.importAll({ by: 'Daily Gift Up sync' }); if (r.vouchers || r.updated || r.codes) await Events.add({ type: 'giftup_import', detail: { ...r, auto: true } }); } catch (e) { console.error('Gift Up sync failed:', e.message); } } }
     if (mailProvider() !== 'outbox') {
       const days = (await Settings.get('expiry_reminder_days')) || 30;
       for (const v of await Vouchers.expiringWithin(days)) { try { if (await emailReminder(v)) await Events.add({ voucher_id: v.voucher_id, type: 'reminder_sent', detail: { to: v.recipient_email } }); } catch (e) { console.error('reminder failed:', e.message); } }
