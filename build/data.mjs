@@ -42,7 +42,7 @@ const outletAbout = {
     intro: 'Our ION Orchard spa is at basement level B1 of ION Orchard, directly connected to Orchard MRT — an easy escape between meetings, shopping or the commute home.',
     about: ['Step in from the mall into a calm reception and private treatment rooms, where our therapists offer the full Elements menu: therapeutic massage, results-driven facials, TCM wellness therapies and slimming treatments.', 'At ION Orchard, the Fire element of The 5 Elements Massage is paired with Red Light Therapy, a technology that works at the cellular level to support circulation and recovery.'],
     highlights: ['Directly connected to Orchard MRT', 'Full massage, facial, wellness and slimming menu', 'Red Light Therapy enhancement for the 5 Elements Massage (Fire)', 'Open daily, including weekends and public holidays'],
-    gallery: ['ion-interior.jpg', 'ion-storefront.jpg', 'aquaglow.jpg'],
+    gallery: ['ion-interior.jpg', 'ion-storefront.jpg'],
   },
   centrepoint: {
     intro: 'The Centrepoint is home to our private Koyamaki Onsen suites — authentic Japanese Koyamaki baths where you soak, scrub and unwind in complete privacy.',

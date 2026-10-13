@@ -74,7 +74,7 @@ export const revealCard = ({ href, kind = '', title, short = '', more = '', img 
     <div class="rcard-foot">${meta.filter(Boolean).map((m) => `<span>${esc(m)}</span>`).join('')}<span class="rcard-cta">${esc(cta)} ${icon.arrow}</span></div>
   </div>
 </a>`;
-export const serviceCard = (s, extra = '') => revealCard({ href: s.url, kind: s.ritual ? 'Spa experience' : s.group === 'facials' ? 'Facial' : s.group === 'spa' ? 'Spa experience' : 'Massage & recovery', title: s.name, short: s.short === 'New treatment — details coming soon.' ? '' : s.short, more: s.description || '', img: s.img, meta: [s.duration, s.price ? `${s.priceNote === 'First trial' ? 'First trial ' : s.priceNote === 'Per couple' ? 'Per couple ' : 'From '}${s.price}` : ''], tag: s.tag, extra: `data-tags="${(s.concerns || []).join(' ')} ${s.group}" ${extra}` });
+export const serviceCard = (s, extra = '') => revealCard({ href: s.url, kind: s.ritual ? 'Spa experience' : s.group === 'facials' ? 'Facial' : s.group === 'spa' ? 'Spa experience' : 'Massage & recovery', title: s.name, short: s.short === 'New treatment — details coming soon.' ? '' : s.short, more: s.description || '', img: s.img, meta: [s.duration, s.price ? `${s.priceNote === 'First trial' ? 'First trial ' : s.priceNote === 'Per couple' ? 'Per couple ' : 'From '}${s.price}` : ''], tag: '', extra: `data-tags="${(s.concerns || []).join(' ')} ${s.group}" ${extra}` });
 
 // Mega menus follow the sitemap: By Concern · Focused Care · By Treatment, plus a separate Boosters link. No prices.
 const mlink = (u, t) => `<a href="${u}">${esc(t)}</a>`;
