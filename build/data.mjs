@@ -279,7 +279,7 @@ export const awards = (research.awards || []).map((a) => {
 // Press & award logos for the marquee.
 export const pressLogos = [
   ...[...new Map(awards.filter((a) => a.logo).map((a) => [a.logo, a])).values()].map((a) => ({ img: a.logo, title: a.publication, url: `/awards/#${a.slug}` })),
-  { img: img('awards/thesmartlocal.png'), title: 'TheSmartLocal' },
+  { img: img('awards/thesmartlocal.svg'), title: 'TheSmartLocal' },
   { img: img('awards/mothership.svg'), title: 'Mothership' },
 ];
 
