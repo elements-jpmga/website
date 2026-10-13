@@ -1,4 +1,4 @@
-import { site, groups, services, concerns, outlets, awards, pressLogos, faqs, google, googleFor, sgOutline, concernPagesAll } from '../data.mjs';
+import { site, groups, services, concerns, outlets, awards, pressLogos, faqs, google, googleFor, sgOutline, orchardMap, concernPagesAll } from '../data.mjs';
 import { layout, esc, icon, btn, linkArrow, ring, faqList, logo, googleCard, starRow, fmtNum, gLogo, revealCard } from '../ui.mjs';
 
 export default function home() {
@@ -145,7 +145,7 @@ export default function home() {
 <section class="section bg-sand" id="reviews" data-google-reviews>
   <div class="wrap grid-2 rv-layout">
     <div class="rv-words">
-      <h2 data-split>Loved, then <span class="thin">loved again.</span></h2>
+      <h2 data-split>What people <span class="thin">are saying</span></h2>
       <div class="g-flex" data-reveal>
         <div class="g-flex-num"><span data-rv-avg>${google.average.toFixed(1)}</span><small>/ 5</small></div>
         <div><div class="g-flex-stars">${starRow(google.average)}</div><p>From <b data-rv-total>${fmtNum(google.total)}</b> Google reviews across our three outlets</p></div>
@@ -200,50 +200,37 @@ export default function home() {
   </div>
 </section>`;
 
-  // Red map of Singapore: the three outlets sit together on Orchard Road, so a lens zooms into that stretch
-  const lensPins = { ion: [62, 92], '313': [150, 118], centrepoint: [232, 100] };
+  // Locations: the Singapore outline zooms into Orchard Road, our own red street map draws in with a pin per outlet; three cards below
+  const M = orchardMap;
+  const vb0 = '240 250 720 320';
   const mapLocs = `
 <section class="section bg-deep map-sec" id="locations" data-map>
   <div class="wrap">
-    <div class="head-row"><div><span class="eyebrow" data-reveal="drop">Visit us</span><h2 data-split style="margin-top:16px">Three sanctuaries <span class="thin">on Orchard Road.</span></h2></div><div><p class="lede" data-reveal>${esc(site.hoursSummary)}</p><div data-reveal style="margin-top:14px">${linkArrow('/locations/', 'All locations')}</div></div></div>
-    <div class="map-layout">
-      <div class="map-stage" data-reveal="fade">
-        <svg class="sg-map" viewBox="0 0 1000 446" aria-hidden="true" focusable="false">
-          <defs><pattern id="sg-dots" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="rgba(255,255,255,.14)"/></pattern><radialGradient id="sg-glow"><stop offset="0" stop-color="#ffd3d3" stop-opacity=".9"/><stop offset="1" stop-color="#ffd3d3" stop-opacity="0"/></radialGradient></defs>
-          <path class="sg-land" d="${sgOutline}"/>
-          <path class="sg-land-dots" d="${sgOutline}" fill="url(#sg-dots)"/>
-          <g class="sg-orchard"><circle class="sg-pulse" cx="340" cy="238" r="22"/><circle class="sg-pulse d2" cx="340" cy="238" r="22"/><circle cx="340" cy="238" r="40" fill="url(#sg-glow)" opacity=".5"/><circle class="sg-dot" cx="340" cy="238" r="6"/><text class="sg-label" x="362" y="231">Orchard Road</text><text class="sg-sub" x="362" y="250">3 outlets · 2 MRT stops</text></g>
-          <line class="sg-link" x1="340" y1="238" x2="690" y2="200"/>
-        </svg>
-        <div class="map-lens" aria-hidden="true">
-          <svg viewBox="0 0 300 200">
-            <path class="lens-road" d="M-10 70 C 60 60, 110 95, 160 112 S 260 118, 320 98"/>
-            <g class="lens-mrt"><circle cx="48" cy="66" r="5"/><text x="48" y="52">Orchard MRT</text><circle cx="210" cy="116" r="5"/><text x="210" y="138">Somerset MRT</text></g>
-            ${outlets.map((o) => { const [x, y] = lensPins[o.id]; return `<g class="lens-pin" data-map-pin="${o.id}" transform="translate(${x} ${y})"><circle class="lens-ring" r="14"/><circle class="lens-dot" r="6"/><text y="${o.id === '313' ? 30 : -22}">${esc(o.short)}</text></g>`; }).join('')}
-          </svg>
-          <span class="lens-cap">Orchard Road, zoomed in</span>
-        </div>
-      </div>
-      <div class="map-side" data-reveal>
-        ${outlets.map((o, i) => { const g = googleFor(o.id) || { rating: 0, count: 0 }; const tel = o.phone.replace(/\s/g, ''), wa = o.whatsapp.replace(/\s/g, ''); return `<article class="map-item ${i === 0 ? 'is-on' : ''}" data-map-item="${o.id}" data-url="${o.url}">
-          <button type="button" class="map-item-head" aria-expanded="${i === 0}">
-            <span class="map-no">0${i + 1}</span>
-            <span class="map-item-text"><b>${esc(o.name)}</b><small>${esc(o.feature)}</small></span>
-            <span class="map-item-score" data-rv-place="${o.id}"><b data-rv-rating>${g.rating.toFixed(1)}</b> ${starRow(g.rating)} <small><span data-rv-count>${fmtNum(g.count)}</span> reviews</small></span>
-            <span class="map-item-arrow" aria-hidden="true">${icon.arrow}</span>
-          </button>
-          <div class="map-item-body">
-            <div class="map-item-grid">
-              <div><small>Address</small><p>${o.address}</p></div>
-              <div><small>Getting here</small><p>${esc(o.directions || '')}</p></div>
-              <div><small>Hours</small><p>${esc(site.hoursSummary)}</p></div>
-              <div><small>Contact</small><p><a href="tel:+65${tel}">${esc(o.phone)}</a> · <a href="https://wa.me/65${wa}" target="_blank" rel="noopener">WhatsApp</a></p></div>
-            </div>
-            <div class="map-item-actions">${btn(o.url, 'Open ' + o.short + ' page', 'btn-light btn-sm')}${btn('https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent('Elements Wellness ' + o.mapQuery), 'Directions', 'btn-ghost-light btn-sm', 'target="_blank" rel="noopener"')}</div>
-          </div>
-        </article>`; }).join('')}
-        <p class="map-hint">Tap an outlet to see where it is and how to get there · tap again to open its page</p>
-      </div>
+    <div class="head-row"><div><h2 data-split>Three sanctuaries <span class="thin">on Orchard Road.</span></h2></div><div><p class="lede" data-reveal>${esc(site.hoursSummary)}</p><div data-reveal style="margin-top:14px">${linkArrow('/locations/', 'All locations')}</div></div></div>
+    <div class="omap-layout">
+    <div class="omap" data-omap>
+      <svg class="omap-sg" viewBox="0 0 1000 446" aria-hidden="true" focusable="false"><path class="sg-land" d="${sgOutline}"/><circle class="sg-dot" cx="340" cy="238" r="7"/></svg>
+      <svg class="omap-street" viewBox="${vb0}" preserveAspectRatio="xMidYMid meet" data-vb0="${vb0}" role="img" aria-label="Map of Orchard Road showing the three Elements Wellness outlets">
+        <rect x="0" y="0" width="${M.w}" height="${M.h}" class="om-land"/>
+        <path class="om-park" d="${M.parks}"/>
+        <path class="om-bld" d="${M.buildings}"/>
+        <path class="om-road om-walk" d="${M.roads.walk}"/><path class="om-road om-minor" d="${M.roads.minor}"/><path class="om-road om-mid" d="${M.roads.mid}"/><path class="om-road om-major" d="${M.roads.major}"/><path class="om-road om-orchard" d="${M.roads.orchard}"/>
+        ${outlets.map((o) => `<path class="om-mall" data-mall="${o.id}" d="${M.malls[o.id] || ''}"/>`).join('')}
+        ${Object.entries(M.mrt).map(([n, [x, y]]) => `<g class="om-mrt" transform="translate(${x} ${y})"><g class="om-mrt-scale"><rect x="-7" y="-7" width="14" height="14" rx="3"/><text x="12" y="4">${n} MRT</text></g></g>`).join('')}
+        ${outlets.map((o, i) => { const [x, y] = M.pins[o.id]; return `<g class="om-pin" data-pin="${o.id}" transform="translate(${x} ${y})" tabindex="0" role="button" aria-label="${esc(o.name)}"><g class="om-pin-in"><g class="om-pin-scale"><circle class="om-pulse" r="16"/><path class="om-drop" d="M0 0 C -4 -9 -13 -14 -13 -24 A 13 13 0 1 1 13 -24 C 13 -14 4 -9 0 0 Z"/><circle class="om-dot" cx="0" cy="-24" r="5"/><text class="om-label" x="0" y="-46">${esc(o.short)}</text></g></g></g>`; }).join('')}
+      </svg>
+      <span class="omap-credit">Map data © OpenStreetMap contributors</span>
+    </div>
+    <div class="omap-cards">
+      ${outlets.map((o, i) => { const g = googleFor(o.id) || { rating: 0, count: 0 }; const wa = o.whatsapp.replace(/\s/g, ''); return `<article class="omap-card" data-card="${o.id}" tabindex="0">
+        <div class="omap-card-top"><span class="omap-no">0${i + 1}</span><span class="omap-score" data-rv-place="${o.id}"><b data-rv-rating>${g.rating.toFixed(1)}</b> ${starRow(g.rating)} <small><span data-rv-count>${fmtNum(g.count)}</span> reviews</small></span></div>
+        <h3>${esc(o.name)}</h3>
+        <p class="omap-addr">${o.address}</p>
+        <div class="omap-more"><p class="omap-dir">${esc(o.directions || '')}</p>
+        <p class="omap-contact"><a href="tel:+65${o.phone.replace(/\s/g, '')}">${esc(o.phone)}</a> · <a href="https://wa.me/65${wa}" target="_blank" rel="noopener">WhatsApp</a></p></div>
+        <div class="omap-actions">${btn(o.url, 'View outlet', 'btn-light btn-sm')}${btn('https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent('Elements Wellness ' + o.mapQuery), 'Directions', 'btn-ghost-light btn-sm', 'target="_blank" rel="noopener"')}</div>
+      </article>`; }).join('')}
+    </div>
     </div>
   </div>
 </section>`;
@@ -278,6 +265,6 @@ export default function home() {
     title: 'Elements Wellness — Award-winning Spa & Wellness in Singapore',
     description: 'Award-winning spa on Orchard Road: TCM massage, results-driven facials, INDIBA® slimming, recovery therapy and Singapore’s first private Koyamaki onsen. ION Orchard, 313@somerset, The Centrepoint.',
     path: '/', bodyClass: 'page-home', schema,
-    body: hero + keyTreatments + awardsStrip + testimonials + mapLocs + ha + commerce + standard + faq + cta,
+    body: hero + keyTreatments + awardsStrip + testimonials + mapLocs,
   });
 }

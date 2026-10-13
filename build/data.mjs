@@ -280,7 +280,7 @@ export const awards = (research.awards || []).map((a) => {
 export const pressLogos = [
   ...[...new Map(awards.filter((a) => a.logo).map((a) => [a.logo, a])).values()].map((a) => ({ img: a.logo, title: a.publication, url: `/awards/#${a.slug}` })),
   { img: img('awards/thesmartlocal.png'), title: 'TheSmartLocal' },
-  { img: img('awards/mothership.png'), title: 'Mothership' },
+  { img: img('awards/mothership.svg'), title: 'Mothership' },
 ];
 
 /* ---------------- Reviews (Google, from the live site) ---------------- */
@@ -289,6 +289,8 @@ export const google = JSON.parse(read('src/data/google-reviews.json') || '{"tota
 export const googleFor = (outletId) => google.places.find((p) => p.id === outletId);
 // Singapore outline (OpenStreetMap, simplified) as an SVG path in a 1000×660 box; the three outlets sit around (470, 355) on Orchard Road
 export const sgOutline = (read('src/data/singapore-outline.txt') || '').trim();
+// Orchard Road street map (OpenStreetMap data, © OpenStreetMap contributors, ODbL) in a 1200×790 box, with outlet and MRT positions
+export const orchardMap = JSON.parse(read('src/data/orchard-map.json') || 'null');
 
 export const reviews = [
   { name: 'Brad Bones', text: 'I come back weekly to see my super star Nicole! My wife also enjoys. Amazing at what they do!' },

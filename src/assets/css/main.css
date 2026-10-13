@@ -1210,3 +1210,44 @@ h3, .h3 { letter-spacing: .02em; color: var(--ink); }
 .hero-reviews .g { width: 16px; height: 16px; border-radius: 50%; background: conic-gradient(#4285f4 0 25%, #34a853 0 50%, #fbbc05 0 75%, #ea4335 0); display: grid; place-items: center; flex: none; } .hero-reviews .g i { width: 8px; height: 8px; border-radius: 50%; background: #3a2a29; }
 .hero-reviews b { font-weight: 600; font-size: 13px; } .hero-reviews .g-stars-row { font-size: 11px; color: #f4b400 !important; } .hero-reviews .g-stars-row .off { color: rgba(255, 255, 255, .3); } .hero-reviews > span { color: rgba(255, 255, 255, .85); }
 @media (max-width: 720px) { .hero-reviews { left: 50%; transform: translateX(-50%); bottom: 64px; white-space: nowrap; } }
+
+/* ================= Home: Orchard Road street map + outlet cards ================= */
+.omap { position: relative; min-height: 0; overflow: hidden; background: #2a0709; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1); }
+.omap-sg, .omap-street { position: absolute; inset: 0; width: 100%; height: 100%; }
+.omap-sg .sg-land { fill: #8f2226; stroke: #e2a9ac; stroke-width: 1.2; vector-effect: non-scaling-stroke; } .omap-sg .sg-dot { fill: #fff; }
+.om-land { fill: #3a0a0d; }
+.om-park { fill: rgba(255, 255, 255, .04); }
+.om-bld { fill: rgba(255, 255, 255, .07); }
+.om-road { fill: none; stroke: #fff; stroke-linecap: round; stroke-linejoin: round; }
+.om-walk { stroke-opacity: .14; stroke-width: 1.2; stroke-dasharray: 3 4; } .om-minor { stroke-opacity: .16; stroke-width: 1.6; } .om-mid { stroke-opacity: .28; stroke-width: 2.6; } .om-major { stroke-opacity: .42; stroke-width: 4.2; }
+.om-orchard { stroke: #f0b4b6; stroke-opacity: .9; stroke-width: 6; }
+.om-mall { fill: rgba(240, 180, 182, .16); stroke: rgba(240, 180, 182, .45); stroke-width: 1; transition: fill .4s, stroke .4s; } .om-mall.is-on { fill: rgba(240, 180, 182, .42); stroke: #f0b4b6; }
+.om-mrt rect { fill: #fff; opacity: .9; } .om-mrt text { fill: rgba(255, 255, 255, .75); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; font-family: var(--f-text); paint-order: stroke; stroke: #3a0a0d; stroke-width: 3px; }
+.om-pin { cursor: pointer; outline: none; }
+.om-drop { fill: #b8262c; stroke: #fff; stroke-width: 2; transition: fill .3s; transform-box: fill-box; transform-origin: 50% 100%; transition: transform .4s var(--ease), fill .3s; }
+.om-dot { fill: #fff; }
+.om-label { fill: #fff; font-family: var(--f-text); font-size: 14px; font-weight: 600; text-anchor: middle; paint-order: stroke; stroke: #3a0a0d; stroke-width: 4px; stroke-linejoin: round; }
+.om-pulse { fill: none; stroke: #fff; stroke-width: 1.5; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.om-pin.is-on .om-drop, .om-pin.is-hot .om-drop, .om-pin:focus-visible .om-drop { fill: #e0353c; transform: scale(1.18); }
+.om-pin.is-on .om-pulse { animation: om-pulse 2.2s ease-out infinite; }
+@keyframes om-pulse { 0% { transform: scale(.4); opacity: .9; } 100% { transform: scale(2.6); opacity: 0; } }
+.omap-credit { position: absolute; right: 10px; bottom: 8px; font-size: 10px; color: rgba(255, 255, 255, .5); pointer-events: none; }
+.omap-layout { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 14px; margin-top: clamp(28px, 3.5vw, 44px); align-items: stretch; } .omap { min-height: 480px; }
+.omap-cards { display: grid; grid-auto-rows: min-content; gap: 10px; align-content: start; }
+.omap-card { padding: 16px 18px 18px !important; gap: 6px !important; }
+.omap-card h3 { font-size: 21px !important; margin: 2px 0 0 !important; }
+.omap-more { display: grid; gap: 6px; max-height: 0; overflow: hidden; opacity: 0; transition: max-height .5s var(--ease), opacity .4s; }
+.omap-card.is-on .omap-more { max-height: 180px; opacity: 1; }
+.omap-actions { padding-top: 8px !important; }
+.omap-card { padding: 22px 22px 24px; background: rgba(255, 255, 255, .05); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14); color: #fff; cursor: pointer; display: flex; flex-direction: column; gap: 8px; transition: background .35s, box-shadow .35s, transform .35s var(--ease); outline: none; }
+.omap-card:hover { background: rgba(255, 255, 255, .08); } .omap-card.is-on { background: rgba(255, 255, 255, .12); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .55); }
+.omap-card-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.omap-no { font-family: var(--f-head); font-size: 14px; color: rgba(255, 255, 255, .55); }
+.omap-score { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; white-space: nowrap; } .omap-score b { font-weight: 600; } .omap-score .g-stars-row { font-size: 12px; color: #f4b400; } .omap-score .g-stars-row .off { color: rgba(255, 255, 255, .3); } .omap-score small { color: rgba(255, 255, 255, .65); }
+.omap-card h3 { color: #fff; font-size: 24px; margin: 4px 0 2px; }
+.omap-card p { margin: 0; font-size: 13.5px; line-height: 1.55; color: rgba(255, 255, 255, .85); } .omap-card .omap-dir { color: rgba(255, 255, 255, .65); }
+.omap-card a { color: #fff; } .omap-contact a { border-bottom: 1px solid rgba(255, 255, 255, .4); }
+.omap-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 12px; }
+.omap-actions .btn { border-bottom: 0; }
+.om-pin-scale { transform: scale(.62); } .om-mrt-scale { transform: scale(.62); }
+@media (max-width: 900px) { .omap-layout { grid-template-columns: 1fr; } .omap { aspect-ratio: 4 / 3; min-height: 0; } .om-pin-scale { transform: scale(1.45); } .om-mrt-scale { transform: scale(1.25); } }

@@ -227,32 +227,58 @@
     });
   }
 
-  /* ---------- Map of Singapore: one tap shows an outlet, a second tap opens its page ---------- */
+  /* ---------- Locations map: Singapore zooms into Orchard Road; tap a card or pin to focus it, tap again to open the outlet ---------- */
   function mapLocations() {
     const sec = $('[data-map]'); if (!sec) return;
-    const items = $$('[data-map-item]', sec), pins = $$('[data-map-pin]', sec);
-    const open = (id, user) => {
-      items.forEach((it) => {
-        const on = it.dataset.mapItem === id, was = it.classList.contains('is-on');
-        it.classList.toggle('is-on', on); $('.map-item-head', it).setAttribute('aria-expanded', on);
-        const body = $('.map-item-body', it);
-        if (reduced) { body.style.height = on ? 'auto' : '0'; return; }
-        if (on && !was) gsap.fromTo(body, { height: 0 }, { height: 'auto', duration: .7, ease: 'power3.out', onComplete: () => ScrollTrigger.refresh() });
-        else if (!on && was) gsap.to(body, { height: 0, duration: .5, ease: 'power3.inOut' });
-      });
-      pins.forEach((p) => p.classList.toggle('is-on', p.dataset.mapPin === id));
-      if (user && !reduced) { const p = pins.find((x) => x.dataset.mapPin === id); if (p) gsap.fromTo($('.lens-ring', p), { attr: { r: 6 }, opacity: 1 }, { attr: { r: 22 }, opacity: 0, duration: .9, ease: 'power2.out', onComplete: () => gsap.set($('.lens-ring', p), { attr: { r: 14 }, clearProps: 'opacity' }) }); }
+    const stage = $('[data-omap]', sec), sg = $('.omap-sg', sec), street = $('.omap-street', sec);
+    const cards = $$('[data-card]', sec), pins = $$('[data-pin]', street), malls = $$('[data-mall]', street);
+    const W = 1200, H = 790;
+    const pinXY = (id) => { const t = pins.find((p) => p.dataset.pin === id).getAttribute('transform').match(/translate\(([\d.]+) ([\d.]+)\)/); return [+t[1], +t[2]]; };
+    // fit a box of map units into the stage's own shape so nothing important is ever cropped
+    const fit = (x0, y0, x1, y1) => { const a = stage.clientWidth / Math.max(1, stage.clientHeight); let w = x1 - x0, h = y1 - y0; if (w / h < a) w = h * a; else h = w / a; const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2; return [Math.min(Math.max(cx - w / 2, 0), Math.max(0, W - w)), Math.min(Math.max(cy - h / 2, 0), Math.max(0, H - h)), w, h].map((n) => Math.round(n * 10) / 10); };
+    const overview = () => { const xy = pins.map((p) => pinXY(p.dataset.pin)); const xs = xy.map((p) => p[0]), ys = xy.map((p) => p[1]); return fit(Math.min(...xs) - 90, Math.min(...ys) - 80, Math.max(...xs) + 90, Math.max(...ys) + 60); };
+    const vbFor = (id) => { const [x, y] = pinXY(id); return fit(x - 170, y - 110, x + 170, y + 80); };
+    street.setAttribute('viewBox', overview().join(' '));
+    let lastSize = '';
+    new ResizeObserver(() => { const k = stage.clientWidth + 'x' + stage.clientHeight; if (k === lastSize) return; lastSize = k; gsap.to(street, { attr: { viewBox: (current ? vbFor(current) : overview()).join(' ') }, duration: .5, ease: 'power2.out' }); }).observe(stage);
+    let current = null;
+    const focus = (id, animate = true) => {
+      current = id;
+      cards.forEach((c) => c.classList.toggle('is-on', c.dataset.card === id));
+      if (animate && window.innerWidth <= 900 && stage.getBoundingClientRect().top < 0) scrollTo(stage);
+      pins.forEach((p) => p.classList.toggle('is-on', p.dataset.pin === id));
+      malls.forEach((m) => m.classList.toggle('is-on', m.dataset.mall === id));
+      const vb = id ? vbFor(id) : overview();
+      if (reduced || !animate) street.setAttribute('viewBox', vb.join(' '));
+      else gsap.to(street, { attr: { viewBox: vb.join(' ') }, duration: 1.1, ease: 'power3.inOut' });
     };
-    items.forEach((it) => {
-      $('.map-item-head', it).addEventListener('click', () => (it.classList.contains('is-on') ? leavePage(it.dataset.url) : open(it.dataset.mapItem, true)));
-      it.addEventListener('pointerenter', () => pins.forEach((p) => p.classList.toggle('is-hot', p.dataset.mapPin === it.dataset.mapItem)));
-      it.addEventListener('pointerleave', () => pins.forEach((p) => p.classList.remove('is-hot')));
+    const go = (id) => { const c = cards.find((x) => x.dataset.card === id); if (c) leavePage(c.querySelector('.omap-actions a').href); };
+    cards.forEach((c) => {
+      c.addEventListener('click', (e) => { if (e.target.closest('a')) return; current === c.dataset.card ? go(c.dataset.card) : focus(c.dataset.card); });
+      c.addEventListener('keydown', (e) => { if (e.key === 'Enter') c.click(); });
+      c.addEventListener('pointerenter', () => pins.forEach((p) => p.classList.toggle('is-hot', p.dataset.pin === c.dataset.card)));
+      c.addEventListener('pointerleave', () => pins.forEach((p) => p.classList.remove('is-hot')));
     });
-    pins.forEach((p) => { p.style.cursor = 'pointer'; p.addEventListener('click', () => { const it = items.find((x) => x.dataset.mapItem === p.dataset.mapPin); if (!it) return; if (p.classList.contains('is-on')) leavePage(it.dataset.url); else { open(p.dataset.mapPin, true); if (window.innerWidth <= 960) scrollTo(it); } }); });
-    // first outlet open from the start; the island draws itself in as the section arrives
-    const first = items.find((it) => it.classList.contains('is-on')); if (first) { $('.map-item-body', first).style.height = 'auto'; pins.forEach((p) => p.classList.toggle('is-on', p.dataset.mapPin === first.dataset.mapItem)); }
-    const land = $('.sg-land', sec);
-    if (land && !reduced) { const len = land.getTotalLength(); gsap.set(land, { strokeDasharray: len, strokeDashoffset: len, fillOpacity: 0 }); gsap.timeline({ scrollTrigger: { trigger: sec, start: 'top 70%', once: true } }).to(land, { strokeDashoffset: 0, duration: 2.2, ease: 'power2.inOut' }).to(land, { fillOpacity: 1, duration: 1 }, '-=1.2').from($('.sg-orchard', sec), { opacity: 0, scale: .6, transformOrigin: '340px 238px', duration: .8, ease: 'back.out(2)' }, '-=.6').from($('.sg-link', sec), { opacity: 0, duration: .6 }, '-=.3').from($('.map-lens', sec), { opacity: 0, scale: .85, duration: .9, ease: 'power3.out' }, '-=.4'); }
+    pins.forEach((p) => {
+      const act = () => (current === p.dataset.pin ? go(p.dataset.pin) : focus(p.dataset.pin));
+      p.addEventListener('click', act); p.addEventListener('keydown', (e) => { if (e.key === 'Enter') act(); });
+    });
+    if (reduced) { sg.style.display = 'none'; return; }
+    // intro: island → zoom into the Orchard Road dot → street map settles, roads fade up, pins drop in
+    gsap.set(street, { opacity: 0 }); gsap.set($$('.om-pin-in', street), { opacity: 0, y: -40 }); gsap.set($$('.om-road, .om-bld, .om-park', street), { opacity: 0 });
+    ScrollTrigger.create({ trigger: stage, start: 'top 72%', once: true, onEnter: () => {
+      const dot = $('.sg-dot', sg).getBoundingClientRect(), box = stage.getBoundingClientRect();
+      gsap.set(sg, { transformOrigin: `${dot.left + dot.width / 2 - box.left}px ${dot.top + dot.height / 2 - box.top}px` });
+      gsap.timeline()
+        .from(sg, { opacity: 0, scale: .92, duration: .7, ease: 'power2.out' })
+        .to(sg, { scale: 14, duration: 1.5, ease: 'power3.in' }, '+=.35')
+        .to(sg, { opacity: 0, duration: .45 }, '-=.45')
+        .fromTo(street, { opacity: 0, scale: 1.25, transformOrigin: '50% 50%' }, { opacity: 1, scale: 1, duration: 1.2, ease: 'power3.out' }, '-=.5')
+        .to($$('.om-park, .om-bld', street), { opacity: 1, duration: .8 }, '-=.9')
+        .to($$('.om-road', street), { opacity: 1, duration: .9, stagger: .08 }, '-=.8')
+        .to($$('.om-pin-in', street), { opacity: 1, y: 0, duration: .8, stagger: .15, ease: 'back.out(2)' }, '-=.4')
+        .add(() => { sg.style.display = 'none'; }, '+=.2');
+    } });
   }
 
   /* ---------- Steps: image crossfade by scroll position ---------- */
