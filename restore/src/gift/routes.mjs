@@ -56,7 +56,7 @@ export function registerGiftRoutes({ route, send, err, json, readBody, staff, se
   route('GET', '/api/gift/vouchers', async (req, res, { url }) => { const q = url.searchParams; send(res, 200, (await Vouchers.list({ q: q.get('q') || '', status: q.get('status') || '', item_id: q.get('item_id') || '', source: q.get('source') || '', limit: Math.min(+q.get('limit') || 100, 500), offset: +q.get('offset') || 0 })).map(withStatus)); });
   route('GET', '/api/gift/lookup', async (req, res, { url }) => { const v = await Vouchers.byCode(url.searchParams.get('code') || ''); v ? send(res, 200, withStatus(v)) : err(res, 404, 'No voucher with that code'); });
   route('GET', '/api/gift/vouchers/:id', async (req, res, { params }) => { const v = await Vouchers.get(params.id); if (!v) return err(res, 404, 'Voucher not found'); send(res, 200, { ...withStatus(v), events: await Events.forVoucher(params.id), siblings: (await Vouchers.forOrder(v.order_id)).filter((x) => x.voucher_id !== v.voucher_id).map(withStatus) }); });
-  route('GET', '/api/gift/vouchers/:id/pdf', async (req, res, { params }) => { const v = await Vouchers.get(params.id); if (!v) return err(res, 404, 'Voucher not found'); sendFile(res, await pdfFor(params.id), 'application/pdf', `Elements-Gift-Voucher-${v.code.split(' ')[0]}.pdf`); });
+  route('GET', '/api/gift/vouchers/:id/pdf', async (req, res, { params, url }) => { const v = await Vouchers.get(params.id); if (!v) return err(res, 404, 'Voucher not found'); const original = v.pdf_path?.startsWith('gift/giftup/') && url.searchParams.get('original') !== '0' ? await files.get(v.pdf_path) : null; sendFile(res, original || await pdfFor(params.id), 'application/pdf', `Elements-Gift-Voucher-${v.code.split(' ')[0]}.pdf`); });
   route('GET', '/api/gift/vouchers/:id/preview.html', async (req, res, { params }) => { const v = await Vouchers.get(params.id); if (!v) return err(res, 404, 'Voucher not found'); const html = (await voucherHtml(v)).replace('</head>', `<style>html{background:#e9e9ee}body{transform-origin:0 0;box-shadow:0 2px 12px rgba(0,0,0,.12)}</style><script>function fit(){if(!document.body)return;var z=document.documentElement.clientWidth/document.body.offsetWidth;document.body.style.transform='scale('+z+')';document.documentElement.style.height=(document.body.offsetHeight*z)+'px'}addEventListener('DOMContentLoaded',fit);addEventListener('load',fit);addEventListener('resize',fit)</script></head>`);
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' }); res.end(html); });
   route('POST', '/api/gift/vouchers/:id/resend', async (req, res, { params }) => {
@@ -103,7 +103,8 @@ export function registerGiftRoutes({ route, send, err, json, readBody, staff, se
   });
 
   /* ---- reports ---- */
-  route('GET', '/api/gift/reports/sales', async (req, res, { url }) => send(res, 200, await Reports.salesByMonth(+url.searchParams.get('months') || 12)));
+  route('GET', '/api/gift/reports/sales', async (req, res, { url }) => { const y = url.searchParams.get('year'); send(res, 200, y ? await Reports.salesByMonth(`${+y - 1}-12-31`, `${+y + 1}-01-01T00:00:00`) : await Reports.salesByMonth(new Date(Date.now() - 366 * 864e5).toISOString(), '9999')); });
+  route('GET', '/api/gift/reports/years', async (req, res) => send(res, 200, await Reports.salesByYear()));
   route('GET', '/api/gift/reports/items', async (req, res, { url }) => send(res, 200, await Reports.salesByItem(url.searchParams.get('from') || '2000', url.searchParams.get('to') || '9999')));
   route('GET', '/api/gift/reports/outlets', async (req, res, { url }) => send(res, 200, await Reports.redemptionsByOutlet(url.searchParams.get('from') || '2000', url.searchParams.get('to') || '9999')));
   route('GET', '/api/gift/reports/expiring', async (req, res, { url }) => send(res, 200, (await Reports.expiring(+url.searchParams.get('days') || 30)).map(withStatus)));
@@ -122,6 +123,7 @@ export function registerGiftRoutes({ route, send, err, json, readBody, staff, se
     if (b.low_stock_threshold !== undefined) await Settings.set('low_stock_threshold', Math.max(0, +b.low_stock_threshold || 0));
     if (b.terms !== undefined) await Settings.set('terms', String(b.terms).slice(0, 2000));
     if (b.expiry_reminder_days !== undefined) await Settings.set('expiry_reminder_days', Math.max(0, +b.expiry_reminder_days || 0));
+    if (b.giftup_auto_sync !== undefined) await Settings.set('giftup_auto_sync', !!b.giftup_auto_sync);
     send(res, 200, await Settings.all());
   });
 

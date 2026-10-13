@@ -3,7 +3,7 @@
 // Decisions (13 Oct 2026): low-stock threshold 10 per item, staff mark redemptions here, no partial use.
 import { db, id, now } from '../db.mjs';
 
-export const TABLES = ['gift_items', 'gift_code_batches', 'gift_codes', 'gift_designs', 'gift_orders', 'gift_vouchers', 'gift_events', 'gift_alerts', 'gift_settings'];
+export const TABLES = ['gift_items', 'gift_code_batches', 'gift_codes', 'gift_designs', 'gift_orders', 'gift_vouchers', 'gift_events', 'gift_alerts', 'gift_settings', 'gift_archive'];
 await db.exec(`
 CREATE TABLE IF NOT EXISTS gift_items (
   item_id TEXT PRIMARY KEY, name TEXT NOT NULL, kind TEXT NOT NULL DEFAULT 'treatment', price DOUBLE PRECISION NOT NULL, value DOUBLE PRECISION,
@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS gift_vouchers (
 CREATE TABLE IF NOT EXISTS gift_events (event_id TEXT PRIMARY KEY, voucher_id TEXT, order_id TEXT, type TEXT NOT NULL, detail TEXT, staff TEXT, at TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS gift_alerts (alert_id TEXT PRIMARY KEY, item_id TEXT NOT NULL REFERENCES gift_items(item_id), level TEXT NOT NULL, remaining INTEGER NOT NULL, created_at TEXT NOT NULL, emailed_at TEXT, resolved_at TEXT);
 CREATE TABLE IF NOT EXISTS gift_settings (key TEXT PRIMARY KEY, value TEXT NOT NULL, updated_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS gift_archive (kind TEXT NOT NULL, giftup_id TEXT NOT NULL, json TEXT NOT NULL, imported_at TEXT NOT NULL, PRIMARY KEY (kind, giftup_id));
 CREATE INDEX IF NOT EXISTS gift_codes_item_status ON gift_codes (item_id, status);
 CREATE INDEX IF NOT EXISTS gift_vouchers_code ON gift_vouchers (code);
 CREATE INDEX IF NOT EXISTS gift_vouchers_order ON gift_vouchers (order_id);
@@ -46,10 +47,11 @@ const addMonths = (iso, months) => { const d = new Date(iso); d.setMonth(d.getMo
 
 /* ---------------- Settings ---------------- */
 export const DEFAULTS = {
-  notify_emails: [],            // who receives "voucher sold" and low-stock emails (to be confirmed by Elements)
+  notify_emails: ['finance.ewg@gmail.com'], // who receives "voucher sold" and low-stock emails — more can be added in Settings
   low_stock_threshold: 10,
   terms: '• 12 months validity from issue date.\n• Proper identification is required to redeem the voucher. We reserve the right to decline in cases where identification is not duly provided.\n• Kindly call or WhatsApp your preferred outlet to make an appointment. The gift voucher must be presented on the appointment day for validation.',
   expiry_reminder_days: 30,
+  giftup_auto_sync: true,       // while GIFTUP_API_KEY is set, pull anything new/changed from Gift Up once a day
 };
 export const Settings = {
   async all() { const rows = await db.all('SELECT key, value FROM gift_settings'); return { ...DEFAULTS, ...Object.fromEntries(rows.map((r) => [r.key, json(r.value)])) }; },
@@ -184,6 +186,7 @@ export const Vouchers = {
     if (source) where.push('o.source = ?'), p.push(source);
     return db.all(`SELECT v.*, o.order_no, o.buyer_name, o.buyer_email, o.source, o.status AS order_status FROM gift_vouchers v JOIN gift_orders o USING (order_id) ${where.length ? 'WHERE ' + where.join(' AND ') : ''} ORDER BY v.created_at DESC LIMIT ? OFFSET ?`, ...p, limit, offset);
   },
+  setPdf: (voucher_id, pdf_path) => db.run('UPDATE gift_vouchers SET pdf_path = ? WHERE voucher_id = ?', pdf_path, voucher_id),
   markSent: (voucher_id, pdf_path) => db.run(`UPDATE gift_vouchers SET sent_at = ?, status = CASE WHEN status = 'scheduled' THEN 'active' ELSE status END, pdf_path = COALESCE(?, pdf_path) WHERE voucher_id = ?`, now(), pdf_path || null, voucher_id),
   setRecipient: (voucher_id, { recipient_name, recipient_email, message, from_name }) => db.run('UPDATE gift_vouchers SET recipient_name = COALESCE(?, recipient_name), recipient_email = COALESCE(?, recipient_email), message = COALESCE(?, message), from_name = COALESCE(?, from_name) WHERE voucher_id = ?', recipient_name ?? null, recipient_email ?? null, message ?? null, from_name ?? null, voucher_id),
   extend: (voucher_id, expires_at) => db.run(`UPDATE gift_vouchers SET expires_at = ?, status = CASE WHEN status IN ('active','expired') THEN 'active' ELSE status END WHERE voucher_id = ?`, expires_at, voucher_id),
@@ -194,6 +197,16 @@ export const Vouchers = {
   dueToSend: () => db.all(`SELECT voucher_id FROM gift_vouchers WHERE status = 'scheduled' AND send_at <= ? ORDER BY send_at LIMIT 50`, now()),
   expiringWithin: (days) => { const until = new Date(Date.now() + days * 864e5).toISOString(); return db.all(`SELECT v.*, o.buyer_email, o.buyer_name FROM gift_vouchers v JOIN gift_orders o USING (order_id) WHERE v.status = 'active' AND v.expires_at BETWEEN ? AND ? AND NOT EXISTS (SELECT 1 FROM gift_events e WHERE e.voucher_id = v.voucher_id AND e.type = 'reminder_sent') ORDER BY v.expires_at`, now(), until); },
   sweepExpired: () => db.run(`UPDATE gift_vouchers SET status = 'expired' WHERE status = 'active' AND expires_at < ?`, now()),
+  // Gift Up sync: bring an imported voucher up to date unless staff have acted on it here
+  syncFromGiftup: (voucher_id, f) => db.run('UPDATE gift_vouchers SET status = ?, expires_at = ?, value_remaining = ?, units_remaining = ?, voided_at = ?, recipient_email = COALESCE(?, recipient_email), sent_at = COALESCE(?, sent_at) WHERE voucher_id = ?', f.status, f.expires_at, f.value_remaining, f.units_remaining, f.voided_at, f.recipient_email, f.sent_at, voucher_id),
+  touchedByStaff: (voucher_id) => db.get(`SELECT CAST(COUNT(*) AS INTEGER) AS n FROM gift_events WHERE voucher_id = ? AND type IN ('redeemed','unredeemed','voided','extended','recipient_changed','resent')`, voucher_id).then((r) => r.n > 0),
+};
+
+// Complete raw copy of every Gift Up record (card + order) so nothing is lost when Gift Up is switched off
+export const Archive = {
+  put: (kind, giftup_id, obj) => db.run('INSERT INTO gift_archive (kind, giftup_id, json, imported_at) VALUES (?,?,?,?) ON CONFLICT (kind, giftup_id) DO UPDATE SET json = excluded.json, imported_at = excluded.imported_at', kind, String(giftup_id), JSON.stringify(obj), now()),
+  get: (kind, giftup_id) => db.get('SELECT json FROM gift_archive WHERE kind = ? AND giftup_id = ?', kind, String(giftup_id)).then((r) => (r ? JSON.parse(r.json) : null)),
+  count: () => db.get('SELECT CAST(COUNT(*) AS INTEGER) AS n FROM gift_archive').then((r) => r.n),
 };
 
 export const Events = {
@@ -203,19 +216,22 @@ export const Events = {
 };
 
 /* ---------------- Reports ---------------- */
-const monthExpr = db.kind === 'postgres' ? "SUBSTRING(o.paid_at FROM 1 FOR 7)" : "SUBSTR(o.paid_at, 1, 7)";
+// Months are grouped in Singapore time (what Elements' accounts and the Gift Up dashboard use)
+const monthExpr = db.kind === 'postgres' ? "to_char((o.paid_at::timestamptz AT TIME ZONE 'Asia/Singapore'), 'YYYY-MM')" : "strftime('%Y-%m', datetime(o.paid_at, '+8 hours'))";
 export const Reports = {
   async summary() {
-    const t = now(); const monthStart = t.slice(0, 7) + '-01'; const prev = new Date(t); prev.setMonth(prev.getMonth() - 1); const prevStart = prev.toISOString().slice(0, 7) + '-01';
+    const t = now(); const sg = new Date(Date.now() + 8 * 3600e3); const utcOf = (y, m) => new Date(Date.UTC(y, m, 1) - 8 * 3600e3).toISOString(); const monthStart = utcOf(sg.getUTCFullYear(), sg.getUTCMonth()); const prevStart = utcOf(sg.getUTCFullYear(), sg.getUTCMonth() - 1);
     const sales = async (from, to) => db.get(`SELECT CAST(COUNT(*) AS INTEGER) AS orders, COALESCE(SUM(total), 0) AS revenue FROM gift_orders WHERE status = 'paid' AND paid_at >= ? AND paid_at < ?`, from, to);
     const [thisMonth, lastMonth] = [await sales(monthStart, '9999'), await sales(prevStart, monthStart)];
     const out = await db.get(`SELECT CAST(COUNT(*) AS INTEGER) AS vouchers, COALESCE(SUM(value_remaining), 0) AS value, CAST(COALESCE(SUM(units_remaining), 0) AS INTEGER) AS units FROM gift_vouchers WHERE status = 'active' AND expires_at >= ?`, t);
     const redeemed30 = await db.get(`SELECT CAST(COUNT(*) AS INTEGER) AS n FROM gift_vouchers WHERE status = 'redeemed' AND redeemed_at >= ?`, new Date(Date.now() - 30 * 864e5).toISOString());
     const expiring = await db.get(`SELECT CAST(COUNT(*) AS INTEGER) AS n FROM gift_vouchers WHERE status = 'active' AND expires_at BETWEEN ? AND ?`, t, new Date(Date.now() + 30 * 864e5).toISOString());
     const scheduled = await db.get(`SELECT CAST(COUNT(*) AS INTEGER) AS n FROM gift_vouchers WHERE status = 'scheduled'`);
-    return { thisMonth, lastMonth, outstanding: out, redeemed30: redeemed30.n, expiring30: expiring.n, scheduled: scheduled.n, codes: await Codes.stats(), alerts: await Alerts.open() };
+    return { thisMonth, lastMonth, allTime: await this.allTime(), outstanding: out, redeemed30: redeemed30.n, expiring30: expiring.n, scheduled: scheduled.n, codes: await Codes.stats(), alerts: await Alerts.open() };
   },
-  salesByMonth: (months = 12) => db.all(`SELECT ${monthExpr} AS month, CAST(COUNT(*) AS INTEGER) AS orders, COALESCE(SUM(o.total), 0) AS revenue FROM gift_orders o WHERE o.status = 'paid' AND o.paid_at >= ? GROUP BY ${monthExpr} ORDER BY month`, new Date(Date.now() - months * 31 * 864e5).toISOString()),
+  salesByMonth: (from = '2000', to = '9999') => db.all(`SELECT ${monthExpr} AS month, CAST(COUNT(*) AS INTEGER) AS orders, COALESCE(SUM(o.total), 0) AS revenue FROM gift_orders o WHERE o.status = 'paid' AND o.paid_at >= ? AND o.paid_at < ? GROUP BY ${monthExpr} ORDER BY month`, from, to),
+  salesByYear: () => db.all(`SELECT SUBSTR(${monthExpr}, 1, 4) AS year, CAST(COUNT(*) AS INTEGER) AS orders, COALESCE(SUM(o.total), 0) AS revenue FROM gift_orders o WHERE o.status = 'paid' GROUP BY SUBSTR(${monthExpr}, 1, 4) ORDER BY year`),
+  allTime: () => db.get(`SELECT CAST(COUNT(*) AS INTEGER) AS orders, COALESCE(SUM(total), 0) AS revenue, MIN(paid_at) AS since FROM gift_orders WHERE status = 'paid'`),
   salesByItem: (from, to) => db.all(`SELECT v.title, CAST(COUNT(*) AS INTEGER) AS vouchers, COALESCE(SUM(COALESCE(v.value_initial, i.price)), 0) AS value FROM gift_vouchers v JOIN gift_orders o USING (order_id) LEFT JOIN gift_items i ON i.item_id = v.item_id WHERE o.status = 'paid' AND o.paid_at >= ? AND o.paid_at < ? GROUP BY v.title ORDER BY vouchers DESC`, from, to),
   redemptionsByOutlet: (from, to) => db.all(`SELECT COALESCE(redeemed_outlet, 'Not recorded') AS outlet, CAST(COUNT(*) AS INTEGER) AS vouchers, COALESCE(SUM(value_initial), 0) AS value FROM gift_vouchers WHERE status = 'redeemed' AND redeemed_at >= ? AND redeemed_at < ? GROUP BY redeemed_outlet ORDER BY vouchers DESC`, from, to),
   expiring: (days = 30) => db.all(`SELECT v.*, o.buyer_name, o.buyer_email FROM gift_vouchers v JOIN gift_orders o USING (order_id) WHERE v.status = 'active' AND v.expires_at BETWEEN ? AND ? ORDER BY v.expires_at`, now(), new Date(Date.now() + days * 864e5).toISOString()),
