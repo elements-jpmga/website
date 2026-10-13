@@ -263,6 +263,12 @@
 
   /* ---------- Boot ---------- */
   // Signature tiles: tap to open on touch devices; arrows scroll the row on smaller screens
+  // Reveal cards: on touch the first tap shows the photo + description, the second follows the link
+  function revealCards() {
+    if (!isTouch) return;
+    $$('.rcard').forEach((c) => c.addEventListener('click', (e) => { if (!c.classList.contains('is-open')) { e.preventDefault(); $$('.rcard.is-open').forEach((x) => x.classList.remove('is-open')); c.classList.add('is-open'); } }));
+    document.addEventListener('click', (e) => { if (!e.target.closest('.rcard')) $$('.rcard.is-open').forEach((x) => x.classList.remove('is-open')); });
+  }
   function sigTiles() {
     const row = $('[data-sig-row]'); if (!row) return;
     const tiles = $$('.sig-tile', row);
@@ -284,7 +290,7 @@
     const w = $('[data-rv-write]'); if (w && d.places[0]?.writeReviewUrl) w.href = d.places[0].writeReviewUrl;
     const up = $('[data-rv-updated]'); if (up) up.textContent = 'Live from Google · updated ' + new Date(d.snapshotDate).toLocaleDateString('en-SG', { day: 'numeric', month: 'short', year: 'numeric' });
   }
-  const boot = () => { liveReviews(); reveals(); steps(); concerns(); carousel(); sigTiles(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
+  const boot = () => { liveReviews(); reveals(); steps(); concerns(); carousel(); sigTiles(); revealCards(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
   (document.fonts?.ready || Promise.resolve()).then(() => enterPage(() => { steamHero(); boot(); }));
   window.addEventListener('load', () => ScrollTrigger.refresh());
 })();

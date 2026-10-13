@@ -1004,3 +1004,49 @@ h6 { font-size: 16px; line-height: 1.2; }
 .btn.busy { opacity: .6; pointer-events: none; }
 .spin { display: inline-block; width: 14px; height: 14px; border: 2px solid var(--line); border-top-color: var(--maroon); border-radius: 50%; animation: gvspin .7s linear infinite; vertical-align: -2px; margin-right: 6px; } @keyframes gvspin { to { transform: rotate(360deg); } }
 @media (max-width: 960px) { .gv-layout { grid-template-columns: 1fr; } .gv-sticky { position: static; } }
+
+/* ================= Reveal cards: text first, photo + maroon veil on hover ================= */
+.rcard { position: relative; display: flex; flex-direction: column; min-height: 240px; border-radius: var(--r); overflow: hidden; background: var(--surface); box-shadow: 0 1px 0 var(--line); isolation: isolate; transition: transform .45s var(--ease), box-shadow .45s var(--ease); color: var(--ink); }
+.rcard:hover, .rcard:focus-visible, .rcard.is-open { transform: translateY(-5px); box-shadow: var(--shadow); color: #fff; outline: none; }
+.rcard-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0; transform: scale(1.06); transition: opacity .5s var(--ease), transform 1.2s var(--ease); }
+.rcard-veil { position: absolute; inset: 0; z-index: -1; opacity: 0; background: linear-gradient(180deg, rgba(114, 24, 27, .82) 0%, rgba(58, 11, 14, .94) 100%); transition: opacity .5s var(--ease); }
+.rcard:hover .rcard-img, .rcard:focus-visible .rcard-img, .rcard.is-open .rcard-img { opacity: 1; transform: scale(1); }
+.rcard:hover .rcard-veil, .rcard:focus-visible .rcard-veil, .rcard.is-open .rcard-veil { opacity: 1; }
+.rcard-body { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 22px 22px 20px; flex: 1; }
+.rcard-kind { font-family: var(--f-display); font-weight: 700; font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--stone); transition: color .4s; }
+.rcard h3 { font-size: 19px; line-height: 1.25; margin: 0; }
+.rcard-short { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.5; transition: color .4s; }
+.rcard-more { margin: 0; font-size: 13.5px; line-height: 1.55; color: rgba(255, 255, 255, .88); max-height: 0; opacity: 0; overflow: hidden; transition: max-height .55s var(--ease), opacity .45s var(--ease) .1s; }
+.rcard:hover .rcard-more, .rcard:focus-visible .rcard-more, .rcard.is-open .rcard-more { max-height: 180px; opacity: 1; }
+.rcard:hover .rcard-kind, .rcard:focus-visible .rcard-kind, .rcard.is-open .rcard-kind { color: rgba(255, 255, 255, .7); }
+.rcard:hover .rcard-short, .rcard:focus-visible .rcard-short, .rcard.is-open .rcard-short { color: rgba(255, 255, 255, .85); }
+.rcard-foot { margin-top: auto; padding-top: 14px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; font-size: 12.5px; font-weight: 600; color: var(--maroon); transition: color .4s; }
+.rcard:hover .rcard-foot, .rcard:focus-visible .rcard-foot, .rcard.is-open .rcard-foot { color: #fff; }
+.rcard-cta { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; } .rcard-cta .arrow { width: 13px; height: 13px; transition: transform .35s var(--ease); } .rcard:hover .rcard-cta .arrow { transform: translateX(4px); }
+.rcard-tag { position: absolute; top: 12px; left: 12px; z-index: 2; background: rgba(255, 255, 255, .92); color: var(--maroon); border-radius: 99px; padding: 5px 10px; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.rcard-wide { min-height: 300px; } .rcard-wide h3 { font-size: clamp(22px, 2.4vw, 32px); font-weight: 300; letter-spacing: -.01em; }
+.rcard-outlet h3 { font-size: 22px; font-weight: 300; }
+html.reduced .rcard-img, html.reduced .rcard-veil, html.reduced .rcard-more { transition: none; }
+/* Home pillars: the maroon panel with the three treatments is always open; the photo only appears on hover */
+.sig-tile { background: linear-gradient(180deg, #72181b 0%, #3a0b0e 100%); color: #fff; aspect-ratio: auto; min-height: 520px; }
+.sig-tile > img { opacity: 0; transition: opacity .6s var(--ease), transform 1.1s var(--ease); }
+.sig-tile::after { opacity: 0; transition: opacity .6s var(--ease); }
+.sig-tile:hover > img, .sig-tile:focus-within > img { opacity: .55; }
+.sig-tile:hover::after, .sig-tile:focus-within::after { opacity: 1; }
+.sig-tile-base { display: none; }
+.sig-drop { position: relative; inset: auto; transform: none; background: transparent; min-height: 520px; }
+.sig-drop-head p { margin: 4px 0 0; font-size: 13.5px; color: rgba(255, 255, 255, .78); }
+.sig-mini { opacity: 1; transform: none; }
+.sig-mini img { display: none; } .sig-mini { grid-template-columns: 1fr 16px; }
+.sig-tile:hover .sig-mini img { display: block; } .sig-tile:hover .sig-mini { grid-template-columns: 58px 1fr 16px; }
+/* Outlet pages: location first, then the space */
+.outlet-find { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 32px; align-items: stretch; }
+.outlet-map.tall { min-height: 420px; } .outlet-map.tall iframe { width: 100%; height: 100%; min-height: 420px; border: 0; border-radius: var(--r); }
+.outlet-gallery { display: grid; grid-template-columns: 1.4fr 1fr; grid-template-rows: 1fr 1fr; gap: 14px; }
+.outlet-gallery figure { margin: 0; border-radius: var(--r); overflow: hidden; aspect-ratio: 4 / 3; } .outlet-gallery figure.lead { grid-row: 1 / 3; aspect-ratio: auto; }
+.outlet-gallery img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.2s var(--ease); } .outlet-gallery figure:hover img { transform: scale(1.04); }
+.outlet-highlights { grid-template-columns: repeat(4, 1fr); display: grid; gap: 12px; }
+@media (max-width: 960px) { .outlet-find { grid-template-columns: 1fr; } .outlet-gallery { grid-template-columns: 1fr 1fr; } .outlet-gallery figure.lead { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 16 / 9; } .outlet-highlights { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .outlet-highlights { grid-template-columns: 1fr; } .rcard { min-height: 0; } }
+.outlet-find > * { min-width: 0; } .outlet-map, .outlet-map iframe { max-width: 100%; min-width: 0; }
+.cta-big { overflow: hidden; }

@@ -1,5 +1,5 @@
 import { site, groups, services, concerns, outlets, awards, pressLogos, faqs, google } from '../data.mjs';
-import { layout, esc, icon, btn, linkArrow, ring, faqList, logo, googleCard, starRow, fmtNum, gLogo } from '../ui.mjs';
+import { layout, esc, icon, btn, linkArrow, ring, faqList, logo, googleCard, starRow, fmtNum, gLogo, revealCard } from '../ui.mjs';
 
 export default function home() {
   const marqueeAwards = [...pressLogos, ...pressLogos].map((a) => a.url ? `<a href="${a.url}" title="${esc(a.title)}"><img class="award-logo" src="${a.img}" alt="${esc(a.title)}" loading="lazy"></a>` : `<img class="award-logo" src="${a.img}" alt="${esc(a.title)}" loading="lazy">`).join('');
@@ -111,7 +111,7 @@ export default function home() {
 <section class="section" id="treatments">
   <div class="wrap">
     <div class="head-row" style="align-items:end">
-      <div><h2 data-split>Find your <span class="thin">first treatment.</span></h2><p class="lede" data-reveal style="margin-top:14px;max-width:520px">Hover a section to see the treatments our guests return for — then tap to explore.</p></div>
+      <div><h2 data-split>Find your <span class="thin">first treatment.</span></h2><p class="lede" data-reveal style="margin-top:14px;max-width:520px">Three places to start, with the treatments our guests return for. Tap one to explore, or view the full menu.</p></div>
       <div class="sig-arrows" data-reveal><button type="button" data-sig-prev aria-label="Previous"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8H2M7 3 2 8l5 5"/></svg></button><button type="button" data-sig-next aria-label="Next"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 8h13M9 3l5 5-5 5"/></svg></button></div>
     </div>
     <div class="sig-row sig-3" data-sig-row>
@@ -119,7 +119,7 @@ export default function home() {
         <img src="${c.img}" alt="${esc(c.label)} at Elements Wellness" loading="lazy">
         <div class="sig-tile-base"><h3>${esc(c.label)}</h3><p>${esc(sigCopy[c.id] || '')}</p></div>
         <div class="sig-drop" aria-label="${esc(c.label)} treatments">
-          <div class="sig-drop-head"><h3>${esc(c.label)}</h3><a class="sig-all-link" href="${c.url}">View all ${icon.arrow}</a></div>
+          <div class="sig-drop-head"><div><h3>${esc(c.label)}</h3><p>${esc(sigCopy[c.id] || '')}</p></div><a class="sig-all-link" href="${c.url}">View all ${icon.arrow}</a></div>
           <div class="sig-mini-list">${pick(c).map((t) => `<a class="sig-mini" href="${t.url}"><img src="${t.img}" alt="" loading="lazy"><span><b>${esc(t.name)}</b>${meta(t) ? `<small>${esc(meta(t))}</small>` : ''}</span>${icon.arrow}</a>`).join('')}</div>
         </div>
       </article>`).join('')}
@@ -183,8 +183,8 @@ export default function home() {
   const commerce = `
 <section class="section-sm">
   <div class="wrap cards-2">
-    <div class="split-card bg-maroon" data-reveal><div class="copy"><span class="eyebrow">Gift vouchers</span><div class="h2" style="font-size:clamp(26px,3vw,40px)">Give someone <span class="thin">an hour of calm.</span></div><p class="muted" style="margin:0">Digital or printed, for any treatment or value, at all three outlets.</p>${btn('/gift-vouchers/', 'Send a voucher', 'btn-light')}</div><div class="media"><img src="/assets/img/jacuzzi-close.jpg" alt="" loading="lazy"></div></div>
-    <div class="split-card bg-ivory" data-reveal><div class="copy"><span class="eyebrow">Products</span><div class="h2" style="font-size:clamp(26px,3vw,40px)">Results that <span class="thin">go home with you.</span></div><p class="muted" style="margin:0">The skincare and supplements we use and recommend, by category or by brand.</p>${btn('/products/', 'Browse products')}</div><div class="media"><img src="/assets/img/herbal-flatlay.jpg" alt="" loading="lazy"></div></div>
+    ${revealCard({ href: '/gift-vouchers/', kind: 'Gift vouchers', title: 'Give someone an hour of calm.', short: 'Emailed today or on the day you choose — redeemable at all three outlets.', more: 'Choose a spa credit or a treatment, pick a card, add a message. The recipient gets a voucher with a unique code; you get a receipt. Valid 12 months.', img: '/assets/img/jacuzzi-close.jpg', cta: 'Send a voucher', cls: 'rcard-wide' })}
+    ${revealCard({ href: '/products/', kind: 'Products', title: 'Results that go home with you.', short: 'The skincare and supplements we use and recommend.', more: 'Browse by category or by brand — each brand page explains why Elements carries it and which products suit which concerns.', img: '/assets/img/herbal-flatlay.jpg', cta: 'Browse products', cls: 'rcard-wide' })}
   </div>
 </section>`;
 
@@ -192,7 +192,7 @@ export default function home() {
 <section class="section bg-ivory" id="locations">
   <div class="wrap">
     <div class="head-row"><div><span class="eyebrow" data-reveal="drop">Visit us</span><h2 data-split style="margin-top:16px">Three sanctuaries <span class="thin">on Orchard Road.</span></h2></div><div><p class="lede" data-reveal>${esc(site.hoursSummary)}</p><div data-reveal style="margin-top:14px">${linkArrow('/locations/', 'All locations')}</div></div></div>
-    ${outlets.map((o) => `<div class="loc" data-reveal><div><h3><a href="${o.url}">${esc(o.name)}</a></h3><span class="tagline">${esc(o.feature)}</span></div><div class="addr">${o.address}</div><div class="contact"><a href="tel:${o.phone.replace(/\s/g, '')}">T · ${esc(o.phone)}</a>${o.whatsapp ? `<a href="https://wa.me/65${o.whatsapp.replace(/\s/g, '')}" target="_blank" rel="noopener">WhatsApp · ${esc(o.whatsapp)}</a>` : ''}</div>${btn(o.url, 'Visit', 'btn-ghost btn-sm')}</div>`).join('')}
+    <div class="cards-3">${outlets.map((o) => revealCard({ href: o.url, kind: 'Elements Wellness', title: o.name, short: o.feature, more: `${o.addressPlain}. ${o.directions || ''}`, img: o.img, meta: [o.phone], cta: 'Visit', cls: 'rcard-outlet' })).join('')}</div>
   </div>
 </section>`;
 

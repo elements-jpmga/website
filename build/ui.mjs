@@ -59,16 +59,22 @@ export const faqList = (items) => `<div class="faq">${items.map((f, i) => `
     <div class="faq-a" id="faq-${i}-${f.q.length}"><div><div>${f.a}</div></div></div>
   </div>`).join('')}</div>`;
 
-export const serviceCard = (s, extra = '') => `
-<a class="card" href="${s.url}" data-reveal data-tags="${(s.concerns || []).join(' ')} ${s.category}" data-cursor="View" ${extra}>
-  ${s.tag ? `<span class="tag">${esc(s.tag)}</span>` : ''}
-  <div class="card-media"><img src="${s.img}" alt="${esc(s.name)} at Elements Wellness" loading="lazy"></div>
-  <div class="card-body">
-    <h3>${esc(s.name)}</h3>
-    <p>${esc(s.short)}</p>
-    <div class="meta">${s.duration ? `<span>${esc(s.duration)}</span>` : ''}${s.price ? `<span>${esc(s.price)}</span>` : ''}<span>Discover →</span></div>
+// Text-first card: title, one line and the facts. On hover / focus / tap the photo fades in behind a maroon veil with
+// a longer description — fewer photos on the page, the picture only when someone shows interest.
+const clip = (t = '', n = 170) => { t = String(t).replace(/\s+/g, ' ').trim(); if (t.length <= n) return t; const cut = t.slice(0, n); return cut.slice(0, Math.max(cut.lastIndexOf('. '), cut.lastIndexOf(' '))).replace(/[,;:]$/, '') + '…'; };
+export const revealCard = ({ href, kind = '', title, short = '', more = '', img = '', meta = [], tag = '', cta = 'Discover', extra = '', cls = '' }) => `
+<a class="rcard ${cls}" href="${href}" data-reveal ${extra}>
+  ${img ? `<img class="rcard-img" src="${img}" alt="" loading="lazy">` : ''}<span class="rcard-veil" aria-hidden="true"></span>
+  ${tag ? `<span class="rcard-tag">${esc(tag)}</span>` : ''}
+  <div class="rcard-body">
+    ${kind ? `<span class="rcard-kind">${esc(kind)}</span>` : ''}
+    <h3>${esc(title)}</h3>
+    ${short ? `<p class="rcard-short">${esc(short)}</p>` : ''}
+    ${more ? `<p class="rcard-more">${esc(clip(more))}</p>` : ''}
+    <div class="rcard-foot">${meta.filter(Boolean).map((m) => `<span>${esc(m)}</span>`).join('')}<span class="rcard-cta">${esc(cta)} ${icon.arrow}</span></div>
   </div>
 </a>`;
+export const serviceCard = (s, extra = '') => revealCard({ href: s.url, kind: s.ritual ? 'Spa experience' : s.group === 'facials' ? 'Facial' : s.group === 'spa' ? 'Spa experience' : 'Massage & recovery', title: s.name, short: s.short === 'New treatment — details coming soon.' ? '' : s.short, more: s.description || '', img: s.img, meta: [s.duration, s.price ? `${s.priceNote === 'First trial' ? 'First trial ' : s.priceNote === 'Per couple' ? 'Per couple ' : 'From '}${s.price}` : ''], tag: s.tag, extra: `data-tags="${(s.concerns || []).join(' ')} ${s.group}" ${extra}` });
 
 // Mega menus follow the sitemap: By Concern · Focused Care · By Treatment, plus a separate Boosters link. No prices.
 const mlink = (u, t) => `<a href="${u}">${esc(t)}</a>`;

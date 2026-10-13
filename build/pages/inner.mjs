@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import { site, groups, services, outlets, awards, posts, faqs, promotions, promoTerms, voucherItems, blogTopics, story, policies, etiquette, facialConcerns, massageConcerns, concernPagesAll, productBrands } from '../data.mjs';
 import * as SM from '../sitemap.mjs';
-import { layout, esc, icon, btn, linkArrow, faqList, logo, crumbs, serviceCard } from '../ui.mjs';
+import { layout, esc, icon, btn, linkArrow, faqList, logo, crumbs, serviceCard, revealCard } from '../ui.mjs';
 import { oldPage, splitHero, renderBlocks, sectionAfter } from '../content.mjs';
 import { googleFor } from '../data.mjs';
 import { googleCard, starRow, fmtNum, gLogo } from '../ui.mjs';
@@ -40,7 +40,7 @@ const copyNote = (status, what = 'Page copy') => status === 'new' ? `<p class="p
 const groupOf = (id) => groups.find((g) => g.id === id);
 const concernsFor = (s) => concernPagesAll.filter((c) => c.treatments.some((t) => t.id === s.id));
 const oldBody = (source, title, skip = []) => { const old = source ? oldPage(source) : null; if (!old) return { old: null, h: { rest: [] }, html: '' }; const h = splitHero(old, title); return { old, h, html: h.rest.length ? renderBlocks(h.rest, { skipImages: [h.heroImg, ...skip] }) : '' }; };
-const tile = (u, label, img, sub = '') => `<a class="card concern-card" href="${u}" data-reveal><div class="card-media"><img src="${img}" alt="" loading="lazy"></div><div class="card-body"><h3>${esc(label)}</h3>${sub ? `<p>${esc(sub)}</p>` : ''}<div class="meta"><span>Explore →</span></div></div></a>`;
+const tile = (u, label, img, sub = '', more = '', kind = '') => revealCard({ href: u, kind, title: label, short: sub, more, img, cta: 'Explore' });
 
 /* ---------- Main landing pages: Facials · Massage & Recovery ---------- */
 export function treatmentLanding(groupId) {
@@ -50,14 +50,14 @@ export function treatmentLanding(groupId) {
   const trail = [['Home', '/'], [g.label]];
   const { h, html } = oldBody(L.source, groupId === 'facials' ? 'Facial' : 'Massage');
   const focused = groupId === 'facials'
-    ? SM.facialShared.filter((p) => p.group === 'focused').map((p) => tile(p.url, p.label, `/assets/img/${p.img}`, p.items.length + ' options')).join('')
+    ? SM.facialShared.filter((p) => p.group === 'focused').map((p) => tile(p.url, p.label, `/assets/img/${p.img}`, p.items.length + ' options', p.items.join(' · '), 'Focused care')).join('')
     : SM.womensWellness.map((id) => list.find((s) => s.id === id)).map((s) => serviceCard(s)).join('');
   const boost = groupId === 'facials' ? SM.facialShared.find((p) => p.group === 'boosters') : SM.massageBoosters;
   const body = pageHero({ title: esc(g.label), lede: esc(h.tagline || g.blurb), trail, img: h.heroImg || g.hero }) + `
 ${copyNote(L.copy, 'Overview copy')}
 ${html ? `<section class="section-sm"><div class="content-flow wide">${html}</div></section>` : ''}
 <section class="section-sm"><div class="wrap"><div class="head-row"><div><span class="eyebrow">By concern</span><h2 style="margin-top:14px">Start with <span class="thin">how you feel.</span></h2></div></div>
-  <div class="cards-4">${cps.map((c) => tile(c.url, c.label, c.img, c.treatments.length + ' treatments')).join('')}</div></div></section>
+  <div class="cards-4">${cps.map((c) => tile(c.url, c.label, c.img, c.treatments.length + ' treatments', c.intro || c.treatments.slice(0, 4).map((t) => t.name).join(' · '), 'By concern')).join('')}</div></div></section>
 <section class="section-sm bg-ivory"><div class="wrap"><div class="head-row"><div><span class="eyebrow">Focused care</span><h2 style="margin-top:14px">${groupId === 'facials' ? 'Eyes <span class="thin">&amp; neck.</span>' : 'Women’s <span class="thin">wellness.</span>'}</h2></div>${linkArrow(boost.url, 'See the boosters')}</div>
   <div class="cards-${groupId === 'facials' ? '2' : '4'}">${focused}</div></div></section>
 <section class="section-sm"><div class="wrap"><div class="head-row"><div><span class="eyebrow">By treatment</span><h2 style="margin-top:14px">All ${esc(g.label.toLowerCase())} <span class="thin">treatments.</span></h2></div></div>
@@ -210,7 +210,7 @@ export function productsPage(kind = '') {
   const body = pageHero({ eyebrow: 'Products', title: kind ? esc(label) : 'Take the results<br><span class="thin">home with you</span>', lede: kind === 'skincare' ? 'The professional skincare we use and recommend in our facials.' : kind === 'supplements' ? 'Wellness supplements selected by Elements to support your treatments between visits.' : 'The skincare and supplements sold by Elements — browse by category or by brand.', trail }) + `
 ${copyNote('new', 'Brand, skincare and supplement inventory')}
 <section class="section-sm"><div class="wrap">
-  ${kind ? '' : `<div class="cards-2" style="margin-bottom:56px">${tile('/products/skincare/', 'Skincare', '/assets/img/facial-mask.jpg', 'Professional skincare from the brands we use in treatment.')}${tile('/products/supplements/', 'Supplements', '/assets/img/herbal-flatlay.jpg', 'Wellness support between visits.')}</div>`}
+  ${kind ? '' : `<div class="cards-2" style="margin-bottom:56px">${tile('/products/skincare/', 'Skincare', '/assets/img/facial-mask.jpg', 'Professional skincare from the brands we use in treatment.', '', 'Products')}${tile('/products/supplements/', 'Supplements', '/assets/img/herbal-flatlay.jpg', 'Wellness support between visits.', '', 'Products')}</div>`}
   <div class="head-row"><div><span class="eyebrow">By brand</span><h2 style="margin-top:14px">Our <span class="thin">brands.</span></h2></div></div>
   ${productBrands.length ? '' : '<div class="empty-state"><p>Each carried brand gets its own page — introducing the brand, why Elements carries it and its products with selection guidance. Brands and products will appear here once Elements supplies the inventory.</p></div>'}
 </div></section>` + ctaBand('Not sure which product suits you?', 'Ask your therapist at your next visit, or WhatsApp us.');
@@ -354,48 +354,40 @@ export function outletPage(o) {
   const exclusive = services.filter((s) => s.outlets && s.outlets.length === 1 && s.outlets[0] === o.id);
   const others = outlets.filter((x) => x.id !== o.id);
   const tel = o.phone.replace(/\s/g, ''), wa = o.whatsapp.replace(/\s/g, '');
-  const body = pageHero({ title: `Elements<br><span class="thin">${esc(o.name)}</span>`, lede: esc(o.intro || o.blurb), trail, img: o.img,
+  const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent('Elements Wellness ' + o.mapQuery)}`;
+  const body = pageHero({ eyebrow: 'Our outlets', title: `Elements<br><span class="thin">${esc(o.name)}</span>`, lede: esc(o.intro || o.blurb), trail,
     extra: `<div class="hero-actions" style="justify-content:flex-start;margin-top:28px" data-reveal>${btn(`/book-appointment/?outlet=${o.id}`, 'Book at ' + o.short)}${btn(`https://wa.me/65${wa}`, 'WhatsApp ' + o.whatsapp, 'btn-ghost', 'target="_blank" rel="noopener"')}</div>` }) + `
-<section class="section-sm"><div class="wrap grid-2" style="align-items:start">
-  <div>
-    <h2 data-split>About <span class="thin">this outlet.</span></h2>
-    <div class="cf-prose prose" style="margin-top:20px">${(o.about || []).map((p) => `<p data-reveal>${esc(p)}</p>`).join('')}</div>
-    <ul class="checklist" style="margin-top:18px">${(o.highlights || []).map((h) => `<li data-reveal>${esc(h)}</li>`).join('')}</ul>
-  </div>
+<section class="section-sm" style="padding-top:0"><div class="wrap outlet-find">
   <div class="outlet-info" data-reveal>
+    <span class="eyebrow">Find us</span>
     <div><small>Address</small><p>${o.address}</p></div>
+    <div><small>Getting here</small><p>${esc(o.directions || o.feature)}</p></div>
     <div><small>Opening hours</small>${o.hours.map(([d, h]) => `<p class="row"><span>${d}</span><b>${h}</b></p>`).join('')}</div>
     <div><small>Contact</small><p><a href="tel:${tel}">Tel ${esc(o.phone)}</a><br><a href="https://wa.me/65${wa}" target="_blank" rel="noopener">WhatsApp ${esc(o.whatsapp)}</a><br><a href="mailto:${o.email}">${esc(o.email)}</a></p></div>
-    <div class="outlet-map"><iframe title="Map to Elements Wellness ${esc(o.name)}" src="https://maps.google.com/maps?q=${encodeURIComponent('Elements Wellness ' + o.mapQuery)}&t=m&z=16&output=embed&iwloc=near" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    <div class="hero-actions" style="justify-content:flex-start">${btn(mapsUrl, 'Directions in Google Maps', 'btn-ghost btn-sm', 'target="_blank" rel="noopener"')}</div>
   </div>
+  <div class="outlet-map tall" data-reveal="fade"><iframe title="Map to Elements Wellness ${esc(o.name)}" src="https://maps.google.com/maps?q=${encodeURIComponent('Elements Wellness ' + o.mapQuery)}&t=m&z=16&output=embed&iwloc=near" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 </div></section>
-${o.gallery?.length ? `<section class="section-sm" style="padding-top:0"><div class="wrap"><div class="cf-gallery c3">${o.gallery.map((g) => `<figure data-reveal><img src="/assets/img/${g}" alt="Elements Wellness ${esc(o.name)}" loading="lazy"></figure>`).join('')}</div></div></section>` : ''}
-${exclusive.length ? `<section class="section-sm bg-ivory"><div class="wrap"><div class="head-row"><h2 style="font-size:clamp(24px,2.6vw,36px)">Only at <span class="thin">${esc(o.short)}.</span></h2></div><div class="cards-3">${exclusive.map((s) => serviceCard(s)).join('')}</div></div></section>` : ''}
-<section class="section-sm"><div class="wrap"><div class="head-row"><h2 style="font-size:clamp(24px,2.6vw,36px)">Available <span class="thin">treatments.</span></h2><button class="link-arrow" type="button" data-finder="outlet:${o.id}">Search this outlet ${icon.arrow}</button></div>${groups.map((g) => { const l = list.filter((s) => s.group === g.id); return l.length ? `<div class="outlet-svc"><h3><a href="${g.url}">${esc(g.label)}</a></h3><p>${l.map((s) => `<a href="${s.url}">${esc(s.name)}</a>`).join(' · ')}</p></div>` : ''; }).join('')}</div></section>
+<section class="section-sm bg-ivory"><div class="wrap">
+  <div class="head-row"><div><span class="eyebrow" data-reveal>The space</span><h2 data-split style="margin-top:14px">What it <span class="thin">looks like.</span></h2></div><p class="lede" data-reveal style="max-width:520px">${esc((o.about || [])[0] || '')}</p></div>
+  ${o.gallery?.length ? `<div class="outlet-gallery">${o.gallery.map((g, i) => `<figure data-reveal${i === 0 ? ' class="lead"' : ''}><img src="/assets/img/${g}" alt="Elements Wellness ${esc(o.name)}" loading="lazy"></figure>`).join('')}</div>` : ''}
+  <ul class="checklist outlet-highlights" style="margin-top:28px">${(o.highlights || []).map((h) => `<li data-reveal>${esc(h)}</li>`).join('')}</ul>
+</div></section>
+${exclusive.length ? `<section class="section-sm"><div class="wrap"><div class="head-row"><h2 style="font-size:clamp(24px,2.6vw,36px)">Only at <span class="thin">${esc(o.short)}.</span></h2></div><div class="cards-3">${exclusive.map((s) => serviceCard(s)).join('')}</div></div></section>` : ''}
+<section class="section-sm ${exclusive.length ? 'bg-ivory' : ''}"><div class="wrap"><div class="head-row"><h2 style="font-size:clamp(24px,2.6vw,36px)">Treatments <span class="thin">available here.</span></h2><button class="link-arrow" type="button" data-finder="outlet:${o.id}">Search this outlet ${icon.arrow}</button></div>${groups.map((g) => { const l = list.filter((s) => s.group === g.id); return l.length ? `<div class="outlet-svc"><h3><a href="${g.url}">${esc(g.label)}</a></h3><p>${l.map((s) => `<a href="${s.url}">${esc(s.name)}</a>`).join(' · ')}</p></div>` : ''; }).join('')}</div></section>
 ${(() => { const g = googleFor(o.id); if (!g) return ''; return `<section class="section-sm bg-sand" data-google-reviews><div class="wrap">
   <div class="head-row"><div><h2 style="font-size:clamp(24px,2.6vw,36px)">What guests say <span class="thin">about ${esc(o.short)}.</span></h2>
     <div class="g-flex" style="margin-top:18px" data-rv-place="${g.id}"><div class="g-flex-num"><span data-rv-rating>${g.rating.toFixed(1)}</span><small>/ 5</small></div><div><div class="g-flex-stars">${starRow(g.rating)}</div><p><b data-rv-count>${fmtNum(g.count)}</b> Google reviews for ${esc(g.googleName)}</p></div></div></div>
     <div class="hero-actions">${btn(g.mapsUrl, 'All reviews on Google', 'btn-ghost', 'target="_blank" rel="noopener"')}${btn(g.mapsUrl, 'Write a review', '', 'target="_blank" rel="noopener"')}</div></div>
   <div class="g-grid">${g.reviews.map((r) => googleCard(r)).join('')}</div>
 </div></section>`; })()}
-<section class="section-sm bg-ivory"><div class="wrap"><div class="head-row"><h2 style="font-size:clamp(24px,2.6vw,36px)">Our other <span class="thin">outlets.</span></h2></div><div class="cards-2">${others.map(outletCard).join('')}</div></div></section>` + ctaBand(`See you at ${esc(o.short)}`);
-  const schema = [bc(trail), { '@context': 'https://schema.org', '@type': 'DaySpa', name: 'Elements Wellness ' + o.name, telephone: '+65' + tel, email: o.email, address: { '@type': 'PostalAddress', streetAddress: o.street, postalCode: o.postal, addressLocality: 'Singapore', addressCountry: 'SG' }, openingHours: o.schemaHours, url: site.url + o.url, image: site.url + o.img, parentOrganization: { '@type': 'Organization', name: 'Elements Wellness' } }];
+<section class="section-sm"><div class="wrap"><div class="head-row"><h2 style="font-size:clamp(24px,2.6vw,36px)">Our other <span class="thin">outlets.</span></h2></div><div class="cards-2">${others.map(outletCard).join('')}</div></div></section>` + ctaBand(`See you at ${esc(o.short)}`);
+  const schema = [bc(trail), { '@context': 'https://schema.org', '@type': 'DaySpa', name: 'Elements Wellness ' + o.name, telephone: '+65' + tel, email: o.email, address: { '@type': 'PostalAddress', streetAddress: o.street, postalCode: o.postal, addressLocality: 'Singapore', addressCountry: 'SG' }, openingHours: o.schemaHours, url: site.url + o.url, image: site.url + o.img, hasMap: mapsUrl, parentOrganization: { '@type': 'Organization', name: 'Elements Wellness' } }];
   return { path: o.url, html: layout({ title: `Elements Wellness ${o.name} — Spa on Orchard Road`, description: `${o.intro || o.blurb} ${o.addressPlain}. Call ${o.phone}.`, path: o.url, bodyClass: 'page-light', schema, ogImage: o.img, body }) };
 }
 
 // Whole-card link to the outlet page; phone / WhatsApp stay separately clickable
-const outletCard = (o) => `<article class="card outlet-card" data-reveal>
-  <div class="card-media"><img src="${o.img}" alt="Elements Wellness ${esc(o.name)}" loading="lazy"></div>
-  <div class="card-body">
-    <h3><a class="stretched" href="${o.url}">${esc(o.name)}</a></h3>
-    <span class="tagline">${esc(o.feature)}</span>
-    ${googleFor(o.id) ? `<p class="g-inline" data-rv-place="${o.id}">${gLogo}<b data-rv-rating>${googleFor(o.id).rating.toFixed(1)}</b> ${starRow(googleFor(o.id).rating)} <small>(<span data-rv-count>${fmtNum(googleFor(o.id).count)}</span> reviews)</small></p>` : ''}
-    <p>${o.address}</p>
-    <p class="small">${o.hours.map(([d, h]) => `${d}: ${h}`).join('<br>')}</p>
-    <p class="small on-top"><a href="tel:${o.phone.replace(/\s/g, '')}">Tel ${esc(o.phone)}</a> · <a href="https://wa.me/65${o.whatsapp.replace(/\s/g, '')}" target="_blank" rel="noopener">WhatsApp ${esc(o.whatsapp)}</a></p>
-    <span class="link-arrow">Discover this outlet ${icon.arrow}</span>
-  </div>
-</article>`;
+const outletCard = (o) => revealCard({ href: o.url, kind: 'Elements Wellness', title: o.name, short: o.feature, more: `${o.addressPlain}. ${o.directions || ''} ${o.hours.map(([d, h]) => `${d} ${h}`).join(' · ')}.`, img: o.img, meta: [googleFor(o.id) ? `★ ${googleFor(o.id).rating.toFixed(1)} · ${fmtNum(googleFor(o.id).count)} reviews` : ''], cta: 'Visit', cls: 'rcard-outlet' });
 
 export function locationsPage() {
   const trail = [['Home', '/'], ['Locations']];
