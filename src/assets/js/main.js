@@ -175,6 +175,9 @@
   /* ---------- Logo wall: every couple of seconds one cell swaps its logo for one not on the wall ---------- */
   function logoWall() {
     const wall = $('[data-logo-wall]'), pool = window.EW_LOGOS; if (!wall || !pool || reduced) return;
+    const shown = $$('.logo-cell', wall).filter((c) => c.offsetParent !== null);
+    gsap.set(shown, { opacity: 0, x: -28 });
+    ScrollTrigger.create({ trigger: wall, start: 'top 85%', once: true, onEnter: () => gsap.to(shown, { opacity: 1, x: 0, duration: .9, stagger: .09, ease: 'power3.out' }) });
     const cells = $$('.logo-cell', wall).filter((c) => c.offsetParent !== null); if (pool.length <= cells.length) return;
     let showing0 = $$('.logo-cell', wall).map((_, i) => i);
     let showing = showing0, last = -1, timer;
@@ -200,7 +203,17 @@
     $$('[data-split]').forEach((el) => {
       SplitText.create(el, { type: 'lines', mask: 'lines', autoSplit: true, onSplit(self) { gsap.set(el, { visibility: 'visible' }); return gsap.from(self.lines, { yPercent: 100, opacity: 0, duration: 1.1, stagger: .09, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } }); } });
     });
-    ScrollTrigger.batch('[data-reveal]', { start: 'top 90%', once: true, onEnter: (els) => gsap.to(els, { opacity: 1, y: 0, duration: 1, stagger: .08, ease: 'power3.out', overwrite: true }) });
+    // Reveal direction follows position: left side slides in from the left, right side from the right, centre rises;
+    // whatever enters together queues in reading order (top row first, then left to right)
+    const dirFor = (el) => { const r = el.getBoundingClientRect(), vw = window.innerWidth, c = (r.left + r.width / 2) / vw; if (r.width > vw * .66 || vw < 720) return { x: 0, y: 28 }; if (c < .42) return { x: -56, y: 0 }; if (c > .58) return { x: 56, y: 0 }; return { x: 0, y: 28 }; };
+    $$('[data-reveal]').forEach((el) => gsap.set(el, { opacity: 0, ...dirFor(el) }));
+    const order = (els) => els.map((el) => ({ el, r: el.getBoundingClientRect() })).sort((a, b) => (Math.abs(a.r.top - b.r.top) > 40 ? a.r.top - b.r.top : a.r.left - b.r.left)).map((o) => o.el);
+    ScrollTrigger.batch('[data-reveal]', { start: 'top 90%', once: true, onEnter: (els) => {
+      // anything already scrolled past (a fast scroll or a jump) just appears; what's on screen queues, finishing within about a second
+      const passed = els.filter((el) => el.getBoundingClientRect().bottom < 0), now = order(els.filter((el) => !passed.includes(el)));
+      if (passed.length) gsap.set(passed, { opacity: 1, x: 0, y: 0, overwrite: true });
+      if (now.length) gsap.to(now, { opacity: 1, x: 0, y: 0, duration: 1.1, stagger: Math.min(.12, .9 / now.length), ease: 'power3.out', overwrite: true });
+    } });
     ScrollTrigger.batch('[data-clip]', { start: 'top 85%', once: true, onEnter: (els) => gsap.to(els, { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: 'power3.out', overwrite: true }) });
     $$('[data-fill]').forEach((el) => { const s = SplitText.create(el, { type: 'words', wordsClass: 'w' }); gsap.to(s.words, { opacity: 1, stagger: .06, ease: 'none', scrollTrigger: { trigger: el, start: 'top 80%', end: 'bottom 50%', scrub: true } }); });
     $$('[data-count]').forEach((el) => { const to = parseFloat(el.dataset.count), dec = (el.dataset.count.split('.')[1] || '').length, o = { v: 0 }; gsap.to(o, { v: to, duration: 2, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true }, onUpdate: () => el.textContent = o.v.toFixed(dec) }); });
@@ -280,7 +293,7 @@
         .fromTo(street, { opacity: 0, scale: 1.25, transformOrigin: '50% 50%' }, { opacity: 1, scale: 1, duration: 1.2, ease: 'power3.out' }, '-=.5')
         .to($$('.om-park, .om-bld', street), { opacity: 1, duration: .8 }, '-=.9')
         .to($$('.om-road', street), { opacity: 1, duration: .9, stagger: .08 }, '-=.8')
-        .to($$('.om-pin-in', street), { opacity: 1, y: 0, duration: .8, stagger: .15, ease: 'back.out(2)' }, '-=.4')
+        .to(pins.slice().sort((a, b) => pinXY(a.dataset.pin)[0] - pinXY(b.dataset.pin)[0]).map((p) => $('.om-pin-in', p)), { opacity: 1, y: 0, duration: .8, stagger: .18, ease: 'back.out(2)' }, '-=.4')
         .add(() => { sg.style.display = 'none'; }, '+=.2');
     } });
   }
