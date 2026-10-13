@@ -6,7 +6,7 @@ export default function home() {
 
   // Hero: full-bleed slides with a few words each, like a resort site — centred title, one line, one outlined button
   const slides = [
-    { img: '/assets/img/hero-reception.jpg', alt: 'Elements Wellness reception at night', title: 'Where wellness meets results', sub: 'Therapeutic massage, results-driven facials and private onsen rituals — three sanctuaries on Orchard Road.', cta: 'Book now', href: '/book-appointment/' },
+    { img: '/assets/img/hero-reception.jpg', alt: 'Elements Wellness reception at night', title: 'Where Wellness Meets Results', sub: 'Where feeling good and real results go hand in hand', cta: 'Book now', href: '/book-appointment/' },
     { img: '/assets/img/jacuzzi.jpg', alt: 'Private couple jacuzzi suite with rose petals', title: 'Koyamaki Onsen', sub: 'Singapore’s first private onsen suites — soak, scrub and massage. For one, or for two.', cta: 'Discover the onsen', href: '/koyamaki-onsen-ritual/' },
     { img: '/assets/img/main-massage.jpg', alt: 'Therapeutic massage at Elements Wellness', title: 'Massage & Recovery', sub: 'TCM techniques, skilled hands and recovery technology for bodies that work hard.', cta: 'Explore massage', href: '/massage-and-recovery/' },
     { img: '/assets/img/facial-mask.jpg', alt: 'Facial treatment at Elements Wellness', title: 'Facials', sub: 'Results-driven facials for glow, firmness and clarity you can see.', cta: 'Explore facials', href: '/facials/' },
@@ -18,7 +18,6 @@ export default function home() {
   <div class="steam-veil" aria-hidden="true"></div>
   <div class="hero-content">
     <div class="wrap hero-center">
-      <span class="hero-kicker" data-hero-in>Elements Wellness · Singapore</span>
       <h1 class="hero-title"><span class="line"><span data-slide-title>${esc(slides[0].title)}</span></span></h1>
       <p class="hero-sub" data-hero-in data-slide-sub>${esc(slides[0].sub)}</p>
       <div class="hero-actions" data-hero-in><a class="btn btn-light" href="${slides[0].href}" data-slide-cta><span>${esc(slides[0].cta)}</span></a></div>

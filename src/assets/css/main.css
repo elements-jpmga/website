@@ -1197,3 +1197,7 @@ h3, .h3 { letter-spacing: .02em; color: var(--ink); }
 /* hero words: solid white, easy to read */
 .hero-kicker, .hero-sub, .hero-title, .hero-title span { color: #fff; opacity: 1; }
 .hero-kicker { color: rgba(255, 255, 255, .92); } .hero-sub { color: #fff; font-weight: 400; text-shadow: 0 1px 12px rgba(0, 0, 0, .35); } .hero-title { text-shadow: 0 2px 24px rgba(0, 0, 0, .3); }
+
+/* hero: title on one line on wider screens */
+.hero-center { max-width: 1200px; } .hero-title { max-width: none; }
+@media (min-width: 900px) { .hero-title { white-space: nowrap; font-size: clamp(24px, 2.7vw, 40px); } .hero-sub { max-width: none; } }
