@@ -1282,9 +1282,12 @@ h3, .h3 { letter-spacing: .02em; color: var(--ink); }
   .omap { margin-bottom: 0; }
 }
 
-/* treatment cards: the hovered treatment's photo fades over the category photo */
-.path-media .path-swap { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .45s var(--ease); z-index: 0; } .path-media .path-swap.on { opacity: 1; }
-.path-media .path-swap:not([src]) { display: none; }
+/* treatment cards: the hovered treatment's row turns red and its photo slides across the card photo */
+.path-media .path-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; will-change: clip-path, transform; }
+.path-list li a { margin: 0 -10px; padding: 10px; transition: background .35s var(--ease), color .35s var(--ease), padding .35s var(--ease); }
+.path-list li a:hover, .path-list li a:focus-visible { background: var(--maroon); color: #fff; padding-left: 16px; }
+.path-list li a:hover small, .path-list li a:focus-visible small { color: rgba(255, 255, 255, .8); }
+
 
 /* outlet card v2: name, rating and address on the main photo; buttons straight underneath */
 .omap-pop { width: min(360px, 34%); }
@@ -1317,17 +1320,7 @@ h3, .h3 { letter-spacing: .02em; color: var(--ink); }
 /* the map is the last home section: no extra dark band before the footer */
 .map-sec { padding-bottom: clamp(48px, 6vw, 80px); }
 
-/* treatment cards: on hover a red tint sweeps across the photo left to right, then the whole card turns red */
-.path-card { transition: background .55s var(--ease) .25s, box-shadow .4s; }
-.path-media::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(114, 24, 27, .78), rgba(114, 24, 27, .55)); transform: scaleX(0); transform-origin: left center; transition: transform .7s cubic-bezier(.7, 0, .2, 1); pointer-events: none; }
-.path-media::after { z-index: 2; }
-.path-card:hover .path-media::before, .path-card:focus-within .path-media::before { transform: scaleX(1); }
-.path-card .path-body, .path-card .path-body h3 a, .path-card .path-list li a, .path-card .path-list small, .path-card .path-body .link-arrow { transition: color .45s var(--ease) .3s, border-color .45s var(--ease) .3s; }
-.path-card:hover, .path-card:focus-within { background: linear-gradient(180deg, #7a1c20 0%, #4a0e11 100%); box-shadow: 0 30px 60px -28px rgba(74, 14, 17, .7); }
-.path-card:hover .path-body h3 a, .path-card:focus-within .path-body h3 a, .path-card:hover .path-list li a, .path-card:focus-within .path-list li a, .path-card:hover .path-body .link-arrow, .path-card:focus-within .path-body .link-arrow { color: #fff; }
-.path-card:hover .path-list, .path-card:hover .path-list li a, .path-card:focus-within .path-list, .path-card:focus-within .path-list li a { border-color: rgba(255, 255, 255, .18); }
-.path-card:hover .path-list small, .path-card:focus-within .path-list small { color: rgba(255, 255, 255, .7); }
-.path-card:hover .path-list li a:hover { color: #f3d9d9; }
+
 
 /* very wide wordmarks (e.g. TheSmartLocal) get a little more width so they are not tiny */
 .logo-cell .award-logo[src$="thesmartlocal.svg"] { max-width: 190px; height: auto; max-height: 92px; }

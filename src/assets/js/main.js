@@ -240,15 +240,28 @@
     });
   }
 
-  /* ---------- Treatment cards: hovering a treatment shows its photo on the card ---------- */
+  /* ---------- Treatment cards: the hovered treatment's photo slides in over the card photo (left to right) and slides away on leave ---------- */
   function pathPhotos() {
     if (isTouch) return;
     $$('.path-card').forEach((card) => {
-      const swap = $('.path-swap', card); if (!swap) return;
-      const links = $$('.path-list a[data-img]', card).filter((a) => a.dataset.img);
+      const media = $('.path-media', card), list = $('.path-list', card); if (!media || !list) return;
+      const links = $$('a[data-img]', list).filter((a) => a.dataset.img);
       card.addEventListener('pointerenter', () => links.forEach((a) => { const i = new Image(); i.src = a.dataset.img; }), { once: true });
-      links.forEach((a) => a.addEventListener('pointerenter', () => { if (swap.getAttribute('src') !== a.dataset.img) { swap.classList.remove('on'); swap.src = a.dataset.img; } requestAnimationFrame(() => swap.classList.add('on')); }));
-      $('.path-list', card).addEventListener('pointerleave', () => swap.classList.remove('on'));
+      let top = null;
+      const show = (src) => {
+        if (top && top.dataset.src === src) return;
+        const img = document.createElement('img'); img.className = 'path-slide'; img.alt = ''; img.src = src; img.dataset.src = src; media.appendChild(img);
+        const under = top; top = img;
+        if (reduced) { under?.remove(); return; }
+        gsap.fromTo(img, { clipPath: 'inset(0 100% 0 0)', scale: 1.08 }, { clipPath: 'inset(0 0% 0 0)', scale: 1, duration: .75, ease: 'power3.inOut', onComplete: () => under?.remove() });
+      };
+      const hide = () => {
+        if (!top) return; const img = top; top = null;
+        if (reduced) { img.remove(); return; }
+        gsap.to(img, { clipPath: 'inset(0 0 0 100%)', duration: .6, ease: 'power3.inOut', onComplete: () => { $$('.path-slide', media).forEach((x) => x !== top && x.remove()); } });
+      };
+      links.forEach((a) => a.addEventListener('pointerenter', () => show(a.dataset.img)));
+      list.addEventListener('pointerleave', hide);
     });
   }
 
