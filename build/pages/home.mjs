@@ -116,23 +116,21 @@ export default function home() {
   const pick = (g) => { const ids = sig[g.id] || []; const chosen = ids.map((id) => services.find((s) => s.id === id)).filter(Boolean); const rest = g.id === 'contouring' ? [] : services.filter((s) => s.group === g.id && !chosen.includes(s)); return [...chosen, ...rest].slice(0, 5); };
   const price = (t) => (t.price ? (t.priceNote === 'First trial' ? 'Trial ' : t.priceNote === 'Per couple' ? '' : 'From ') + t.price : '');
   const sigCopy = { facials: 'Results-driven facials for glow, firmness and clarity.', massage: 'Therapeutic massage, TCM therapies and recovery technology.', spa: 'Private onsen, contrast and herbal rituals — for one or two.' };
-  const glyph = { facials: '水', massage: '火', spa: '木', contouring: '土' };
-  const contour = concernPagesAll.find((c) => c.url === '/body-contouring/');
-  const cards = [...['massage', 'facials', 'spa'].map((id) => groups.find((g) => g.id === id)), { id: 'contouring', label: 'Slimming & Contouring', url: '/body-contouring/', img: contour?.img || '/assets/img/cat-slimming.jpg', blurb: 'TCM and technology to contour, firm and de-bloat — the slimming menu, renamed.' }];
+    const contour = concernPagesAll.find((c) => c.url === '/body-contouring/');
+  const cards = [...['massage', 'facials', 'spa'].map((id) => groups.find((g) => g.id === id)), { id: 'contouring', label: contour?.label || 'Body Contouring', url: '/body-contouring/', img: contour?.img || '/assets/img/cat-slimming.jpg' }];
   sig.contouring = ['tcm-slimming', 'indiba-slimming', 'deepba-slim', 'catabolic-tummy', 'tcm-bust'];
   const keyTreatments = `
 <section class="section-sm paths-sec" id="treatments">
   <div class="wrap">
     <div class="head-row" style="align-items:end">
       <div><span class="eyebrow" data-reveal="drop">Our treatments</span><h2 data-split style="margin-top:16px">Find your <span class="thin">first treatment.</span></h2></div>
-      <div><p class="lede" data-reveal style="max-width:480px">Massage, facials, spa and slimming — with the treatments our guests return for. Tap any treatment to read more, or open the full menu.</p><div data-reveal style="margin-top:14px"><button class="link-arrow" type="button" data-finder>Browse all treatments ${icon.arrow}</button></div></div>
+      <div><p class="lede" data-reveal style="max-width:480px">Tap any treatment to read more, or open the full menu.</p><div data-reveal style="margin-top:14px"><button class="link-arrow" type="button" data-finder>Browse all treatments ${icon.arrow}</button></div></div>
     </div>
     <div class="paths" data-rise>
       ${cards.map((c) => `<article class="path-card" data-rise-item>
-        <a class="path-media" href="${c.url}" aria-label="${esc(c.label)}"><img src="${c.img}" alt="" loading="lazy"><span class="path-glyph" aria-hidden="true">${glyph[c.id] || ''}</span></a>
+        <a class="path-media" href="${c.url}" aria-label="${esc(c.label)}"><img src="${c.img}" alt="" loading="lazy"></a>
         <div class="path-body">
           <h3><a href="${c.url}">${esc(c.label)}</a></h3>
-          <p>${esc(sigCopy[c.id] || c.blurb || '')}</p>
           <ul class="path-list">${pick(c).map((t) => `<li><a href="${t.url}"><span>${esc(t.name)}</span>${price(t) ? `<small>${esc(price(t))}</small>` : ''}</a></li>`).join('')}</ul>
           <a class="link-arrow" href="${c.url}">View all ${esc(c.label.toLowerCase())} ${icon.arrow}</a>
         </div>
