@@ -166,10 +166,7 @@ const footer = () => `
     <div class="footer-grid">
       <div>
         ${logo('div')}
-        <p style="margin-top:24px;max-width:340px">${esc(site.footerBlurb)}</p>
-        <form class="newsletter" data-demo aria-label="Newsletter"><input type="email" required placeholder="Your email for rituals & offers" aria-label="Email"><button type="submit">Join</button></form>
-        <div class="form-success" style="background:transparent;color:var(--blush);padding:12px 0">Thank you — you're on the list.</div>
-        <div class="socials">${socials()}</div>
+        <div class="socials" style="margin-top:24px">${socials()}</div>
       </div>
       <div><h4>Locations</h4><ul><li><a href="/locations/">All Locations</a></li>${outlets.map((o) => `<li><a href="${o.url}">${esc(o.name)}</a></li>`).join('')}</ul></div>
       <div><h4>Elements</h4><ul><li><a href="/about-elements/">About Elements</a></li><li><a href="/awards/">Awards &amp; Recognition</a></li><li><a href="/promotions/">Promotions</a></li><li><a href="/contact/">Contact</a></li></ul></div>

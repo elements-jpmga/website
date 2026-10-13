@@ -260,25 +260,37 @@
     const W = 1200, H = 790;
     const pinXY = (id) => { const t = pins.find((p) => p.dataset.pin === id).getAttribute('transform').match(/translate\(([\d.]+) ([\d.]+)\)/); return [+t[1], +t[2]]; };
     // frame all three pins to the map's own shape (pins sit to the upper right, leaving the lower left free for the card)
-    const fit = () => { const xy = pins.map((p) => pinXY(p.dataset.pin)); const xs = xy.map((p) => p[0]), ys = xy.map((p) => p[1]); const a = stage.clientWidth / Math.max(1, stage.clientHeight); const wide = window.innerWidth > 900;
-      let x0 = Math.min(...xs) - (wide ? 470 : 70), x1 = Math.max(...xs) + 90, y0 = Math.min(...ys) - 90, y1 = Math.max(...ys) + (wide ? 160 : 60); let w = x1 - x0, h = y1 - y0; if (w / h < a) { const d = h * a - w; x0 -= d / 2; w = h * a; } else { const d = w / a - h; y0 -= d / 2; h = w / a; }
-      x0 = Math.min(Math.max(x0, 0), Math.max(0, W - w)); y0 = Math.min(Math.max(y0, 0), Math.max(0, H - h)); return [x0, y0, w, h].map((n) => Math.round(n * 10) / 10).join(' '); };
+    const fit = () => {
+      const xy = pins.map((p) => pinXY(p.dataset.pin)), xs = xy.map((p) => p[0]), ys = xy.map((p) => p[1]);
+      const sw = stage.clientWidth, a = sw / Math.max(1, stage.clientHeight), wide = window.innerWidth > 900;
+      // on desktop the left part of the map is kept for the outlet card, so the pins are framed in the rest
+      const f = wide ? Math.min(.45, (Math.min(380, sw * .36) + 56) / sw) : 0, a2 = a * (1 - f);
+      let x0 = Math.min(...xs) - 70, x1 = Math.max(...xs) + 90, y0 = Math.min(...ys) - 90, y1 = Math.max(...ys) + (wide ? 120 : 60);
+      let w = x1 - x0, h = y1 - y0; if (w / h < a2) { const d = h * a2 - w; x0 -= d / 2; w = h * a2; } else { const d = w / a2 - h; y0 -= d / 2; h = w / a2; }
+      const full = w / (1 - f); x0 -= full - w; w = full;
+      x0 = Math.min(Math.max(x0, 0), Math.max(0, W - w)); y0 = Math.min(Math.max(y0, 0), Math.max(0, H - h));
+      return [x0, y0, w, h].map((n) => Math.round(n * 10) / 10).join(' ');
+    };
     street.setAttribute('viewBox', fit());
     new ResizeObserver(() => street.setAttribute('viewBox', fit())).observe(stage);
-    let current = null;
+    let current = null, slideTimer;
+    // the outlet's photos rotate in the card while it is open
+    const showSlide = (c, n) => { const imgs = $$('[data-pop-slides] img', c), dots = $$('[data-pop-dot]', c); if (!imgs.length) return; n = (n + imgs.length) % imgs.length; imgs.forEach((im, j) => im.classList.toggle('is-on', j === n)); dots.forEach((d, j) => d.classList.toggle('is-on', j === n)); c.dataset.slide = n; };
+    const startSlides = (c) => { clearInterval(slideTimer); if (!c || reduced) return; slideTimer = setInterval(() => showSlide(c, (+c.dataset.slide || 0) + 1), 3200); };
     const open = (id) => {
       current = id;
       pins.forEach((p) => p.classList.toggle('is-on', p.dataset.pin === id));
       malls.forEach((m) => m.classList.toggle('is-on', m.dataset.mall === id));
       pops.forEach((c) => { const on = c.dataset.pop === id; c.classList.toggle('is-open', on); c.setAttribute('aria-hidden', !on); });
       const c = pops.find((x) => x.dataset.pop === id);
-      if (c && !reduced) gsap.fromTo($$('.omap-pop-over > *, .omap-actions, .omap-pop-body > *, .omap-pop-photos .omap-ph-img', c), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .7, stagger: .05, ease: 'power3.out', delay: .15 });
+      if (c) { showSlide(c, 0); startSlides(c); } else clearInterval(slideTimer);
+      if (c && !reduced) gsap.fromTo($$('.omap-pop-over > *, .omap-actions, .omap-pop-body > *', c), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .7, stagger: .05, ease: 'power3.out', delay: .15 });
       if (c && window.innerWidth <= 900) setTimeout(() => scrollTo(c), 150);
     };
     pins.forEach((p) => { p.addEventListener('click', () => open(p.dataset.pin)); p.addEventListener('keydown', (e) => { if (e.key === 'Enter') open(p.dataset.pin); }); });
     pops.forEach((c) => {
       $('[data-pop-close]', c).addEventListener('click', () => open(null));
-      $$('[data-ph-img]', c).forEach((b) => b.addEventListener('click', () => { if (b.classList.contains('is-big')) return; const a = $('.is-big img', c), i = $('img', b); [a.src, i.src] = [i.src, a.src]; if (!reduced) gsap.fromTo(a, { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: .6 }); }));
+      $$('[data-pop-dot]', c).forEach((d) => d.addEventListener('click', () => { showSlide(c, +d.dataset.popDot); startSlides(c); }));
     });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && current) open(null); });
     if (reduced) { sg.style.display = 'none'; return; }
