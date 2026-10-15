@@ -33,24 +33,25 @@
       if (curtain && !reduced) { gsap.set(curtain, { opacity: 1, visibility: 'visible' }); gsap.to(curtain, { opacity: 0, duration: .6, ease: 'power2.out', onComplete: () => gsap.set(curtain, { visibility: 'hidden' }) }); }
       onDone(); return;
     }
-    // Home: "Elements" rises in, "Wellness" drops in under it, both fade slowly, then the maroon screen opens from the middle
-    const top = loader.querySelector('.loader-top'), bottom = loader.querySelector('.loader-bottom'), inner = loader.querySelector('.loader-inner'), l1 = loader.querySelector('.l1'), l2 = loader.querySelector('.l2');
+    // Home: the logo lockup appears — ELEMENTS rises, WELLNESS settles in beneath it (two clipped copies of the supplied logo file) — then the screen opens from the middle
+    const top = loader.querySelector('.loader-top'), bottom = loader.querySelector('.loader-bottom'), inner = loader.querySelector('.loader-inner'), lock = loader.querySelector('.loader-lockup'), l1 = loader.querySelector('.ll-1'), l2 = loader.querySelector('.ll-2');
     const k = firstVisit ? 1 : .55;
     gsap.timeline({ onComplete: () => { loader.style.display = 'none'; } })
-      .fromTo(l1, { opacity: 0, y: 14, letterSpacing: '.5em' }, { opacity: 1, y: 0, letterSpacing: '.2em', duration: 1.1 * k, ease: 'power3.out' }, 0)
-      .fromTo(l2, { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: .9 * k, ease: 'power3.out' }, .55 * k)
-      .to(inner, { opacity: 0, duration: 1 * k, ease: 'power2.inOut' }, `+=${.5 * k}`)
+      .fromTo(lock, { opacity: 0, scale: .96 }, { opacity: 1, scale: 1, duration: .7 * k, ease: 'power2.out' }, 0)
+      .fromTo(l1, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .9 * k, ease: 'power3.out' }, .2 * k)
+      .fromTo(l2, { opacity: 0, y: -6 }, { opacity: 1, y: 0, duration: .8 * k, ease: 'power3.out' }, .6 * k)
+      .to(inner, { opacity: 0, duration: .8 * k, ease: 'power2.inOut' }, `+=${.45 * k}`)
       .add(onDone, '-=.2')
-      .to(top, { yPercent: -100, duration: 1.2, ease: 'expo.inOut' }, '-=.3')
-      .to(bottom, { yPercent: 100, duration: 1.2, ease: 'expo.inOut' }, '<');
+      .to(top, { yPercent: -100, duration: 1.1, ease: 'expo.inOut' }, '-=.25')
+      .to(bottom, { yPercent: 100, duration: 1.1, ease: 'expo.inOut' }, '<');
   };
   const leavePage = (href) => {
     if (!curtain || reduced) { window.location.href = href; return; }
     gsap.set(curtain, { visibility: 'visible', opacity: 0 });
-    gsap.set(curtain.querySelector('.loader-logo'), { opacity: 0, y: 8 });
+    gsap.set(curtain.querySelector('.loader-lockup'), { opacity: 0, y: 8 });
     gsap.timeline({ onComplete: () => { window.location.href = href; } })
       .to(curtain, { opacity: 1, duration: .45, ease: 'power2.inOut' })
-      .to(curtain.querySelector('.loader-logo'), { opacity: 1, y: 0, duration: .4 }, '-=.2');
+      .to(curtain.querySelector('.loader-lockup'), { opacity: 1, y: 0, duration: .4 }, '-=.2');
   };
   document.addEventListener('click', (e) => {
     const a = e.target.closest('a');
@@ -265,6 +266,14 @@
     });
   }
 
+  /* ---------- Treatment pages: the bottom-left booking card appears after the hero and steps aside at the booking section ---------- */
+  function bookCard() {
+    const card = $('[data-bookcard]'); if (!card) return;
+    const hero = $('.tp-hero'), band = $('#tp-book');
+    const update = () => { const past = hero ? hero.getBoundingClientRect().bottom < 0 : window.scrollY > 500; const atBand = band ? band.getBoundingClientRect().top < window.innerHeight * .85 : false; card.classList.toggle('show', past && !atBand); };
+    window.addEventListener('scroll', update, { passive: true }); update();
+  }
+
   /* ---------- Locations map: Singapore zooms into Orchard Road once; tap a pin and its card (photos + details) opens in the empty corner ---------- */
   function mapLocations() {
     const sec = $('[data-map]'); if (!sec) return;
@@ -458,7 +467,7 @@
     const w = $('[data-rv-write]'); if (w && d.places[0]?.writeReviewUrl) w.href = d.places[0].writeReviewUrl;
     const up = $('[data-rv-updated]'); if (up) up.textContent = 'Live from Google · updated ' + new Date(d.snapshotDate).toLocaleDateString('en-SG', { day: 'numeric', month: 'short', year: 'numeric' });
   }
-  const boot = () => { heroSlides(); logoWall(); pathPhotos(); liveReviews(); reveals(); rise(); mapLocations(); steps(); concerns(); carousel(); sigTiles(); revealCards(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
+  const boot = () => { heroSlides(); logoWall(); pathPhotos(); bookCard(); liveReviews(); reveals(); rise(); mapLocations(); steps(); concerns(); carousel(); sigTiles(); revealCards(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
   (document.fonts?.ready || Promise.resolve()).then(() => enterPage(() => { steamHero(); boot(); }));
   window.addEventListener('load', () => ScrollTrigger.refresh());
 })();

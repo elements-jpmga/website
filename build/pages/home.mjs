@@ -7,9 +7,9 @@ export default function home() {
   // Hero: full-bleed slides with a few words each, like a resort site — centred title, one line, one outlined button
   const slides = [
     { img: '/assets/img/hero-reception.jpg', alt: 'Elements Wellness reception at night', title: 'Where Wellness Meets Results', sub: 'Where feeling good and real results go hand in hand', cta: 'Book now', href: '/book-appointment/' },
-    { img: '/assets/img/jacuzzi.jpg', alt: 'Private couple jacuzzi suite with rose petals', title: 'Koyamaki Onsen', sub: 'Singapore’s first private onsen suites — soak, scrub and massage. For one, or for two.', cta: 'Discover the onsen', href: '/koyamaki-onsen-ritual/' },
-    { img: '/assets/img/main-massage.jpg', alt: 'Therapeutic massage at Elements Wellness', title: 'Massage & Recovery', sub: 'TCM techniques, skilled hands and recovery technology for bodies that work hard.', cta: 'Explore massage', href: '/massage-and-recovery/' },
-    { img: '/assets/img/facial-mask.jpg', alt: 'Facial treatment at Elements Wellness', title: 'Facials', sub: 'Results-driven facials for glow, firmness and clarity you can see.', cta: 'Explore facials', href: '/facials/' },
+    { img: '/assets/img/onsen-1.jpg', alt: 'Private Koyamaki onsen suite at Elements Wellness, The Centrepoint', title: 'Koyamaki Onsen', sub: 'Singapore’s first private onsen suites — soak, scrub and massage. For one, or for two.', cta: 'Discover the onsen', href: '/koyamaki-onsen-ritual/' },
+    { img: '/assets/img/fascia-back.jpg', alt: 'Fascia release therapy at Elements Wellness', title: 'Massage & Recovery', sub: 'TCM techniques, skilled hands and recovery technology for bodies that work hard.', cta: 'Explore massage', href: '/massage-and-recovery/' },
+    { img: '/assets/img/fascia-face.jpg', alt: 'Facial treatment at Elements Wellness', title: 'Facials', sub: 'Results-driven facials for glow, firmness and clarity you can see.', cta: 'Explore facials', href: '/facials/' },
   ];
   const hero = `
 <section class="hero" aria-label="Welcome" data-slides>

@@ -24,7 +24,8 @@ export const icon = {
   wave: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 18c5-5 9-5 13 0s8 5 13 0 9-5 14 0M4 28c5-5 9-5 13 0s8 5 13 0 9-5 14 0M4 38c5-5 9-5 13 0s8 5 13 0 9-5 14 0"/></svg>',
 };
 
-export const logo = (tag = 'span', cls = '') => `<${tag} class="logo ${cls}"><span class="logo-type l1">Elements</span><span class="logo-type l2">Wellness</span></${tag}>`;
+// The brand lockup: the supplied white wordmark on its maroon block, never retyped in a font
+export const logo = (tag = 'span', cls = '') => `<${tag} class="logo-lockup ${cls}"><img src="/assets/img/logo-white.png" alt="Elements Wellness" width="1119" height="253"></${tag}>`;
 
 // The five-element ring (木 火 土 金 水) used as the brand motif.
 export const ring = (opts = {}) => {
@@ -103,9 +104,10 @@ const navItem = (label, url, key, active, menu) => menu
 
 export const header = (active = '') => `
 <a class="skip" href="#main">Skip to content</a>
+<div class="utility-row"><div class="wrap utility-inner"><a href="/promotions/" ${active === 'promotions' ? 'aria-current="page"' : ''}>Promotions</a></div></div>
 <header class="header">
   <div class="wrap header-inner">
-    <a href="/" aria-label="Elements Wellness — home"><img class="logo-img" src="/assets/img/logo-white.png" alt="Elements Wellness" width="1119" height="253"></a>
+    <a href="/" class="logo-lockup" aria-label="Elements Wellness — home"><img src="/assets/img/logo-white.png" alt="Elements Wellness" width="1119" height="253"></a>
     <nav class="nav-left" aria-label="Primary">
       ${navItem('Facials', '/facials/', 'facials', active, megaFacials())}
       ${navItem('Massage & Recovery', '/massage-and-recovery/', 'massage', active, megaMassage())}
@@ -116,7 +118,7 @@ export const header = (active = '') => `
     </nav>
     <div class="nav-right">
       <button class="nav-search" type="button" data-finder aria-label="Find a treatment">${icon.search}<span>Find</span></button>
-      <a class="btn btn-sm" href="/book-appointment/"><span>Book Now</span>${icon.arrow}</a>
+      <a class="btn btn-sm" href="/book-appointment/"><span>Book Now</span></a>
       <button class="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
     </div>
   </div>
@@ -129,10 +131,11 @@ export const header = (active = '') => `
     <a href="/elements-restore/">Elements Restore</a>
     <details><summary>Products</summary><div class="sub"><a href="/products/">All Products</a><a href="/products/skincare/">Skincare</a><a href="/products/supplements/">Supplements</a></div></details>
     <a href="/gift-vouchers/">Gift Vouchers</a>
+    <a href="/promotions/">Promotions</a>
     <details><summary>Locations</summary><div class="sub"><a href="/locations/">All Locations</a>${outlets.map((o) => mlink(o.url, o.name)).join('')}</div></details>
   </nav>
   <div class="mm-foot">
-    <a class="btn btn-light" href="/book-appointment/"><span>Book Now</span>${icon.arrow}</a>
+    <a class="btn" href="/book-appointment/"><span>Book Now</span></a>
     <div class="socials">${socials()}</div>
   </div>
 </div>`;
@@ -165,15 +168,14 @@ const footer = () => `
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        ${logo('div')}
-        <div class="socials" style="margin-top:24px">${socials()}</div>
+        ${logo('a', 'footer-logo').replace('<a class="logo-lockup footer-logo">', '<a class="logo-lockup footer-logo" href="/" aria-label="Elements Wellness — home">')}
+        <div class="socials">${socials()}</div>
       </div>
       <div><h4>Locations</h4><ul><li><a href="/locations/">All Locations</a></li>${outlets.map((o) => `<li><a href="${o.url}">${esc(o.name)}</a></li>`).join('')}</ul></div>
-      <div><h4>Elements</h4><ul><li><a href="/about-elements/">About Elements</a></li><li><a href="/awards/">Awards &amp; Recognition</a></li><li><a href="/promotions/">Promotions</a></li><li><a href="/contact/">Contact</a></li></ul></div>
-      <div><h4>Help</h4><ul><li><a href="/faq-spa-etiquette/">FAQ &amp; Spa Etiquette</a></li><li><a href="/appointment-booking-cancellation-policy/">Booking &amp; Cancellation Policy</a></li><li><a href="/customer-assurance-privacy/">Customer Assurance &amp; Privacy</a></li><li><a href="mailto:${site.email}">${site.email}</a></li></ul></div>
+      <div><h4>Elements</h4><ul><li><a href="/about-elements/">About Elements</a></li><li><a href="/contact/">Contact</a></li><li><a href="/faq-spa-etiquette/">FAQ &amp; Spa Etiquette</a></li></ul></div>
+      <div><h4>Policies</h4><ul><li><a href="/appointment-booking-cancellation-policy/">Booking &amp; Cancellation Policy</a></li><li><a href="/customer-assurance-privacy/">Customer Assurance &amp; Privacy</a></li><li><a href="mailto:${site.email}">${site.email}</a></li></ul></div>
     </div>
-    <div class="footer-word" aria-hidden="true">Elements</div>
-    <div class="footer-bottom"><span>© ${new Date().getFullYear()} Elements Wellness Pte. Ltd. All rights reserved.</span><nav><a href="/customer-assurance-privacy/">Privacy</a><a href="/appointment-booking-cancellation-policy/">Booking Policy</a><a href="/sitemap.xml">Sitemap</a></nav></div>
+    <div class="footer-bottom"><span>© ${new Date().getFullYear()} Elements Wellness Pte. Ltd. All rights reserved.</span><nav><a href="/sitemap.xml">Sitemap</a></nav></div>
   </div>
 </footer>
 <div class="fab"><a class="wa" href="${site.whatsapp}" target="_blank" rel="noopener" aria-label="WhatsApp us">${icon.wa}</a><a class="bk" href="/book-appointment/" aria-label="Book Now">${icon.arrow}<span>Book now</span></a></div>`;
@@ -196,18 +198,16 @@ export const layout = ({ title, description, path, body, active = '', bodyClass 
 ${noindex ? '<meta name="robots" content="noindex">' : ''}
 ${process.env.LIVE_REVIEWS ? '<meta name="ew-live-reviews" content="1">' : ''}
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://api.fontshare.com"><link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300..600&family=Urbanist:wght@300;400;500;600;700&family=Quicksand:wght@600;700&family=Noto+Serif+SC:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/vendor/lenis.css">
 <link rel="stylesheet" href="/assets/css/main.css">
 <script>document.documentElement.className='js'</script>
 ${schema.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('\n')}
 </head>
 <body class="${bodyClass}">
-<div class="loader" aria-hidden="true"><div class="loader-top"></div><div class="loader-bottom"></div><div class="loader-inner"><span class="loader-wordmark"><span class="logo-type l1">Elements</span><span class="logo-type l2">Wellness</span></span></div></div>
-<div class="curtain" aria-hidden="true"><img class="loader-logo" src="/assets/img/logo-white.png" alt="" width="1119" height="253"></div>
+<div class="loader" aria-hidden="true"><div class="loader-top"></div><div class="loader-bottom"></div><div class="loader-inner"><span class="loader-lockup"><img class="ll-1" src="/assets/img/logo-white.png" alt="" width="1119" height="253"><img class="ll-2" src="/assets/img/logo-white.png" alt="" width="1119" height="253"></span></div></div>
+<div class="curtain" aria-hidden="true"><span class="loader-lockup"><img src="/assets/img/logo-white.png" alt="" width="1119" height="253"></span></div>
 ${header(active)}
 <main id="main">
 ${body}

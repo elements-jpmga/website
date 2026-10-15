@@ -88,8 +88,8 @@ export const concerns = [
 
 /* ---------------- Main treatment sections (client sitemap 2026) ---------------- */
 export const groups = [
-  { id: 'facials', label: 'Facials', url: '/facials/', img: img('lymphatic-sculpt.jpg'), hero: img('facial-mask.jpg'), blurb: 'Results-driven facials that pair skilled hands with professional-grade products and advanced skin technology — for clarity, firmness and glow you can see.' },
-  { id: 'massage', label: 'Massage & Recovery', url: '/massage-and-recovery/', img: img('main-massage.jpg'), hero: img('massage-banner.jpg'), blurb: 'Therapeutic massage, TCM therapies and recovery technology — compare the options and choose the right starting point for your body.' },
+  { id: 'facials', label: 'Facials', url: '/facials/', img: img('aquaglow.jpg'), hero: img('facial-mask.jpg'), blurb: 'Results-driven facials that pair skilled hands with professional-grade products and advanced skin technology — for clarity, firmness and glow you can see.' },
+  { id: 'massage', label: 'Massage & Recovery', url: '/massage-and-recovery/', img: img('fascia-back.jpg'), hero: img('massage-banner.jpg'), blurb: 'Therapeutic massage, TCM therapies and recovery technology — compare the options and choose the right starting point for your body.' },
   { id: 'spa', label: 'Spa Experiences', url: '/spa-experiences/', img: img('couple-onsen-2.jpg'), hero: img('jacuzzi.jpg'), blurb: 'Private Koyamaki onsen, Chill & Heal contrast and TCM herbal rituals — designed for one, or for two.' },
 ];
 // Old site categories (used only to read legacy data)

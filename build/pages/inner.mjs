@@ -4,7 +4,8 @@ import { site, groups, services, outlets, awards, posts, faqs, promotions, promo
 import * as SM from '../sitemap.mjs';
 import { layout, esc, icon, btn, linkArrow, faqList, logo, crumbs, serviceCard, revealCard } from '../ui.mjs';
 import { oldPage, splitHero, renderBlocks, sectionAfter } from '../content.mjs';
-import { googleFor } from '../data.mjs';
+import { googleFor, pressLogos } from '../data.mjs';
+import { drafts } from '../drafts.mjs';
 import { googleCard, starRow, fmtNum, gLogo } from '../ui.mjs';
 
 const research = JSON.parse(fs.readFileSync(new URL('../../_research/content.json', import.meta.url), 'utf8'));
@@ -130,6 +131,7 @@ ${copyNote(p.copy)}
 
 /* ---------- Treatment & ritual pages ---------- */
 export function servicePage(s) {
+  if (drafts[s.id]) return draftTreatmentPage(s, drafts[s.id]);
   const g = groupOf(s.group);
   const trail = [['Home', '/'], [g.label, g.url], [s.name]];
   const cps = concernsFor(s);
@@ -202,6 +204,94 @@ ${related.length ? `<section class="section ${options || coupleRituals ? '' : 'b
 ` + ctaBand(`Book your ${esc(s.name.replace(/^The /, ''))}`);
   const schema = [bc(trail), { '@context': 'https://schema.org', '@type': 'Service', name: s.name, serviceType: g.label, description: old?.description || s.short, provider: { '@type': 'DaySpa', name: 'Elements Wellness', url: site.url }, areaServed: 'Singapore', ...(s.priceNum ? { offers: { '@type': 'Offer', price: s.priceNum, priceCurrency: 'SGD' } } : {}) }];
   return { path: s.url, html: layout({ title: `${s.name} in Singapore | Elements Wellness`, description: old?.description || s.meta || s.short, path: s.url, active: s.group, bodyClass: 'page-light', schema, ogImage: heroImg, body }) };
+}
+
+
+/* ---------- Treatment page from an Elements draft (copy word for word; layout per the brand guide) ---------- */
+function draftTreatmentPage(s, d) {
+  const g = groupOf(s.group);
+  const trail = [['Home', '/'], [g.label, g.url], [s.name]];
+  const old = s.source ? oldPage(s.source) : null; const oh = old ? splitHero(old, s.name) : {};
+  const heroImg = oh.heroImg || s.img;
+  const F = d.facts; const outs = F.outlets.map((id) => outlets.find((o) => o.id === id)).filter(Boolean);
+  const nameOf = (u) => [...concernPagesAll, ...SM.facialShared, SM.massageBoosters].find((x) => x.url === u) || {};
+  const book = `/book-appointment/?treatment=${s.id}`;
+  const sid = (t) => 'tp-' + t.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  const awardLogos = pressLogos.filter((l) => !/TheSmartLocal|Mothership/.test(l.title)).slice(0, 8);
+  const body = `
+<section class="tp-hero"><div class="wrap">
+  ${crumbs(trail)}
+  <div class="tp-hero-grid">
+    <div class="tp-hero-copy">
+      <h1 data-split>${esc(d.h1)}</h1>
+      <p class="lede" data-reveal>${esc(d.lede)}</p>
+      <div class="tp-hero-actions" data-reveal>${btn(book, 'Book Now')}<a class="link-arrow" href="#tp-about">Discover the treatment ↓</a></div>
+      <dl class="tp-facts" data-reveal>
+        <div><dt>Duration</dt><dd>${esc(F.duration)}</dd></div>
+        <div><dt>First-trial price</dt><dd>${esc(F.firstTrial)}</dd>${F.usual ? `<small>Usual price ${esc(F.usual)}</small>` : ''}</div>
+        <div><dt>Available at</dt><dd class="small">${esc(F.outletNames)}</dd></div>
+      </dl>
+    </div>
+    <figure class="tp-hero-media" data-clip><img src="${heroImg}" alt="${esc(s.name)} at Elements Wellness" fetchpriority="high"></figure>
+  </div>
+  <nav class="tp-anchors" aria-label="On this page"><a href="#tp-about">About the treatment</a><a href="#tp-benefits">Benefits &amp; results</a><a href="#tp-suits">Who it suits</a><a href="#tp-session">Your session</a><a href="#tp-faq">FAQs</a></nav>
+</div></section>
+
+<section class="tp-section" id="tp-about"><div class="wrap tp-cols">
+  <div><span class="tp-label">About the treatment</span></div>
+  <div class="tp-body">
+    <p class="tp-intro" data-reveal>${esc(d.intro)}</p>
+    ${d.about.map((a) => `<div class="tp-block" data-reveal><h3>${esc(a.h)}</h3>${a.p.map((x) => `<p>${esc(x)}</p>`).join('')}${a.list ? `<ul class="tp-list">${a.list.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}</div>`).join('')}
+  </div>
+</div></section>
+
+<section class="tp-section tp-tint" id="tp-benefits"><div class="wrap">
+  <span class="tp-label">Benefits and results</span>
+  <div class="tp-two">${d.benefits.map((b) => `<div data-reveal><h3>${esc(b.h)}</h3><ul class="tp-list">${b.list.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>`).join('')}</div>
+</div></section>
+
+<section class="tp-section" id="tp-suits"><div class="wrap tp-cols">
+  <div><h2 data-split>Who it suits</h2></div>
+  <ul class="tp-suits">${d.suits.map((x) => `<li data-reveal>${esc(x)}</li>`).join('')}</ul>
+</div></section>
+
+<section class="tp-section tp-session" id="tp-session"><div class="wrap">
+  <span class="tp-label">${esc(F.duration)}</span>
+  <h2 data-split>What happens during your session</h2>
+  <ol class="tp-steps">${d.session.steps.map((x, i) => `<li data-reveal><span>${String(i + 1).padStart(2, '0')}</span><p>${esc(x)}</p></li>`).join('')}</ol>
+  ${d.session.aftercare ? `<div class="tp-aftercare" data-reveal><h3>Aftercare</h3><p>${esc(d.session.aftercare)}</p></div>` : ''}
+</div></section>
+
+<section class="tp-awards"><div class="wrap">
+  <p class="tp-awards-line" data-reveal>${esc(d.awardsLine)}</p>
+  <div class="tp-award-logos" data-reveal>${awardLogos.map((l) => `<img src="${l.img}" alt="${esc(l.title)}" loading="lazy">`).join('')}</div>
+  <a class="link-arrow" href="/awards/">Awards &amp; Recognition</a>
+</div></section>
+
+<section class="tp-section" id="tp-faq"><div class="wrap tp-cols">
+  <div><h2 data-split>Your questions answered</h2></div>
+  <div>${faqList(d.faq)}</div>
+</div></section>
+
+<section class="tp-section tp-related"><div class="wrap">
+  <h2 data-split>Related treatments and concern guides</h2>
+  <div class="tp-related-grid">${d.related.treatments.map((r) => { const t = services.find((x) => x.id === r.id); return t ? `<a class="tp-rel" href="${t.url}" data-reveal><h3>${esc(t.name)}</h3><p>${esc(r.text)}</p><span class="link-arrow">Explore treatment</span></a>` : ''; }).join('')}</div>
+  <div class="tp-chips" data-reveal>${[...d.related.guides, ...d.related.boosters].map((r) => `<a class="chip" href="${r.url}">${esc(r.label)}</a>`).join('')}</div>
+</div></section>
+
+<section class="tp-book bg-deep" id="tp-book"><div class="wrap">
+  <h2 data-split>Book at your preferred outlet</h2>
+  <p class="tp-book-facts">${esc(F.duration)} · First-trial price ${esc(F.firstTrial)}${F.usual ? ` · Usual price ${esc(F.usual)}` : ''}</p>
+  <div class="tp-outlets">${outs.map((o) => `<div class="tp-outlet" data-reveal><h3>${esc(o.name)}</h3><a href="tel:+65${o.phone.replace(/\s/g, '')}">+65 ${esc(o.phone)}</a><a class="tp-wa" href="https://wa.me/65${o.whatsapp.replace(/\s/g, '')}" target="_blank" rel="noopener">WhatsApp</a></div>`).join('')}</div>
+  <div class="tp-book-actions">${btn(book, 'Book Now', 'btn-light')}<a class="link-arrow" href="/appointment-booking-cancellation-policy/">Booking information &amp; terms</a></div>
+</div></section>
+
+<aside class="tp-bookcard" data-bookcard aria-label="Book ${esc(s.name)}">
+  <div><b>${esc(s.name)}</b><small>${esc(F.duration)} · First trial ${esc(F.firstTrial)}</small></div>
+  ${btn(book, 'Book Now', 'btn-sm')}
+</aside>`;
+  const schema = [bc(trail), { '@context': 'https://schema.org', '@type': 'Service', name: s.name, serviceType: g.label, description: d.description, provider: { '@type': 'DaySpa', name: 'Elements Wellness', url: site.url }, areaServed: 'Singapore' }, faqSchema(d.faq)];
+  return { path: s.url, html: layout({ title: d.title, description: d.description, path: s.url, active: s.group, bodyClass: 'page-light page-treatment', schema, ogImage: heroImg, body }) };
 }
 
 /* ---------- Spa Experiences overview ---------- */
