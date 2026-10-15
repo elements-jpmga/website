@@ -274,6 +274,19 @@
     window.addEventListener('scroll', update, { passive: true }); update();
   }
 
+  /* ---------- Review carousels: arrows page through the cards; long reviews get "Read more" ---------- */
+  function reviewCarousels() {
+    $$('[data-rv-carousel]').forEach((c) => {
+      const track = $('.rv-track', c), items = $$('.rv-item', c), prev = $('[data-rv-prev]', c), next = $('[data-rv-next]', c), count = $('.rv-count', c);
+      const step = () => (items[0]?.getBoundingClientRect().width || 300) + 16;
+      const update = () => { const max = track.scrollWidth - track.clientWidth - 4; prev.disabled = track.scrollLeft <= 4; next.disabled = track.scrollLeft >= max; const first = Math.round(track.scrollLeft / step()) + 1; const shown = Math.max(1, Math.round(track.clientWidth / step())); const last = Math.min(items.length, first + shown - 1); count.textContent = `${last > first ? `${first}–${last}` : first} of ${items.length} reviews`; };
+      prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+      next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+      track.addEventListener('scroll', update, { passive: true }); window.addEventListener('resize', update); update();
+      items.forEach((it) => { const t = $('.rv-text', it), b = $('.rv-more', it); if (t.scrollHeight > t.clientHeight + 4) { b.hidden = false; b.addEventListener('click', () => { const o = it.classList.toggle('is-open'); b.textContent = o ? 'Show less' : 'Read more'; }); } });
+    });
+  }
+
   /* ---------- Locations map: Singapore zooms into Orchard Road once; tap a pin and its card (photos + details) opens in the empty corner ---------- */
   function mapLocations() {
     const sec = $('[data-map]'); if (!sec) return;
@@ -467,7 +480,7 @@
     const w = $('[data-rv-write]'); if (w && d.places[0]?.writeReviewUrl) w.href = d.places[0].writeReviewUrl;
     const up = $('[data-rv-updated]'); if (up) up.textContent = 'Live from Google · updated ' + new Date(d.snapshotDate).toLocaleDateString('en-SG', { day: 'numeric', month: 'short', year: 'numeric' });
   }
-  const boot = () => { heroSlides(); logoWall(); pathPhotos(); bookCard(); liveReviews(); reveals(); rise(); mapLocations(); steps(); concerns(); carousel(); sigTiles(); revealCards(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
+  const boot = () => { heroSlides(); logoWall(); pathPhotos(); bookCard(); reviewCarousels(); liveReviews(); reveals(); rise(); mapLocations(); steps(); concerns(); carousel(); sigTiles(); revealCards(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
   (document.fonts?.ready || Promise.resolve()).then(() => enterPage(() => { steamHero(); boot(); }));
   window.addEventListener('load', () => ScrollTrigger.refresh());
 })();

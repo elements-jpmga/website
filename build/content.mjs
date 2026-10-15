@@ -5,6 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { esc, icon, btn, faqList } from './ui.mjs';
 import { resolveUrl } from './data.mjs';
+import { reviewFor, widgetReviews, wellnessReviews } from './old-reviews.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dir = path.join(root, '_research/pages');
@@ -62,6 +63,17 @@ export function splitHero(page, title, { keepAll = false } = {}) {
   return { heroImg, tagline, price, label, rest: blocks.filter((b, i) => !drop.has(i)) };
 }
 
+const reviewCarousel = (items) => `<div class="rv-carousel" data-rv-carousel data-reveal>
+  <div class="rv-track" tabindex="0" aria-label="Reviews">${items.map((r) => `<figure class="rv-item">
+    <div class="rv-stars" aria-label="5 out of 5 stars">★★★★★</div>
+    <blockquote class="rv-text">${r.text.split(/\n{2,}/).map((p) => `<p>${esc(p).replace(/\n/g, '<br>')}</p>`).join('')}</blockquote>
+    ${r.tags ? `<p class="rv-tags">${esc(r.tags)}</p>` : ''}
+    <figcaption><b>${esc(r.author)}</b>${[r.source, r.place, r.date].filter(Boolean).length ? `<small>${esc([r.source, r.place, r.date].filter(Boolean).join(' · '))}</small>` : ''}</figcaption>
+    <button type="button" class="rv-more" hidden>Read more</button>
+  </figure>`).join('')}</div>
+  <div class="rv-controls"><span class="rv-count" aria-live="polite"></span><button type="button" class="rv-btn" data-rv-prev aria-label="Previous reviews">←</button><button type="button" class="rv-btn" data-rv-next aria-label="Next reviews">→</button></div>
+</div>`;
+
 /** Blocks → HTML in the new design. */
 export function renderBlocks(blocks, opts = {}) {
   // Old pages list skin types etc. as a small icon followed by a short heading; keep them together in a row
@@ -71,6 +83,19 @@ export function renderBlocks(blocks, opts = {}) {
     const nt = n && (n.t === 'heading' ? strip(n.text) : n.t === 'html' ? strip(n.html) : '');
     if (b.t === 'image' && b.w && b.w < 260 && nt && nt.length <= 40) { merged.push({ t: 'iconitem', src: b.src, alt: b.alt, title: nt }); i++; continue; }
     merged.push(b);
+  }
+  // Old "Reviews" sections were screenshots of reviews (or a review widget): turn them into a text carousel
+  for (let i = 0; i < merged.length; i++) {
+    const b = merged[i];
+    if (!(b.t === 'heading' && /^reviews?$/i.test(strip(b.text)))) continue;
+    const items = []; let j = i + 1;
+    for (; j < merged.length && merged[j].t !== 'heading'; j++) {
+      const n = merged[j];
+      if (n.t === 'image' && reviewFor(n.src)) { items.push(reviewFor(n.src)); n.t = 'skip'; }
+      if (n.t === 'gallery') { const r = n.images.map((x) => reviewFor(x.src)).filter(Boolean); if (r.length) { items.push(...r); n.t = 'skip'; } }
+      if (n.t === 'html' && /Victoria Joy/.test(n.html)) { items.push(...widgetReviews, ...wellnessReviews); n.t = 'skip'; }
+    }
+    if (items.length) merged.splice(i + 1, 0, { t: 'reviews', items });
   }
   blocks = [];
   for (const b of merged) { const last = blocks[blocks.length - 1]; if (b.t === 'iconitem') { if (last?.t === 'icongroup') last.items.push(b); else blocks.push({ t: 'icongroup', items: [b] }); } else blocks.push(b); }
@@ -105,6 +130,8 @@ export function renderBlocks(blocks, opts = {}) {
       case 'faq': out.push(`<div class="cf-faq">${faqList(b.items.map((i) => ({ q: i.q, a: fixLinks(i.a) })))}</div>`); break;
       case 'card': out.push(`<div class="cf-card" data-reveal>${b.img ? `<img src="${b.img}" alt="" loading="lazy">` : ''}<div>${b.title ? `<h3>${esc(b.title)}</h3>` : ''}${b.html ? `<div class="prose">${fixLinks(b.html)}</div>` : ''}${b.href ? `<a class="link-arrow" href="${fixHref(b.href)}">Learn more ${icon.arrow}</a>` : ''}</div></div>`); break;
       case 'icongroup': out.push(`<div class="cf-icon-row" data-reveal>${b.items.map((i) => `<div class="cf-icon-item"><img src="${i.src}" alt="${esc(i.alt || '')}" loading="lazy"><span>${esc(i.title)}</span></div>`).join('')}</div>`); break;
+      case 'reviews': out.push(reviewCarousel(b.items)); break;
+      case 'skip': break;
       case 'quote': out.push(`<blockquote class="cf-quote" data-reveal>${esc(b.text)}${b.who ? `<cite>${esc(b.who)}</cite>` : ''}</blockquote>`); break;
       case 'video': if (b.url) out.push(`<div class="cf-video" data-reveal><iframe src="${ytEmbed(b.url)}" title="Video" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`); break;
       case 'map': if (b.src) out.push(`<div class="cf-video map" data-reveal><iframe src="${b.src}" title="Map" loading="lazy"></iframe></div>`); break;
