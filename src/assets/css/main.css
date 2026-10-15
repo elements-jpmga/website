@@ -1578,3 +1578,11 @@ body:has(.header.is-solid) .utility-row { transform: translateY(-100%); }
 /* preloader logo: smaller, quieter */
 .loader-lockup { --logo-h: clamp(46px, 4.2vw, 58px); }
 .curtain .loader-lockup { --logo-h: 50px; }
+.tp-facts small + small { margin-top: 2px; }
+.tp-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.tp-two p { margin: 0; line-height: 1.6; }
+.tp-note { margin: 22px 0 0; padding-top: 18px; border-top: 1px solid var(--rule); color: var(--muted-c); }
+.tp-session-list { margin-top: 4px; }
+.tp-award-note { margin: -10px 0 22px; font-size: 14px; color: var(--primary-dark); }
+.tp-chips:empty { display: none; }
+@media (max-width: 900px) { .tp-three { grid-template-columns: 1fr; } }

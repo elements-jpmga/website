@@ -212,7 +212,7 @@ function draftTreatmentPage(s, d) {
   const g = groupOf(s.group);
   const trail = [['Home', '/'], [g.label, g.url], [s.name]];
   const old = s.source ? oldPage(s.source) : null; const oh = old ? splitHero(old, s.name) : {};
-  const heroImg = oh.heroImg || s.img;
+  const heroImg = d.heroImg || oh.heroImg || s.img;
   const F = d.facts; const outs = F.outlets.map((id) => outlets.find((o) => o.id === id)).filter(Boolean);
   const nameOf = (u) => [...concernPagesAll, ...SM.facialShared, SM.massageBoosters].find((x) => x.url === u) || {};
   const book = `/book-appointment/?treatment=${s.id}`;
@@ -228,7 +228,7 @@ function draftTreatmentPage(s, d) {
       <div class="tp-hero-actions" data-reveal>${btn(book, 'Book Now')}<a class="link-arrow" href="#tp-about">Discover the treatment ↓</a></div>
       <dl class="tp-facts" data-reveal>
         <div><dt>Duration</dt><dd>${esc(F.duration)}</dd></div>
-        <div><dt>First-trial price</dt><dd>${esc(F.firstTrial)}</dd>${F.usual ? `<small>Usual price ${esc(F.usual)}</small>` : ''}</div>
+        <div><dt>First-trial price</dt><dd>${esc(F.firstTrial)}</dd>${F.webPromo ? `<small>Web promo price ${esc(F.webPromo)}</small>` : ''}${F.usual ? `<small>Usual price ${esc(F.usual)}</small>` : ''}</div>
         <div><dt>Available at</dt><dd class="small">${esc(F.outletNames)}</dd></div>
       </dl>
     </div>
@@ -241,13 +241,13 @@ function draftTreatmentPage(s, d) {
   <div><span class="tp-label">About the treatment</span></div>
   <div class="tp-body">
     <p class="tp-intro" data-reveal>${esc(d.intro)}</p>
-    ${d.about.map((a) => `<div class="tp-block" data-reveal><h3>${esc(a.h)}</h3>${a.p.map((x) => `<p>${esc(x)}</p>`).join('')}${a.list ? `<ul class="tp-list">${a.list.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}</div>`).join('')}
+    ${d.about.map((a) => `<div class="tp-block" data-reveal><h3>${esc(a.h)}</h3>${a.p.map((x) => `<p>${esc(x)}</p>`).join('')}${a.list ? `<ul class="tp-list">${a.list.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}${(a.after || []).map((x) => `<p>${esc(x)}</p>`).join('')}</div>`).join('')}
   </div>
 </div></section>
 
 <section class="tp-section tp-tint" id="tp-benefits"><div class="wrap">
   <span class="tp-label">Benefits and results</span>
-  <div class="tp-two">${d.benefits.map((b) => `<div data-reveal><h3>${esc(b.h)}</h3><ul class="tp-list">${b.list.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div>`).join('')}</div>
+  <div class="tp-two ${d.benefits.length > 2 ? 'tp-three' : ''}">${d.benefits.map((b) => `<div data-reveal><h3>${esc(b.h)}</h3>${b.list ? `<ul class="tp-list">${b.list.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}${(b.p || []).map((x) => `<p>${esc(x)}</p>`).join('')}</div>`).join('')}</div>
 </div></section>
 
 <section class="tp-section" id="tp-suits"><div class="wrap tp-cols">
@@ -258,14 +258,15 @@ function draftTreatmentPage(s, d) {
 <section class="tp-section tp-session" id="tp-session"><div class="wrap">
   <span class="tp-label">${esc(F.duration)}</span>
   <h2 data-split>What happens during your session</h2>
-  <ol class="tp-steps">${d.session.steps.map((x, i) => `<li data-reveal><span>${String(i + 1).padStart(2, '0')}</span><p>${esc(x)}</p></li>`).join('')}</ol>
-  ${d.session.aftercare ? `<div class="tp-aftercare" data-reveal><h3>Aftercare</h3><p>${esc(d.session.aftercare)}</p></div>` : ''}
+  ${d.session.numbered ? `<ol class="tp-steps">${d.session.steps.map((x, i) => `<li data-reveal><span>${String(i + 1).padStart(2, '0')}</span><p>${esc(x)}</p></li>`).join('')}</ol>` : `<ul class="tp-suits tp-session-list">${d.session.steps.map((x) => `<li data-reveal>${esc(x)}</li>`).join('')}</ul>`}
+  ${d.session.note ? `<p class="tp-note" data-reveal>${esc(d.session.note)}</p>` : ''}
 </div></section>
 
 <section class="tp-awards"><div class="wrap">
   <p class="tp-awards-line" data-reveal>${esc(d.awardsLine)}</p>
+  ${d.awardNote ? `<p class="tp-award-note" data-reveal>${esc(d.awardNote)}</p>` : ''}
   <div class="tp-award-logos" data-reveal>${awardLogos.map((l) => `<img src="${l.img}" alt="${esc(l.title)}" loading="lazy">`).join('')}</div>
-  <a class="link-arrow" href="/awards/">Awards &amp; Recognition</a>
+  <a class="link-arrow" href="/awards/">${d.awardNote ? 'See all awards' : 'Awards &amp; Recognition'}</a>
 </div></section>
 
 <section class="tp-section" id="tp-faq"><div class="wrap tp-cols">
@@ -274,9 +275,9 @@ function draftTreatmentPage(s, d) {
 </div></section>
 
 <section class="tp-section tp-related"><div class="wrap">
-  <h2 data-split>Related treatments and concern guides</h2>
+  <h2 data-split>${esc(d.related.title || 'Related treatments and concern guides')}</h2>
   <div class="tp-related-grid">${d.related.treatments.map((r) => { const t = services.find((x) => x.id === r.id); return t ? `<a class="tp-rel" href="${t.url}" data-reveal><h3>${esc(t.name)}</h3><p>${esc(r.text)}</p><span class="link-arrow">Explore treatment</span></a>` : ''; }).join('')}</div>
-  <div class="tp-chips" data-reveal>${[...d.related.guides, ...d.related.boosters].map((r) => `<a class="chip" href="${r.url}">${esc(r.label)}</a>`).join('')}</div>
+  ${d.related.guides.length + d.related.boosters.length ? '' : '<!-- no guides -->'}<div class="tp-chips" data-reveal>${[...d.related.guides, ...d.related.boosters].map((r) => `<a class="chip" href="${r.url}">${esc(r.label)}</a>`).join('')}</div>
 </div></section>
 
 <section class="tp-book bg-deep" id="tp-book"><div class="wrap">
