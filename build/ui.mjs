@@ -111,9 +111,9 @@ export const header = (active = '') => `
       ${navItem('Facials', '/facials/', 'facials', active, megaFacials())}
       ${navItem('Massage & Recovery', '/massage-and-recovery/', 'massage', active, megaMassage())}
       ${navItem('Spa Experiences', '/spa-experiences/', 'spa', active, dropSpa())}
-      ${navItem('Promotions', '/promotions/', 'promotions', active)}
       ${navItem('Products', '/products/', 'products', active, dropProducts())}
       ${navItem('Gift Vouchers', '/gift-vouchers/', 'gift', active)}
+      ${navItem('Promotions', '/promotions/', 'promotions', active)}
     </nav>
     <div class="nav-right">
       <button class="nav-search" type="button" data-finder aria-label="Find a treatment">${icon.search}<span>Find</span></button>
@@ -127,9 +127,9 @@ export const header = (active = '') => `
     <details><summary>Facials</summary><div class="sub"><a href="/facials/">All Facials</a><b class="sub-h">By Concern</b>${facialConcerns.map((c) => mlink(c.url, c.label)).join('')}<b class="sub-h">Focused Care</b>${facialShared.map((p) => mlink(p.url, p.label)).join('')}<b class="sub-h">By Treatment</b>${services.filter((s) => s.group === 'facials').map((s) => mlink(s.url, s.name)).join('')}</div></details>
     <details><summary>Massage &amp; Recovery</summary><div class="sub"><a href="/massage-and-recovery/">All Massage &amp; Recovery</a><b class="sub-h">By Concern</b>${massageConcerns.map((c) => mlink(c.url, c.label)).join('')}<b class="sub-h">Women’s Wellness</b>${womens().map((s) => mlink(s.url, s.name)).join('')}${mlink(massageBoosters.url, 'Boosters')}<b class="sub-h">By Treatment</b>${services.filter((s) => s.group === 'massage').map((s) => mlink(s.url, s.name)).join('')}</div></details>
     <details><summary>Spa Experiences</summary><div class="sub"><a href="/spa-experiences/">All Spa Experiences</a>${spaPages.map((p) => mlink(p.url, p.name)).join('')}</div></details>
-    <a href="/promotions/">Promotions</a>
     <details><summary>Products</summary><div class="sub"><a href="/products/">All Products</a><a href="/products/skincare/">Skincare</a><a href="/products/supplements/">Supplements</a></div></details>
     <a href="/gift-vouchers/">Gift Vouchers</a>
+    <a href="/promotions/">Promotions</a>
     <details><summary>Locations</summary><div class="sub"><a href="/locations/">All Locations</a>${outlets.map((o) => mlink(o.url, o.name)).join('')}</div></details>
   </nav>
   <div class="mm-foot">
