@@ -205,7 +205,7 @@ export default function home() {
   const photos = (o) => [...new Set([o.img, ...(o.gallery || []).map((g) => '/assets/img/' + g)])].slice(0, 3);
   const vb0 = '240 250 720 320';
   const mapLocs = `
-<section class="section bg-deep map-sec" id="locations" data-map>
+<section class="section map-sec" id="locations" data-map>
   <div class="wrap">
     <div class="head-row"><div><h2 data-split>Find us</h2></div><div><p class="lede" data-reveal>${esc(site.hoursSummary)}</p><div data-reveal style="margin-top:14px">${linkArrow('/locations/', 'All locations')}</div></div></div>
     <div class="omap-wrap">
@@ -228,7 +228,7 @@ export default function home() {
         <div class="omap-pop-hero" data-pop-slides>${ph.map((src, j) => `<img src="${src}" alt="Elements Wellness ${esc(o.name)}" loading="lazy" class="${j === 0 ? 'is-on' : ''}">`).join('')}
           <div class="omap-pop-over"><h3>${esc(o.name)}</h3><span class="omap-score" data-rv-place="${o.id}"><b data-rv-rating>${g.rating.toFixed(1)}</b> ${starRow(g.rating)} <small><span data-rv-count>${fmtNum(g.count)}</span> reviews</small></span><p class="omap-addr">${o.address}</p></div>
           ${ph.length > 1 ? `<div class="omap-pop-dots">${ph.map((_, j) => `<button type="button" class="${j === 0 ? 'is-on' : ''}" data-pop-dot="${j}" aria-label="Photo ${j + 1}"></button>`).join('')}</div>` : ''}</div>
-        <div class="omap-actions">${btn(o.url, 'View outlet', 'btn-light btn-sm')}${btn('https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent('Elements Wellness ' + o.mapQuery), 'Directions', 'btn-ghost-light btn-sm', 'target="_blank" rel="noopener"')}</div>
+        <div class="omap-actions">${btn(o.url, 'View outlet', 'btn-sm')}${btn('https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent('Elements Wellness ' + o.mapQuery), 'Directions', 'btn-ghost btn-sm', 'target="_blank" rel="noopener"')}</div>
         <div class="omap-pop-body">
           <p class="omap-dir">${esc(o.directions || '')}</p>
           <p class="omap-contact"><a href="tel:+65${o.phone.replace(/\s/g, '')}">${esc(o.phone)}</a> · <a href="https://wa.me/65${wa}" target="_blank" rel="noopener">WhatsApp</a></p>

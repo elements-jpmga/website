@@ -1535,3 +1535,46 @@ body:has(.header.is-solid) .utility-row { transform: translateY(-100%); }
 .tp-label { display: block; font-family: var(--f-text); font-size: 11px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); }
 .bg-deep .tp-label { color: var(--rule); }
 @media (max-width: 900px) { .tp-bookcard { padding: 10px 10px 10px 14px; gap: 10px; } .tp-bookcard b { font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 46vw; } .tp-bookcard small { font-size: 11.5px; } }
+
+/* the supplied logo file (Element Logo.png) already carries its maroon block and clearspace — show it as-is */
+.logo-lockup { padding: 0 !important; background: none !important; line-height: 0; }
+.logo-lockup img { height: var(--logo-h, 40px); width: auto; display: block; }
+.header .logo-lockup { --logo-h: 44px; }
+.footer .footer-logo { --logo-h: 58px; }
+@media (max-width: 900px) { .header .logo-lockup { --logo-h: 38px; } }
+/* preloader: the same file, ELEMENTS and WELLNESS revealed in turn, ending as the exact logo */
+.loader-lockup { --logo-h: clamp(72px, 9vw, 110px); position: relative; display: inline-block; padding: 0 !important; background: #72181b; line-height: 0; }
+.loader-lockup img { display: block; height: var(--logo-h); width: auto; }
+.loader-lockup .ll-1 { clip-path: inset(26% 0 46% 0); }
+.loader-lockup .ll-2 { position: absolute; left: 0; top: 0; clip-path: inset(61% 0 25% 0); }
+.curtain .loader-lockup { --logo-h: 72px; }
+
+/* Find us: a light, Google-Maps-like street map in brand neutrals; Dark Red only on the pins */
+.map-sec { background: var(--warm-white); color: var(--primary-dark); }
+.map-sec h2, .map-sec .lede { color: var(--primary-dark); } .map-sec .link-arrow { color: var(--primary-dark); }
+.omap { background: #ebe8e3; box-shadow: 0 0 0 1px var(--rule); }
+.omap-sg .sg-land { fill: var(--accent); stroke: #fff; } .omap-sg .sg-dot { fill: var(--dark-red); } .omap-sg .sg-ring { stroke: var(--dark-red); }
+.om-land { fill: #ebe8e3; }
+.om-park { fill: #e2e0d6; }
+.om-bld { fill: #dcd6cd; }
+.om-road { stroke: #ffffff; stroke-opacity: 1; }
+.om-walk { stroke: #cfc8bd; stroke-width: 1.2; } .om-minor { stroke-width: 2.4; } .om-mid { stroke-width: 4; } .om-major { stroke-width: 6; }
+.om-orchard { stroke: #e3d3b4; stroke-width: 8; stroke-opacity: 1; }
+.om-mall { fill: rgba(134, 112, 76, .16); stroke: rgba(134, 112, 76, .55); } .om-mall.is-on { fill: rgba(114, 24, 27, .14); stroke: var(--dark-red); }
+.om-mrt rect { fill: var(--primary-dark); opacity: 1; } .om-mrt text { fill: var(--primary-dark); stroke: #ebe8e3; }
+.om-label { fill: var(--primary-dark); stroke: #fff; }
+.om-pulse { stroke: var(--dark-red); }
+.omap-credit { color: var(--muted-c); }
+.omap-burst { box-shadow: 0 0 0 1px rgba(65, 63, 66, .35), inset 0 0 60px rgba(134, 112, 76, .12); }
+/* outlet card: Warm White, Primary Dark text; the photo keeps its dark veil for the name */
+.omap-pop { background: var(--warm-white); color: var(--primary-dark); backdrop-filter: none; box-shadow: 0 0 0 1px var(--rule), 0 24px 48px -28px rgba(65, 63, 66, .55); }
+.omap-pop p, .omap-pop .omap-dir { color: var(--primary-dark); } .omap-pop .omap-dir { color: var(--muted-c); }
+.omap-pop a { color: var(--primary-dark); } .omap-pop .omap-contact a { border-bottom-color: var(--rule); }
+.omap-pop-over, .omap-pop-over h3, .omap-pop-over p, .omap-pop-over .omap-addr { color: var(--warm-white); } .omap-pop-over .omap-score small { color: rgba(250, 248, 245, .8); }
+.omap-pop .omap-actions .btn { color: var(--fg); } .omap-pop .omap-actions .btn:not(.btn-ghost) { --bg: var(--dark-red); --fg: var(--warm-white); } .omap-pop .omap-actions .btn-ghost { --fg: var(--primary-dark); }
+.omap-pop .omap-actions .btn:hover { color: var(--warm-white); }
+.omap-pop-body { border-top-color: var(--rule); }
+
+/* preloader logo: smaller, quieter */
+.loader-lockup { --logo-h: clamp(46px, 4.2vw, 58px); }
+.curtain .loader-lockup { --logo-h: 50px; }

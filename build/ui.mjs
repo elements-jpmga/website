@@ -24,8 +24,8 @@ export const icon = {
   wave: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 18c5-5 9-5 13 0s8 5 13 0 9-5 14 0M4 28c5-5 9-5 13 0s8 5 13 0 9-5 14 0M4 38c5-5 9-5 13 0s8 5 13 0 9-5 14 0"/></svg>',
 };
 
-// The brand lockup: the supplied white wordmark on its maroon block, never retyped in a font
-export const logo = (tag = 'span', cls = '') => `<${tag} class="logo-lockup ${cls}"><img src="/assets/img/logo-white.png" alt="Elements Wellness" width="1119" height="253"></${tag}>`;
+// The brand logo: the supplied file (Element Logo.png — white wordmark on its maroon block), used as-is, never retyped
+export const logo = (tag = 'span', cls = '') => `<${tag} class="logo-lockup ${cls}"><img src="/assets/img/logo/elements-logo-720.png" alt="Elements Wellness" width="720" height="228"></${tag}>`;
 
 // The five-element ring (木 火 土 金 水) used as the brand motif.
 export const ring = (opts = {}) => {
@@ -107,7 +107,7 @@ export const header = (active = '') => `
 <div class="utility-row"><div class="wrap utility-inner"><a href="/promotions/" ${active === 'promotions' ? 'aria-current="page"' : ''}>Promotions</a></div></div>
 <header class="header">
   <div class="wrap header-inner">
-    <a href="/" class="logo-lockup" aria-label="Elements Wellness — home"><img src="/assets/img/logo-white.png" alt="Elements Wellness" width="1119" height="253"></a>
+    <a href="/" class="logo-lockup" aria-label="Elements Wellness — home"><img src="/assets/img/logo/elements-logo-720.png" alt="Elements Wellness" width="720" height="228"></a>
     <nav class="nav-left" aria-label="Primary">
       ${navItem('Facials', '/facials/', 'facials', active, megaFacials())}
       ${navItem('Massage & Recovery', '/massage-and-recovery/', 'massage', active, megaMassage())}
@@ -206,8 +206,8 @@ ${process.env.LIVE_REVIEWS ? '<meta name="ew-live-reviews" content="1">' : ''}
 ${schema.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('\n')}
 </head>
 <body class="${bodyClass}">
-<div class="loader" aria-hidden="true"><div class="loader-top"></div><div class="loader-bottom"></div><div class="loader-inner"><span class="loader-lockup"><img class="ll-1" src="/assets/img/logo-white.png" alt="" width="1119" height="253"><img class="ll-2" src="/assets/img/logo-white.png" alt="" width="1119" height="253"></span></div></div>
-<div class="curtain" aria-hidden="true"><span class="loader-lockup"><img src="/assets/img/logo-white.png" alt="" width="1119" height="253"></span></div>
+<div class="loader" aria-hidden="true"><div class="loader-top"></div><div class="loader-bottom"></div><div class="loader-inner"><span class="loader-lockup"><img class="ll-1" src="/assets/img/logo/elements-logo-720.png" alt="" width="720" height="228"><img class="ll-2" src="/assets/img/logo/elements-logo-720.png" alt="" width="720" height="228"></span></div></div>
+<div class="curtain" aria-hidden="true"><span class="loader-lockup"><img src="/assets/img/logo/elements-logo-720.png" alt="" width="720" height="228"></span></div>
 ${header(active)}
 <main id="main">
 ${body}
