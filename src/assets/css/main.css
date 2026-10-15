@@ -1608,3 +1608,6 @@ body:has(.header.is-solid) .utility-row { transform: translateY(-100%); }
 .rv-carousel { width: 100%; max-width: 100%; min-width: 0; overflow: hidden; }
 .rv-track { width: 100%; align-items: stretch; }
 .content-flow > * { min-width: 0; }
+
+:root { --banner-h: 0px; }
+.utility-row { display: none; }

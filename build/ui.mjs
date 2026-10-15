@@ -63,7 +63,7 @@ export const faqList = (items) => `<div class="faq">${items.map((f, i) => `
 // Text-first card: title, one line and the facts. On hover / focus / tap the photo fades in behind a maroon veil with
 // a longer description — fewer photos on the page, the picture only when someone shows interest.
 const clip = (t = '', n = 170) => { t = String(t).replace(/\s+/g, ' ').trim(); if (t.length <= n) return t; const cut = t.slice(0, n); return cut.slice(0, Math.max(cut.lastIndexOf('. '), cut.lastIndexOf(' '))).replace(/[,;:]$/, '') + '…'; };
-export const revealCard = ({ href, kind = '', title, short = '', more = '', img = '', meta = [], tag = '', cta = 'Discover', extra = '', cls = '' }) => `
+export const revealCard = ({ href, kind = '', title, short = '', more = '', img = '', meta = [], tag = '', cta = 'Learn More', extra = '', cls = '' }) => `
 <a class="rcard ${cls}" href="${href}" data-reveal ${extra}>
   ${img ? `<img class="rcard-img" src="${img}" alt="" loading="lazy">` : ''}<span class="rcard-veil" aria-hidden="true"></span>
   ${tag ? `<span class="rcard-tag">${esc(tag)}</span>` : ''}
@@ -75,7 +75,7 @@ export const revealCard = ({ href, kind = '', title, short = '', more = '', img 
     <div class="rcard-foot">${meta.filter(Boolean).map((m) => `<span>${esc(m)}</span>`).join('')}<span class="rcard-cta">${esc(cta)} ${icon.arrow}</span></div>
   </div>
 </a>`;
-export const serviceCard = (s, extra = '') => revealCard({ href: s.url, kind: s.ritual ? 'Spa experience' : s.group === 'facials' ? 'Facial' : s.group === 'spa' ? 'Spa experience' : 'Massage & recovery', title: s.name, short: s.short === 'New treatment — details coming soon.' ? '' : s.short, more: s.description || '', img: s.img, meta: [s.duration, s.price ? `${s.priceNote === 'First trial' ? 'First trial ' : s.priceNote === 'Per couple' ? 'Per couple ' : 'From '}${s.price}` : ''], tag: '', extra: `data-tags="${(s.concerns || []).join(' ')} ${s.group}" ${extra}` });
+export const serviceCard = (s, extra = '') => revealCard({ href: s.url, kind: '', title: s.name, short: '', more: s.description || '', img: s.img, meta: [s.duration, s.price ? `${s.priceNote === 'First trial' ? 'First trial ' : s.priceNote === 'Per couple' ? 'Per couple ' : 'From '}${s.price}` : ''], tag: '', extra: `data-tags="${(s.concerns || []).join(' ')} ${s.group}" ${extra}` });
 
 // Mega menus follow the sitemap: By Concern · Focused Care · By Treatment, plus a separate Boosters link. No prices.
 const mlink = (u, t) => `<a href="${u}">${esc(t)}</a>`;
@@ -104,7 +104,6 @@ const navItem = (label, url, key, active, menu) => menu
 
 export const header = (active = '') => `
 <a class="skip" href="#main">Skip to content</a>
-<div class="utility-row"><div class="wrap utility-inner"><a href="/promotions/" ${active === 'promotions' ? 'aria-current="page"' : ''}>Promotions</a></div></div>
 <header class="header">
   <div class="wrap header-inner">
     <a href="/" class="logo-lockup" aria-label="Elements Wellness — home"><img src="/assets/img/logo/elements-logo-720.png" alt="Elements Wellness" width="720" height="228"></a>
@@ -112,7 +111,7 @@ export const header = (active = '') => `
       ${navItem('Facials', '/facials/', 'facials', active, megaFacials())}
       ${navItem('Massage & Recovery', '/massage-and-recovery/', 'massage', active, megaMassage())}
       ${navItem('Spa Experiences', '/spa-experiences/', 'spa', active, dropSpa())}
-      ${navItem('Elements Restore', '/elements-restore/', 'restore', active)}
+      ${navItem('Promotions', '/promotions/', 'promotions', active)}
       ${navItem('Products', '/products/', 'products', active, dropProducts())}
       ${navItem('Gift Vouchers', '/gift-vouchers/', 'gift', active)}
     </nav>
@@ -128,10 +127,9 @@ export const header = (active = '') => `
     <details><summary>Facials</summary><div class="sub"><a href="/facials/">All Facials</a><b class="sub-h">By Concern</b>${facialConcerns.map((c) => mlink(c.url, c.label)).join('')}<b class="sub-h">Focused Care</b>${facialShared.map((p) => mlink(p.url, p.label)).join('')}<b class="sub-h">By Treatment</b>${services.filter((s) => s.group === 'facials').map((s) => mlink(s.url, s.name)).join('')}</div></details>
     <details><summary>Massage &amp; Recovery</summary><div class="sub"><a href="/massage-and-recovery/">All Massage &amp; Recovery</a><b class="sub-h">By Concern</b>${massageConcerns.map((c) => mlink(c.url, c.label)).join('')}<b class="sub-h">Women’s Wellness</b>${womens().map((s) => mlink(s.url, s.name)).join('')}${mlink(massageBoosters.url, 'Boosters')}<b class="sub-h">By Treatment</b>${services.filter((s) => s.group === 'massage').map((s) => mlink(s.url, s.name)).join('')}</div></details>
     <details><summary>Spa Experiences</summary><div class="sub"><a href="/spa-experiences/">All Spa Experiences</a>${spaPages.map((p) => mlink(p.url, p.name)).join('')}</div></details>
-    <a href="/elements-restore/">Elements Restore</a>
+    <a href="/promotions/">Promotions</a>
     <details><summary>Products</summary><div class="sub"><a href="/products/">All Products</a><a href="/products/skincare/">Skincare</a><a href="/products/supplements/">Supplements</a></div></details>
     <a href="/gift-vouchers/">Gift Vouchers</a>
-    <a href="/promotions/">Promotions</a>
     <details><summary>Locations</summary><div class="sub"><a href="/locations/">All Locations</a>${outlets.map((o) => mlink(o.url, o.name)).join('')}</div></details>
   </nav>
   <div class="mm-foot">
@@ -158,7 +156,6 @@ const finder = () => `
         <div><div class="finder-label">Choose one</div><div class="finder-opts"></div></div>
         <div><div class="finder-label finder-results-label">All treatments</div><div class="finder-results"></div></div>
       </div>
-      <p class="finder-note">Not sure where to start? <a class="link-arrow" href="/elements-restore/">Discover Elements Restore</a></p>
     </div>
   </div>
 </div>`;
