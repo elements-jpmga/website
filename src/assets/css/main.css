@@ -1637,7 +1637,7 @@ body:has(.header.is-solid) .utility-row { transform: translateY(-100%); }
 @media (max-width: 900px) { .ct-grid, .ct-form-wrap { grid-template-columns: 1fr; } .outlet-walkin { height: 56vh; } }
 /* 313: the walk-in plays with the scroll */
 .walk { position: relative; height: 420vh; margin-top: var(--header-h); background: #111; }
-.walk-pin { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+.walk-pin { position: sticky; top: var(--header-h); height: calc(100vh - var(--header-h)); overflow: hidden; }
 .walk-canvas, .walk-fallback { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .walk-fallback { transition: opacity .4s; }
 .walk-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20, 8, 8, .18) 0%, rgba(20, 8, 8, .22) 50%, rgba(20, 8, 8, .72) 100%); pointer-events: none; }
@@ -1657,7 +1657,7 @@ body:has(.header.is-solid) .utility-row { transform: translateY(-100%); }
 /* 313 end scene: visit card on the left, the map on the right, over the reception */
 .walk-shade { background: linear-gradient(180deg, rgba(20, 8, 8, .18) 0%, rgba(20, 8, 8, .24) 50%, rgba(20, 8, 8, .62) 100%); transition: background .6s; }
 .walk.is-end .walk-shade { background: rgba(20, 8, 8, .66); }
-.walk-end { top: 0; bottom: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 80px); align-items: center; padding-top: var(--header-h); }
+.walk-end { top: 0; bottom: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 80px); align-items: center; }
 .walk-label { display: block; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: rgba(250, 248, 245, .7); margin-bottom: 14px; }
 .walk-visit h2 { color: var(--warm-white); font-size: clamp(32px, 3.4vw, 48px); margin: 0 0 12px; }
 .walk-dl { margin: 22px 0 0; display: grid; gap: 12px; } .walk-dl div { display: grid; grid-template-columns: 96px 1fr; gap: 16px; align-items: start; }
@@ -1669,3 +1669,5 @@ body:has(.header.is-solid) .utility-row { transform: translateY(-100%); }
 @media (max-width: 900px) { .walk-end { grid-template-columns: 1fr; align-content: end; gap: 18px; padding-bottom: 24px; } .walk-map { aspect-ratio: 16 / 10; max-height: 34vh; } .walk-visit h2 { font-size: 30px; } .walk-dl div { grid-template-columns: 80px 1fr; } }
 /* the stage sits under the header while it grows */
 .ct-stage { z-index: 49; }
+
+.walk-canvas { opacity: 0; transition: opacity .25s; } .walk-canvas.ready { opacity: 1; } .walk-fallback { transition: none; }

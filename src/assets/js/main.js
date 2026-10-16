@@ -300,14 +300,15 @@
       const href = a.getAttribute('href'), img = $('img', a), r = a.getBoundingClientRect();
       if (reduced) { go(href); return; }
       stage.innerHTML = ''; const pic = img.cloneNode(); pic.removeAttribute('loading'); stage.appendChild(pic);
+      const shade = document.createElement('div'); shade.className = 'walk-shade'; stage.appendChild(shade); gsap.set(shade, { opacity: 0 });
       const headH = $('.header')?.getBoundingClientRect().bottom || 76;
       gsap.set(stage, { left: r.left, top: r.top, width: r.width, height: r.height }); gsap.set(pic, { scale: 1, transformOrigin: '50% 50%' });
       stage.classList.add('on'); lenis?.stop();
       $('.header')?.classList.remove('is-hidden');
       gsap.timeline({ onComplete: () => go(href) })
         .to(stage, { left: 0, top: headH, width: window.innerWidth, height: window.innerHeight - headH, duration: 1.1, ease: 'expo.inOut' }, 0)
-        .to(pic, { scale: 1.06, duration: 1.1, ease: 'expo.inOut' }, 0)
-        .to({}, { duration: .15 });
+        .to(shade, { opacity: 1, duration: .55, ease: 'power1.out' }, .55)
+        .to({}, { duration: .1 });
     };
     $$('[data-expand]').forEach((a) => a.addEventListener('click', (e) => { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); e.stopPropagation(); open(a); }, true));
     $$('[data-expand-link]').forEach((l) => l.addEventListener('click', (e) => { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); e.stopPropagation(); open($(`[data-expand="${l.dataset.expandLink}"]`)); }, true));
@@ -321,19 +322,21 @@
     const n = +sec.dataset.frames, small = window.innerWidth <= 900, pattern = small ? sec.dataset.srcSm : sec.dataset.src;
     const src = (i) => pattern.replace('%03d', String(i + 1).padStart(3, '0'));
     const frames = []; let loaded = 0, ctx = canvas.getContext('2d'), cur = -1;
-    const fit = () => { const dpr = Math.min(devicePixelRatio || 1, 1.5); canvas.width = sec.clientWidth * dpr; canvas.height = innerHeight * dpr; draw(Math.max(cur, 0)); };
-    const draw = (i) => { const im = frames[i]; if (!im || !im.complete || !im.naturalWidth) return; cur = i; const cw = canvas.width, ch = canvas.height, s = Math.max(cw / im.naturalWidth, ch / im.naturalHeight), w = im.naturalWidth * s, h = im.naturalHeight * s; ctx.clearRect(0, 0, cw, ch); ctx.drawImage(im, (cw - w) / 2, (ch - h) / 2, w, h); fallback.style.opacity = 0; };
+    const pin = $('.walk-pin', sec);
+    const fit = () => { const dpr = Math.min(devicePixelRatio || 1, 1.5); canvas.width = pin.clientWidth * dpr; canvas.height = pin.clientHeight * dpr; draw(Math.max(cur, 0)); };
+    const draw = (i) => { const im = frames[i]; if (!im || !im.complete || !im.naturalWidth) return; cur = i; const cw = canvas.width, ch = canvas.height, s = Math.max(cw / im.naturalWidth, ch / im.naturalHeight), w = im.naturalWidth * s, h = im.naturalHeight * s; ctx.clearRect(0, 0, cw, ch); ctx.drawImage(im, (cw - w) / 2, (ch - h) / 2, w, h); canvas.classList.add('ready'); };
     for (let i = 0; i < n; i++) { const im = new Image(); im.src = src(i); im.onload = () => { loaded++; if (i === 0) fit(); }; frames.push(im); }
     window.addEventListener('resize', fit);
     if (reduced) { gsap.set(end, { opacity: 1 }); return; }
     gsap.set(end, { opacity: 0, y: 24, pointerEvents: 'none' });
-    gsap.timeline({ scrollTrigger: { trigger: sec, start: 'top top', end: 'bottom bottom', scrub: .6, onUpdate: (st) => { const i = Math.min(n - 1, Math.round(st.progress * (n - 1))); if (i !== cur) draw(i); } } })
+    const headH = () => ($('.header')?.getBoundingClientRect().bottom || 76);
+    gsap.timeline({ scrollTrigger: { trigger: sec, start: () => 'top ' + headH() + 'px', end: 'bottom bottom', scrub: .6, onUpdate: (st) => { const i = Math.min(n - 1, Math.round(st.progress * (n - 1))); if (i !== cur) draw(i); } } })
       .to(start, { opacity: 0, y: -30, duration: .28, ease: 'power2.in' }, .05)
       .set(start, { pointerEvents: 'none' })
       .to(end, { opacity: 1, y: 0, pointerEvents: 'auto', duration: .25, ease: 'power2.out', onStart: () => sec.classList.add('is-end'), onReverseComplete: () => sec.classList.remove('is-end') }, .72);
     // arriving from the contact card: the shopfront settles from the zoom the card ended on
     let fromCard = false; try { fromCard = sessionStorage.getItem('ew-walkin') === '1'; sessionStorage.removeItem('ew-walkin'); } catch {}
-    if (fromCard) { gsap.fromTo([canvas, fallback], { scale: 1.06 }, { scale: 1, duration: 2.2, ease: 'power2.out' }); gsap.fromTo(start.children, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .9, stagger: .08, ease: 'power3.out', delay: .25 }); }
+    if (fromCard) gsap.fromTo(start.children, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .9, stagger: .08, ease: 'power3.out', delay: .2 });
   }
 
   /* ---------- Locations map: Singapore zooms into Orchard Road once; tap a pin and its card (photos + details) opens in the empty corner ---------- */

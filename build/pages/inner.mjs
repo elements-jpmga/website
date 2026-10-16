@@ -439,7 +439,7 @@ export function outletPage(o) {
   const walkIn = o.id === '313' ? `<section class="walk" data-walk data-frames="60" data-src="/assets/img/313-walk/f%03d.jpg" data-src-sm="/assets/img/313-walk-sm/f%03d.jpg">
     <div class="walk-pin">
       <canvas class="walk-canvas" width="1440" height="810" aria-hidden="true"></canvas>
-      <img class="walk-fallback" src="/assets/img/313-walk/f001.jpg" alt="Elements Wellness 313@somerset">
+      <img class="walk-fallback" src="/assets/img/313-walk/f001.jpg" alt="Elements Wellness 313@somerset" fetchpriority="high">
       <div class="walk-shade" aria-hidden="true"></div>
       <div class="wrap walk-start" data-walk-start>
         ${crumbs(trail)}
@@ -509,7 +509,7 @@ export function contactPage() {
   const old = oldPage('/contact-us/');
   const intro = old.blocks.find((b) => b.t === 'html' && /To make a booking/.test(b.html))?.html.replace('/make-an-appointment-form/', '/book-appointment/') || '';
   const contactLine = old.blocks.find((b) => b.t === 'html' && /partnership/.test(b.html))?.html || '';
-  const video = { '313': { first: '/assets/img/313-walk-first.jpg' } }; // the 313 card shows the walk-in's first frame; the walk itself plays on the 313 page as you scroll
+  const video = { '313': { first: '/assets/img/313-walk/f001.jpg' } }; // the 313 card shows the walk-in's first frame; the walk itself plays on the 313 page as you scroll
   const cards = contactOutlets().map(({ o, img, list, hours }) => {
     const [addr, tel, wa, mail] = list; const v = video[o.id];
     return `<article class="ct-card" data-reveal>
