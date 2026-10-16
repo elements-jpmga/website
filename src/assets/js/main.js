@@ -310,16 +310,22 @@
         skip.addEventListener('click', () => go(href));
         vid.addEventListener('ended', () => go(href));
       }
+      // the card's picture grows to the whole screen while zooming in; the video fades in on top at the same frame
       gsap.set(stage, { left: r.left, top: r.top, width: r.width, height: r.height });
+      gsap.set(pic, { scale: 1, transformOrigin: '50% 50%' });
       stage.classList.add('on'); lenis?.stop();
       const tl = gsap.timeline();
-      tl.to(stage, { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight, duration: 1, ease: 'expo.inOut' });
+      tl.to(stage, { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight, duration: 1.1, ease: 'expo.inOut' }, 0)
+        .to(pic, { scale: 1.18, duration: 1.1, ease: 'expo.inOut' }, 0);
       if (vid) {
-        tl.to(vid, { opacity: 1, duration: .5, ease: 'power2.out', onStart: () => { vid.play().catch(() => go(href)); } }, '-=.45')
-          .to(skip, { opacity: 1, duration: .4 }, '+=.6');
-        setTimeout(() => go(href), 9000); // safety: never strand the visitor
+        vid.addEventListener('canplay', () => { gsap.set(vid, { scale: 1.18, transformOrigin: '50% 50%' }); }, { once: true });
+        tl.add(() => { vid.play().catch(() => go(href)); }, .55)
+          .to(vid, { opacity: 1, duration: .45, ease: 'power2.out' }, .6)
+          .to([pic, vid], { scale: 1, duration: .9, ease: 'power2.out' }, 1.1)
+          .to(skip, { opacity: 1, duration: .4 }, 1.9);
+        setTimeout(() => go(href), 9500); // safety: never strand the visitor
       } else {
-        tl.to(pic, { scale: 1.08, duration: .6, ease: 'power2.in' }, '-=.15').add(() => go(href));
+        tl.add(() => go(href));
       }
     };
     $$('[data-expand]').forEach((a) => a.addEventListener('click', (e) => { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); e.stopPropagation(); open(a); }, true));

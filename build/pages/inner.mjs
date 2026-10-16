@@ -485,7 +485,7 @@ export function contactPage() {
   const cards = contactOutlets().map(({ o, img, list, hours }) => {
     const [addr, tel, wa, mail] = list; const v = video[o.id];
     return `<article class="ct-card" data-reveal>
-      <a class="ct-media" href="${o.url}" data-expand="${o.id}" ${v ? `data-video="${v.src}" data-video-sm="${v.small}" data-first="${v.first}"` : ''} aria-label="${esc(o.name)}"><img src="${img}" alt="Elements Wellness ${esc(o.name)}" loading="lazy"></a>
+      <a class="ct-media" href="${o.url}" data-expand="${o.id}" ${v ? `data-video="${v.src}" data-video-sm="${v.small}" data-first="${v.first}"` : ''} aria-label="${esc(o.name)}"><img src="${v ? v.first : img}" alt="Elements Wellness ${esc(o.name)}" loading="lazy"></a>
       <h2 class="ct-name"><a href="${o.url}" data-expand-link="${o.id}">${esc(o.name)}</a></h2>
       <ul class="ct-list">
         <li>${icon.mappin}<span>${esc(addr || '')}</span></li>
