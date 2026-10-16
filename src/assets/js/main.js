@@ -29,7 +29,7 @@
   sessionStorage.setItem('ew-seen', '1');
   const enterPage = (onDone) => {
     let walkin = false; try { walkin = sessionStorage.getItem('ew-walkin') === '1'; sessionStorage.removeItem('ew-walkin'); } catch {}
-    if (walkin && !isHome) { if (loader) loader.style.display = 'none'; if (curtain) gsap.set(curtain, { visibility: 'hidden', opacity: 0 }); const w = document.querySelector('[data-walkin] img'), wc = document.querySelector('.outlet-walkin-copy'); if (w && !reduced) { gsap.fromTo(w, { scale: 1.12 }, { scale: 1, duration: 1.8, ease: 'power3.out' }); if (wc) gsap.fromTo(wc.children, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 1, stagger: .08, ease: 'power3.out', delay: .5 }); } onDone(); return; }
+    if (walkin && !isHome) { if (loader) loader.style.display = 'none'; if (curtain) gsap.set(curtain, { visibility: 'hidden', opacity: 0 }); try { sessionStorage.setItem('ew-walkin', '1'); } catch {} onDone(); return; }
     if (reduced || !loader || !isHome) {
       if (loader) loader.style.display = 'none';
       if (curtain && !reduced) { gsap.set(curtain, { opacity: 1, visibility: 'visible' }); gsap.to(curtain, { opacity: 0, duration: .6, ease: 'power2.out', onComplete: () => gsap.set(curtain, { visibility: 'hidden' }) }); }
@@ -289,13 +289,9 @@
     });
   }
 
-  /* ---------- Contact: a card's photo expands to fill the screen, then opens the outlet page.
-     313@somerset plays its walk-in video while it expands and opens the page when the video ends. ---------- */
+  /* ---------- Contact: a card's photo zooms in and expands to the whole screen, then the outlet page opens on that same picture ---------- */
   function contactExpand() {
     const stage = $('[data-ct-stage]'); if (!stage) return;
-    const small = window.matchMedia('(max-width: 900px)').matches;
-    // warm the video so it starts at once
-    $$('[data-video]').forEach((a) => { const l = document.createElement('link'); l.rel = 'preload'; l.as = 'video'; l.href = small ? a.dataset.videoSm : a.dataset.video; document.head.appendChild(l); });
     let busy = false;
     const go = (href) => { try { sessionStorage.setItem('ew-walkin', '1'); } catch {} window.location.href = href; };
     const open = (a) => {
@@ -303,35 +299,37 @@
       const href = a.getAttribute('href'), img = $('img', a), r = a.getBoundingClientRect();
       if (reduced) { go(href); return; }
       stage.innerHTML = ''; const pic = img.cloneNode(); pic.removeAttribute('loading'); stage.appendChild(pic);
-      let vid = null, skip = null;
-      if (a.dataset.video) {
-        vid = document.createElement('video'); vid.muted = true; vid.playsInline = true; vid.preload = 'auto'; vid.src = small ? a.dataset.videoSm : a.dataset.video; vid.poster = a.dataset.first; stage.appendChild(vid);
-        skip = document.createElement('button'); skip.type = 'button'; skip.className = 'ct-skip'; skip.textContent = '→'; skip.setAttribute('aria-label', 'Continue'); stage.appendChild(skip);
-        skip.addEventListener('click', () => go(href));
-        vid.addEventListener('ended', () => go(href));
-      }
-      // the card's picture grows to the whole screen while zooming in; the video fades in on top at the same frame
-      gsap.set(stage, { left: r.left, top: r.top, width: r.width, height: r.height });
-      gsap.set(pic, { scale: 1, transformOrigin: '50% 50%' });
+      gsap.set(stage, { left: r.left, top: r.top, width: r.width, height: r.height }); gsap.set(pic, { scale: 1, transformOrigin: '50% 50%' });
       stage.classList.add('on'); lenis?.stop();
-      const tl = gsap.timeline();
-      tl.to(stage, { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight, duration: 1.1, ease: 'expo.inOut' }, 0)
-        .to(pic, { scale: 1.18, duration: 1.1, ease: 'expo.inOut' }, 0);
-      if (vid) {
-        vid.addEventListener('canplay', () => { gsap.set(vid, { scale: 1.18, transformOrigin: '50% 50%' }); }, { once: true });
-        tl.add(() => { vid.play().catch(() => go(href)); }, .55)
-          .to(vid, { opacity: 1, duration: .45, ease: 'power2.out' }, .6)
-          .to([pic, vid], { scale: 1, duration: .9, ease: 'power2.out' }, 1.1)
-          .to(skip, { opacity: 1, duration: .4 }, 1.9);
-        // the video is the transition: hand over to the page while the walk-in is still moving (its last second plays on the page's hero)
-        setTimeout(() => go(href), 4600);
-      } else {
-        tl.add(() => go(href));
-      }
+      gsap.timeline({ onComplete: () => go(href) })
+        .to(stage, { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight, duration: 1.05, ease: 'expo.inOut' }, 0)
+        .to(pic, { scale: 1.12, duration: 1.05, ease: 'expo.inOut' }, 0);
     };
     $$('[data-expand]').forEach((a) => a.addEventListener('click', (e) => { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); e.stopPropagation(); open(a); }, true));
     $$('[data-expand-link]').forEach((l) => l.addEventListener('click', (e) => { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); e.stopPropagation(); open($(`[data-expand="${l.dataset.expandLink}"]`)); }, true));
     window.addEventListener('pageshow', (e) => { if (e.persisted) { stage.classList.remove('on'); stage.innerHTML = ''; busy = false; lenis?.start(); } });
+  }
+
+  /* ---------- 313 walk-in: the frames play with the scroll; the shopfront copy fades out, the treatments fade in over the reception ---------- */
+  function walkIn() {
+    const sec = $('[data-walk]'); if (!sec) return;
+    const canvas = $('.walk-canvas', sec), fallback = $('.walk-fallback', sec), start = $('[data-walk-start]', sec), end = $('[data-walk-end]', sec);
+    const n = +sec.dataset.frames, small = window.innerWidth <= 900, pattern = small ? sec.dataset.srcSm : sec.dataset.src;
+    const src = (i) => pattern.replace('%03d', String(i + 1).padStart(3, '0'));
+    const frames = []; let loaded = 0, ctx = canvas.getContext('2d'), cur = -1;
+    const fit = () => { const dpr = Math.min(devicePixelRatio || 1, 1.5); canvas.width = sec.clientWidth * dpr; canvas.height = innerHeight * dpr; draw(Math.max(cur, 0)); };
+    const draw = (i) => { const im = frames[i]; if (!im || !im.complete || !im.naturalWidth) return; cur = i; const cw = canvas.width, ch = canvas.height, s = Math.max(cw / im.naturalWidth, ch / im.naturalHeight), w = im.naturalWidth * s, h = im.naturalHeight * s; ctx.clearRect(0, 0, cw, ch); ctx.drawImage(im, (cw - w) / 2, (ch - h) / 2, w, h); fallback.style.opacity = 0; };
+    for (let i = 0; i < n; i++) { const im = new Image(); im.src = src(i); im.onload = () => { loaded++; if (i === 0) fit(); }; frames.push(im); }
+    window.addEventListener('resize', fit);
+    if (reduced) { gsap.set(end, { opacity: 1 }); return; }
+    gsap.set(end, { opacity: 0, y: 24, pointerEvents: 'none' });
+    gsap.timeline({ scrollTrigger: { trigger: sec, start: 'top top', end: 'bottom bottom', scrub: .6, onUpdate: (st) => { const i = Math.min(n - 1, Math.round(st.progress * (n - 1))); if (i !== cur) draw(i); } } })
+      .to(start, { opacity: 0, y: -30, duration: .28, ease: 'power2.in' }, .05)
+      .set(start, { pointerEvents: 'none' })
+      .to(end, { opacity: 1, y: 0, pointerEvents: 'auto', duration: .25, ease: 'power2.out' }, .72);
+    // arriving from the contact card: the shopfront settles from the zoom the card ended on
+    let fromCard = false; try { fromCard = sessionStorage.getItem('ew-walkin') === '1'; sessionStorage.removeItem('ew-walkin'); } catch {}
+    if (fromCard) gsap.fromTo(canvas, { scale: 1.12 }, { scale: 1, duration: 1.4, ease: 'power3.out' });
   }
 
   /* ---------- Locations map: Singapore zooms into Orchard Road once; tap a pin and its card (photos + details) opens in the empty corner ---------- */
@@ -527,7 +525,7 @@
     const w = $('[data-rv-write]'); if (w && d.places[0]?.writeReviewUrl) w.href = d.places[0].writeReviewUrl;
     const up = $('[data-rv-updated]'); if (up) up.textContent = 'Live from Google · updated ' + new Date(d.snapshotDate).toLocaleDateString('en-SG', { day: 'numeric', month: 'short', year: 'numeric' });
   }
-  const boot = () => { heroSlides(); logoWall(); pathPhotos(); bookCard(); reviewCarousels(); contactExpand(); liveReviews(); reveals(); rise(); mapLocations(); steps(); concerns(); carousel(); sigTiles(); revealCards(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
+  const boot = () => { heroSlides(); logoWall(); pathPhotos(); bookCard(); reviewCarousels(); contactExpand(); walkIn(); liveReviews(); reveals(); rise(); mapLocations(); steps(); concerns(); carousel(); sigTiles(); revealCards(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
   (document.fonts?.ready || Promise.resolve()).then(() => enterPage(() => { steamHero(); boot(); }));
   window.addEventListener('load', () => ScrollTrigger.refresh());
 })();

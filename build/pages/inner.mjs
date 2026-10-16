@@ -435,21 +435,29 @@ export function outletPage(o) {
   const others = outlets.filter((x) => x.id !== o.id);
   const tel = o.phone.replace(/\s/g, ''), wa = o.whatsapp.replace(/\s/g, '');
   const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent('Elements Wellness ' + o.mapQuery)}`;
-  // 313: the page opens on the walk-in video's last frame, with the outlet's details (old site) laid over it
-  const walkIn = o.id === '313' ? `<section class="outlet-walkin" data-walkin>
-    <img src="/assets/img/313-walk-last.jpg" alt="Elements Wellness 313@somerset">
-    <div class="wrap outlet-walkin-copy">
-      ${crumbs(trail)}
-      <h1 data-split>${esc(o.name)}</h1>
-      <p class="outlet-walkin-addr">${o.address}</p>
-      <p class="outlet-walkin-meta"><a href="tel:+65${tel}">${esc(o.phone)}</a> · <a href="https://wa.me/65${wa}" target="_blank" rel="noopener">WhatsApp ${esc(o.whatsapp)}</a> · <a href="mailto:${o.email}">${esc(o.email)}</a></p>
-      <p class="outlet-walkin-meta">${o.hours.map(([d, h]) => `${esc(d)}: ${esc(h)}`).join('<br>')}</p>
-      <div class="hero-actions" style="justify-content:flex-start;margin-top:26px">${btn(`/book-appointment/?outlet=${o.id}`, 'Book Now', 'btn-light')}${btn(mapsUrl, 'Directions', 'btn-ghost-light', 'target="_blank" rel="noopener"')}</div>
+  // 313: the walk-in plays with the scroll — frame by frame — from the shopfront (name, address, hours over it) into the reception (the 313-only treatments over the final scene)
+  const walkIn = o.id === '313' ? `<section class="walk" data-walk data-frames="60" data-src="/assets/img/313-walk/f%03d.jpg" data-src-sm="/assets/img/313-walk-sm/f%03d.jpg">
+    <div class="walk-pin">
+      <canvas class="walk-canvas" width="1440" height="810" aria-hidden="true"></canvas>
+      <img class="walk-fallback" src="/assets/img/313-walk/f001.jpg" alt="Elements Wellness 313@somerset">
+      <div class="walk-shade" aria-hidden="true"></div>
+      <div class="wrap walk-start" data-walk-start>
+        ${crumbs(trail)}
+        <h1 data-split>${esc(o.name)}</h1>
+        <p class="outlet-walkin-addr">${o.address}</p>
+        <p class="outlet-walkin-meta"><a href="tel:+65${tel}">${esc(o.phone)}</a> · <a href="https://wa.me/65${wa}" target="_blank" rel="noopener">WhatsApp ${esc(o.whatsapp)}</a> · <a href="mailto:${o.email}">${esc(o.email)}</a></p>
+        <p class="outlet-walkin-meta">${o.hours.map(([d, h]) => `${esc(d)}: ${esc(h)}`).join('<br>')}</p>
+        <div class="hero-actions" style="justify-content:flex-start;margin-top:26px">${btn(`/book-appointment/?outlet=${o.id}`, 'Book Now', 'btn-light')}${btn(mapsUrl, 'Directions', 'btn-ghost-light', 'target="_blank" rel="noopener"')}</div>
+        <span class="walk-cue" aria-hidden="true">Scroll</span>
+      </div>
+      <div class="wrap walk-end" data-walk-end>
+        ${exclusive.length ? `<div class="walk-cards">${exclusive.map((s) => `<a class="walk-card" href="${s.url}"><span class="walk-card-name">${esc(s.name)}</span>${[s.duration, s.price ? `${s.priceNote === 'Per couple' ? 'Per couple ' : ''}${s.price}` : ''].filter(Boolean).length ? `<span class="walk-card-meta">${[s.duration, s.price ? `${s.priceNote === 'Per couple' ? 'Per couple ' : ''}${s.price}` : ''].filter(Boolean).map(esc).join(' · ')}</span>` : ''}<span class="link-arrow">Learn More</span></a>`).join('')}</div>` : ''}
+        <div class="hero-actions" style="justify-content:flex-start;margin-top:24px">${btn(`/book-appointment/?outlet=${o.id}`, 'Book Now', 'btn-light')}</div>
+      </div>
     </div>
   </section>` : '';
   const body = walkIn + (o.id === '313' ? '' : pageHero({ title: esc(o.name), trail,
     extra: `<div class="hero-actions" style="justify-content:flex-start;margin-top:28px" data-reveal>${btn(`/book-appointment/?outlet=${o.id}`, 'Book Now')}${btn(`https://wa.me/65${wa}`, 'WhatsApp ' + o.whatsapp, 'btn-ghost', 'target="_blank" rel="noopener"')}</div>` })) + `
-${o.id === '313' && exclusive.length ? `<section class="section-sm"><div class="wrap"><div class="svc-list">${exclusive.map((s) => serviceCard(s)).join('')}</div></div></section>` : ''}
 <section class="section-sm" style="padding-top:0"><div class="wrap outlet-find">
   <div class="outlet-info" data-reveal>
     <div><small>Address</small><p>${o.address}</p></div>
@@ -493,11 +501,11 @@ export function contactPage() {
   const old = oldPage('/contact-us/');
   const intro = old.blocks.find((b) => b.t === 'html' && /To make a booking/.test(b.html))?.html.replace('/make-an-appointment-form/', '/book-appointment/') || '';
   const contactLine = old.blocks.find((b) => b.t === 'html' && /partnership/.test(b.html))?.html || '';
-  const video = { '313': { src: '/assets/video/313-walkthrough.mp4', small: '/assets/video/313-walkthrough-sm.mp4', first: '/assets/img/313-walk-first.jpg' } };
+  const video = { '313': { first: '/assets/img/313-walk-first.jpg' } }; // the 313 card shows the walk-in's first frame; the walk itself plays on the 313 page as you scroll
   const cards = contactOutlets().map(({ o, img, list, hours }) => {
     const [addr, tel, wa, mail] = list; const v = video[o.id];
     return `<article class="ct-card" data-reveal>
-      <a class="ct-media" href="${o.url}" data-expand="${o.id}" ${v ? `data-video="${v.src}" data-video-sm="${v.small}" data-first="${v.first}"` : ''} aria-label="${esc(o.name)}"><img src="${v ? v.first : img}" alt="Elements Wellness ${esc(o.name)}" loading="lazy"></a>
+      <a class="ct-media" href="${o.url}" data-expand="${o.id}" aria-label="${esc(o.name)}"><img src="${v ? v.first : img}" alt="Elements Wellness ${esc(o.name)}" loading="lazy"></a>
       <h2 class="ct-name"><a href="${o.url}" data-expand-link="${o.id}">${esc(o.name)}</a></h2>
       <ul class="ct-list">
         <li>${icon.mappin}<span>${esc(addr || '')}</span></li>
