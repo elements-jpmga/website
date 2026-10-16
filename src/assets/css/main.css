@@ -1611,3 +1611,27 @@ body:has(.header.is-solid) .utility-row { transform: translateY(-100%); }
 
 :root { --banner-h: 0px; }
 .utility-row { display: none; }
+
+/* ================= Contact: three outlets; a card opens its outlet with the photo expanding (313 plays its walk-in) ================= */
+.ct-h { font-size: clamp(28px, 2.6vw, 40px); margin: 0 0 10px; }
+.ct-intro { margin-bottom: 30px; } .ct-intro a { color: var(--dark-red); }
+.ct-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.ct-card { display: flex; flex-direction: column; gap: 14px; }
+.ct-media { display: block; position: relative; aspect-ratio: 600 / 350; overflow: hidden; background: var(--tint); cursor: pointer; }
+.ct-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); } .ct-media:hover img { transform: scale(1.04); }
+.ct-name { font-size: clamp(26px, 2.3vw, 36px); margin: 8px 0 0; } .ct-name a { color: var(--primary-dark); } .ct-name a:hover { color: var(--dark-red); }
+.ct-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; font-size: 16px; }
+.ct-list li { display: flex; align-items: center; gap: 12px; } .ct-list svg { width: 18px; height: 18px; flex: none; color: var(--primary-dark); } .ct-list a { color: var(--primary-dark); } .ct-list a:hover { color: var(--dark-red); }
+.ct-hours { font-size: 14px; color: var(--muted-c); line-height: 1.6; } .ct-hours p { margin: 0; }
+.ct-form-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: clamp(28px, 5vw, 72px); align-items: start; }
+/* the expanding stage */
+.ct-stage { position: fixed; z-index: 120; overflow: hidden; background: #000; display: none; pointer-events: none; }
+.ct-stage.on { display: block; pointer-events: auto; }
+.ct-stage img, .ct-stage video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ct-stage video { opacity: 0; }
+.ct-skip { position: absolute; right: 22px; bottom: 22px; z-index: 2; height: 40px; padding: 0 18px; background: rgba(250, 248, 245, .9); color: var(--primary-dark); font: 500 13.5px var(--f-text); border: 0; cursor: pointer; opacity: 0; }
+/* 313 outlet page opens on the walk-in's last frame */
+.outlet-walkin { height: min(78vh, 760px); overflow: hidden; margin-top: calc(var(--header-h)); background: #111; }
+.outlet-walkin img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.outlet-walkin + .page-hero { padding-top: clamp(32px, 4vw, 56px); }
+@media (max-width: 900px) { .ct-grid, .ct-form-wrap { grid-template-columns: 1fr; } .outlet-walkin { height: 56vh; } }

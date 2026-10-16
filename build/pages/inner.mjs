@@ -435,7 +435,8 @@ export function outletPage(o) {
   const others = outlets.filter((x) => x.id !== o.id);
   const tel = o.phone.replace(/\s/g, ''), wa = o.whatsapp.replace(/\s/g, '');
   const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent('Elements Wellness ' + o.mapQuery)}`;
-  const body = pageHero({ title: esc(o.name), trail,
+  const walkIn = o.id === '313' ? `<section class="outlet-walkin" data-walkin><img src="/assets/img/313-walk-last.jpg" alt="Elements Wellness 313@somerset"></section>` : '';
+  const body = walkIn + pageHero({ title: esc(o.name), trail,
     extra: `<div class="hero-actions" style="justify-content:flex-start;margin-top:28px" data-reveal>${btn(`/book-appointment/?outlet=${o.id}`, 'Book Now')}${btn(`https://wa.me/65${wa}`, 'WhatsApp ' + o.whatsapp, 'btn-ghost', 'target="_blank" rel="noopener"')}</div>` }) + `
 <section class="section-sm" style="padding-top:0"><div class="wrap outlet-find">
   <div class="outlet-info" data-reveal>
@@ -467,8 +468,46 @@ const contactForm = `<form class="form cf-form" data-demo>
     <div class="field"><label for="c-msg">Message</label><textarea id="c-msg" required></textarea></div>
     <button class="btn" type="submit"><span>Send</span></button>
   </form>`;
+// Contact: the old page's content — Locations line, the three outlets (photo, address, phone, WhatsApp, email, hours),
+// then "Contact Us" with its line and form. A card opens its outlet page with the photo expanding to fill the screen;
+// 313@somerset plays the walk-in video (supplied by the user) as it expands.
+const contactOutlets = () => {
+  const old = oldPage('/contact-us/'); const bl = old.blocks; const out = [];
+  bl.forEach((b, i) => { if (b.t === 'heading' && outlets.some((o) => o.name === b.text)) { const o = outlets.find((x) => x.name === b.text); const imgB = [...bl.slice(0, i)].reverse().find((x) => x.t === 'image' && x.w >= 400); const list = bl[i + 1]?.t === 'list' ? bl[i + 1].items : []; const hours = bl[i + 2]?.t === 'html' ? bl[i + 2].html : ''; out.push({ o, img: imgB?.src, list, hours }); } });
+  return out;
+};
 export function contactPage() {
-  return oldView({ path: '/contact/', source: '/contact-us/', title: 'Contact Us', form: contactForm, metaTitle: 'Contact Elements Wellness — ION Orchard, 313@somerset, The Centrepoint', description: 'Contact Elements Wellness: addresses, phone, WhatsApp and opening hours for our ION Orchard, 313@somerset and The Centrepoint spas.' });
+  const trail = [['Home', '/'], ['Contact Us']];
+  const old = oldPage('/contact-us/');
+  const intro = old.blocks.find((b) => b.t === 'html' && /To make a booking/.test(b.html))?.html.replace('/make-an-appointment-form/', '/book-appointment/') || '';
+  const contactLine = old.blocks.find((b) => b.t === 'html' && /partnership/.test(b.html))?.html || '';
+  const video = { '313': { src: '/assets/video/313-walkthrough.mp4', small: '/assets/video/313-walkthrough-sm.mp4', first: '/assets/img/313-walk-first.jpg' } };
+  const cards = contactOutlets().map(({ o, img, list, hours }) => {
+    const [addr, tel, wa, mail] = list; const v = video[o.id];
+    return `<article class="ct-card" data-reveal>
+      <a class="ct-media" href="${o.url}" data-expand="${o.id}" ${v ? `data-video="${v.src}" data-video-sm="${v.small}" data-first="${v.first}"` : ''} aria-label="${esc(o.name)}"><img src="${img}" alt="Elements Wellness ${esc(o.name)}" loading="lazy"></a>
+      <h2 class="ct-name"><a href="${o.url}" data-expand-link="${o.id}">${esc(o.name)}</a></h2>
+      <ul class="ct-list">
+        <li>${icon.mappin}<span>${esc(addr || '')}</span></li>
+        <li>${icon.phone}<a href="tel:+65${(tel || '').replace(/\s/g, '')}">${esc(tel || '')}</a></li>
+        <li>${icon.wa}<a href="https://wa.me/65${(wa || '').replace(/\s/g, '')}" target="_blank" rel="noopener">${esc(wa || '')}</a></li>
+        <li>${icon.mail}<a href="mailto:${esc(mail || '')}">${esc(mail || '')}</a></li>
+      </ul>
+      <div class="ct-hours">${hours}</div>
+    </article>`;
+  }).join('');
+  const body = pageHero({ title: 'Contact Us', trail }) + `
+<section class="section-sm" style="padding-top:0"><div class="wrap">
+  <h2 class="ct-h">Locations</h2>
+  <div class="ct-intro prose">${intro}</div>
+  <div class="ct-grid">${cards}</div>
+</div></section>
+<section class="section-sm bg-sand"><div class="wrap ct-form-wrap">
+  <div><h2 class="ct-h">Contact Us</h2><div class="prose">${contactLine}</div></div>
+  <div>${contactForm}</div>
+</div></section>
+<div class="ct-stage" data-ct-stage aria-hidden="true"></div>`;
+  return { path: '/contact/', html: layout({ title: 'Contact Elements Wellness — ION Orchard, 313@somerset, The Centrepoint', description: old.description || 'Contact Elements Wellness.', path: '/contact/', bodyClass: 'page-light page-contact', schema: [bc(trail)], body }) };
 }
 
 export function bookPage(path = '/book-appointment/') {

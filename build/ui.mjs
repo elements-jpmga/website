@@ -20,6 +20,9 @@ export const icon = {
   leaf: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 38C10 20 22 10 40 8c-1 18-10 30-28 30Z"/><path d="M10 38 28 20"/></svg>',
   award: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="24" cy="19" r="11"/><path d="m17 28-3 14 10-5 10 5-3-14"/><path d="m24 13 1.8 3.7 4 .6-2.9 2.8.7 4-3.6-1.9-3.6 1.9.7-4-2.9-2.8 4-.6L24 13Z"/></svg>',
   hands: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 30c4-2 8-2 12 0l8 4c2 1 2 4-1 4h-8"/><path d="M8 26v14M40 22c-3-6-10-9-16-6"/><circle cx="30" cy="12" r="5"/></svg>',
+  phone: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1z"/></svg>',
+  mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3.5 6 8.5 7 8.5-7"/></svg>',
+  mappin: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>',
   pin: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M24 44S10 30 10 19a14 14 0 1 1 28 0c0 11-14 25-14 25Z"/><circle cx="24" cy="19" r="5"/></svg>',
   wave: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 18c5-5 9-5 13 0s8 5 13 0 9-5 14 0M4 28c5-5 9-5 13 0s8 5 13 0 9-5 14 0M4 38c5-5 9-5 13 0s8 5 13 0 9-5 14 0"/></svg>',
 };

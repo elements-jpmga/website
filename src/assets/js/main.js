@@ -28,6 +28,8 @@
   const firstVisit = !sessionStorage.getItem('ew-seen');
   sessionStorage.setItem('ew-seen', '1');
   const enterPage = (onDone) => {
+    let walkin = false; try { walkin = sessionStorage.getItem('ew-walkin') === '1'; sessionStorage.removeItem('ew-walkin'); } catch {}
+    if (walkin && !isHome) { if (loader) loader.style.display = 'none'; if (curtain) gsap.set(curtain, { visibility: 'hidden', opacity: 0 }); const w = document.querySelector('[data-walkin] img'); if (w && !reduced) gsap.fromTo(w, { scale: 1.04 }, { scale: 1, duration: 1.6, ease: 'power2.out' }); onDone(); return; }
     if (reduced || !loader || !isHome) {
       if (loader) loader.style.display = 'none';
       if (curtain && !reduced) { gsap.set(curtain, { opacity: 1, visibility: 'visible' }); gsap.to(curtain, { opacity: 0, duration: .6, ease: 'power2.out', onComplete: () => gsap.set(curtain, { visibility: 'hidden' }) }); }
@@ -287,6 +289,44 @@
     });
   }
 
+  /* ---------- Contact: a card's photo expands to fill the screen, then opens the outlet page.
+     313@somerset plays its walk-in video while it expands and opens the page when the video ends. ---------- */
+  function contactExpand() {
+    const stage = $('[data-ct-stage]'); if (!stage) return;
+    const small = window.matchMedia('(max-width: 900px)').matches;
+    // warm the video so it starts at once
+    $$('[data-video]').forEach((a) => { const l = document.createElement('link'); l.rel = 'preload'; l.as = 'video'; l.href = small ? a.dataset.videoSm : a.dataset.video; document.head.appendChild(l); });
+    let busy = false;
+    const go = (href) => { try { sessionStorage.setItem('ew-walkin', '1'); } catch {} window.location.href = href; };
+    const open = (a) => {
+      if (busy) return; busy = true;
+      const href = a.getAttribute('href'), img = $('img', a), r = a.getBoundingClientRect();
+      if (reduced) { go(href); return; }
+      stage.innerHTML = ''; const pic = img.cloneNode(); pic.removeAttribute('loading'); stage.appendChild(pic);
+      let vid = null, skip = null;
+      if (a.dataset.video) {
+        vid = document.createElement('video'); vid.muted = true; vid.playsInline = true; vid.preload = 'auto'; vid.src = small ? a.dataset.videoSm : a.dataset.video; vid.poster = a.dataset.first; stage.appendChild(vid);
+        skip = document.createElement('button'); skip.type = 'button'; skip.className = 'ct-skip'; skip.textContent = '→'; skip.setAttribute('aria-label', 'Continue'); stage.appendChild(skip);
+        skip.addEventListener('click', () => go(href));
+        vid.addEventListener('ended', () => go(href));
+      }
+      gsap.set(stage, { left: r.left, top: r.top, width: r.width, height: r.height });
+      stage.classList.add('on'); lenis?.stop();
+      const tl = gsap.timeline();
+      tl.to(stage, { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight, duration: 1, ease: 'expo.inOut' });
+      if (vid) {
+        tl.to(vid, { opacity: 1, duration: .5, ease: 'power2.out', onStart: () => { vid.play().catch(() => go(href)); } }, '-=.45')
+          .to(skip, { opacity: 1, duration: .4 }, '+=.6');
+        setTimeout(() => go(href), 9000); // safety: never strand the visitor
+      } else {
+        tl.to(pic, { scale: 1.08, duration: .6, ease: 'power2.in' }, '-=.15').add(() => go(href));
+      }
+    };
+    $$('[data-expand]').forEach((a) => a.addEventListener('click', (e) => { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); e.stopPropagation(); open(a); }, true));
+    $$('[data-expand-link]').forEach((l) => l.addEventListener('click', (e) => { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); e.stopPropagation(); open($(`[data-expand="${l.dataset.expandLink}"]`)); }, true));
+    window.addEventListener('pageshow', (e) => { if (e.persisted) { stage.classList.remove('on'); stage.innerHTML = ''; busy = false; lenis?.start(); } });
+  }
+
   /* ---------- Locations map: Singapore zooms into Orchard Road once; tap a pin and its card (photos + details) opens in the empty corner ---------- */
   function mapLocations() {
     const sec = $('[data-map]'); if (!sec) return;
@@ -480,7 +520,7 @@
     const w = $('[data-rv-write]'); if (w && d.places[0]?.writeReviewUrl) w.href = d.places[0].writeReviewUrl;
     const up = $('[data-rv-updated]'); if (up) up.textContent = 'Live from Google · updated ' + new Date(d.snapshotDate).toLocaleDateString('en-SG', { day: 'numeric', month: 'short', year: 'numeric' });
   }
-  const boot = () => { heroSlides(); logoWall(); pathPhotos(); bookCard(); reviewCarousels(); liveReviews(); reveals(); rise(); mapLocations(); steps(); concerns(); carousel(); sigTiles(); revealCards(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
+  const boot = () => { heroSlides(); logoWall(); pathPhotos(); bookCard(); reviewCarousels(); contactExpand(); liveReviews(); reveals(); rise(); mapLocations(); steps(); concerns(); carousel(); sigTiles(); revealCards(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
   (document.fonts?.ready || Promise.resolve()).then(() => enterPage(() => { steamHero(); boot(); }));
   window.addEventListener('load', () => ScrollTrigger.refresh());
 })();
