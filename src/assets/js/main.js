@@ -289,7 +289,8 @@
     });
   }
 
-  /* ---------- Contact: a card's photo zooms in and expands to the whole screen, then the outlet page opens on that same picture ---------- */
+  /* ---------- Contact: a card's photo grows to the hero's exact place under the header (not the whole screen),
+     so the outlet page appears already in position; the page then only fades its words in ---------- */
   function contactExpand() {
     const stage = $('[data-ct-stage]'); if (!stage) return;
     let busy = false;
@@ -299,11 +300,14 @@
       const href = a.getAttribute('href'), img = $('img', a), r = a.getBoundingClientRect();
       if (reduced) { go(href); return; }
       stage.innerHTML = ''; const pic = img.cloneNode(); pic.removeAttribute('loading'); stage.appendChild(pic);
+      const headH = $('.header')?.getBoundingClientRect().bottom || 76;
       gsap.set(stage, { left: r.left, top: r.top, width: r.width, height: r.height }); gsap.set(pic, { scale: 1, transformOrigin: '50% 50%' });
       stage.classList.add('on'); lenis?.stop();
+      $('.header')?.classList.remove('is-hidden');
       gsap.timeline({ onComplete: () => go(href) })
-        .to(stage, { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight, duration: 1.05, ease: 'expo.inOut' }, 0)
-        .to(pic, { scale: 1.12, duration: 1.05, ease: 'expo.inOut' }, 0);
+        .to(stage, { left: 0, top: headH, width: window.innerWidth, height: window.innerHeight - headH, duration: 1.1, ease: 'expo.inOut' }, 0)
+        .to(pic, { scale: 1.06, duration: 1.1, ease: 'expo.inOut' }, 0)
+        .to({}, { duration: .15 });
     };
     $$('[data-expand]').forEach((a) => a.addEventListener('click', (e) => { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); e.stopPropagation(); open(a); }, true));
     $$('[data-expand-link]').forEach((l) => l.addEventListener('click', (e) => { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); e.stopPropagation(); open($(`[data-expand="${l.dataset.expandLink}"]`)); }, true));
@@ -329,7 +333,7 @@
       .to(end, { opacity: 1, y: 0, pointerEvents: 'auto', duration: .25, ease: 'power2.out', onStart: () => sec.classList.add('is-end'), onReverseComplete: () => sec.classList.remove('is-end') }, .72);
     // arriving from the contact card: the shopfront settles from the zoom the card ended on
     let fromCard = false; try { fromCard = sessionStorage.getItem('ew-walkin') === '1'; sessionStorage.removeItem('ew-walkin'); } catch {}
-    if (fromCard) gsap.fromTo(canvas, { scale: 1.12 }, { scale: 1, duration: 1.4, ease: 'power3.out' });
+    if (fromCard) { gsap.fromTo([canvas, fallback], { scale: 1.06 }, { scale: 1, duration: 2.2, ease: 'power2.out' }); gsap.fromTo(start.children, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .9, stagger: .08, ease: 'power3.out', delay: .25 }); }
   }
 
   /* ---------- Locations map: Singapore zooms into Orchard Road once; tap a pin and its card (photos + details) opens in the empty corner ---------- */

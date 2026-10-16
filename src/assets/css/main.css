@@ -1667,3 +1667,5 @@ body:has(.header.is-solid) .utility-row { transform: translateY(-100%); }
 .walk-map { aspect-ratio: 4 / 3; max-height: 62vh; background: var(--tint); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .7), 0 0 0 1px rgba(250, 248, 245, .2); overflow: hidden; }
 .walk-map iframe { width: 100%; height: 100%; border: 0; display: block; filter: saturate(.85); }
 @media (max-width: 900px) { .walk-end { grid-template-columns: 1fr; align-content: end; gap: 18px; padding-bottom: 24px; } .walk-map { aspect-ratio: 16 / 10; max-height: 34vh; } .walk-visit h2 { font-size: 30px; } .walk-dl div { grid-template-columns: 80px 1fr; } }
+/* the stage sits under the header while it grows */
+.ct-stage { z-index: 49; }
