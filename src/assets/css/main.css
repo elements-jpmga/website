@@ -1671,3 +1671,5 @@ body:has(.header.is-solid) .utility-row { transform: translateY(-100%); }
 .ct-stage { z-index: 49; }
 
 .walk-canvas { opacity: 0; transition: opacity .25s; } .walk-canvas.ready { opacity: 1; } .walk-fallback { transition: none; }
+/* the moving frames sit above the still first frame (which only shows until the first frame is drawn) */
+.walk-fallback { z-index: 0; } .walk-canvas { z-index: 1; } .walk-shade { z-index: 2; } .walk-start, .walk-end { z-index: 3; }

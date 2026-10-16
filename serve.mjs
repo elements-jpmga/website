@@ -27,6 +27,6 @@ http.createServer((req, res) => {
     file = path.join(file, 'index.html');
   }
   if (!fs.existsSync(file)) { res.writeHead(404, { 'Content-Type': types['.html'] }); return fs.createReadStream(path.join(root, '404.html')).pipe(res); }
-  res.writeHead(200, { 'Content-Type': types[path.extname(file).toLowerCase()] || 'application/octet-stream' });
+  res.writeHead(200, { 'Content-Type': types[path.extname(file).toLowerCase()] || 'application/octet-stream', 'Cache-Control': 'no-cache' }); // preview only: always serve the latest build
   fs.createReadStream(file).pipe(res);
 }).listen(port, () => console.log(`Elements Wellness preview → http://localhost:${port}`));
