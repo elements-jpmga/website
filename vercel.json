@@ -695,12 +695,22 @@
     },
     {
       "source": "/health-analysis/",
-      "destination": "/elements-restore/",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/health-analysis",
-      "destination": "/elements-restore/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/elements-restore/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/elements-restore",
+      "destination": "/",
       "permanent": true
     },
     {

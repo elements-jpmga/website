@@ -132,7 +132,6 @@ export const products = {
 
 export const supportPages = [
   { label: 'Home', url: '/', copy: 'adapt', note: 'Sections now follow the sitemap: treatments, Elements Restore, Products, Gift Vouchers, Why Elements, outlets, first visit, offers, awards.' },
-  { label: 'Elements Restore', url: '/elements-restore/', copy: 'new', note: 'Draft written from the Elements Restore build spec and report wording — needs Elements approval. Launch planned for November.' },
   { label: 'Gift Vouchers', url: '/gift-vouchers/', source: '/gift-vouchers/', copy: 'adapt', note: 'Needs voucher options, purchase, redemption, terms and FAQs on one page; Gift Up connection later.' },
   { label: 'Promotions', url: '/promotions/', source: '/promotions/', copy: 'existing' },
   { label: 'Locations overview', url: '/locations/', copy: 'new', note: 'Built from outlet details; short intro needed.' },
@@ -168,7 +167,7 @@ export const redirects = [
   ['/3d-fat-freeze/', '/body-contouring/'],
   ['/power-moxa/', '/meridian-moxibustion-therapy/'],
   ['/meridian-flush-and-hyperwave/', '/meridian-flush-therapy/'],
-  ['/health-analysis/', '/elements-restore/'],
+  ['/health-analysis/', '/'], ['/elements-restore/', '/'],
   ['/shop/', '/products/'],
   ['/product/solo-koyamaki-onsen-spa-ritual-115-min/', '/koyamaki-onsen-ritual/'],
   ['/product/couple-koyamaki-onsen-spa-ritual-115-min/', '/koyamaki-onsen-ritual/'],

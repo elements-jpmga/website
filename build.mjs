@@ -26,7 +26,6 @@ massageConcerns.forEach((c) => add(P.concernPage(c)));
 add(P.sharedPage(SM.massageBoosters, 'massage'));
 add(P.spaLanding());
 services.forEach((s) => add(P.servicePage(s)));
-add(P.restorePage());
 add(P.productsPage());
 add(P.productsPage('skincare'));
 add(P.productsPage('supplements'));

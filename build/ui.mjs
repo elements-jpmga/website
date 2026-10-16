@@ -20,11 +20,15 @@ export const icon = {
   leaf: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 38C10 20 22 10 40 8c-1 18-10 30-28 30Z"/><path d="M10 38 28 20"/></svg>',
   award: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="24" cy="19" r="11"/><path d="m17 28-3 14 10-5 10 5-3-14"/><path d="m24 13 1.8 3.7 4 .6-2.9 2.8.7 4-3.6-1.9-3.6 1.9.7-4-2.9-2.8 4-.6L24 13Z"/></svg>',
   hands: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 30c4-2 8-2 12 0l8 4c2 1 2 4-1 4h-8"/><path d="M8 26v14M40 22c-3-6-10-9-16-6"/><circle cx="30" cy="12" r="5"/></svg>',
+  phone: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1z"/></svg>',
+  mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3.5 6 8.5 7 8.5-7"/></svg>',
+  mappin: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>',
   pin: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M24 44S10 30 10 19a14 14 0 1 1 28 0c0 11-14 25-14 25Z"/><circle cx="24" cy="19" r="5"/></svg>',
   wave: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 18c5-5 9-5 13 0s8 5 13 0 9-5 14 0M4 28c5-5 9-5 13 0s8 5 13 0 9-5 14 0M4 38c5-5 9-5 13 0s8 5 13 0 9-5 14 0"/></svg>',
 };
 
-export const logo = (tag = 'span', cls = '') => `<${tag} class="logo ${cls}"><span class="logo-type l1">Elements</span><span class="logo-type l2">Wellness</span></${tag}>`;
+// The brand logo: the supplied file (Element Logo.png — white wordmark on its maroon block), used as-is, never retyped
+export const logo = (tag = 'span', cls = '') => `<${tag} class="logo-lockup ${cls}"><img src="/assets/img/logo/elements-logo-720.png" alt="Elements Wellness" width="720" height="228"></${tag}>`;
 
 // The five-element ring (木 火 土 金 水) used as the brand motif.
 export const ring = (opts = {}) => {
@@ -59,16 +63,22 @@ export const faqList = (items) => `<div class="faq">${items.map((f, i) => `
     <div class="faq-a" id="faq-${i}-${f.q.length}"><div><div>${f.a}</div></div></div>
   </div>`).join('')}</div>`;
 
-export const serviceCard = (s, extra = '') => `
-<a class="card" href="${s.url}" data-reveal data-tags="${(s.concerns || []).join(' ')} ${s.category}" data-cursor="View" ${extra}>
-  ${s.tag ? `<span class="tag">${esc(s.tag)}</span>` : ''}
-  <div class="card-media"><img src="${s.img}" alt="${esc(s.name)} at Elements Wellness" loading="lazy"></div>
-  <div class="card-body">
-    <h3>${esc(s.name)}</h3>
-    <p>${esc(s.short)}</p>
-    <div class="meta">${s.duration ? `<span>${esc(s.duration)}</span>` : ''}${s.price ? `<span>${esc(s.price)}</span>` : ''}<span>Discover →</span></div>
+// Text-first card: title, one line and the facts. On hover / focus / tap the photo fades in behind a maroon veil with
+// a longer description — fewer photos on the page, the picture only when someone shows interest.
+const clip = (t = '', n = 170) => { t = String(t).replace(/\s+/g, ' ').trim(); if (t.length <= n) return t; const cut = t.slice(0, n); return cut.slice(0, Math.max(cut.lastIndexOf('. '), cut.lastIndexOf(' '))).replace(/[,;:]$/, '') + '…'; };
+export const revealCard = ({ href, kind = '', title, short = '', more = '', img = '', meta = [], tag = '', cta = 'Learn More', extra = '', cls = '' }) => `
+<a class="rcard ${cls}" href="${href}" data-reveal ${extra}>
+  ${img ? `<img class="rcard-img" src="${img}" alt="" loading="lazy">` : ''}<span class="rcard-veil" aria-hidden="true"></span>
+  ${tag ? `<span class="rcard-tag">${esc(tag)}</span>` : ''}
+  <div class="rcard-body">
+    ${kind ? `<span class="rcard-kind">${esc(kind)}</span>` : ''}
+    <h3>${esc(title)}</h3>
+    ${short ? `<p class="rcard-short">${esc(short)}</p>` : ''}
+    ${more ? `<p class="rcard-more">${esc(clip(more))}</p>` : ''}
+    <div class="rcard-foot">${meta.filter(Boolean).map((m) => `<span>${esc(m)}</span>`).join('')}<span class="rcard-cta">${esc(cta)} ${icon.arrow}</span></div>
   </div>
 </a>`;
+export const serviceCard = (s, extra = '') => revealCard({ href: s.url, kind: '', title: s.name, short: '', more: s.description || '', img: s.img, meta: [s.duration, s.price ? `${s.priceNote === 'First trial' ? 'First trial ' : s.priceNote === 'Per couple' ? 'Per couple ' : 'From '}${s.price}` : ''], tag: '', extra: `data-tags="${(s.concerns || []).join(' ')} ${s.group}" ${extra}` });
 
 // Mega menus follow the sitemap: By Concern · Focused Care · By Treatment, plus a separate Boosters link. No prices.
 const mlink = (u, t) => `<a href="${u}">${esc(t)}</a>`;
@@ -97,21 +107,20 @@ const navItem = (label, url, key, active, menu) => menu
 
 export const header = (active = '') => `
 <a class="skip" href="#main">Skip to content</a>
-<div class="utility-row"><div class="wrap utility-inner"><a href="/promotions/" ${active === 'promotions' ? 'aria-current="page"' : ''}>Promotions</a></div></div>
 <header class="header">
   <div class="wrap header-inner">
-    <a href="/" aria-label="Elements Wellness — home"><img class="logo-img" src="/assets/img/logo-white.png" alt="Elements Wellness" width="1119" height="253"></a>
+    <a href="/" class="logo-lockup" aria-label="Elements Wellness — home"><img src="/assets/img/logo/elements-logo-720.png" alt="Elements Wellness" width="720" height="228"></a>
     <nav class="nav-left" aria-label="Primary">
       ${navItem('Facials', '/facials/', 'facials', active, megaFacials())}
       ${navItem('Massage & Recovery', '/massage-and-recovery/', 'massage', active, megaMassage())}
       ${navItem('Spa Experiences', '/spa-experiences/', 'spa', active, dropSpa())}
-      ${navItem('Elements Restore', '/elements-restore/', 'restore', active)}
       ${navItem('Products', '/products/', 'products', active, dropProducts())}
       ${navItem('Gift Vouchers', '/gift-vouchers/', 'gift', active)}
+      ${navItem('Promotions', '/promotions/', 'promotions', active)}
     </nav>
     <div class="nav-right">
       <button class="nav-search" type="button" data-finder aria-label="Find a treatment">${icon.search}<span>Find</span></button>
-      <a class="btn btn-sm" href="/book-appointment/"><span>Book Now</span>${icon.arrow}</a>
+      <a class="btn btn-sm" href="/book-appointment/"><span>Book Now</span></a>
       <button class="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
     </div>
   </div>
@@ -121,14 +130,13 @@ export const header = (active = '') => `
     <details><summary>Facials</summary><div class="sub"><a href="/facials/">All Facials</a><b class="sub-h">By Concern</b>${facialConcerns.map((c) => mlink(c.url, c.label)).join('')}<b class="sub-h">Focused Care</b>${facialShared.map((p) => mlink(p.url, p.label)).join('')}<b class="sub-h">By Treatment</b>${services.filter((s) => s.group === 'facials').map((s) => mlink(s.url, s.name)).join('')}</div></details>
     <details><summary>Massage &amp; Recovery</summary><div class="sub"><a href="/massage-and-recovery/">All Massage &amp; Recovery</a><b class="sub-h">By Concern</b>${massageConcerns.map((c) => mlink(c.url, c.label)).join('')}<b class="sub-h">Women’s Wellness</b>${womens().map((s) => mlink(s.url, s.name)).join('')}${mlink(massageBoosters.url, 'Boosters')}<b class="sub-h">By Treatment</b>${services.filter((s) => s.group === 'massage').map((s) => mlink(s.url, s.name)).join('')}</div></details>
     <details><summary>Spa Experiences</summary><div class="sub"><a href="/spa-experiences/">All Spa Experiences</a>${spaPages.map((p) => mlink(p.url, p.name)).join('')}</div></details>
-    <a href="/elements-restore/">Elements Restore</a>
     <details><summary>Products</summary><div class="sub"><a href="/products/">All Products</a><a href="/products/skincare/">Skincare</a><a href="/products/supplements/">Supplements</a></div></details>
     <a href="/gift-vouchers/">Gift Vouchers</a>
     <a href="/promotions/">Promotions</a>
     <details><summary>Locations</summary><div class="sub"><a href="/locations/">All Locations</a>${outlets.map((o) => mlink(o.url, o.name)).join('')}</div></details>
   </nav>
   <div class="mm-foot">
-    <a class="btn btn-light" href="/book-appointment/"><span>Book Now</span>${icon.arrow}</a>
+    <a class="btn" href="/book-appointment/"><span>Book Now</span></a>
     <div class="socials">${socials()}</div>
   </div>
 </div>`;
@@ -151,7 +159,6 @@ const finder = () => `
         <div><div class="finder-label">Choose one</div><div class="finder-opts"></div></div>
         <div><div class="finder-label finder-results-label">All treatments</div><div class="finder-results"></div></div>
       </div>
-      <p class="finder-note">Not sure where to start? <a class="link-arrow" href="/elements-restore/">Discover Elements Restore</a></p>
     </div>
   </div>
 </div>`;
@@ -161,18 +168,14 @@ const footer = () => `
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        ${logo('div')}
-        <p style="margin-top:24px;max-width:340px">${esc(site.footerBlurb)}</p>
-        <form class="newsletter" data-demo aria-label="Newsletter"><input type="email" required placeholder="Your email for rituals & offers" aria-label="Email"><button type="submit">Join</button></form>
-        <div class="form-success" style="background:transparent;color:var(--blush);padding:12px 0">Thank you — you're on the list.</div>
+        ${logo('a', 'footer-logo').replace('<a class="logo-lockup footer-logo">', '<a class="logo-lockup footer-logo" href="/" aria-label="Elements Wellness — home">')}
         <div class="socials">${socials()}</div>
       </div>
       <div><h4>Locations</h4><ul><li><a href="/locations/">All Locations</a></li>${outlets.map((o) => `<li><a href="${o.url}">${esc(o.name)}</a></li>`).join('')}</ul></div>
-      <div><h4>Elements</h4><ul><li><a href="/about-elements/">About Elements</a></li><li><a href="/awards/">Awards &amp; Recognition</a></li><li><a href="/contact/">Contact</a></li></ul></div>
-      <div><h4>Help</h4><ul><li><a href="/faq-spa-etiquette/">FAQ &amp; Spa Etiquette</a></li><li><a href="/appointment-booking-cancellation-policy/">Booking &amp; Cancellation Policy</a></li><li><a href="/customer-assurance-privacy/">Customer Assurance &amp; Privacy</a></li><li><a href="mailto:${site.email}">${site.email}</a></li></ul></div>
+      <div><h4>Elements</h4><ul><li><a href="/about-elements/">About Elements</a></li><li><a href="/contact/">Contact</a></li><li><a href="/faq-spa-etiquette/">FAQ &amp; Spa Etiquette</a></li></ul></div>
+      <div><h4>Policies</h4><ul><li><a href="/appointment-booking-cancellation-policy/">Booking &amp; Cancellation Policy</a></li><li><a href="/customer-assurance-privacy/">Customer Assurance &amp; Privacy</a></li><li><a href="mailto:${site.email}">${site.email}</a></li></ul></div>
     </div>
-    <div class="footer-word" aria-hidden="true">Elements</div>
-    <div class="footer-bottom"><span>© ${new Date().getFullYear()} Elements Wellness Pte. Ltd. All rights reserved.</span><nav><a href="/customer-assurance-privacy/">Privacy</a><a href="/appointment-booking-cancellation-policy/">Booking Policy</a><a href="/sitemap.xml">Sitemap</a></nav></div>
+    <div class="footer-bottom"><span>© ${new Date().getFullYear()} Elements Wellness Pte. Ltd. All rights reserved.</span><nav><a href="/sitemap.xml">Sitemap</a></nav></div>
   </div>
 </footer>
 <div class="fab"><a class="wa" href="${site.whatsapp}" target="_blank" rel="noopener" aria-label="WhatsApp us">${icon.wa}</a><a class="bk" href="/book-appointment/" aria-label="Book Now">${icon.arrow}<span>Book now</span></a></div>`;
@@ -195,18 +198,16 @@ export const layout = ({ title, description, path, body, active = '', bodyClass 
 ${noindex ? '<meta name="robots" content="noindex">' : ''}
 ${process.env.LIVE_REVIEWS ? '<meta name="ew-live-reviews" content="1">' : ''}
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://api.fontshare.com"><link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300..600&family=Urbanist:wght@300;400;500;600;700&family=Quicksand:wght@600;700&family=Noto+Serif+SC:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/vendor/lenis.css">
 <link rel="stylesheet" href="/assets/css/main.css">
 <script>document.documentElement.className='js'</script>
 ${schema.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('\n')}
 </head>
 <body class="${bodyClass}">
-<div class="loader" aria-hidden="true"><img class="loader-logo" src="/assets/img/logo-white.png" alt="Elements Wellness" width="1119" height="253"></div>
-<div class="curtain" aria-hidden="true"><img class="loader-logo" src="/assets/img/logo-white.png" alt="" width="1119" height="253"></div>
+<div class="loader" aria-hidden="true"><div class="loader-top"></div><div class="loader-bottom"></div><div class="loader-inner"><span class="loader-lockup"><img class="ll-1" src="/assets/img/logo/elements-logo-720.png" alt="" width="720" height="228"><img class="ll-2" src="/assets/img/logo/elements-logo-720.png" alt="" width="720" height="228"></span></div></div>
+<div class="curtain" aria-hidden="true"><span class="loader-lockup"><img src="/assets/img/logo/elements-logo-720.png" alt="" width="720" height="228"></span></div>
 ${header(active)}
 <main id="main">
 ${body}

@@ -100,7 +100,7 @@ const initGift = () => {
           <div class="panel"><h2>Details</h2><div class="kv-grid">
             <span>Worth</span><span><b>${esc(worth(v))}</b></span><span>Valid</span><span>${fmtDay(v.valid_from)} → <b>${fmtDay(v.expires_at)}</b></span>
             <span>Recipient</span><span>${esc(v.recipient_name || '—')}<br><span class="muted">${esc(v.recipient_email || '')}</span></span><span>From</span><span>${esc(v.from_name || '—')}</span>
-            <span>Message</span><span>${v.message ? '“' + esc(v.message) + '”' : '—'}</span><span>Delivery</span><span>${v.delivery === 'print' ? 'Print' : v.status === 'scheduled' ? 'Email · sends ' + fmtDate(v.send_at) : v.sent_at ? 'Emailed ' + fmtDate(v.sent_at) : 'Email · not sent yet'}</span>
+            <span>Card says</span><span>${esc(v.headline || 'A gift for you')}</span><span>Message</span><span>${v.message ? '“' + esc(v.message) + '”' : '—'}</span><span>Delivery</span><span>${v.delivery === 'print' ? 'Print' : v.status === 'scheduled' ? 'Email · sends ' + fmtDate(v.send_at) : v.sent_at ? 'Emailed ' + fmtDate(v.sent_at) : 'Email · not sent yet'}</span>
             ${v.status === 'redeemed' ? `<span>Redeemed</span><span>${fmtDate(v.redeemed_at)} at ${esc(v.redeemed_outlet || '—')} by ${esc(v.redeemed_by || '—')}</span>` : ''}${v.status === 'voided' ? `<span>Voided</span><span>${fmtDate(v.voided_at)} by ${esc(v.voided_by || '—')} — ${esc(v.void_reason || '')}</span>` : ''}
             <span>Design</span><span>${esc(v.design_name || '—')}</span></div></div>
           <div class="panel"><h2>Order ${esc(v.order_no)} ${pill(v.order_status)}</h2><div class="kv-grid"><span>Buyer</span><span>${esc(v.buyer_name || '—')}<br><span class="muted">${esc(v.buyer_email || '')}${v.buyer_phone ? ' · ' + esc(v.buyer_phone) : ''}</span></span><span>Source</span><span>${esc(v.source)}</span><span>Total</span><span>${money(v.order_total)}${v.paid_at ? ' · paid ' + fmtDay(v.paid_at) : ''}</span></div>
@@ -130,7 +130,7 @@ const initGift = () => {
         <div class="row"><div class="field"><label>Recipient name</label><input id="i-rn" placeholder="Who receives the gift"></div><div class="field"><label>Recipient email</label><input id="i-re" type="email" placeholder="Where to send the voucher"></div></div>
         <div class="row"><div class="field"><label>From (shown on the voucher)</label><input id="i-from" placeholder="Buyer's name"></div><div class="field"><label>Send</label><select id="i-del"><option value="email">Email now</option><option value="later">Email on a date…</option><option value="print">Print only (no email)</option></select></div></div>
         <div class="field" id="i-when-wrap" hidden><label>Send on</label><input id="i-when" type="datetime-local"></div>
-        <div class="field"><label>Personal message</label><textarea id="i-msg" maxlength="240" placeholder="Printed on the voucher (optional)"></textarea></div>
+        <div class="row"><div class="field"><label>Headline on the card</label><input id="i-head" maxlength="40" placeholder="A gift for you"></div></div><div class="field"><label>Personal message</label><textarea id="i-msg" maxlength="240" placeholder="Printed on the voucher (optional)"></textarea></div>
         <h2 style="margin-top:8px">Payment</h2>
         <div class="row"><div class="field"><label>Paid how <span class="req">*</span></label><select id="i-pay"><option value="counter">Paid at the counter (WESS)</option><option value="complimentary">Complimentary</option><option value="other">Other</option></select></div><div class="field"><label>Buyer email (receipt)</label><input id="i-be" type="email" placeholder="optional"></div></div>
         <div class="field"><label>Notes (internal)</label><input id="i-notes" placeholder="e.g. WESS receipt no."></div>
@@ -142,7 +142,7 @@ const initGift = () => {
       e.preventDefault(); const b = $('button[type=submit]', e.target); b.disabled = true; $('#i-err').innerHTML = '<span class="spin"></span> Issuing…';
       const del = $('#i-del').value;
       try {
-        const r = await api('POST', '/api/gift/issue', { item_id: $('#i-item').value, design_id: $('input[name=design]:checked')?.value || null, recipient_name: $('#i-rn').value, recipient_email: $('#i-re').value, from_name: $('#i-from').value, message: $('#i-msg').value, delivery: del === 'print' ? 'print' : 'email', send_at: del === 'later' && $('#i-when').value ? new Date($('#i-when').value).toISOString() : null, payment: $('#i-pay').value, buyer_name: $('#i-from').value, buyer_email: $('#i-be').value, notes: $('#i-notes').value });
+        const r = await api('POST', '/api/gift/issue', { item_id: $('#i-item').value, design_id: $('input[name=design]:checked')?.value || null, recipient_name: $('#i-rn').value, recipient_email: $('#i-re').value, from_name: $('#i-from').value, message: $('#i-msg').value, headline: $('#i-head').value, delivery: del === 'print' ? 'print' : 'email', send_at: del === 'later' && $('#i-when').value ? new Date($('#i-when').value).toISOString() : null, payment: $('#i-pay').value, buyer_name: $('#i-from').value, buyer_email: $('#i-be').value, notes: $('#i-notes').value });
         toast(`Issued ${r.voucher.code}`); go(`/gift/voucher/${r.voucher.voucher_id}`);
       } catch (err) { b.disabled = false; $('#i-err').innerHTML = `<div class="bad-box">${esc(err.message)}</div>`; }
     });
