@@ -326,7 +326,7 @@
     gsap.timeline({ scrollTrigger: { trigger: sec, start: 'top top', end: 'bottom bottom', scrub: .6, onUpdate: (st) => { const i = Math.min(n - 1, Math.round(st.progress * (n - 1))); if (i !== cur) draw(i); } } })
       .to(start, { opacity: 0, y: -30, duration: .28, ease: 'power2.in' }, .05)
       .set(start, { pointerEvents: 'none' })
-      .to(end, { opacity: 1, y: 0, pointerEvents: 'auto', duration: .25, ease: 'power2.out' }, .72);
+      .to(end, { opacity: 1, y: 0, pointerEvents: 'auto', duration: .25, ease: 'power2.out', onStart: () => sec.classList.add('is-end'), onReverseComplete: () => sec.classList.remove('is-end') }, .72);
     // arriving from the contact card: the shopfront settles from the zoom the card ended on
     let fromCard = false; try { fromCard = sessionStorage.getItem('ew-walkin') === '1'; sessionStorage.removeItem('ew-walkin'); } catch {}
     if (fromCard) gsap.fromTo(canvas, { scale: 1.12 }, { scale: 1, duration: 1.4, ease: 'power3.out' });

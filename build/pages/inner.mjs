@@ -445,20 +445,28 @@ export function outletPage(o) {
         ${crumbs(trail)}
         <h1 data-split>${esc(o.name)}</h1>
         <p class="outlet-walkin-addr">${o.address}</p>
-        <p class="outlet-walkin-meta"><a href="tel:+65${tel}">${esc(o.phone)}</a> · <a href="https://wa.me/65${wa}" target="_blank" rel="noopener">WhatsApp ${esc(o.whatsapp)}</a> · <a href="mailto:${o.email}">${esc(o.email)}</a></p>
-        <p class="outlet-walkin-meta">${o.hours.map(([d, h]) => `${esc(d)}: ${esc(h)}`).join('<br>')}</p>
-        <div class="hero-actions" style="justify-content:flex-start;margin-top:26px">${btn(`/book-appointment/?outlet=${o.id}`, 'Book Now', 'btn-light')}${btn(mapsUrl, 'Directions', 'btn-ghost-light', 'target="_blank" rel="noopener"')}</div>
         <span class="walk-cue" aria-hidden="true">Scroll</span>
       </div>
       <div class="wrap walk-end" data-walk-end>
-        ${exclusive.length ? `<div class="walk-cards">${exclusive.map((s) => `<a class="walk-card" href="${s.url}"><span class="walk-card-name">${esc(s.name)}</span>${[s.duration, s.price ? `${s.priceNote === 'Per couple' ? 'Per couple ' : ''}${s.price}` : ''].filter(Boolean).length ? `<span class="walk-card-meta">${[s.duration, s.price ? `${s.priceNote === 'Per couple' ? 'Per couple ' : ''}${s.price}` : ''].filter(Boolean).map(esc).join(' · ')}</span>` : ''}<span class="link-arrow">Learn More</span></a>`).join('')}</div>` : ''}
-        <div class="hero-actions" style="justify-content:flex-start;margin-top:24px">${btn(`/book-appointment/?outlet=${o.id}`, 'Book Now', 'btn-light')}</div>
+        <div class="walk-visit">
+          <span class="walk-label">Visit us</span>
+          <h2>${esc(o.name)}</h2>
+          <p class="outlet-walkin-addr">${o.address}</p>
+          <dl class="walk-dl">
+            <div><dt>Hours</dt><dd>${o.hours.map(([d, h]) => `${esc(d)}: ${esc(h)}`).join('<br>')}</dd></div>
+            <div><dt>Phone</dt><dd><a href="tel:+65${tel}">${esc(o.phone)}</a></dd></div>
+            <div><dt>WhatsApp</dt><dd><a href="https://wa.me/65${wa}" target="_blank" rel="noopener">${esc(o.whatsapp)}</a></dd></div>
+            <div><dt>Email</dt><dd><a href="mailto:${o.email}">${esc(o.email)}</a></dd></div>
+          </dl>
+          <div class="hero-actions" style="justify-content:flex-start;margin-top:26px">${btn(`/book-appointment/?outlet=${o.id}`, 'Book Now', 'btn-light')}<a class="link-arrow walk-maps" href="${mapsUrl}" target="_blank" rel="noopener">Open in Maps</a></div>
+        </div>
+        <div class="walk-map"><iframe title="Map to Elements Wellness ${esc(o.name)}" src="https://maps.google.com/maps?q=${encodeURIComponent('Elements Wellness ' + o.mapQuery)}&t=m&z=16&output=embed&iwloc=near" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
       </div>
     </div>
   </section>` : '';
   const body = walkIn + (o.id === '313' ? '' : pageHero({ title: esc(o.name), trail,
     extra: `<div class="hero-actions" style="justify-content:flex-start;margin-top:28px" data-reveal>${btn(`/book-appointment/?outlet=${o.id}`, 'Book Now')}${btn(`https://wa.me/65${wa}`, 'WhatsApp ' + o.whatsapp, 'btn-ghost', 'target="_blank" rel="noopener"')}</div>` })) + `
-<section class="section-sm" style="padding-top:0"><div class="wrap outlet-find">
+${o.id === '313' ? (exclusive.length ? `<section class="section-sm"><div class="wrap"><div class="svc-list">${exclusive.map((s) => serviceCard(s)).join('')}</div></div></section>` : '') : `<section class="section-sm" style="padding-top:0"><div class="wrap outlet-find">
   <div class="outlet-info" data-reveal>
     <div><small>Address</small><p>${o.address}</p></div>
     <div><small>Opening hours</small>${o.hours.map(([d, h]) => `<p class="row"><span>${d}</span><b>${h}</b></p>`).join('')}</div>
@@ -467,7 +475,7 @@ export function outletPage(o) {
   </div>
   <div class="outlet-map tall" data-reveal="fade"><iframe title="Map to Elements Wellness ${esc(o.name)}" src="https://maps.google.com/maps?q=${encodeURIComponent('Elements Wellness ' + o.mapQuery)}&t=m&z=16&output=embed&iwloc=near" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 </div></section>
-${o.gallery?.length ? `<section class="section-sm bg-ivory"><div class="wrap"><div class="outlet-gallery">${[o.img.replace('/assets/img/', ''), ...o.gallery].filter((g, i, a) => a.indexOf(g) === i).slice(0, 4).map((g, i) => `<figure data-reveal${i === 0 ? ' class="lead"' : ''}><img src="/assets/img/${g}" alt="Elements Wellness ${esc(o.name)}" loading="lazy"></figure>`).join('')}</div></div></section>` : ''}`;
+${o.gallery?.length ? `<section class="section-sm bg-ivory"><div class="wrap"><div class="outlet-gallery">${[o.img.replace('/assets/img/', ''), ...o.gallery].filter((g, i, a) => a.indexOf(g) === i).slice(0, 4).map((g, i) => `<figure data-reveal${i === 0 ? ' class="lead"' : ''}><img src="/assets/img/${g}" alt="Elements Wellness ${esc(o.name)}" loading="lazy"></figure>`).join('')}</div></div></section>` : ''}`}`;
   const schema = [bc(trail), { '@context': 'https://schema.org', '@type': 'DaySpa', name: 'Elements Wellness ' + o.name, telephone: '+65' + tel, email: o.email, address: { '@type': 'PostalAddress', streetAddress: o.street, postalCode: o.postal, addressLocality: 'Singapore', addressCountry: 'SG' }, openingHours: o.schemaHours, url: site.url + o.url, image: site.url + o.img, hasMap: mapsUrl, parentOrganization: { '@type': 'Organization', name: 'Elements Wellness' } }];
   return { path: o.url, html: layout({ title: `Elements Wellness ${o.name} — Spa on Orchard Road`, description: `Elements Wellness ${o.name}: ${o.addressPlain}. Call ${o.phone}.`, path: o.url, bodyClass: 'page-light', schema, ogImage: o.img, body }) };
 }

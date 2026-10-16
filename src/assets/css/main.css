@@ -1654,3 +1654,16 @@ body:has(.header.is-solid) .utility-row { transform: translateY(-100%); }
 .walk-card-name { font-family: var(--f-head); font-weight: 500; font-size: 24px; letter-spacing: .015em; } .walk-card-meta { font-size: 13px; color: var(--muted-c); } .walk-card .link-arrow { margin-top: 8px; font-size: 13.5px; }
 .walk + section { padding-top: clamp(40px, 5vw, 72px); }
 @media (max-width: 900px) { .walk { height: 320vh; } .walk-start h1 { font-size: 38px; } .walk-cue { display: none; } .walk-cards { grid-template-columns: 1fr; } }
+/* 313 end scene: visit card on the left, the map on the right, over the reception */
+.walk-shade { background: linear-gradient(180deg, rgba(20, 8, 8, .18) 0%, rgba(20, 8, 8, .24) 50%, rgba(20, 8, 8, .62) 100%); transition: background .6s; }
+.walk.is-end .walk-shade { background: rgba(20, 8, 8, .66); }
+.walk-end { top: 0; bottom: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 80px); align-items: center; padding-top: var(--header-h); }
+.walk-label { display: block; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: rgba(250, 248, 245, .7); margin-bottom: 14px; }
+.walk-visit h2 { color: var(--warm-white); font-size: clamp(32px, 3.4vw, 48px); margin: 0 0 12px; }
+.walk-dl { margin: 22px 0 0; display: grid; gap: 12px; } .walk-dl div { display: grid; grid-template-columns: 96px 1fr; gap: 16px; align-items: start; }
+.walk-dl dt { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: rgba(250, 248, 245, .65); padding-top: 4px; }
+.walk-dl dd { margin: 0; font-size: 15px; line-height: 1.6; color: var(--warm-white); } .walk-dl a { color: var(--warm-white); border-bottom: 1px solid rgba(250, 248, 245, .4); }
+.walk-maps { color: var(--warm-white); border-bottom-color: rgba(250, 248, 245, .5); }
+.walk-map { aspect-ratio: 4 / 3; max-height: 62vh; background: var(--tint); box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .7), 0 0 0 1px rgba(250, 248, 245, .2); overflow: hidden; }
+.walk-map iframe { width: 100%; height: 100%; border: 0; display: block; filter: saturate(.85); }
+@media (max-width: 900px) { .walk-end { grid-template-columns: 1fr; align-content: end; gap: 18px; padding-bottom: 24px; } .walk-map { aspect-ratio: 16 / 10; max-height: 34vh; } .walk-visit h2 { font-size: 30px; } .walk-dl div { grid-template-columns: 80px 1fr; } }
