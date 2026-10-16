@@ -1635,3 +1635,14 @@ body:has(.header.is-solid) .utility-row { transform: translateY(-100%); }
 .outlet-walkin img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .outlet-walkin + .page-hero { padding-top: clamp(32px, 4vw, 56px); }
 @media (max-width: 900px) { .ct-grid, .ct-form-wrap { grid-template-columns: 1fr; } .outlet-walkin { height: 56vh; } }
+/* 313 hero: the walk-in's last frame with the outlet's details over it */
+.outlet-walkin { position: relative; height: min(88vh, 860px); margin-top: var(--header-h); background: #111; }
+.outlet-walkin img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.outlet-walkin::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20, 8, 8, .15) 0%, rgba(20, 8, 8, .3) 45%, rgba(20, 8, 8, .78) 100%); }
+.outlet-walkin-copy { position: absolute; z-index: 1; left: 0; right: 0; bottom: clamp(32px, 6vh, 72px); color: var(--warm-white); }
+.outlet-walkin-copy .crumbs { color: rgba(250, 248, 245, .7); margin-bottom: 18px; } .outlet-walkin-copy .crumbs a { color: var(--warm-white); }
+.outlet-walkin-copy h1 { color: var(--warm-white); font-size: clamp(40px, 5vw, 72px); margin: 0 0 14px; }
+.outlet-walkin-addr { font-size: clamp(16px, 1.3vw, 19px); margin: 0 0 10px; line-height: 1.5; }
+.outlet-walkin-meta { margin: 0 0 6px; font-size: 14.5px; line-height: 1.6; color: rgba(250, 248, 245, .88); } .outlet-walkin-meta a { color: var(--warm-white); border-bottom: 1px solid rgba(250, 248, 245, .4); }
+.outlet-walkin + section { padding-top: clamp(40px, 5vw, 72px); }
+@media (max-width: 900px) { .outlet-walkin { height: 78vh; } .outlet-walkin-copy h1 { font-size: 38px; } }

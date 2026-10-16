@@ -29,7 +29,7 @@
   sessionStorage.setItem('ew-seen', '1');
   const enterPage = (onDone) => {
     let walkin = false; try { walkin = sessionStorage.getItem('ew-walkin') === '1'; sessionStorage.removeItem('ew-walkin'); } catch {}
-    if (walkin && !isHome) { if (loader) loader.style.display = 'none'; if (curtain) gsap.set(curtain, { visibility: 'hidden', opacity: 0 }); const w = document.querySelector('[data-walkin] img'); if (w && !reduced) gsap.fromTo(w, { scale: 1.04 }, { scale: 1, duration: 1.6, ease: 'power2.out' }); onDone(); return; }
+    if (walkin && !isHome) { if (loader) loader.style.display = 'none'; if (curtain) gsap.set(curtain, { visibility: 'hidden', opacity: 0 }); const w = document.querySelector('[data-walkin] img'), wc = document.querySelector('.outlet-walkin-copy'); if (w && !reduced) { gsap.fromTo(w, { scale: 1.12 }, { scale: 1, duration: 1.8, ease: 'power3.out' }); if (wc) gsap.fromTo(wc.children, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 1, stagger: .08, ease: 'power3.out', delay: .5 }); } onDone(); return; }
     if (reduced || !loader || !isHome) {
       if (loader) loader.style.display = 'none';
       if (curtain && !reduced) { gsap.set(curtain, { opacity: 1, visibility: 'visible' }); gsap.to(curtain, { opacity: 0, duration: .6, ease: 'power2.out', onComplete: () => gsap.set(curtain, { visibility: 'hidden' }) }); }
@@ -323,7 +323,8 @@
           .to(vid, { opacity: 1, duration: .45, ease: 'power2.out' }, .6)
           .to([pic, vid], { scale: 1, duration: .9, ease: 'power2.out' }, 1.1)
           .to(skip, { opacity: 1, duration: .4 }, 1.9);
-        setTimeout(() => go(href), 9500); // safety: never strand the visitor
+        // the video is the transition: hand over to the page while the walk-in is still moving (its last second plays on the page's hero)
+        setTimeout(() => go(href), 4600);
       } else {
         tl.add(() => go(href));
       }

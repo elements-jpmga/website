@@ -435,9 +435,21 @@ export function outletPage(o) {
   const others = outlets.filter((x) => x.id !== o.id);
   const tel = o.phone.replace(/\s/g, ''), wa = o.whatsapp.replace(/\s/g, '');
   const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent('Elements Wellness ' + o.mapQuery)}`;
-  const walkIn = o.id === '313' ? `<section class="outlet-walkin" data-walkin><img src="/assets/img/313-walk-last.jpg" alt="Elements Wellness 313@somerset"></section>` : '';
-  const body = walkIn + pageHero({ title: esc(o.name), trail,
-    extra: `<div class="hero-actions" style="justify-content:flex-start;margin-top:28px" data-reveal>${btn(`/book-appointment/?outlet=${o.id}`, 'Book Now')}${btn(`https://wa.me/65${wa}`, 'WhatsApp ' + o.whatsapp, 'btn-ghost', 'target="_blank" rel="noopener"')}</div>` }) + `
+  // 313: the page opens on the walk-in video's last frame, with the outlet's details (old site) laid over it
+  const walkIn = o.id === '313' ? `<section class="outlet-walkin" data-walkin>
+    <img src="/assets/img/313-walk-last.jpg" alt="Elements Wellness 313@somerset">
+    <div class="wrap outlet-walkin-copy">
+      ${crumbs(trail)}
+      <h1 data-split>${esc(o.name)}</h1>
+      <p class="outlet-walkin-addr">${o.address}</p>
+      <p class="outlet-walkin-meta"><a href="tel:+65${tel}">${esc(o.phone)}</a> · <a href="https://wa.me/65${wa}" target="_blank" rel="noopener">WhatsApp ${esc(o.whatsapp)}</a> · <a href="mailto:${o.email}">${esc(o.email)}</a></p>
+      <p class="outlet-walkin-meta">${o.hours.map(([d, h]) => `${esc(d)}: ${esc(h)}`).join('<br>')}</p>
+      <div class="hero-actions" style="justify-content:flex-start;margin-top:26px">${btn(`/book-appointment/?outlet=${o.id}`, 'Book Now', 'btn-light')}${btn(mapsUrl, 'Directions', 'btn-ghost-light', 'target="_blank" rel="noopener"')}</div>
+    </div>
+  </section>` : '';
+  const body = walkIn + (o.id === '313' ? '' : pageHero({ title: esc(o.name), trail,
+    extra: `<div class="hero-actions" style="justify-content:flex-start;margin-top:28px" data-reveal>${btn(`/book-appointment/?outlet=${o.id}`, 'Book Now')}${btn(`https://wa.me/65${wa}`, 'WhatsApp ' + o.whatsapp, 'btn-ghost', 'target="_blank" rel="noopener"')}</div>` })) + `
+${o.id === '313' && exclusive.length ? `<section class="section-sm"><div class="wrap"><div class="svc-list">${exclusive.map((s) => serviceCard(s)).join('')}</div></div></section>` : ''}
 <section class="section-sm" style="padding-top:0"><div class="wrap outlet-find">
   <div class="outlet-info" data-reveal>
     <div><small>Address</small><p>${o.address}</p></div>
