@@ -406,7 +406,7 @@ export function giftVouchers() {
     <p class="form-note gv-err" data-gift-pay-error></p>
   </div>
 </div></section>
-<section class="section-sm"><div class="wrap gv-wrap"><form class="form gv-check" data-gift-check><div class="field"><label for="gv-code">Voucher code</label><input id="gv-code" required></div><button class="btn btn-ghost" type="submit"><span>Check</span></button><div data-gift-check-out style="margin-top:12px"></div></form></div></section>`;
+`;
   return { path: '/gift-vouchers/', html: layout({ title: 'Gift Vouchers | Elements Wellness', description: 'Gift Vouchers — Elements Wellness.', path: '/gift-vouchers/', active: 'gift', bodyClass: 'page-light', schema: [bc(trail)], scripts: ['/assets/js/gift.js'], body }) };
 }
 export function giftThankYou() {

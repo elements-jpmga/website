@@ -25,8 +25,10 @@
     const renderDesigns = () => {
       if (!state.design) state.design = state.designs[0] || null;
       if (state.designs.length < 2) { designBox.hidden = true; return; }
-      designBox.innerHTML = `<span class="gv-label">Card design</span><div class="gv-design-row">${state.designs.map((d, n) => `<label class="gv-design ${n === 0 ? 'on' : ''}"><input type="radio" name="design" value="${d.design_id}" ${n === 0 ? 'checked' : ''}><img src="${API}${d.image}" alt="${esc(d.name)}" loading="lazy"></label>`).join('')}</div>`;
-      $$('input[name=design]', designBox).forEach((r) => r.addEventListener('change', () => { state.design = state.designs.find((d) => d.design_id === r.value); $$('.gv-design', designBox).forEach((l) => l.classList.toggle('on', l.contains(r))); }));
+      // the chosen design shows large; the others sit as small thumbnails underneath
+      designBox.innerHTML = `<span class="gv-label">Card design</span><div class="gv-design-big"><img src="${API}${state.design.image}" alt="${esc(state.design.name)}"></div><div class="gv-design-row">${state.designs.map((d, n) => `<label class="gv-design ${n === 0 ? 'on' : ''}"><input type="radio" name="design" value="${d.design_id}" ${n === 0 ? 'checked' : ''}><img src="${API}${d.image}" alt="${esc(d.name)}" loading="lazy"></label>`).join('')}</div>`;
+      const big = $('.gv-design-big img', designBox);
+      $$('input[name=design]', designBox).forEach((r) => r.addEventListener('change', () => { state.design = state.designs.find((d) => d.design_id === r.value); $$('.gv-design', designBox).forEach((l) => l.classList.toggle('on', l.contains(r))); big.style.opacity = 0; setTimeout(() => { big.src = API + state.design.image; big.alt = state.design.name; big.style.opacity = 1; }, 180); }));
     };
     api('/api/gift/public/catalog').then((c) => { state.items = c.items.sort((a, b) => a.price - b.price); state.designs = c.designs; renderItems(); renderDesigns(); }).catch(() => { itemsBox.innerHTML = '<p class="muted">We could not load the voucher list. Please refresh, or call or WhatsApp an outlet.</p>'; });
     const f = () => Object.fromEntries(new FormData(form).entries());
@@ -69,12 +71,4 @@
     else (async () => { for (let i = 0; i < 12; i++) { try { const o = await api('/api/gift/public/order?session_id=' + encodeURIComponent(sid)); render(o); if (o.status !== 'pending') return; } catch (e) { thanks.innerHTML = `<p class="lede">${esc(e.message)}</p>`; return; } await new Promise((r) => setTimeout(r, 2500)); } })();
   }
 
-  /* ---------- Check a voucher ---------- */
-  const check = $('[data-gift-check]');
-  if (check) check.addEventListener('submit', async (e) => {
-    e.preventDefault(); const out = $('[data-gift-check-out]'); const code = $('input', check).value.trim(); if (!code) return;
-    out.innerHTML = '<span class="spin"></span>';
-    try { const v = await api('/api/gift/public/check?code=' + encodeURIComponent(code)); const label = { active: 'Valid', scheduled: 'Not yet sent', redeemed: 'Already used', expired: 'Expired', voided: 'Cancelled' }[v.status] || v.status; out.innerHTML = `<div class="gv-check-result ${v.status}"><b>${label}</b> — ${esc(v.title)}${v.value_remaining != null ? ` · balance ${money(v.value_remaining)}` : ''}<br><small>${v.status === 'redeemed' && v.redeemed_at ? 'Used on ' + day(v.redeemed_at) : 'Valid until ' + day(v.expires_at)}</small></div>`; }
-    catch (err) { out.innerHTML = `<div class="gv-check-result voided">${esc(err.message)}</div>`; }
-  });
 })();

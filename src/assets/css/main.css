@@ -1815,3 +1815,5 @@ body.menu-open .utility-row { display: none !important; }
 .gv-done { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px 0; border-top: 1px solid var(--rule); } .gv-done code { font-size: 14px; background: var(--tint); padding: 6px 10px; }
 .gv-form .gv-designs { display: block; } .gv-form .gv-designs[hidden] { display: none; }
 .gv-form .gv-design-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+.gv-design-big { margin: 0 0 10px; box-shadow: 0 0 0 1px var(--rule); background: var(--tint); } .gv-design-big img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; transition: opacity .25s; }
+.gv-form .gv-design-row { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); }
