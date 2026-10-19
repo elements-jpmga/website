@@ -9,41 +9,51 @@
   const day = (iso) => new Date(iso).toLocaleDateString('en-SG', { day: 'numeric', month: 'short', year: 'numeric' });
   const api = async (path, opts = {}) => { const r = await fetch(API + path, { ...opts, headers: { ...(opts.body ? { 'Content-Type': 'application/json' } : {}), ...(opts.headers || {}) } }); const j = await r.json().catch(() => ({})); if (!r.ok) throw new Error(j.error || 'Something went wrong. Please try again.'); return j; };
 
-  /* ---------- Buy ---------- */
+  /* ---------- Buy: 1 pick a voucher → 2 one short form (+ card design if there are several) → 3 summary and Pay ---------- */
   const shop = $('[data-gift-shop]');
   if (shop) {
     const state = { item: null, design: null, items: [], designs: [] };
-    const itemsBox = $('[data-gift-items]'), designBox = $('[data-gift-designs]'), form = $('[data-gift-form]'), preview = $('[data-gift-preview]');
+    const itemsBox = $('[data-gift-items]'), form = $('[data-gift-form]'), designBox = $('[data-gift-designs]'), chosen = $('[data-gift-chosen]'), summary = $('[data-gift-summary]');
+    const stages = $$('[data-stage]'), dots = $$('[data-dot]');
+    const go = (n) => { stages.forEach((st) => st.classList.toggle('is-on', +st.dataset.stage === n)); dots.forEach((d) => { d.classList.toggle('is-on', +d.dataset.dot === n); d.classList.toggle('is-done', +d.dataset.dot < n); }); shop.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+    const label = (i) => esc(i.name);
     const renderItems = () => {
-      itemsBox.innerHTML = state.items.map((i) => `<button type="button" class="gv-item ${state.item?.item_id === i.item_id ? 'on' : ''}" data-id="${i.item_id}"><span class="gv-kind">${i.kind === 'value' ? 'Spa credit' : 'Treatment'}</span><b>${esc(i.name)}</b>${i.description ? `<small>${esc(i.description).replace(/\r?\n/g, '<br>')}</small>` : ''}<span class="gv-price">${money(i.price)}</span></button>`).join('') || '<p class="muted">Vouchers are temporarily unavailable online — please call or WhatsApp an outlet.</p>';
-      $$('.gv-item', itemsBox).forEach((b) => b.addEventListener('click', () => { state.item = state.items.find((i) => i.item_id === b.dataset.id); renderItems(); renderPreview(); designBox.closest('section')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }));
+      itemsBox.innerHTML = state.items.map((i) => `<button type="button" class="gv-pick" data-id="${i.item_id}"><span class="gv-pick-name">${label(i)}</span><span class="gv-pick-price">${money(i.price)}</span>${i.description ? `<span class="gv-pick-desc">${esc(i.description).replace(/\r?\n/g, '<br>')}</span>` : ''}</button>`).join('')
+        || '<p class="muted">Vouchers are temporarily unavailable online — please call or WhatsApp an outlet.</p>';
+      $$('[data-id]', itemsBox).forEach((b) => b.addEventListener('click', () => { state.item = state.items.find((i) => i.item_id === b.dataset.id); chosen.innerHTML = `<b>${label(state.item)}</b><span>${money(state.item.price)}</span>${state.item.description ? `<p>${esc(state.item.description)}</p>` : ''}`; go(2); }));
     };
     const renderDesigns = () => {
-      designBox.innerHTML = state.designs.map((d, n) => `<label class="gv-design ${(state.design?.design_id || state.designs[0]?.design_id) === d.design_id ? 'on' : ''}"><input type="radio" name="design" value="${d.design_id}" ${n === 0 ? 'checked' : ''}><img src="${API}${d.image}" alt="${esc(d.name)}" loading="lazy"><span>${esc(d.name)}</span></label>`).join('');
       if (!state.design) state.design = state.designs[0] || null;
-      $$('input[name=design]', designBox).forEach((r) => r.addEventListener('change', () => { state.design = state.designs.find((d) => d.design_id === r.value); $$('.gv-design', designBox).forEach((l) => l.classList.toggle('on', l.contains(r))); renderPreview(); }));
+      if (state.designs.length < 2) { designBox.hidden = true; return; }
+      // the chosen design shows large; the others sit as small thumbnails underneath
+      designBox.innerHTML = `<span class="gv-label">Card design</span><div class="gv-design-big"><img src="${API}${state.design.image}" alt="${esc(state.design.name)}"></div><div class="gv-design-row">${state.designs.map((d, n) => `<label class="gv-design ${n === 0 ? 'on' : ''}"><input type="radio" name="design" value="${d.design_id}" ${n === 0 ? 'checked' : ''}><img src="${API}${d.image}" alt="${esc(d.name)}" loading="lazy"></label>`).join('')}</div>`;
+      const big = $('.gv-design-big img', designBox);
+      $$('input[name=design]', designBox).forEach((r) => r.addEventListener('change', () => { state.design = state.designs.find((d) => d.design_id === r.value); $$('.gv-design', designBox).forEach((l) => l.classList.toggle('on', l.contains(r))); big.style.opacity = 0; setTimeout(() => { big.src = API + state.design.image; big.alt = state.design.name; big.style.opacity = 1; }, 180); }));
     };
-    const renderPreview = () => {
-      if (!preview) return;
-      const to = $('[name=recipient_name]', form)?.value.trim(), from = $('[name=from_name]', form)?.value.trim() || $('[name=buyer_name]', form)?.value.trim(), msg = $('[name=message]', form)?.value.trim();
-      preview.innerHTML = `<div class="gv-card">${state.design ? `<img src="${API}${state.design.image}" alt="">` : '<div class="gv-card-blank"></div>'}<div class="gv-card-body"><small>Elements Wellness · Gift voucher</small><b>${state.item ? esc(state.item.kind === 'value' ? money(state.item.value ?? state.item.price) : state.item.name) : 'Choose a voucher'}</b>${to ? `<span>For ${esc(to)}${from ? ' · From ' + esc(from) : ''}</span>` : ''}${msg ? `<em>“${esc(msg)}”</em>` : ''}</div></div>`;
-      const sum = $('[data-gift-total]'); if (sum) sum.textContent = state.item ? money(state.item.price) : '—';
-      const btn = $('button[type=submit]', form); if (btn) btn.disabled = !state.item;
-    };
-    api('/api/gift/public/catalog').then((c) => { state.items = c.items; state.designs = c.designs; renderItems(); renderDesigns(); renderPreview(); }).catch(() => { itemsBox.innerHTML = '<p class="muted">We could not load the voucher list. Please refresh, or call or WhatsApp an outlet.</p>'; });
-    form.addEventListener('input', renderPreview);
-    $('[name=send_when]', form)?.addEventListener('change', (e) => { $('[data-send-date]', form).hidden = e.target.value !== 'later'; });
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault(); if (!state.item) return itemsBox.scrollIntoView({ behavior: 'smooth' });
-      if (!form.checkValidity()) return form.reportValidity();
-      const btn = $('button[type=submit]', form), out = $('[data-gift-error]', form); btn.disabled = true; btn.classList.add('busy'); out.textContent = '';
-      const f = Object.fromEntries(new FormData(form).entries());
-      try {
-        const r = await api('/api/gift/public/checkout', { method: 'POST', body: JSON.stringify({ item_id: state.item.item_id, design_id: state.design?.design_id || null, buyer_name: f.buyer_name, buyer_email: f.buyer_email, buyer_phone: f.buyer_phone, recipient_name: f.recipient_name, recipient_email: f.recipient_email || f.buyer_email, from_name: f.from_name || f.buyer_name, message: f.message, send_at: f.send_when === 'later' && f.send_date ? new Date(f.send_date + 'T09:00:00+08:00').toISOString() : null, return_base: location.origin }) });
-        location.href = r.url;
-      } catch (err) { out.textContent = err.message; btn.disabled = false; btn.classList.remove('busy'); }
+    api('/api/gift/public/catalog').then((c) => { state.items = c.items.sort((a, b) => a.price - b.price); state.designs = c.designs; renderItems(); renderDesigns(); }).catch(() => { itemsBox.innerHTML = '<p class="muted">We could not load the voucher list. Please refresh, or call or WhatsApp an outlet.</p>'; });
+    const f = () => Object.fromEntries(new FormData(form).entries());
+    $$('[data-gift-back]').forEach((b) => b.addEventListener('click', () => go(b.closest('[data-stage]').dataset.stage === '3' ? 2 : 1)));
+    $('[data-gift-next]').addEventListener('click', () => {
+      const d = f(), out = $('[data-gift-error]'); out.textContent = '';
+      if (!d.buyer_name.trim()) { out.textContent = 'Please enter your name.'; return; }
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.buyer_email)) { out.textContent = 'Please enter a valid email address.'; return; }
+      if (d.recipient_email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.recipient_email)) { out.textContent = 'Please enter a valid recipient email.'; return; }
+      const to = d.recipient_email || d.buyer_email;
+      summary.innerHTML = `<div class="gv-sum-row"><span>${label(state.item)}</span><b>SGD ${Number(state.item.price).toLocaleString('en-SG')}</b></div>
+        ${d.recipient_name ? `<div class="gv-sum-line"><span>Recipient:</span> ${esc(d.recipient_name)}</div>` : ''}<div class="gv-sum-line"><span>Your name:</span> ${esc(d.buyer_name)}</div>
+        <div class="gv-sum-row"><span>Shipping<br><small>By email: ${esc(to)}</small></span><b>SGD 0</b></div>
+        <div class="gv-sum-total"><span>Total:</span><b>SGD ${Number(state.item.price).toLocaleString('en-SG')}</b></div>`;
+      go(3);
     });
-    if (new URLSearchParams(location.search).get('cancelled')) { const n = $('[data-gift-notice]'); if (n) { n.hidden = false; n.textContent = 'Your payment was cancelled — nothing has been charged. You can try again whenever you like.'; } }
+    $('[data-gift-pay]').addEventListener('click', async () => {
+      const b = $('[data-gift-pay]'), out = $('[data-gift-pay-error]'); b.disabled = true; b.classList.add('busy'); out.textContent = '';
+      const d = f();
+      try {
+        const r = await api('/api/gift/public/checkout', { method: 'POST', body: JSON.stringify({ item_id: state.item.item_id, design_id: state.design?.design_id || null, buyer_name: d.buyer_name, buyer_email: d.buyer_email, recipient_name: d.recipient_name, recipient_email: d.recipient_email || d.buyer_email, from_name: d.buyer_name, message: d.message, return_base: location.origin }) });
+        location.href = r.url;
+      } catch (err) { out.textContent = err.message; b.disabled = false; b.classList.remove('busy'); }
+    });
+    if (new URLSearchParams(location.search).get('cancelled')) { const n = $('[data-gift-notice]'); if (n) { n.hidden = false; n.textContent = 'Your payment was cancelled — nothing has been charged.'; } }
   }
 
   /* ---------- Thank-you page ---------- */
@@ -51,22 +61,14 @@
   if (thanks) {
     const sid = new URLSearchParams(location.search).get('session_id');
     const render = (o) => {
-      if (o.status === 'paid') thanks.innerHTML = `<p class="lede">Thank you${o.buyer_name ? ', ' + esc(o.buyer_name) : ''}. Your order <b>${esc(o.order_no)}</b> is confirmed and a receipt has been sent to <b>${esc(o.buyer_email || '')}</b>.</p>
+      if (o.status === 'paid') thanks.innerHTML = `<p class="lede">Order <b>${esc(o.order_no)}</b> · receipt sent to <b>${esc(o.buyer_email || '')}</b></p>
         ${o.vouchers.map((v) => `<div class="gv-done"><div><b>${esc(v.title)}</b><br><span class="muted">${v.recipient_name ? 'For ' + esc(v.recipient_name) + ' · ' : ''}${v.status === 'scheduled' ? 'Will be emailed on ' + day(v.send_at) : v.sent_at ? 'Emailed to ' + esc(v.recipient_email) : 'Being emailed to ' + esc(v.recipient_email)}</span></div><code>${esc(v.code)}</code></div>`).join('')}
-        <p class="form-note">Vouchers are valid until ${o.vouchers[0] ? day(o.vouchers[0].expires_at) : 'the date shown on the voucher'} and can be used at ION Orchard, The Centrepoint and 313@somerset. Can't find the email? Check the spam folder, or contact us with your order number.</p>`;
-      else if (o.status === 'pending') thanks.innerHTML = '<p class="lede"><span class="spin"></span> Confirming your payment…</p>';
-      else thanks.innerHTML = `<p class="lede">This order (${esc(o.order_no)}) was ${esc(o.status)}. Nothing has been charged. <a class="link-arrow" href="/gift-vouchers/">Try again</a></p>`;
+        <p class="form-note">Valid until ${o.vouchers[0] ? day(o.vouchers[0].expires_at) : ''}</p>`;
+      else if (o.status === 'pending') thanks.innerHTML = '<p class="lede"><span class="spin"></span></p>';
+      else thanks.innerHTML = `<p class="lede">Order ${esc(o.order_no)}: ${esc(o.status)}. <a class="link-arrow" href="/gift-vouchers/">Gift Vouchers</a></p>`;
     };
-    if (!sid) thanks.innerHTML = '<p class="lede">We could not find your order. If you have paid, please contact us with your receipt.</p>';
-    else (async () => { for (let i = 0; i < 12; i++) { try { const o = await api('/api/gift/public/order?session_id=' + encodeURIComponent(sid)); render(o); if (o.status !== 'pending') return; } catch (e) { thanks.innerHTML = `<p class="lede">${esc(e.message)}</p>`; return; } await new Promise((r) => setTimeout(r, 2500)); } thanks.innerHTML += '<p class="form-note">Still confirming — your receipt email will arrive once the payment completes.</p>'; })();
+    if (!sid) thanks.innerHTML = '<p class="lede"><a class="link-arrow" href="/gift-vouchers/">Gift Vouchers</a></p>';
+    else (async () => { for (let i = 0; i < 12; i++) { try { const o = await api('/api/gift/public/order?session_id=' + encodeURIComponent(sid)); render(o); if (o.status !== 'pending') return; } catch (e) { thanks.innerHTML = `<p class="lede">${esc(e.message)}</p>`; return; } await new Promise((r) => setTimeout(r, 2500)); } })();
   }
 
-  /* ---------- Check a voucher ---------- */
-  const check = $('[data-gift-check]');
-  if (check) check.addEventListener('submit', async (e) => {
-    e.preventDefault(); const out = $('[data-gift-check-out]'); const code = $('input', check).value.trim(); if (!code) return;
-    out.innerHTML = '<span class="spin"></span>';
-    try { const v = await api('/api/gift/public/check?code=' + encodeURIComponent(code)); const label = { active: 'Valid', scheduled: 'Not yet sent', redeemed: 'Already used', expired: 'Expired', voided: 'Cancelled' }[v.status] || v.status; out.innerHTML = `<div class="gv-check-result ${v.status}"><b>${label}</b> — ${esc(v.title)}${v.value_remaining != null ? ` · balance ${money(v.value_remaining)}` : ''}<br><small>${v.status === 'redeemed' && v.redeemed_at ? 'Used on ' + day(v.redeemed_at) : 'Valid until ' + day(v.expires_at)}</small></div>`; }
-    catch (err) { out.innerHTML = `<div class="gv-check-result voided">${esc(err.message)}</div>`; }
-  });
 })();

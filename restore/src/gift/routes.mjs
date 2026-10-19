@@ -95,7 +95,7 @@ export function registerGiftRoutes({ route, send, err, json, readBody, staff, se
   /* ---- issue manually (counter sale / complimentary) ---- */
   route('POST', '/api/gift/issue', async (req, res) => {
     const b = await json(req);
-    const line = { item_id: b.item_id, qty: 1, recipient_name: b.recipient_name?.trim() || null, recipient_email: b.recipient_email?.trim() || null, from_name: b.from_name?.trim() || null, message: b.message?.trim() || null, design_id: b.design_id || null, delivery: b.delivery === 'print' ? 'print' : 'email', send_at: b.send_at || null };
+    const line = { item_id: b.item_id, qty: 1, recipient_name: b.recipient_name?.trim() || null, recipient_email: b.recipient_email?.trim() || null, from_name: b.from_name?.trim() || null, message: b.message?.trim() || null, headline: String(b.headline || '').trim().slice(0, 40) || null, design_id: b.design_id || null, delivery: b.delivery === 'print' ? 'print' : 'email', send_at: b.send_at || null };
     if (line.delivery === 'email' && !EMAIL_RE.test(line.recipient_email || '')) return err(res, 422, 'Enter the recipient email, or choose Print');
     if (!['counter', 'complimentary', 'other'].includes(b.payment)) return err(res, 422, 'Choose how it was paid');
     try {
@@ -158,10 +158,10 @@ export function registerGiftRoutes({ route, send, err, json, readBody, staff, se
     const recipient_name = String(b.recipient_name || '').trim().slice(0, 80), recipient_email = String(b.recipient_email || buyer_email).trim().toLowerCase();
     if (!buyer_name || !EMAIL_RE.test(buyer_email)) return err(res, 422, 'Please enter your name and a valid email address');
     if (!EMAIL_RE.test(recipient_email)) return err(res, 422, 'Please enter a valid email address for the recipient');
-    const message = String(b.message || '').trim().slice(0, 240);
+    const message = String(b.message || '').trim().slice(0, 240), headline = String(b.headline || '').trim().slice(0, 40);
     let send_at = null; if (b.send_at) { const d = new Date(b.send_at); if (Number.isNaN(d.getTime()) || d.getTime() > Date.now() + 366 * 864e5) return err(res, 422, 'Please choose a send date within the next year'); if (d.getTime() > Date.now() + 60e3) send_at = d.toISOString(); }
     const return_base = allowedOrigins.includes(b.return_base) ? b.return_base : siteUrl; // never redirect to an unknown site
-    const line = { item_id: it.item_id, title: it.name, price: it.price, qty: 1, design_id: design?.design_id || null, recipient_name: recipient_name || null, recipient_email, from_name: String(b.from_name || buyer_name).trim().slice(0, 80), message: message || null, delivery: 'email', send_at };
+    const line = { item_id: it.item_id, title: it.name, price: it.price, qty: 1, design_id: design?.design_id || null, recipient_name: recipient_name || null, recipient_email, from_name: String(b.from_name || buyer_name).trim().slice(0, 80), message: message || null, headline: headline || null, delivery: 'email', send_at };
     const order = await Orders.create({ source: 'website', buyer_name, buyer_email, buyer_phone: String(b.buyer_phone || '').trim().slice(0, 30) || null, total: it.price, status: 'pending', payment_provider: 'stripe' });
     try {
       const session = await stripe.createCheckoutSession({ order, lines: [line], successUrl: `${return_base}/gift-vouchers/thank-you/?session_id={CHECKOUT_SESSION_ID}`, cancelUrl: `${return_base}/gift-vouchers/?cancelled=1` });

@@ -26,7 +26,6 @@ massageConcerns.forEach((c) => add(P.concernPage(c)));
 add(P.sharedPage(SM.massageBoosters, 'massage'));
 add(P.spaLanding());
 services.forEach((s) => add(P.servicePage(s)));
-add(P.restorePage());
 add(P.productsPage());
 add(P.productsPage('skincare'));
 add(P.productsPage('supplements'));
@@ -40,10 +39,6 @@ add(P.awardsIndex());
 add(P.contactPage());
 add(P.faqPage());
 policies.forEach((p) => add(P.policyPage(p)));
-
-// ---- Needed but not separate sitemap entries: Book Now destination ----
-add(P.bookPage('/book-appointment/'));
-add(P.bookPage('/make-an-appointment-form/'), { inSitemap: false });
 
 // ---- Kept live but outside the navigation and sitemap.xml (for Elements to decide) ----
 // Campaign pages: "add individual campaign pages only where the campaign needs a dedicated destination"

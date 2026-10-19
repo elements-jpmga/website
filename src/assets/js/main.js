@@ -28,27 +28,32 @@
   const firstVisit = !sessionStorage.getItem('ew-seen');
   sessionStorage.setItem('ew-seen', '1');
   const enterPage = (onDone) => {
+    let walkin = false; try { walkin = sessionStorage.getItem('ew-walkin') === '1'; sessionStorage.removeItem('ew-walkin'); } catch {}
+    if (walkin && !isHome) { if (loader) loader.style.display = 'none'; if (curtain) gsap.set(curtain, { visibility: 'hidden', opacity: 0 }); try { sessionStorage.setItem('ew-walkin', '1'); } catch {} onDone(); return; }
     if (reduced || !loader || !isHome) {
       if (loader) loader.style.display = 'none';
       if (curtain && !reduced) { gsap.set(curtain, { opacity: 1, visibility: 'visible' }); gsap.to(curtain, { opacity: 0, duration: .6, ease: 'power2.out', onComplete: () => gsap.set(curtain, { visibility: 'hidden' }) }); }
       onDone(); return;
     }
-    // Home only: solid maroon screen with the wordmark, then a soft fade out
-    const wm = loader.querySelector('.loader-logo');
-    // the steam reveal starts underneath while the loader fades, so the spa is already emerging
+    // Home: the logo lockup appears — ELEMENTS rises, WELLNESS settles in beneath it (two clipped copies of the supplied logo file) — then the screen opens from the middle
+    const top = loader.querySelector('.loader-top'), bottom = loader.querySelector('.loader-bottom'), inner = loader.querySelector('.loader-inner'), lock = loader.querySelector('.loader-lockup'), l1 = loader.querySelector('.ll-1'), l2 = loader.querySelector('.ll-2');
+    const k = firstVisit ? 1 : .55;
     gsap.timeline({ onComplete: () => { loader.style.display = 'none'; } })
-      .fromTo(wm, { opacity: 0, y: 12, scale: .96 }, { opacity: 1, y: 0, scale: 1, duration: .8, ease: 'power3.out' }, 0)
-      .to(wm, { opacity: 0, y: -8, duration: .35, ease: 'power2.in' }, '+=.35')
-      .add(onDone, '-=.1')
-      .to(loader, { opacity: 0, duration: .7, ease: 'power2.inOut' }, '-=.15');
+      .fromTo(lock, { opacity: 0, scale: .96 }, { opacity: 1, scale: 1, duration: .7 * k, ease: 'power2.out' }, 0)
+      .fromTo(l1, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .9 * k, ease: 'power3.out' }, .2 * k)
+      .fromTo(l2, { opacity: 0, y: -6 }, { opacity: 1, y: 0, duration: .8 * k, ease: 'power3.out' }, .6 * k)
+      .to(inner, { opacity: 0, duration: .8 * k, ease: 'power2.inOut' }, `+=${.45 * k}`)
+      .add(onDone, '-=.2')
+      .to(top, { yPercent: -100, duration: 1.1, ease: 'expo.inOut' }, '-=.25')
+      .to(bottom, { yPercent: 100, duration: 1.1, ease: 'expo.inOut' }, '<');
   };
   const leavePage = (href) => {
     if (!curtain || reduced) { window.location.href = href; return; }
     gsap.set(curtain, { visibility: 'visible', opacity: 0 });
-    gsap.set(curtain.querySelector('.loader-logo'), { opacity: 0, y: 8 });
+    gsap.set(curtain.querySelector('.loader-lockup'), { opacity: 0, y: 8 });
     gsap.timeline({ onComplete: () => { window.location.href = href; } })
       .to(curtain, { opacity: 1, duration: .45, ease: 'power2.inOut' })
-      .to(curtain.querySelector('.loader-logo'), { opacity: 1, y: 0, duration: .4 }, '-=.2');
+      .to(curtain.querySelector('.loader-lockup'), { opacity: 1, y: 0, duration: .4 }, '-=.2');
   };
   document.addEventListener('click', (e) => {
     const a = e.target.closest('a');
@@ -83,6 +88,8 @@
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') m.classList.remove('open'); });
   });
   const burger = $('.burger');
+  // the mobile menu's own Close button
+  $$('[data-mm-close]').forEach((c) => c.addEventListener('click', () => { document.body.classList.remove('menu-open'); burger?.setAttribute('aria-expanded', 'false'); lenis?.start(); }));
   if (burger) burger.addEventListener('click', () => {
     const open = !document.body.classList.contains('menu-open');
     document.body.classList.toggle('menu-open', open); burger.setAttribute('aria-expanded', open);
@@ -97,7 +104,7 @@
     const titleLines = $$('.hero-title .line > span', hero), fadeIns = $$('[data-hero-in]', hero);
     const seen = sessionStorage.getItem('ew-steam') === '1'; sessionStorage.setItem('ew-steam', '1');
     const speed = seen ? .6 : 1;
-    const state = { density: 1, mx: -9999, my: -9999 };
+    const state = { density: .09, mx: -9999, my: -9999 };
     let ctx, W, H, parts = [], sprite, running = true;
     if (canvas && !reduced) {
       ctx = canvas.getContext('2d');
@@ -107,7 +114,7 @@
       s.fillStyle = g; s.fillRect(0, 0, 256, 256);
       const resize = () => { const dpr = Math.min(window.devicePixelRatio || 1, 1.5); W = hero.offsetWidth; H = hero.offsetHeight; canvas.width = W * dpr; canvas.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
       resize(); window.addEventListener('resize', resize);
-      const N = W < 700 ? 34 : 70;
+      const N = W < 700 ? 14 : 26;
       const spawn = (init) => ({ x: Math.random() * W, y: init ? Math.random() * H * 1.1 : H + 150 + Math.random() * 200, r: (W < 700 ? 140 : 220) + Math.random() * (W < 700 ? 200 : 380), vx: (Math.random() - .5) * .25, vy: -(.25 + Math.random() * .55), a: .5 + Math.random() * .5, rot: Math.random() * Math.PI * 2, vr: (Math.random() - .5) * .002, wob: Math.random() * 1000, ox: 0, oy: 0 });
       for (let i = 0; i < N; i++) parts.push(spawn(true));
       hero.addEventListener('pointermove', (e) => { const r = hero.getBoundingClientRect(); state.mx = e.clientX - r.left; state.my = e.clientY - r.top; });
@@ -131,16 +138,64 @@
     }
     if (reduced) { gsap.set(veil, { opacity: 0 }); gsap.set(img, { filter: 'blur(0px) brightness(1)', scale: 1.04 }); gsap.set([...titleLines, ...fadeIns], { yPercent: 0, y: 0, opacity: 1 }); state.density = .2; return; }
     gsap.set(titleLines, { y: 0, yPercent: 115 }); gsap.set(fadeIns, { opacity: 0, y: 18 });
+    gsap.set(veil, { opacity: 0 });
     gsap.timeline()
-      .to(veil, { opacity: 0, duration: 1.8 * speed, ease: 'power2.out' }, 0)
-      .to(img, { filter: 'blur(0px) brightness(1)', scale: 1.04, duration: 2.6 * speed, ease: 'power3.out' }, 0)
-      .to(state, { density: .13, duration: 3.4 * speed, ease: 'power2.out' }, .4 * speed)
+      .fromTo(img, { scale: 1.08 }, { scale: 1.04, duration: 2.6 * speed, ease: 'power3.out' }, 0)
       .to(titleLines, { yPercent: 0, duration: 1.2, stagger: .12, ease: 'expo.out' }, .8 * speed)
       .to(fadeIns, { opacity: 1, y: 0, duration: 1, stagger: .1 }, 1.1 * speed);
     gsap.timeline({ scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } })
       .to(img, { yPercent: 10, ease: 'none' }, 0)
       .to($('.hero-content', hero), { yPercent: -12, opacity: 0, ease: 'none' }, 0)
-      .to(state, { density: .05, ease: 'none' }, 0);
+      .to(state, { density: .04, ease: 'none' }, 0);
+  }
+
+  /* ---------- Hero slides: crossfade every few seconds; words swap with a soft lift ---------- */
+  function heroSlides() {
+    const sec = $('[data-slides]'), data = window.EW_SLIDES; if (!sec || !data) return;
+    const imgs = $$('[data-slide-img]', sec), dots = $$('[data-slide-to]', sec), title = $('[data-slide-title]', sec), sub = $('[data-slide-sub]', sec), cta = $('[data-slide-cta]', sec);
+    let i = 0, timer, busy = false;
+    const fill = (n) => { title.textContent = data[n].title; sub.textContent = data[n].sub; cta.querySelector('span').textContent = data[n].cta; cta.href = data[n].href; };
+    const show = (n, user) => {
+      n = (n + data.length) % data.length; if (n === i || busy) return; const from = i; i = n;
+      dots.forEach((d, j) => { d.classList.toggle('is-on', j === n); d.setAttribute('aria-selected', j === n); });
+      if (reduced) { imgs.forEach((im, j) => im.classList.toggle('is-on', j === n)); fill(n); return; }
+      busy = true;
+      gsap.timeline({ onComplete: () => { busy = false; } })
+        .to([title, sub, cta], { opacity: 0, y: -14, duration: .45, stagger: .05, ease: 'power2.in' }, 0)
+        .set(imgs[n], { opacity: 0, scale: 1.08, zIndex: 2 }, 0).add(() => imgs[n].classList.add('is-on'), 0)
+        .to(imgs[n], { opacity: 1, duration: 1.4, ease: 'power2.inOut' }, 0)
+        .to(imgs[n], { scale: 1.04, duration: 6, ease: 'none' }, 0)
+        .add(() => { imgs[from].classList.remove('is-on'); gsap.set(imgs[from], { clearProps: 'all' }); gsap.set(imgs[n], { zIndex: 1 }); }, 1.4)
+        .add(fill.bind(null, n), .5)
+        .fromTo([title, sub, cta], { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: .9, stagger: .08, ease: 'power3.out' }, .6);
+      if (user) restart();
+    };
+    const restart = () => { clearInterval(timer); if (!reduced) timer = setInterval(() => show(i + 1), 6500); };
+    dots.forEach((d) => d.addEventListener('click', () => show(+d.dataset.slideTo, true)));
+    $('[data-slide-prev]', sec)?.addEventListener('click', () => show(i - 1, true));
+    $('[data-slide-next]', sec)?.addEventListener('click', () => show(i + 1, true));
+    new IntersectionObserver(([en]) => (en.isIntersecting ? restart() : clearInterval(timer))).observe(sec);
+  }
+
+  /* ---------- Logo wall: every couple of seconds one cell swaps its logo for one not on the wall ---------- */
+  function logoWall() {
+    const wall = $('[data-logo-wall]'), pool = window.EW_LOGOS; if (!wall || !pool || reduced) return;
+    const shown = $$('.logo-cell', wall).filter((c) => c.offsetParent !== null);
+    gsap.set(shown, { opacity: 0, x: -28 });
+    ScrollTrigger.create({ trigger: wall, start: 'top 85%', once: true, onEnter: () => gsap.to(shown, { opacity: 1, x: 0, duration: .9, stagger: .09, ease: 'power3.out' }) });
+    const cells = $$('.logo-cell', wall).filter((c) => c.offsetParent !== null); if (pool.length <= cells.length) return;
+    let showing0 = $$('.logo-cell', wall).map((_, i) => i);
+    let showing = showing0, last = -1, timer;
+    const swap = () => {
+      let c; do { c = Math.floor(Math.random() * cells.length); } while (c === last); last = c;
+      const hidden = pool.map((_, i) => i).filter((i) => !showing.includes(i)); const next = hidden[Math.floor(Math.random() * hidden.length)];
+      const cell = cells[c], img = $('img', cell), a = $('a', cell); showing[c] = next; const L = pool[next];
+      gsap.timeline()
+        .to(img, { yPercent: -45, opacity: 0, duration: .45, ease: 'power2.in' })
+        .add(() => { img.src = L.img; img.alt = L.title; if (a) { a.href = L.url || a.href; a.title = L.title; } })
+        .fromTo(img, { yPercent: 45, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .8, ease: 'power3.out' });
+    };
+    new IntersectionObserver(([en]) => { clearInterval(timer); if (en.isIntersecting) timer = setInterval(swap, 2200); }).observe(wall);
   }
 
   /* ---------- Hero finder rotator ---------- */
@@ -153,7 +208,17 @@
     $$('[data-split]').forEach((el) => {
       SplitText.create(el, { type: 'lines', mask: 'lines', autoSplit: true, onSplit(self) { gsap.set(el, { visibility: 'visible' }); return gsap.from(self.lines, { yPercent: 100, opacity: 0, duration: 1.1, stagger: .09, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } }); } });
     });
-    ScrollTrigger.batch('[data-reveal]', { start: 'top 90%', once: true, onEnter: (els) => gsap.to(els, { opacity: 1, y: 0, duration: 1, stagger: .08, ease: 'power3.out', overwrite: true }) });
+    // Reveal direction follows position: left side slides in from the left, right side from the right, centre rises;
+    // whatever enters together queues in reading order (top row first, then left to right)
+    const dirFor = (el) => { const r = el.getBoundingClientRect(), vw = window.innerWidth, c = (r.left + r.width / 2) / vw; if (r.width > vw * .66 || vw < 720) return { x: 0, y: 28 }; if (c < .42) return { x: -56, y: 0 }; if (c > .58) return { x: 56, y: 0 }; return { x: 0, y: 28 }; };
+    $$('[data-reveal]').forEach((el) => gsap.set(el, { opacity: 0, ...dirFor(el) }));
+    const order = (els) => els.map((el) => ({ el, r: el.getBoundingClientRect() })).sort((a, b) => (Math.abs(a.r.top - b.r.top) > 40 ? a.r.top - b.r.top : a.r.left - b.r.left)).map((o) => o.el);
+    ScrollTrigger.batch('[data-reveal]', { start: 'top 90%', once: true, onEnter: (els) => {
+      // anything already scrolled past (a fast scroll or a jump) just appears; what's on screen queues, finishing within about a second
+      const passed = els.filter((el) => el.getBoundingClientRect().bottom < 0), now = order(els.filter((el) => !passed.includes(el)));
+      if (passed.length) gsap.set(passed, { opacity: 1, x: 0, y: 0, overwrite: true });
+      if (now.length) gsap.to(now, { opacity: 1, x: 0, y: 0, duration: 1.1, stagger: Math.min(.12, .9 / now.length), ease: 'power3.out', overwrite: true });
+    } });
     ScrollTrigger.batch('[data-clip]', { start: 'top 85%', once: true, onEnter: (els) => gsap.to(els, { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: 'power3.out', overwrite: true }) });
     $$('[data-fill]').forEach((el) => { const s = SplitText.create(el, { type: 'words', wordsClass: 'w' }); gsap.to(s.words, { opacity: 1, stagger: .06, ease: 'none', scrollTrigger: { trigger: el, start: 'top 80%', end: 'bottom 50%', scrub: true } }); });
     $$('[data-count]').forEach((el) => { const to = parseFloat(el.dataset.count), dec = (el.dataset.count.split('.')[1] || '').length, o = { v: 0 }; gsap.to(o, { v: to, duration: 2, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true }, onUpdate: () => el.textContent = o.v.toFixed(dec) }); });
@@ -167,6 +232,198 @@
     $$('.page-hero-media img, .svc-hero-media img').forEach((img) => gsap.fromTo(img, { yPercent: -8 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }));
     // Fanned photo stack opens as it appears
     $$('[data-fan]').forEach((f) => { const imgs = $$('img', f); const rots = [-12, 0, 12], xs = [-60, 0, 60]; const m = window.innerWidth < 640 ? .78 : 1; gsap.to(imgs, { rotate: (i) => rots[i], x: (i) => xs[i] * m, duration: 1.2, ease: 'power3.out', stagger: .06, scrollTrigger: { trigger: f, start: 'top 85%', once: true } }); });
+  }
+
+  /* ---------- Treatment cards: rise into place with perspective, then drift gently with the scroll ---------- */
+  function rise() {
+    $$('[data-rise]').forEach((grid) => {
+      const items = $$('[data-rise-item]', grid); if (!items.length) return;
+      if (reduced) { gsap.set(items, { opacity: 1 }); return; }
+      gsap.set(grid, { perspective: 1200 });
+      gsap.fromTo(items, { y: 140, opacity: 0, rotateX: 9, scale: .96, transformOrigin: '50% 100%' }, { y: 0, opacity: 1, rotateX: 0, scale: 1, duration: 1.5, stagger: .13, ease: 'expo.out', scrollTrigger: { trigger: grid, start: 'top 82%', once: true }, clearProps: 'rotateX,scale' });
+      if (window.innerWidth > 960) items.forEach((it, i) => gsap.fromTo(it, { y: i % 2 ? 36 : 0 }, { y: i % 2 ? -24 : 0, ease: 'none', immediateRender: false, scrollTrigger: { trigger: grid, start: 'top bottom', end: 'bottom top', scrub: 1.2 } }));
+    });
+  }
+
+  /* ---------- Treatment cards: the hovered treatment's photo slides in over the card photo (left to right) and slides away on leave ---------- */
+  function pathPhotos() {
+    if (isTouch) return;
+    $$('.path-card').forEach((card) => {
+      const media = $('.path-media', card), list = $('.path-list', card); if (!media || !list) return;
+      const links = $$('a[data-img]', list).filter((a) => a.dataset.img);
+      card.addEventListener('pointerenter', () => links.forEach((a) => { const i = new Image(); i.src = a.dataset.img; }), { once: true });
+      let top = null;
+      const show = (src) => {
+        if (top && top.dataset.src === src) return;
+        const img = document.createElement('img'); img.className = 'path-slide'; img.alt = ''; img.src = src; img.dataset.src = src; media.appendChild(img);
+        const under = top; top = img;
+        if (reduced) { under?.remove(); return; }
+        gsap.fromTo(img, { clipPath: 'inset(0 100% 0 0)', scale: 1.08 }, { clipPath: 'inset(0 0% 0 0)', scale: 1, duration: .75, ease: 'power3.inOut', onComplete: () => under?.remove() });
+      };
+      const hide = () => {
+        if (!top) return; const img = top; top = null;
+        if (reduced) { img.remove(); return; }
+        gsap.to(img, { clipPath: 'inset(0 0 0 100%)', duration: .6, ease: 'power3.inOut', onComplete: () => { $$('.path-slide', media).forEach((x) => x !== top && x.remove()); } });
+      };
+      links.forEach((a) => a.addEventListener('pointerenter', () => show(a.dataset.img)));
+      list.addEventListener('pointerleave', hide);
+    });
+  }
+
+  /* ---------- Treatment pages: the bottom-left booking card appears after the hero and steps aside at the booking section ---------- */
+  function bookCard() {
+    const card = $('[data-bookcard]'); if (!card) return;
+    const hero = $('.tp-hero'), band = $('#tp-book');
+    const update = () => { const past = hero ? hero.getBoundingClientRect().bottom < 0 : window.scrollY > 500; const atBand = band ? band.getBoundingClientRect().top < window.innerHeight * .85 : false; card.classList.toggle('show', past && !atBand); };
+    window.addEventListener('scroll', update, { passive: true }); update();
+  }
+
+  /* ---------- Review carousels: arrows page through the cards; long reviews get "Read more" ---------- */
+  function reviewCarousels() {
+    $$('[data-rv-carousel]').forEach((c) => {
+      const track = $('.rv-track', c), items = $$('.rv-item', c), prev = $('[data-rv-prev]', c), next = $('[data-rv-next]', c), count = $('.rv-count', c);
+      const step = () => (items[0]?.getBoundingClientRect().width || 300) + 16;
+      const update = () => { const max = track.scrollWidth - track.clientWidth - 4; prev.disabled = track.scrollLeft <= 4; next.disabled = track.scrollLeft >= max; const first = Math.round(track.scrollLeft / step()) + 1; const shown = Math.max(1, Math.round(track.clientWidth / step())); const last = Math.min(items.length, first + shown - 1); count.textContent = `${last > first ? `${first}–${last}` : first} of ${items.length} reviews`; };
+      prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+      next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+      track.addEventListener('scroll', update, { passive: true }); window.addEventListener('resize', update); update();
+      items.forEach((it) => { const t = $('.rv-text', it), b = $('.rv-more', it); if (t.scrollHeight > t.clientHeight + 4) { b.hidden = false; b.addEventListener('click', () => { const o = it.classList.toggle('is-open'); b.textContent = o ? 'Show less' : 'Read more'; }); } });
+    });
+  }
+
+  /* ---------- Contact: a card's photo grows to the hero's exact place under the header (not the whole screen),
+     so the outlet page appears already in position; the page then only fades its words in ---------- */
+  function contactExpand() {
+    const stage = $('[data-ct-stage]'); if (!stage) return;
+    let busy = false;
+    const go = (href) => { try { sessionStorage.setItem('ew-walkin', '1'); } catch {} window.location.href = href; };
+    const open = (a) => {
+      if (busy) return; busy = true;
+      const href = a.getAttribute('href'), img = $('img', a), r = a.getBoundingClientRect();
+      if (reduced) { go(href); return; }
+      stage.innerHTML = ''; const pic = img.cloneNode(); pic.removeAttribute('loading'); stage.appendChild(pic);
+      const shade = document.createElement('div'); shade.className = 'walk-shade'; stage.appendChild(shade); gsap.set(shade, { opacity: 0 });
+      const headH = $('.header')?.getBoundingClientRect().bottom || 76;
+      gsap.set(stage, { left: r.left, top: r.top, width: r.width, height: r.height }); gsap.set(pic, { scale: 1, transformOrigin: '50% 50%' });
+      stage.classList.add('on'); lenis?.stop();
+      $('.header')?.classList.remove('is-hidden');
+      gsap.timeline({ onComplete: () => go(href) })
+        .to(stage, { left: 0, top: headH, width: window.innerWidth, height: window.innerHeight - headH, duration: 1.1, ease: 'expo.inOut' }, 0)
+        .to(shade, { opacity: 1, duration: .55, ease: 'power1.out' }, .55)
+        .to({}, { duration: .1 });
+    };
+    $$('[data-expand]').forEach((a) => a.addEventListener('click', (e) => { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); e.stopPropagation(); open(a); }, true));
+    $$('[data-expand-link]').forEach((l) => l.addEventListener('click', (e) => { if (e.metaKey || e.ctrlKey || e.shiftKey) return; e.preventDefault(); e.stopPropagation(); open($(`[data-expand="${l.dataset.expandLink}"]`)); }, true));
+    window.addEventListener('pageshow', (e) => { if (e.persisted) { stage.classList.remove('on'); stage.innerHTML = ''; busy = false; lenis?.start(); } });
+  }
+
+  /* ---------- Make An Appointment: four steps; a step must be filled before Next; Submit shows the old page's "allow 3 business days" line ---------- */
+  function bookSteps() {
+    const f = $('[data-book]'); if (!f) return;
+    const steps = $$('.bk-step', f), dots = $$('[data-step-dot]', f); let i = 0;
+    const show = (n) => { i = n; steps.forEach((st, k) => st.classList.toggle('is-on', k === n)); dots.forEach((d, k) => { d.classList.toggle('is-on', k === n); d.classList.toggle('is-done', k < n); }); $$('.bk-err', f).forEach((e) => e.remove()); if (n === 3) summary(); f.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+    const err = (st, msg) => { const e = document.createElement('p'); e.className = 'bk-err'; e.textContent = msg; st.appendChild(e); };
+    const valid = (n) => { const st = steps[n]; if (n === 1 && !f.treatment.value) { err(st, 'Please choose a treatment.'); return false; } if (n === 2 && !f.date.value) { err(st, 'Please choose a date.'); return false; } return true; };
+    const summary = () => { const o = $('input[name=outlet]:checked', f)?.closest('.bk-outlet')?.querySelector('b')?.textContent, t = $('input[name=treatment]:checked', f)?.closest('.bk-item')?.querySelector('b')?.textContent; $('[data-summary]', f).innerHTML = `<b>${o || ''}</b> · ${t || ''} · ${f.date.value} · ${f.time.value}`; };
+    $$('[data-next]', f).forEach((b) => b.addEventListener('click', () => { if (valid(i)) show(i + 1); }));
+    $$('[data-back]', f).forEach((b) => b.addEventListener('click', () => show(i - 1)));
+    f.addEventListener('submit', (e) => { e.preventDefault(); if (!f.name.value || !f.phone.value) { err(steps[3], 'Please enter your name and mobile.'); return; } steps.forEach((st) => st.classList.remove('is-on')); $('.bk-steps', f).hidden = true; const d = $('.bk-done', f); d.hidden = false; d.innerHTML = '<p>Please allow 3 business days.</p>'; });
+  }
+
+  /* ---------- 313 walk-in: the frames play with the scroll; the shopfront copy fades out, the treatments fade in over the reception ---------- */
+  function walkIn() {
+    const sec = $('[data-walk]'); if (!sec) return;
+    const canvas = $('.walk-canvas', sec), fallback = $('.walk-fallback', sec), start = $('[data-walk-start]', sec), end = $('[data-walk-end]', sec);
+    const n = +sec.dataset.frames, small = window.innerWidth <= 900, pattern = small ? sec.dataset.srcSm : sec.dataset.src;
+    const src = (i) => pattern.replace('%03d', String(i + 1).padStart(3, '0'));
+    const frames = []; let loaded = 0, ctx = canvas.getContext('2d'), cur = -1;
+    const pin = $('.walk-pin', sec);
+    const fit = () => { const dpr = Math.min(devicePixelRatio || 1, 1.5); canvas.width = pin.clientWidth * dpr; canvas.height = pin.clientHeight * dpr; draw(Math.max(cur, 0)); };
+    const draw = (i) => { const im = frames[i]; if (!im || !im.complete || !im.naturalWidth) return; cur = i; const cw = canvas.width, ch = canvas.height, s = Math.max(cw / im.naturalWidth, ch / im.naturalHeight), w = im.naturalWidth * s, h = im.naturalHeight * s; ctx.clearRect(0, 0, cw, ch); ctx.drawImage(im, (cw - w) / 2, (ch - h) / 2, w, h); canvas.classList.add('ready'); };
+    for (let i = 0; i < n; i++) { const im = new Image(); im.src = src(i); im.onload = () => { loaded++; if (i === 0) fit(); }; frames.push(im); }
+    window.addEventListener('resize', fit);
+    if (reduced) { gsap.set(end, { opacity: 1 }); return; }
+    gsap.set(end, { opacity: 0, y: 24, pointerEvents: 'none' });
+    const headH = () => ($('.header')?.getBoundingClientRect().bottom || 76);
+    gsap.timeline({ scrollTrigger: { trigger: sec, start: () => 'top ' + headH() + 'px', end: 'bottom bottom', scrub: .6, onUpdate: (st) => { const i = Math.min(n - 1, Math.round(st.progress * (n - 1))); if (i !== cur) draw(i); } } })
+      .to(start, { opacity: 0, y: -30, duration: .28, ease: 'power2.in' }, .05)
+      .set(start, { pointerEvents: 'none' })
+      .to(end, { opacity: 1, y: 0, pointerEvents: 'auto', duration: .25, ease: 'power2.out', onStart: () => sec.classList.add('is-end'), onReverseComplete: () => sec.classList.remove('is-end') }, .72);
+    // arriving from the contact card: the shopfront settles from the zoom the card ended on
+    let fromCard = false; try { fromCard = sessionStorage.getItem('ew-walkin') === '1'; sessionStorage.removeItem('ew-walkin'); } catch {}
+    if (fromCard) gsap.fromTo(start.children, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .9, stagger: .08, ease: 'power3.out', delay: .2 });
+  }
+
+  /* ---------- Locations map: Singapore zooms into Orchard Road once; tap a pin and its card (photos + details) opens in the empty corner ---------- */
+  function mapLocations() {
+    const sec = $('[data-map]'); if (!sec) return;
+    const stage = $('[data-omap]', sec), sg = $('.omap-sg', sec), street = $('.omap-street', sec);
+    const pins = $$('[data-pin]', street), malls = $$('[data-mall]', street), pops = $$('[data-pop]', sec);
+    const W = 1200, H = 790;
+    const pinXY = (id) => { const t = pins.find((p) => p.dataset.pin === id).getAttribute('transform').match(/translate\(([\d.]+) ([\d.]+)\)/); return [+t[1], +t[2]]; };
+    // frame all three pins to the map's own shape (pins sit to the upper right, leaving the lower left free for the card)
+    const fit = () => {
+      const xy = pins.map((p) => pinXY(p.dataset.pin)), xs = xy.map((p) => p[0]), ys = xy.map((p) => p[1]);
+      const sw = stage.clientWidth, a = sw / Math.max(1, stage.clientHeight), wide = window.innerWidth > 900;
+      // on desktop the left part of the map is kept for the outlet card, so the pins are framed in the rest
+      const f = wide ? Math.min(.45, (Math.min(380, sw * .36) + 56) / sw) : 0, a2 = a * (1 - f);
+      let x0 = Math.min(...xs) - 70, x1 = Math.max(...xs) + 90, y0 = Math.min(...ys) - 90, y1 = Math.max(...ys) + (wide ? 120 : 60);
+      let w = x1 - x0, h = y1 - y0; if (w / h < a2) { const d = h * a2 - w; x0 -= d / 2; w = h * a2; } else { const d = w / a2 - h; y0 -= d / 2; h = w / a2; }
+      const full = w / (1 - f); x0 -= full - w; w = full;
+      x0 = Math.min(Math.max(x0, 0), Math.max(0, W - w)); y0 = Math.min(Math.max(y0, 0), Math.max(0, H - h));
+      return [x0, y0, w, h].map((n) => Math.round(n * 10) / 10).join(' ');
+    };
+    street.setAttribute('viewBox', fit());
+    new ResizeObserver(() => street.setAttribute('viewBox', fit())).observe(stage);
+    let current = null, slideTimer;
+    // the outlet's photos rotate in the card while it is open
+    const showSlide = (c, n) => { const imgs = $$('[data-pop-slides] img', c), dots = $$('[data-pop-dot]', c); if (!imgs.length) return; n = (n + imgs.length) % imgs.length; imgs.forEach((im, j) => im.classList.toggle('is-on', j === n)); dots.forEach((d, j) => d.classList.toggle('is-on', j === n)); c.dataset.slide = n; };
+    const startSlides = (c) => { clearInterval(slideTimer); if (!c || reduced) return; slideTimer = setInterval(() => showSlide(c, (+c.dataset.slide || 0) + 1), 3200); };
+    const open = (id) => {
+      current = id;
+      pins.forEach((p) => p.classList.toggle('is-on', p.dataset.pin === id));
+      malls.forEach((m) => m.classList.toggle('is-on', m.dataset.mall === id));
+      pops.forEach((c) => { const on = c.dataset.pop === id; c.classList.toggle('is-open', on); c.setAttribute('aria-hidden', !on); });
+      const c = pops.find((x) => x.dataset.pop === id);
+      if (c) { showSlide(c, 0); startSlides(c); } else clearInterval(slideTimer);
+      if (c && !reduced) gsap.fromTo($$('.omap-pop-over > *, .omap-actions, .omap-pop-body > *', c), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .7, stagger: .05, ease: 'power3.out', delay: .15 });
+      if (c && window.innerWidth <= 900) setTimeout(() => scrollTo(c), 150);
+    };
+    pins.forEach((p) => { p.addEventListener('click', () => open(p.dataset.pin)); p.addEventListener('keydown', (e) => { if (e.key === 'Enter') open(p.dataset.pin); }); });
+    pops.forEach((c) => {
+      $('[data-pop-close]', c).addEventListener('click', () => open(null));
+      $$('[data-pop-dot]', c).forEach((d) => d.addEventListener('click', () => { showSlide(c, +d.dataset.popDot); startSlides(c); }));
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && current) open(null); });
+    if (reduced) { sg.style.display = 'none'; return; }
+    // Intro: Singapore with the Orchard Road dot dead centre → the camera dives into the dot → the street map opens from the middle
+    const DX = 340, DY = 238, dot = $('.sg-dot', sg), rings = $$('.sg-ring', sg), burst = $('.omap-burst', sec);
+    const aspect = () => stage.clientWidth / Math.max(1, stage.clientHeight);
+    const box = (w) => { const h = w / aspect(); return [DX - w / 2, DY - h / 2, w, h].map((n) => Math.round(n * 100) / 100).join(' '); };
+    const W0 = Math.max(1400, 933 * aspect()), W1 = 22;
+    sg.setAttribute('viewBox', box(W0));
+    gsap.set(sg, { opacity: 0 }); gsap.set(street, { clipPath: 'circle(0% at 50% 50%)' }); gsap.set(burst, { scale: 0, opacity: 0 });
+    gsap.set($$('.om-pin-in', street), { opacity: 0, y: -40 }); gsap.set($$('.om-road, .om-bld, .om-park, .om-mrt', street), { opacity: 0 });
+    gsap.set(rings, { attr: { r: 7 }, opacity: 0 });
+    ScrollTrigger.create({ trigger: stage, start: 'top 70%', once: true, onEnter: () => {
+      const tl = gsap.timeline();
+      tl.to(sg, { opacity: 1, duration: .9, ease: 'power2.out' })
+        .fromTo(dot, { attr: { r: 0 } }, { attr: { r: 9 }, duration: .6, ease: 'back.out(3)' }, '-=.4')
+        .to(rings, { attr: { r: 70 }, opacity: 0, duration: 1.4, stagger: .35, ease: 'power2.out', startAt: { attr: { r: 9 }, opacity: .9 } }, '-=.1')
+        // dive: the viewBox shrinks around the dot (which stays the same size on screen), so the island rushes past the edges
+        .to(sg, { attr: { viewBox: box(W1) }, duration: 1.7, ease: 'power4.inOut' }, '-=.6')
+        .to(dot, { attr: { r: 9 * W1 / W0 }, duration: 1.7, ease: 'power4.inOut' }, '<')
+        // the street map opens out from the middle in a widening circle, with a soft ring riding its edge
+        .to(street, { clipPath: 'circle(75% at 50% 50%)', duration: 1.3, ease: 'power3.inOut' }, '-=.35')
+        .fromTo(street, { scale: 1.18, transformOrigin: '50% 50%' }, { scale: 1, duration: 1.6, ease: 'power3.out' }, '<')
+        .to(burst, { scale: 1, opacity: 1, duration: .5, ease: 'power2.out' }, '<')
+        .to(burst, { scale: 2.6, opacity: 0, duration: 1.1, ease: 'power2.out' }, '<.3')
+        .to($$('.om-park, .om-bld', street), { opacity: 1, duration: .8 }, '<.2')
+        .to($$('.om-road', street), { opacity: 1, duration: .9, stagger: .08 }, '<')
+        .to($$('.om-mrt', street), { opacity: 1, duration: .6 }, '-=.4')
+        .to(pins.slice().sort((a, b) => pinXY(a.dataset.pin)[0] - pinXY(b.dataset.pin)[0]).map((p) => $('.om-pin-in', p)), { opacity: 1, y: 0, duration: .8, stagger: .18, ease: 'back.out(2)' }, '-=.5')
+        .add(() => { sg.style.display = 'none'; burst.style.display = 'none'; gsap.set(street, { clearProps: 'clipPath' }); });
+    } });
   }
 
   /* ---------- Steps: image crossfade by scroll position ---------- */
@@ -263,6 +520,12 @@
 
   /* ---------- Boot ---------- */
   // Signature tiles: tap to open on touch devices; arrows scroll the row on smaller screens
+  // Reveal cards: on touch the first tap shows the photo + description, the second follows the link
+  function revealCards() {
+    if (!isTouch) return;
+    $$('.rcard').forEach((c) => c.addEventListener('click', (e) => { if (!c.classList.contains('is-open')) { e.preventDefault(); $$('.rcard.is-open').forEach((x) => x.classList.remove('is-open')); c.classList.add('is-open'); } }));
+    document.addEventListener('click', (e) => { if (!e.target.closest('.rcard')) $$('.rcard.is-open').forEach((x) => x.classList.remove('is-open')); });
+  }
   function sigTiles() {
     const row = $('[data-sig-row]'); if (!row) return;
     const tiles = $$('.sig-tile', row);
@@ -284,7 +547,7 @@
     const w = $('[data-rv-write]'); if (w && d.places[0]?.writeReviewUrl) w.href = d.places[0].writeReviewUrl;
     const up = $('[data-rv-updated]'); if (up) up.textContent = 'Live from Google · updated ' + new Date(d.snapshotDate).toLocaleDateString('en-SG', { day: 'numeric', month: 'short', year: 'numeric' });
   }
-  const boot = () => { liveReviews(); reveals(); steps(); concerns(); carousel(); sigTiles(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
+  const boot = () => { heroSlides(); logoWall(); pathPhotos(); bookCard(); reviewCarousels(); contactExpand(); bookSteps(); walkIn(); liveReviews(); reveals(); rise(); mapLocations(); steps(); concerns(); carousel(); sigTiles(); revealCards(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
   (document.fonts?.ready || Promise.resolve()).then(() => enterPage(() => { steamHero(); boot(); }));
   window.addEventListener('load', () => ScrollTrigger.refresh());
 })();

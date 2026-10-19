@@ -695,12 +695,42 @@
     },
     {
       "source": "/health-analysis/",
-      "destination": "/elements-restore/",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/health-analysis",
-      "destination": "/elements-restore/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/elements-restore/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/elements-restore",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/book-appointment/",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/book-appointment",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/make-an-appointment-form/",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/make-an-appointment-form",
+      "destination": "/contact/",
       "permanent": true
     },
     {
