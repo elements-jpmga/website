@@ -80,65 +80,75 @@ export const revealCard = ({ href, kind = '', title, short = '', more = '', img 
 </a>`;
 export const serviceCard = (s, extra = '') => revealCard({ href: s.url, kind: '', title: s.name, short: '', more: s.description || '', img: s.img, meta: [s.duration, s.price ? `${s.priceNote === 'First trial' ? 'First trial ' : s.priceNote === 'Per couple' ? 'Per couple ' : 'From '}${s.price}` : ''], tag: '', extra: `data-tags="${(s.concerns || []).join(' ')} ${s.group}" ${extra}` });
 
-// Mega menus follow the sitemap: By Concern · Focused Care · By Treatment, plus a separate Boosters link. No prices.
+// Header and menus as the client's mockup (Oct 2026), following the sitemap: utility row Promotions; main nav
+// Facials · Massage & Recovery · Spa Experiences · Products · Gift Vouchers; Book Now. Mega menus: title + Explore All,
+// By Concern · Focused Care · By Treatment, and a separate Boosters link. No prices.
 const mlink = (u, t) => `<a href="${u}">${esc(t)}</a>`;
-const megaFacials = () => {
-  const focused = facialShared.filter((p) => p.group === 'focused'), boost = facialShared.find((p) => p.group === 'boosters');
-  return `<div class="mega"><div class="wrap mega-inner mega-3">
-    <div class="mega-col"><h4>By Concern</h4>${facialConcerns.map((c) => mlink(c.url, c.label)).join('')}</div>
-    <div class="mega-col"><h4>Focused Care</h4>${focused.map((p) => mlink(p.url, p.label)).join('')}<h4 class="mega-sub"><a href="${boost.url}">Boosters</a></h4><h4 class="mega-sub"><a href="/facials/">All Facials</a></h4></div>
-    <div class="mega-col mega-wide"><h4>By Treatment</h4><div class="mega-list c2">${services.filter((s) => s.group === 'facials').map((s) => mlink(s.url, s.name)).join('')}</div></div>
-  </div></div>`;
-};
-const megaMassage = () => {
-  const list = services.filter((s) => s.group === 'massage');
-  return `<div class="mega"><div class="wrap mega-inner mega-3">
-    <div class="mega-col"><h4>By Concern</h4>${massageConcerns.map((c) => mlink(c.url, c.label)).join('')}</div>
-    <div class="mega-col"><h4>Focused Care</h4><span class="mega-heading">Women’s Wellness</span>${womens().map((s) => mlink(s.url, s.name)).join('')}<h4 class="mega-sub"><a href="${massageBoosters.url}">Boosters</a></h4><h4 class="mega-sub"><a href="/massage-and-recovery/">All Massage &amp; Recovery</a></h4></div>
-    <div class="mega-col mega-wide"><h4>By Treatment</h4><div class="mega-list c3">${list.map((s) => mlink(s.url, s.name)).join('')}</div></div>
-  </div></div>`;
-};
-const dropSpa = () => `<div class="mega mega-small"><div class="mega-inner mega-1"><div class="mega-col">${mlink('/spa-experiences/', 'All Spa Experiences')}${spaPages.map((p) => mlink(p.url, p.name)).join('')}</div></div></div>`;
-const dropProducts = () => `<div class="mega mega-small"><div class="mega-inner mega-1"><div class="mega-col">${mlink('/products/', 'All Products')}${mlink('/products/skincare/', 'Skincare')}${mlink('/products/supplements/', 'Supplements')}</div></div></div>`;
+const facialBoost = () => facialShared.find((p) => p.group === 'boosters');
+const megaPanel = ({ title, url, all, concerns, focused, treatments, cols, boosters }) => `<div class="mega"><div class="wrap"><div class="mega-panel">
+  <div class="mega-top"><span class="mega-title">${esc(title)}</span><a class="mega-all" href="${url}">${esc(all)} →</a></div>
+  <div class="mega-cols">
+    <div class="mega-col"><h4>By Concern</h4>${concerns.map((c) => mlink(c.url, c.label)).join('')}</div>
+    <div class="mega-col">${focused}</div>
+    <div class="mega-col mega-wide"><h4>By Treatment</h4><div class="mega-list c${cols}">${treatments.map((s) => mlink(s.url, s.name)).join('')}</div></div>
+  </div>
+  <div class="mega-foot"><a href="${boosters}">Boosters →</a></div>
+</div></div></div>`;
+const megaFacials = () => megaPanel({ title: 'Facials', url: '/facials/', all: 'Explore All Facials', concerns: facialConcerns,
+  focused: `<h4>Focused Care</h4>${facialShared.filter((p) => p.group === 'focused').map((p) => mlink(p.url, p.label)).join('')}`,
+  treatments: services.filter((s) => s.group === 'facials'), cols: 2, boosters: facialBoost().url });
+const megaMassage = () => megaPanel({ title: 'Massage & Recovery', url: '/massage-and-recovery/', all: 'Explore All Massage & Recovery', concerns: massageConcerns,
+  focused: `<h4>Focused Care</h4><span class="mega-heading">Women’s Wellness</span>${womens().map((s) => mlink(s.url, s.name)).join('')}`,
+  treatments: services.filter((s) => s.group === 'massage'), cols: 3, boosters: massageBoosters.url });
 
 const navItem = (label, url, key, active, menu) => menu
-  ? `<div class="has-mega${menu.startsWith('<div class="mega mega-small') ? ' has-drop' : ''}"><a class="nav-link" href="${url}" ${active === key ? 'aria-current="page"' : ''}>${esc(label)} ${icon.chev}</a>${menu}</div>`
+  ? `<div class="has-mega"><a class="nav-link" href="${url}" ${active === key ? 'aria-current="page"' : ''}>${esc(label)} ${icon.chev}</a>${menu}</div>`
   : `<a class="nav-link" href="${url}" ${active === key ? 'aria-current="page"' : ''}>${esc(label)}</a>`;
+
+// Mobile: accordions — each section opens to Explore All, then By Concern / Focused Care / By Treatment (each expandable) and Boosters
+const mSection = (title, url, all, groups, boosters) => `<details class="mm-sec"><summary>${esc(title)}</summary><div class="mm-body">
+  <a class="mm-all" href="${url}">${esc(all)} →</a>
+  ${groups.map(([h, items]) => `<details class="mm-grp"><summary>${esc(h)}</summary><div class="mm-list">${items}</div></details>`).join('')}
+  <a class="mm-all" href="${boosters}">Boosters →</a>
+</div></details>`;
 
 export const header = (active = '') => `
 <a class="skip" href="#main">Skip to content</a>
+<div class="utility-row"><div class="wrap utility-inner"><a href="/promotions/" ${active === 'promotions' ? 'aria-current="page"' : ''}>Promotions</a></div></div>
 <header class="header">
   <div class="wrap header-inner">
     <a href="/" class="logo-lockup" aria-label="Elements Wellness — home"><img src="/assets/img/logo/elements-logo-720.png" alt="Elements Wellness" width="720" height="228"></a>
     <nav class="nav-left" aria-label="Primary">
       ${navItem('Facials', '/facials/', 'facials', active, megaFacials())}
       ${navItem('Massage & Recovery', '/massage-and-recovery/', 'massage', active, megaMassage())}
-      ${navItem('Spa Experiences', '/spa-experiences/', 'spa', active, dropSpa())}
-      ${navItem('Products', '/products/', 'products', active, dropProducts())}
+      ${navItem('Spa Experiences', '/spa-experiences/', 'spa', active)}
+      ${navItem('Products', '/products/', 'products', active)}
       ${navItem('Gift Vouchers', '/gift-vouchers/', 'gift', active)}
-      ${navItem('Promotions', '/promotions/', 'promotions', active)}
     </nav>
     <div class="nav-right">
-      <button class="nav-search" type="button" data-finder aria-label="Find a treatment">${icon.search}<span>Find</span></button>
       <a class="btn btn-sm" href="/book-appointment/"><span>Book Now</span></a>
       <button class="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
     </div>
   </div>
 </header>
 <div class="mobile-menu" aria-label="Mobile">
+  <div class="mm-head"><a href="/" class="logo-lockup" aria-label="Elements Wellness — home"><img src="/assets/img/logo/elements-logo-720.png" alt="Elements Wellness" width="720" height="228"></a><a class="btn btn-sm" href="/book-appointment/"><span>Book Now</span></a><button class="mm-close" type="button" data-mm-close>Close</button></div>
   <nav>
-    <details><summary>Facials</summary><div class="sub"><a href="/facials/">All Facials</a><b class="sub-h">By Concern</b>${facialConcerns.map((c) => mlink(c.url, c.label)).join('')}<b class="sub-h">Focused Care</b>${facialShared.map((p) => mlink(p.url, p.label)).join('')}<b class="sub-h">By Treatment</b>${services.filter((s) => s.group === 'facials').map((s) => mlink(s.url, s.name)).join('')}</div></details>
-    <details><summary>Massage &amp; Recovery</summary><div class="sub"><a href="/massage-and-recovery/">All Massage &amp; Recovery</a><b class="sub-h">By Concern</b>${massageConcerns.map((c) => mlink(c.url, c.label)).join('')}<b class="sub-h">Women’s Wellness</b>${womens().map((s) => mlink(s.url, s.name)).join('')}${mlink(massageBoosters.url, 'Boosters')}<b class="sub-h">By Treatment</b>${services.filter((s) => s.group === 'massage').map((s) => mlink(s.url, s.name)).join('')}</div></details>
-    <details><summary>Spa Experiences</summary><div class="sub"><a href="/spa-experiences/">All Spa Experiences</a>${spaPages.map((p) => mlink(p.url, p.name)).join('')}</div></details>
-    <details><summary>Products</summary><div class="sub"><a href="/products/">All Products</a><a href="/products/skincare/">Skincare</a><a href="/products/supplements/">Supplements</a></div></details>
-    <a href="/gift-vouchers/">Gift Vouchers</a>
-    <a href="/promotions/">Promotions</a>
-    <details><summary>Locations</summary><div class="sub"><a href="/locations/">All Locations</a>${outlets.map((o) => mlink(o.url, o.name)).join('')}</div></details>
+    ${mSection('Facials', '/facials/', 'Explore All Facials', [
+      ['By Concern', facialConcerns.map((c) => mlink(c.url, c.label)).join('')],
+      ['Focused Care', facialShared.filter((p) => p.group === 'focused').map((p) => mlink(p.url, p.label)).join('')],
+      ['By Treatment', services.filter((s) => s.group === 'facials').map((s) => mlink(s.url, s.name)).join('')],
+    ], facialBoost().url)}
+    ${mSection('Massage & Recovery', '/massage-and-recovery/', 'Explore Massage & Recovery', [
+      ['By Concern', massageConcerns.map((c) => mlink(c.url, c.label)).join('')],
+      ['Focused Care', `<span class="mm-sub-h">Women’s Wellness</span>${womens().map((s) => mlink(s.url, s.name)).join('')}`],
+      ['By Treatment', services.filter((s) => s.group === 'massage').map((s) => mlink(s.url, s.name)).join('')],
+    ], massageBoosters.url)}
+    <a class="mm-link" href="/spa-experiences/">Spa Experiences</a>
+    <a class="mm-link" href="/products/">Products</a>
+    <a class="mm-link" href="/gift-vouchers/">Gift Vouchers</a>
+    <a class="mm-link mm-small" href="/promotions/">Promotions</a>
   </nav>
-  <div class="mm-foot">
-    <a class="btn" href="/book-appointment/"><span>Book Now</span></a>
-    <div class="socials">${socials()}</div>
-  </div>
 </div>`;
 
 export const socials = () => site.socials.map((s) => `<a href="${s.url}" target="_blank" rel="noopener" aria-label="${s.label}">${icon[s.icon]}</a>`).join('');

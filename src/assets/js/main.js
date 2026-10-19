@@ -88,6 +88,8 @@
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') m.classList.remove('open'); });
   });
   const burger = $('.burger');
+  // the mobile menu's own Close button
+  $$('[data-mm-close]').forEach((c) => c.addEventListener('click', () => { document.body.classList.remove('menu-open'); burger?.setAttribute('aria-expanded', 'false'); lenis?.start(); }));
   if (burger) burger.addEventListener('click', () => {
     const open = !document.body.classList.contains('menu-open');
     document.body.classList.toggle('menu-open', open); burger.setAttribute('aria-expanded', open);
