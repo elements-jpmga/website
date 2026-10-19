@@ -1788,3 +1788,30 @@ body.menu-open .utility-row { display: none !important; }
 .awards-inline img { mix-blend-mode: multiply; }
 @media (max-width: 720px) { .tp-awards .logo-wall { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px 10px; } .tp-awards .logo-cell { height: 58px; } .tp-awards .logo-cell .award-logo { height: 46px; max-width: 76px; } .tp-awards .logo-cell:nth-child(n+9) { display: none; } }
 .tp-awards .tp-award-logos.logo-wall { display: grid; }
+
+/* ================= Gift Vouchers — pick, one form, pay (Gift Up flow) ================= */
+.gv-wrap { max-width: 640px; margin: 0 auto; }
+.gv-card-head { background: var(--dark-red); color: var(--warm-white); text-align: center; padding: 22px 20px 20px; display: grid; gap: 4px; }
+.gv-card-head span { font-size: 11px; letter-spacing: .26em; text-transform: uppercase; opacity: .85; } .gv-card-head b { font-family: var(--f-head); font-weight: 500; font-size: 30px; letter-spacing: .02em; } .gv-card-head small { font-size: 12px; letter-spacing: .3em; text-transform: uppercase; opacity: .9; }
+.gv-dots { list-style: none; margin: 26px 0 22px; padding: 0; display: flex; justify-content: center; gap: 22px; }
+.gv-dots li { width: 12px; height: 12px; border-radius: 50%; background: var(--rule); position: relative; } .gv-dots li.is-done { background: var(--dark-red); } .gv-dots li.is-on { background: var(--dark-red); box-shadow: 0 0 0 5px rgba(114, 24, 27, .18); }
+.gv-stage { display: none; } .gv-stage.is-on { display: block; }
+.gv-picks { display: grid; gap: 10px; }
+.gv-pick { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; align-items: baseline; text-align: left; padding: 16px 18px; background: var(--warm-white); box-shadow: inset 0 0 0 1px var(--rule); font: inherit; color: var(--primary-dark); cursor: pointer; transition: box-shadow .2s, background .2s; }
+.gv-pick:hover { background: #fff; box-shadow: inset 0 0 0 1px var(--primary-dark); } .gv-pick[disabled] { cursor: default; }
+.gv-pick-name { font-family: var(--f-head); font-weight: 500; font-size: 21px; letter-spacing: .015em; } .gv-pick-price { font-weight: 500; font-size: 16px; } .gv-pick-desc { grid-column: 1 / -1; font-size: 13.5px; color: var(--muted-c); line-height: 1.5; }
+.gv-chosen { text-align: center; margin: 0 0 24px; } .gv-chosen b { display: block; font-family: var(--f-head); font-weight: 500; font-size: clamp(28px, 3vw, 38px); letter-spacing: .015em; } .gv-chosen > span { display: block; font-size: 15px; margin-top: 4px; } .gv-chosen p { margin: 10px 0 0; color: var(--muted-c); font-size: 15px; }
+.gv-form { display: grid; gap: 16px; } .gv-form .field label { font-size: 13px; font-weight: 500; color: var(--primary-dark); text-transform: none; letter-spacing: 0; }
+.gv-form .gv-label { font-size: 13px; font-weight: 500; color: var(--primary-dark); text-transform: none; letter-spacing: 0; margin-bottom: 8px; display: block; }
+.gv-design-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+.gv-design { position: relative; cursor: pointer; box-shadow: inset 0 0 0 1px var(--rule); } .gv-design input { position: absolute; opacity: 0; } .gv-design img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; } .gv-design.on { box-shadow: inset 0 0 0 2px var(--dark-red); }
+.gv-actions { display: flex; justify-content: space-between; gap: 12px; margin-top: 8px; } .gv-actions .btn:only-child { margin-left: auto; }
+.gv-err { color: var(--dark-red); min-height: 1em; }
+.gv-summary { display: grid; gap: 0; margin-bottom: 24px; }
+.gv-sum-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding: 14px 0; border-bottom: 1px dashed var(--rule); font-size: 16px; } .gv-sum-row small { display: block; font-size: 14px; color: var(--muted-c); margin-top: 4px; }
+.gv-sum-line { padding: 4px 0 12px; font-size: 15px; } .gv-sum-line span { color: var(--muted-c); }
+.gv-sum-total { display: flex; justify-content: space-between; padding: 16px 0 0; font-size: 18px; font-weight: 500; } .gv-sum-total b { color: var(--dark-red); }
+.gv-check { display: grid; gap: 12px; } .gv-check .btn { justify-self: start; }
+.gv-done { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px 0; border-top: 1px solid var(--rule); } .gv-done code { font-size: 14px; background: var(--tint); padding: 6px 10px; }
+.gv-form .gv-designs { display: block; } .gv-form .gv-designs[hidden] { display: none; }
+.gv-form .gv-design-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
