@@ -218,7 +218,7 @@ function draftTreatmentPage(s, d) {
   const nameOf = (u) => [...concernPagesAll, ...SM.facialShared, SM.massageBoosters].find((x) => x.url === u) || {};
   const book = '/contact/#book';
   const sid = (t) => 'tp-' + t.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-  const awardLogos = pressLogos.filter((l) => !/TheSmartLocal|Mothership/.test(l.title)).slice(0, 8);
+  const awardLogos = pressLogos.slice(0, 8);
   const body = `
 <section class="tp-hero"><div class="wrap">
   ${crumbs(trail)}
@@ -266,7 +266,8 @@ function draftTreatmentPage(s, d) {
 <section class="tp-awards"><div class="wrap">
   <p class="tp-awards-line" data-reveal>${esc(d.awardsLine)}</p>
   ${d.awardNote ? `<p class="tp-award-note" data-reveal>${esc(d.awardNote)}</p>` : ''}
-  <div class="tp-award-logos" data-reveal>${awardLogos.map((l) => `<img src="${l.img}" alt="${esc(l.title)}" loading="lazy">`).join('')}</div>
+  <div class="tp-award-logos logo-wall" data-logo-wall>${awardLogos.map((l, i) => `<div class="logo-cell" data-i="${i}">${l.url ? `<a href="${l.url}" title="${esc(l.title)}">` : ''}<img class="award-logo" src="${l.img}" alt="${esc(l.title)}" loading="lazy">${l.url ? '</a>' : ''}</div>`).join('')}</div>
+  <script>window.EW_LOGOS=${JSON.stringify(pressLogos.map((a) => ({ img: a.img, title: a.title, url: a.url || '' })))}</script>
   <a class="link-arrow" href="/awards/">${d.awardNote ? 'See all awards' : 'Awards &amp; Recognition'}</a>
 </div></section>
 
