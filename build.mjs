@@ -40,10 +40,6 @@ add(P.contactPage());
 add(P.faqPage());
 policies.forEach((p) => add(P.policyPage(p)));
 
-// ---- Needed but not separate sitemap entries: Book Now destination ----
-add(P.bookPage('/book-appointment/'));
-add(P.bookPage('/make-an-appointment-form/'), { inSitemap: false });
-
 // ---- Kept live but outside the navigation and sitemap.xml (for Elements to decide) ----
 // Campaign pages: "add individual campaign pages only where the campaign needs a dedicated destination"
 const redirected = new Set(SM.redirects.map(([a]) => a));

@@ -1734,3 +1734,19 @@ body.menu-open .utility-row { display: none !important; }
 .mobile-menu nav details.mm-sec > summary, .mobile-menu nav details.mm-grp > summary { display: flex !important; justify-content: space-between; align-items: center; }
 .mobile-menu nav details.mm-sec > summary::after, .mobile-menu nav details.mm-grp > summary::after { content: "+"; font: 400 22px var(--f-text); color: var(--dark-red); margin-left: 16px; }
 .mobile-menu nav details.mm-sec[open] > summary::after, .mobile-menu nav details.mm-grp[open] > summary::after { content: "–"; }
+
+/* treatment showcase cards (concern + landing pages): photo, name, duration · price, Learn More */
+.tcards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.tcard { display: flex; flex-direction: column; background: var(--warm-white); box-shadow: 0 0 0 1px var(--rule); color: var(--primary-dark); transition: box-shadow .3s, transform .35s var(--ease); }
+.tcard:hover { transform: translateY(-3px); box-shadow: 0 0 0 1px var(--rule), 0 24px 40px -28px rgba(65, 63, 66, .5); }
+.tcard-media { display: block; aspect-ratio: 4 / 3; overflow: hidden; background: var(--tint); } .tcard-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.1s var(--ease); } .tcard:hover .tcard-media img { transform: scale(1.04); }
+.tcard-body { display: flex; flex-direction: column; gap: 6px; padding: 16px 18px 18px; flex: 1; }
+.tcard-name { font-family: var(--f-head); font-weight: 500; font-size: 21px; line-height: 1.2; letter-spacing: .015em; }
+.tcard-meta { font-size: 13px; color: var(--muted-c); }
+.tcard .link-arrow { margin-top: auto; padding-top: 12px; font-size: 13.5px; align-self: flex-start; }
+/* old copy sits in the narrow reading column, photos left out; the old pages' small icons still show in a row */
+.content-flow .cf-figure, .content-flow .cf-gallery { display: none; }
+@media (max-width: 1100px) { .tcards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .tcards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } .tcard-name { font-size: 17px; } }
+.ct-book-lines a { color: var(--dark-red); } .ct-contact-email { padding-top: 6px; }
+#book { scroll-margin-top: calc(var(--header-h) + var(--banner-h) + 16px); }

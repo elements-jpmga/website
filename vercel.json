@@ -714,6 +714,26 @@
       "permanent": true
     },
     {
+      "source": "/book-appointment/",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/book-appointment",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/make-an-appointment-form/",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/make-an-appointment-form",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
       "source": "/shop/",
       "destination": "/products/",
       "permanent": true

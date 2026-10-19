@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import { site, groups, services, outlets, awards, posts, faqs, promotions, promoTerms, voucherItems, blogTopics, story, policies, etiquette, facialConcerns, massageConcerns, concernPagesAll, productBrands } from '../data.mjs';
 import * as SM from '../sitemap.mjs';
-import { layout, esc, icon, btn, linkArrow, faqList, logo, crumbs, serviceCard, revealCard } from '../ui.mjs';
+import { layout, esc, icon, btn, linkArrow, faqList, logo, crumbs, serviceCard, revealCard, showCard } from '../ui.mjs';
 import { oldPage, splitHero, renderBlocks, sectionAfter } from '../content.mjs';
 import { googleFor, pressLogos } from '../data.mjs';
 import { drafts } from '../drafts.mjs';
@@ -30,7 +30,7 @@ const ctaBand = (title = 'Ready when you are', sub = 'Book online, call or Whats
     <span class="eyebrow" data-reveal="drop">Your next step</span>
     <div class="h1" data-split>${title}</div>
     <p class="lede" data-reveal>${sub}</p>
-    <div class="hero-actions" data-reveal>${btn('/book-appointment/', 'Book appointment')}${btn(site.whatsapp, 'WhatsApp us', 'btn-ghost', 'target="_blank" rel="noopener"')}</div>
+    <div class="hero-actions" data-reveal>${btn('/contact/#book', 'Book appointment')}${btn(site.whatsapp, 'WhatsApp us', 'btn-ghost', 'target="_blank" rel="noopener"')}</div>
   </div>
   <div class="ghost" aria-hidden="true">Elements</div>
 </section>`;
@@ -41,7 +41,7 @@ const faqSchema = (list) => ({ '@context': 'https://schema.org', '@type': 'FAQPa
 const copyNote = (status, what = 'Page copy') => status === 'new' ? `<p class="placeholder-note copy-note" data-reveal>✦ ${what} to be supplied by Elements</p>` : status === 'adapt' ? `<p class="placeholder-note copy-note" data-reveal>✦ Existing copy carried over — to be updated for the new page</p>` : '';
 const groupOf = (id) => groups.find((g) => g.id === id);
 const concernsFor = (s) => concernPagesAll.filter((c) => c.treatments.some((t) => t.id === s.id));
-const oldBody = (source, title, skip = []) => { const old = source ? oldPage(source) : null; if (!old) return { old: null, h: { rest: [] }, html: '' }; const h = splitHero(old, title); return { old, h, html: h.rest.length ? renderBlocks(h.rest, { skipImages: [h.heroImg, ...skip] }) : '' }; };
+const oldBody = (source, title, skip = []) => { const old = source ? oldPage(source) : null; if (!old) return { old: null, h: { rest: [] }, html: '' }; const h = splitHero(old, title); return { old, h, html: h.rest.length ? renderBlocks(h.rest, { skipImages: [h.heroImg, ...skip], photos: false }) : '' }; };
 // An old elements.com.sg page shown as it was: its title, hero photo, copy and pictures in the same order — nothing added
 const oldView = ({ path, source, title, active = '', form = '', metaTitle = '', description = '', trail }) => {
   const old = oldPage(source); const h = splitHero(old, title, { keepAll: true }); trail = trail || [['Home', '/'], [title]];
@@ -49,10 +49,10 @@ const oldView = ({ path, source, title, active = '', form = '', metaTitle = '', 
   const restText = h.rest.map((b) => (b.html || b.text || '').replace(/<[^>]+>/g, ' ')).join(' ').replace(/\s+/g, ' ');
   const lede = h.tagline && !restText.includes(h.tagline.slice(0, 40)) ? h.tagline : '';
   const body = pageHero({ title: esc(title), lede: esc(lede), trail, img: h.heroImg }) + `
-<section class="section-sm" style="padding-top:0"><div class="content-flow">${renderBlocks(h.rest, { skipImages: [h.heroImg], form })}</div></section>`;
+<section class="section-sm" style="padding-top:0"><div class="content-flow">${renderBlocks(h.rest, { skipImages: [h.heroImg], form, photos: false })}</div></section>`;
   return { path, html: layout({ title: metaTitle || `${title} | Elements Wellness`, description: description || old.description || title, path, active, bodyClass: 'page-light', schema: [bc(trail)], body }) };
 };
-const tile = (u, label, img) => revealCard({ href: u, title: label, img });
+const tile = (u, label, img) => `<a class="tcard" href="${u}" data-reveal><span class="tcard-media"><img src="${img}" alt="${esc(label)}" loading="lazy"></span><span class="tcard-body"><span class="tcard-name">${esc(label)}</span><span class="link-arrow">Learn More</span></span></a>`;
 
 /* ---------- Main landing pages: Facials · Massage & Recovery ---------- */
 export function treatmentLanding(groupId) {
@@ -63,16 +63,16 @@ export function treatmentLanding(groupId) {
   const { h, html } = oldBody(L.source, groupId === 'facials' ? 'Facial' : 'Massage');
   const focused = groupId === 'facials'
     ? SM.facialShared.filter((p) => p.group === 'focused').map((p) => tile(p.url, p.label, `/assets/img/${p.img}`)).join('')
-    : SM.womensWellness.map((id) => list.find((s) => s.id === id)).map((s) => serviceCard(s)).join('');
+    : SM.womensWellness.map((id) => list.find((s) => s.id === id)).map(showCard).join('');
   const boost = groupId === 'facials' ? SM.facialShared.find((p) => p.group === 'boosters') : SM.massageBoosters;
-  const body = pageHero({ title: esc(g.label), lede: esc(h.tagline || ''), trail, img: h.heroImg }) + `
-${html ? `<section class="section-sm"><div class="content-flow wide">${html}</div></section>` : ''}
+  const body = pageHero({ title: esc(g.label), lede: esc(h.tagline || ''), trail }) + `
 <section class="section-sm"><div class="wrap"><div class="head-row"><div><h2>By Concern</h2></div></div>
-  <div class="cards-4">${cps.map((c) => tile(c.url, c.label, c.img)).join('')}</div></div></section>
+  <div class="tcards">${cps.map((c) => tile(c.url, c.label, c.img)).join('')}</div></div></section>
 <section class="section-sm bg-ivory"><div class="wrap"><div class="head-row"><div><h2>${groupId === 'facials' ? 'Focused Care' : 'Women’s Wellness'}</h2></div>${linkArrow(boost.url, esc(boost.title || boost.label))}</div>
-  <div class="cards-${groupId === 'facials' ? '2' : '4'}">${focused}</div></div></section>
+  <div class="tcards">${focused}</div></div></section>
 <section class="section-sm"><div class="wrap"><div class="head-row"><div><h2>By Treatment</h2></div></div>
-  <div class="svc-list">${list.map((s) => serviceCard(s)).join('')}</div></div></section>`;
+  <div class="tcards">${list.map(showCard).join('')}</div></div></section>
+${html ? `<section class="section-sm"><div class="content-flow">${html}</div></section>` : ''}`;
   return { path: g.url, html: layout({ title: `${g.label} in Singapore | Elements Wellness`, description: g.blurb, path: g.url, active: groupId, bodyClass: 'page-light', schema: [bc(trail)], body }) };
 }
 
@@ -82,13 +82,13 @@ export function concernPage(c) {
   const trail = [['Home', '/'], [g.label, g.url], [c.label]];
   const { old, h, html } = oldBody(c.source, c.label);
   if (old && c.copy !== 'new') {
-    const body = pageHero({ title: esc(c.label), lede: esc(h.tagline || ''), trail, img: h.heroImg }) + `
-${html ? `<section class="section-sm"><div class="content-flow wide">${html}</div></section>` : ''}
-<section class="section-sm"><div class="wrap"><div class="svc-list">${c.treatments.map((s) => serviceCard(s)).join('')}</div></div></section>`;
+    const body = pageHero({ title: esc(c.label), lede: esc(h.tagline || ''), trail }) + `
+<section class="section-sm" style="padding-top:0"><div class="wrap"><div class="tcards">${c.treatments.map(showCard).join('')}</div></div></section>
+${html ? `<section class="section-sm"><div class="content-flow">${html}</div></section>` : ''}`;
     return { path: c.url, html: layout({ title: `${c.label} — ${g.label} in Singapore | Elements Wellness`, description: old.description || c.label, path: c.url, active: c.group, bodyClass: 'page-light', schema: [bc(trail)], body }) };
   }
   const body = pageHero({ title: esc(c.label), trail }) + `
-<section class="section-sm" style="padding-top:0"><div class="wrap"><div class="svc-list">${c.treatments.map((s) => serviceCard(s)).join('')}</div></div></section>`;
+<section class="section-sm" style="padding-top:0"><div class="wrap"><div class="tcards">${c.treatments.map(showCard).join('')}</div></div></section>`;
   return { path: c.url, html: layout({ title: `${c.label} — ${g.label} in Singapore | Elements Wellness`, description: old?.description || c.label, path: c.url, active: c.group, bodyClass: 'page-light', schema: [bc(trail)], body }) };
 }
 
@@ -110,7 +110,7 @@ export function sharedPage(p, groupId) {
   const isBooster = /boosters/.test(p.url);
   if (old && p.copy !== 'new') {
     const body = pageHero({ title: esc(title), lede: esc(intro.tagline || ''), trail, img: intro.heroImg }) + `
-<section class="section-sm" style="padding-top:0"><div class="content-flow">${renderBlocks(intro.rest, { skipImages: [intro.heroImg] })}</div></section>`;
+<section class="section-sm" style="padding-top:0"><div class="content-flow">${renderBlocks(intro.rest, { skipImages: [intro.heroImg], photos: false })}</div></section>`;
     return { path: p.url, html: layout({ title: `${title} | ${g.label} | Elements Wellness`, description: old.description || title, path: p.url, active: groupId, bodyClass: 'page-light', schema: [bc(trail)], body }) };
   }
   const body = pageHero({ title: esc(title), trail }) + `
@@ -134,7 +134,7 @@ export function servicePage(s) {
   const priceLine = h.price || [s.duration, s.price ? `${s.priceNote || ''} ${s.price}`.trim() : '', s.up ? `U.P. ${s.up}` : ''].filter(Boolean).join(' · ');
   const options = s.options ? `<section class="section-sm bg-ivory"><div class="wrap"><div class="head-row"><div><span class="eyebrow">Options &amp; prices</span><h2 style="margin-top:14px">Choose <span class="thin">your ritual.</span></h2></div></div>
     <div class="opt-table" role="table"><div class="opt-row opt-head" role="row"><span role="columnheader">Option</span><span role="columnheader">Duration</span><span role="columnheader">Price</span><span role="columnheader"></span></div>
-    ${s.options.map(([n, d, pr], i) => `<div class="opt-row" role="row" data-reveal><div role="cell"><h3>${esc(n)}</h3></div><span role="cell">${esc(d)}</span><span role="cell">${esc(pr)}</span><span role="cell">${btn(`/book-appointment/?treatment=${s.id}&option=${i}`, i === 0 ? 'Book' : 'Buy', 'btn-sm')}</span></div>`).join('')}</div>
+    ${s.options.map(([n, d, pr], i) => `<div class="opt-row" role="row" data-reveal><div role="cell"><h3>${esc(n)}</h3></div><span role="cell">${esc(d)}</span><span role="cell">${esc(pr)}</span><span role="cell">${btn('/contact/#book', i === 0 ? 'Book' : 'Buy', 'btn-sm')}</span></div>`).join('')}</div>
     <p class="form-note" style="margin-top:16px">Prices include GST. Inclusions for each option and the online purchase method are to be confirmed by Elements.</p></div></section>` : '';
   if (!old) {
     const body = `
@@ -142,7 +142,7 @@ export function servicePage(s) {
   ${crumbs(trail)}
   <div class="svc-hero">
     <div><h1 data-split style="font-size:clamp(34px,4.8vw,72px)">${esc(s.name)}</h1>
-      <div class="hero-actions" style="justify-content:flex-start;margin-top:28px" data-reveal>${btn(`/book-appointment/?treatment=${s.id}`, 'Book Now')}</div></div>
+      <div class="hero-actions" style="justify-content:flex-start;margin-top:28px" data-reveal>${btn('/contact/#book', 'Book Now')}</div></div>
     <div class="svc-hero-media" data-clip><img src="${heroImg}" alt="${esc(s.name)} at Elements Wellness"></div>
   </div>
 </div></section>`;
@@ -158,12 +158,12 @@ export function servicePage(s) {
       <h1 data-split style="font-size:clamp(34px,4.8vw,72px);margin-top:${h.label ? '18px' : '0'}">${esc(s.name)}</h1>
       ${h.tagline ? `<p class="lede" data-reveal style="margin-top:20px">${esc(h.tagline)}</p>` : ''}
       ${h.price ? `<p class="lede" data-reveal style="margin-top:12px"><b>${esc(h.price)}</b></p>` : ''}
-      <div class="hero-actions" style="justify-content:flex-start;margin-top:28px" data-reveal>${btn(`/book-appointment/?treatment=${s.id}`, 'Book Now')}</div>
+      <div class="hero-actions" style="justify-content:flex-start;margin-top:28px" data-reveal>${btn('/contact/#book', 'Book Now')}</div>
     </div>
     ${h.heroImg ? `<div class="svc-hero-media" data-clip><img src="${h.heroImg}" alt="${esc(s.name)} at Elements Wellness"></div>` : ''}
   </div>
 </div></section>
-<section class="section-sm"><div class="content-flow">${renderBlocks(h.rest, { skipImages: [h.heroImg] })}</div></section>`;
+<section class="section-sm"><div class="content-flow">${renderBlocks(h.rest, { skipImages: [h.heroImg], photos: false })}</div></section>`;
     const schema = [bc(trail), { '@context': 'https://schema.org', '@type': 'Service', name: s.name, serviceType: g.label, description: old.description || s.short, provider: { '@type': 'DaySpa', name: 'Elements Wellness', url: site.url }, areaServed: 'Singapore' }];
     return { path: s.url, html: layout({ title: `${s.name} in Singapore | Elements Wellness`, description: old.description || s.short, path: s.url, active: s.group, bodyClass: 'page-light', schema, ogImage: h.heroImg || s.img, body }) };
   }
@@ -181,7 +181,7 @@ export function servicePage(s) {
         <div><small>${esc(s.priceNote || 'Price')}</small><b>${esc(s.price || (s.isNew ? 'To be confirmed' : 'Enquire'))}</b>${s.up ? ` <s class="muted" style="font-size:13px">U.P. ${esc(s.up)}</s>` : ''}</div>
         <div><small>Available at</small><b style="font-size:14px">${avail.map((o) => esc(o.short)).join(' · ')}</b></div>
       </div>
-      <div class="hero-actions" style="justify-content:flex-start;margin-top:28px" data-reveal>${btn(`/book-appointment/?treatment=${s.id}`, s.ritual ? 'Book this ritual' : 'Book this treatment')}${btn(site.whatsapp, 'Ask a therapist', 'btn-ghost', 'target="_blank" rel="noopener"')}</div>
+      <div class="hero-actions" style="justify-content:flex-start;margin-top:28px" data-reveal>${btn('/contact/#book', s.ritual ? 'Book this ritual' : 'Book this treatment')}${btn(site.whatsapp, 'Ask a therapist', 'btn-ghost', 'target="_blank" rel="noopener"')}</div>
       ${priceLine ? `<p class="small muted" data-reveal style="margin-top:14px;font-size:13px">${esc(priceLine)}</p>` : ''}
     </div>
     <div class="svc-hero-media" data-clip><img src="${heroImg}" alt="${esc(s.name)} at Elements Wellness"></div>
@@ -191,7 +191,7 @@ export function servicePage(s) {
 ${copyNote(s.copy, 'Treatment description')}
 <section class="section-sm"><div class="wrap svc-body">
   <aside class="svc-aside">
-    <div class="book-box"><small>${esc(s.priceNote || '')}${s.duration ? ' · ' + esc(s.duration) : ''}</small><div class="price">${esc(s.price || (s.isNew ? 'To be confirmed' : 'Enquire'))}${s.up ? ` <s style="font-size:15px;opacity:.6">${esc(s.up)}</s>` : ''}</div><small>All prices after GST. First-trial offers for first-time local visitors.</small>${btn(`/book-appointment/?treatment=${s.id}`, 'Book Now', 'btn-light')}</div>
+    <div class="book-box"><small>${esc(s.priceNote || '')}${s.duration ? ' · ' + esc(s.duration) : ''}</small><div class="price">${esc(s.price || (s.isNew ? 'To be confirmed' : 'Enquire'))}${s.up ? ` <s style="font-size:15px;opacity:.6">${esc(s.up)}</s>` : ''}</div><small>All prices after GST. First-trial offers for first-time local visitors.</small>${btn('/contact/#book', 'Book Now', 'btn-light')}</div>
     ${aw.length ? `<div class="panel-soft"><span class="eyebrow">Award-winning</span><div class="awards-inline" style="margin-top:12px">${aw.map((a) => `<a href="/awards/#${a.slug}" title="${esc(a.title)}">${a.logo ? `<img src="${a.logo}" alt="${esc(a.title)}">` : `<span class="pill-award">${esc(a.publicationShort)} ${a.year}</span>`}</a>`).join('')}</div>${linkArrow('/awards/', 'Awards & Recognition')}</div>` : ''}
   </aside>
   <div class="content-flow" style="padding-inline:0;max-width:none">
@@ -216,7 +216,7 @@ function draftTreatmentPage(s, d) {
   const heroImg = d.heroImg || oh.heroImg || s.img;
   const F = d.facts; const outs = F.outlets.map((id) => outlets.find((o) => o.id === id)).filter(Boolean);
   const nameOf = (u) => [...concernPagesAll, ...SM.facialShared, SM.massageBoosters].find((x) => x.url === u) || {};
-  const book = `/book-appointment/?treatment=${s.id}`;
+  const book = '/contact/#book';
   const sid = (t) => 'tp-' + t.toLowerCase().replace(/[^a-z0-9]+/g, '-');
   const awardLogos = pressLogos.filter((l) => !/TheSmartLocal|Mothership/.test(l.title)).slice(0, 8);
   const body = `
@@ -458,14 +458,14 @@ export function outletPage(o) {
             <div><dt>WhatsApp</dt><dd><a href="https://wa.me/65${wa}" target="_blank" rel="noopener">${esc(o.whatsapp)}</a></dd></div>
             <div><dt>Email</dt><dd><a href="mailto:${o.email}">${esc(o.email)}</a></dd></div>
           </dl>
-          <div class="hero-actions" style="justify-content:flex-start;margin-top:26px">${btn(`/book-appointment/?outlet=${o.id}`, 'Book Now', 'btn-light')}<a class="link-arrow walk-maps" href="${mapsUrl}" target="_blank" rel="noopener">Open in Maps</a></div>
+          <div class="hero-actions" style="justify-content:flex-start;margin-top:26px">${btn('/contact/#book', 'Book Now', 'btn-light')}<a class="link-arrow walk-maps" href="${mapsUrl}" target="_blank" rel="noopener">Open in Maps</a></div>
         </div>
         <div class="walk-map"><iframe title="Map to Elements Wellness ${esc(o.name)}" src="https://maps.google.com/maps?q=${encodeURIComponent('Elements Wellness ' + o.mapQuery)}&t=m&z=16&output=embed&iwloc=near" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
       </div>
     </div>
   </section>` : '';
   const body = walkIn + (o.id === '313' ? '' : pageHero({ title: esc(o.name), trail,
-    extra: `<div class="hero-actions" style="justify-content:flex-start;margin-top:28px" data-reveal>${btn(`/book-appointment/?outlet=${o.id}`, 'Book Now')}${btn(`https://wa.me/65${wa}`, 'WhatsApp ' + o.whatsapp, 'btn-ghost', 'target="_blank" rel="noopener"')}</div>` })) + `
+    extra: `<div class="hero-actions" style="justify-content:flex-start;margin-top:28px" data-reveal>${btn('/contact/#book', 'Book Now')}${btn(`https://wa.me/65${wa}`, 'WhatsApp ' + o.whatsapp, 'btn-ghost', 'target="_blank" rel="noopener"')}</div>` })) + `
 ${o.id === '313' ? (exclusive.length ? `<section class="section-sm"><div class="wrap"><div class="svc-list">${exclusive.map((s) => serviceCard(s)).join('')}</div></div></section>` : '') : `<section class="section-sm" style="padding-top:0"><div class="wrap outlet-find">
   <div class="outlet-info" data-reveal>
     <div><small>Address</small><p>${o.address}</p></div>
@@ -506,9 +506,11 @@ const contactOutlets = () => {
 };
 export function contactPage() {
   const trail = [['Home', '/'], ['Contact Us']];
-  const old = oldPage('/contact-us/');
-  const intro = old.blocks.find((b) => b.t === 'html' && /To make a booking/.test(b.html))?.html.replace('/make-an-appointment-form/', '/book-appointment/') || '';
+  const old = oldPage('/contact-us/'), oldBook = oldPage('/contact/#book');
+  const intro = old.blocks.find((b) => b.t === 'html' && /To make a booking/.test(b.html))?.html.replace('/make-an-appointment-form/', '#book') || '';
   const contactLine = old.blocks.find((b) => b.t === 'html' && /partnership/.test(b.html))?.html || '';
+  // the old "Make An Appointment" page: its lines, then its form (now on this page)
+  const bookLines = oldBook ? oldBook.blocks.filter((b) => b.t === 'html' && !/Elements – /.test(b.html)).map((b) => b.html).filter((h, i, a) => a.indexOf(h) === i).join('') : '';
   const video = { '313': { first: '/assets/img/313-walk/f001.jpg' } }; // the 313 card shows the walk-in's first frame; the walk itself plays on the 313 page as you scroll
   const cards = contactOutlets().map(({ o, img, list, hours }) => {
     const [addr, tel, wa, mail] = list; const v = video[o.id];
@@ -524,30 +526,33 @@ export function contactPage() {
       <div class="ct-hours">${hours}</div>
     </article>`;
   }).join('');
+  const bookForm = `<form class="form cf-form" data-demo id="book-form">
+    <div class="field"><label>Outlet</label><div class="opt-grid">${outlets.map((o, i) => `<label class="opt"><input type="radio" name="outlet" value="${o.id}" ${i === 0 ? 'checked' : ''}><span><b>${esc(o.short)}</b></span></label>`).join('')}</div></div>
+    <div class="field"><label for="b-cat">Treatment</label><select id="b-cat" required><option value="">Select a treatment…</option>${groups.map((g) => `<optgroup label="${esc(g.label)}">${services.filter((s) => s.group === g.id).map((s) => `<option value="${s.id}">${esc(s.name)}</option>`).join('')}</optgroup>`).join('')}</select></div>
+    <div class="row"><div class="field"><label for="b-date">Preferred date</label><input id="b-date" type="date" required></div><div class="field"><label for="b-time">Preferred time</label><select id="b-time">${['11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'].map((t) => `<option>${t}</option>`).join('')}</select></div></div>
+    <div class="row"><div class="field"><label for="b-name">Name</label><input id="b-name" required autocomplete="name"></div><div class="field"><label for="b-phone">Mobile</label><input id="b-phone" type="tel" required autocomplete="tel"></div></div>
+    <div class="field"><label for="b-email">Email</label><input id="b-email" type="email" autocomplete="email"></div>
+    <button class="btn" type="submit"><span>Submit</span></button>
+  </form>`;
   const body = pageHero({ title: 'Contact Us', trail }) + `
 <section class="section-sm" style="padding-top:0"><div class="wrap">
   <h2 class="ct-h">Locations</h2>
   <div class="ct-intro prose">${intro}</div>
   <div class="ct-grid">${cards}</div>
 </div></section>
-<section class="section-sm bg-sand"><div class="wrap ct-form-wrap">
+<section class="section-sm bg-sand" id="book"><div class="wrap ct-form-wrap">
+  <div><h2 class="ct-h">Make An Appointment</h2><div class="prose ct-book-lines">${bookLines}</div></div>
+  <div>${bookForm}</div>
+</div></section>
+<section class="section-sm"><div class="wrap ct-form-wrap">
   <div><h2 class="ct-h">Contact Us</h2><div class="prose">${contactLine}</div></div>
-  <div>${contactForm}</div>
+  <div class="ct-contact-email"><a class="link-arrow" href="mailto:${site.email}">${esc(site.email)}</a></div>
 </div></section>
 <div class="ct-stage" data-ct-stage aria-hidden="true"></div>`;
   return { path: '/contact/', html: layout({ title: 'Contact Elements Wellness — ION Orchard, 313@somerset, The Centrepoint', description: old.description || 'Contact Elements Wellness.', path: '/contact/', bodyClass: 'page-light page-contact', schema: [bc(trail)], body }) };
 }
 
-export function bookPage(path = '/book-appointment/') {
-  const form = `<form class="form cf-form" data-demo>
-    <div class="field"><label>Outlet</label><div class="opt-grid">${outlets.map((o, i) => `<label class="opt"><input type="radio" name="outlet" value="${o.id}" ${i === 0 ? 'checked' : ''}><span><b>${esc(o.short)}</b></span></label>`).join('')}</div></div>
-    <div class="field"><label for="b-cat">Treatment</label><select id="b-cat" required><option value="">Select a treatment…</option>${groups.map((g) => `<optgroup label="${esc(g.label)}">${services.filter((s) => s.group === g.id).map((s) => `<option value="${s.id}">${esc(s.name)}</option>`).join('')}</optgroup>`).join('')}</select></div>
-    <div class="row"><div class="field"><label for="b-date">Preferred date</label><input id="b-date" type="date" required></div><div class="field"><label for="b-time">Preferred time</label><select id="b-time">${['11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'].map((t) => `<option>${t}</option>`).join('')}</select></div></div>
-    <div class="row"><div class="field"><label for="b-name">Name</label><input id="b-name" required autocomplete="name"></div><div class="field"><label for="b-phone">Mobile</label><input id="b-phone" type="tel" required autocomplete="tel"></div></div>
-    <button class="btn" type="submit"><span>Submit</span></button>
-  </form>`;
-  return oldView({ path, source: '/book-appointment/', title: 'Make An Appointment', form, trail: [['Home', '/'], ['Book Appointment']], metaTitle: 'Book an Appointment | Elements Wellness Singapore' });
-}
+export function bookPage() { return null; } // merged into the Contact page (/contact/#book)
 
 export function faqPage() {
   return oldView({ path: '/faq-spa-etiquette/', source: '/faq-spa-etiquette/', title: 'FAQ & Spa Etiquette' });

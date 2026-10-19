@@ -78,6 +78,8 @@ export const revealCard = ({ href, kind = '', title, short = '', more = '', img 
     <div class="rcard-foot">${meta.filter(Boolean).map((m) => `<span>${esc(m)}</span>`).join('')}<span class="rcard-cta">${esc(cta)} ${icon.arrow}</span></div>
   </div>
 </a>`;
+// Treatment showcase card: the treatment's photo on top, its name, duration and price (client data), Learn More
+export const showCard = (s) => `<a class="tcard" href="${s.url}" data-reveal><span class="tcard-media"><img src="${s.img}" alt="${esc(s.name)}" loading="lazy"></span><span class="tcard-body"><span class="tcard-name">${esc(s.name)}</span>${[s.duration, s.price ? `${s.priceNote === 'First trial' ? 'First trial ' : s.priceNote === 'Per couple' ? 'Per couple ' : 'From '}${s.price}` : ''].filter(Boolean).length ? `<span class="tcard-meta">${[s.duration, s.price ? `${s.priceNote === 'First trial' ? 'First trial ' : s.priceNote === 'Per couple' ? 'Per couple ' : 'From '}${s.price}` : ''].filter(Boolean).map(esc).join(' · ')}</span>` : ''}<span class="link-arrow">Learn More</span></span></a>`;
 export const serviceCard = (s, extra = '') => revealCard({ href: s.url, kind: '', title: s.name, short: '', more: s.description || '', img: s.img, meta: [s.duration, s.price ? `${s.priceNote === 'First trial' ? 'First trial ' : s.priceNote === 'Per couple' ? 'Per couple ' : 'From '}${s.price}` : ''], tag: '', extra: `data-tags="${(s.concerns || []).join(' ')} ${s.group}" ${extra}` });
 
 // Header and menus as the client's mockup (Oct 2026), following the sitemap: utility row Promotions; main nav
@@ -126,13 +128,13 @@ export const header = (active = '') => `
       ${navItem('Gift Vouchers', '/gift-vouchers/', 'gift', active)}
     </nav>
     <div class="nav-right">
-      <a class="btn btn-sm" href="/book-appointment/"><span>Book Now</span></a>
+      <a class="btn btn-sm" href="/contact/#book"><span>Book Now</span></a>
       <button class="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
     </div>
   </div>
 </header>
 <div class="mobile-menu" aria-label="Mobile">
-  <div class="mm-head"><a href="/" class="logo-lockup" aria-label="Elements Wellness — home"><img src="/assets/img/logo/elements-logo-720.png" alt="Elements Wellness" width="720" height="228"></a><a class="btn btn-sm" href="/book-appointment/"><span>Book Now</span></a><button class="mm-close" type="button" data-mm-close>Close</button></div>
+  <div class="mm-head"><a href="/" class="logo-lockup" aria-label="Elements Wellness — home"><img src="/assets/img/logo/elements-logo-720.png" alt="Elements Wellness" width="720" height="228"></a><a class="btn btn-sm" href="/contact/#book"><span>Book Now</span></a><button class="mm-close" type="button" data-mm-close>Close</button></div>
   <nav>
     ${mSection('Facials', '/facials/', 'Explore All Facials', [
       ['By Concern', facialConcerns.map((c) => mlink(c.url, c.label)).join('')],
@@ -188,7 +190,7 @@ const footer = () => `
     <div class="footer-bottom"><span>© ${new Date().getFullYear()} Elements Wellness Pte. Ltd. All rights reserved.</span><nav><a href="/sitemap.xml">Sitemap</a></nav></div>
   </div>
 </footer>
-<div class="fab"><a class="wa" href="${site.whatsapp}" target="_blank" rel="noopener" aria-label="WhatsApp us">${icon.wa}</a><a class="bk" href="/book-appointment/" aria-label="Book Now">${icon.arrow}<span>Book now</span></a></div>`;
+<div class="fab"><a class="wa" href="${site.whatsapp}" target="_blank" rel="noopener" aria-label="WhatsApp us">${icon.wa}</a><a class="bk" href="/contact/#book" aria-label="Book Now">${icon.arrow}<span>Book now</span></a></div>`;
 
 export const layout = ({ title, description, path, body, active = '', bodyClass = '', schema = [], ogImage = '/assets/img/onsen-1.jpg', scripts = [], noindex = false }) => `<!doctype html>
 <html lang="en-SG" class="no-js">

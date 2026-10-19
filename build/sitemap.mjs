@@ -167,7 +167,7 @@ export const redirects = [
   ['/3d-fat-freeze/', '/body-contouring/'],
   ['/power-moxa/', '/meridian-moxibustion-therapy/'],
   ['/meridian-flush-and-hyperwave/', '/meridian-flush-therapy/'],
-  ['/health-analysis/', '/'], ['/elements-restore/', '/'],
+  ['/health-analysis/', '/'], ['/elements-restore/', '/'], ['/book-appointment/', '/contact/'], ['/make-an-appointment-form/', '/contact/'],
   ['/shop/', '/products/'],
   ['/product/solo-koyamaki-onsen-spa-ritual-115-min/', '/koyamaki-onsen-ritual/'],
   ['/product/couple-koyamaki-onsen-spa-ritual-115-min/', '/koyamaki-onsen-ritual/'],

@@ -23,7 +23,7 @@ const strip = (h = '') => h.replace(/<[^>]+>/g, ' ').replace(/&nbsp;|&#8211;|&#8
 const isLabel = (t) => t.length > 1 && t.length <= 42 && t === t.toUpperCase() && /[A-Z]/.test(t) && !/[.!?]$/.test(t);
 // Internal links in old copy point at old URLs: send them to the page that replaced it
 const fixHref = (h = '#') => { const local = /^https?:\/\/(www\.)?elements\.com\.sg/.test(h) ? h.replace(/^https?:\/\/(www\.)?elements\.com\.sg/, '') || '/' : h; return (local.startsWith('/') && !/\.(pdf|jpe?g|png|webp)$/i.test(local) ? resolveUrl(local) : local) || '#'; };
-const bookLink = (t, h) => (/book|appointment/i.test(t) && (!h || h === '#' || /wpforms|#/.test(h)) ? '/book-appointment/' : fixHref(h));
+const bookLink = (t, h) => (/book|appointment/i.test(t) && (!h || h === '#' || /wpforms|#/.test(h)) ? '/contact/#book' : fixHref(h));
 const listify = (html) => {
   // "– item" / "• item" paragraphs → proper lists
   const parts = html.split(/(?=<p>)/);
@@ -123,8 +123,8 @@ export function renderBlocks(blocks, opts = {}) {
         else out.push(`<div class="cf-prose prose" data-reveal>${listify(fixLinks(b.html))}</div>`);
         break;
       }
-      case 'image': if (!seenImg.has(b.src)) { seenImg.add(b.src); imgRun.push(b); } break;
-      case 'gallery': out.push(`<div class="cf-gallery c3">${b.images.filter((i) => !seenImg.has(i.src)).map((i) => { seenImg.add(i.src); return `<figure data-reveal><img src="${i.src}" alt="${esc(i.alt)}" loading="lazy"></figure>`; }).join('')}</div>`); break;
+      case 'image': if (opts.photos === false && (b.w || 0) >= 420) break; if (!seenImg.has(b.src)) { seenImg.add(b.src); imgRun.push(b); } break;
+      case 'gallery': if (opts.photos === false) break; out.push(`<div class="cf-gallery c3">${b.images.filter((i) => !seenImg.has(i.src)).map((i) => { seenImg.add(i.src); return `<figure data-reveal><img src="${i.src}" alt="${esc(i.alt)}" loading="lazy"></figure>`; }).join('')}</div>`); break;
       case 'button': out.push(`<div class="cf-actions" data-reveal>${btn(bookLink(b.text, b.href), b.text.replace(/\s+/g, ' ').toLowerCase().replace(/^\w/, (c) => c.toUpperCase()))}</div>`); break;
       case 'list': out.push(`<ul class="checklist" data-reveal>${b.items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>`); break;
       case 'faq': out.push(`<div class="cf-faq">${faqList(b.items.map((i) => ({ q: i.q, a: fixLinks(i.a) })))}</div>`); break;

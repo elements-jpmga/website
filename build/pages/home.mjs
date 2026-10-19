@@ -6,7 +6,7 @@ export default function home() {
 
   // Hero: full-bleed slides with a few words each, like a resort site — centred title, one line, one outlined button
   const slides = [
-    { img: '/assets/img/hero-reception.jpg', alt: 'Elements Wellness reception at night', title: 'Where Wellness Meets Results', sub: 'Where feeling good and real results go hand in hand', cta: 'Book now', href: '/book-appointment/' },
+    { img: '/assets/img/hero-reception.jpg', alt: 'Elements Wellness reception at night', title: 'Where Wellness Meets Results', sub: 'Where feeling good and real results go hand in hand', cta: 'Book now', href: '/contact/#book' },
     { img: '/assets/img/onsen-1.jpg', alt: 'Private Koyamaki onsen suite at Elements Wellness, The Centrepoint', title: 'Koyamaki Onsen', sub: 'Singapore’s first private onsen suites — soak, scrub and massage. For one, or for two.', cta: 'Discover the onsen', href: '/koyamaki-onsen-ritual/' },
     { img: '/assets/img/fascia-back.jpg', alt: 'Fascia release therapy at Elements Wellness', title: 'Massage & Recovery', sub: 'TCM techniques, skilled hands and recovery technology for bodies that work hard.', cta: 'Explore massage', href: '/massage-and-recovery/' },
     { img: '/assets/img/fascia-face.jpg', alt: 'Facial treatment at Elements Wellness', title: 'Facials', sub: 'Results-driven facials for glow, firmness and clarity you can see.', cta: 'Explore facials', href: '/facials/' },
@@ -153,7 +153,7 @@ export default function home() {
       <div class="g-outlets" data-reveal>
         ${google.places.map((p) => `<a class="g-outlet" href="${p.mapsUrl}" target="_blank" rel="noopener" data-rv-place="${p.id}"><span class="g-outlet-name">${gLogo}${esc(p.name)}</span><span class="g-outlet-score"><b data-rv-rating>${p.rating.toFixed(1)}</b> ${starRow(p.rating)} <small>(<span data-rv-count>${fmtNum(p.count)}</span>)</small></span></a>`).join('')}
       </div>
-      <div class="hero-actions" data-reveal style="margin-top:22px">${btn(google.places[0].mapsUrl, 'Write a review on Google', '', 'target="_blank" rel="noopener" data-rv-write')}${btn('/book-appointment/', 'Book a treatment', 'btn-ghost')}</div>
+      <div class="hero-actions" data-reveal style="margin-top:22px">${btn(google.places[0].mapsUrl, 'Write a review on Google', '', 'target="_blank" rel="noopener" data-rv-write')}${btn('/contact/#book', 'Book a treatment', 'btn-ghost')}</div>
       <p class="g-note" data-rv-updated>Google ratings as of ${new Date(google.snapshotDate).toLocaleDateString('en-SG', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
     </div>
     <div class="rv-cols" data-reveal="fade" aria-label="Google reviews">
@@ -253,7 +253,7 @@ export default function home() {
     <span class="eyebrow" data-reveal="drop">Your next step</span>
     <div class="h1" data-split>Ready to feel <span class="thin">like yourself again?</span></div>
     <p class="lede" data-reveal>Book a treatment, or start with Elements Restore and let your consultant recommend the right path.</p>
-    <div class="hero-actions" data-reveal>${btn('/book-appointment/', 'Book Now')}${btn(site.whatsapp, 'WhatsApp us', 'btn-ghost', 'target="_blank" rel="noopener"')}</div>
+    <div class="hero-actions" data-reveal>${btn('/contact/#book', 'Book Now')}${btn(site.whatsapp, 'WhatsApp us', 'btn-ghost', 'target="_blank" rel="noopener"')}</div>
   </div>
   <div class="ghost" aria-hidden="true">Elements</div>
 </section>`;
