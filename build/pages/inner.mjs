@@ -506,7 +506,7 @@ const contactOutlets = () => {
 };
 export function contactPage() {
   const trail = [['Home', '/'], ['Contact Us']];
-  const old = oldPage('/contact-us/'), oldBook = oldPage('/contact/#book');
+  const old = oldPage('/contact-us/'), oldBook = oldPage('/book-appointment/');
   const intro = old.blocks.find((b) => b.t === 'html' && /To make a booking/.test(b.html))?.html.replace('/make-an-appointment-form/', '#book') || '';
   const contactLine = old.blocks.find((b) => b.t === 'html' && /partnership/.test(b.html))?.html || '';
   // the old "Make An Appointment" page: its lines, then its form (now on this page)
@@ -526,27 +526,52 @@ export function contactPage() {
       <div class="ct-hours">${hours}</div>
     </article>`;
   }).join('');
-  const bookForm = `<form class="form cf-form" data-demo id="book-form">
-    <div class="field"><label>Outlet</label><div class="opt-grid">${outlets.map((o, i) => `<label class="opt"><input type="radio" name="outlet" value="${o.id}" ${i === 0 ? 'checked' : ''}><span><b>${esc(o.short)}</b></span></label>`).join('')}</div></div>
-    <div class="field"><label for="b-cat">Treatment</label><select id="b-cat" required><option value="">Select a treatment…</option>${groups.map((g) => `<optgroup label="${esc(g.label)}">${services.filter((s) => s.group === g.id).map((s) => `<option value="${s.id}">${esc(s.name)}</option>`).join('')}</optgroup>`).join('')}</select></div>
-    <div class="row"><div class="field"><label for="b-date">Preferred date</label><input id="b-date" type="date" required></div><div class="field"><label for="b-time">Preferred time</label><select id="b-time">${['11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'].map((t) => `<option>${t}</option>`).join('')}</select></div></div>
-    <div class="row"><div class="field"><label for="b-name">Name</label><input id="b-name" required autocomplete="name"></div><div class="field"><label for="b-phone">Mobile</label><input id="b-phone" type="tel" required autocomplete="tel"></div></div>
-    <div class="field"><label for="b-email">Email</label><input id="b-email" type="email" autocomplete="email"></div>
-    <button class="btn" type="submit"><span>Submit</span></button>
+  // Make An Appointment: four steps down the middle — outlet (with its photo), treatment, date & time, your details
+  const times = ['11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'];
+  const byGroup = groups.map((g) => ({ g, list: services.filter((s) => s.group === g.id) })).filter((x) => x.list.length);
+  const bookForm = `<form class="bk" data-book id="book-form" novalidate>
+    <ol class="bk-steps" aria-label="Steps"><li class="is-on" data-step-dot="1"><span>1</span>Outlet</li><li data-step-dot="2"><span>2</span>Treatment</li><li data-step-dot="3"><span>3</span>Date &amp; time</li><li data-step-dot="4"><span>4</span>Your details</li></ol>
+
+    <section class="bk-step is-on" data-step="1">
+      <h3 class="bk-h">Choose your outlet</h3>
+      <div class="bk-outlets">${outlets.map((o, i) => `<label class="bk-outlet"><input type="radio" name="outlet" value="${o.id}" ${i === 0 ? 'checked' : ''} required><span class="bk-outlet-card"><img src="${o.id === '313' ? '/assets/img/313-walk/f001.jpg' : o.img}" alt="Elements Wellness ${esc(o.name)}" loading="lazy"><span class="bk-outlet-body"><b>${esc(o.name)}</b><small>${esc(o.addressPlain)}</small></span></span></label>`).join('')}</div>
+      <div class="bk-nav"><button class="btn" type="button" data-next>Next</button></div>
+    </section>
+
+    <section class="bk-step" data-step="2">
+      <h3 class="bk-h">Choose your treatment</h3>
+      <div class="bk-groups">${byGroup.map(({ g, list }, i) => `<details class="bk-group" ${i === 0 ? 'open' : ''}><summary>${esc(g.label)}</summary><div class="bk-list">${list.map((s) => `<label class="bk-item"><input type="radio" name="treatment" value="${s.id}" required><span><b>${esc(s.name)}</b>${[s.duration, s.price ? `${s.priceNote === 'First trial' ? 'First trial ' : s.priceNote === 'Per couple' ? 'Per couple ' : 'From '}${s.price}` : ''].filter(Boolean).length ? `<small>${[s.duration, s.price ? `${s.priceNote === 'First trial' ? 'First trial ' : s.priceNote === 'Per couple' ? 'Per couple ' : 'From '}${s.price}` : ''].filter(Boolean).map(esc).join(' · ')}</small>` : ''}</span></label>`).join('')}</div></details>`).join('')}</div>
+      <div class="bk-nav"><button class="btn btn-ghost" type="button" data-back>Back</button><button class="btn" type="button" data-next>Next</button></div>
+    </section>
+
+    <section class="bk-step" data-step="3">
+      <h3 class="bk-h">Choose your date and time</h3>
+      <div class="bk-when">
+        <div class="field"><label for="b-date">Date</label><input id="b-date" name="date" type="date" required></div>
+        <div class="field"><label>Time</label><div class="bk-times">${times.map((t, i) => `<label class="bk-time"><input type="radio" name="time" value="${t}" ${i === 0 ? 'checked' : ''}><span>${t}</span></label>`).join('')}</div></div>
+      </div>
+      <div class="bk-nav"><button class="btn btn-ghost" type="button" data-back>Back</button><button class="btn" type="button" data-next>Next</button></div>
+    </section>
+
+    <section class="bk-step" data-step="4">
+      <h3 class="bk-h">Your details</h3>
+      <div class="bk-summary" data-summary></div>
+      <div class="row"><div class="field"><label for="b-name">Name</label><input id="b-name" name="name" required autocomplete="name"></div><div class="field"><label for="b-phone">Mobile</label><input id="b-phone" name="phone" type="tel" required autocomplete="tel"></div></div>
+      <div class="field"><label for="b-email">Email</label><input id="b-email" name="email" type="email" autocomplete="email"></div>
+      <div class="bk-nav"><button class="btn btn-ghost" type="button" data-back>Back</button><button class="btn" type="submit">Submit</button></div>
+    </section>
+    <div class="bk-done" hidden></div>
   </form>`;
   const body = pageHero({ title: 'Contact Us', trail }) + `
-<section class="section-sm" style="padding-top:0"><div class="wrap">
+<section class="section-sm bg-sand" id="book" style="padding-top:0"><div class="wrap bk-wrap">
+  <h2 class="ct-h bk-title">Make An Appointment</h2>
+  <div class="prose ct-book-lines bk-lines">${bookLines}</div>
+  ${bookForm}
+</div></section>
+<section class="section-sm"><div class="wrap">
   <h2 class="ct-h">Locations</h2>
   <div class="ct-intro prose">${intro}</div>
   <div class="ct-grid">${cards}</div>
-</div></section>
-<section class="section-sm bg-sand" id="book"><div class="wrap ct-form-wrap">
-  <div><h2 class="ct-h">Make An Appointment</h2><div class="prose ct-book-lines">${bookLines}</div></div>
-  <div>${bookForm}</div>
-</div></section>
-<section class="section-sm"><div class="wrap ct-form-wrap">
-  <div><h2 class="ct-h">Contact Us</h2><div class="prose">${contactLine}</div></div>
-  <div class="ct-contact-email"><a class="link-arrow" href="mailto:${site.email}">${esc(site.email)}</a></div>
 </div></section>
 <div class="ct-stage" data-ct-stage aria-hidden="true"></div>`;
   return { path: '/contact/', html: layout({ title: 'Contact Elements Wellness — ION Orchard, 313@somerset, The Centrepoint', description: old.description || 'Contact Elements Wellness.', path: '/contact/', bodyClass: 'page-light page-contact', schema: [bc(trail)], body }) };

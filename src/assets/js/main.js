@@ -317,6 +317,19 @@
     window.addEventListener('pageshow', (e) => { if (e.persisted) { stage.classList.remove('on'); stage.innerHTML = ''; busy = false; lenis?.start(); } });
   }
 
+  /* ---------- Make An Appointment: four steps; a step must be filled before Next; Submit shows the old page's "allow 3 business days" line ---------- */
+  function bookSteps() {
+    const f = $('[data-book]'); if (!f) return;
+    const steps = $$('.bk-step', f), dots = $$('[data-step-dot]', f); let i = 0;
+    const show = (n) => { i = n; steps.forEach((st, k) => st.classList.toggle('is-on', k === n)); dots.forEach((d, k) => { d.classList.toggle('is-on', k === n); d.classList.toggle('is-done', k < n); }); $$('.bk-err', f).forEach((e) => e.remove()); if (n === 3) summary(); f.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+    const err = (st, msg) => { const e = document.createElement('p'); e.className = 'bk-err'; e.textContent = msg; st.appendChild(e); };
+    const valid = (n) => { const st = steps[n]; if (n === 1 && !f.treatment.value) { err(st, 'Please choose a treatment.'); return false; } if (n === 2 && !f.date.value) { err(st, 'Please choose a date.'); return false; } return true; };
+    const summary = () => { const o = $('input[name=outlet]:checked', f)?.closest('.bk-outlet')?.querySelector('b')?.textContent, t = $('input[name=treatment]:checked', f)?.closest('.bk-item')?.querySelector('b')?.textContent; $('[data-summary]', f).innerHTML = `<b>${o || ''}</b> · ${t || ''} · ${f.date.value} · ${f.time.value}`; };
+    $$('[data-next]', f).forEach((b) => b.addEventListener('click', () => { if (valid(i)) show(i + 1); }));
+    $$('[data-back]', f).forEach((b) => b.addEventListener('click', () => show(i - 1)));
+    f.addEventListener('submit', (e) => { e.preventDefault(); if (!f.name.value || !f.phone.value) { err(steps[3], 'Please enter your name and mobile.'); return; } steps.forEach((st) => st.classList.remove('is-on')); $('.bk-steps', f).hidden = true; const d = $('.bk-done', f); d.hidden = false; d.innerHTML = '<p>Please allow 3 business days.</p>'; });
+  }
+
   /* ---------- 313 walk-in: the frames play with the scroll; the shopfront copy fades out, the treatments fade in over the reception ---------- */
   function walkIn() {
     const sec = $('[data-walk]'); if (!sec) return;
@@ -534,7 +547,7 @@
     const w = $('[data-rv-write]'); if (w && d.places[0]?.writeReviewUrl) w.href = d.places[0].writeReviewUrl;
     const up = $('[data-rv-updated]'); if (up) up.textContent = 'Live from Google · updated ' + new Date(d.snapshotDate).toLocaleDateString('en-SG', { day: 'numeric', month: 'short', year: 'numeric' });
   }
-  const boot = () => { heroSlides(); logoWall(); pathPhotos(); bookCard(); reviewCarousels(); contactExpand(); walkIn(); liveReviews(); reveals(); rise(); mapLocations(); steps(); concerns(); carousel(); sigTiles(); revealCards(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
+  const boot = () => { heroSlides(); logoWall(); pathPhotos(); bookCard(); reviewCarousels(); contactExpand(); bookSteps(); walkIn(); liveReviews(); reveals(); rise(); mapLocations(); steps(); concerns(); carousel(); sigTiles(); revealCards(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
   (document.fonts?.ready || Promise.resolve()).then(() => enterPage(() => { steamHero(); boot(); }));
   window.addEventListener('load', () => ScrollTrigger.refresh());
 })();
