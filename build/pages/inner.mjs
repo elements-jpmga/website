@@ -6,6 +6,30 @@ import { layout, esc, icon, btn, linkArrow, faqList, logo, crumbs, serviceCard, 
 import { oldPage, splitHero, renderBlocks, sectionAfter } from '../content.mjs';
 import { googleFor, pressLogos } from '../data.mjs';
 import { drafts } from '../drafts.mjs';
+// Lucy's mockup pages (basictrout9.chatgpt.site), ported as-is: her <main>, her CSS (scoped under .mk-page), her images. Our header and footer.
+const mockDir = new URL('../mock/', import.meta.url);
+const mockMap = fs.existsSync(new URL('_map.json', mockDir)) ? JSON.parse(fs.readFileSync(new URL('_map.json', mockDir), 'utf8')) : {};
+const mockByUrl = Object.fromEntries(Object.entries(mockMap).map(([site, url]) => [url, site]));
+const mockFor = (url) => mockByUrl[url] || null;
+// Each ported page lives in its own shadow root so the site's stylesheet and scripts cannot touch her class names (.hero, .btn, .step …). Her CSS was scoped under .mk-page by the porter; inside the shadow root that prefix becomes :host.
+const shadowCss = (css) => css.replace(/\.mk-page \*\{/g, '*{').replace(/\.mk-page :root/g, ':host').replace(/\.mk-page\{/g, ':host{').replace(/\.mk-page /g, '');
+const mockBase = ':host{display:block;font-family:var(--f-text);color:var(--primary-dark)}h1,h2,h3{font-family:var(--f-head);font-weight:500;letter-spacing:.01em;text-transform:none}.btn{border-radius:0;text-transform:none;letter-spacing:.02em;font-family:var(--f-text)}img{max-width:100%}';
+// Attaches the shadow root where the browser has no declarative shadow DOM, and makes her in-page jump links (#about …) scroll inside the shadow tree.
+const mockScript = `<script>(function(){var h=document.querySelector('.mk-page');if(!h)return;var t=h.querySelector(':scope>template[shadowrootmode]');if(t){var sr=h.attachShadow({mode:'open'});sr.appendChild(t.content);t.remove()}var r=h.shadowRoot;if(!r)return;var go=function(el){if(window.__ewScrollTo)window.__ewScrollTo(el);else el.scrollIntoView({behavior:'smooth',block:'start'})};r.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a)return;var id=a.getAttribute('href').slice(1);var el=id&&r.getElementById(id);if(el){e.preventDefault();go(el);history.replaceState(null,'','#'+id)}});if(location.hash){var el=r.getElementById(location.hash.slice(1));if(el)setTimeout(function(){go(el)},400)}})();</script>`;
+function mockFacts(site) {
+  const html = fs.readFileSync(new URL(site + '.html', mockDir), 'utf8');
+  const facts = (html.match(/<div class="facts">([\s\S]*?)<\/div>\s*(?:<div class="jump"|<\/div>)/) || [])[1] || '';
+  const cells = [...facts.matchAll(/<div>([\s\S]*?)<\/div>/g)].map((m) => m[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim());
+  const dur = cells.find((c) => /^(Your session|Duration)/i.test(c)); const pr = cells.find((c) => /^First[- ]trial/i.test(c));
+  return { duration: dur ? (dur.match(/(\d+ minutes(?: per body area)?)/i) || [])[1]?.replace(' minutes', ' min') : '', price: pr ? (pr.match(/S\$\d+(?: nett)?/) || [])[0] : '' };
+}
+function mockPage({ url, site, title, description, active, trail, treatmentId, bookcard }) {
+  const main = fs.readFileSync(new URL(site + '.html', mockDir), 'utf8').replace(/^<main[^>]*>/, '').replace(/<\/main>\s*$/, '');
+  const css = shadowCss(fs.readFileSync(new URL(site + '.css', mockDir), 'utf8'));
+  if (/\.mk-page/.test(css)) throw new Error('mock css still has .mk-page after rescoping: ' + site);
+  const body = `<div class="mk-page" data-mock="${site}"><template shadowrootmode="open"><style>${css}${mockBase}</style>${main}</template></div>${mockScript}` + (bookcard || '');
+  return { path: url, html: layout({ title, description, path: url, active, bodyClass: 'page-light page-mock' + (bookcard ? ' page-treatment' : ''), schema: [bc(trail)], body }) };
+}
 import { googleCard, starRow, fmtNum, gLogo } from '../ui.mjs';
 
 const research = JSON.parse(fs.readFileSync(new URL('../../_research/content.json', import.meta.url), 'utf8'));
@@ -79,6 +103,7 @@ ${html ? `<section class="section-sm"><div class="content-flow">${html}</div></s
 /* ---------- Concern pages (discovery pathways) ---------- */
 export function concernPage(c) {
   const g = groupOf(c.group);
+  if (mockFor(c.url)) return mockPage({ url: c.url, site: mockFor(c.url), title: `${c.label} | Elements Wellness`, description: c.label, active: c.group, trail: [['Home', '/'], [g.label, g.url], [c.label]] });
   const trail = [['Home', '/'], [g.label, g.url], [c.label]];
   const { old, h, html } = oldBody(c.source, c.label);
   if (old && c.copy !== 'new') {
@@ -99,6 +124,7 @@ const itemSource = {
 };
 export function sharedPage(p, groupId) {
   const g = groupOf(groupId); const title = p.title || p.label;
+  if (mockFor(p.url)) return mockPage({ url: p.url, site: mockFor(p.url), title: `${title} | Elements Wellness`, description: title, active: groupId, trail: [['Home', '/'], [g.label, g.url], [title]] });
   const trail = [['Home', '/'], [g.label, g.url], [title]];
   const old = p.source ? oldPage(p.source) : null;
   const intro = old ? splitHero(old, title) : { rest: [] };
@@ -120,6 +146,15 @@ export function sharedPage(p, groupId) {
 
 /* ---------- Treatment & ritual pages ---------- */
 export function servicePage(s) {
+  const mk = mockFor(s.url);
+  if (mk) {
+    const g = groupOf(s.group); const trail = [['Home', '/'], [g.label, g.url], [s.name]];
+    const d = drafts[s.id] || {};
+    // The card's duration and first-trial price are read from her facts strip, so the card never contradicts the page
+    const f = mockFacts(mk);
+    const card = `<aside class="tp-bookcard" data-bookcard aria-label="Book ${esc(s.name)}"><div><b>${esc(s.name)}</b>${f.duration || f.price ? `<small>${[f.duration, f.price ? 'First trial ' + f.price : ''].filter(Boolean).join(' · ')}</small>` : ''}</div>${btn('/contact/#book', 'Book Now', 'btn-sm')}</aside>`;
+    return mockPage({ url: s.url, site: mk, title: d.title || `${s.name} | Elements Wellness`, description: d.description || s.name, active: s.group, trail, bookcard: card });
+  }
   if (drafts[s.id]) return draftTreatmentPage(s, drafts[s.id]);
   const g = groupOf(s.group);
   const trail = [['Home', '/'], [g.label, g.url], [s.name]];

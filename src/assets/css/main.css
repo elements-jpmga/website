@@ -1817,3 +1817,10 @@ body.menu-open .utility-row { display: none !important; }
 .gv-form .gv-design-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
 .gv-design-big { margin: 0 0 10px; box-shadow: 0 0 0 1px var(--rule); background: var(--tint); } .gv-design-big img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; transition: opacity .25s; }
 .gv-form .gv-design-row { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); }
+
+/* ================= Mockup pages (Lucy's layouts, ported as-is) ================= */
+.page-mock main { padding-top: calc(var(--header-h) + var(--banner-h)); }
+.mk-page { font-family: var(--f-text); color: var(--primary-dark); }
+.mk-page h1, .mk-page h2, .mk-page h3 { font-family: var(--f-head); font-weight: 500; letter-spacing: .01em; color: var(--primary-dark); text-transform: none; }
+.mk-page .btn { border-radius: 0; text-transform: none; letter-spacing: .02em; font-family: var(--f-text); }
+.mk-page img { max-width: 100%; }

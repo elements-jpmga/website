@@ -20,6 +20,7 @@
     gsap.ticker.lagSmoothing(0);
   }
   const scrollTo = (t) => lenis ? lenis.scrollTo(t, { offset: -90, duration: 1.2 }) : t.scrollIntoView({ behavior: 'smooth' });
+  window.__ewScrollTo = scrollTo; // used by the ported mockup pages (shadow DOM jump links)
   $$('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => { const id = a.getAttribute('href'); if (id.length < 2) return; const t = $(id); if (t) { e.preventDefault(); scrollTo(t); } }));
 
   /* ---------- Preloader + page transitions ---------- */
