@@ -1,5 +1,6 @@
 // Inner page templates (client sitemap 2026). Each returns { path, html }.
 import fs from 'node:fs';
+import { productCategories, productsNote } from '../products.mjs';
 import { site, groups, services, outlets, awards, posts, faqs, promotions, promoTerms, voucherItems, blogTopics, story, policies, etiquette, facialConcerns, massageConcerns, concernPagesAll, productBrands } from '../data.mjs';
 import * as SM from '../sitemap.mjs';
 import { layout, esc, icon, btn, linkArrow, faqList, logo, crumbs, serviceCard, revealCard, showCard } from '../ui.mjs';
@@ -342,13 +343,20 @@ export function spaLanding() {
   return { path: g.url, html: layout({ title: 'Spa Experiences | Elements Wellness', description: list.map((s) => s.name).join(', '), path: g.url, active: 'spa', bodyClass: 'page-light', schema: [bc(trail)], body }) };
 }
 
-/* ---------- Products (catalogue structure; inventory from Elements) ---------- */
+/* ---------- Products: two categories, sorted by brand (names, sizes, prices and photos supplied by Elements) ---------- */
 export function productsPage(kind = '') {
-  const label = kind === 'skincare' ? 'Skincare' : kind === 'supplements' ? 'Supplements' : 'Products';
+  const cats = kind ? productCategories.filter((c) => c.id === kind) : productCategories;
+  const label = kind ? cats[0].label : 'Products';
   const url = kind ? `/products/${kind}/` : '/products/';
   const trail = kind ? [['Home', '/'], ['Products', '/products/'], [label]] : [['Home', '/'], ['Products']];
-  const body = pageHero({ title: esc(label), trail }) + (kind ? '' : `
-<section class="section-sm" style="padding-top:0"><div class="wrap"><div class="cards-2">${tile('/products/skincare/', 'Skincare', '/assets/img/facial-mask.jpg')}${tile('/products/supplements/', 'Supplements', '/assets/img/herbal-flatlay.jpg')}</div></div></section>`);
+  const item = (it, i) => `<article class="pd" data-reveal>
+    <div class="pd-media">${it.img.map((src, j) => `<img src="${src}" alt="${esc(it.name)}" loading="lazy" ${j ? 'class="pd-alt"' : ''}>`).join('')}</div>
+    <h4 class="pd-name">${esc(it.name)}</h4>${it.sub ? `<p class="pd-sub">${esc(it.sub)}</p>` : ''}
+    <p class="pd-meta"><span>${esc(it.size)}</span><b>${esc(it.price)}</b></p></article>`;
+  const brand = (b) => `<section class="pb" id="${b.id}"><div class="pb-head"><h3 class="pb-name">${esc(b.name)}</h3>${b.items.length ? `<span class="pb-count">${b.items.length} products</span>` : ''}</div>${b.items.length ? `<div class="pd-grid">${b.items.map(item).join('')}</div>` : ''}</section>`;
+  const cat = (c) => `<section class="pcat" id="${c.id}">${kind ? '' : `<h2 class="pcat-title">${esc(c.label)}</h2>`}${c.brands.map(brand).join('')}</section>`;
+  const body = pageHero({ title: esc(label), trail }) + `
+<section class="section-sm" style="padding-top:0"><div class="wrap">${cats.map(cat).join('')}<p class="pd-note">${esc(productsNote)}</p></div></section>`;
   return { path: url, html: layout({ title: `${label} | Elements Wellness`, description: label, path: url, active: 'products', bodyClass: 'page-light', schema: [bc(trail)], body }) };
 }
 
