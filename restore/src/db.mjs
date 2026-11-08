@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS report_emails (
 `);
 if (db.kind === 'sqlite') {
   try { await db.exec('ALTER TABLE clients ADD COLUMN email TEXT'); } catch {} // databases created before this column existed
+  for (const c of ['pain_today TEXT', 'pain_location TEXT', 'energy_level TEXT']) { try { await db.exec(`ALTER TABLE assessments ADD COLUMN ${c}`); } catch {} } // "How you're feeling today" answers (8 Nov 2026)
 } else {
   // Supabase exposes the public schema through its Data API. Only this server (the table owner) may read these tables:
   // row level security with no policies + no grants for the API roles means the Data API sees nothing.
@@ -75,11 +76,13 @@ export const Clients = {
 };
 
 export const Assessments = {
-  async create(client_id, created_by) {
+  async create(client_id, created_by, intake = {}) {
     const a = { assessment_id: id(), client_id, created_at: now(), created_by: created_by || 'staff', status: 'uploading' };
-    await db.run('INSERT INTO assessments (assessment_id, client_id, created_at, created_by, status) VALUES (?,?,?,?,?)', a.assessment_id, client_id, a.created_at, a.created_by, a.status);
+    await db.run('INSERT INTO assessments (assessment_id, client_id, created_at, created_by, status, pain_today, pain_location, energy_level) VALUES (?,?,?,?,?,?,?,?)', a.assessment_id, client_id, a.created_at, a.created_by, a.status, intake.pain_today ?? null, intake.pain_location ?? null, intake.energy_level ?? null);
     return a;
   },
+  // The three questions asked at the start of the session; shown on the report, never used by the engine
+  setIntake: (assessment_id, { pain_today, pain_location, energy_level }) => db.run('UPDATE assessments SET pain_today = ?, pain_location = ?, energy_level = ? WHERE assessment_id = ?', pain_today ?? null, pain_location ?? null, energy_level ?? null, assessment_id),
   get: (assessment_id) => db.get('SELECT a.*, c.name AS client_name, c.age AS client_age, c.sex AS client_sex FROM assessments a JOIN clients c USING (client_id) WHERE assessment_id = ?', assessment_id),
   setStatus: (assessment_id, status) => db.run('UPDATE assessments SET status = ? WHERE assessment_id = ?', status, assessment_id),
   setAssessedAt: (assessment_id, iso) => db.run('UPDATE assessments SET assessed_at = COALESCE(?, assessed_at) WHERE assessment_id = ?', iso, assessment_id),

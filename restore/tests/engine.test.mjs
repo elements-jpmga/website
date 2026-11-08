@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { evaluate, validateReadings } from '../src/engine.mjs';
 
-const rules = JSON.parse(fs.readFileSync(new URL('../rules/v1.json', import.meta.url)));
+const rules = JSON.parse(fs.readFileSync(new URL('../rules/v2.json', import.meta.url)));
 const run = (stress_index, pulse_complexity, vascular_age_type, vascular_age_index) => evaluate({ stress_index, pulse_complexity, vascular_age_type, vascular_age_index }, rules);
 const out = (r) => Object.fromEntries(r.domains.map((d) => [d.id, [d.outcome, d.severity]]));
 
@@ -78,4 +78,15 @@ test('Invalid readings are rejected, never guessed', () => {
   assert.equal(v.ok, false);
   assert.deepEqual(Object.keys(v.errors).sort(), ['pulse_complexity', 'stress_index', 'vascular_age_index', 'vascular_age_type']);
   assert.throws(() => run('', 30, 'B', 0));
+});
+
+test('v6 recommendations: fixed protocols, totals and enhancers', () => {
+  const P = rules.programs;
+  assert.deepEqual(P.STRESS.components.map((c) => c.options), [['Relaxing Massage'], ['Myofascial Head/Neck Therapy', 'Infra Ray Moxibustion Therapy'], ['Acuwave-restoration Therapy']]);
+  assert.equal(P.STRESS.total, '75 min'); assert.equal(P.STRESS.enhancer, '5 Elements Massage'); assert.equal(P.STRESS.benefits.length, 4);
+  assert.deepEqual(P.RECOVERY.components.map((c) => c.options), [['Deep Tissue Massage'], ['Ginseng Bojin Meridian Therapy', 'Fascia Release Therapy'], ['Acuwave-recovery Therapy']]);
+  assert.equal(P.RECOVERY.enhancer, 'Red Light Therapy');
+  assert.deepEqual(P.CIRCULATION.components.map((c) => c.options), [['Acuwave-circulation Therapy'], ['Meridian Flush Therapy', 'TCM Qi Meridian Therapy']]);
+  assert.equal(P.CIRCULATION.total, '60 min'); assert.equal(P.CIRCULATION.enhancer, 'Compression Therapy');
+  assert.equal(run(10, 40, 'B', 0).programs[0], 'CIRCULATION'); // Maintain uses the CIRCULATION Program
 });

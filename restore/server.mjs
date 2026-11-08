@@ -76,7 +76,13 @@ route('GET', '/api/clients/:client_id', async (req, res, { params }) => { const 
 /* ---------- Assessments ---------- */
 route('GET', '/api/activity', async (req, res) => send(res, 200, await Activity.feed(60)));
 route('GET', '/api/assessments', async (req, res) => send(res, 200, await Assessments.list({ limit: 200 })));
-route('POST', '/api/assessments', async (req, res) => { const b = await json(req); if (!await Clients.get(b.client_id)) return err(res, 400, 'Unknown client'); const a = await Assessments.create(b.client_id, staff(req)); send(res, 201, await Assessments.full(a.assessment_id)); });
+const cleanIntake = (i = {}) => {
+  const pain = i.pain_today === 'Yes' ? 'Yes' : i.pain_today === 'No' ? 'No' : null;
+  const energy = ['Good', 'Moderate', 'Low', 'Fatigued'].includes(i.energy_level) ? i.energy_level : null;
+  return { pain_today: pain, pain_location: pain === 'Yes' ? String(i.pain_location || '').trim().slice(0, 200) || null : null, energy_level: energy };
+};
+route('POST', '/api/assessments', async (req, res) => { const b = await json(req); if (!await Clients.get(b.client_id)) return err(res, 400, 'Unknown client'); const a = await Assessments.create(b.client_id, staff(req), cleanIntake(b.intake)); send(res, 201, await Assessments.full(a.assessment_id)); });
+route('PUT', '/api/assessments/:aid/intake', async (req, res, { params }) => { const a = await Assessments.get(params.aid); if (!a) return err(res, 404, 'Assessment not found'); await Assessments.setIntake(a.assessment_id, cleanIntake(await json(req))); send(res, 200, await Assessments.full(a.assessment_id)); });
 route('GET', '/api/assessments/:aid', async (req, res, { params }) => { const a = await Assessments.full(params.aid); a ? send(res, 200, a) : err(res, 404, 'Assessment not found'); });
 
 // Upload: raw PDF bytes in the body; kind in x-kind (stress|vascular|auto), filename in x-filename.
@@ -122,6 +128,7 @@ route('POST', '/api/assessments/:aid/confirm', async (req, res, { params }) => {
   await Readings.confirm(a.assessment_id, v.clean, b.extracted || null, b.corrections || [], staff(req));
   if (b.assessed_at) await Assessments.setAssessedAt(a.assessment_id, b.assessed_at);
   if (b.client) await Clients.update(a.client_id, { name: b.client.name || null, age: b.client.age ? +b.client.age : null, sex: b.client.sex || null, email: b.client.email || null });
+  if (b.intake) await Assessments.setIntake(a.assessment_id, cleanIntake(b.intake));
   const result = evaluate(v.clean, rules);
   await Results.save(a.assessment_id, result);
   await Assessments.setRules(a.assessment_id, rules.version);
@@ -136,7 +143,7 @@ route('PUT', '/api/assessments/:aid/selections/:program', async (req, res, { par
   if (!prog || !a.result.programs.includes(params.program)) return err(res, 400, 'Program is not part of this assessment');
   const b = await json(req);
   const ok2 = !b.component2 || prog.components[1].options.includes(b.component2);
-  const ok3 = !b.component3 || prog.components[2].options.includes(b.component3);
+  const ok3 = !b.component3 || !!prog.components[2]?.options.includes(b.component3); // CIRCULATION has two components since engine v6
   if (!ok2 || !ok3) return err(res, 422, 'Only the permitted OR-options can be selected');
   await Selections.set(a.assessment_id, params.program, { component2: b.component2, component3: b.component3, enhancer: !!b.enhancer });
   send(res, 200, await Assessments.full(a.assessment_id));
