@@ -28,7 +28,7 @@ export const icon = {
 };
 
 // The brand logo: the supplied file (Element Logo.png — white wordmark on its maroon block), used as-is, never retyped
-export const logo = (tag = 'span', cls = '') => `<${tag} class="logo-lockup ${cls}"><img src="/assets/img/logo/elements-logo-720.png" alt="Elements Wellness" width="720" height="228"></${tag}>`;
+export const logo = (tag = 'span', cls = '') => `<${tag} class="logo-lockup ${cls}"><img src="/assets/img/logo/elements-logo-red.png" alt="Elements Wellness" width="464" height="114"></${tag}>`;
 
 // The five-element ring (木 火 土 金 水) used as the brand motif.
 export const ring = (opts = {}) => {
@@ -119,7 +119,7 @@ export const header = (active = '') => `
 <div class="utility-row"><div class="wrap utility-inner"><a href="/promotions/" ${active === 'promotions' ? 'aria-current="page"' : ''}>Promotions</a></div></div>
 <header class="header">
   <div class="wrap header-inner">
-    <a href="/" class="logo-lockup" aria-label="Elements Wellness — home"><img src="/assets/img/logo/elements-logo-720.png" alt="Elements Wellness" width="720" height="228"></a>
+    <a href="/" class="logo-lockup" aria-label="Elements Wellness — home"><img src="/assets/img/logo/elements-logo-red.png" alt="Elements Wellness" width="464" height="114"></a>
     <nav class="nav-left" aria-label="Primary">
       ${navItem('Facials', '/facials/', 'facials', active, megaFacials())}
       ${navItem('Massage & Recovery', '/massage-and-recovery/', 'massage', active, megaMassage())}
@@ -134,7 +134,7 @@ export const header = (active = '') => `
   </div>
 </header>
 <div class="mobile-menu" aria-label="Mobile">
-  <div class="mm-head"><a href="/" class="logo-lockup" aria-label="Elements Wellness — home"><img src="/assets/img/logo/elements-logo-720.png" alt="Elements Wellness" width="720" height="228"></a><a class="btn btn-sm" href="/contact/#book"><span>Book Now</span></a><button class="mm-close" type="button" data-mm-close>Close</button></div>
+  <div class="mm-head"><a href="/" class="logo-lockup" aria-label="Elements Wellness — home"><img src="/assets/img/logo/elements-logo-red.png" alt="Elements Wellness" width="464" height="114"></a><a class="btn btn-sm" href="/contact/#book"><span>Book Now</span></a><button class="mm-close" type="button" data-mm-close>Close</button></div>
   <nav>
     ${mSection('Facials', '/facials/', 'Explore All Facials', [
       ['By Concern', facialConcerns.map((c) => mlink(c.url, c.label)).join('')],
@@ -218,8 +218,8 @@ ${process.env.LIVE_REVIEWS ? '<meta name="ew-live-reviews" content="1">' : ''}
 ${schema.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('\n')}
 </head>
 <body class="${bodyClass}">
-<div class="loader" aria-hidden="true"><div class="loader-top"></div><div class="loader-bottom"></div><div class="loader-inner"><span class="loader-lockup"><img class="ll-1" src="/assets/img/logo/elements-logo-720.png" alt="" width="720" height="228"><img class="ll-2" src="/assets/img/logo/elements-logo-720.png" alt="" width="720" height="228"></span></div></div>
-<div class="curtain" aria-hidden="true"><span class="loader-lockup"><img src="/assets/img/logo/elements-logo-720.png" alt="" width="720" height="228"></span></div>
+<div class="loader" aria-hidden="true"><div class="loader-top"></div><div class="loader-bottom"></div><div class="loader-inner"><span class="loader-lockup"><img class="ll-1" src="/assets/img/logo/elements-logo-red.png" alt="" width="464" height="114"><img class="ll-2" src="/assets/img/logo/elements-logo-red.png" alt="" width="464" height="114"></span></div></div>
+<div class="curtain" aria-hidden="true"><span class="loader-lockup"><img src="/assets/img/logo/elements-logo-red.png" alt="" width="464" height="114"></span></div>
 ${header(active)}
 <main id="main">
 ${body}

@@ -1824,3 +1824,14 @@ body.menu-open .utility-row { display: none !important; }
 .mk-page h1, .mk-page h2, .mk-page h3 { font-family: var(--f-head); font-weight: 500; letter-spacing: .01em; color: var(--primary-dark); text-transform: none; }
 .mk-page .btn { border-radius: 0; text-transform: none; letter-spacing: .02em; font-family: var(--f-text); }
 .mk-page img { max-width: 100%; }
+
+/* logo: the client's red transparent wordmark file (Element Logo Red Transparent.png, #72181b), trimmed to the letters — no maroon block */
+.logo-lockup { padding: 0 !important; background: none !important; }
+.header .logo-lockup { --logo-h: 26px; }
+.footer .footer-logo { --logo-h: 34px; }
+.mm-head .logo-lockup { --logo-h: 22px; }
+@media (max-width: 900px) { .header .logo-lockup { --logo-h: 22px; } }
+.loader-lockup { --logo-h: clamp(40px, 5vw, 60px); background: none; }
+.loader-lockup .ll-1 { clip-path: inset(0 0 48% 0); }
+.loader-lockup .ll-2 { left: 0; top: 0; clip-path: inset(74% 0 0 0); }
+.curtain { background: var(--warm-white); }
