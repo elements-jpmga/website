@@ -2,8 +2,10 @@
 // The website build (build/products.mjs) imports this file, and the checkout prices every order from it,
 // so a browser can never set its own price. Names, sizes and prices as supplied by Elements (Lucy, 8 Nov 2026):
 // the Anubis pricelist image and "all items listed here are 30ml, S$128" for V10. Supplements (brand ELEMENTS) come later.
-const A = (sku, name, size, price, img, sub = '') => ({ sku, brand: 'anubis', name, sub, size, price, img: [].concat(img).map((f) => `/assets/img/products/anubis/${f}`) });
-const V = (sku, name, img) => ({ sku, brand: 'v10', name, sub: '', size: '30ml', price: 128, img: [`/assets/img/products/v10/${img}.jpg`] });
+const slug = (s) => s.toLowerCase().replace(/\+/g, ' plus').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+// Each product has its own page on the website: /products/<brand>/<product>/
+const A = (sku, name, size, price, img, sub = '') => ({ sku, brand: 'anubis', name, sub, size, price, url: `/products/anubis/${slug(name)}/`, img: [].concat(img).map((f) => `/assets/img/products/anubis/${f}`) });
+const V = (sku, name, img) => ({ sku, brand: 'v10', name, sub: '', size: '30ml', price: 128, url: `/products/v10/${slug(name)}/`, img: [`/assets/img/products/v10/${img}.jpg`] });
 
 export const CATEGORIES = [
   { id: 'skincare', label: 'Skincare', url: '/products/skincare/', brands: [

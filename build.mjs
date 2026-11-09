@@ -30,6 +30,7 @@ services.forEach((s) => add(P.servicePage(s)));
 add(P.productsPage());
 add(P.productsPage('skincare'));
 add(P.productsPage('supplements'));
+productCategories.forEach((c) => c.brands.forEach((b) => b.items.forEach((it) => add(P.productPage(it)))));
 add(P.cartPage(), { inSitemap: false });
 add(P.checkoutPage(), { inSitemap: false });
 add(P.checkoutThankYou(), { inSitemap: false });
@@ -66,7 +67,7 @@ for (const { p, html, file } of pages) {
 // Finder data for the browser
 fs.writeFileSync(path.join(out, 'assets/js/finder-data.js'), `window.EW_FINDER=${JSON.stringify(finderData())};`);
 // Product list for the cart (names, sizes, prices, photos). The checkout re-prices every line from the same catalogue on the server.
-fs.writeFileSync(path.join(out, 'assets/js/shop-data.js'), `window.EW_PRODUCTS=${JSON.stringify(Object.fromEntries(productCategories.flatMap((c) => c.brands.flatMap((b) => b.items.map((p) => [p.sku, { name: p.name, brand: b.name, size: p.size, price: p.price, img: p.img[0] }])))))};window.EW_SHOP_API=${JSON.stringify(process.env.SHOP_API || '')};`);
+fs.writeFileSync(path.join(out, 'assets/js/shop-data.js'), `window.EW_PRODUCTS=${JSON.stringify(Object.fromEntries(productCategories.flatMap((c) => c.brands.flatMap((b) => b.items.map((p) => [p.sku, { name: p.name, brand: b.name, size: p.size, price: p.price, img: p.img[0], url: p.url }])))))};window.EW_SHOP_API=${JSON.stringify(process.env.SHOP_API || '')};`);
 
 // Legacy URLs → new pages (301). The old per-award pages are now sections of /awards/.
 const redirects = [...SM.redirects, ...awards.map((a) => [a.url, '/awards/'])].filter(([a]) => !seen.has(a));

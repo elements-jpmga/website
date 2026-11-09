@@ -1856,7 +1856,7 @@ body.menu-open .utility-row { display: none !important; }
 .pd-note { margin: 48px 0 0; font-size: 13px; color: var(--muted-c); text-align: center; }
 @media (max-width: 1100px) { .pd-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 700px) { .pd-grid { grid-template-columns: repeat(2, 1fr); gap: 20px 14px; } .pd-name { font-size: 14px; } }
-#anubis .pd-media img { mix-blend-mode: multiply; } /* the pricelist photos have white backgrounds — multiply sinks them into the panel */
+#anubis .pd-media img, .pd[data-brand="anubis"] .pd-media img { mix-blend-mode: multiply; } /* the pricelist photos have white backgrounds — multiply sinks them into the panel */
 
 /* =====================================================================================
    SHOP — product panels (photo + name/size/price inside one panel), header cart, drawer, cart, checkout
@@ -1968,3 +1968,51 @@ body.menu-open .utility-row { display: none !important; }
 .cd-empty { padding: 32px 0; color: var(--muted-c); text-align: center; }
 .cd-foot { padding: 16px 26px 26px; border-top: 1px solid var(--rule); background: var(--warm-white); }
 html.cd-lock { overflow: hidden; }
+
+/* product panel: icon button top right, whole panel is the link; product page; fly-to-cart + notice */
+.pd { position: relative; }
+.pd-link { display: flex; flex-direction: column; color: inherit; flex: 1; }
+.pd-link:hover .pd-name { color: var(--dark-red); }
+.pd-cart { position: absolute; top: 12px; right: 12px; z-index: 2; width: 40px; height: 40px; display: grid; place-items: center; background: var(--warm-white); border: 1px solid rgba(65, 63, 66, .12); border-radius: 999px; color: var(--primary-dark); cursor: pointer; box-shadow: 0 6px 18px -12px rgba(65, 63, 66, .5); transition: background .25s, color .25s, transform .25s; }
+.pd-cart svg { width: 19px; height: 19px; }
+.pd-cart-plus { position: absolute; right: 7px; bottom: 7px; width: 13px; height: 13px; border-radius: 50%; background: var(--dark-red); color: var(--warm-white); font-size: 10px; line-height: 13px; text-align: center; font-weight: 600; }
+.pd-cart:hover { background: var(--primary-dark); color: var(--warm-white); transform: scale(1.06); }
+.pd-cart.is-busy { pointer-events: none; }
+.pd-cart.is-added { background: var(--dark-red); border-color: var(--dark-red); color: var(--warm-white); }
+.pd-cart.is-added .pd-cart-plus { background: var(--warm-white); color: var(--dark-red); }
+.pd-add { display: none; }
+.pd-foot { margin-top: 8px; }
+@media (max-width: 700px) { .pd-cart { top: 8px; right: 8px; width: 36px; height: 36px; } .pd-cart svg { width: 17px; height: 17px; } }
+
+.fly { position: fixed; z-index: 200; object-fit: contain; pointer-events: none; border-radius: 50%; background: #f1ede7; padding: 10px; box-shadow: 0 20px 40px -20px rgba(65, 63, 66, .6); will-change: transform, opacity; }
+.cart-link { transition: transform .25s var(--ease, ease); }
+.cart-link.is-bump { transform: scale(1.25); }
+.cart-toast { position: fixed; left: 50%; bottom: 28px; z-index: 150; display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 14px; min-width: 300px; max-width: calc(100% - 32px); padding: 12px 16px 12px 12px; background: var(--primary-dark); color: var(--warm-white); box-shadow: 0 24px 48px -24px rgba(0, 0, 0, .5); transform: translate(-50%, 24px); opacity: 0; pointer-events: none; transition: transform .4s var(--ease, ease), opacity .4s; }
+.cart-toast.is-on { transform: translate(-50%, 0); opacity: 1; pointer-events: auto; }
+.cart-toast img { width: 44px; height: 44px; object-fit: contain; background: #f1ede7; padding: 4px; }
+.cart-toast b { display: block; font-weight: 500; font-size: 14px; } .cart-toast span { display: block; font-size: 12.5px; opacity: .75; }
+.cart-toast a { font-size: 13px; color: var(--warm-white); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.cl-name { color: var(--primary-dark); }
+
+/* product page */
+.pp-hero { padding-bottom: clamp(32px, 4vw, 64px); }
+.pp { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 40px clamp(32px, 6vw, 96px); align-items: start; margin-top: 28px; }
+.pp-gallery { position: sticky; top: calc(var(--header-h) + 24px); }
+.pp-main { aspect-ratio: 1 / 1; background: #f1ede7; display: grid; place-items: center; overflow: hidden; }
+.pp-main img { width: 100%; height: 100%; object-fit: contain; padding: 9%; mix-blend-mode: multiply; transition: opacity .25s; }
+.pp-thumbs { display: flex; gap: 10px; margin-top: 12px; }
+.pp-thumb { width: 76px; height: 76px; padding: 0; background: #f1ede7; border: 1px solid transparent; cursor: pointer; }
+.pp-thumb.is-on { border-color: var(--primary-dark); }
+.pp-thumb img { width: 100%; height: 100%; object-fit: contain; padding: 8px; mix-blend-mode: multiply; }
+.pp-info { padding-top: 12px; }
+.pp-brand { display: block; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted-c); }
+.pp-name { font-family: var(--f-head); font-weight: 500; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.1; letter-spacing: .01em; margin: 10px 0 0; color: var(--primary-dark); max-width: none; }
+.pp-sub { margin: 10px 0 0; font-size: 16px; color: var(--muted-c); }
+.pp-meta { display: flex; align-items: baseline; gap: 18px; margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--rule); }
+.pp-size { font-size: 14px; color: var(--muted-c); } .pp-price { font-family: var(--f-text); font-weight: 600; font-size: 22px; color: var(--primary-dark); }
+.pp-buy { display: flex; gap: 12px; margin-top: 26px; }
+.pp-buy .qty { height: 52px; } .pp-buy .qty button { width: 44px; } .pp-add { flex: 1; height: 52px; }
+.pp-add.is-added { background: var(--dark-red); color: var(--warm-white); box-shadow: inset 0 0 0 1px var(--dark-red); }
+.pp-note { margin: 22px 0 0; font-size: 13px; color: var(--muted-c); }
+.pp-more { padding-top: 0; } .pp-more .pb-head a { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 860px) { .pp { grid-template-columns: 1fr; gap: 28px; } .pp-gallery { position: static; } .pp-buy { flex-wrap: wrap; } .pp-add { flex-basis: 100%; } }

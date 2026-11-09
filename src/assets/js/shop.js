@@ -28,9 +28,9 @@
   document.addEventListener('ew-cart', badge); badge();
 
   const lineHtml = (l, { editable = true } = {}) => { const p = P[l.sku]; return `<div class="cl" data-line="${esc(l.sku)}">
-      <a class="cl-media" href="/products/#${esc(l.sku)}"><img src="${esc(p.img)}" alt="${esc(p.name)}" loading="lazy"></a>
+      <a class="cl-media" href="${esc(p.url || '/products/')}"><img src="${esc(p.img)}" alt="${esc(p.name)}" loading="lazy"></a>
       <div class="cl-body">
-        <div class="cl-row"><span class="cl-name">${esc(p.name)}</span><span class="cl-size">${esc(p.size)}</span></div>
+        <div class="cl-row"><a class="cl-name" href="${esc(p.url || '/products/')}">${esc(p.name)}</a><span class="cl-size">${esc(p.size)}</span></div>
         <span class="cl-brand">${esc(p.brand)}</span>
         <div class="cl-row cl-foot">
           ${editable ? `<div class="qty" aria-label="Quantity"><button type="button" data-qty="-1" aria-label="Decrease">−</button><span>${l.qty}</span><button type="button" data-qty="1" aria-label="Increase" ${l.qty >= 10 ? 'disabled' : ''}>+</button></div>` : `<span class="cl-qty">× ${l.qty}</span>`}
@@ -62,8 +62,52 @@
   const closeDrawer = () => { if (!drawer) return; drawer.classList.remove('is-open'); drawer.setAttribute('aria-hidden', 'true'); document.documentElement.classList.remove('cd-lock'); };
   document.addEventListener('ew-cart', renderDrawer);
 
-  // Add to cart buttons on the product cards; the header cart link opens the drawer instead of leaving the page
-  $$('[data-add]').forEach((b) => b.addEventListener('click', () => { cart.add(b.dataset.add); b.classList.add('is-added'); setTimeout(() => b.classList.remove('is-added'), 1400); openDrawer(); }));
+  /* ---------- add to cart: the product photo flies into the header bag, then a small notice ---------- */
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const flyToCart = (img) => new Promise(async (done) => {
+    const target = $('.header .cart-link') || $('.cart-link');
+    if (!img || !target || reduced) return done();
+    // the header slides away while scrolling down — bring it back first so the bag is on screen to fly to
+    const header = $('.header'); if (header?.classList.contains('is-hidden')) { header.classList.remove('is-hidden'); await new Promise((r) => setTimeout(r, 260)); }
+    const from = img.getBoundingClientRect(), to = target.getBoundingClientRect();
+    if (!from.width) return done();
+    const size = Math.min(from.width, from.height, 160);
+    const ghost = img.cloneNode(); ghost.className = 'fly'; ghost.removeAttribute('loading');
+    Object.assign(ghost.style, { left: from.left + from.width / 2 - size / 2 + 'px', top: from.top + from.height / 2 - size / 2 + 'px', width: size + 'px', height: size + 'px' });
+    document.body.appendChild(ghost);
+    const dx = to.left + to.width / 2 - (from.left + from.width / 2), dy = to.top + to.height / 2 - (from.top + from.height / 2);
+    const anim = ghost.animate([
+      { transform: 'translate(0,0) scale(1)', opacity: 1, offset: 0 },
+      { transform: `translate(${dx * .5}px, ${dy * .5 - 120}px) scale(.55)`, opacity: 1, offset: .55 },
+      { transform: `translate(${dx}px, ${dy}px) scale(.12)`, opacity: .4, offset: 1 },
+    ], { duration: 800, easing: 'cubic-bezier(.4, 0, .2, 1)' });
+    anim.onfinish = () => { ghost.remove(); target.classList.add('is-bump'); setTimeout(() => target.classList.remove('is-bump'), 500); done(); };
+  });
+  let toastEl, toastTimer;
+  const toast = (sku) => {
+    const p = P[sku]; if (!p) return;
+    if (!toastEl) { toastEl = document.createElement('div'); toastEl.className = 'cart-toast'; toastEl.setAttribute('role', 'status'); document.body.appendChild(toastEl); }
+    toastEl.innerHTML = `<img src="${esc(p.img)}" alt=""><div><b>Added to cart</b><span>${esc(p.name)}</span></div><a href="/cart/">View cart</a>`;
+    toastEl.classList.add('is-on'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toastEl.classList.remove('is-on'), 3200);
+  };
+  $$('[data-add]').forEach((b) => b.addEventListener('click', async (e) => {
+    e.preventDefault(); e.stopPropagation();
+    const sku = b.dataset.add, qty = b.hasAttribute('data-add-qty') ? +($('[data-pp-qty-n]')?.textContent || 1) : 1;
+    const scope = b.closest('.pd, [data-pp]') || document;
+    const img = $('[data-pp-main]', scope) || $('.pd-media img', scope);
+    b.classList.add('is-busy');
+    await flyToCart(img);
+    cart.add(sku, qty); b.classList.remove('is-busy'); b.classList.add('is-added'); setTimeout(() => b.classList.remove('is-added'), 1400);
+    toast(sku);
+  }));
+  // product page: quantity and photo thumbnails
+  const pp = $('[data-pp]');
+  if (pp) {
+    const n = $('[data-pp-qty-n]', pp);
+    $$('[data-pp-qty]', pp).forEach((b) => b.addEventListener('click', () => { n.textContent = Math.max(1, Math.min(10, +n.textContent + +b.dataset.ppQty)); }));
+    const main = $('[data-pp-main]', pp);
+    $$('[data-pp-thumb]', pp).forEach((t) => t.addEventListener('click', () => { $$('[data-pp-thumb]', pp).forEach((x) => x.classList.toggle('is-on', x === t)); main.style.opacity = 0; setTimeout(() => { main.src = t.dataset.ppThumb; main.style.opacity = 1; }, 180); }));
+  }
   if (!$('[data-cart-page]') && !$('[data-checkout]')) $$('.cart-link').forEach((a) => a.addEventListener('click', (e) => { if (!cart.count()) return; e.preventDefault(); openDrawer(); }));
 
   /* ---------- /cart/ ---------- */

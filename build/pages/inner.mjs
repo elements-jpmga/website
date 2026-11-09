@@ -343,20 +343,55 @@ export function spaLanding() {
   return { path: g.url, html: layout({ title: 'Spa Experiences | Elements Wellness', description: list.map((s) => s.name).join(', '), path: g.url, active: 'spa', bodyClass: 'page-light', schema: [bc(trail)], body }) };
 }
 
+// One panel per product: the photo with a small cart icon at its top right, then inside the same panel the name with the size flush right
+// and the price in the title face. The panel itself opens the product's own page.
+const productCard = (it) => `<article class="pd" data-reveal data-sku="${esc(it.sku)}" data-brand="${esc(it.brand)}">
+    <button class="pd-cart" type="button" data-add="${esc(it.sku)}" aria-label="Add ${esc(it.name)} to cart">${icon.bag}<span class="pd-cart-plus">+</span></button>
+    <a class="pd-link" href="${it.url}">
+      <div class="pd-media">${it.img.map((src, j) => `<img src="${src}" alt="${esc(it.name)}" loading="lazy" ${j ? 'class="pd-alt"' : ''}>`).join('')}</div>
+      <div class="pd-body">
+        <div class="pd-row"><h4 class="pd-name">${esc(it.name)}</h4><span class="pd-size">${esc(it.size)}</span></div>
+        ${it.sub ? `<p class="pd-sub">${esc(it.sub)}</p>` : ''}
+        <div class="pd-row pd-foot"><b class="pd-price">${esc(it.priceLabel)}</b></div>
+      </div>
+    </a></article>`;
+
+/* ---------- One page per product: the client's data only (brand, name, line, size, price, photos) + Add to cart; no written copy yet ---------- */
+export function productPage(it) {
+  const trail = [['Home', '/'], ['Products', '/products/'], [it.brandName, `/products/#${it.brand}`], [it.name]];
+  const others = productCategories.flatMap((c) => c.brands).find((b) => b.id === it.brand).items.filter((x) => x.sku !== it.sku).slice(0, 4);
+  const body = `
+<section class="page-hero pp-hero"><div class="wrap">${crumbs(trail)}
+  <div class="pp" data-pp data-sku="${esc(it.sku)}">
+    <div class="pp-gallery" data-pp-gallery>
+      <div class="pp-main"><img src="${it.img[0]}" alt="${esc(it.name)}" fetchpriority="high" data-pp-main></div>
+      ${it.img.length > 1 ? `<div class="pp-thumbs">${it.img.map((src, i) => `<button type="button" class="pp-thumb ${i ? '' : 'is-on'}" data-pp-thumb="${src}" aria-label="Photo ${i + 1}"><img src="${src}" alt=""></button>`).join('')}</div>` : ''}
+    </div>
+    <div class="pp-info">
+      <span class="pp-brand">${esc(it.brandName)}</span>
+      <h1 class="pp-name">${esc(it.name)}</h1>
+      ${it.sub ? `<p class="pp-sub">${esc(it.sub)}</p>` : ''}
+      <div class="pp-meta"><span class="pp-size">${esc(it.size)}</span><b class="pp-price">${esc(it.priceLabel)}</b></div>
+      <div class="pp-buy">
+        <div class="qty" aria-label="Quantity"><button type="button" data-pp-qty="-1" aria-label="Decrease">−</button><span data-pp-qty-n>1</span><button type="button" data-pp-qty="1" aria-label="Increase">+</button></div>
+        <button class="btn pp-add" type="button" data-add="${esc(it.sku)}" data-add-qty><span>Add to cart</span></button>
+      </div>
+      <p class="pp-note">${esc(productsNote)}</p>
+    </div>
+  </div>
+</div></section>
+${others.length ? `<section class="section-sm pp-more"><div class="wrap"><div class="pb-head"><h2 class="pb-name">${esc(it.brandName)}</h2><a class="pb-count" href="/products/#${it.brand}">All ${esc(it.brandName)} products</a></div><div class="pd-grid">${others.map(productCard).join('')}</div></div></section>` : ''}`;
+  const schema = [bc(trail), { '@context': 'https://schema.org', '@type': 'Product', name: it.name, brand: { '@type': 'Brand', name: it.brandName }, image: it.img.map((i) => site.url + i), offers: { '@type': 'Offer', priceCurrency: 'SGD', price: it.price, availability: 'https://schema.org/InStock', url: site.url + it.url } }];
+  return { path: it.url, html: layout({ title: `${it.name} | ${it.brandName} | Elements Wellness`, description: `${it.name} — ${it.brandName}, ${it.size}, ${it.priceLabel}.`, path: it.url, active: 'products', bodyClass: 'page-light', schema, ogImage: it.img[0], body }) };
+}
+
 /* ---------- Products: two categories, sorted by brand (names, sizes, prices and photos supplied by Elements) ---------- */
 export function productsPage(kind = '') {
   const cats = kind ? productCategories.filter((c) => c.id === kind) : productCategories;
   const label = kind ? cats[0].label : 'Products';
   const url = kind ? `/products/${kind}/` : '/products/';
   const trail = kind ? [['Home', '/'], ['Products', '/products/'], [label]] : [['Home', '/'], ['Products']];
-  // One panel per product: photo on top, then inside the same panel the name with the size flush right, the price in the title face, and Add to cart
-  const item = (it) => `<article class="pd" data-reveal data-sku="${esc(it.sku)}">
-    <div class="pd-media">${it.img.map((src, j) => `<img src="${src}" alt="${esc(it.name)}" loading="lazy" ${j ? 'class="pd-alt"' : ''}>`).join('')}</div>
-    <div class="pd-body">
-      <div class="pd-row"><h4 class="pd-name">${esc(it.name)}</h4><span class="pd-size">${esc(it.size)}</span></div>
-      ${it.sub ? `<p class="pd-sub">${esc(it.sub)}</p>` : ''}
-      <div class="pd-row pd-foot"><b class="pd-price">${esc(it.priceLabel)}</b><button class="pd-add" type="button" data-add="${esc(it.sku)}"><span>Add to cart</span><span class="pd-added">Added</span></button></div>
-    </div></article>`;
+  const item = productCard;
   const brand = (b) => `<section class="pb" id="${b.id}"><div class="pb-head"><h3 class="pb-name">${esc(b.name)}</h3>${b.items.length ? `<span class="pb-count">${b.items.length} products</span>` : ''}</div>${b.items.length ? `<div class="pd-grid">${b.items.map(item).join('')}</div>` : ''}</section>`;
   const cat = (c) => `<section class="pcat" id="${c.id}">${kind ? '' : `<h2 class="pcat-title">${esc(c.label)}</h2>`}${c.brands.map(brand).join('')}</section>`;
   const body = pageHero({ title: esc(label), trail }) + `
