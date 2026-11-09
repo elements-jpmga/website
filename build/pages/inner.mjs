@@ -545,36 +545,51 @@ export function promotionsPage() {
 // with the widget's own wording (item names, prices, descriptions, "A Gift For You — GIFT VOUCHER").
 export function giftVouchers() {
   const trail = [['Home', '/'], ['Gift Vouchers']];
-  const fallback = voucherItems.map((v) => `<button type="button" class="gv-pick" disabled><span class="gv-pick-name">${esc(v.name)}</span><span class="gv-pick-price">${esc(v.price)}</span>${v.desc ? `<span class="gv-pick-desc">${esc(v.desc)}</span>` : ''}</button>`).join('');
+  // Same steps as the Gift Up widget on the old page (voucher → details → your details → pay) with one more step: choose the card design.
+  // Static fallback list (from the old widget) until the live catalogue loads.
+  const fallback = voucherItems.map((v) => `<article class="gv-item"><h3 class="gv-item-name">${esc(v.name)}</h3>${v.desc ? `<p class="gv-item-desc">${esc(v.desc)}</p>` : ''}<button type="button" class="btn gv-buy" disabled><span>Buy ${esc(v.price).replace('S$', 'SGD ')}</span></button></article>`).join('');
   const body = pageHero({ title: 'Gift Vouchers', trail }) + `
 <div class="wrap"><div class="warn-box gv-notice" data-gift-notice hidden></div></div>
 <section class="section-sm" style="padding-top:0" data-gift-shop><div class="wrap gv-wrap">
-  <div class="gv-card-head"><span>Elements Wellness</span><b>A Gift For You</b><small>Gift Voucher</small></div>
-  <ol class="gv-dots" aria-label="Steps"><li class="is-on" data-dot="1"></li><li data-dot="2"></li><li data-dot="3"></li></ol>
+  <div class="gv-card" data-gift-card><div class="gv-card-head"><span>Elements Wellness</span><b>A Gift For You</b></div><div class="gv-card-art"><img data-gift-card-art alt="" hidden></div><div class="gv-card-ribbon">Gift Voucher</div></div>
+  <ol class="gv-dots" aria-label="Steps"><li class="is-on" data-dot="1"></li><li data-dot="2"></li><li data-dot="3"></li><li data-dot="4"></li></ol>
 
   <div class="gv-stage is-on" data-stage="1">
-    <div class="gv-picks" data-gift-items>${fallback}</div>
+    <div class="gv-items" data-gift-items>${fallback}</div>
   </div>
 
   <div class="gv-stage" data-stage="2">
     <div class="gv-chosen" data-gift-chosen></div>
+    <span class="gv-label">Choose a design</span>
+    <div class="gv-designs" data-gift-designs></div>
+    <div class="gv-actions"><button class="btn btn-ghost" type="button" data-gift-back>Back</button><button class="btn" type="button" data-gift-next="2"><span>Continue</span></button></div>
+  </div>
+
+  <div class="gv-stage" data-stage="3">
+    <div class="gv-chosen" data-gift-chosen></div>
     <form class="form gv-form" data-gift-form autocomplete="on" novalidate>
-      <div class="gv-designs" data-gift-designs></div>
+      <div class="field"><label for="gv-qty">Quantity</label><select id="gv-qty" name="qty">${[1,2,3,4,5,6,7,8,9,10].map((n) => `<option>${n}</option>`).join('')}</select></div>
       <div class="field"><label for="gv-bn">Your name</label><input id="gv-bn" name="buyer_name" required maxlength="80" autocomplete="name"></div>
       <div class="field"><label for="gv-rn">Recipient name</label><input id="gv-rn" name="recipient_name" maxlength="80"></div>
-      <div class="field"><label for="gv-msg">Message <span class="muted">(optional)</span></label><textarea id="gv-msg" name="message" maxlength="240" rows="3"></textarea></div>
-      <div class="field"><label for="gv-re">Recipient email <span class="muted">(leave blank to send it to yourself)</span></label><input id="gv-re" name="recipient_email" type="email"></div>
-      <div class="field"><label for="gv-be">Your email address (for the receipt)</label><input id="gv-be" name="buyer_email" type="email" required autocomplete="email"></div>
-      <div class="gv-actions"><button class="btn btn-ghost" type="button" data-gift-back>Back</button><button class="btn" type="button" data-gift-next>Next</button></div>
+      <div class="field"><label for="gv-msg">Message <span class="muted">optional</span></label><textarea id="gv-msg" name="message" maxlength="240" rows="4"></textarea></div>
+      <div class="gv-toggle" role="radiogroup" aria-label="Delivery"><label><input type="radio" name="delivery" value="email" checked><span>By email</span></label><label><input type="radio" name="delivery" value="print"><span>Print</span></label></div>
+      <div data-gift-email-fields>
+        <div class="field"><label for="gv-re">What email address should we send the gift voucher to?</label><input id="gv-re" name="recipient_email" type="email" inputmode="email"></div>
+        <div class="field gv-when"><select name="when" aria-label="When to send"><option value="now">Send instantly</option><option value="date">Send on a date</option></select><input type="date" name="send_at" aria-label="Send date" hidden></div>
+      </div>
+      <p class="form-note" data-gift-print-note hidden>The voucher PDF will be emailed to you to print.</p>
+      <div class="gv-actions"><button class="btn btn-ghost" type="button" data-gift-back>Back</button><button class="btn" type="button" data-gift-next="3"><span>Continue</span></button></div>
       <p class="form-note gv-err" data-gift-error></p>
     </form>
   </div>
 
-  <div class="gv-stage" data-stage="3">
+  <div class="gv-stage" data-stage="4">
+    <div class="form gv-form"><div class="field"><label for="gv-be">Your email address (for the receipt)</label><input id="gv-be" name="buyer_email" type="email" required autocomplete="email" inputmode="email"></div></div>
     <div class="gv-summary" data-gift-summary></div>
     <div class="gv-actions"><button class="btn btn-ghost" type="button" data-gift-back>Back</button><button class="btn" type="button" data-gift-pay><span>Pay</span></button></div>
     <p class="form-note gv-err" data-gift-pay-error></p>
   </div>
+  <details class="gv-terms" data-gift-terms hidden><summary>Terms &amp; conditions</summary><div data-gift-terms-text></div></details>
 </div></section>
 `;
   return { path: '/gift-vouchers/', html: layout({ title: 'Gift Vouchers | Elements Wellness', description: 'Gift Vouchers — Elements Wellness.', path: '/gift-vouchers/', active: 'gift', bodyClass: 'page-light', schema: [bc(trail)], scripts: ['/assets/js/gift.js'], body }) };

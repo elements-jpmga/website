@@ -2031,3 +2031,35 @@ html.cd-lock { overflow: hidden; }
 .pp-ingredients summary::after { content: "+"; font-size: 18px; color: var(--muted-c); }
 .pp-ingredients[open] summary::after { content: "−"; }
 .pp-inci { margin: 12px 0 0; font-size: 13px; line-height: 1.6; color: var(--muted-c); } .pp-inci b { font-weight: 500; color: var(--primary-dark); }
+
+/* gift vouchers: the old widget's steps + a design step */
+.gv-card { border-radius: 0; box-shadow: 0 0 0 1px var(--rule); background: #fff; }
+.gv-card-art img[hidden] { display: none; } .gv-card-art img { aspect-ratio: 16 / 7; }
+.gv-card-ribbon { position: static; padding: 9px 18px; text-align: center; background: var(--accent); color: var(--warm-white); font-size: 13px; letter-spacing: .3em; text-transform: uppercase; }
+.gv-items { display: grid; gap: 12px; }
+.gv-item { padding: 22px 22px 20px; background: #fff; box-shadow: 0 0 0 1px var(--rule); display: grid; gap: 10px; }
+.gv-item-name { font-family: var(--f-head); font-weight: 500; font-size: 24px; letter-spacing: .01em; margin: 0; color: var(--primary-dark); }
+.gv-item-desc { margin: 0; font-size: 15px; line-height: 1.55; color: var(--primary-dark); }
+.gv-item-terms summary, .gv-terms summary { cursor: pointer; list-style: none; font-size: 14px; color: var(--dark-red); display: inline-flex; align-items: center; gap: 6px; }
+.gv-item-terms summary::-webkit-details-marker, .gv-terms summary::-webkit-details-marker { display: none; }
+.gv-item-terms summary::after, .gv-terms summary::after { content: "⌄"; font-size: 14px; line-height: 1; transform: translateY(-2px); }
+.gv-item-terms[open] summary::after, .gv-terms[open] summary::after { transform: rotate(180deg) translateY(-2px); }
+.gv-item-terms div, .gv-terms div { margin-top: 8px; font-size: 13.5px; line-height: 1.6; color: var(--muted-c); }
+.gv-buy { width: 100%; height: 50px; margin-top: 6px; }
+.gv-terms { margin-top: 28px; text-align: center; } .gv-terms[hidden] { display: none; } .gv-terms div { text-align: left; }
+.gv-stage .gv-label { display: block; font-size: 13px; font-weight: 500; color: var(--primary-dark); margin: 0 0 10px; text-transform: none; letter-spacing: 0; }
+.gv-designs .gv-design-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 10px; }
+.gv-designs .gv-design-big { margin-bottom: 10px; }
+.gv-stage[data-stage="2"] .gv-actions, .gv-stage[data-stage="4"] .gv-actions { margin-top: 22px; }
+.gv-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.gv-toggle label { position: relative; display: grid; place-items: center; height: 48px; background: var(--warm-white); box-shadow: inset 0 0 0 1px var(--rule); font-size: 15px; font-weight: 500; color: var(--primary-dark); cursor: pointer; }
+.gv-toggle input { position: absolute; opacity: 0; } .gv-toggle label:has(input:checked) { background: var(--tint); box-shadow: inset 0 0 0 1px var(--primary-dark); }
+[data-gift-email-fields] { display: grid; gap: 16px; } [data-gift-email-fields][hidden], [data-gift-print-note][hidden] { display: none; }
+.gv-when { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; } .gv-when input[hidden] { display: none; }
+.gv-form select, .gv-form input[type=date] { font: inherit; color: var(--primary-dark); }
+.gv-chosen b { font-size: clamp(26px, 3vw, 34px); }
+/* the design image is the whole card (it carries its own title and ribbon) — show the band and ribbon only while no design has loaded */
+.gv-card { transform: none; border-radius: 0; }
+.gv-card:has(.gv-card-art img:not([hidden])) .gv-card-head, .gv-card:has(.gv-card-art img:not([hidden])) .gv-card-ribbon { display: none; }
+.gv-card-art img { aspect-ratio: auto; width: 100%; height: auto; display: block; }
+.gv-designs { display: block; }
