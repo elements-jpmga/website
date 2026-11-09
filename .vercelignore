@@ -1,7 +1,24 @@
-restore/node_modules
+# Mirrors .gitignore (Vercel uses this file instead of .gitignore) plus everything the website build does not need
+node_modules
+_vendor
+dist
+.vercel
+.claude
+.DS_Store
+*.log
+*.zip
+.env
+.env.*
+restore/.env
+restore/.env.*
+Elements_Restore_Web_App_Developer_Pack
+reports
 restore/data
+restore/node_modules
 restore/public
 restore/tools
 restore/tests
-reports
-_research
+restore/scripts
+restore/Dockerfile
+restore/server.mjs
+_research/blog/*.raw.html
