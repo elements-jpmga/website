@@ -1,6 +1,7 @@
 // Inner page templates (client sitemap 2026). Each returns { path, html }.
 import fs from 'node:fs';
 import { productCategories, productsNote, shopOutlets } from '../products.mjs';
+import { productInfo, brandInfo } from '../product-info.mjs';
 import { site, groups, services, outlets, awards, posts, faqs, promotions, promoTerms, voucherItems, blogTopics, story, policies, etiquette, facialConcerns, massageConcerns, concernPagesAll, productBrands } from '../data.mjs';
 import * as SM from '../sitemap.mjs';
 import { layout, esc, icon, btn, linkArrow, faqList, logo, crumbs, serviceCard, revealCard, showCard } from '../ui.mjs';
@@ -356,6 +357,23 @@ const productCard = (it) => `<article class="pd" data-reveal data-sku="${esc(it.
       </div>
     </a></article>`;
 
+// Manufacturer-published information (build/product-info.mjs). Only the fields the brand publishes are rendered.
+const productDetails = (it) => {
+  const i = productInfo[it.sku], b = brandInfo[it.brand]; if (!i && !b) return '';
+  const list = (arr) => `<ul class="pp-list">${arr.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>`;
+  const inci = !i?.inci ? '' : Array.isArray(i.inci) ? `<p class="pp-inci">${esc(i.inci.join(', '))}</p>` : Object.entries(i.inci).map(([k, v]) => `<p class="pp-inci"><b>${esc(k)}:</b> ${esc(v.join(', '))}</p>`).join('');
+  const notes = [...(i?.notes || []), ...(b?.notes || [])];
+  return `<div class="pp-details">
+    ${i?.desc ? `<p class="pp-desc">${esc(i.desc)}</p>` : ''}
+    ${b?.line ? `<p class="pp-line">${esc(b.line)}</p>` : ''}
+    ${notes.length ? `<ul class="pp-chips">${notes.map((n) => `<li>${esc(n)}</li>`).join('')}</ul>` : ''}
+    ${i?.target || i?.skin ? `<dl class="pp-facts">${i.target ? `<dt>Targets</dt><dd>${esc(i.target)}</dd>` : ''}${i.skin ? `<dt>Suitable for</dt><dd>${esc(i.skin)}</dd>` : ''}</dl>` : ''}
+    ${i?.actives ? `<section class="pp-sec"><h2>Key ingredients</h2>${list(i.actives)}</section>` : ''}
+    ${i?.use ? `<section class="pp-sec"><h2>How to use</h2><p>${esc(i.use)}</p></section>` : ''}
+    ${inci ? `<details class="pp-sec pp-ingredients"><summary>Ingredients</summary>${inci}</details>` : ''}
+  </div>`;
+};
+
 /* ---------- One page per product: the client's data only (brand, name, line, size, price, photos) + Add to cart; no written copy yet ---------- */
 export function productPage(it) {
   const trail = [['Home', '/'], ['Products', '/products/'], [it.brandName, `/products/#${it.brand}`], [it.name]];
@@ -377,6 +395,7 @@ export function productPage(it) {
         <button class="btn pp-add" type="button" data-add="${esc(it.sku)}" data-add-qty><span>Add to cart</span></button>
       </div>
       <p class="pp-note">${esc(productsNote)}</p>
+      ${productDetails(it)}
     </div>
   </div>
 </div></section>

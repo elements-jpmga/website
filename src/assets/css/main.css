@@ -2014,3 +2014,20 @@ html.cd-lock { overflow: hidden; }
 .pp-note { margin: 22px 0 0; font-size: 13px; color: var(--muted-c); }
 .pp-more { padding-top: 0; } .pp-more .pb-head a { text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 860px) { .pp { grid-template-columns: 1fr; gap: 28px; } .pp-gallery { position: static; } .pp-buy { flex-wrap: wrap; } .pp-add { flex-basis: 100%; } }
+
+/* product page: manufacturer information */
+.pp-details { margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--rule); display: grid; gap: 18px; }
+.pp-desc { margin: 0; font-size: 16px; line-height: 1.65; color: var(--primary-dark); }
+.pp-line { margin: -8px 0 0; font-size: 14px; color: var(--muted-c); }
+.pp-chips { list-style: none; margin: -4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.pp-chips li { font-size: 12.5px; padding: 5px 10px; border: 1px solid var(--rule); color: var(--primary-dark); }
+.pp-facts { display: grid; grid-template-columns: 120px 1fr; gap: 6px 16px; margin: 0; font-size: 14.5px; }
+.pp-facts dt { color: var(--muted-c); } .pp-facts dd { margin: 0; color: var(--primary-dark); }
+.pp-sec h2, .pp-sec summary { font-family: var(--f-text); font-weight: 500; font-size: 15px; letter-spacing: .01em; margin: 0 0 8px; color: var(--primary-dark); }
+.pp-sec p { margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--primary-dark); }
+.pp-list { margin: 0; padding-left: 18px; font-size: 14.5px; line-height: 1.6; color: var(--primary-dark); }
+.pp-ingredients summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin: 0; }
+.pp-ingredients summary::-webkit-details-marker { display: none; }
+.pp-ingredients summary::after { content: "+"; font-size: 18px; color: var(--muted-c); }
+.pp-ingredients[open] summary::after { content: "−"; }
+.pp-inci { margin: 12px 0 0; font-size: 13px; line-height: 1.6; color: var(--muted-c); } .pp-inci b { font-weight: 500; color: var(--primary-dark); }
