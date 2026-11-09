@@ -413,9 +413,12 @@ export function productsPage(kind = '') {
   const item = productCard;
   const brand = (b) => `<section class="pb" id="${b.id}"><div class="pb-head"><h3 class="pb-name">${esc(b.name)}</h3>${b.items.length ? `<span class="pb-count">${b.items.length} products</span>` : ''}</div>${b.items.length ? `<div class="pd-grid">${b.items.map(item).join('')}</div>` : ''}</section>`;
   const cat = (c) => `<section class="pcat" id="${c.id}">${kind ? '' : `<h2 class="pcat-title">${esc(c.label)}</h2>`}${c.brands.map(brand).join('')}</section>`;
-  const body = pageHero({ title: esc(label), trail }) + `
+  // Hero: a photographed countertop with three of the real Anubis packshots standing on it (no invented products)
+  const heroItems = ['AN-HA-SERUM', 'AN-BAKUCHIOL', 'AN-TONER'].map((sku) => productCategories.flatMap((c) => c.brands.flatMap((b) => b.items)).find((p) => p.sku === sku)).filter(Boolean);
+  const hero = `<div class="page-hero-media phero" data-clip><img class="phero-bg" src="/assets/img/hero/products.jpg" alt="" fetchpriority="high"><div class="phero-items">${heroItems.map((p, i) => `<a href="${p.url}" class="phero-item phero-item-${i + 1}"><img src="${p.img[0]}" alt="${esc(p.name)}"></a>`).join('')}</div></div>`;
+  const body = pageHero({ title: esc(label), trail, extra: hero }) + `
 <section class="section-sm" style="padding-top:0"><div class="wrap">${cats.map(cat).join('')}<p class="pd-note">${esc(productsNote)}</p></div></section>`;
-  return { path: url, html: layout({ title: `${label} | Elements Wellness`, description: label, path: url, active: 'products', bodyClass: 'page-light', schema: [bc(trail)], body }) };
+  return { path: url, html: layout({ title: `${label} | Elements Wellness`, description: label, path: url, active: 'products', bodyClass: 'page-light', schema: [bc(trail)], ogImage: '/assets/img/hero/products.jpg', body }) };
 }
 
 /* ---------- Cart → Checkout (Stripe Checkout via the Elements staff system, like gift vouchers) → Thank you ---------- */
@@ -548,10 +551,10 @@ export function giftVouchers() {
   // Same steps as the Gift Up widget on the old page (voucher → details → your details → pay) with one more step: choose the card design.
   // Static fallback list (from the old widget) until the live catalogue loads.
   const fallback = voucherItems.map((v) => `<article class="gv-item"><h3 class="gv-item-name">${esc(v.name)}</h3>${v.desc ? `<p class="gv-item-desc">${esc(v.desc)}</p>` : ''}<button type="button" class="btn gv-buy" disabled><span>Buy ${esc(v.price).replace('S$', 'SGD ')}</span></button></article>`).join('');
-  const body = pageHero({ title: 'Gift Vouchers', trail }) + `
+  const hero = `<div class="page-hero-media ghero" data-clip><img class="ghero-bg" src="/assets/img/hero/gift-vouchers.jpg" alt="" fetchpriority="high"><div class="ghero-card"><img data-gift-card-art alt="" hidden></div></div>`;
+  const body = pageHero({ title: 'Gift Vouchers', trail, extra: hero }) + `
 <div class="wrap"><div class="warn-box gv-notice" data-gift-notice hidden></div></div>
 <section class="section-sm" style="padding-top:0" data-gift-shop><div class="wrap gv-wrap">
-  <div class="gv-card" data-gift-card><div class="gv-card-head"><span>Elements Wellness</span><b>A Gift For You</b></div><div class="gv-card-art"><img data-gift-card-art alt="" hidden></div><div class="gv-card-ribbon">Gift Voucher</div></div>
   <ol class="gv-dots" aria-label="Steps"><li class="is-on" data-dot="1"></li><li data-dot="2"></li><li data-dot="3"></li><li data-dot="4"></li></ol>
 
   <div class="gv-stage is-on" data-stage="1">
@@ -592,7 +595,7 @@ export function giftVouchers() {
   <details class="gv-terms" data-gift-terms hidden><summary>Terms &amp; conditions</summary><div data-gift-terms-text></div></details>
 </div></section>
 `;
-  return { path: '/gift-vouchers/', html: layout({ title: 'Gift Vouchers | Elements Wellness', description: 'Gift Vouchers — Elements Wellness.', path: '/gift-vouchers/', active: 'gift', bodyClass: 'page-light', schema: [bc(trail)], scripts: ['/assets/js/gift.js'], body }) };
+  return { path: '/gift-vouchers/', html: layout({ title: 'Gift Vouchers | Elements Wellness', description: 'Gift Vouchers — Elements Wellness.', path: '/gift-vouchers/', active: 'gift', bodyClass: 'page-light', schema: [bc(trail)], scripts: ['/assets/js/gift.js'], ogImage: '/assets/img/hero/gift-vouchers.jpg', body }) };
 }
 export function giftThankYou() {
   const trail = [['Home', '/'], ['Gift Vouchers', '/gift-vouchers/'], ['Thank you']];

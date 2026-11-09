@@ -2063,3 +2063,15 @@ html.cd-lock { overflow: hidden; }
 .gv-card:has(.gv-card-art img:not([hidden])) .gv-card-head, .gv-card:has(.gv-card-art img:not([hidden])) .gv-card-ribbon { display: none; }
 .gv-card-art img { aspect-ratio: auto; width: 100%; height: auto; display: block; }
 .gv-designs { display: block; }
+
+/* photographic heroes: Products (real packshots on a photographed countertop) and Gift Vouchers (the real card on linen) */
+.phero, .ghero { border-radius: 0; box-shadow: none; aspect-ratio: 21 / 9; }
+.phero-bg, .ghero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.phero-items { position: absolute; inset: 0; }
+.phero-item { position: absolute; bottom: 19%; display: block; height: 58%; }
+.phero-item img { height: 100%; width: auto; display: block; mix-blend-mode: multiply; transition: transform .5s var(--ease, ease); }
+.phero-item:hover img { transform: translateY(-4px); }
+.phero-item-1 { left: 47%; } .phero-item-2 { left: 62%; height: 52%; } .phero-item-3 { left: 78%; height: 62%; }
+.ghero-card { position: absolute; left: 50%; top: 14%; width: 40%; transform: rotate(-5deg); box-shadow: 0 30px 60px -28px rgba(65, 63, 66, .7), 0 4px 14px -8px rgba(65, 63, 66, .4); }
+.ghero-card img { display: block; width: 100%; height: auto; } .ghero-card:has(img[hidden]) { display: none; }
+@media (max-width: 700px) { .phero, .ghero { aspect-ratio: 4 / 3; } .phero-item { bottom: 20%; height: 44%; } .phero-item-1 { left: 36%; } .phero-item-2 { left: 56%; height: 40%; } .phero-item-3 { left: 77%; height: 48%; } .ghero-card { left: 44%; top: 20%; width: 50%; } }
