@@ -4,6 +4,7 @@ import * as giftup from './giftup.mjs';
 import { issue, deliver, fulfil, pdfFor, voucherHtml, OUTLETS } from './voucher.mjs';
 import * as stripe from './stripe.mjs';
 import * as files from '../files.mjs';
+import { onStripeSession as shopStripe } from '../shop/routes.mjs'; // product orders share the same Stripe webhook
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const csvCell = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
@@ -177,8 +178,8 @@ export function registerGiftRoutes({ route, send, err, json, readBody, staff, se
     let ev; try { ev = stripe.verifyWebhook(raw, req.headers['stripe-signature']); } catch (e) { return err(res, 400, e.message); }
     if (['checkout.session.completed', 'checkout.session.async_payment_succeeded'].includes(ev.type)) {
       const s = ev.data.object;
-      if (s.payment_status === 'paid') { const order = await Orders.byStripeSession(s.id); if (order) { try { await settle(order, s.payment_intent); } catch (e) { console.error('settle failed:', e.message); return err(res, 500, e.message); } } }
-    } else if (ev.type === 'checkout.session.expired') { const order = await Orders.byStripeSession(ev.data.object.id); if (order?.status === 'pending') await Orders.setStatus(order.order_id, 'cancelled'); }
+      if (s.payment_status === 'paid') { const order = await Orders.byStripeSession(s.id); if (order) { try { await settle(order, s.payment_intent); } catch (e) { console.error('settle failed:', e.message); return err(res, 500, e.message); } } else { try { await shopStripe(s, 'paid'); } catch (e) { console.error('shop settle failed:', e.message); return err(res, 500, e.message); } } }
+    } else if (ev.type === 'checkout.session.expired') { const order = await Orders.byStripeSession(ev.data.object.id); if (order?.status === 'pending') await Orders.setStatus(order.order_id, 'cancelled'); else if (!order) await shopStripe(ev.data.object, 'expired'); }
     send(res, 200, { received: true });
   }, { open: true });
 

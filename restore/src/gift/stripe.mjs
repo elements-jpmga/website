@@ -23,14 +23,17 @@ async function call(method, path, body) {
 }
 
 // A hosted Checkout page for one order. Returns { id, url }.
-export function createCheckoutSession({ order, lines, successUrl, cancelUrl }) {
+// `kind` tells the webhook which order book the session belongs to ('gift' by default, 'shop' for product orders);
+// `description` is the card-statement / Stripe dashboard description; a line's `description` or `recipient_name` shows under its name.
+export function createCheckoutSession({ order, lines, successUrl, cancelUrl, kind = 'gift', description = `Elements Wellness gift voucher order ${order.order_no}`, phoneCollection = false }) {
   return call('POST', '/v1/checkout/sessions', {
     mode: 'payment',
     client_reference_id: order.order_id,
     customer_email: order.buyer_email || undefined,
-    line_items: lines.map((l) => ({ quantity: l.qty || 1, price_data: { currency: 'sgd', unit_amount: Math.round(l.price * 100), product_data: { name: l.title, description: l.recipient_name ? `Gift for ${l.recipient_name}` : undefined } } })),
-    metadata: { order_id: order.order_id, order_no: order.order_no },
-    payment_intent_data: { description: `Elements Wellness gift voucher order ${order.order_no}`, metadata: { order_id: order.order_id, order_no: order.order_no } },
+    ...(phoneCollection ? { phone_number_collection: { enabled: true } } : {}),
+    line_items: lines.map((l) => ({ quantity: l.qty || 1, price_data: { currency: 'sgd', unit_amount: Math.round(l.price * 100), product_data: { name: l.title, description: l.description || (l.recipient_name ? `Gift for ${l.recipient_name}` : undefined) } } })),
+    metadata: { kind, order_id: order.order_id, order_no: order.order_no },
+    payment_intent_data: { description, metadata: { kind, order_id: order.order_id, order_no: order.order_no } },
     success_url: successUrl, cancel_url: cancelUrl,
     expires_at: Math.floor(Date.now() / 1000) + 30 * 60,
   });

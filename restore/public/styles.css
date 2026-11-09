@@ -496,3 +496,7 @@ textarea.codes { font-family: Menlo, Consolas, monospace; font-size: 12.5px; min
 .intake { border: 1px solid var(--line, #e6e1da); border-radius: 10px; padding: 10px 14px 14px; margin: 0 0 14px; }
 .intake legend { padding: 0 6px; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted, #8b8175); }
 .intake .row { margin-bottom: 10px; }
+
+/* Product shop orders */
+.status.ready { background: var(--c-blue-bg); color: var(--c-blue-tx); } .status.completed { background: var(--hover); color: var(--text-2); } .status.cancelled, .status.failed, .status.refunded { background: #fde8e8; color: #9b2c2c; }
+.shop-lines { display: grid; gap: 10px; } .shop-line { display: grid; grid-template-columns: 56px 1fr auto; gap: 12px; align-items: center; } .shop-line img { width: 56px; height: 56px; object-fit: contain; background: #f1ede7; border-radius: 8px; } .shop-line small { display: block; color: var(--text-3); }

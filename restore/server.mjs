@@ -14,6 +14,7 @@ import { evaluate, validateReadings } from './src/engine.mjs';
 import { extractUbio, ocrEngine } from './src/extract.mjs';
 import { reportHtml, htmlToPdf, TEMPLATE_VERSION } from './src/report.mjs';
 import { registerGiftRoutes } from './src/gift/routes.mjs';
+import { registerShopRoutes } from './src/shop/routes.mjs';
 import { startScheduler as startGiftScheduler } from './src/gift/voucher.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -239,6 +240,9 @@ route('GET', '/api/reports/:rid/file', async (req, res, { params }) => {
 registerGiftRoutes({ route, send, err, json, readBody, staff, sendFile, allowedOrigins: ALLOWED_ORIGINS });
 startGiftScheduler();
 
+/* ---------- Product shop (website cart + checkout; orders collected at an outlet) ---------- */
+registerShopRoutes({ route, send, err, json, staff, allowedOrigins: ALLOWED_ORIGINS });
+
 /* ---------- Server ---------- */
 http.createServer(async (req, res) => {
   const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
@@ -247,7 +251,7 @@ http.createServer(async (req, res) => {
   res.setHeader('Referrer-Policy', 'same-origin');
   res.setHeader('X-Robots-Tag', 'noindex, nofollow');
   // The public website (elements.com.sg, or the local preview) calls the public gift endpoints from the browser
-  if (url.pathname.startsWith('/api/gift/public/') || url.pathname === '/api/gift/stripe/webhook') {
+  if (url.pathname.startsWith('/api/gift/public/') || url.pathname.startsWith('/api/shop/public/') || url.pathname === '/api/gift/stripe/webhook') {
     const origin = req.headers.origin || '';
     if (origin && ALLOWED_ORIGINS.includes(origin)) { res.setHeader('Access-Control-Allow-Origin', origin); res.setHeader('Vary', 'Origin'); res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS'); res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); res.setHeader('Access-Control-Max-Age', '600'); }
     if (req.method === 'OPTIONS') { res.writeHead(204); return res.end(); }

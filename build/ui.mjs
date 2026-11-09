@@ -6,6 +6,7 @@ const womens = () => womensWellness.map((id) => services.find((s) => s.id === id
 export const esc = (s = '') => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 export const icon = {
+  bag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5.5 8.5h13l-.9 11a1.5 1.5 0 0 1-1.5 1.4H7.9a1.5 1.5 0 0 1-1.5-1.4l-.9-11Z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg>',
   arrow: '<svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5"/></svg>',
   search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>',
   close: '<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 2l14 14M16 2 2 16"/></svg>',
@@ -128,13 +129,14 @@ export const header = (active = '') => `
       ${navItem('Gift Vouchers', '/gift-vouchers/', 'gift', active)}
     </nav>
     <div class="nav-right">
+      <a class="cart-link" href="/cart/" aria-label="Cart">${icon.bag}<span class="cart-count" data-cart-count hidden>0</span></a>
       <a class="btn btn-sm" href="/contact/#book"><span>Book Now</span></a>
       <button class="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
     </div>
   </div>
 </header>
 <div class="mobile-menu" aria-label="Mobile">
-  <div class="mm-head"><a href="/" class="logo-lockup" aria-label="Elements Wellness — home"><img src="/assets/img/logo/elements-logo-red.png" alt="Elements Wellness" width="464" height="114"></a><a class="btn btn-sm" href="/contact/#book"><span>Book Now</span></a><button class="mm-close" type="button" data-mm-close>Close</button></div>
+  <div class="mm-head"><a href="/" class="logo-lockup" aria-label="Elements Wellness — home"><img src="/assets/img/logo/elements-logo-red.png" alt="Elements Wellness" width="464" height="114"></a><a class="cart-link" href="/cart/" aria-label="Cart">${icon.bag}<span class="cart-count" data-cart-count hidden>0</span></a><a class="btn btn-sm" href="/contact/#book"><span>Book Now</span></a><button class="mm-close" type="button" data-mm-close>Close</button></div>
   <nav>
     ${mSection('Facials', '/facials/', 'Explore All Facials', [
       ['By Concern', facialConcerns.map((c) => mlink(c.url, c.label)).join('')],
@@ -232,6 +234,8 @@ ${finder()}
 <script src="/assets/vendor/SplitText.min.js" defer></script>
 <script src="/assets/vendor/lenis.min.js" defer></script>
 <script src="/assets/js/main.js" defer></script>
+<script src="/assets/js/shop-data.js" defer></script>
+<script src="/assets/js/shop.js" defer></script>
 ${scripts.map((src) => `<script src="${src}" defer></script>`).join('\n')}
 </body>
 </html>`;

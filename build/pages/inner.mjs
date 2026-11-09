@@ -1,6 +1,6 @@
 // Inner page templates (client sitemap 2026). Each returns { path, html }.
 import fs from 'node:fs';
-import { productCategories, productsNote } from '../products.mjs';
+import { productCategories, productsNote, shopOutlets } from '../products.mjs';
 import { site, groups, services, outlets, awards, posts, faqs, promotions, promoTerms, voucherItems, blogTopics, story, policies, etiquette, facialConcerns, massageConcerns, concernPagesAll, productBrands } from '../data.mjs';
 import * as SM from '../sitemap.mjs';
 import { layout, esc, icon, btn, linkArrow, faqList, logo, crumbs, serviceCard, revealCard, showCard } from '../ui.mjs';
@@ -349,15 +349,88 @@ export function productsPage(kind = '') {
   const label = kind ? cats[0].label : 'Products';
   const url = kind ? `/products/${kind}/` : '/products/';
   const trail = kind ? [['Home', '/'], ['Products', '/products/'], [label]] : [['Home', '/'], ['Products']];
-  const item = (it, i) => `<article class="pd" data-reveal>
+  // One panel per product: photo on top, then inside the same panel the name with the size flush right, the price in the title face, and Add to cart
+  const item = (it) => `<article class="pd" data-reveal data-sku="${esc(it.sku)}">
     <div class="pd-media">${it.img.map((src, j) => `<img src="${src}" alt="${esc(it.name)}" loading="lazy" ${j ? 'class="pd-alt"' : ''}>`).join('')}</div>
-    <h4 class="pd-name">${esc(it.name)}</h4>${it.sub ? `<p class="pd-sub">${esc(it.sub)}</p>` : ''}
-    <p class="pd-meta"><span>${esc(it.size)}</span><b>${esc(it.price)}</b></p></article>`;
+    <div class="pd-body">
+      <div class="pd-row"><h4 class="pd-name">${esc(it.name)}</h4><span class="pd-size">${esc(it.size)}</span></div>
+      ${it.sub ? `<p class="pd-sub">${esc(it.sub)}</p>` : ''}
+      <div class="pd-row pd-foot"><b class="pd-price">${esc(it.priceLabel)}</b><button class="pd-add" type="button" data-add="${esc(it.sku)}"><span>Add to cart</span><span class="pd-added">Added</span></button></div>
+    </div></article>`;
   const brand = (b) => `<section class="pb" id="${b.id}"><div class="pb-head"><h3 class="pb-name">${esc(b.name)}</h3>${b.items.length ? `<span class="pb-count">${b.items.length} products</span>` : ''}</div>${b.items.length ? `<div class="pd-grid">${b.items.map(item).join('')}</div>` : ''}</section>`;
   const cat = (c) => `<section class="pcat" id="${c.id}">${kind ? '' : `<h2 class="pcat-title">${esc(c.label)}</h2>`}${c.brands.map(brand).join('')}</section>`;
   const body = pageHero({ title: esc(label), trail }) + `
 <section class="section-sm" style="padding-top:0"><div class="wrap">${cats.map(cat).join('')}<p class="pd-note">${esc(productsNote)}</p></div></section>`;
   return { path: url, html: layout({ title: `${label} | Elements Wellness`, description: label, path: url, active: 'products', bodyClass: 'page-light', schema: [bc(trail)], body }) };
+}
+
+/* ---------- Cart → Checkout (Stripe Checkout via the Elements staff system, like gift vouchers) → Thank you ---------- */
+// Functional UI labels only (field names, buttons, totals). The cart keeps itself in the browser; shop.js fills these shells.
+export function cartPage() {
+  const trail = [['Home', '/'], ['Products', '/products/'], ['Cart']];
+  const body = pageHero({ title: 'Cart', trail }) + `
+<section class="section-sm" style="padding-top:0"><div class="wrap">
+  <div class="cart-empty" data-cart-empty hidden><p class="lede">Your cart is empty.</p>${btn('/products/', 'Products', 'btn-ghost')}</div>
+  <div class="cart-grid" data-cart-page hidden>
+    <div class="cart-lines" data-cart-lines></div>
+    <aside class="cart-side">
+      <div class="co-sum" data-cart-summary></div>
+      <a class="btn co-pay" href="/checkout/"><span>Checkout</span></a>
+      <a class="co-back" href="/products/">Continue shopping</a>
+    </aside>
+  </div>
+</div></section>`;
+  return { path: '/cart/', html: layout({ title: 'Cart | Elements Wellness', description: 'Your cart.', path: '/cart/', active: 'products', bodyClass: 'page-light', schema: [bc(trail)], noindex: true, body }) };
+}
+export function checkoutPage() {
+  const trail = [['Home', '/'], ['Products', '/products/'], ['Cart', '/cart/'], ['Checkout']];
+  const outlet = (o, i) => `<label class="co-outlet"><input type="radio" name="outlet" value="${esc(o.id)}" ${i === 0 ? 'checked' : ''} required><span class="co-outlet-name">${esc(o.name)}</span><span class="co-outlet-addr">${esc(o.address)}</span></label>`;
+  const body = pageHero({ title: 'Checkout', trail }) + `
+<div class="wrap"><div class="warn-box gv-notice" data-co-notice hidden></div></div>
+<section class="section-sm" style="padding-top:0"><div class="wrap">
+  <div class="cart-empty" data-cart-empty hidden><p class="lede">Your cart is empty.</p>${btn('/products/', 'Products', 'btn-ghost')}</div>
+  <form class="co-grid" data-checkout hidden novalidate autocomplete="on">
+    <div class="co-main">
+      <section class="co-block"><h2 class="co-h">Contact</h2>
+        <div class="form">
+          <div class="field"><label for="co-name">Full name</label><input id="co-name" name="buyer_name" required maxlength="80" autocomplete="name"></div>
+          <div class="row">
+            <div class="field"><label for="co-email">Email</label><input id="co-email" name="buyer_email" type="email" required autocomplete="email" inputmode="email"></div>
+            <div class="field"><label for="co-phone">Mobile</label><input id="co-phone" name="buyer_phone" type="tel" required maxlength="30" autocomplete="tel" inputmode="tel"></div>
+          </div>
+        </div></section>
+      <section class="co-block"><h2 class="co-h">Collection</h2>
+        <div class="co-methods" data-co-methods hidden>
+          <label class="co-method"><input type="radio" name="fulfilment" value="collect" checked><span>Collect at an outlet</span><b>Free</b></label>
+          <label class="co-method"><input type="radio" name="fulfilment" value="delivery"><span>Delivery</span><b data-co-delivery-fee></b></label>
+        </div>
+        <div class="co-outlets" data-co-outlets>${shopOutlets.map(outlet).join('')}</div>
+        <div class="form co-address" data-co-address hidden>
+          <div class="field"><label for="co-l1">Address</label><input id="co-l1" name="line1" maxlength="120" autocomplete="address-line1"></div>
+          <div class="row">
+            <div class="field"><label for="co-l2">Unit number</label><input id="co-l2" name="line2" maxlength="120" autocomplete="address-line2"></div>
+            <div class="field"><label for="co-pc">Postal code</label><input id="co-pc" name="postal" maxlength="6" inputmode="numeric" autocomplete="postal-code"></div>
+          </div>
+        </div></section>
+      <section class="co-block"><h2 class="co-h">Note <span class="muted">(optional)</span></h2>
+        <div class="form"><div class="field"><textarea id="co-note" name="note" maxlength="300" rows="2"></textarea></div></div></section>
+    </div>
+    <aside class="co-side">
+      <div class="co-items" data-co-items></div>
+      <div class="co-sum" data-co-summary></div>
+      <button class="btn co-pay" type="submit" data-co-pay><span>Pay</span></button>
+      <p class="form-note co-err" data-co-error></p>
+      <p class="co-secure">Payment is processed securely by Stripe.</p>
+      <a class="co-back" href="/cart/">Back to cart</a>
+    </aside>
+  </form>
+</div></section>`;
+  return { path: '/checkout/', html: layout({ title: 'Checkout | Elements Wellness', description: 'Checkout.', path: '/checkout/', active: 'products', bodyClass: 'page-light', schema: [bc(trail)], noindex: true, body }) };
+}
+export function checkoutThankYou() {
+  const trail = [['Home', '/'], ['Products', '/products/'], ['Thank you']];
+  const body = pageHero({ title: 'Thank you', trail }) + `<section class="section-sm" style="padding-top:0"><div class="wrap ty-wrap" data-co-thanks><p class="lede"><span class="spin"></span></p></div></section>`;
+  return { path: '/checkout/thank-you/', html: layout({ title: 'Thank you | Elements Wellness', description: 'Your order confirmation.', path: '/checkout/thank-you/', active: 'products', bodyClass: 'page-light', schema: [bc(trail)], noindex: true, body }) };
 }
 
 /* ---------- Awards & Recognition: verified awards by year, awarding organisation, category and treatment ---------- */
