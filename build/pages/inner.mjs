@@ -415,7 +415,7 @@ export function productsPage(kind = '') {
   const cat = (c) => `<section class="pcat" id="${c.id}">${kind ? '' : `<h2 class="pcat-title">${esc(c.label)}</h2>`}${c.brands.map(brand).join('')}</section>`;
   // Hero: a photographed countertop with three of the real Anubis packshots standing on it (no invented products)
   const heroItems = ['AN-HA-SERUM', 'AN-BAKUCHIOL', 'AN-TONER'].map((sku) => productCategories.flatMap((c) => c.brands.flatMap((b) => b.items)).find((p) => p.sku === sku)).filter(Boolean);
-  const hero = `<div class="page-hero-media phero" data-clip><img class="phero-bg" src="/assets/img/hero/products.jpg" alt="" fetchpriority="high"><div class="phero-items">${heroItems.map((p, i) => `<a href="${p.url}" class="phero-item phero-item-${i + 1}"><img src="${p.img[0]}" alt="${esc(p.name)}"></a>`).join('')}</div></div>`;
+  const hero = `<div class="page-hero-media phero" data-clip><img class="phero-bg" src="/assets/img/hero/products.jpg" alt="" fetchpriority="high"><div class="phero-items">${heroItems.map((p, i) => `<a href="${p.url}" class="phero-item phero-item-${i + 1}"><img src="/assets/img/hero/cut/${p.img[0].split('/').pop()}" alt="${esc(p.name)}"></a>`).join('')}</div></div>`;
   const body = pageHero({ title: esc(label), trail, extra: hero }) + `
 <section class="section-sm" style="padding-top:0"><div class="wrap">${cats.map(cat).join('')}<p class="pd-note">${esc(productsNote)}</p></div></section>`;
   return { path: url, html: layout({ title: `${label} | Elements Wellness`, description: label, path: url, active: 'products', bodyClass: 'page-light', schema: [bc(trail)], ogImage: '/assets/img/hero/products.jpg', body }) };
