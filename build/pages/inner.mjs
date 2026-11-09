@@ -346,7 +346,7 @@ export function spaLanding() {
 // One panel per product: the photo with a small cart icon at its top right, then inside the same panel the name with the size flush right
 // and the price in the title face. The panel itself opens the product's own page.
 const productCard = (it) => `<article class="pd" data-reveal data-sku="${esc(it.sku)}" data-brand="${esc(it.brand)}">
-    <button class="pd-cart" type="button" data-add="${esc(it.sku)}" aria-label="Add ${esc(it.name)} to cart">${icon.bag}<span class="pd-cart-plus">+</span></button>
+    <button class="pd-cart" type="button" data-add="${esc(it.sku)}" aria-label="Add ${esc(it.name)} to cart">${icon.bag}</button>
     <a class="pd-link" href="${it.url}">
       <div class="pd-media">${it.img.map((src, j) => `<img src="${src}" alt="${esc(it.name)}" loading="lazy" ${j ? 'class="pd-alt"' : ''}>`).join('')}</div>
       <div class="pd-body">
