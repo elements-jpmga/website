@@ -110,6 +110,20 @@
   }
   if (!$('[data-cart-page]') && !$('[data-checkout]')) $$('.cart-link').forEach((a) => a.addEventListener('click', (e) => { if (!cart.count()) return; e.preventDefault(); openDrawer(); }));
 
+  /* ---------- /products/: brand bar follows the brand in view ---------- */
+  const bar = $('[data-brand-bar]');
+  if (bar) {
+    const links = $$('a[data-brand]', bar), sections = $$('.pb[id]');
+    const setOn = (id) => links.forEach((a) => a.classList.toggle('is-on', a.dataset.brand === id));
+    links.forEach((a) => a.addEventListener('click', (e) => { const id = a.dataset.brand, el = id === 'all' ? $('.products-body') : document.getElementById(id); if (!el || (a.getAttribute('href') || '').startsWith('/') && id !== 'all') return; e.preventDefault(); setOn(id); (window.__ewScrollTo || ((t) => t.scrollIntoView({ behavior: 'smooth' })))(el); history.replaceState(null, '', id === 'all' ? location.pathname : '#' + id); }));
+    if (sections.length && 'IntersectionObserver' in window) {
+      let current = null;
+      const io = new IntersectionObserver((entries) => { entries.forEach((en) => { if (en.isIntersecting) current = en.target.id; }); if (current) setOn(current); }, { rootMargin: '-45% 0px -50% 0px' });
+      sections.forEach((sct) => io.observe(sct));
+      window.addEventListener('scroll', () => { if (window.scrollY < 300) setOn('all'); }, { passive: true });
+    }
+  }
+
   /* ---------- /cart/ ---------- */
   const cartPage = $('[data-cart-page]');
   if (cartPage) {

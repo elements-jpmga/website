@@ -548,7 +548,7 @@
     const w = $('[data-rv-write]'); if (w && d.places[0]?.writeReviewUrl) w.href = d.places[0].writeReviewUrl;
     const up = $('[data-rv-updated]'); if (up) up.textContent = 'Live from Google · updated ' + new Date(d.snapshotDate).toLocaleDateString('en-SG', { day: 'numeric', month: 'short', year: 'numeric' });
   }
-  const boot = () => { heroSlides(); logoWall(); pathPhotos(); bookCard(); reviewCarousels(); contactExpand(); bookSteps(); walkIn(); liveReviews(); reveals(); rise(); mapLocations(); steps(); concerns(); carousel(); sigTiles(); revealCards(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
+  const boot = () => { setTimeout(() => $$('[data-fhero]').forEach((h) => h.classList.add('is-in')), firstVisit && isHome ? 2600 : firstVisit ? 1900 : 250); heroSlides(); logoWall(); pathPhotos(); bookCard(); reviewCarousels(); contactExpand(); bookSteps(); walkIn(); liveReviews(); reveals(); rise(); mapLocations(); steps(); concerns(); carousel(); sigTiles(); revealCards(); finder(); magnetic(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
   (document.fonts?.ready || Promise.resolve()).then(() => enterPage(() => { steamHero(); boot(); }));
   window.addEventListener('load', () => ScrollTrigger.refresh());
 })();

@@ -374,6 +374,14 @@ const productDetails = (it) => {
   </div>`;
 };
 
+// Full-bleed 16:9 photographic hero: the photo is the whole hero, the title sits on it; layers (cut-outs) slide in when the page opens
+const photoHero = ({ title, trail, img, layers = '', cls = '' }) => `
+<section class="fhero ${cls}" data-fhero>
+  <img class="fhero-bg" src="${img}" alt="" fetchpriority="high">
+  <div class="fhero-layers">${layers}</div>
+  <div class="wrap fhero-text">${crumbs(trail)}<h1 data-split>${title}</h1></div>
+</section>`;
+
 /* ---------- One page per product: the client's data only (brand, name, line, size, price, photos) + Add to cart; no written copy yet ---------- */
 export function productPage(it) {
   const trail = [['Home', '/'], ['Products', '/products/'], [it.brandName, `/products/#${it.brand}`], [it.name]];
@@ -413,11 +421,12 @@ export function productsPage(kind = '') {
   const item = productCard;
   const brand = (b) => `<section class="pb" id="${b.id}"><div class="pb-head"><h3 class="pb-name">${esc(b.name)}</h3>${b.items.length ? `<span class="pb-count">${b.items.length} products</span>` : ''}</div>${b.items.length ? `<div class="pd-grid">${b.items.map(item).join('')}</div>` : ''}</section>`;
   const cat = (c) => `<section class="pcat" id="${c.id}">${kind ? '' : `<h2 class="pcat-title">${esc(c.label)}</h2>`}${c.brands.map(brand).join('')}</section>`;
-  // Hero: a photographed countertop with three of the real Anubis packshots standing on it (no invented products)
-  const heroItems = ['AN-HA-SERUM', 'AN-BAKUCHIOL', 'AN-TONER'].map((sku) => productCategories.flatMap((c) => c.brands.flatMap((b) => b.items)).find((p) => p.sku === sku)).filter(Boolean);
-  const hero = `<div class="page-hero-media phero" data-clip><img class="phero-bg" src="/assets/img/hero/products.jpg" alt="" fetchpriority="high"><div class="phero-items">${heroItems.map((p, i) => `<a href="${p.url}" class="phero-item phero-item-${i + 1}"><img src="/assets/img/hero/cut/${p.img[0].split('/').pop()}" alt="${esc(p.name)}"></a>`).join('')}</div></div>`;
-  const body = pageHero({ title: esc(label), trail, extra: hero }) + `
-<section class="section-sm" style="padding-top:0"><div class="wrap">${cats.map(cat).join('')}<p class="pd-note">${esc(productsNote)}</p></div></section>`;
+  // Hero: a product photoshoot generated from the real Anubis packshots (HA+ Serum, Bakuchiol TRX 3.0, Thermal Toner) on stone and wood risers
+  // Brand bar (like a fashion house's category bar): every brand in the catalogue, so new brands appear here automatically
+  const allBrands = productCategories.flatMap((c) => c.brands.map((b) => ({ ...b, cat: c })));
+  const brandBar = `<nav class="brand-bar" aria-label="Brands" data-brand-bar><div class="wrap brand-bar-inner"><a href="/products/" class="${kind ? '' : 'is-on'}" data-brand="all">All</a>${allBrands.map((b) => `<a href="${kind && kind !== b.cat.id ? b.cat.url : ''}#${b.id}" data-brand="${b.id}">${esc(b.name)}</a>`).join('')}</div></nav>`;
+  const body = photoHero({ title: esc(label), trail, img: '/assets/img/hero/products.jpg', cls: 'fhero-products' }) + brandBar + `
+<section class="section-sm products-body" style="padding-top:0"><div class="wrap">${cats.map(cat).join('')}<p class="pd-note">${esc(productsNote)}</p></div></section>`;
   return { path: url, html: layout({ title: `${label} | Elements Wellness`, description: label, path: url, active: 'products', bodyClass: 'page-light', schema: [bc(trail)], ogImage: '/assets/img/hero/products.jpg', body }) };
 }
 
@@ -551,8 +560,9 @@ export function giftVouchers() {
   // Same steps as the Gift Up widget on the old page (voucher → details → your details → pay) with one more step: choose the card design.
   // Static fallback list (from the old widget) until the live catalogue loads.
   const fallback = voucherItems.map((v) => `<article class="gv-item"><h3 class="gv-item-name">${esc(v.name)}</h3>${v.desc ? `<p class="gv-item-desc">${esc(v.desc)}</p>` : ''}<button type="button" class="btn gv-buy" disabled><span>Buy ${esc(v.price).replace('S$', 'SGD ')}</span></button></article>`).join('');
-  const hero = `<div class="page-hero-media ghero" data-clip><img class="ghero-bg" src="/assets/img/hero/gift-vouchers.jpg" alt="" fetchpriority="high"><div class="ghero-card"><img data-gift-card-art alt="" hidden></div></div>`;
-  const body = pageHero({ title: 'Gift Vouchers', trail, extra: hero }) + `
+  // bare linen; the envelope and the real voucher card (the chosen design) slide in from the top
+  const layers = `<img class="fhero-layer ghero-env" src="/assets/img/hero/cut/envelope.png" alt=""><div class="fhero-layer ghero-card" data-gift-hero-card><img data-gift-card-art alt="" hidden></div>`;
+  const body = photoHero({ title: 'Gift Vouchers', trail, img: '/assets/img/hero/gift-vouchers.jpg', layers, cls: 'fhero-gift' }) + `
 <div class="wrap"><div class="warn-box gv-notice" data-gift-notice hidden></div></div>
 <section class="section-sm" style="padding-top:0" data-gift-shop><div class="wrap gv-wrap">
   <ol class="gv-dots" aria-label="Steps"><li class="is-on" data-dot="1"></li><li data-dot="2"></li><li data-dot="3"></li><li data-dot="4"></li></ol>
