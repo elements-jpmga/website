@@ -75,7 +75,6 @@
 "Products","Supplements","/products/supplements/","Catalogue page","Waiting for product inventory","","",""
 "Products","Brand pages","/products/brands/<brand>/","Brand page","Waiting for product inventory","","","One per carried brand — needs brand list."
 "Products","Individual product pages","/products/<brand-product>/","Product page","Waiting for product inventory","","","Needs product list; purchase or enquiry action not yet agreed."
-"Elements Restore","Elements Restore","/elements-restore/","Page","NEW page — copy to be written","","","Draft written from the Elements Restore build spec and report wording — needs Elements approval. Launch planned for November."
 "Gift Vouchers","Gift Vouchers","/gift-vouchers/","Page","Existing copy — rewrite / merge needed","/gift-vouchers/","","Needs voucher options, purchase, redemption, terms and FAQs on one page; Gift Up connection later."
 "Promotions","Promotions","/promotions/","Page","Existing copy carried over — review only","/promotions/","",""
 "Supporting & footer","Locations overview","/locations/","Page","NEW page — copy to be written","","","Built from outlet details; short intro needed."

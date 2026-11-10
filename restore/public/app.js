@@ -235,10 +235,22 @@
     $$('[data-palette]', app).forEach((b) => b.addEventListener('click', openPalette));
   });
 
+  // "How you're feeling today" — three questions asked at the start of the session. They are printed on the report and never change the engine.
+  function intakeFields(a) {
+    const pain = a.pain_today || ''; const energy = a.energy_level || '';
+    return `<fieldset class="intake"><legend>How you're feeling today</legend>
+      <div class="row"><div class="field"><label for="i-pain">Pain or discomfort today</label><select id="i-pain"><option value="">—</option><option ${pain === 'Yes' ? 'selected' : ''}>Yes</option><option ${pain === 'No' ? 'selected' : ''}>No</option></select></div>
+        <div class="field" data-pain-location ${pain === 'Yes' ? '' : 'hidden'}><label for="i-where">Pain location</label><input id="i-where" value="${esc(a.pain_location || '')}" placeholder="e.g. Neck and shoulders" autocomplete="off"></div></div>
+      <div class="field"><label for="i-energy">Energy level today</label><select id="i-energy"><option value="">—</option>${['Good', 'Moderate', 'Low', 'Fatigued'].map((o) => `<option ${energy === o ? 'selected' : ''}>${o}</option>`).join('')}</select></div></fieldset>`;
+  }
+  function bindIntake(root) { const sel = $('#i-pain', root); const loc = $('[data-pain-location]', root); if (!sel || !loc) return; sel.addEventListener('change', () => { loc.hidden = sel.value !== 'Yes'; if (sel.value === 'Yes') $('#i-where', root).focus(); }); }
+  function readIntake(root) { return { pain_today: $('#i-pain', root)?.value || null, pain_location: $('#i-where', root)?.value.trim() || null, energy_level: $('#i-energy', root)?.value || null }; }
+
   function newAssessmentModal(preClient) {
     const m = document.createElement('div'); m.className = 'modal-bg';
     m.innerHTML = `<div class="modal new-modal" role="dialog" aria-modal="true" aria-label="New assessment"><h2>New assessment</h2>
       <div class="seg" role="tablist"><button type="button" class="on" data-mode="new">New client</button><button type="button" data-mode="returning">Returning client</button></div>
+      ${intakeFields({})}
       <form class="form" data-pane="new" autocomplete="off">
         <div class="field"><label for="m-name">Client name <span class="req">*</span></label><input id="m-name" required placeholder="e.g. Leslie Tan"></div>
         <div class="row"><div class="field"><label for="m-email">Email <span class="muted">(for the report)</span></label><input id="m-email" type="email" placeholder="client@email.com"></div>
@@ -257,7 +269,8 @@
     document.addEventListener('keydown', onKey);
     $$('[data-cancel]', m).forEach((b) => b.addEventListener('click', close)); m.addEventListener('click', (e) => e.target === m && close());
     let busy = false;
-    const start = async (client_id) => { if (busy) return; busy = true; try { const a = await api('POST', '/api/assessments', { client_id }); close(); go(`/assessment/${a.assessment_id}/upload`); } catch (e) { busy = false; toast(e.message, true); } };
+    const start = async (client_id) => { if (busy) return; busy = true; try { const a = await api('POST', '/api/assessments', { client_id, intake: readIntake(m) }); close(); go(`/assessment/${a.assessment_id}/upload`); } catch (e) { busy = false; toast(e.message, true); } };
+    bindIntake(m);
     const mode = (k) => { $$('[data-mode]', m).forEach((b) => b.classList.toggle('on', b.dataset.mode === k)); $$('[data-pane]', m).forEach((p) => (p.hidden = p.dataset.pane !== k)); $(k === 'new' ? '#m-name' : '#m-q', m).focus(); };
     $$('[data-mode]', m).forEach((b) => b.addEventListener('click', () => mode(b.dataset.mode)));
     $('[data-pane="new"]', m).addEventListener('submit', async (e) => {
@@ -397,6 +410,7 @@
           <div class="row">
           <div class="field"><label>Read from PDF</label><div class="small muted" style="padding-top:12px">${f.client_name?.value ? `${esc(f.client_name.value)} · ${f.sex?.value || ''} · ${f.age?.value ?? ''} yrs` : '—'}${f.client_name?.value && f.client_name.value.toLowerCase() !== a.client_name.toLowerCase() ? '<br><b class="changed">Name on PDF differs from the client record</b>' : ''}</div></div></div>
         </div></div>
+        <div class="panel" style="margin-top:20px">${intakeFields(a)}</div>
         <div class="panel" style="margin-top:20px"><h2>Extracted readings</h2><p class="small muted">Check each value against the source report on the right. Edit anything that is wrong; corrections are recorded with your name.</p>
           <div class="confirm-grid">${fieldDefs.map(box).join('')}</div>
           <div class="divider"></div>
@@ -409,7 +423,7 @@
         ${[st, va].filter(Boolean)[0] ? `<img id="pimg" src="/api/uploads/${[st, va].filter(Boolean)[0].upload_id}/preview" alt="Source report"><p class="small" style="margin-top:8px"><a class="link" id="popen" href="/api/uploads/${[st, va].filter(Boolean)[0].upload_id}/file" target="_blank">Open PDF</a></p>` : '<div class="empty">No report uploaded.</div>'}</div>
     </div>`;
     el.querySelectorAll('.tabs button').forEach((b) => b.addEventListener('click', () => { el.querySelectorAll('.tabs button').forEach((x) => x.classList.toggle('on', x === b)); $('#pimg').src = `/api/uploads/${b.dataset.p}/preview`; $('#popen').href = `/api/uploads/${b.dataset.p}/file`; }));
-    const ok = $('#ok'), run = $('#run');
+    const ok = $('#ok'), run = $('#run'); bindIntake(el);
     ok.addEventListener('change', () => run.disabled = !ok.checked);
     el.querySelectorAll('.reading input').forEach((inp) => inp.addEventListener('input', () => { const k = inp.closest('.reading').dataset.k; const orig = f[k]?.value; inp.closest('.reading').querySelector('[data-changed]').hidden = String(orig ?? '') === inp.value.trim(); ok.checked = false; run.disabled = true; }));
     run.addEventListener('click', async () => {
@@ -418,7 +432,7 @@
       el.querySelectorAll('[data-err]').forEach((e) => e.textContent = '');
       run.disabled = true; run.innerHTML = '<span class="spin"></span> Running…';
       try {
-        await api('POST', `/api/assessments/${a.assessment_id}/confirm`, { readings, confirmed: true, extracted: Object.fromEntries(fieldDefs.map(([k]) => [k, f[k] || null])), corrections, assessed_at: $('#c-date').value ? new Date($('#c-date').value).toISOString() : null, client: { name: $('#c-name').value.trim(), age: $('#c-age').value, email: $('#c-email').value.trim() || null } });
+        await api('POST', `/api/assessments/${a.assessment_id}/confirm`, { readings, confirmed: true, extracted: Object.fromEntries(fieldDefs.map(([k]) => [k, f[k] || null])), corrections, assessed_at: $('#c-date').value ? new Date($('#c-date').value).toISOString() : null, intake: readIntake(el), client: { name: $('#c-name').value.trim(), age: $('#c-age').value, email: $('#c-email').value.trim() || null } });
         toast('Restore engine complete'); go(`/assessment/${a.assessment_id}/results`);
       } catch (e) {
         run.disabled = false; run.textContent = 'Confirm & run Restore engine →';
@@ -439,7 +453,7 @@
           <p class="small muted" style="margin-top:12px">${esc(R.plan.basis)} Every domain with severity ${rules.priority.threshold}+ becomes a priority (severity 3 listed before 2).</p></div>
       </div>
       <div class="panel" style="margin-top:20px"><h2>Treatment recommendation</h2><p class="small muted">The matching fixed Restore Program${R.programs.length > 1 ? 's' : ''}, exactly as printed on the client's report. Where alternatives are shown, the consultant selects the suitable option during the session.</p>
-        <div class="grid grid-${Math.min(R.programs.length, 3)}" style="margin-top:12px">${R.programs.map((code) => { const p = rules.programs[code]; return `<div class="prog"><h3>${esc(p.name)}</h3><p class="small muted" style="margin:0 0 10px">${esc(p.benefit)}</p><ol class="comps-list">${p.components.map((c) => `<li><b>${c.options.map(esc).join(' <span class="or">OR</span> ')}</b> — ${esc(c.duration)}<br><span class="small muted">${esc(c.blurb)}</span></li>`).join('')}</ol><p class="small" style="margin:8px 0 0">Optional enhancer: <b>${esc(p.enhancer)}</b></p></div>`; }).join('')}</div></div>
+        <div class="grid grid-${Math.min(R.programs.length, 3)}" style="margin-top:12px">${R.programs.map((code) => { const p = rules.programs[code]; return `<div class="prog"><h3>${esc(p.name)}</h3><ul class="small muted" style="margin:0 0 10px;padding-left:18px">${(p.benefits || [p.benefit]).map((b) => `<li>${esc(b)}</li>`).join('')}</ul><ol class="comps-list">${p.components.map((c) => `<li><b>${c.options.map(esc).join(' <span class="or">OR</span> ')}</b> — ${esc(c.duration)}<br><span class="small muted">${esc(c.blurb)}</span></li>`).join('')}</ol><p class="small" style="margin:8px 0 0">Optional enhancer: <b>${esc(p.enhancer)}</b></p></div>`; }).join('')}</div></div>
       <div class="panel" style="margin-top:20px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap"><div class="small muted">Confirmed by ${esc(a.readings?.confirmed_by || '—')} · ${fmtDate(a.readings?.confirmed_at)}${a.readings?.corrections?.length ? ` · ${a.readings.corrections.length} value${a.readings.corrections.length > 1 ? 's' : ''} corrected manually` : ' · no manual corrections'} · rules ${esc(R.rulesVersion)}</div>
         <div class="btn-row"><a class="btn ghost" href="#/assessment/${a.assessment_id}/confirm">Edit readings</a><a class="btn primary" href="#/assessment/${a.assessment_id}/report">Continue to report →</a></div></div>`;
   }

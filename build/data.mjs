@@ -42,7 +42,7 @@ const outletAbout = {
     intro: 'Our ION Orchard spa is at basement level B1 of ION Orchard, directly connected to Orchard MRT — an easy escape between meetings, shopping or the commute home.',
     about: ['Step in from the mall into a calm reception and private treatment rooms, where our therapists offer the full Elements menu: therapeutic massage, results-driven facials, TCM wellness therapies and slimming treatments.', 'At ION Orchard, the Fire element of The 5 Elements Massage is paired with Red Light Therapy, a technology that works at the cellular level to support circulation and recovery.'],
     highlights: ['Directly connected to Orchard MRT', 'Full massage, facial, wellness and slimming menu', 'Red Light Therapy enhancement for the 5 Elements Massage (Fire)', 'Open daily, including weekends and public holidays'],
-    gallery: ['ion-interior.jpg', 'ion-storefront.jpg', 'aquaglow.jpg'],
+    gallery: ['ion-interior.jpg', 'ion-storefront.jpg'],
   },
   centrepoint: {
     intro: 'The Centrepoint is home to our private Koyamaki Onsen suites — authentic Japanese Koyamaki baths where you soak, scrub and unwind in complete privacy.',
@@ -61,9 +61,9 @@ const outletAbout = {
 /* ---------------- Outlets ---------------- */
 const hours = [['Mon – Fri', '11am – 9pm'], ['Sat, Sun & PH', '10:30am – 8pm']];
 export const outlets = [
-  { id: 'ion', name: 'ION Orchard', short: 'ION Orchard', url: '/locations/ion-orchard/', feature: 'Beside Orchard MRT', street: '2 Orchard Turn, #B1-30', postal: '238801', address: '2 Orchard Turn, #B1-30<br>ION Orchard, Singapore 238801', addressPlain: '#B1-30 ION Orchard, 2 Orchard Turn, Singapore 238801', phone: '6738 3788', whatsapp: '8938 2878', email: 'ion@elements.com.sg', img: img('ion-interior.jpg'), mapQuery: 'ION Orchard 2 Orchard Turn B1-30', blurb: 'Our ION Orchard spa sits right beside Orchard MRT — an easy escape for massage, facials and recovery therapy in the heart of the shopping belt.' },
-  { id: 'centrepoint', name: 'The Centrepoint', short: 'Centrepoint', url: '/locations/centrepoint/', feature: 'Home of the Koyamaki Onsen', street: '176 Orchard Road, #02-28', postal: '238843', address: '176 Orchard Road, #02-28<br>The Centrepoint, Singapore 238843', addressPlain: '#02-28 The Centrepoint, 176 Orchard Road, Singapore 238843', phone: '6737 8488', whatsapp: '9357 8183', email: 'cpoint@elements.com.sg', img: img('centrepoint-front.jpg'), mapQuery: 'The Centrepoint 176 Orchard Road 02-28', blurb: 'The Centrepoint is home to our award-winning private Koyamaki onsen suites — soak, scrub and massage in a ritual built for one or two.' },
-  { id: '313', name: '313@somerset', short: '313@somerset', url: '/locations/313-somerset/', feature: 'Contrast therapy & herbal baths', street: '313 Orchard Road, #B2-50/51', postal: '238895', address: '313 Orchard Road, #B2-50/51<br>313@somerset, Singapore 238895', addressPlain: '#B2-50/51 313@somerset, 313 Orchard Road, Singapore 238895', phone: '6636 8878', whatsapp: '8875 1677', email: '313@elements.com.sg', img: img('313-front.jpg'), mapQuery: '313@somerset 313 Orchard Road B2-50', blurb: 'At 313@somerset, recover like an athlete with our Chill & Heal contrast therapy and TCM herbal baths, alongside the full treatment menu.' },
+  { id: 'ion', name: 'ION Orchard', short: 'ION Orchard', url: '/locations/ion-orchard/', feature: 'Beside Orchard MRT', directions: 'Basement 1 of ION Orchard, directly connected to Orchard MRT (NS22 / TE14). Parking at ION Orchard.', street: '2 Orchard Turn, #B1-30', postal: '238801', address: '2 Orchard Turn, #B1-30<br>ION Orchard, Singapore 238801', addressPlain: '#B1-30 ION Orchard, 2 Orchard Turn, Singapore 238801', phone: '6738 3788', whatsapp: '8938 2878', email: 'ion@elements.com.sg', img: img('ion-interior.jpg'), mapQuery: 'ION Orchard 2 Orchard Turn B1-30', blurb: 'Our ION Orchard spa sits right beside Orchard MRT — an easy escape for massage, facials and recovery therapy in the heart of the shopping belt.' },
+  { id: 'centrepoint', name: 'The Centrepoint', short: 'Centrepoint', url: '/locations/centrepoint/', feature: 'Home of the Koyamaki Onsen', directions: 'Level 2 of The Centrepoint, a 5-minute walk from Somerset MRT (NS23). Parking at The Centrepoint.', street: '176 Orchard Road, #02-28', postal: '238843', address: '176 Orchard Road, #02-28<br>The Centrepoint, Singapore 238843', addressPlain: '#02-28 The Centrepoint, 176 Orchard Road, Singapore 238843', phone: '6737 8488', whatsapp: '9357 8183', email: 'cpoint@elements.com.sg', img: img('centrepoint-front.jpg'), mapQuery: 'The Centrepoint 176 Orchard Road 02-28', blurb: 'The Centrepoint is home to our award-winning private Koyamaki onsen suites — soak, scrub and massage in a ritual built for one or two.' },
+  { id: '313', name: '313@somerset', short: '313@somerset', url: '/locations/313-somerset/', feature: 'Contrast therapy & herbal baths', directions: 'Basement 2 of 313@somerset, directly above Somerset MRT (NS23). Parking at 313@somerset.', street: '313 Orchard Road, #B2-50/51', postal: '238895', address: '313 Orchard Road, #B2-50/51<br>313@somerset, Singapore 238895', addressPlain: '#B2-50/51 313@somerset, 313 Orchard Road, Singapore 238895', phone: '6636 8878', whatsapp: '8875 1677', email: '313@elements.com.sg', img: img('313-front.jpg'), mapQuery: '313@somerset 313 Orchard Road B2-50', blurb: 'At 313@somerset, recover like an athlete with our Chill & Heal contrast therapy and TCM herbal baths, alongside the full treatment menu.' },
 ].map((o) => ({ ...o, ...outletAbout[o.id] })).map((o) => {
   const r = (research.outlets || []).find((x) => x.name && x.name.toLowerCase().includes(o.short.toLowerCase().slice(0, 5)));
   return { ...o, email: r?.email || o.email, hours, schemaHours: ['Mo-Fr 11:00-21:00', 'Sa-Su 10:30-20:00'] };
@@ -88,8 +88,8 @@ export const concerns = [
 
 /* ---------------- Main treatment sections (client sitemap 2026) ---------------- */
 export const groups = [
-  { id: 'facials', label: 'Facials', url: '/facials/', img: img('lymphatic-sculpt.jpg'), hero: img('facial-mask.jpg'), blurb: 'Results-driven facials that pair skilled hands with professional-grade products and advanced skin technology — for clarity, firmness and glow you can see.' },
-  { id: 'massage', label: 'Massage & Recovery', url: '/massage-and-recovery/', img: img('main-massage.jpg'), hero: img('massage-banner.jpg'), blurb: 'Therapeutic massage, TCM therapies and recovery technology — compare the options and choose the right starting point for your body.' },
+  { id: 'facials', label: 'Facials', url: '/facials/', img: img('aquaglow.jpg'), hero: img('facial-mask.jpg'), blurb: 'Results-driven facials that pair skilled hands with professional-grade products and advanced skin technology — for clarity, firmness and glow you can see.' },
+  { id: 'massage', label: 'Massage & Recovery', url: '/massage-and-recovery/', img: img('fascia-back.jpg'), hero: img('massage-banner.jpg'), blurb: 'Therapeutic massage, TCM therapies and recovery technology — compare the options and choose the right starting point for your body.' },
   { id: 'spa', label: 'Spa Experiences', url: '/spa-experiences/', img: img('couple-onsen-2.jpg'), hero: img('jacuzzi.jpg'), blurb: 'Private Koyamaki onsen, Chill & Heal contrast and TCM herbal rituals — designed for one, or for two.' },
 ];
 // Old site categories (used only to read legacy data)
@@ -279,14 +279,18 @@ export const awards = (research.awards || []).map((a) => {
 // Press & award logos for the marquee.
 export const pressLogos = [
   ...[...new Map(awards.filter((a) => a.logo).map((a) => [a.logo, a])).values()].map((a) => ({ img: a.logo, title: a.publication, url: `/awards/#${a.slug}` })),
-  { img: img('awards/thesmartlocal.png'), title: 'TheSmartLocal' },
-  { img: img('awards/mothership.png'), title: 'Mothership' },
+  { img: img('awards/thesmartlocal.svg'), title: 'TheSmartLocal' },
+  { img: img('awards/mothership.svg'), title: 'Mothership' },
 ];
 
 /* ---------------- Reviews (Google, from the live site) ---------------- */
 // Google ratings & reviews per outlet — snapshot in src/data/google-reviews.json, refreshed live by /api/reviews
 export const google = JSON.parse(read('src/data/google-reviews.json') || '{"total":0,"average":0,"places":[]}');
 export const googleFor = (outletId) => google.places.find((p) => p.id === outletId);
+// Singapore outline (OpenStreetMap, simplified) as an SVG path in a 1000×660 box; the three outlets sit around (470, 355) on Orchard Road
+export const sgOutline = (read('src/data/singapore-outline.txt') || '').trim();
+// Orchard Road street map (OpenStreetMap data, © OpenStreetMap contributors, ODbL) in a 1200×790 box, with outlet and MRT positions
+export const orchardMap = JSON.parse(read('src/data/orchard-map.json') || 'null');
 
 export const reviews = [
   { name: 'Brad Bones', text: 'I come back weekly to see my super star Nicole! My wife also enjoys. Amazing at what they do!' },

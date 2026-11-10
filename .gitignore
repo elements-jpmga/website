@@ -21,3 +21,4 @@ _research/blog/*.raw.html
 .env
 .env.*
 *.log
+reports/

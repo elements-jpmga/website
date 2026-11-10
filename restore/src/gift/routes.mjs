@@ -4,6 +4,7 @@ import * as giftup from './giftup.mjs';
 import { issue, deliver, fulfil, pdfFor, voucherHtml, OUTLETS } from './voucher.mjs';
 import * as stripe from './stripe.mjs';
 import * as files from '../files.mjs';
+import { onStripeSession as shopStripe } from '../shop/routes.mjs'; // product orders share the same Stripe webhook
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const csvCell = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
@@ -95,7 +96,7 @@ export function registerGiftRoutes({ route, send, err, json, readBody, staff, se
   /* ---- issue manually (counter sale / complimentary) ---- */
   route('POST', '/api/gift/issue', async (req, res) => {
     const b = await json(req);
-    const line = { item_id: b.item_id, qty: 1, recipient_name: b.recipient_name?.trim() || null, recipient_email: b.recipient_email?.trim() || null, from_name: b.from_name?.trim() || null, message: b.message?.trim() || null, design_id: b.design_id || null, delivery: b.delivery === 'print' ? 'print' : 'email', send_at: b.send_at || null };
+    const line = { item_id: b.item_id, qty: 1, recipient_name: b.recipient_name?.trim() || null, recipient_email: b.recipient_email?.trim() || null, from_name: b.from_name?.trim() || null, message: b.message?.trim() || null, headline: String(b.headline || '').trim().slice(0, 40) || null, design_id: b.design_id || null, delivery: b.delivery === 'print' ? 'print' : 'email', send_at: b.send_at || null };
     if (line.delivery === 'email' && !EMAIL_RE.test(line.recipient_email || '')) return err(res, 422, 'Enter the recipient email, or choose Print');
     if (!['counter', 'complimentary', 'other'].includes(b.payment)) return err(res, 422, 'Choose how it was paid');
     try {
@@ -134,7 +135,7 @@ export function registerGiftRoutes({ route, send, err, json, readBody, staff, se
   route('POST', '/api/gift/giftup/import', async (req, res) => { try { const r = await giftup.importAll({ by: staff(req) }); await Events.add({ type: 'giftup_import', detail: r, staff: staff(req) }); send(res, 200, r); } catch (e) { err(res, 502, 'Import failed: ' + e.message); } });
 
   /* ---- public (website): catalogue + balance check — no personal data ---- */
-  route('GET', '/api/gift/public/catalog', async (req, res) => send(res, 200, { items: (await Items.list()).filter((i) => i.show_on_website && i.codes_available > 0).map((i) => ({ item_id: i.item_id, name: i.name, kind: i.kind, price: i.price, value: i.value, description: i.description, validity_months: i.validity_months })), designs: (await Designs.list()).filter((d) => d.customer_pick).map((d) => ({ design_id: d.design_id, name: d.name, image: `/api/gift/designs/${d.design_id}/image` })) }, { 'Cache-Control': 'public, max-age=300' }), { open: true });
+  route('GET', '/api/gift/public/catalog', async (req, res) => send(res, 200, { items: (await Items.list()).filter((i) => i.show_on_website && i.codes_available > 0).map((i) => ({ item_id: i.item_id, name: i.name, kind: i.kind, price: i.price, value: i.value, description: i.description, validity_months: i.validity_months })), designs: (await Designs.list()).filter((d) => d.customer_pick).map((d) => ({ design_id: d.design_id, name: d.name, image: `/api/gift/designs/${d.design_id}/image` })), terms: (await Settings.get('terms')) || '' }, { 'Cache-Control': 'public, max-age=300' }), { open: true });
   /* ---- public (website): buy a voucher → Stripe Checkout → confirmation ---- */
   // Marks an order paid and issues its vouchers exactly once (called by the Stripe webhook and by the thank-you page)
   async function settle(order, paymentIntent) {
@@ -152,21 +153,26 @@ export function registerGiftRoutes({ route, send, err, json, readBody, staff, se
     if (!stripe.enabled()) return err(res, 503, 'Online payment is not switched on yet. Please call or WhatsApp an outlet to buy a voucher.');
     const b = await json(req);
     const it = await Items.get(b.item_id); if (!it || !it.active || !it.show_on_website) return err(res, 400, 'Please choose a voucher');
-    if (!(await Codes.available(it.item_id))) return err(res, 409, `${it.name} is sold out right now — please choose another voucher or contact us.`);
+    const qty = Math.min(10, Math.max(1, parseInt(b.qty, 10) || 1));
+    const avail = await Codes.available(it.item_id);
+    if (!avail) return err(res, 409, `${it.name} is sold out right now — please choose another voucher or contact us.`);
+    if (avail < qty) return err(res, 409, `Only ${avail} of ${it.name} ${avail === 1 ? 'is' : 'are'} available right now — please reduce the quantity.`);
     const design = b.design_id ? await Designs.get(b.design_id) : null; if (b.design_id && !(design?.active && design.customer_pick)) return err(res, 400, 'Please choose a card design');
     const buyer_name = String(b.buyer_name || '').trim().slice(0, 80), buyer_email = String(b.buyer_email || '').trim().toLowerCase();
-    const recipient_name = String(b.recipient_name || '').trim().slice(0, 80), recipient_email = String(b.recipient_email || buyer_email).trim().toLowerCase();
+    // "Print" (as on the Gift Up widget): the voucher PDF is emailed to the buyer to print, so the recipient address is the buyer's
+    const print = b.delivery === 'print';
+    const recipient_name = String(b.recipient_name || '').trim().slice(0, 80), recipient_email = print ? buyer_email : String(b.recipient_email || buyer_email).trim().toLowerCase();
     if (!buyer_name || !EMAIL_RE.test(buyer_email)) return err(res, 422, 'Please enter your name and a valid email address');
     if (!EMAIL_RE.test(recipient_email)) return err(res, 422, 'Please enter a valid email address for the recipient');
-    const message = String(b.message || '').trim().slice(0, 240);
+    const message = String(b.message || '').trim().slice(0, 240), headline = String(b.headline || '').trim().slice(0, 40);
     let send_at = null; if (b.send_at) { const d = new Date(b.send_at); if (Number.isNaN(d.getTime()) || d.getTime() > Date.now() + 366 * 864e5) return err(res, 422, 'Please choose a send date within the next year'); if (d.getTime() > Date.now() + 60e3) send_at = d.toISOString(); }
     const return_base = allowedOrigins.includes(b.return_base) ? b.return_base : siteUrl; // never redirect to an unknown site
-    const line = { item_id: it.item_id, title: it.name, price: it.price, qty: 1, design_id: design?.design_id || null, recipient_name: recipient_name || null, recipient_email, from_name: String(b.from_name || buyer_name).trim().slice(0, 80), message: message || null, delivery: 'email', send_at };
-    const order = await Orders.create({ source: 'website', buyer_name, buyer_email, buyer_phone: String(b.buyer_phone || '').trim().slice(0, 30) || null, total: it.price, status: 'pending', payment_provider: 'stripe' });
+    const line = { item_id: it.item_id, title: it.name, price: it.price, qty, design_id: design?.design_id || null, recipient_name: recipient_name || null, recipient_email, from_name: String(b.from_name || buyer_name).trim().slice(0, 80), message: message || null, headline: headline || null, delivery: 'email', send_at: print ? null : send_at };
+    const order = await Orders.create({ source: 'website', buyer_name, buyer_email, buyer_phone: String(b.buyer_phone || '').trim().slice(0, 30) || null, total: it.price * qty, status: 'pending', payment_provider: 'stripe' });
     try {
       const session = await stripe.createCheckoutSession({ order, lines: [line], successUrl: `${return_base}/gift-vouchers/thank-you/?session_id={CHECKOUT_SESSION_ID}`, cancelUrl: `${return_base}/gift-vouchers/?cancelled=1` });
       await Orders.setCheckout(order.order_id, { stripe_session_id: session.id, cart: [line], return_base });
-      await Events.add({ order_id: order.order_id, type: 'order_created', detail: { source: 'website', total: it.price, item: it.name } });
+      await Events.add({ order_id: order.order_id, type: 'order_created', detail: { source: 'website', total: it.price * qty, qty, item: it.name } });
       send(res, 200, { url: session.url, order_no: order.order_no });
     } catch (e) { await Orders.setStatus(order.order_id, 'failed'); console.error('checkout failed:', e.message); err(res, 502, 'We could not start the payment. Please try again in a moment.'); }
   }, { open: true });
@@ -177,8 +183,8 @@ export function registerGiftRoutes({ route, send, err, json, readBody, staff, se
     let ev; try { ev = stripe.verifyWebhook(raw, req.headers['stripe-signature']); } catch (e) { return err(res, 400, e.message); }
     if (['checkout.session.completed', 'checkout.session.async_payment_succeeded'].includes(ev.type)) {
       const s = ev.data.object;
-      if (s.payment_status === 'paid') { const order = await Orders.byStripeSession(s.id); if (order) { try { await settle(order, s.payment_intent); } catch (e) { console.error('settle failed:', e.message); return err(res, 500, e.message); } } }
-    } else if (ev.type === 'checkout.session.expired') { const order = await Orders.byStripeSession(ev.data.object.id); if (order?.status === 'pending') await Orders.setStatus(order.order_id, 'cancelled'); }
+      if (s.payment_status === 'paid') { const order = await Orders.byStripeSession(s.id); if (order) { try { await settle(order, s.payment_intent); } catch (e) { console.error('settle failed:', e.message); return err(res, 500, e.message); } } else { try { await shopStripe(s, 'paid'); } catch (e) { console.error('shop settle failed:', e.message); return err(res, 500, e.message); } } }
+    } else if (ev.type === 'checkout.session.expired') { const order = await Orders.byStripeSession(ev.data.object.id); if (order?.status === 'pending') await Orders.setStatus(order.order_id, 'cancelled'); else if (!order) await shopStripe(ev.data.object, 'expired'); }
     send(res, 200, { received: true });
   }, { open: true });
 

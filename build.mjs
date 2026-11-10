@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { site, services, awards, posts, outlets, policies, finderData, facialConcerns, massageConcerns } from './build/data.mjs';
 import * as SM from './build/sitemap.mjs';
+import { productCategories } from './build/products.mjs';
 import home from './build/pages/home.mjs';
 import * as P from './build/pages/inner.mjs';
 import { pageIndex } from './build/content.mjs';
@@ -26,10 +27,13 @@ massageConcerns.forEach((c) => add(P.concernPage(c)));
 add(P.sharedPage(SM.massageBoosters, 'massage'));
 add(P.spaLanding());
 services.forEach((s) => add(P.servicePage(s)));
-add(P.restorePage());
 add(P.productsPage());
 add(P.productsPage('skincare'));
 add(P.productsPage('supplements'));
+productCategories.forEach((c) => c.brands.forEach((b) => b.items.forEach((it) => add(P.productPage(it)))));
+add(P.cartPage(), { inSitemap: false });
+add(P.checkoutPage(), { inSitemap: false });
+add(P.checkoutThankYou(), { inSitemap: false });
 add(P.giftVouchers());
 add(P.giftThankYou(), { inSitemap: false });
 add(P.promotionsPage());
@@ -40,10 +44,6 @@ add(P.awardsIndex());
 add(P.contactPage());
 add(P.faqPage());
 policies.forEach((p) => add(P.policyPage(p)));
-
-// ---- Needed but not separate sitemap entries: Book Now destination ----
-add(P.bookPage('/book-appointment/'));
-add(P.bookPage('/make-an-appointment-form/'), { inSitemap: false });
 
 // ---- Kept live but outside the navigation and sitemap.xml (for Elements to decide) ----
 // Campaign pages: "add individual campaign pages only where the campaign needs a dedicated destination"
@@ -66,12 +66,18 @@ for (const { p, html, file } of pages) {
 
 // Finder data for the browser
 fs.writeFileSync(path.join(out, 'assets/js/finder-data.js'), `window.EW_FINDER=${JSON.stringify(finderData())};`);
+// Product list for the cart (names, sizes, prices, photos). The checkout re-prices every line from the same catalogue on the server.
+fs.writeFileSync(path.join(out, 'assets/js/shop-data.js'), `window.EW_PRODUCTS=${JSON.stringify(Object.fromEntries(productCategories.flatMap((c) => c.brands.flatMap((b) => b.items.map((p) => [p.sku, { name: p.name, brand: b.name, size: p.size, price: p.price, img: p.img[0], url: p.url }])))))};window.EW_SHOP_API=${JSON.stringify(process.env.SHOP_API || '')};`);
 
 // Legacy URLs → new pages (301). The old per-award pages are now sections of /awards/.
 const redirects = [...SM.redirects, ...awards.map((a) => [a.url, '/awards/'])].filter(([a]) => !seen.has(a));
 fs.writeFileSync(path.join(out, '_redirects'), redirects.map(([a, b]) => `${a} ${b} 301`).join('\n') + '\n');
 // Vercel reads redirects from vercel.json at the project root
-fs.writeFileSync('vercel.json', JSON.stringify({ buildCommand: 'node build.mjs', outputDirectory: 'dist', trailingSlash: true, redirects: redirects.flatMap(([source, destination]) => [source, source.replace(/\/$/, '')].filter((x, i, a) => x && a.indexOf(x) === i).map((src) => ({ source: src, destination, permanent: true }))) }, null, 2) + '\n');
+// Public voucher/shop endpoints are forwarded to the staff server so a Vercel address can use them without a cross-site request
+const API_ORIGIN = (process.env.STAFF_API_ORIGIN || 'https://assess.elements.com.sg').replace(/\/+$/, '');
+// (.*) rather than :path* — with trailingSlash on, Vercel matches named segments strictly and a path ending in / would not match
+const rewrites = ['/api/gift/public/', '/api/gift/designs/', '/api/shop/public/'].map((base) => ({ source: base + '(.*)', destination: API_ORIGIN + base + '$1' }));
+fs.writeFileSync('vercel.json', JSON.stringify({ buildCommand: 'node build.mjs', outputDirectory: 'dist', trailingSlash: true, rewrites, redirects: redirects.flatMap(([source, destination]) => [source, source.replace(/\/$/, '')].filter((x, i, a) => x && a.indexOf(x) === i).map((src) => ({ source: src, destination, permanent: true }))) }, null, 2) + '\n');
 
 // Copywriting status for Elements (generated from build/sitemap.mjs)
 const rows = SM.statusRows();

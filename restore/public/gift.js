@@ -79,6 +79,61 @@ const initGift = () => {
     load();
   });
 
+  /* ---------------- Product orders (website shop) ---------------- */
+  const SHOP_STATUSES = ['paid', 'ready', 'completed', 'pending', 'cancelled', 'refunded', 'failed'];
+  const where = (o) => (o.fulfilment === 'delivery' ? 'Delivery' : o.outlet_name || 'Collect');
+  async function refreshShopBadge() { try { const s = await api('GET', '/api/shop/summary'); const el = $('[data-shop-open]'); if (el) el.textContent = s.open ? s.open : ''; } catch {} }
+  route(/^\/gift\/shop$/, async () => {
+    section('shop');
+    const s = await api('GET', '/api/shop/summary');
+    const q = new URLSearchParams(location.hash.split('?')[1] || '');
+    app.innerHTML = `${head('Product orders', `<a class="btn ghost" href="/api/shop/export.csv" target="_blank">Export CSV</a>`)}
+      ${!s.stripe ? '<div class="warn-box" style="margin-bottom:12px">Online payment is off — the website shows products and a cart but cannot take payment until the Stripe keys are added on the server.</div>' : s.stripe === 'test' ? '<div class="warn-box" style="margin-bottom:12px">Stripe is in test mode — card payments on the website are not real.</div>' : ''}
+      ${!s.delivery ? '<div class="warn-box" style="margin-bottom:12px">Customers collect at an outlet. Home delivery switches on once a delivery fee is set on the server (SHOP_DELIVERY_FEE).</div>' : ''}
+      <div class="kpis">
+        <div class="kpi"><span>To prepare</span><b>${s.open}</b><small>paid, not yet collected</small></div>
+        <div class="kpi"><span>Last 30 days</span><b>${money(s.month_revenue)}</b><small>${s.month_orders} order${s.month_orders === 1 ? '' : 's'}</small></div>
+      </div>
+      <div class="panel" style="padding:14px 14px 6px"><div class="form"><div class="row" style="grid-template-columns:2fr 1fr 1fr">
+        <div class="field"><input id="s-q" placeholder="Search order no, name, email or product…" autocomplete="off" value="${esc(q.get('q') || '')}"></div>
+        <div class="field"><select id="s-status"><option value="">Any status</option>${SHOP_STATUSES.map((x) => `<option ${q.get('status') === x ? 'selected' : ''}>${x}</option>`).join('')}</select></div>
+        <div class="field"><select id="s-outlet"><option value="">Any outlet</option>${s.outlets.map((o) => `<option value="${o.id}">${esc(o.name)}</option>`).join('')}</select></div></div></div>
+        <div id="slist" style="margin-top:8px"></div></div>`;
+    let t; const load = async () => {
+      const p = new URLSearchParams({ q: $('#s-q').value.trim(), status: $('#s-status').value, outlet: $('#s-outlet').value, limit: 200 });
+      const list = await api('GET', '/api/shop/orders?' + p);
+      $('#slist').innerHTML = list.length ? `<table class="table"><thead><tr><th>Ordered</th><th>Order</th><th>Status</th><th>Customer</th><th>Items</th><th>Collect / deliver</th><th style="text-align:right">Total</th></tr></thead><tbody>${list.map((o) => `<tr class="row" data-go="/gift/shop/${o.order_id}"><td>${fmtDay(o.created_at)}</td><td><b>${esc(o.order_no)}</b></td><td>${pill(o.status)}</td><td>${esc(o.buyer_name || '')}<br><span class="small muted">${esc(o.buyer_phone || o.buyer_email || '')}</span></td><td>${o.lines.map((l) => `${esc(l.title)}${l.qty > 1 ? ' ×' + l.qty : ''}`).join('<br>')}</td><td>${esc(where(o))}</td><td style="text-align:right">${money(o.total)}</td></tr>`).join('')}</tbody></table>` : '<p class="muted small" style="padding:16px">No orders yet.</p>';
+      $$('#slist [data-go]').forEach((el) => el.addEventListener('click', () => go(el.dataset.go)));
+    };
+    ['#s-q', '#s-status', '#s-outlet'].forEach((x) => $(x).addEventListener('input', () => { clearTimeout(t); t = setTimeout(load, 200); }));
+    load();
+  });
+  route(/^\/gift\/shop\/([^/]+)$/, async (oid) => {
+    section('shop');
+    const o = await api('GET', `/api/shop/orders/${oid}`);
+    const nextBtns = { paid: [['ready', 'Mark ready for collection'], ['completed', 'Mark collected']], ready: [['completed', 'Mark collected']], pending: [['cancelled', 'Cancel']] }[o.status] || [];
+    const more = { paid: ['cancelled', 'refunded'], ready: ['paid', 'cancelled', 'refunded'], completed: ['refunded'] }[o.status] || [];
+    app.innerHTML = `${head(`${esc(o.order_no)} ${pill(o.status)}`, nextBtns.map(([st, label], i) => `<button class="btn ${i ? 'ghost' : ''}" data-status="${st}">${label}</button>`).join('') + (more.length ? `<select id="o-more" class="btn ghost" style="padding:0 10px"><option value="">More…</option>${more.map((m) => `<option value="${m}">Mark ${m}</option>`).join('')}</select>` : ''), [['Product orders', '/gift/shop']], o.order_no)}
+      <div class="grid grid-side">
+        <div>
+          <div class="panel"><div class="panel-head"><h2>Items</h2></div><div class="shop-lines">${o.lines.map((l) => `<div class="shop-line"><img src="${esc((o.return_base || '') + l.img)}" alt="" onerror="this.style.visibility='hidden'"><div>${esc(l.title)}<small>${esc(l.brand)}${l.size ? ' · ' + esc(l.size) : ''} · ${money(l.price)} × ${l.qty}</small></div><b>${money(l.price * l.qty)}</b></div>`).join('')}</div>
+            <div class="kv-grid" style="margin-top:16px"><span>Subtotal</span><span>${money(o.subtotal)}</span>${o.delivery_fee ? `<span>Delivery</span><span>${money(o.delivery_fee)}</span>` : ''}<span><b>Total paid</b></span><span><b>${money(o.total)}</b></span></div></div>
+          <div class="panel"><div class="panel-head"><h2>Staff note</h2></div><div class="form"><div class="field"><textarea id="o-note" rows="3" placeholder="e.g. packed, customer called…">${esc(o.staff_note || '')}</textarea></div><div class="btn-row"><button class="btn ghost" id="o-note-save">Save note</button></div></div></div>
+        </div>
+        <div>
+          <div class="panel"><div class="panel-head"><h2>Customer</h2></div><div class="kv-grid"><span>Name</span><span>${esc(o.buyer_name || '')}</span><span>Email</span><span>${esc(o.buyer_email || '')}</span><span>Phone</span><span>${esc(o.buyer_phone || '')}</span>
+            <span>${o.fulfilment === 'delivery' ? 'Deliver to' : 'Collect at'}</span><span>${o.fulfilment === 'delivery' && o.address ? `${esc(o.address.line1)}${o.address.line2 ? '<br>' + esc(o.address.line2) : ''}<br>Singapore ${esc(o.address.postal)}` : esc(o.outlet_name || '')}</span>
+            ${o.customer_note ? `<span>Customer note</span><span>${esc(o.customer_note)}</span>` : ''}<span>Ordered</span><span>${fmtDate(o.created_at)}</span>${o.paid_at ? `<span>Paid</span><span>${fmtDate(o.paid_at)}</span>` : ''}${o.completed_at ? `<span>Collected</span><span>${fmtDate(o.completed_at)}</span>` : ''}</div></div>
+          <div class="panel"><div class="panel-head"><h2>History</h2></div><ul class="timeline">${o.events.map((e) => `<li class="${/cancel|fail|refund/.test(e.type) ? 'bad' : /paid|completed/.test(e.type) ? 'ok' : ''}"><span>${esc(e.type.replace(/_/g, ' '))}${e.staff ? ' · ' + esc(e.staff) : ''}${e.detail?.note ? ' — ' + esc(e.detail.note) : ''}</span><small>${ago(e.at)}</small></li>`).join('')}</ul></div>
+        </div>
+      </div>`;
+    const setStatus = async (status) => { try { await api('POST', `/api/shop/orders/${oid}/status`, { status }); toast(`Order marked ${status}`); refreshShopBadge(); window.RestoreApp.render(); } catch (e) { toast(e.message, true); } };
+    $$('[data-status]').forEach((b) => b.addEventListener('click', () => setStatus(b.dataset.status)));
+    $('#o-more')?.addEventListener('change', (e) => { if (e.target.value) setStatus(e.target.value); });
+    $('#o-note-save').addEventListener('click', async () => { try { await api('POST', `/api/shop/orders/${oid}/note`, { note: $('#o-note').value }); toast('Note saved'); } catch (e) { toast(e.message, true); } });
+  });
+  refreshShopBadge();
+
   /* ---------------- Voucher detail ---------------- */
   route(/^\/gift\/voucher\/([^/]+)$/, async (id) => {
     section('orders');
@@ -100,7 +155,7 @@ const initGift = () => {
           <div class="panel"><h2>Details</h2><div class="kv-grid">
             <span>Worth</span><span><b>${esc(worth(v))}</b></span><span>Valid</span><span>${fmtDay(v.valid_from)} → <b>${fmtDay(v.expires_at)}</b></span>
             <span>Recipient</span><span>${esc(v.recipient_name || '—')}<br><span class="muted">${esc(v.recipient_email || '')}</span></span><span>From</span><span>${esc(v.from_name || '—')}</span>
-            <span>Message</span><span>${v.message ? '“' + esc(v.message) + '”' : '—'}</span><span>Delivery</span><span>${v.delivery === 'print' ? 'Print' : v.status === 'scheduled' ? 'Email · sends ' + fmtDate(v.send_at) : v.sent_at ? 'Emailed ' + fmtDate(v.sent_at) : 'Email · not sent yet'}</span>
+            <span>Card says</span><span>${esc(v.headline || 'A gift for you')}</span><span>Message</span><span>${v.message ? '“' + esc(v.message) + '”' : '—'}</span><span>Delivery</span><span>${v.delivery === 'print' ? 'Print' : v.status === 'scheduled' ? 'Email · sends ' + fmtDate(v.send_at) : v.sent_at ? 'Emailed ' + fmtDate(v.sent_at) : 'Email · not sent yet'}</span>
             ${v.status === 'redeemed' ? `<span>Redeemed</span><span>${fmtDate(v.redeemed_at)} at ${esc(v.redeemed_outlet || '—')} by ${esc(v.redeemed_by || '—')}</span>` : ''}${v.status === 'voided' ? `<span>Voided</span><span>${fmtDate(v.voided_at)} by ${esc(v.voided_by || '—')} — ${esc(v.void_reason || '')}</span>` : ''}
             <span>Design</span><span>${esc(v.design_name || '—')}</span></div></div>
           <div class="panel"><h2>Order ${esc(v.order_no)} ${pill(v.order_status)}</h2><div class="kv-grid"><span>Buyer</span><span>${esc(v.buyer_name || '—')}<br><span class="muted">${esc(v.buyer_email || '')}${v.buyer_phone ? ' · ' + esc(v.buyer_phone) : ''}</span></span><span>Source</span><span>${esc(v.source)}</span><span>Total</span><span>${money(v.order_total)}${v.paid_at ? ' · paid ' + fmtDay(v.paid_at) : ''}</span></div>
@@ -130,7 +185,7 @@ const initGift = () => {
         <div class="row"><div class="field"><label>Recipient name</label><input id="i-rn" placeholder="Who receives the gift"></div><div class="field"><label>Recipient email</label><input id="i-re" type="email" placeholder="Where to send the voucher"></div></div>
         <div class="row"><div class="field"><label>From (shown on the voucher)</label><input id="i-from" placeholder="Buyer's name"></div><div class="field"><label>Send</label><select id="i-del"><option value="email">Email now</option><option value="later">Email on a date…</option><option value="print">Print only (no email)</option></select></div></div>
         <div class="field" id="i-when-wrap" hidden><label>Send on</label><input id="i-when" type="datetime-local"></div>
-        <div class="field"><label>Personal message</label><textarea id="i-msg" maxlength="240" placeholder="Printed on the voucher (optional)"></textarea></div>
+        <div class="row"><div class="field"><label>Headline on the card</label><input id="i-head" maxlength="40" placeholder="A gift for you"></div></div><div class="field"><label>Personal message</label><textarea id="i-msg" maxlength="240" placeholder="Printed on the voucher (optional)"></textarea></div>
         <h2 style="margin-top:8px">Payment</h2>
         <div class="row"><div class="field"><label>Paid how <span class="req">*</span></label><select id="i-pay"><option value="counter">Paid at the counter (WESS)</option><option value="complimentary">Complimentary</option><option value="other">Other</option></select></div><div class="field"><label>Buyer email (receipt)</label><input id="i-be" type="email" placeholder="optional"></div></div>
         <div class="field"><label>Notes (internal)</label><input id="i-notes" placeholder="e.g. WESS receipt no."></div>
@@ -142,7 +197,7 @@ const initGift = () => {
       e.preventDefault(); const b = $('button[type=submit]', e.target); b.disabled = true; $('#i-err').innerHTML = '<span class="spin"></span> Issuing…';
       const del = $('#i-del').value;
       try {
-        const r = await api('POST', '/api/gift/issue', { item_id: $('#i-item').value, design_id: $('input[name=design]:checked')?.value || null, recipient_name: $('#i-rn').value, recipient_email: $('#i-re').value, from_name: $('#i-from').value, message: $('#i-msg').value, delivery: del === 'print' ? 'print' : 'email', send_at: del === 'later' && $('#i-when').value ? new Date($('#i-when').value).toISOString() : null, payment: $('#i-pay').value, buyer_name: $('#i-from').value, buyer_email: $('#i-be').value, notes: $('#i-notes').value });
+        const r = await api('POST', '/api/gift/issue', { item_id: $('#i-item').value, design_id: $('input[name=design]:checked')?.value || null, recipient_name: $('#i-rn').value, recipient_email: $('#i-re').value, from_name: $('#i-from').value, message: $('#i-msg').value, headline: $('#i-head').value, delivery: del === 'print' ? 'print' : 'email', send_at: del === 'later' && $('#i-when').value ? new Date($('#i-when').value).toISOString() : null, payment: $('#i-pay').value, buyer_name: $('#i-from').value, buyer_email: $('#i-be').value, notes: $('#i-notes').value });
         toast(`Issued ${r.voucher.code}`); go(`/gift/voucher/${r.voucher.voucher_id}`);
       } catch (err) { b.disabled = false; $('#i-err').innerHTML = `<div class="bad-box">${esc(err.message)}</div>`; }
     });

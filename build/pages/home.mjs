@@ -1,28 +1,32 @@
-import { site, groups, services, concerns, outlets, awards, pressLogos, faqs, google } from '../data.mjs';
-import { layout, esc, icon, btn, linkArrow, ring, faqList, logo, googleCard, starRow, fmtNum, gLogo } from '../ui.mjs';
+import { site, groups, services, concerns, outlets, awards, pressLogos, faqs, google, googleFor, sgOutline, orchardMap, concernPagesAll } from '../data.mjs';
+import { layout, esc, icon, btn, linkArrow, ring, faqList, logo, googleCard, starRow, fmtNum, gLogo, revealCard } from '../ui.mjs';
 
 export default function home() {
   const marqueeAwards = [...pressLogos, ...pressLogos].map((a) => a.url ? `<a href="${a.url}" title="${esc(a.title)}"><img class="award-logo" src="${a.img}" alt="${esc(a.title)}" loading="lazy"></a>` : `<img class="award-logo" src="${a.img}" alt="${esc(a.title)}" loading="lazy">`).join('');
 
+  // Hero: full-bleed slides with a few words each, like a resort site — centred title, one line, one outlined button
+  const slides = [
+    { img: '/assets/img/hero-reception.jpg', alt: 'Elements Wellness reception at night', title: 'Where Wellness Meets Results', sub: 'Where feeling good and real results go hand in hand', cta: 'Book now', href: '/contact/#book' },
+    { img: '/assets/img/onsen-1.jpg', alt: 'Private Koyamaki onsen suite at Elements Wellness, The Centrepoint', title: 'Koyamaki Onsen', sub: 'Singapore’s first private onsen suites — soak, scrub and massage. For one, or for two.', cta: 'Discover the onsen', href: '/koyamaki-onsen-ritual/' },
+    { img: '/assets/img/fascia-back.jpg', alt: 'Fascia release therapy at Elements Wellness', title: 'Massage & Recovery', sub: 'TCM techniques, skilled hands and recovery technology for bodies that work hard.', cta: 'Explore massage', href: '/massage-and-recovery/' },
+    { img: '/assets/img/fascia-face.jpg', alt: 'Facial treatment at Elements Wellness', title: 'Facials', sub: 'Results-driven facials for glow, firmness and clarity you can see.', cta: 'Explore facials', href: '/facials/' },
+  ];
   const hero = `
-<section class="hero" aria-label="Welcome">
-  <div class="hero-media"><img src="/assets/img/onsen-1.jpg" alt="Private Koyamaki onsen suite at Elements Wellness, The Centrepoint" fetchpriority="high"></div>
+<section class="hero" aria-label="Welcome" data-slides>
+  <div class="hero-media">${slides.map((sl, i) => `<img src="${sl.img}" alt="${esc(sl.alt)}" class="${i === 0 ? 'is-on' : ''}" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} data-slide-img>`).join('')}</div>
   <canvas class="steam" aria-hidden="true"></canvas>
   <div class="steam-veil" aria-hidden="true"></div>
-  <div class="hero-meta" data-hero-in><span>Award-winning therapeutic spa · Singapore</span><span>${awards.length} awards · ION Orchard · 313@somerset · The Centrepoint</span></div>
   <div class="hero-content">
-    <div class="wrap">
-      <h1 class="hero-title"><span class="line"><span>Where wellness</span></span><span class="line"><span>meets real results.</span></span></h1>
-      <div class="hero-bottom">
-        <p class="hero-sub" data-hero-in>Where feeling good and real results go hand in hand — TCM wisdom, modern technology and the magic of touch.</p>
-        <div style="display:grid;gap:12px;justify-items:end" data-hero-in>
-          <button class="hero-finder" type="button" data-finder aria-label="Open the treatment finder">${icon.search}<span class="hf-text">I want relief for <span class="hf-rotator" data-words="${concerns.map((c) => c.phrase).join('|')}">${esc(concerns[0].phrase)}</span></span><span class="btn btn-sm btn-light" aria-hidden="true"><span>Find</span></span></button>
-          <div class="hero-actions">${btn('/book-appointment/', 'Book Now')}${btn('/promotions/', 'First-visit offers', 'btn-ghost-light')}</div>
-        </div>
-      </div>
+    <div class="wrap hero-center">
+      <h1 class="hero-title"><span class="line"><span data-slide-title>${esc(slides[0].title)}</span></span></h1>
+      <p class="hero-sub" data-hero-in data-slide-sub>${esc(slides[0].sub)}</p>
+      <div class="hero-actions" data-hero-in><a class="btn btn-light" href="${slides[0].href}" data-slide-cta><span>${esc(slides[0].cta)}</span></a></div>
     </div>
   </div>
-  <div class="scroll-cue" aria-hidden="true"></div>
+  <a class="hero-reviews" href="#reviews" data-hero-in aria-label="Google rating ${google.average.toFixed(1)} out of 5 from ${fmtNum(google.total)} reviews">${gLogo}<b data-rv-avg>${google.average.toFixed(1)}</b>${starRow(google.average)}<span><span data-rv-total>${fmtNum(google.total)}</span> Google reviews</span></a>
+  <div class="hero-dots" role="tablist" aria-label="Slides">${slides.map((sl, i) => `<button type="button" role="tab" aria-selected="${i === 0}" aria-label="${esc(sl.title)}" class="${i === 0 ? 'is-on' : ''}" data-slide-to="${i}"><i></i></button>`).join('')}</div>
+  <div class="hero-nav"><button type="button" data-slide-prev aria-label="Previous slide"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 2 4 8l6 6"/></svg></button><button type="button" data-slide-next aria-label="Next slide"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m6 2 6 6-6 6"/></svg></button></div>
+  <script>window.EW_SLIDES=${JSON.stringify(slides.map(({ title, sub, cta, href }) => ({ title, sub, cta, href })))}</script>
 </section>`;
 
   const introStrip = `
@@ -34,10 +38,15 @@ export default function home() {
   </div>
 </section>`;
 
+  // Logo wall: two plain rows where one logo at a time swaps for another from the pool (no scrolling marquee)
+  const wallLogos = pressLogos.map((a) => ({ img: a.img, title: a.title, url: a.url || '' }));
   const awardsStrip = `
 <section class="awards-strip" aria-label="Awards and press">
-  <div class="label"><span class="caps">Award-winning · As featured in</span><a class="link-arrow award-all" href="/awards/">Awards &amp; Recognition ${icon.arrow}</a></div>
-  <div class="marquee" style="--gap:72px;--dur:45s"><div class="marquee-track">${marqueeAwards}</div></div>
+  <div class="wrap">
+    <div class="label"><span class="caps">Award-winning · As featured in</span><a class="link-arrow award-all" href="/awards/">Awards &amp; Recognition ${icon.arrow}</a></div>
+    <div class="logo-wall" data-logo-wall>${wallLogos.slice(0, 10).map((a, i) => `<div class="logo-cell" data-i="${i}">${a.url ? `<a href="${a.url}" title="${esc(a.title)}">` : ''}<img class="award-logo" src="${a.img}" alt="${esc(a.title)}" loading="lazy">${a.url ? '</a>' : ''}</div>`).join('')}</div>
+    <script>window.EW_LOGOS=${JSON.stringify(wallLogos)}</script>
+  </div>
 </section>`;
 
   const approach = `
@@ -102,25 +111,28 @@ export default function home() {
   </div>
 </section>`;
 
-  // Core treatment sections from the sitemap, each with three treatments guests return for
-  const sig = { facials: ['3c-vit-glow', 'nano-fibroblast', 'meridian-bojin-facial'], massage: ['tuina', 'sports', 'lymphatic'], spa: ['onsen', 'contrast', 'herbal-bath'] };
-  const pick = (g) => sig[g.id].map((id) => services.find((s) => s.id === id)).filter(Boolean);
-  const meta = (t) => [t.duration, t.price ? (t.priceNote === 'First trial' ? 'First trial ' : 'From ') + t.price : ''].filter(Boolean).join(' · ');
+  // Four cards straight after the hero, like the old site: each lists the treatments guests return for
+  const sig = { facials: ['3c-vit-glow', 'nano-fibroblast', 'meridian-bojin-facial', 'nir-cellbright', 'lymphatic-sculpt'], massage: ['tuina', 'sports', 'lymphatic', 'indiba-pro-recovery', 'fascia-release'], spa: ['onsen', 'contrast', 'herbal-bath', 'couples-massage'] };
+  const pick = (g) => { const ids = sig[g.id] || []; const chosen = ids.map((id) => services.find((s) => s.id === id)).filter(Boolean); const rest = g.id === 'contouring' ? [] : services.filter((s) => s.group === g.id && !chosen.includes(s)); return [...chosen, ...rest].slice(0, 5); };
+  const price = (t) => (t.price ? (t.priceNote === 'First trial' ? 'Trial ' : t.priceNote === 'Per couple' ? '' : 'From ') + t.price : '');
   const sigCopy = { facials: 'Results-driven facials for glow, firmness and clarity.', massage: 'Therapeutic massage, TCM therapies and recovery technology.', spa: 'Private onsen, contrast and herbal rituals — for one or two.' };
+    const contour = concernPagesAll.find((c) => c.url === '/body-contouring/');
+  const cards = [...['massage', 'facials', 'spa'].map((id) => groups.find((g) => g.id === id)), { id: 'contouring', label: contour?.label || 'Body Contouring', url: '/body-contouring/', img: contour?.img || '/assets/img/cat-slimming.jpg' }];
+  sig.contouring = ['tcm-slimming', 'indiba-slimming', 'deepba-slim', 'catabolic-tummy', 'tcm-bust'];
   const keyTreatments = `
-<section class="section" id="treatments">
+<section class="section-sm paths-sec" id="treatments">
   <div class="wrap">
     <div class="head-row" style="align-items:end">
-      <div><h2 data-split>Find your <span class="thin">first treatment.</span></h2><p class="lede" data-reveal style="margin-top:14px;max-width:520px">Hover a section to see the treatments our guests return for — then tap to explore.</p></div>
-      <div class="sig-arrows" data-reveal><button type="button" data-sig-prev aria-label="Previous"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8H2M7 3 2 8l5 5"/></svg></button><button type="button" data-sig-next aria-label="Next"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 8h13M9 3l5 5-5 5"/></svg></button></div>
+      <div><span class="eyebrow" data-reveal="drop">Our treatments</span><h2 data-split style="margin-top:16px">Find your <span class="thin">first treatment.</span></h2></div>
+      <div><p class="lede" data-reveal style="max-width:480px">Tap any treatment to read more, or open the full menu.</p><div data-reveal style="margin-top:14px"><button class="link-arrow" type="button" data-finder>Browse all treatments ${icon.arrow}</button></div></div>
     </div>
-    <div class="sig-row sig-3" data-sig-row>
-      ${groups.map((c) => `<article class="sig-tile" data-reveal tabindex="0">
-        <img src="${c.img}" alt="${esc(c.label)} at Elements Wellness" loading="lazy">
-        <div class="sig-tile-base"><h3>${esc(c.label)}</h3><p>${esc(sigCopy[c.id] || '')}</p></div>
-        <div class="sig-drop" aria-label="${esc(c.label)} treatments">
-          <div class="sig-drop-head"><h3>${esc(c.label)}</h3><a class="sig-all-link" href="${c.url}">View all ${icon.arrow}</a></div>
-          <div class="sig-mini-list">${pick(c).map((t) => `<a class="sig-mini" href="${t.url}"><img src="${t.img}" alt="" loading="lazy"><span><b>${esc(t.name)}</b>${meta(t) ? `<small>${esc(meta(t))}</small>` : ''}</span>${icon.arrow}</a>`).join('')}</div>
+    <div class="paths" data-rise>
+      ${cards.map((c) => `<article class="path-card" data-rise-item>
+        <a class="path-media" href="${c.url}" aria-label="${esc(c.label)}"><img src="${c.img}" alt="" loading="lazy"></a>
+        <div class="path-body">
+          <h3><a href="${c.url}">${esc(c.label)}</a></h3>
+          <ul class="path-list">${pick(c).map((t) => `<li><a href="${t.url}" data-img="${t.img || ''}"><span>${esc(t.name)}</span>${price(t) ? `<small>${esc(price(t))}</small>` : ''}</a></li>`).join('')}</ul>
+          <a class="link-arrow" href="${c.url}">View all ${esc(c.label.toLowerCase())} ${icon.arrow}</a>
         </div>
       </article>`).join('')}
     </div>
@@ -133,7 +145,7 @@ export default function home() {
 <section class="section bg-sand" id="reviews" data-google-reviews>
   <div class="wrap grid-2 rv-layout">
     <div class="rv-words">
-      <h2 data-split>Loved, then <span class="thin">loved again.</span></h2>
+      <h2 data-split>What people <span class="thin">are saying</span></h2>
       <div class="g-flex" data-reveal>
         <div class="g-flex-num"><span data-rv-avg>${google.average.toFixed(1)}</span><small>/ 5</small></div>
         <div><div class="g-flex-stars">${starRow(google.average)}</div><p>From <b data-rv-total>${fmtNum(google.total)}</b> Google reviews across our three outlets</p></div>
@@ -141,7 +153,7 @@ export default function home() {
       <div class="g-outlets" data-reveal>
         ${google.places.map((p) => `<a class="g-outlet" href="${p.mapsUrl}" target="_blank" rel="noopener" data-rv-place="${p.id}"><span class="g-outlet-name">${gLogo}${esc(p.name)}</span><span class="g-outlet-score"><b data-rv-rating>${p.rating.toFixed(1)}</b> ${starRow(p.rating)} <small>(<span data-rv-count>${fmtNum(p.count)}</span>)</small></span></a>`).join('')}
       </div>
-      <div class="hero-actions" data-reveal style="margin-top:22px">${btn(google.places[0].mapsUrl, 'Write a review on Google', '', 'target="_blank" rel="noopener" data-rv-write')}${btn('/book-appointment/', 'Book a treatment', 'btn-ghost')}</div>
+      <div class="hero-actions" data-reveal style="margin-top:22px">${btn(google.places[0].mapsUrl, 'Write a review on Google', '', 'target="_blank" rel="noopener" data-rv-write')}${btn('/contact/#book', 'Book a treatment', 'btn-ghost')}</div>
       <p class="g-note" data-rv-updated>Google ratings as of ${new Date(google.snapshotDate).toLocaleDateString('en-SG', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
     </div>
     <div class="rv-cols" data-reveal="fade" aria-label="Google reviews">
@@ -183,16 +195,46 @@ export default function home() {
   const commerce = `
 <section class="section-sm">
   <div class="wrap cards-2">
-    <div class="split-card bg-maroon" data-reveal><div class="copy"><span class="eyebrow">Gift vouchers</span><div class="h2" style="font-size:clamp(26px,3vw,40px)">Give someone <span class="thin">an hour of calm.</span></div><p class="muted" style="margin:0">Digital or printed, for any treatment or value, at all three outlets.</p>${btn('/gift-vouchers/', 'Send a voucher', 'btn-light')}</div><div class="media"><img src="/assets/img/jacuzzi-close.jpg" alt="" loading="lazy"></div></div>
-    <div class="split-card bg-ivory" data-reveal><div class="copy"><span class="eyebrow">Products</span><div class="h2" style="font-size:clamp(26px,3vw,40px)">Results that <span class="thin">go home with you.</span></div><p class="muted" style="margin:0">The skincare and supplements we use and recommend, by category or by brand.</p>${btn('/products/', 'Browse products')}</div><div class="media"><img src="/assets/img/herbal-flatlay.jpg" alt="" loading="lazy"></div></div>
+    ${revealCard({ href: '/gift-vouchers/', kind: 'Gift vouchers', title: 'Give someone an hour of calm.', short: 'Emailed today or on the day you choose — redeemable at all three outlets.', more: 'Choose a spa credit or a treatment, pick a card, add a message. The recipient gets a voucher with a unique code; you get a receipt. Valid 12 months.', img: '/assets/img/jacuzzi-close.jpg', cta: 'Send a voucher', cls: 'rcard-wide' })}
+    ${revealCard({ href: '/products/', kind: 'Products', title: 'Results that go home with you.', short: 'The skincare and supplements we use and recommend.', more: 'Browse by category or by brand — each brand page explains why Elements carries it and which products suit which concerns.', img: '/assets/img/herbal-flatlay.jpg', cta: 'Browse products', cls: 'rcard-wide' })}
   </div>
 </section>`;
 
-  const locs = `
-<section class="section bg-ivory" id="locations">
+  // Locations: the Singapore outline zooms into Orchard Road, our own red street map draws in with a pin per outlet; three cards below
+  const M = orchardMap;
+  const photos = (o) => [...new Set([o.img, ...(o.gallery || []).map((g) => '/assets/img/' + g)])].slice(0, 3);
+  const vb0 = '240 250 720 320';
+  const mapLocs = `
+<section class="section map-sec" id="locations" data-map>
   <div class="wrap">
-    <div class="head-row"><div><span class="eyebrow" data-reveal="drop">Visit us</span><h2 data-split style="margin-top:16px">Three sanctuaries <span class="thin">on Orchard Road.</span></h2></div><div><p class="lede" data-reveal>${esc(site.hoursSummary)}</p><div data-reveal style="margin-top:14px">${linkArrow('/locations/', 'All locations')}</div></div></div>
-    ${outlets.map((o) => `<div class="loc" data-reveal><div><h3><a href="${o.url}">${esc(o.name)}</a></h3><span class="tagline">${esc(o.feature)}</span></div><div class="addr">${o.address}</div><div class="contact"><a href="tel:${o.phone.replace(/\s/g, '')}">T · ${esc(o.phone)}</a>${o.whatsapp ? `<a href="https://wa.me/65${o.whatsapp.replace(/\s/g, '')}" target="_blank" rel="noopener">WhatsApp · ${esc(o.whatsapp)}</a>` : ''}</div>${btn(o.url, 'Visit', 'btn-ghost btn-sm')}</div>`).join('')}
+    <div class="head-row"><div><h2 data-split>Find us</h2></div><div><p class="lede" data-reveal>${esc(site.hoursSummary)}</p><div data-reveal style="margin-top:14px">${linkArrow('/locations/', 'All locations')}</div></div></div>
+    <div class="omap-wrap">
+    <div class="omap" data-omap>
+      <svg class="omap-sg" viewBox="-360 -229 1400 933" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><path class="sg-land" d="${sgOutline}"/><circle class="sg-ring" cx="340" cy="238" r="7"/><circle class="sg-ring" cx="340" cy="238" r="7"/><circle class="sg-dot" cx="340" cy="238" r="7"/></svg>
+      <div class="omap-burst" aria-hidden="true"></div>
+      <svg class="omap-street" viewBox="${vb0}" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Map of Orchard Road showing the three Elements Wellness outlets">
+        <rect x="0" y="0" width="${M.w}" height="${M.h}" class="om-land"/>
+        <path class="om-park" d="${M.parks}"/>
+        <path class="om-bld" d="${M.buildings}"/>
+        <path class="om-road om-walk" d="${M.roads.walk}"/><path class="om-road om-minor" d="${M.roads.minor}"/><path class="om-road om-mid" d="${M.roads.mid}"/><path class="om-road om-major" d="${M.roads.major}"/><path class="om-road om-orchard" d="${M.roads.orchard}"/>
+        ${outlets.map((o) => `<path class="om-mall" data-mall="${o.id}" d="${M.malls[o.id] || ''}"/>`).join('')}
+        ${Object.entries(M.mrt).map(([n, [x, y]]) => `<g class="om-mrt" transform="translate(${x} ${y})"><g class="om-mrt-scale"><rect x="-7" y="-7" width="14" height="14" rx="3"/><text x="12" y="4">${n} MRT</text></g></g>`).join('')}
+        ${outlets.map((o) => { const [x, y] = M.pins[o.id]; return `<g class="om-pin" data-pin="${o.id}" transform="translate(${x} ${y})" tabindex="0" role="button" aria-label="${esc(o.name)}"><g class="om-pin-in"><g class="om-pin-scale"><circle class="om-pulse" r="16"/><path class="om-drop" d="M0 0 C -4 -9 -13 -14 -13 -24 A 13 13 0 1 1 13 -24 C 13 -14 4 -9 0 0 Z"/><circle class="om-dot" cx="0" cy="-24" r="5"/><text class="om-label" x="0" y="-46">${esc(o.short)}</text></g></g></g>`; }).join('')}
+      </svg>
+      <span class="omap-credit">Map data © OpenStreetMap contributors</span>
+    </div>
+      ${outlets.map((o, i) => { const g = googleFor(o.id) || { rating: 0, count: 0 }; const wa = o.whatsapp.replace(/\s/g, ''); const ph = photos(o); return `<article class="omap-pop" data-pop="${o.id}" aria-hidden="true">
+        <button type="button" class="omap-pop-close" data-pop-close aria-label="Close"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3l10 10M13 3 3 13"/></svg></button>
+        <div class="omap-pop-hero" data-pop-slides>${ph.map((src, j) => `<img src="${src}" alt="Elements Wellness ${esc(o.name)}" loading="lazy" class="${j === 0 ? 'is-on' : ''}">`).join('')}
+          <div class="omap-pop-over"><h3>${esc(o.name)}</h3><span class="omap-score" data-rv-place="${o.id}"><b data-rv-rating>${g.rating.toFixed(1)}</b> ${starRow(g.rating)} <small><span data-rv-count>${fmtNum(g.count)}</span> reviews</small></span><p class="omap-addr">${o.address}</p></div>
+          ${ph.length > 1 ? `<div class="omap-pop-dots">${ph.map((_, j) => `<button type="button" class="${j === 0 ? 'is-on' : ''}" data-pop-dot="${j}" aria-label="Photo ${j + 1}"></button>`).join('')}</div>` : ''}</div>
+        <div class="omap-actions">${btn(o.url, 'View outlet', 'btn-sm')}${btn('https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent('Elements Wellness ' + o.mapQuery), 'Directions', 'btn-ghost btn-sm', 'target="_blank" rel="noopener"')}</div>
+        <div class="omap-pop-body">
+          <p class="omap-dir">${esc(o.directions || '')}</p>
+          <p class="omap-contact"><a href="tel:+65${o.phone.replace(/\s/g, '')}">${esc(o.phone)}</a> · <a href="https://wa.me/65${wa}" target="_blank" rel="noopener">WhatsApp</a></p>
+        </div>
+      </article>`; }).join('')}
+    </div>
   </div>
 </section>`;
 
@@ -211,7 +253,7 @@ export default function home() {
     <span class="eyebrow" data-reveal="drop">Your next step</span>
     <div class="h1" data-split>Ready to feel <span class="thin">like yourself again?</span></div>
     <p class="lede" data-reveal>Book a treatment, or start with Elements Restore and let your consultant recommend the right path.</p>
-    <div class="hero-actions" data-reveal>${btn('/book-appointment/', 'Book Now')}${btn(site.whatsapp, 'WhatsApp us', 'btn-ghost', 'target="_blank" rel="noopener"')}</div>
+    <div class="hero-actions" data-reveal>${btn('/contact/#book', 'Book Now')}${btn(site.whatsapp, 'WhatsApp us', 'btn-ghost', 'target="_blank" rel="noopener"')}</div>
   </div>
   <div class="ghost" aria-hidden="true">Elements</div>
 </section>`;
@@ -226,6 +268,6 @@ export default function home() {
     title: 'Elements Wellness — Award-winning Spa & Wellness in Singapore',
     description: 'Award-winning spa on Orchard Road: TCM massage, results-driven facials, INDIBA® slimming, recovery therapy and Singapore’s first private Koyamaki onsen. ION Orchard, 313@somerset, The Centrepoint.',
     path: '/', bodyClass: 'page-home', schema,
-    body: hero + awardsStrip + keyTreatments + ha + commerce + standard + locs + faq + testimonials + cta,
+    body: hero + keyTreatments + awardsStrip + testimonials + mapLocs,
   });
 }

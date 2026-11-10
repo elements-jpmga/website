@@ -31,7 +31,7 @@ body { width: 210mm; height: 148mm; font-family: 'Helvetica Neue', Helvetica, Ar
 .art { height: 62mm; background: #72181b center/cover no-repeat; position: relative; }
 .art .ribbon { position: absolute; left: 0; right: 0; bottom: 0; background: rgba(45,42,39,.72); color: #fff; padding: 4mm 10mm; display: flex; justify-content: space-between; align-items: baseline; }
 .art .ribbon b { font-family: 'Noto Serif', Georgia, serif; font-weight: 400; font-size: 15pt; letter-spacing: .02em; }
-.art .ribbon span { font-size: 8pt; letter-spacing: .3em; text-transform: uppercase; }
+.art .ribbon span { font-family: 'Noto Serif', Georgia, serif; font-size: 13pt; letter-spacing: .02em; }
 .body { display: grid; grid-template-columns: 1fr 46mm; gap: 8mm; padding: 7mm 10mm 0; }
 .eyebrow { font-size: 7pt; letter-spacing: .22em; text-transform: uppercase; color: #8b8175; font-weight: 700; }
 .worth { font-family: 'Noto Serif', Georgia, serif; font-size: 22pt; color: #72181b; margin: 1.5mm 0 3mm; line-height: 1.15; }
@@ -43,7 +43,7 @@ body { width: 210mm; height: 148mm; font-family: 'Helvetica Neue', Helvetica, Ar
 .foot .terms { white-space: pre-line; max-width: 128mm; }
 .foot .meta b { display: block; color: #2d2a27; font-size: 7.2pt; }
 </style></head><body>
-<div class="art" style="${art ? `background-image:url(${art})` : ''}"><div class="ribbon"><b>Elements Wellness · Gift Voucher</b><span>A gift for you</span></div></div>
+<div class="art" style="${art ? `background-image:url(${art})` : ''}"><div class="ribbon"><b>Elements Wellness · Gift Voucher</b><span>${esc(v.headline || 'A gift for you')}</span></div></div>
 <div class="body">
   <div>
     <div class="eyebrow">${v.value_initial != null ? 'Voucher value' : 'Treatment'}</div>
@@ -70,7 +70,7 @@ export async function emailRecipient(v, pdf, { resend = false } = {}) {
   if (!v.recipient_email) throw new Error('This voucher has no recipient email');
   const subject = `${v.from_name ? v.from_name + ' has sent you' : 'You have received'} an Elements Wellness gift voucher`;
   const body = `<p style="margin:0 0 14px">Dear ${esc(v.recipient_name || 'there')},</p><p style="margin:0 0 14px">${v.from_name ? `<b>${esc(v.from_name)}</b> has sent you` : 'You have received'} a gift voucher for <b>${esc(v.value_initial != null ? money(v.value_initial) + ' at Elements Wellness' : v.title)}</b>.</p>${v.message ? `<p style="margin:0 0 14px;font-family:Georgia,serif;font-style:italic;color:#4a4039">“${esc(v.message)}”</p>` : ''}<p style="margin:0 0 6px">Your voucher code:</p><p style="margin:0 0 14px;font-family:Menlo,Consolas,monospace;font-size:17px;letter-spacing:.05em;background:#fbf8f4;border:1px solid #e8e1d9;padding:12px 16px;display:inline-block">${esc(v.code)}</p><p style="margin:0">Your voucher is attached as a PDF and is valid until <b>${day(v.expires_at)}</b>.</p>${outletsHtml}`;
-  const html = brandEmail({ title: 'A gift for you', eyebrow: resend ? 'Your gift voucher (resent)' : 'Your gift voucher', body, footnote: 'Please keep this email: the code inside is your voucher. Terms are printed on the PDF.' });
+  const html = brandEmail({ title: v.headline || 'A gift for you', eyebrow: resend ? 'Your gift voucher (resent)' : 'Your gift voucher', body, footnote: 'Please keep this email: the code inside is your voucher. Terms are printed on the PDF.' });
   const text = `Dear ${v.recipient_name || 'there'},\n\n${v.from_name ? v.from_name + ' has sent you' : 'You have received'} a gift voucher for ${v.value_initial != null ? money(v.value_initial) + ' at Elements Wellness' : v.title}.\n${v.message ? '\n“' + v.message + '”\n' : ''}\nVoucher code: ${v.code}\nValid until ${day(v.expires_at)}. Your voucher is attached as a PDF.\n\nION Orchard · The Centrepoint · 313@somerset — call or WhatsApp your preferred outlet to book.`;
   return sendMail({ to: v.recipient_email, subject, html, text, attachments: [{ filename: `Elements-Gift-Voucher-${v.code.split(' ')[0]}.pdf`, content: pdf, contentType: 'application/pdf' }] });
 }
@@ -125,7 +125,7 @@ export async function fulfil(order, lines, items, by) {
       const code = await Codes.allocate(it.item_id, voucher_id);
       if (!code) { await Events.add({ order_id: order.order_id, type: 'no_code', detail: { item: it.name }, staff: by }); throw new Error(`No voucher codes left for "${it.name}" — import new WESS codes first`); }
       const scheduled = l.send_at && new Date(l.send_at).getTime() > Date.now() + 60e3;
-      const v = await Vouchers.create({ voucher_id, order_id: order.order_id, item_id: it.item_id, title: it.name, code, design_id: l.design_id || null, recipient_name: l.recipient_name, recipient_email: l.recipient_email, from_name: l.from_name || order.buyer_name, message: l.message, delivery: l.delivery || 'email', send_at: scheduled ? new Date(l.send_at).toISOString() : null, value_initial: it.kind === 'value' ? it.value : null, units_initial: it.kind === 'value' ? null : 1, validity_months: it.validity_months, status: scheduled ? 'scheduled' : 'active' });
+      const v = await Vouchers.create({ voucher_id, order_id: order.order_id, item_id: it.item_id, title: it.name, code, design_id: l.design_id || null, recipient_name: l.recipient_name, recipient_email: l.recipient_email, from_name: l.from_name || order.buyer_name, message: l.message, headline: l.headline || null, delivery: l.delivery || 'email', send_at: scheduled ? new Date(l.send_at).toISOString() : null, value_initial: it.kind === 'value' ? it.value : null, units_initial: it.kind === 'value' ? null : 1, validity_months: it.validity_months, status: scheduled ? 'scheduled' : 'active' });
       await Events.add({ voucher_id, order_id: order.order_id, type: 'created', detail: { code, scheduled: !!scheduled }, staff: by });
       const alert = await Alerts.check(it.item_id); if (alert?.fresh) { try { const r = await emailLowStock(alert); if (r) await Alerts.markEmailed(alert.alert_id); } catch (e) { console.error('low-stock email failed:', e.message); } }
       vouchers.push({ ...v, order_no: order.order_no });

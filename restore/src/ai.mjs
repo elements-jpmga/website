@@ -69,12 +69,12 @@ function brief(a, rules) {
   const r = a.result;
   const progs = r.programs.map((code) => {
     const p = rules.programs[code];
-    return `${p.name}: ${p.components.map((c) => c.options.join(' or ')).join(' + ')} (the consultant chooses where alternatives are shown), optional enhancer ${p.enhancer}. Benefit: ${p.benefit}`;
+    return `${p.name}: ${p.components.map((c) => c.options.join(' or ')).join(' + ')} (the consultant chooses where alternatives are shown), optional enhancer ${p.enhancer}. Benefits: ${(p.benefits || [p.benefit]).join('; ')}`;
   });
   return [
     `Client: ${a.client_age ? `age ${a.client_age}` : 'age not recorded'}${a.client_sex ? `, ${a.client_sex.toLowerCase()}` : ''}.`,
     'Restore results (from the rules engine — final):',
-    ...r.domains.map((d) => `- ${d.label}: ${d.outcome} (${d.readings}; ideal ${d.idealRange.replace(/\n/g, ', ')})`),
+    ...r.domains.map((d) => `- ${d.label}: ${d.outcome} (${d.readings}; ideal ${(d.idealRange || '').replace(/\n/g, ', ')})`),
     `Restore Priority: ${r.priorityLabel}. ${r.priorityText}`,
     `Programme(s): ${progs.join(' | ')}`,
     `Restore Plan: ${r.plan.duration}, ${r.plan.frequency}. Next review in ${rules.report.reviewWindow}.`,
