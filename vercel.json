@@ -4,16 +4,16 @@
   "trailingSlash": true,
   "rewrites": [
     {
-      "source": "/api/gift/public/:path*",
-      "destination": "https://assess.elements.com.sg/api/gift/public/:path*"
+      "source": "/api/gift/public/(.*)",
+      "destination": "https://assess.elements.com.sg/api/gift/public/$1"
     },
     {
-      "source": "/api/gift/designs/:path*",
-      "destination": "https://assess.elements.com.sg/api/gift/designs/:path*"
+      "source": "/api/gift/designs/(.*)",
+      "destination": "https://assess.elements.com.sg/api/gift/designs/$1"
     },
     {
-      "source": "/api/shop/public/:path*",
-      "destination": "https://assess.elements.com.sg/api/shop/public/:path*"
+      "source": "/api/shop/public/(.*)",
+      "destination": "https://assess.elements.com.sg/api/shop/public/$1"
     }
   ],
   "redirects": [

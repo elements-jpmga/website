@@ -75,7 +75,8 @@ fs.writeFileSync(path.join(out, '_redirects'), redirects.map(([a, b]) => `${a} $
 // Vercel reads redirects from vercel.json at the project root
 // Public voucher/shop endpoints are forwarded to the staff server so a Vercel address can use them without a cross-site request
 const API_ORIGIN = (process.env.STAFF_API_ORIGIN || 'https://assess.elements.com.sg').replace(/\/+$/, '');
-const rewrites = ['/api/gift/public/:path*', '/api/gift/designs/:path*', '/api/shop/public/:path*'].map((source) => ({ source, destination: API_ORIGIN + source }));
+// (.*) rather than :path* — with trailingSlash on, Vercel matches named segments strictly and a path ending in / would not match
+const rewrites = ['/api/gift/public/', '/api/gift/designs/', '/api/shop/public/'].map((base) => ({ source: base + '(.*)', destination: API_ORIGIN + base + '$1' }));
 fs.writeFileSync('vercel.json', JSON.stringify({ buildCommand: 'node build.mjs', outputDirectory: 'dist', trailingSlash: true, rewrites, redirects: redirects.flatMap(([source, destination]) => [source, source.replace(/\/$/, '')].filter((x, i, a) => x && a.indexOf(x) === i).map((src) => ({ source: src, destination, permanent: true }))) }, null, 2) + '\n');
 
 // Copywriting status for Elements (generated from build/sitemap.mjs)
