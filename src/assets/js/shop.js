@@ -4,10 +4,12 @@
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const P = window.EW_PRODUCTS || {};
   const local = ['localhost', '127.0.0.1'].includes(location.hostname);
-  const API = window.EW_SHOP_API || document.querySelector('meta[name="ew-gift-api"]')?.content || (local ? 'http://localhost:4400' : 'https://assess.elements.com.sg');
+  const proxied = /\.vercel\.app$/.test(location.hostname); // see gift.js: on a Vercel address the calls are forwarded by vercel.json
+  const API = window.EW_SHOP_API || document.querySelector('meta[name="ew-gift-api"]')?.content || (local ? 'http://localhost:4400' : proxied ? '' : 'https://assess.elements.com.sg');
+  const url = (path) => API + (proxied ? path.replace(/^([^?]*[^/?])(\?|$)/, '$1/$2') : path);
   const esc = (s = '') => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   const money = (n) => 'S$' + Number(n).toLocaleString('en-SG', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
-  const api = async (path, opts = {}) => { const r = await fetch(API + path, { ...opts, headers: { ...(opts.body ? { 'Content-Type': 'application/json' } : {}), ...(opts.headers || {}) } }); const j = await r.json().catch(() => ({})); if (!r.ok) throw new Error(j.error || 'Something went wrong. Please try again.'); return j; };
+  const api = async (path, opts = {}) => { const r = await fetch(url(path), { ...opts, headers: { ...(opts.body ? { 'Content-Type': 'application/json' } : {}), ...(opts.headers || {}) } }); const j = await r.json().catch(() => ({})); if (!r.ok) throw new Error(j.error || 'Something went wrong. Please try again.'); return j; };
 
   /* ---------- the cart itself ---------- */
   const KEY = 'ew-cart';

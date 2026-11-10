@@ -3,11 +3,15 @@
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const local = ['localhost', '127.0.0.1'].includes(location.hostname);
-  const API = document.querySelector('meta[name="ew-gift-api"]')?.content || (local ? 'http://localhost:4400' : 'https://assess.elements.com.sg');
+  // On a *.vercel.app address the staff server would refuse the browser (it only allows elements.com.sg), so the calls go through
+  // this site instead: vercel.json forwards /api/gift/public/*, /api/gift/designs/* and /api/shop/public/* to the staff server.
+  const proxied = /\.vercel\.app$/.test(location.hostname);
+  const API = document.querySelector('meta[name="ew-gift-api"]')?.content || (local ? 'http://localhost:4400' : proxied ? '' : 'https://assess.elements.com.sg');
+  const url = (path) => API + (proxied ? path.replace(/^([^?]*[^/?])(\?|$)/, '$1/$2') : path); // the site serves every path with a trailing slash
   const esc = (s = '') => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   const money = (n) => 'S$' + Number(n).toLocaleString('en-SG', { maximumFractionDigits: 2 });
   const day = (iso) => new Date(iso).toLocaleDateString('en-SG', { day: 'numeric', month: 'short', year: 'numeric' });
-  const api = async (path, opts = {}) => { const r = await fetch(API + path, { ...opts, headers: { ...(opts.body ? { 'Content-Type': 'application/json' } : {}), ...(opts.headers || {}) } }); const j = await r.json().catch(() => ({})); if (!r.ok) throw new Error(j.error || 'Something went wrong. Please try again.'); return j; };
+  const api = async (path, opts = {}) => { const r = await fetch(url(path), { ...opts, headers: { ...(opts.body ? { 'Content-Type': 'application/json' } : {}), ...(opts.headers || {}) } }); const j = await r.json().catch(() => ({})); if (!r.ok) throw new Error(j.error || 'Something went wrong. Please try again.'); return j; };
 
   /* ---------- Buy: 1 pick a voucher → 2 one short form (+ card design if there are several) → 3 summary and Pay ---------- */
   const shop = $('[data-gift-shop]');
@@ -26,10 +30,10 @@
       $$('[data-id]', itemsBox).forEach((b) => b.addEventListener('click', () => { state.item = state.items.find((i) => i.item_id === b.dataset.id); $$('[data-gift-chosen]').forEach((c) => { c.innerHTML = `<b>${esc(state.item.name)}</b>${state.item.description ? `<p>${esc(state.item.description)}</p>` : ''}`; }); go(state.designs.length > 1 ? 2 : 3); }));
     };
     // 2 · the card design: the chosen one large, the others as thumbnails; the card at the top of the page follows it
-    const setDesign = (d) => { state.design = d; if (!d) return; cardArt.src = API + d.image; cardArt.alt = d.name; cardArt.hidden = false; cardArt.closest('[data-gift-hero-card]')?.classList.add('has-img'); const big = $('.gv-design-big img', designBox); if (big && big.src !== API + d.image) { big.style.opacity = 0; setTimeout(() => { big.src = API + d.image; big.alt = d.name; big.style.opacity = 1; }, 180); } };
+    const setDesign = (d) => { state.design = d; if (!d) return; cardArt.src = url(d.image); cardArt.alt = d.name; cardArt.hidden = false; cardArt.closest('[data-gift-hero-card]')?.classList.add('has-img'); const big = $('.gv-design-big img', designBox); if (big && big.src !== url(d.image)) { big.style.opacity = 0; setTimeout(() => { big.src = url(d.image); big.alt = d.name; big.style.opacity = 1; }, 180); } };
     const renderDesigns = () => {
       if (!state.designs.length) { designBox.hidden = true; return; }
-      designBox.innerHTML = `<div class="gv-design-big"><img src="${API}${state.designs[0].image}" alt="${esc(state.designs[0].name)}"></div>${state.designs.length > 1 ? `<div class="gv-design-row">${state.designs.map((d, n) => `<label class="gv-design ${n === 0 ? 'on' : ''}"><input type="radio" name="design" value="${d.design_id}" ${n === 0 ? 'checked' : ''}><img src="${API}${d.image}" alt="${esc(d.name)}" loading="lazy"></label>`).join('')}</div>` : ''}`;
+      designBox.innerHTML = `<div class="gv-design-big"><img src="${url(state.designs[0].image)}" alt="${esc(state.designs[0].name)}"></div>${state.designs.length > 1 ? `<div class="gv-design-row">${state.designs.map((d, n) => `<label class="gv-design ${n === 0 ? 'on' : ''}"><input type="radio" name="design" value="${d.design_id}" ${n === 0 ? 'checked' : ''}><img src="${url(d.image)}" alt="${esc(d.name)}" loading="lazy"></label>`).join('')}</div>` : ''}`;
       setDesign(state.designs[0]);
       $$('input[name=design]', designBox).forEach((r) => r.addEventListener('change', () => { $$('.gv-design', designBox).forEach((l) => l.classList.toggle('on', l.contains(r))); setDesign(state.designs.find((d) => d.design_id === r.value)); }));
     };

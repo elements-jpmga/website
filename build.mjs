@@ -73,7 +73,10 @@ fs.writeFileSync(path.join(out, 'assets/js/shop-data.js'), `window.EW_PRODUCTS=$
 const redirects = [...SM.redirects, ...awards.map((a) => [a.url, '/awards/'])].filter(([a]) => !seen.has(a));
 fs.writeFileSync(path.join(out, '_redirects'), redirects.map(([a, b]) => `${a} ${b} 301`).join('\n') + '\n');
 // Vercel reads redirects from vercel.json at the project root
-fs.writeFileSync('vercel.json', JSON.stringify({ buildCommand: 'node build.mjs', outputDirectory: 'dist', trailingSlash: true, redirects: redirects.flatMap(([source, destination]) => [source, source.replace(/\/$/, '')].filter((x, i, a) => x && a.indexOf(x) === i).map((src) => ({ source: src, destination, permanent: true }))) }, null, 2) + '\n');
+// Public voucher/shop endpoints are forwarded to the staff server so a Vercel address can use them without a cross-site request
+const API_ORIGIN = (process.env.STAFF_API_ORIGIN || 'https://assess.elements.com.sg').replace(/\/+$/, '');
+const rewrites = ['/api/gift/public/:path*', '/api/gift/designs/:path*', '/api/shop/public/:path*'].map((source) => ({ source, destination: API_ORIGIN + source }));
+fs.writeFileSync('vercel.json', JSON.stringify({ buildCommand: 'node build.mjs', outputDirectory: 'dist', trailingSlash: true, rewrites, redirects: redirects.flatMap(([source, destination]) => [source, source.replace(/\/$/, '')].filter((x, i, a) => x && a.indexOf(x) === i).map((src) => ({ source: src, destination, permanent: true }))) }, null, 2) + '\n');
 
 // Copywriting status for Elements (generated from build/sitemap.mjs)
 const rows = SM.statusRows();

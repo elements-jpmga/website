@@ -2,6 +2,20 @@
   "buildCommand": "node build.mjs",
   "outputDirectory": "dist",
   "trailingSlash": true,
+  "rewrites": [
+    {
+      "source": "/api/gift/public/:path*",
+      "destination": "https://assess.elements.com.sg/api/gift/public/:path*"
+    },
+    {
+      "source": "/api/gift/designs/:path*",
+      "destination": "https://assess.elements.com.sg/api/gift/designs/:path*"
+    },
+    {
+      "source": "/api/shop/public/:path*",
+      "destination": "https://assess.elements.com.sg/api/shop/public/:path*"
+    }
+  ],
   "redirects": [
     {
       "source": "/services/facial/nir-cellbright-facial/",
